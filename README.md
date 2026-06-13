@@ -81,7 +81,7 @@ python evaluation/evaluate_all_multi_llms.py
 
 ## Dataset
 
-The benchmark contains **500 natural language descriptions** with manually annotated ER schemas covering diverse domains (academic, business, healthcare, etc.).
+The benchmark contains **250 natural language descriptions** with manually annotated ER schemas covering diverse domains (academic, business, healthcare, etc.).
 
 ```
 dataset/
