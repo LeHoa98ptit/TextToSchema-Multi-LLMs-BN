@@ -1,0 +1,40 @@
+\begin{table*}[t]
+\centering
+\caption{ER schema quality metrics for pipeline comparison.}
+\label{tab:structural_metrics_pipelines}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Pipeline}
+& \textbf{Basic Counts}
+& \textbf{Complexity}
+& \textbf{Redundancy (\%)} $\downarrow$
+& \textbf{Well-Formedness (\%)} $\uparrow$ \\
+\midrule
+& E | R | A | Total
+& R/E | N:M (\%) | A/E
+& Dup | Similar
+& Ent w/ A | Valid Card | Not Isolated \\
+\rowcolor{gray!15}
+\multicolumn{5}{@{}l}{\textit{Our Approach}} \\
+\textbf{Multi-LLM-BN-Llama3} & 4.85 | 4.37 | 21.88 | 31.1 & 0.87 | 6.67 | 4.61 & 0.0 | 0.23 & 100.0 | 100.0 | 100.0 \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{5}{@{}l}{\textit{Baselines}} \\
+Text-To-ERD (GPT) ~\cite{menezes2025dbmodeling} & 5.63 | 5.4 | 29.39 | 40.42 & 0.94 | 0.0 | 5.34 & 2.81 | 0.36 & 100.0 | 99.04 | 98.13 \\
+Text-To-ERD (Llama3) ~\cite{menezes2025dbmodeling} & 5.33 | 4.7 | 25.65 | 35.69 & 0.87 | 0.0 | 4.91 & 1.38 | 0.51 & 100.0 | 99.79 | 98.61 \\
+DSL-ToT-DM~\cite{SilvaEtAl2025_ToT_DomainModeling}  & 5.36 | 5.07 | 20.96 | 31.38 & 0.93 | 12.66 | 4.13 & 4.44 | 0.28 & 98.19 | 99.45 | 97.93 \\
+SchemaAgent~\cite{wang2025text2schemafillinggapdesigning} & 5.39 | 5.39 | 27.25 | 38.02 & 0.95 | 16.32 | 5.02 & 3.68 | 0.13 & 98.93 | 98.93 | 99.14 \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{5}{@{}l}{\textit{Variants}} \\
+Multi-LLM-noBN-Llama3 & 4.63 | 4.15 | 20.66 | 29.44 & 0.88 | 12.66 | 4.58 & 1.91 | 0.11 & 98.11 | 100.0 | 97.58 \\
+Multi-LLM-BN-NoWiki-Llama3 & 4.29 | 3.18 | 20.28 | 27.75 & 0.73 | 10.77 | 4.77 & 0.25 | 0.39 & 100.0 | 100.0 | 100.0  \\
+One-LLM-BN-Llama3 & 6.0 | 5.95 | 22.44 | 34.39 & 0.98 | 17.20 | 3.79 & 0.0 | 0.44 & 100.0 | 100.0 | 100.0 \\
+One-LLM-BN-NoWiki-Llama3 & 4.87 | 3.7 | 18.91 | 27.48 & 0.75 | 9.97 | 3.91 & 0.62 | 0.47 & 100.0 | 99.59 | 100.0 \\
+One-LLM-noBN-Llama3 & 4.94 | 4.93 | 19.33 | 29.2 & 0.98 | 24.02 | 3.9 & 2.61 | 0.36 & 98.63 | 98.8 | 99.28  \\
+
+\bottomrule
+\end{tabular}
+\end{table*}

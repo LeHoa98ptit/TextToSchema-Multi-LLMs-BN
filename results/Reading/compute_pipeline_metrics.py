@@ -1,6 +1,6 @@
 """
 Compute structural quality metrics for each pipeline folder and generate
-results/Reading/LaTeX_Tables/structural_metrics_pipelines.tex
+Output_final/results/Reading/LaTeX_Tables/structural_metrics_pipelines.tex
 """
 import os, json, statistics
 
@@ -15,15 +15,15 @@ LLMERRawEvaluator = _ns["LLMERRawEvaluator"]
 
 # ── Pipeline definitions (key, folder) ─────────────────────────────────────
 PIPELINES = {
-    "multi_bn_llama":    "output/add/multi/opt_fewshot_llama_0.5_1.0-(1.2--0.5-1.0)",
-    "multi_nobn_gpt":    "output/generation/multi-llms/few-shot-gpt",
-    "multi_nobn_llama":  "output/generation/multi-llms/few-shot-llama",
-    "one_bn_llama":      "output/add/one-llm/opt_one_fewshot_llama_0.5_1.0-(1.2-1.0-1.0)",
-    "one_bn_gpt":        "output/add/one-llm/opt_one_fewshot_gpt_0.5_1.0-(1.2-1.0-1.0)",
-    "text-to-erd_gpt":        "output/generation/Text-To-ERD/gpt",
-    "text-to-erd-llama":      "output/generation/Text-To-ERD/llama",
-    "dsl_tot":           "output/DSL-TOT-DM/GPT",
-    "schema_agent":      "output/SchemaAgent/data",
+    "multi_bn_llama":    "Output_final/add/multi/opt_fewshot_llama_0.5_1.0-(1.2--0.5-1.0)",
+    "multi_nobn_gpt":    "Output_final/generation/multi-llms/few-shot-gpt",
+    "multi_nobn_llama":  "Output_final/generation/multi-llms/few-shot-llama",
+    "one_bn_llama":      "Output_final/add/one-llm/opt_one_fewshot_llama_0.5_1.0-(1.2-1.0-1.0)",
+    "one_bn_gpt":        "Output_final/add/one-llm/opt_one_fewshot_gpt_0.5_1.0-(1.2-1.0-1.0)",
+    "text-to-erd_gpt":        "Output_final/generation/Text-To-ERD/gpt",
+    "text-to-erd-llama":      "Output_final/generation/Text-To-ERD/llama",
+    "dsl_tot":           "Output_final/DSL-TOT-DM/GPT",
+    "schema_agent":      "Output_final/SchemaAgent/data",
     "multi_bn_llama_nowd": "ablation/optimization_ablation_hard/output/multi-llms/few-shot-llama",
     "one_bn_llama_nowd": "ablation/ablation_one_llm/optimization"
 }

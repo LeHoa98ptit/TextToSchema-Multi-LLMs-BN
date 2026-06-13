@@ -16,6 +16,26 @@ Given an input text *T*, the system produces a structured ER schema through thre
 
 ---
 
+## Methods & Baselines
+
+| Method | LLM | Bayesian Network | # Steps |
+|--------|-----|:----------------:|:--------:|
+| **Our Approach** | | | |
+| **Multi-LLM-BN-Llama3** | Llama-3 | Yes | Multi |
+| **Baselines** | | | |
+| Text-To-ERD (Llama3) | Llama-3 | — | One |
+| Text-To-ERD (GPT) | GPT | — | One |
+| DSL-ToT-DM | GPT | — | Multi (ToT) |
+| SchemaAgent | GPT | — | Multi |
+| **Variants** | | | |
+| Multi-LLM-BN-NoWiki-Llama3 | Llama-3 | Yes (w/o Wikidata) | Multi |
+| Multi-LLM-noBN-Llama3 | Llama-3 | No | Multi |
+| One-LLM-BN-Llama3 | Llama-3 | Yes | One |
+| One-LLM-BN-NoWiki-Llama3 | Llama-3 | Yes (w/o Wikidata) | One |
+| One-LLM-noBN-Llama3 | Llama-3 | No | One |
+
+---
+
 ## Repository Structure
 
 ```
