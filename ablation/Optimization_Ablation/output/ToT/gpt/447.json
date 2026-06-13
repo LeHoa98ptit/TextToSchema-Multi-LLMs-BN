@@ -1,0 +1,186 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "UNIT",
+    "FINANCIAL_DOCUMENT",
+    "DOCUMENT_CATEGORY",
+    "DOCUMENT_LEVEL",
+    "DOCUMENT_ATTACHMENT",
+    "DOCUMENT_OPERATION_LOG",
+    "NOTIFICATION",
+    "NOTIFICATION_STATUS",
+    "CONFIGURATION",
+    "CONFIG_TYPE",
+    "ADMIN_OPERATION_LOG",
+    "ASSOC_USER_ROLE",
+    "ASSOC_USER_UNIT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "phone_number",
+      "email",
+      "created_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "UNIT": [
+      "unit_id",
+      "unit_name",
+      "parent_unit_id",
+      "address"
+    ],
+    "FINANCIAL_DOCUMENT": [
+      "doc_id",
+      "title",
+      "doc_number",
+      "issue_date",
+      "validity_status",
+      "remark",
+      "content_path"
+    ],
+    "DOCUMENT_CATEGORY": [
+      "category_id",
+      "category_name",
+      "description"
+    ],
+    "DOCUMENT_LEVEL": [
+      "level_id",
+      "level_name",
+      "security_classification"
+    ],
+    "DOCUMENT_ATTACHMENT": [
+      "attachment_id",
+      "doc_id",
+      "file_path",
+      "file_type",
+      "uploaded_at"
+    ],
+    "DOCUMENT_OPERATION_LOG": [
+      "log_id",
+      "doc_id",
+      "operator_user_id",
+      "operation_type",
+      "operation_time",
+      "description"
+    ],
+    "NOTIFICATION": [
+      "notif_id",
+      "content",
+      "issue_date",
+      "publisher_user_id"
+    ],
+    "NOTIFICATION_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "CONFIGURATION": [
+      "config_id",
+      "key",
+      "value",
+      "type_id",
+      "directory_path",
+      "last_modified"
+    ],
+    "CONFIG_TYPE": [
+      "type_id",
+      "type_name",
+      "description"
+    ],
+    "ADMIN_OPERATION_LOG": [
+      "log_id",
+      "admin_user_id",
+      "operation",
+      "target_entity",
+      "target_id",
+      "timestamp",
+      "details"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ],
+    "ASSOC_USER_UNIT": [
+      "assoc_user_unit_id",
+      "user_id",
+      "unit_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "ASSOC_USER_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "DOCUMENT_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "DOCUMENT_LEVEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DOCUMENT_OPERATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "NOTIFICATION",
+      "entity_2": "NOTIFICATION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFIGURATION",
+      "entity_2": "CONFIG_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMIN_OPERATION_LOG",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 112.5346,
+  "ilp_runtime": 0.04
+}

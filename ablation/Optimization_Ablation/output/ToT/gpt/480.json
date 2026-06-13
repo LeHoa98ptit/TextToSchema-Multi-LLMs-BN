@@ -1,0 +1,135 @@
+{
+  "entity": [
+    "PROPERTY",
+    "APARTMENT",
+    "AGENT",
+    "USER",
+    "RESPONSIBILITY",
+    "SALE",
+    "LOG",
+    "EXPORT",
+    "ARCHIVE"
+  ],
+  "attribute": {
+    "PROPERTY": [
+      "property_id",
+      "certificate_number",
+      "address",
+      "construction_year",
+      "build_area",
+      "sale_price",
+      "sale_status",
+      "sale_market",
+      "photo"
+    ],
+    "APARTMENT": [
+      "apartment_id",
+      "property_id",
+      "apartment_type",
+      "floor",
+      "rooms"
+    ],
+    "AGENT": [
+      "agent_id",
+      "home_address",
+      "contact_number",
+      "license_number"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "role",
+      "email"
+    ],
+    "RESPONSIBILITY": [
+      "responsibility_id",
+      "agent_id",
+      "property_id",
+      "start_date",
+      "end_date"
+    ],
+    "SALE": [
+      "sale_id",
+      "property_id",
+      "agent_id",
+      "buyer_user_id",
+      "sale_date",
+      "sale_price",
+      "approval_status"
+    ],
+    "LOG": [
+      "log_id",
+      "user_id",
+      "action",
+      "timestamp",
+      "details"
+    ],
+    "EXPORT": [
+      "export_id",
+      "export_date",
+      "exported_by_user_id",
+      "export_criteria",
+      "file_path"
+    ],
+    "ARCHIVE": [
+      "archive_id",
+      "property_id",
+      "removal_date",
+      "removed_by_user_id",
+      "reason"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "APARTMENT",
+      "cardinality": "0..1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "RESPONSIBILITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AGENT",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPORT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "ARCHIVE",
+      "cardinality": "0..1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ARCHIVE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 51.7276,
+  "ilp_runtime": 0.063
+}

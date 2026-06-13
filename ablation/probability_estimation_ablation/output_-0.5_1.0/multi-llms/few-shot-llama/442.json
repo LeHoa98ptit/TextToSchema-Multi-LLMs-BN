@@ -1,0 +1,163 @@
+{
+  "filename": "442.txt",
+  "entity": {
+    "MEDICAL_INSTITUTION": 0.611614,
+    "DEPARTMENT": 0.622459,
+    "MEDICAL_WASTE": 0.612041,
+    "PERSONNEL": 0.517318,
+    "VEHICLE": 0.622459,
+    "INBOUND_PROCESS": 0.5066,
+    "OUTBOUND_PROCESS": 0.536286,
+    "TRANSPORTATION": 0.52832
+  },
+  "attribute": {
+    "MEDICAL_INSTITUTION": {
+      "medical institution id": 0.533291,
+      "name": 0.526831,
+      "address": 0.529139,
+      "contact information": 0.531286
+    },
+    "DEPARTMENT": {
+      "department id": 0.527765,
+      "department name": 0.525331,
+      "description": 0.538339,
+      "medical institution id": 0.535717
+    },
+    "MEDICAL_WASTE": {
+      "waste id": 0.561851,
+      "waste type": 0.556613,
+      "weight": 0.546498,
+      "generation time": 0.548859,
+      "collection time": 0.55478,
+      "current status": 0.554977,
+      "traceability code number": 0.553941,
+      "traceability code generation time": 0.554228,
+      "medical institution id": 0.559104,
+      "department id": 0.561939
+    },
+    "PERSONNEL": {
+      "personnel id": 0.542598,
+      "name": 0.536212,
+      "role": 0.535417,
+      "contact information": 0.538683,
+      "medical institution id": 0.545272
+    },
+    "VEHICLE": {
+      "vehicle id": 0.531687,
+      "license plate number": 0.524726,
+      "model": 0.532255,
+      "capacity": 0.541832,
+      "medical institution id": 0.550588
+    },
+    "INBOUND_PROCESS": {
+      "inbound process id": 0.53257,
+      "batch number": 0.536017,
+      "expected quantity": 0.535088,
+      "actual quantity": 0.539786,
+      "expected weight": 0.538471,
+      "actual weight": 0.539974,
+      "inbound time": 0.527792,
+      "collector id": 0.545525,
+      "confirmer id": 0.529931
+    },
+    "OUTBOUND_PROCESS": {
+      "outbound process id": 0.534341,
+      "batch number": 0.535382,
+      "outbound quantity": 0.544153,
+      "outbound weight": 0.543299,
+      "outbound time": 0.529292,
+      "transporter id": 0.542848,
+      "confirmer id": 0.530694
+    },
+    "TRANSPORTATION": {
+      "transportation id": 0.542289,
+      "start time": 0.526061,
+      "end time": 0.529494,
+      "recipient": 0.535133,
+      "vehicle id": 0.541664
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "DEPARTMENT",
+      "description": "Each medical institution has multiple departments, and each department belongs to one medical institution.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.625938
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "MEDICAL_WASTE",
+      "description": "Each department generates multiple medical waste items, and each medical waste item belongs to one department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000226
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "MEDICAL_WASTE",
+      "description": "Each medical institution generates multiple medical waste items, and each medical waste item belongs to one medical institution.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.046247
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "description": "Each personnel belongs to one medical institution, and each medical institution has multiple personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998338
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "description": "Each vehicle belongs to one medical institution, and each medical institution has multiple vehicles.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.165347
+    },
+    {
+      "entity_1": "MEDICAL_WASTE",
+      "entity_2": "INBOUND_PROCESS",
+      "description": "Each medical waste item can have multiple inbound processes, and each inbound process is for one medical waste item.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005208
+    },
+    {
+      "entity_1": "MEDICAL_WASTE",
+      "entity_2": "OUTBOUND_PROCESS",
+      "description": "Each medical waste item can have multiple outbound processes, and each outbound process is for one medical waste item.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.097291
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "INBOUND_PROCESS",
+      "description": "Each personnel can be the collector for multiple inbound processes, and each inbound process has one collector.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.897906
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "OUTBOUND_PROCESS",
+      "description": "Each personnel can be the transporter for multiple outbound processes, and each outbound process has one transporter.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.954359
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "TRANSPORTATION",
+      "description": "Each vehicle can be used for multiple transportation processes, and each transportation process uses one vehicle.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.982124
+    }
+  ],
+  "processing_time": 53.54
+}

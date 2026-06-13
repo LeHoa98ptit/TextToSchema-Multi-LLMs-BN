@@ -1,0 +1,147 @@
+{
+  "filename": "495.txt",
+  "entity": {
+    "DOCTOR": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "WARD": 0.817574,
+    "PATIENT": 0.817574,
+    "MEDICINE": 0.817574,
+    "CONSULTATION": 0.71441,
+    "MEDICATION_RETRIEVAL": 0.734602,
+    "ASSOC_PATIENT_MEDICINE": 0.087686
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor_id": 0.764405,
+      "gender": 0.757212,
+      "title": 0.758662,
+      "year_of_service": 0.764956,
+      "phone_number": 0.764543,
+      "department_id": 0.768412
+    },
+    "DEPARTMENT": {
+      "department_id": 0.758383,
+      "person_in_charge": 0.753204,
+      "department_info": 0.759689,
+      "total_personnel": 0.764585,
+      "location": 0.753447,
+      "phone_number": 0.757841
+    },
+    "WARD": {
+      "ward_id": 0.761184,
+      "number_of_beds": 0.764427,
+      "ward_level": 0.760348,
+      "location": 0.754761
+    },
+    "PATIENT": {
+      "patient_id": 0.771882,
+      "gender": 0.760599,
+      "age": 0.755848,
+      "contact_info": 0.765859,
+      "consultation_date": 0.757895,
+      "diagnosis_description": 0.76191,
+      "ward_id": 0.776778
+    },
+    "MEDICINE": {
+      "medicine_id": 0.767384,
+      "inventory_quantity": 0.768487,
+      "price": 0.752637,
+      "sale_price": 0.753047,
+      "remark": 0.757025
+    },
+    "CONSULTATION": {
+      "consultation_id": 0.756384,
+      "consultation_time": 0.747372,
+      "diagnosis_description": 0.758834,
+      "treatment_result": 0.758795,
+      "remark": 0.749673,
+      "patient_id": 0.769427,
+      "doctor_id": 0.766111
+    },
+    "MEDICATION_RETRIEVAL": {
+      "retrieval_id": 0.767929,
+      "medicine_id": 0.766534,
+      "patient_id": 0.771642,
+      "retrieval_time": 0.760175,
+      "retrieval_quantity": 0.768779
+    },
+    "ASSOC_PATIENT_MEDICINE": {
+      "assoc_patient_medicine_id": 0.087686,
+      "patient_id": 0.087686,
+      "medicine_id": 0.087686
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DEPARTMENT",
+      "description": "Each doctor belongs to one department, and each department can have many doctors.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.005489
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "WARD",
+      "description": "Each patient is assigned to one ward, and each ward can have many patients.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 6.9e-05
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "description": "Each patient can have many consultations, and each consultation is for one patient.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.994234
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "description": "Each doctor can have many consultations, and each consultation is handled by one doctor.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.346304
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "description": "Each patient can have many medication retrievals, and each medication retrieval is for one patient.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.976581
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "description": "Each medicine can have many medication retrievals, and each medication retrieval is for one medicine.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.96352
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "ASSOC_PATIENT_MEDICINE",
+      "description": "One PATIENT can be associated with many ASSOC_PATIENT_MEDICINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.087686
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "ASSOC_PATIENT_MEDICINE",
+      "description": "One MEDICINE can be associated with many ASSOC_PATIENT_MEDICINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.087686
+    }
+  ],
+  "processing_time": 977.56
+}

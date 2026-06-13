@@ -1,0 +1,118 @@
+{
+  "filename": "374.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.50585,
+    "SUPERVISORY_DEPARTMENT": 0.605468,
+    "WORK_UNIT": 0.466102,
+    "RESOURCE": 0.622459,
+    "RESOURCE_TRANSACTION": 0.525902,
+    "APPROVAL_DOCUMENT": 0.439473,
+    "ASSOC_USER_RESOURCE_TRANSACTION": 0.984974,
+    "ASSOC_RESOURCE_TRANSACTION_APPROVAL_DOCUMENT": 0.000965
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.501872,
+      "password": 0.523484,
+      "email": 0.520377
+    },
+    "ROLE": {
+      "role_name": 0.537517,
+      "description": 0.551962
+    },
+    "SUPERVISORY_DEPARTMENT": {
+      "department_name": 0.566614,
+      "responsibility_description": 0.573391
+    },
+    "WORK_UNIT": {
+      "unit_name": 0.534728,
+      "responsibility_description": 0.556156
+    },
+    "RESOURCE": {
+      "resource_code": 0.533805,
+      "resource_name": 0.529487,
+      "acquisition_value": 0.538387
+    },
+    "RESOURCE_TRANSACTION": {
+      "transaction_id": 0.526038,
+      "transaction_time": 0.527144,
+      "receiver": 0.548434,
+      "storage_location": 0.530345,
+      "budget_year": 0.543805
+    },
+    "APPROVAL_DOCUMENT": {
+      "document_name": 0.516794,
+      "content": 0.533697
+    },
+    "ASSOC_USER_RESOURCE_TRANSACTION": {
+      "assoc_user_resource_transaction_id": 0.984974,
+      "user_id": 0.984974,
+      "resource_transaction_id": 0.984974
+    },
+    "ASSOC_RESOURCE_TRANSACTION_APPROVAL_DOCUMENT": {
+      "assoc_resource_transaction_approval_document_id": 0.000965,
+      "resource_transaction_id": 0.000965,
+      "approval_document_id": 0.000965
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "probability": 0.993899
+    },
+    {
+      "entity_1": "SUPERVISORY_DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "cardinality": "1:N",
+      "probability": 0.974999
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:N",
+      "probability": 0.153597
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "cardinality": "1:N",
+      "probability": 0.998532
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_RESOURCE_TRANSACTION",
+      "description": "One USER can be associated with many ASSOC_USER_RESOURCE_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.984974
+    },
+    {
+      "entity_1": "RESOURCE_TRANSACTION",
+      "entity_2": "ASSOC_USER_RESOURCE_TRANSACTION",
+      "description": "One RESOURCE_TRANSACTION can be associated with many ASSOC_USER_RESOURCE_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.984974
+    },
+    {
+      "entity_1": "RESOURCE_TRANSACTION",
+      "entity_2": "ASSOC_RESOURCE_TRANSACTION_APPROVAL_DOCUMENT",
+      "description": "One RESOURCE_TRANSACTION can be associated with many ASSOC_RESOURCE_TRANSACTION_APPROVAL_DOCUMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000965
+    },
+    {
+      "entity_1": "APPROVAL_DOCUMENT",
+      "entity_2": "ASSOC_RESOURCE_TRANSACTION_APPROVAL_DOCUMENT",
+      "description": "One APPROVAL_DOCUMENT can be associated with many ASSOC_RESOURCE_TRANSACTION_APPROVAL_DOCUMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000965
+    }
+  ],
+  "processing_time": 16.75
+}

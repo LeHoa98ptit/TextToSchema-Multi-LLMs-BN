@@ -1,0 +1,209 @@
+{
+  "filename": "347.txt",
+  "entity": {
+    "MODEL": 0.817574,
+    "MODEL_RUN": 0.743683,
+    "HYPERPARAMETER": 0.817574,
+    "PERFORMANCE_METRIC": 0.684839,
+    "LEADERBOARD": 0.704912,
+    "MODEL_TYPE": 0.795646,
+    "DATASET": 0.817574,
+    "DATASET_VARIABLE": 0.754156,
+    "TAG": 0.817574,
+    "OWNER": 0.711873,
+    "MODEL_HYPERPARAMETER": 0.244351,
+    "MODEL_TYPE_HYPERPARAMETER": 0.022982,
+    "DATASET_TAG": 0.098234
+  },
+  "attribute": {
+    "MODEL": {
+      "model id": 0.751942,
+      "operational status": 0.757433,
+      "model type id": 0.75139
+    },
+    "MODEL_RUN": {
+      "run id": 0.753829,
+      "model id": 0.756612,
+      "dataset id": 0.763627,
+      "execution time": 0.755052,
+      "start time": 0.75216,
+      "end time": 0.758907,
+      "runtime": 0.758875,
+      "run path": 0.752205,
+      "max number": 0.759927
+    },
+    "HYPERPARAMETER": {
+      "hyperparameter id": 0.756572,
+      "name": 0.756996,
+      "description": 0.763308
+    },
+    "PERFORMANCE_METRIC": {
+      "metric id": 0.757495,
+      "name": 0.755076,
+      "description": 0.758866
+    },
+    "LEADERBOARD": {
+      "leaderboard id": 0.751959,
+      "model id": 0.760829,
+      "metric id": 0.758229,
+      "metric value": 0.757156,
+      "rank": 0.757805,
+      "created at": 0.751245
+    },
+    "MODEL_TYPE": {
+      "model type id": 0.750166,
+      "type name": 0.753124,
+      "description": 0.75864
+    },
+    "DATASET": {
+      "dataset id": 0.756373,
+      "owner id": 0.752227,
+      "license": 0.754182,
+      "visibility": 0.754613,
+      "url": 0.755804,
+      "creation date": 0.755246,
+      "update date": 0.753216,
+      "datum size": 0.752729,
+      "row count": 0.761544,
+      "column count": 0.761656
+    },
+    "DATASET_VARIABLE": {
+      "variable id": 0.751658,
+      "dataset id": 0.753704,
+      "datum type": 0.754763,
+      "unique value": 0.752107,
+      "null value": 0.74759
+    },
+    "TAG": {
+      "tag id": 0.737006,
+      "tag name": 0.740494
+    },
+    "OWNER": {
+      "owner id": 0.736022
+    },
+    "MODEL_HYPERPARAMETER": {
+      "model_hyperparameter_id": 0.244351,
+      "model_id": 0.244351,
+      "hyperparameter_id": 0.244351,
+      "hyperparameter_value": 0.244351
+    },
+    "MODEL_TYPE_HYPERPARAMETER": {
+      "model_type_hyperparameter_id": 0.022982,
+      "model_type_id": 0.022982,
+      "hyperparameter_id": 0.022982,
+      "default_value": 0.022982
+    },
+    "DATASET_TAG": {
+      "dataset_tag_id": 0.098234,
+      "dataset_id": 0.098234,
+      "tag_id": 0.098234
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL_TYPE",
+      "entity_2": "MODEL",
+      "description": "Each model is defined with exactly one model type, while a model type can be used by many models.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993053
+    },
+    {
+      "entity_1": "OWNER",
+      "entity_2": "DATASET",
+      "description": "Each dataset has a single owner, and an owner can own multiple datasets.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.055151
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "MODEL_RUN",
+      "description": "A model run is executed on one dataset, while a dataset can be used in many model runs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.145932
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_RUN",
+      "description": "Each model run corresponds to one model, and a model can have many runs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998407
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "LEADERBOARD",
+      "description": "Leaderboard entries record performance metrics for a specific model; a model can appear in many leaderboard records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.211561
+    },
+    {
+      "entity_1": "PERFORMANCE_METRIC",
+      "entity_2": "LEADERBOARD",
+      "description": "Each leaderboard entry references one performance metric, while a metric can be used in many leaderboard records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.088385
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE",
+      "description": "A dataset contains multiple variables; each variable belongs to a single dataset.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999905
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_HYPERPARAMETER",
+      "description": "One MODEL can be associated with many MODEL_HYPERPARAMETER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.244351
+    },
+    {
+      "entity_1": "HYPERPARAMETER",
+      "entity_2": "MODEL_HYPERPARAMETER",
+      "description": "One HYPERPARAMETER can be associated with many MODEL_HYPERPARAMETER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.244351
+    },
+    {
+      "entity_1": "MODEL_TYPE",
+      "entity_2": "MODEL_TYPE_HYPERPARAMETER",
+      "description": "One MODEL_TYPE can be associated with many MODEL_TYPE_HYPERPARAMETER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.022982
+    },
+    {
+      "entity_1": "HYPERPARAMETER",
+      "entity_2": "MODEL_TYPE_HYPERPARAMETER",
+      "description": "One HYPERPARAMETER can be associated with many MODEL_TYPE_HYPERPARAMETER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.022982
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_TAG",
+      "description": "One DATASET can be associated with many DATASET_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.098234
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "DATASET_TAG",
+      "description": "One TAG can be associated with many DATASET_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.098234
+    }
+  ],
+  "processing_time": 61.3
+}

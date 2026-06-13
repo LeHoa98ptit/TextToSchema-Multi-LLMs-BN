@@ -1,0 +1,161 @@
+{
+  "filename": "253.txt",
+  "entity": {
+    "USER": 0.622459,
+    "CONTACT": 0.497,
+    "GROUP_CHAT": 0.599744,
+    "GROUP_CHAT_APPLICATION": 0.571727,
+    "USER_GROUP": 0.600176,
+    "MESSAGE": 0.622459,
+    "MESSAGE_READ": 0.518541
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.521991,
+      "username": 0.516161,
+      "password_hash": 0.513255,
+      "email": 0.540788,
+      "phone": 0.532344,
+      "registration_time": 0.530258,
+      "status": 0.544147
+    },
+    "CONTACT": {
+      "contact_id": 0.524019,
+      "user_id": 0.527088,
+      "contact_user_id": 0.526052,
+      "nickname": 0.526467,
+      "added_time": 0.527906
+    },
+    "GROUP_CHAT": {
+      "group_id": 0.554256,
+      "group_name": 0.551933,
+      "creator_id": 0.557823,
+      "creation_time": 0.560694,
+      "description": 0.575333,
+      "max_members": 0.560208,
+      "is_private": 0.553622,
+      "member_count": 0.562435,
+      "is_deleted": 0.551842,
+      "deleted_time": 0.553537
+    },
+    "GROUP_CHAT_APPLICATION": {
+      "application_id": 0.554618,
+      "user_id": 0.560361,
+      "group_id": 0.556314,
+      "apply_time": 0.553033,
+      "status": 0.5661,
+      "note": 0.565326
+    },
+    "USER_GROUP": {
+      "membership_id": 0.533385,
+      "user_id": 0.53322,
+      "group_id": 0.529947,
+      "join_time": 0.533858,
+      "leave_time": 0.530882,
+      "role": 0.53692,
+      "is_muted": 0.527372
+    },
+    "MESSAGE": {
+      "message_id": 0.554709,
+      "sender_id": 0.549765,
+      "receiver_id": 0.553422,
+      "group_id": 0.559373,
+      "send_time": 0.548092,
+      "content_type": 0.551527,
+      "text_content": 0.551454,
+      "image_url": 0.530937,
+      "file_url": 0.529829,
+      "is_deleted": 0.536153
+    },
+    "MESSAGE_READ": {
+      "read_id": 0.542371,
+      "message_id": 0.553392,
+      "reader_id": 0.542128,
+      "read_time": 0.544413
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "A user can have many contacts.",
+      "probability": 0.999277
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A user may create multiple group chats.",
+      "probability": 0.369223
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GROUP_CHAT_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A user can apply to join many group chats.",
+      "probability": 0.135988
+    },
+    {
+      "entity_1": "GROUP_CHAT_APPLICATION",
+      "entity_2": "GROUP_CHAT",
+      "cardinality": "N:1",
+      "description": "Each application targets a single group chat.",
+      "probability": 0.999978
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "USER_GROUP",
+      "cardinality": "1:N",
+      "description": "A group chat has many membership records.",
+      "probability": 0.657423
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP",
+      "cardinality": "1:N",
+      "description": "A user can belong to many group chats.",
+      "probability": 0.999453
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can send many messages.",
+      "probability": 0.9994
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "GROUP_CHAT",
+      "cardinality": "N:1",
+      "description": "A message may be posted in a group chat.",
+      "probability": 0.000469
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A private message has a single receiver user.",
+      "probability": 0.9994
+    },
+    {
+      "entity_1": "MESSAGE_READ",
+      "entity_2": "MESSAGE",
+      "cardinality": "N:1",
+      "description": "Read records reference the message being read.",
+      "probability": 0.999243
+    },
+    {
+      "entity_1": "MESSAGE_READ",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Read records reference the user who read the message.",
+      "probability": 0.992953
+    }
+  ],
+  "processing_time": 46.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added leave_time column to USER_GROUP to explicitly record when a user exits a group (fulfilling leave‑group management). Added soft‑delete fields (is_deleted, deleted_time) and member_count to GROUP_CHAT for deletion history and quick member count. Retained all existing strengths (comprehensive entities, per‑user read tracking, application handling). Updated model remains consistent and efficient."
+  }
+}

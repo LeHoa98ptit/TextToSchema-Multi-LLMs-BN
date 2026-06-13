@@ -1,0 +1,88 @@
+{
+  "filename": "334.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "FOLLOW": 0.726334
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.756469,
+      "email": 0.764158,
+      "avatar_path": 0.756514,
+      "password_hash": 0.749522,
+      "password_salt": 0.753164,
+      "date_of_birth": 0.754129,
+      "created_at": 0.755671,
+      "last_login": 0.750658,
+      "is_deleted": 0.748948
+    },
+    "POST": {
+      "post_id": 0.747427,
+      "user_id": 0.759572,
+      "title": 0.752499,
+      "content": 0.762312,
+      "created_at": 0.752773,
+      "updated_at": 0.747582,
+      "visibility": 0.752808,
+      "is_deleted": 0.742019
+    },
+    "COMMENT": {
+      "comment_id": 0.76101,
+      "post_id": 0.760322,
+      "user_id": 0.768836,
+      "content": 0.772911,
+      "created_at": 0.761325,
+      "edited_at": 0.759662,
+      "is_deleted": 0.75169
+    },
+    "FOLLOW": {
+      "follower_id": 0.758904,
+      "followee_id": 0.758919,
+      "follow_date": 0.751371
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "One user (poster) can create many posts; each post references its creator via user_id",
+      "probability": 0.863754
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "One user can author many comments; each comment stores the author’s user_id",
+      "probability": 0.961288
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can receive many comments; each comment stores the post_id it belongs to",
+      "probability": 0.017731
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW",
+      "cardinality": "1:N",
+      "description": "A user can follow many other users; each FOLLOW row records the follower_id",
+      "probability": 0.90117
+    },
+    {
+      "entity_1": "FOLLOW",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each FOLLOW row also references the followed user via followee_id",
+      "probability": 0.90117
+    }
+  ],
+  "processing_time": 19.33,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added password_salt for secure password storage, introduced ENUM-like visibility attribute, added soft-delete flag (is_deleted) to USER, POST, and COMMENT, clarified foreign-key attributes, and retained audit fields. The model now supports logical deletion, better security practices, and clearer visibility semantics while preserving all original relationships and strengths."
+  }
+}

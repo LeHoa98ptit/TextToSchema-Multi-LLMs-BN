@@ -1,0 +1,82 @@
+{
+  "filename": "451.txt",
+  "entity": {
+    "INTRUSION_DETECTION_RECORD": 0.525154,
+    "RESPONSE_PLAN": 0.521013,
+    "KNOWLEDGE": 0.622459,
+    "ALARM": 0.622459,
+    "ASSOC_RESPONSE_PLAN_KNOWLEDGE": 0.080041
+  },
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": {
+      "record_id": 0.544126,
+      "detection_time": 0.553155,
+      "source_ip_address": 0.540857,
+      "destination_ip_address": 0.539904,
+      "source_port_number": 0.541919,
+      "destination_port_number": 0.542069,
+      "attack_type": 0.555946,
+      "threat_level": 0.556876
+    },
+    "RESPONSE_PLAN": {
+      "plan_id": 0.513579,
+      "generation_time": 0.515704,
+      "plan_type": 0.514335,
+      "detailed_plan_content": 0.513254,
+      "execution_status": 0.518584
+    },
+    "KNOWLEDGE": {
+      "knowledge_id": 0.529224,
+      "category": 0.540004,
+      "intrusion_behavior": 0.547976,
+      "security_configuration": 0.549054,
+      "good_practice": 0.526825,
+      "description": 0.541255,
+      "source": 0.538068,
+      "reliability": 0.530409
+    },
+    "ALARM": {
+      "alarm_id": 0.537473,
+      "alarm_time": 0.534953,
+      "alarm_level": 0.542472,
+      "alarm_content": 0.541508,
+      "processing_status": 0.549078
+    },
+    "ASSOC_RESPONSE_PLAN_KNOWLEDGE": {
+      "assoc_response_plan_knowledge_id": 0.080041,
+      "response_plan_id": 0.080041,
+      "knowledge_id": 0.080041
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "probability": 0.184763
+    },
+    {
+      "entity_1": "RESPONSE_PLAN",
+      "entity_2": "ASSOC_RESPONSE_PLAN_KNOWLEDGE",
+      "description": "One RESPONSE_PLAN can be associated with many ASSOC_RESPONSE_PLAN_KNOWLEDGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.080041
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "ASSOC_RESPONSE_PLAN_KNOWLEDGE",
+      "description": "One KNOWLEDGE can be associated with many ASSOC_RESPONSE_PLAN_KNOWLEDGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.080041
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "cardinality": "1:N",
+      "probability": 0.99956
+    }
+  ],
+  "processing_time": 14.29
+}

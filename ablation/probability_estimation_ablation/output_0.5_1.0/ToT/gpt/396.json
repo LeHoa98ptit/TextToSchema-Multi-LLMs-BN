@@ -1,0 +1,221 @@
+{
+  "filename": "396.txt",
+  "entity": {
+    "USER": 0.817574,
+    "GUIDE": 0.817574,
+    "CATEGORY": 0.708064,
+    "TAG": 0.721497,
+    "HOTEL": 0.817574,
+    "ATTRACTION": 0.697622,
+    "ROUTE": 0.724381,
+    "LOCATION": 0.722441,
+    "GUIDE_TAG": 0.749134,
+    "ROUTE_TAG": 0.666011,
+    "ROUTE_ATTRACTION": 0.672673,
+    "ROUTE_HOTEL": 0.763885,
+    "ASSOC_GUIDE_TAG": 0.40068,
+    "ASSOC_ROUTE_ATTRACTION": 0.43192,
+    "ASSOC_ROUTE_HOTEL": 0.140085,
+    "ASSOC_ROUTE_TAG": 0.508227
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.72937,
+      "password": 0.741775,
+      "avatar": 0.735595,
+      "nickname": 0.737491,
+      "email": 0.743043,
+      "created_at": 0.737213,
+      "updated_at": 0.739366
+    },
+    "GUIDE": {
+      "title": 0.755971,
+      "content": 0.758162,
+      "created_at": 0.745585,
+      "updated_at": 0.745276,
+      "user_id": 0.750244,
+      "category_id": 0.751946
+    },
+    "CATEGORY": {
+      "name": 0.753146,
+      "description": 0.760041,
+      "created_at": 0.743146,
+      "updated_at": 0.742959
+    },
+    "TAG": {
+      "name": 0.743087,
+      "created_at": 0.737912,
+      "updated_at": 0.738338
+    },
+    "HOTEL": {
+      "name": 0.772605,
+      "introduction": 0.775092,
+      "picture": 0.769507,
+      "location_id": 0.770171,
+      "created_at": 0.766073,
+      "updated_at": 0.766596
+    },
+    "ATTRACTION": {
+      "name": 0.747579,
+      "introduction": 0.744275,
+      "picture": 0.744741,
+      "open_hour": 0.751722,
+      "tip_day": 0.748887,
+      "location_id": 0.75599,
+      "created_at": 0.743226,
+      "updated_at": 0.743711
+    },
+    "ROUTE": {
+      "name": 0.746525,
+      "introduction": 0.750555,
+      "content": 0.750432,
+      "created_at": 0.737071,
+      "updated_at": 0.736132
+    },
+    "LOCATION": {
+      "address": 0.749189,
+      "city": 0.748212,
+      "country": 0.743098,
+      "latitude": 0.742894,
+      "longitude": 0.743138,
+      "created_at": 0.743437,
+      "updated_at": 0.74586
+    },
+    "GUIDE_TAG": {
+      "guide_id": 0.751055,
+      "tag_id": 0.746207
+    },
+    "ROUTE_TAG": {
+      "route_id": 0.739811,
+      "tag_id": 0.742888
+    },
+    "ROUTE_ATTRACTION": {
+      "route_id": 0.743303,
+      "attraction_id": 0.750107,
+      "sequence_number": 0.739741
+    },
+    "ROUTE_HOTEL": {
+      "route_id": 0.761449,
+      "hotel_id": 0.769608
+    },
+    "ASSOC_GUIDE_TAG": {
+      "assoc_guide_tag_id": 0.40068,
+      "guide_id": 0.40068,
+      "tag_id": 0.40068
+    },
+    "ASSOC_ROUTE_ATTRACTION": {
+      "assoc_route_attraction_id": 0.43192,
+      "route_id": 0.43192,
+      "attraction_id": 0.43192
+    },
+    "ASSOC_ROUTE_HOTEL": {
+      "assoc_route_hotel_id": 0.140085,
+      "route_id": 0.140085,
+      "hotel_id": 0.140085
+    },
+    "ASSOC_ROUTE_TAG": {
+      "assoc_route_tag_id": 0.508227,
+      "route_id": 0.508227,
+      "tag_id": 0.508227
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "GUIDE",
+      "cardinality": "1:N",
+      "description": "A user can author multiple guides",
+      "probability": 0.379239
+    },
+    {
+      "entity_1": "GUIDE",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each guide belongs to one category",
+      "probability": 0.000155
+    },
+    {
+      "entity_1": "GUIDE",
+      "entity_2": "ASSOC_GUIDE_TAG",
+      "description": "One GUIDE can be associated with many ASSOC_GUIDE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.40068
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_GUIDE_TAG",
+      "description": "One TAG can be associated with many ASSOC_GUIDE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.40068
+    },
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "description": "Each hotel has a single location record (location_id FK)",
+      "probability": 0.998273
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Multiple attractions can share the same location (location_id FK)",
+      "probability": 0.854449
+    },
+    {
+      "entity_1": "ROUTE",
+      "entity_2": "ASSOC_ROUTE_ATTRACTION",
+      "description": "One ROUTE can be associated with many ASSOC_ROUTE_ATTRACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.43192
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ASSOC_ROUTE_ATTRACTION",
+      "description": "One ATTRACTION can be associated with many ASSOC_ROUTE_ATTRACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.43192
+    },
+    {
+      "entity_1": "ROUTE",
+      "entity_2": "ASSOC_ROUTE_HOTEL",
+      "description": "One ROUTE can be associated with many ASSOC_ROUTE_HOTEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.140085
+    },
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ASSOC_ROUTE_HOTEL",
+      "description": "One HOTEL can be associated with many ASSOC_ROUTE_HOTEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.140085
+    },
+    {
+      "entity_1": "ROUTE",
+      "entity_2": "ASSOC_ROUTE_TAG",
+      "description": "One ROUTE can be associated with many ASSOC_ROUTE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.508227
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_ROUTE_TAG",
+      "description": "One TAG can be associated with many ASSOC_ROUTE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.508227
+    }
+  ],
+  "processing_time": 1009.93,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added explicit foreign‑key attributes (location_id) to HOTEL and ATTRACTION, introduced timestamp fields (created_at, updated_at) for all core entities, created associative entities GUIDE_TAG, ROUTE_TAG, ROUTE_ATTRACTION, and ROUTE_HOTEL to materialize many‑to‑many relationships, and added a sequence_number attribute in ROUTE_ATTRACTION to capture the ordering of attractions within a route. The model now fully reflects the domain description while remaining efficient and consistent."
+  }
+}

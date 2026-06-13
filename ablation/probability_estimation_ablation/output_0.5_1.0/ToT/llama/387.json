@@ -1,0 +1,87 @@
+{
+  "filename": "387.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "AIRLINE": 0.817574,
+    "FLIGHT": 0.817574,
+    "RESERVATION": 0.817574,
+    "PAYMENT": 0.817574
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "contact_information": 0.765758,
+      "credit_card_number": 0.757299,
+      "customer_name": 0.761109,
+      "customer_address": 0.757164
+    },
+    "AIRLINE": {
+      "contact_information": 0.777149,
+      "airline_name": 0.771904,
+      "airline_address": 0.768627
+    },
+    "FLIGHT": {
+      "flight_number": 0.76978,
+      "destination": 0.762798,
+      "departure_time": 0.767355,
+      "arrival_time": 0.769422,
+      "flight_duration": 0.765001,
+      "flight_fare": 0.766178
+    },
+    "RESERVATION": {
+      "reservation_number": 0.763716,
+      "reservation_date": 0.760945,
+      "reservation_time": 0.762043,
+      "number_ticket": 0.768005,
+      "reservation_status": 0.760242
+    },
+    "PAYMENT": {
+      "payment_record": 0.754227,
+      "payment_date": 0.751221,
+      "payment_method": 0.751716,
+      "payment_amount": 0.75393,
+      "payment_status": 0.753293
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple reservations",
+      "probability": 0.006342
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airline operates multiple flights",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A flight can have multiple reservations",
+      "probability": 0.966006
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "A reservation is associated with one payment",
+      "probability": 0.977067
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple payments",
+      "probability": 0.998746
+    }
+  ],
+  "processing_time": 33.8,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added payment status attribute to the payment entity to track the status of payments, and refined the relationships between entities to better reflect the business requirements"
+  }
+}

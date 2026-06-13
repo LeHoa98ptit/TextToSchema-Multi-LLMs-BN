@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "USER",
+    "PROPERTY",
+    "TRANSACTION",
+    "PROPERTY_RECORD"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email",
+      "phone_number",
+      "role",
+      "account_id",
+      "creation_timestamp",
+      "update_timestamp"
+    ],
+    "PROPERTY": [
+      "title",
+      "description",
+      "location",
+      "area",
+      "rent",
+      "image",
+      "status",
+      "creation_timestamp",
+      "update_timestamp"
+    ],
+    "TRANSACTION": [
+      "lease_start_date",
+      "lease_end_date",
+      "total_rent",
+      "transaction_status",
+      "property_id",
+      "tenant_id",
+      "creation_timestamp",
+      "update_timestamp"
+    ],
+    "PROPERTY_RECORD": [
+      "property_id",
+      "owner_id",
+      "record_timestamp",
+      "transaction_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "PROPERTY_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PROPERTY_RECORD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.6631,
+  "ilp_runtime": 0.096
+}

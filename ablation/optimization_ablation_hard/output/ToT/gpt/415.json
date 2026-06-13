@@ -1,0 +1,109 @@
+{
+  "entity": [
+    "USER",
+    "USER_LOGIN",
+    "MESSAGE",
+    "SERVER",
+    "PROTOCOL",
+    "SERVER_PROTOCOL",
+    "ASSOC_SERVER_PROTOCOL"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "password_salt",
+      "email",
+      "registered_ip",
+      "registered_port",
+      "created_at"
+    ],
+    "USER_LOGIN": [
+      "login_id",
+      "user_id",
+      "login_time",
+      "login_ip",
+      "login_port",
+      "is_successful"
+    ],
+    "MESSAGE": [
+      "message_id",
+      "sender_id",
+      "receiver_id",
+      "content",
+      "sent_at",
+      "status",
+      "is_archived",
+      "archived_at"
+    ],
+    "SERVER": [
+      "server_id",
+      "cluster_id",
+      "ip_address",
+      "port_number",
+      "max_clients",
+      "receive_buffer_size"
+    ],
+    "PROTOCOL": [
+      "protocol_id",
+      "name",
+      "version"
+    ],
+    "SERVER_PROTOCOL": [
+      "server_id",
+      "protocol_id"
+    ],
+    "ASSOC_SERVER_PROTOCOL": [
+      "assoc_server_protocol_id",
+      "server_id",
+      "protocol_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_LOGIN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "ASSOC_SERVER_PROTOCOL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROTOCOL",
+      "entity_2": "ASSOC_SERVER_PROTOCOL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "SERVER_PROTOCOL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROTOCOL",
+      "entity_2": "SERVER_PROTOCOL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 78.915,
+  "ilp_runtime": 0.046
+}

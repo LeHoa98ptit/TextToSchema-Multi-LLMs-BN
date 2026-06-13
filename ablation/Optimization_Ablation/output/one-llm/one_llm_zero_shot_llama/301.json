@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "SEAT",
+    "USER",
+    "TEMPLATE",
+    "RESERVATION",
+    "ASSOC_SEAT_TEMPLATE"
+  ],
+  "attribute": {
+    "SEAT": [
+      "seat_location",
+      "x_coordinate",
+      "y_coordinate",
+      "row",
+      "column",
+      "type",
+      "price",
+      "creation_time",
+      "update_time",
+      "validity",
+      "seat_flag"
+    ],
+    "USER": [
+      "unique_id",
+      "contact_number",
+      "email_address"
+    ],
+    "TEMPLATE": [
+      "template_description",
+      "occasion",
+      "time_period"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "seat_id",
+      "user_id",
+      "reservation_time",
+      "purchase_time",
+      "status"
+    ],
+    "ASSOC_SEAT_TEMPLATE": [
+      "assoc_seat_template_id",
+      "seat_id",
+      "template_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SEAT",
+      "entity_2": "ASSOC_SEAT_TEMPLATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEMPLATE",
+      "entity_2": "ASSOC_SEAT_TEMPLATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEMPLATE",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 26.6533,
+  "ilp_runtime": 0.056
+}

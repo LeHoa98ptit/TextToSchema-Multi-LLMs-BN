@@ -1,0 +1,108 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.754119,
+    "PRODUCT": 0.817574,
+    "INVOICE": 0.817574,
+    "DELIVERY_ORDER": 0.780057,
+    "PICKING_LIST": 0.674015
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.753007,
+      "name": 0.755619,
+      "contact": 0.756804,
+      "address": 0.749832
+    },
+    "ORDER": {
+      "order_id": 0.75681,
+      "order_date": 0.755483,
+      "status": 0.769184,
+      "total": 0.76912,
+      "customer_id": 0.763241
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.757226,
+      "order_id": 0.758781,
+      "product_id": 0.756339,
+      "quantity": 0.772582,
+      "unit_price": 0.760867
+    },
+    "PRODUCT": {
+      "product_id": 0.741023,
+      "product_name": 0.74195,
+      "price": 0.742089,
+      "inventory_quantity": 0.763844
+    },
+    "INVOICE": {
+      "invoice_id": 0.757895,
+      "order_id": 0.766451,
+      "invoice_date": 0.756408,
+      "total": 0.768723,
+      "payment_status": 0.76096
+    },
+    "DELIVERY_ORDER": {
+      "delivery_order_id": 0.7588,
+      "order_id": 0.760751,
+      "delivery_date": 0.757888,
+      "status": 0.770569
+    },
+    "PICKING_LIST": {
+      "picking_list_id": 0.736953,
+      "order_id": 0.753011,
+      "pick_date": 0.733625,
+      "status": 0.748486
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.96272
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can include multiple order items",
+      "probability": 0.999935
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "An order item is related to one product",
+      "probability": 0.959256
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:1",
+      "description": "Each order generates one invoice",
+      "probability": 0.98071
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:1",
+      "description": "Each order generates one delivery order",
+      "probability": 0.999225
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "cardinality": "1:1",
+      "description": "Each order generates one picking list",
+      "probability": 5e-06
+    }
+  ],
+  "processing_time": 966.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant INVOICE_ITEM entity, added unique identifiers for each entity, and ensured consistent naming conventions throughout the model."
+  }
+}

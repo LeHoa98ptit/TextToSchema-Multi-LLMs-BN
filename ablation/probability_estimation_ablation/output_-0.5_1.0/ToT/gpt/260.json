@@ -1,0 +1,144 @@
+{
+  "filename": "260.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "INSTRUCTOR": 0.534719,
+    "DEPARTMENT": 0.455146,
+    "COURSE": 0.622459,
+    "REGISTRATION": 0.622459,
+    "EXAM_RESULT": 0.578788,
+    "NOTIFICATION": 0.450785,
+    "NOTIFICATION_TYPE": 0.40975
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.569249,
+      "first_name": 0.560725,
+      "last_name": 0.563708,
+      "date_of_birth": 0.564355,
+      "phone_number": 0.560503,
+      "email": 0.561396,
+      "home_address": 0.561388,
+      "degree_program": 0.563245
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.554572,
+      "first_name": 0.550571,
+      "last_name": 0.552313,
+      "email": 0.548919,
+      "office_location": 0.547934
+    },
+    "DEPARTMENT": {
+      "department_id": 0.527924,
+      "department_name": 0.527543,
+      "building": 0.523317
+    },
+    "COURSE": {
+      "course_id": 0.567897,
+      "course_name": 0.56378,
+      "credit": 0.550483,
+      "class_time": 0.559676,
+      "location": 0.55632,
+      "department_id": 0.564106,
+      "instructor_id": 0.568093
+    },
+    "REGISTRATION": {
+      "registration_id": 0.544369,
+      "student_id": 0.575176,
+      "course_id": 0.578654,
+      "registration_time": 0.540758,
+      "status": 0.550332,
+      "eligibility_status": 0.550469,
+      "exam_result_id": 0.550624
+    },
+    "EXAM_RESULT": {
+      "result_id": 0.534112,
+      "student_id": 0.555895,
+      "course_id": 0.562068,
+      "grade": 0.540433,
+      "exam_date": 0.538051,
+      "passed": 0.536492
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.507107,
+      "student_id": 0.557142,
+      "notification_type_id": 0.506282,
+      "message": 0.515044,
+      "sent_time": 0.508328
+    },
+    "NOTIFICATION_TYPE": {
+      "type_id": 0.507701,
+      "description": 0.518542
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A student can have many registration records",
+      "probability": 0.997413
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A course can be linked to many registrations",
+      "probability": 0.009004
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "EXAM_RESULT",
+      "cardinality": "1:N",
+      "description": "A student may have multiple exam results",
+      "probability": 0.984358
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "EXAM_RESULT",
+      "cardinality": "1:N",
+      "description": "Each course can have many exam results",
+      "probability": 0.140657
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "An instructor teaches many courses",
+      "probability": 0.658214
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "A department offers many courses",
+      "probability": 0.002117
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "System sends many notifications to a student",
+      "probability": 0.024044
+    },
+    {
+      "entity_1": "NOTIFICATION_TYPE",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "Each notification references a single notification type",
+      "probability": 0.996535
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "EXAM_RESULT",
+      "cardinality": "0:1",
+      "description": "A registration may be linked to an exam result used for eligibility checking",
+      "probability": 0.003335
+    }
+  ],
+  "processing_time": 37.76,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit foreign keys (student_id, course_id) to REGISTRATION and a composite unique constraint (student_id + course_id) to prevent duplicate registrations (noted in design). Replaced generic 'eligibility_checked' with 'eligibility_status' (enum) and optional link to EXAM_RESULT for traceability. Introduced NOTIFICATION_TYPE entity to normalize notification types and ensure consistent templating. Included exam_result_id in REGISTRATION to capture eligibility outcome. Kept Department entity for realistic organizational context while allowing optional removal if not needed. Clarified relationship cardinalities and added a 0:1 link from REGISTRATION to EXAM_RESULT. All original strengths retained and model efficiency improved."
+  }
+}

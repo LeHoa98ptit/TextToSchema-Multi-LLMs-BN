@@ -1,0 +1,116 @@
+{
+  "filename": "282.txt",
+  "entity": {
+    "BOOK": 0.622459,
+    "AUTHOR": 0.622459,
+    "EDITOR": 0.622459,
+    "CATEGORY": 0.473625,
+    "BOOK_AUTHOR": 0.565496,
+    "BOOK_EDITOR": 0.558654,
+    "BOOK_AUTHOR_EDITOR": 0.52822
+  },
+  "attribute": {
+    "BOOK": {
+      "isbn": 0.564596,
+      "title": 0.547549,
+      "publication_date": 0.557265,
+      "category_id": 0.548533
+    },
+    "CATEGORY": {
+      "category_id": 0.504492,
+      "name": 0.517943,
+      "description": 0.519717
+    },
+    "AUTHOR": {
+      "author_id": 0.52867,
+      "name": 0.535374,
+      "email": 0.540091
+    },
+    "EDITOR": {
+      "editor_id": 0.526799,
+      "name": 0.537093,
+      "email": 0.536671,
+      "office_location": 0.534912
+    },
+    "BOOK_AUTHOR": {
+      "book_isbn": 0.572484,
+      "author_id": 0.552194,
+      "author_order": 0.556372,
+      "role": 0.564665
+    },
+    "BOOK_EDITOR": {
+      "book_isbn": 0.577729,
+      "editor_id": 0.557178,
+      "role": 0.571019
+    },
+    "BOOK_AUTHOR_EDITOR": {
+      "book_isbn": 0.578151,
+      "author_id": 0.558782,
+      "editor_id": 0.558097,
+      "joint_responsibility": 0.563008
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each book belongs to one category; a category can contain many books",
+      "probability": 0.996904
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "description": "A book can have multiple author link records",
+      "probability": 0.998641
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "description": "An author can be linked to many books",
+      "probability": 0.999974
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_EDITOR",
+      "cardinality": "1:N",
+      "description": "A book can have multiple editor link records",
+      "probability": 0.954675
+    },
+    {
+      "entity_1": "EDITOR",
+      "entity_2": "BOOK_EDITOR",
+      "cardinality": "1:N",
+      "description": "An editor can be linked to many books",
+      "probability": 0.999637
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_AUTHOR_EDITOR",
+      "cardinality": "1:N",
+      "description": "A book can have multiple author‑editor joint responsibility records",
+      "probability": 0.936056
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "BOOK_AUTHOR_EDITOR",
+      "cardinality": "1:N",
+      "description": "An author can participate in multiple author‑editor joint responsibility records",
+      "probability": 0.999242
+    },
+    {
+      "entity_1": "EDITOR",
+      "entity_2": "BOOK_AUTHOR_EDITOR",
+      "cardinality": "1:N",
+      "description": "An editor can participate in multiple author‑editor joint responsibility records",
+      "probability": 0.983166
+    }
+  ],
+  "processing_time": 21.43,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a descriptive 'description' attribute to CATEGORY for richer categorisation. Introduced a weak associative entity BOOK_AUTHOR_EDITOR to capture joint responsibility data between a specific author and editor for a given book. Clarified foreign‑key relationships and noted constraints (e.g., unique (book_isbn, author_order) in BOOK_AUTHOR). Documented role attributes for consistency. Ensured all entities have clear primary keys and relationships remain balanced and efficient."
+  }
+}

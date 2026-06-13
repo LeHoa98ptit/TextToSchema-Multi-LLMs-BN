@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "ACCOUNT",
+    "TRANSACTION",
+    "CURRENCY",
+    "USER",
+    "ASSOC_TRANSACTION_CURRENCY",
+    "ASSOC_ACCOUNT_CURRENCY"
+  ],
+  "attribute": {
+    "ACCOUNT": [
+      "account_balance",
+      "frozen_amount",
+      "account_number"
+    ],
+    "TRANSACTION": [
+      "transaction_status",
+      "error_information",
+      "failure_reason"
+    ],
+    "CURRENCY": [
+      "currency_type",
+      "currency_code"
+    ],
+    "USER": [
+      "user_id",
+      "user_name"
+    ],
+    "ASSOC_TRANSACTION_CURRENCY": [
+      "assoc_transaction_currency_id",
+      "transaction_id",
+      "currency_id"
+    ],
+    "ASSOC_ACCOUNT_CURRENCY": [
+      "assoc_account_currency_id",
+      "account_id",
+      "currency_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_CURRENCY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "ASSOC_TRANSACTION_CURRENCY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ASSOC_ACCOUNT_CURRENCY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "ASSOC_ACCOUNT_CURRENCY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.2933,
+  "ilp_runtime": 0.032
+}

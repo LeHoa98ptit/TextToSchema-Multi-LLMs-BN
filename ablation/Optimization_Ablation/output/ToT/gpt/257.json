@@ -1,0 +1,143 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CUSTOMER_TYPE",
+    "DISCOUNT",
+    "AIRLINE",
+    "FLIGHT",
+    "HOTEL",
+    "BOOKING",
+    "ORDER",
+    "BOOKING_HOTEL",
+    "ASSOC_BOOKING_HOTEL"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "email",
+      "phone",
+      "type_id"
+    ],
+    "CUSTOMER_TYPE": [
+      "type_id",
+      "type_name",
+      "base_discount_rate"
+    ],
+    "DISCOUNT": [
+      "discount_id",
+      "description",
+      "percentage",
+      "valid_from",
+      "valid_to"
+    ],
+    "AIRLINE": [
+      "airline_id",
+      "airline_name",
+      "contact_number"
+    ],
+    "FLIGHT": [
+      "flight_number",
+      "flight_date",
+      "departure_airport",
+      "departure_time",
+      "arrival_airport",
+      "arrival_time",
+      "airline_id"
+    ],
+    "HOTEL": [
+      "hotel_id",
+      "hotel_name",
+      "address",
+      "city",
+      "country"
+    ],
+    "BOOKING": [
+      "booking_id",
+      "booking_timestamp",
+      "check_in",
+      "check_out",
+      "ticket_order_number",
+      "customer_id",
+      "flight_number",
+      "order_id",
+      "discount_id"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_timestamp",
+      "ticket_order_number",
+      "customer_id",
+      "discount_id"
+    ],
+    "BOOKING_HOTEL": [
+      "booking_id",
+      "hotel_id"
+    ],
+    "ASSOC_BOOKING_HOTEL": [
+      "assoc_booking_hotel_id",
+      "booking_id",
+      "hotel_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOKING",
+      "entity_2": "ASSOC_BOOKING_HOTEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ASSOC_BOOKING_HOTEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 87.2298,
+  "ilp_runtime": 0.043
+}

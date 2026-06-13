@@ -1,0 +1,164 @@
+{
+  "entity": [
+    "OWNER",
+    "HOUSE",
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "POSITION",
+    "PERMISSION",
+    "POSITION_PERMISSION",
+    "FEE_TYPE",
+    "FEE_RECORD",
+    "FEE_RECEIPT",
+    "ACCOUNT_RECEIVABLE_REPORT",
+    "OWNERSHIP"
+  ],
+  "attribute": {
+    "OWNER": [
+      "owner_id",
+      "full_name",
+      "workplace",
+      "contact_number",
+      "email"
+    ],
+    "HOUSE": [
+      "house_id",
+      "house_number",
+      "floor_area",
+      "address",
+      "construction_year"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name",
+      "phone_number",
+      "location",
+      "supervisor_id"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "full_name",
+      "date_of_birth",
+      "gender",
+      "address",
+      "contact_number",
+      "password",
+      "position_id",
+      "department_id",
+      "supervisor_id"
+    ],
+    "POSITION": [
+      "position_id",
+      "title",
+      "level"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "description"
+    ],
+    "POSITION_PERMISSION": [
+      "position_id",
+      "permission_id"
+    ],
+    "FEE_TYPE": [
+      "fee_type_id",
+      "type_name",
+      "standard_rate"
+    ],
+    "FEE_RECORD": [
+      "fee_record_id",
+      "house_id",
+      "fee_type_id",
+      "billing_month",
+      "quantity",
+      "calculated_amount",
+      "due_date",
+      "paid_date",
+      "status"
+    ],
+    "FEE_RECEIPT": [
+      "receipt_id",
+      "fee_record_id",
+      "receipt_date",
+      "paid_amount",
+      "payment_method"
+    ],
+    "ACCOUNT_RECEIVABLE_REPORT": [
+      "report_id",
+      "report_month",
+      "total_due",
+      "total_paid",
+      "outstanding_balance"
+    ],
+    "OWNERSHIP": [
+      "ownership_id",
+      "owner_id",
+      "house_id",
+      "ownership_percentage"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "OWNER",
+      "entity_2": "OWNERSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOUSE",
+      "entity_2": "OWNERSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "POSITION_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "POSITION_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FEE_TYPE",
+      "entity_2": "FEE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FEE_RECORD",
+      "entity_2": "FEE_RECEIPT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 89.7804,
+  "ilp_runtime": 0.107
+}

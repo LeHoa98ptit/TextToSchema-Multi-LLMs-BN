@@ -1,0 +1,68 @@
+{
+  "entity": [
+    "MAINTENANCE_TECHNICIAN",
+    "MAINTENANCE_TEAM",
+    "CUSTOMER",
+    "MAINTENANCE_TASK",
+    "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TEAM"
+  ],
+  "attribute": {
+    "MAINTENANCE_TECHNICIAN": [
+      "gender",
+      "phone_number",
+      "position",
+      "employment_date"
+    ],
+    "MAINTENANCE_TEAM": [
+      "team_leader",
+      "team_responsibility",
+      "total_number_member"
+    ],
+    "CUSTOMER": [
+      "phone_number",
+      "address"
+    ],
+    "MAINTENANCE_TASK": [
+      "maintenance_time",
+      "maintenance_duration",
+      "cost",
+      "result",
+      "customer_feedback",
+      "satisfaction_level",
+      "feedback_resolution"
+    ],
+    "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TEAM": [
+      "assoc_maintenance_technician_maintenance_team_id",
+      "maintenance_technician_id",
+      "maintenance_team_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MAINTENANCE_TECHNICIAN",
+      "entity_2": "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 25.1886,
+  "ilp_runtime": 0.171
+}

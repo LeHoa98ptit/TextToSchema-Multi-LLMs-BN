@@ -1,0 +1,147 @@
+{
+  "filename": "345.txt",
+  "entity": {
+    "COURSE": 0.622459,
+    "PROFESSOR": 0.622459,
+    "STUDENT": 0.622459,
+    "SUBJECT": 0.622459,
+    "SEMESTER": 0.545672,
+    "ENROLLMENT": 0.504375,
+    "SUBJECT_SEMESTER": 0.012027,
+    "SUBJECT_PREREQUISITE": 0.999999,
+    "SUBJECT_EQUIVALENT": 0.999999
+  },
+  "attribute": {
+    "COURSE": {
+      "course id": 0.559633,
+      "course code": 0.56697,
+      "course name": 0.565002,
+      "total credit": 0.557445,
+      "coordinator professor id": 0.567062
+    },
+    "PROFESSOR": {
+      "professor id": 0.544625,
+      "professor name": 0.538538,
+      "email": 0.5479
+    },
+    "STUDENT": {
+      "student id": 0.55797,
+      "student name": 0.553119,
+      "email": 0.559804,
+      "date of birth": 0.55217,
+      "total credit completed": 0.553441,
+      "average grade": 0.526769
+    },
+    "SUBJECT": {
+      "subject id": 0.543496,
+      "subject number": 0.542274,
+      "subject name": 0.545521,
+      "credit": 0.548798,
+      "equivalent subject ids": 0.541095,
+      "prerequisite subject ids": 0.566831
+    },
+    "SEMESTER": {
+      "semester id": 0.556133,
+      "semester name": 0.552559,
+      "date range": 0.545726
+    },
+    "ENROLLMENT": {
+      "student id": 0.552485,
+      "subject id": 0.555445,
+      "semester id": 0.556854,
+      "enrollment date": 0.531092,
+      "grade": 0.54122
+    },
+    "SUBJECT_SEMESTER": {
+      "subject_semester_id": 0.012027,
+      "subject_id": 0.012027,
+      "semester_id": 0.012027,
+      "id_SUBJECT_SEMESTER": 0.012027
+    },
+    "SUBJECT_PREREQUISITE": {
+      "subject_prerequisite_id": 0.999999,
+      "subject_id": 0.999999,
+      "id_SUBJECT_PREREQUISITE": 0.999999
+    },
+    "SUBJECT_EQUIVALENT": {
+      "subject_equivalent_id": 0.999999,
+      "subject_id": 0.999999,
+      "id_SUBJECT_EQUIVALENT": 0.999999
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "COURSE",
+      "description": "A professor coordinates many courses, each course has exactly one coordinating professor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.766177
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "SUBJECT",
+      "description": "A course consists of multiple subjects, each subject belongs to one course.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988618
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT_SEMESTER",
+      "description": "One SUBJECT can be associated with many SUBJECT_SEMESTER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012027
+    },
+    {
+      "entity_1": "SEMESTER",
+      "entity_2": "SUBJECT_SEMESTER",
+      "description": "One SEMESTER can be associated with many SUBJECT_SEMESTER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012027
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "description": "A student can have many enrollment records, each enrollment belongs to one student.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ENROLLMENT",
+      "description": "A subject can be enrolled by many students (through enrollment records), each enrollment refers to one subject.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.027641
+    },
+    {
+      "entity_1": "SEMESTER",
+      "entity_2": "ENROLLMENT",
+      "description": "A semester contains many enrollment records, each enrollment occurs in one semester.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993662
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT_PREREQUISITE",
+      "description": "One SUBJECT can be associated with many SUBJECT_PREREQUISITE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT_EQUIVALENT",
+      "description": "One SUBJECT can be associated with many SUBJECT_EQUIVALENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999999
+    }
+  ],
+  "processing_time": 3.09
+}

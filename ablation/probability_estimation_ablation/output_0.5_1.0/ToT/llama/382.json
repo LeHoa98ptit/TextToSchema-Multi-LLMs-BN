@@ -1,0 +1,92 @@
+{
+  "filename": "382.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "PROFILE": 0.739236,
+    "ASSOC_POST_USER": 0.863167
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.753123,
+      "password": 0.764126,
+      "email": 0.765433
+    },
+    "PROFILE": {
+      "gender": 0.763436,
+      "age": 0.758641,
+      "occupation": 0.761522,
+      "interest": 0.754965,
+      "avatar": 0.769111
+    },
+    "POST": {
+      "title": 0.755461,
+      "description": 0.762464,
+      "image": 0.762822,
+      "view_count": 0.742961,
+      "comment_count": 0.754378
+    },
+    "COMMENT": {
+      "content": 0.762522,
+      "time": 0.752485,
+      "comment_id": 0.753526
+    },
+    "ASSOC_POST_USER": {
+      "assoc_post_user_id": 0.863167,
+      "post_id": 0.863167,
+      "user_id": 0.863167
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "description": "A user has one profile",
+      "probability": 0.999208
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can publish many posts",
+      "probability": 0.863167
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments",
+      "probability": 0.017713
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can make many comments",
+      "probability": 0.961178
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_POST_USER",
+      "description": "One POST can be associated with many ASSOC_POST_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.863167
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_POST_USER",
+      "description": "One USER can be associated with many ASSOC_POST_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.863167
+    }
+  ],
+  "processing_time": 26.84,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added attribute for post comments count, added relationship between user and post for likes or reactions, and added avatar attribute to user profile"
+  }
+}

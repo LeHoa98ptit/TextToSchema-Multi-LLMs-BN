@@ -1,0 +1,84 @@
+{
+  "filename": "390.txt",
+  "entity": {
+    "CONSUMER": 0.622459,
+    "COURIER_COMPANY": 0.584895,
+    "COURIER": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "RECIPIENT": 0.622459,
+    "COURIER_TRACKING": 0.571286,
+    "PARTNERSHIP": 0.622459
+  },
+  "attribute": {
+    "CONSUMER": {
+      "consumer id": 0.528266,
+      "address": 0.535724,
+      "phone number": 0.519673
+    },
+    "COURIER_COMPANY": {
+      "company id": 0.564488,
+      "arrival time": 0.56491,
+      "charge price": 0.562547
+    },
+    "COURIER": {
+      "courier number": 0.570985
+    },
+    "RECIPIENT": {
+      "recipient id": 0.521228,
+      "phone number": 0.52287
+    },
+    "COURIER_TRACKING": {
+      "tracking id": 0.574125,
+      "courier number": 0.578876,
+      "recipient id": 0.572488
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.521702,
+      "login": 0.526531,
+      "password": 0.5221
+    },
+    "PARTNERSHIP": {
+      "partnership id": 0.506849,
+      "company id": 0.510221,
+      "admin id": 0.519831,
+      "partnership_id": 4.2e-05,
+      "courier_company_id": 4.2e-05,
+      "administrator_id": 4.2e-05
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURIER",
+      "entity_2": "COURIER_TRACKING",
+      "description": "Each courier has a single tracking record linking it to a recipient",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999828
+    },
+    {
+      "entity_1": "RECIPIENT",
+      "entity_2": "COURIER_TRACKING",
+      "description": "A recipient can be associated with multiple courier tracking records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000759
+    },
+    {
+      "entity_1": "COURIER_COMPANY",
+      "entity_2": "PARTNERSHIP",
+      "description": "One COURIER_COMPANY can be associated with many PARTNERSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 4.2e-05
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PARTNERSHIP",
+      "description": "One ADMINISTRATOR can be associated with many PARTNERSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 4.2e-05
+    }
+  ],
+  "processing_time": 13.52
+}

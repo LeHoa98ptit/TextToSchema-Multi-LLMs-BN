@@ -1,0 +1,248 @@
+{
+  "filename": "344.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "PERMISSION": 0.485754,
+    "APPLICATION": 0.622459,
+    "WEBSERVICE": 0.595223,
+    "ERROR": 0.622459,
+    "INVOCATION": 0.457155,
+    "METRIC": 0.455047,
+    "USER_ROLE": 0.542348,
+    "ROLE_PERMISSION": 0.529715,
+    "APP_USER": 0.525004,
+    "APP_PERMISSION": 0.480735,
+    "DAILY_METRIC": 0.424775,
+    "APPLICATION_METRIC": 0.491576
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.52054,
+      "username": 0.509693,
+      "email": 0.525008,
+      "password_hash": 0.511564,
+      "created_at": 0.511308,
+      "last_login": 0.515337,
+      "is_active": 0.515266
+    },
+    "ROLE": {
+      "role_id": 0.535027,
+      "name": 0.531079,
+      "description": 0.549283,
+      "created_at": 0.527321,
+      "is_deleted": 0.524645
+    },
+    "PERMISSION": {
+      "permission_id": 0.529402,
+      "code": 0.535604,
+      "description": 0.551884,
+      "created_at": 0.517872,
+      "is_deleted": 0.519777
+    },
+    "APPLICATION": {
+      "app_id": 0.529343,
+      "code": 0.543013,
+      "name": 0.533158,
+      "type": 0.547207,
+      "owner": 0.54079,
+      "created_at": 0.518241,
+      "is_deleted": 0.517692
+    },
+    "WEBSERVICE": {
+      "ws_id": 0.533827,
+      "code": 0.541853,
+      "description": 0.555863,
+      "endpoint_url": 0.523401,
+      "creation_date": 0.534502,
+      "app_id": 0.535822,
+      "is_deleted": 0.524421
+    },
+    "ERROR": {
+      "error_id": 0.522546,
+      "code": 0.526981,
+      "description": 0.537686,
+      "timestamp": 0.526078,
+      "return_status": 0.516518,
+      "ws_id": 0.521284,
+      "is_deleted": 0.511933,
+      "archived_at": 0.496474
+    },
+    "INVOCATION": {
+      "invocation_id": 0.508268,
+      "user_id": 0.517602,
+      "ws_id": 0.519398,
+      "invocation_time": 0.51146,
+      "return_status": 0.511683,
+      "delay_ms": 0.503732,
+      "metric_id": 0.522261,
+      "error_id": 0.516265,
+      "is_deleted": 0.501483,
+      "archived_at": 0.494716
+    },
+    "METRIC": {
+      "metric_id": 0.520362,
+      "success": 0.533842,
+      "response_time_ms": 0.52715,
+      "recorded_at": 0.516515
+    },
+    "USER_ROLE": {
+      "user_id": 0.53662,
+      "role_id": 0.537118,
+      "assigned_at": 0.525465
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.5387,
+      "permission_id": 0.53783,
+      "granted_at": 0.529803
+    },
+    "APP_USER": {
+      "app_id": 0.527781,
+      "user_id": 0.527393,
+      "authorized_at": 0.526764
+    },
+    "APP_PERMISSION": {
+      "app_id": 0.533384,
+      "permission_id": 0.532682,
+      "granted_at": 0.521788
+    },
+    "DAILY_METRIC": {
+      "daily_metric_id": 0.520885,
+      "metric_date": 0.519156,
+      "total_invocations": 0.518244,
+      "successful_invocations": 0.528604,
+      "avg_response_time_ms": 0.52003,
+      "app_id": 0.534847,
+      "created_at": 0.51932
+    },
+    "APPLICATION_METRIC": {
+      "app_metric_id": 0.539715,
+      "app_id": 0.543846,
+      "period_start": 0.538474,
+      "period_end": 0.534668,
+      "total_invocations": 0.528296,
+      "success_rate": 0.54458,
+      "avg_response_time_ms": 0.530075,
+      "created_at": 0.530569
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user can have many role assignments",
+      "probability": 0.999577
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users",
+      "probability": 0.99812
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can have many permission links",
+      "probability": 0.997326
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be linked to many roles",
+      "probability": 0.999644
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APP_USER",
+      "cardinality": "1:N",
+      "description": "An application can authorize many users",
+      "probability": 0.996793
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APP_USER",
+      "cardinality": "1:N",
+      "description": "A user can be authorized for many applications",
+      "probability": 0.999875
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEBSERVICE",
+      "cardinality": "1:N",
+      "description": "An application owns multiple web services",
+      "probability": 0.348985
+    },
+    {
+      "entity_1": "WEBSERVICE",
+      "entity_2": "ERROR",
+      "cardinality": "1:N",
+      "description": "A web service can generate many error records",
+      "probability": 0.010169
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INVOCATION",
+      "cardinality": "1:N",
+      "description": "A user may invoke many web services",
+      "probability": 0.260677
+    },
+    {
+      "entity_1": "WEBSERVICE",
+      "entity_2": "INVOCATION",
+      "cardinality": "1:N",
+      "description": "A web service can be invoked many times",
+      "probability": 0.00103
+    },
+    {
+      "entity_1": "INVOCATION",
+      "entity_2": "METRIC",
+      "cardinality": "1:1",
+      "description": "Each invocation has a single performance metric record",
+      "probability": 5.1e-05
+    },
+    {
+      "entity_1": "INVOCATION",
+      "entity_2": "ERROR",
+      "cardinality": "0:1",
+      "description": "An invocation may be linked to an error record",
+      "probability": 0.009169
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APP_PERMISSION",
+      "cardinality": "1:N",
+      "description": "An application can have many permissions scoped to it",
+      "probability": 0.409028
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "APP_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be assigned to many applications",
+      "probability": 0.999437
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "DAILY_METRIC",
+      "cardinality": "1:N",
+      "description": "Daily aggregated metrics may be stored per application",
+      "probability": 0.000785
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_METRIC",
+      "cardinality": "1:N",
+      "description": "Period‑based aggregated metrics per application",
+      "probability": 0.999767
+    }
+  ],
+  "processing_time": 56.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added APP_PERMISSION junction to scope permissions per application, introduced aggregate metric tables DAILY_METRIC and APPLICATION_METRIC for period‑based reporting, incorporated soft‑delete (is_deleted) and archival (archived_at) attributes on ERROR and INVOCATION for long‑term analytics, added missing foreign‑key fields (error_id in INVOCATION, app_id in DAILY_METRIC), and retained all previously strong normalized structures and audit timestamps."
+  }
+}

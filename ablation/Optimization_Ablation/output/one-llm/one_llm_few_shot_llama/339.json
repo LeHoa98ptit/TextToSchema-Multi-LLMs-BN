@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "PROJECT",
+    "API",
+    "USER",
+    "AVATAR",
+    "ASSOC_USER_PROJECT",
+    "ASSOC_API_USER"
+  ],
+  "attribute": {
+    "PROJECT": [
+      "project_id",
+      "project_name",
+      "creation_time",
+      "update_time"
+    ],
+    "API": [
+      "api_id",
+      "access_path",
+      "creation_time",
+      "update_time",
+      "average_response_time",
+      "response_time_90_percentile"
+    ],
+    "USER": [
+      "user_id",
+      "username"
+    ],
+    "AVATAR": [
+      "avatar_id",
+      "avatar_info"
+    ],
+    "ASSOC_USER_PROJECT": [
+      "assoc_user_project_id",
+      "user_id",
+      "project_id"
+    ],
+    "ASSOC_API_USER": [
+      "assoc_api_user_id",
+      "api_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "AVATAR",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "API",
+      "entity_2": "ASSOC_API_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_API_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 15.2591,
+  "ilp_runtime": 0.142
+}

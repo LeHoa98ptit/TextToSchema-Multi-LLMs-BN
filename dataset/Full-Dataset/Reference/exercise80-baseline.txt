@@ -1,0 +1,73 @@
+{
+  "entity": [
+    "Customer",
+    "Repair Worker",
+    "Part",
+    "Repair Task",
+    "Repair Worker Task",
+    "Part Usage"
+  ],
+  "attribut": {
+    "Customer": [
+      "Customer ID",
+      "Customer Name",
+      "Customer Phone"
+    ],
+    "Repair Worker": [
+      "Repair Worker ID",
+      "Name",
+      "Address"
+    ],
+    "Part": [
+      "Part Serial Number",
+      "Description",
+      "Price",
+      "Supplier",
+      "Inventory Quantity"
+    ],
+    "Repair Task": [
+      "Repair Task ID",
+      "Vehicle Model",
+      "Task Status",
+      "Customer ID",
+      "Task Start Date",
+      "Task Completion Date"
+    ],
+    "Repair Worker Task": [
+      "Repair Worker ID",
+      "Repair Task ID"
+    ],
+    "Part Usage": [
+      "Part Serial Number",
+      "Repair Task ID",
+      "Usage Quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Customer",
+      "entity_2": "Repair Task",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Repair Task",
+      "entity_2": "Repair Worker Task",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Repair Worker",
+      "entity_2": "Repair Worker Task",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Repair Task",
+      "entity_2": "Part Usage",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Part",
+      "entity_2": "Part Usage",
+      "cardinality": "1:N"
+    }
+  ]
+}

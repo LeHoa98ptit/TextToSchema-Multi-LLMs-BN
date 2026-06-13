@@ -1,0 +1,81 @@
+{
+  "filename": "461.txt",
+  "entity": {
+    "PRODUCT": 0.622459,
+    "DISTRIBUTION_PERSONNEL": 0.540114,
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "ASSOC_PRODUCT_ORDER": 0.002111
+  },
+  "attribute": {
+    "PRODUCT": {
+      "product_id": 0.512449,
+      "unit_price": 0.521899,
+      "stock_quantity": 0.535081,
+      "unit_measurement": 0.531458,
+      "category": 0.536494,
+      "description": 0.530661,
+      "storage_location": 0.527146
+    },
+    "DISTRIBUTION_PERSONNEL": {
+      "personnel_id": 0.557189,
+      "phone": 0.558197,
+      "gender": 0.558833,
+      "position": 0.563854
+    },
+    "CUSTOMER": {
+      "customer_id": 0.52016,
+      "gender": 0.543691,
+      "age": 0.526848,
+      "phone": 0.529322,
+      "address": 0.52527
+    },
+    "ORDER": {
+      "order_id": 0.516561,
+      "order_creation_time": 0.516175,
+      "product_quantity": 0.537476,
+      "total_order_price": 0.524095,
+      "delivery_address": 0.532749,
+      "order_status": 0.527674,
+      "estimate_delivery_time": 0.526083
+    },
+    "ASSOC_PRODUCT_ORDER": {
+      "assoc_product_order_id": 0.002111,
+      "product_id": 0.002111,
+      "order_id": 0.002111
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_ORDER",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002111
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_PRODUCT_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_PRODUCT_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002111
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each customer can place multiple orders, but each order is associated with only one customer.",
+      "probability": 0.964977
+    },
+    {
+      "entity_1": "DISTRIBUTION_PERSONNEL",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each distribution personnel can be responsible for multiple orders, but each order is assigned to only one personnel.",
+      "probability": 0.000142
+    }
+  ],
+  "processing_time": 14.76
+}

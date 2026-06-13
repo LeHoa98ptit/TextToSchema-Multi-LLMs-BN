@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "BOOK",
+    "AUTHOR",
+    "EDITOR",
+    "CATEGORY",
+    "BOOK_AUTHOR",
+    "BOOK_EDITOR",
+    "BOOK_AUTHOR_EDITOR"
+  ],
+  "attribute": {
+    "BOOK": [
+      "isbn",
+      "title",
+      "publication_date",
+      "category_id"
+    ],
+    "AUTHOR": [
+      "author_id",
+      "name",
+      "email"
+    ],
+    "EDITOR": [
+      "editor_id",
+      "name",
+      "email",
+      "office_location"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "BOOK_AUTHOR": [
+      "book_isbn",
+      "author_id",
+      "author_order",
+      "role"
+    ],
+    "BOOK_EDITOR": [
+      "book_isbn",
+      "editor_id",
+      "role"
+    ],
+    "BOOK_AUTHOR_EDITOR": [
+      "book_isbn",
+      "author_id",
+      "editor_id",
+      "joint_responsibility"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_EDITOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EDITOR",
+      "entity_2": "BOOK_EDITOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_AUTHOR_EDITOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "BOOK_AUTHOR_EDITOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EDITOR",
+      "entity_2": "BOOK_AUTHOR_EDITOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.6189,
+  "ilp_runtime": 0.053
+}

@@ -1,0 +1,95 @@
+{
+  "filename": "404.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "PRODUCT": 0.817574,
+    "SUPPLIER": 0.817574,
+    "SALE": 0.817574,
+    "INVENTORY": 0.754489,
+    "ASSOC_SUPPLIER_INVENTORY": 0.133788
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "username": 0.747845,
+      "password": 0.7552,
+      "position": 0.755569,
+      "contact_information": 0.758554
+    },
+    "PRODUCT": {
+      "name": 0.753222,
+      "id": 0.754856,
+      "purchase_price": 0.760767,
+      "sale_price": 0.767066,
+      "stock_quantity": 0.774633
+    },
+    "SUPPLIER": {
+      "name": 0.76245,
+      "id": 0.762732,
+      "phone_number": 0.759423
+    },
+    "SALE": {
+      "product_name": 0.770412,
+      "product_id": 0.76644,
+      "quantity": 0.776028,
+      "price": 0.756058,
+      "sale_date": 0.761506
+    },
+    "INVENTORY": {
+      "product_id": 0.772775,
+      "stock_quantity": 0.774787,
+      "sale_price": 0.777008
+    },
+    "ASSOC_SUPPLIER_INVENTORY": {
+      "assoc_supplier_inventory_id": 0.133788,
+      "supplier_id": 0.133788,
+      "inventory_id": 0.133788
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "Each sale is made by one employee, and each employee can make many sales.",
+      "probability": 0.501613
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "Each sale is for one product, and each product can be sold many times.",
+      "probability": 0.466836
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each supplier can provide many products, and each product is provided by one supplier.",
+      "probability": 0.035285
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "Each product has one inventory record, and each inventory record is for one product.",
+      "probability": 0.930648
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_SUPPLIER_INVENTORY",
+      "description": "One SUPPLIER can be associated with many ASSOC_SUPPLIER_INVENTORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.133788
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "ASSOC_SUPPLIER_INVENTORY",
+      "description": "One INVENTORY can be associated with many ASSOC_SUPPLIER_INVENTORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.133788
+    }
+  ],
+  "processing_time": 17.35
+}

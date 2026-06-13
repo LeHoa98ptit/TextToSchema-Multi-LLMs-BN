@@ -1,0 +1,173 @@
+{
+  "filename": "268.txt",
+  "entity": {
+    "HOTEL": 0.752595,
+    "RESTAURANT": 0.817574,
+    "TABLE": 0.716283,
+    "CUSTOMER": 0.817574,
+    "RESERVATION": 0.817574,
+    "RESERVATION_RECORD": 0.803008,
+    "DISH": 0.747552,
+    "MENU": 0.714696,
+    "ORDER": 0.717197,
+    "ASSOC_MENU_DISH": 0.026266
+  },
+  "attribute": {
+    "HOTEL": {
+      "hotel_id": 0.768824,
+      "name": 0.769067,
+      "address": 0.771009,
+      "star_rating": 0.760977,
+      "phone": 0.766431
+    },
+    "RESTAURANT": {
+      "restaurant_id": 0.7812,
+      "hotel_id": 0.782221,
+      "name": 0.781348,
+      "location": 0.785146,
+      "operating_hours": 0.788927,
+      "cuisine_type": 0.777275
+    },
+    "TABLE": {
+      "table_id": 0.745101,
+      "restaurant_id": 0.779414,
+      "table_number": 0.752133,
+      "capacity": 0.75684,
+      "status": 0.755681
+    },
+    "CUSTOMER": {
+      "customer_id": 0.757389,
+      "first_name": 0.75497,
+      "last_name": 0.756437,
+      "phone": 0.757763,
+      "email": 0.749895,
+      "loyalty_level": 0.758468
+    },
+    "RESERVATION": {
+      "reservation_id": 0.764817,
+      "customer_id": 0.771098,
+      "restaurant_id": 0.785193,
+      "reservation_time": 0.768662,
+      "party_size": 0.75868,
+      "special_requests": 0.763112,
+      "status": 0.76563
+    },
+    "RESERVATION_RECORD": {
+      "record_id": 0.76117,
+      "reservation_id": 0.765472,
+      "table_id": 0.767096,
+      "assigned_time": 0.768489
+    },
+    "DISH": {
+      "dish_id": 0.7653,
+      "name": 0.764746,
+      "price": 0.767421,
+      "category": 0.771206,
+      "description": 0.767063,
+      "is_vegetarian": 0.750974
+    },
+    "MENU": {
+      "menu_id": 0.741959,
+      "restaurant_id": 0.774122,
+      "effective_date": 0.74158
+    },
+    "ORDER": {
+      "order_id": 0.738916,
+      "reservation_id": 0.763169,
+      "dish_id": 0.761603,
+      "quantity": 0.752924,
+      "notes": 0.749457
+    },
+    "ASSOC_MENU_DISH": {
+      "assoc_menu_dish_id": 0.026266,
+      "menu_id": 0.026266,
+      "dish_id": 0.026266
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "RESTAURANT",
+      "cardinality": "1:N",
+      "description": "A hotel can host multiple restaurants",
+      "probability": 0.998528
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "cardinality": "1:N",
+      "description": "Each restaurant contains many tables",
+      "probability": 0.80395
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "description": "A restaurant can have multiple menus over time (one active at a time)",
+      "probability": 0.400371
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ASSOC_MENU_DISH",
+      "description": "One MENU can be associated with many ASSOC_MENU_DISH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.026266
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ASSOC_MENU_DISH",
+      "description": "One DISH can be associated with many ASSOC_MENU_DISH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.026266
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Customers can create multiple reservations",
+      "probability": 0.006329
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Reservations are made for a specific restaurant",
+      "probability": 0.882308
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_RECORD",
+      "cardinality": "1:N",
+      "description": "A reservation can be linked to one or more tables via reservation records",
+      "probability": 0.999987
+    },
+    {
+      "entity_1": "RESERVATION_RECORD",
+      "entity_2": "TABLE",
+      "cardinality": "N:1",
+      "description": "Each reservation record assigns a specific table",
+      "probability": 0.959651
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A reservation may include multiple dish orders",
+      "probability": 0.056624
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DISH",
+      "cardinality": "N:1",
+      "description": "Each order references a single dish",
+      "probability": 0.193707
+    }
+  ],
+  "processing_time": 30.19,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Standardized attribute names (e.g., reservation_time) and added missing foreign‑key attributes (hotel_id in RESTAURANT, restaurant_id in TABLE, MENU, RESERVATION; reservation_id and table_id in RESERVATION_RECORD; reservation_id and dish_id in ORDER). Replaced the direct N:M between RESERVATION and TABLE with a proper RESERVATION → RESERVATION_RECORD → TABLE chain, improving clarity and enforcing table assignment through a linking entity. Changed RESTAURANT‑MENU cardinality to 1:N to allow historical menus while keeping one active menu concept. Added phone attribute to HOTEL for completeness. Documented uniqueness/overlap constraint for RESERVATION_RECORD (a table cannot be double‑booked for overlapping times) in the improvements note. Retained all core entities and relationships, preserving the comprehensive coverage of the domain while improving efficiency and consistency."
+  }
+}

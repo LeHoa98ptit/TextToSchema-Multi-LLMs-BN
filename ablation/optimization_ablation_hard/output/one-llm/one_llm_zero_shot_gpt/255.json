@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "EQUIPMENT",
+    "INSPECTION_PLAN",
+    "USER",
+    "EQUIPMENT_FAILURE",
+    "REPAIR_WORK_ORDER",
+    "ANNOUNCEMENT"
+  ],
+  "attribute": {
+    "EQUIPMENT": [
+      "equipment_id",
+      "model",
+      "main_category",
+      "sub_category",
+      "location",
+      "operation_status",
+      "real_time_monitoring",
+      "alarm_notification",
+      "anomaly_case"
+    ],
+    "INSPECTION_PLAN": [
+      "plan_id",
+      "inspection_date",
+      "progress",
+      "status"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "role",
+      "permission",
+      "status",
+      "operation_history"
+    ],
+    "EQUIPMENT_FAILURE": [
+      "failure_id",
+      "failure_type",
+      "failure_time",
+      "processing_status"
+    ],
+    "REPAIR_WORK_ORDER": [
+      "work_order_id",
+      "repair_detail",
+      "progress",
+      "repair_time"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "content",
+      "release_time",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT_FAILURE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REPAIR_WORK_ORDER",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.8968,
+  "ilp_runtime": 0.051
+}

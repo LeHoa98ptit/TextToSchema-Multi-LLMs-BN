@@ -1,0 +1,108 @@
+{
+  "filename": "296.txt",
+  "entity": {
+    "FINANCIAL_ADVISOR": 0.60721,
+    "CLIENT": 0.622459,
+    "FINANCIAL_PRODUCT": 0.548448,
+    "INVESTMENT_PORTFOLIO": 0.578617,
+    "TRANSACTION": 0.622459,
+    "INVESTMENT_PLAN": 0.56097
+  },
+  "attribute": {
+    "FINANCIAL_ADVISOR": {
+      "advisor id": 0.534483,
+      "hire date": 0.523705,
+      "contact number": 0.529379
+    },
+    "CLIENT": {
+      "client id": 0.518635,
+      "contact number": 0.51366,
+      "risk preference": 0.53287,
+      "total asset": 0.534914
+    },
+    "FINANCIAL_PRODUCT": {
+      "product code": 0.54031,
+      "product type": 0.546832,
+      "product value": 0.537813
+    },
+    "INVESTMENT_PORTFOLIO": {
+      "client id": 0.54475,
+      "product code": 0.547755,
+      "quantity": 0.543919
+    },
+    "TRANSACTION": {
+      "transaction id": 0.515307,
+      "client id": 0.523576,
+      "product code": 0.530444,
+      "transaction type": 0.531084,
+      "transaction quantity": 0.528158,
+      "transaction price": 0.514886,
+      "transaction time": 0.508343
+    },
+    "INVESTMENT_PLAN": {
+      "plan id": 0.537102,
+      "client id": 0.544496,
+      "advisor id": 0.540564,
+      "plan date": 0.528342
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FINANCIAL_ADVISOR",
+      "entity_2": "CLIENT",
+      "description": "Each financial advisor can manage many clients, while each client is assigned to one financial advisor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.641453
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PLAN",
+      "description": "A client can have multiple investment plans over time, each plan belongs to one client.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.877225
+    },
+    {
+      "entity_1": "FINANCIAL_ADVISOR",
+      "entity_2": "INVESTMENT_PLAN",
+      "description": "A financial advisor creates many investment plans, each plan is created by one advisor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994628
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PORTFOLIO",
+      "description": "A client can hold multiple financial products, each portfolio record links one client to one product with a quantity.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.709163
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "INVESTMENT_PORTFOLIO",
+      "description": "A financial product can appear in many clients' portfolios, each portfolio entry references one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.969431
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "TRANSACTION",
+      "description": "A client can perform many transactions, each transaction is associated with one client.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.213485
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "TRANSACTION",
+      "description": "A financial product can be involved in many transactions, each transaction involves one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.084961
+    }
+  ],
+  "processing_time": 3.72
+}

@@ -1,0 +1,73 @@
+{
+  "filename": "261.txt",
+  "entity": {
+    "VOTER": 0.817574,
+    "ADDRESS": 0.817574,
+    "DISTRICT": 0.817574,
+    "CITY": 0.744102,
+    "TOWN": 0.750915,
+    "VOTING_DISTRICT": 0.776745
+  },
+  "attribute": {
+    "VOTER": {
+      "voter id": 0.78034,
+      "residential address id": 0.784684,
+      "registration status": 0.77868,
+      "eligible": 0.773606,
+      "voting district id": 0.784137
+    },
+    "ADDRESS": {
+      "address id": 0.762428,
+      "detailed address": 0.761788,
+      "address type": 0.766421
+    },
+    "DISTRICT": {
+      "district id": 0.773979,
+      "district type": 0.772961
+    },
+    "CITY": {
+      "city id": 0.764465
+    },
+    "TOWN": {
+      "town id": 0.762411
+    },
+    "VOTING_DISTRICT": {
+      "voting district id": 0.780915
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "VOTER",
+      "entity_2": "ADDRESS",
+      "description": "Each voter is assigned one residential address; an address can be associated with multiple voters",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 8e-05
+    },
+    {
+      "entity_1": "VOTER",
+      "entity_2": "VOTING_DISTRICT",
+      "description": "Each voter registers in a single voting district; a voting district contains many voters",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999743
+    },
+    {
+      "entity_1": "DISTRICT",
+      "entity_2": "TOWN",
+      "description": "A district contains multiple towns; each town belongs to one district",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.922058
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "DISTRICT",
+      "description": "A city contains multiple districts; each district belongs to one city",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981029
+    }
+  ],
+  "processing_time": 11.64
+}

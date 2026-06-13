@@ -1,0 +1,137 @@
+{
+  "filename": "395.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "DEPARTMENT": 0.498625,
+    "MEAL_CARD": 0.598159,
+    "RECHARGE": 0.46782,
+    "TRANSACTION": 0.479786,
+    "LOCATION": 0.622459,
+    "LOCATION_TYPE": 0.49755,
+    "STATISTICS": 0.488927,
+    "CONTACT_INFO": 0.493
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.546696,
+      "first_name": 0.539162,
+      "last_name": 0.540763,
+      "department_id": 0.547005
+    },
+    "DEPARTMENT": {
+      "department_id": 0.520267,
+      "department_name": 0.523356
+    },
+    "MEAL_CARD": {
+      "card_id": 0.546849,
+      "card_number": 0.547804,
+      "balance": 0.56255,
+      "issue_date": 0.538776,
+      "student_id": 0.566052
+    },
+    "RECHARGE": {
+      "recharge_id": 0.506722,
+      "amount": 0.517065,
+      "recharge_date": 0.508864,
+      "card_id": 0.516426,
+      "location_id": 0.504653,
+      "payment_method": 0.519405
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.512192,
+      "timestamp": 0.513657,
+      "amount": 0.529948,
+      "card_id": 0.521929,
+      "location_id": 0.50884,
+      "payment_method": 0.523099
+    },
+    "LOCATION": {
+      "location_id": 0.499737,
+      "name": 0.506127,
+      "type_id": 0.500441
+    },
+    "LOCATION_TYPE": {
+      "type_id": 0.501817,
+      "type_name": 0.503395,
+      "description": 0.523569
+    },
+    "STATISTICS": {
+      "stats_id": 0.517463,
+      "stats_date": 0.520132,
+      "total_recharges": 0.522157,
+      "total_consumption": 0.540113,
+      "average_balance": 0.524556,
+      "location_type_id": 0.511739
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.515317,
+      "student_id": 0.542571,
+      "contact_type": 0.518819,
+      "email": 0.518662,
+      "phone": 0.519519
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each student belongs to one department",
+      "probability": 0.999103
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "MEAL_CARD",
+      "cardinality": "1:1",
+      "description": "Each student is issued a single meal card",
+      "probability": 0.485366
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:N",
+      "description": "A student can have multiple contact records (email, phone, emergency, etc.)",
+      "probability": 0.004388
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "RECHARGE",
+      "cardinality": "1:N",
+      "description": "A meal card may receive many recharge events",
+      "probability": 0.000361
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A meal card may be used for many consumption transactions",
+      "probability": 0.75446
+    },
+    {
+      "entity_1": "RECHARGE",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Each recharge occurs at a specific location (e.g., kiosk, office)",
+      "probability": 0.01665
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Each transaction takes place at a particular location (cafeteria, shop, supermarket)",
+      "probability": 0.988403
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "LOCATION_TYPE",
+      "cardinality": "N:1",
+      "description": "Each location is classified by a type (cafeteria, shop, supermarket, etc.)",
+      "probability": 0.998079
+    }
+  ],
+  "processing_time": 18.25,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added PAYMENT_METHOD attribute to RECHARGE and TRANSACTION for richer payment tracking. Introduced LOCATION_TYPE entity to replace ambiguous generic type field and support a clean subtype hierarchy. Created STATISTICS entity as a derived/aggregated view for daily/weekly reporting (total recharges, total consumption, average balance). Added CONTACT_INFO entity to normalize multiple contact records per student while keeping Student lightweight. Updated relationships to reflect new entities and maintain referential integrity. Retained the original core entities and relationships, preserving the model's efficiency and clarity."
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "APPLICATION",
+    "CHANNEL",
+    "CLIENT",
+    "SUBSCRIPTION",
+    "EVENT",
+    "NOTIFICATION"
+  ],
+  "attribute": {
+    "APPLICATION": [
+      "appid",
+      "name",
+      "created_at"
+    ],
+    "CHANNEL": [
+      "channel_id",
+      "app_id",
+      "name",
+      "is_private",
+      "status",
+      "last_online_at",
+      "created_at",
+      "closed_at"
+    ],
+    "CLIENT": [
+      "client_id",
+      "app_id",
+      "username",
+      "device_token",
+      "email",
+      "registered_at",
+      "last_active_at"
+    ],
+    "SUBSCRIPTION": [
+      "client_id",
+      "channel_id",
+      "subscribed_at",
+      "is_muted"
+    ],
+    "EVENT": [
+      "event_id",
+      "channel_id",
+      "event_type",
+      "event_timestamp",
+      "payload"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "event_id",
+      "client_id",
+      "delivery_status",
+      "sent_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CHANNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.5717,
+  "ilp_runtime": 0.072
+}

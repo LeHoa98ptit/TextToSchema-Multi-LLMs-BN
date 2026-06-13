@@ -1,0 +1,97 @@
+{
+  "filename": "433.txt",
+  "entity": {
+    "BUSINESS_ENTITY": 0.598183,
+    "ATTACHMENT": 0.622459,
+    "USER": 0.622459,
+    "DEPARTMENT": 0.488927,
+    "ROLE": 0.494375,
+    "BUSINESS_MODULE": 0.524081
+  },
+  "attribute": {
+    "BUSINESS_ENTITY": {
+      "business entity id": 0.542271,
+      "entity type": 0.55111,
+      "module code": 0.562196,
+      "creation time": 0.540334,
+      "update time": 0.537171,
+      "creator user id": 0.534383
+    },
+    "ATTACHMENT": {
+      "attachment id": 0.536011,
+      "file name": 0.536333,
+      "file size": 0.539424,
+      "file path": 0.536494,
+      "creation time": 0.537708,
+      "file status": 0.544573,
+      "uploader user id": 0.540141,
+      "business entity id": 0.55732
+    },
+    "USER": {
+      "user id": 0.512291,
+      "department id": 0.529376,
+      "role id": 0.523493,
+      "contact detail": 0.536317
+    },
+    "DEPARTMENT": {
+      "department id": 0.523809
+    },
+    "ROLE": {
+      "role id": 0.527694
+    },
+    "BUSINESS_MODULE": {
+      "module code": 0.557494
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BUSINESS_MODULE",
+      "entity_2": "BUSINESS_ENTITY",
+      "description": "Each business entity belongs to exactly one business module, while a business module can contain many business entities.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998068
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BUSINESS_ENTITY",
+      "description": "A user creates business entities; each business entity has one creator user, and a user can create many business entities.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.913213
+    },
+    {
+      "entity_1": "BUSINESS_ENTITY",
+      "entity_2": "ATTACHMENT",
+      "description": "A business entity can have multiple attachments, each attachment is linked to a single business entity.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.158028
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ATTACHMENT",
+      "description": "A user uploads attachments; each attachment has one uploader user, and a user can upload many attachments.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.031644
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "description": "Each user belongs to one department, while a department can have many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992925
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each user is assigned one role, and a role can be assigned to many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99753
+    }
+  ],
+  "processing_time": 3.02
+}

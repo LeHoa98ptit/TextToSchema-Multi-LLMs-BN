@@ -1,0 +1,179 @@
+{
+  "filename": "431.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "DOCTOR": 0.622459,
+    "PATIENT": 0.532205,
+    "APPOINTMENT": 0.622459,
+    "ADMINISTRATOR": 0.49535,
+    "SCHEDULE": 0.492301,
+    "ADMIN_DOCTOR": 0.282539,
+    "ADMIN_DEPARTMENT": 0.997739,
+    "ADMIN_APPOINTMENT": 0.17369
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department id": 0.530421,
+      "department name": 0.528214,
+      "department introduction": 0.547515
+    },
+    "DOCTOR": {
+      "doctor id": 0.540295,
+      "doctor name": 0.540772,
+      "specialty": 0.544019,
+      "department id": 0.545614
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.526043,
+      "admin name": 0.523644,
+      "username": 0.517962,
+      "password hash": 0.50966
+    },
+    "PATIENT": {
+      "patient id": 0.545525,
+      "username": 0.524483,
+      "password hash": 0.529623,
+      "contact info": 0.545436
+    },
+    "APPOINTMENT": {
+      "appointment id": 0.555101,
+      "patient id": 0.56119,
+      "doctor id": 0.557938,
+      "schedule id": 0.549586,
+      "appointment datetime": 0.546851,
+      "status": 0.558541,
+      "registration timestamp": 0.539448,
+      "cancellation timestamp": 0.520478
+    },
+    "SCHEDULE": {
+      "schedule id": 0.520833,
+      "doctor id": 0.548688,
+      "department id": 0.536107,
+      "schedule date": 0.515227,
+      "start time": 0.512217,
+      "end time": 0.515003,
+      "total slots": 0.527234,
+      "available slots": 0.53149
+    },
+    "ADMIN_DOCTOR": {
+      "admin_doctor_id": 0.282539,
+      "administrator_id": 0.282539,
+      "doctor_id": 0.282539,
+      "id_ADMIN_DOCTOR": 0.282539,
+      "admin_id": 0.282539
+    },
+    "ADMIN_DEPARTMENT": {
+      "admin_department_id": 0.997739,
+      "administrator_id": 0.997739,
+      "department_id": 0.997739,
+      "id_ADMIN_DEPARTMENT": 0.997739,
+      "admin_id": 0.997739
+    },
+    "ADMIN_APPOINTMENT": {
+      "admin_appointment_id": 0.17369,
+      "administrator_id": 0.17369,
+      "appointment_id": 0.17369,
+      "id_ADMIN_APPOINTMENT": 0.17369,
+      "admin_id": 0.17369
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DOCTOR",
+      "description": "A department includes many doctors; each doctor belongs to one department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005436
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "SCHEDULE",
+      "description": "A department has many schedule entries; each schedule is for one department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.047924
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "SCHEDULE",
+      "description": "A doctor can have multiple schedule entries; each schedule belongs to one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.066679
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "APPOINTMENT",
+      "description": "A patient can make many appointments; each appointment is for one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.11212
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "APPOINTMENT",
+      "description": "A doctor can handle many appointments; each appointment is with one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.639731
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "APPOINTMENT",
+      "description": "A schedule slot can be referenced by many appointments; each appointment references one schedule.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.586297
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADMIN_DOCTOR",
+      "description": "One ADMINISTRATOR can be associated with many ADMIN_DOCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.282539
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "ADMIN_DOCTOR",
+      "description": "One DOCTOR can be associated with many ADMIN_DOCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.282539
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADMIN_DEPARTMENT",
+      "description": "One ADMINISTRATOR can be associated with many ADMIN_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997739
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ADMIN_DEPARTMENT",
+      "description": "One DEPARTMENT can be associated with many ADMIN_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997739
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADMIN_APPOINTMENT",
+      "description": "One ADMINISTRATOR can be associated with many ADMIN_APPOINTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.17369
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "ADMIN_APPOINTMENT",
+      "description": "One APPOINTMENT can be associated with many ADMIN_APPOINTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.17369
+    }
+  ],
+  "processing_time": 4.82
+}

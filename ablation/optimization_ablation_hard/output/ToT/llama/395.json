@@ -1,0 +1,65 @@
+{
+  "entity": [
+    "STUDENT",
+    "MEAL_CARD",
+    "LOCATION",
+    "TRANSACTION",
+    "CONSUMPTION_RECORD"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "name",
+      "department",
+      "contact_info"
+    ],
+    "MEAL_CARD": [
+      "card_balance",
+      "card_number",
+      "recharge_history"
+    ],
+    "LOCATION": [
+      "location_name",
+      "location_type",
+      "location_description"
+    ],
+    "TRANSACTION": [
+      "transaction_time",
+      "transaction_amount",
+      "transaction_type"
+    ],
+    "CONSUMPTION_RECORD": [
+      "record_time",
+      "record_location",
+      "record_amount",
+      "record_details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "CONSUMPTION_RECORD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMPTION_RECORD",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CONSUMPTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 19.5144,
+  "ilp_runtime": 0.036
+}

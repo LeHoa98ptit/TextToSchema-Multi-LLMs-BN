@@ -1,0 +1,102 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "DISTRIBUTION_CENTER": 0.74793,
+    "PRODUCT": 0.817574,
+    "SUPPLY_REQUEST": 0.793671,
+    "DISTRIBUTION_ORDER": 0.756944,
+    "PURCHASE_ORDER": 0.7517
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_address": 0.763615,
+      "supermarket_contact_information": 0.771159
+    },
+    "DISTRIBUTION_CENTER": {
+      "center_address": 0.753509,
+      "center_contact_information": 0.763534
+    },
+    "PRODUCT": {
+      "product_number": 0.755569,
+      "product_price": 0.752757,
+      "inventory_quantity": 0.780325
+    },
+    "SUPPLY_REQUEST": {
+      "request_number": 0.773849,
+      "request_date": 0.765278,
+      "quantity": 0.786714
+    },
+    "DISTRIBUTION_ORDER": {
+      "distribution_order_number": 0.754685,
+      "supply_request_number": 0.773653,
+      "distribution_date": 0.750942,
+      "distribution_status": 0.760191
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_number": 0.757523,
+      "product_number": 0.765704,
+      "quantity": 0.779022,
+      "price": 0.757211,
+      "purchase_date": 0.749854,
+      "status": 0.768581
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.001533
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.023666
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.868947
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:1",
+      "probability": 0.012637
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.110207
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.207257
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.088701
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "probability": 0.001409
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.890098
+    }
+  ],
+  "processing_time": 21.8
+}

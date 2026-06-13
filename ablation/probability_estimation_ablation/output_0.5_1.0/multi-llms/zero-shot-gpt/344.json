@@ -1,0 +1,207 @@
+{
+  "filename": "344.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ROLE": 0.817574,
+    "PERMISSION": 0.719705,
+    "APPLICATION": 0.817574,
+    "WEB_SERVICE": 0.793917,
+    "ERROR": 0.817574,
+    "MONITOR_DATUM": 0.751793,
+    "INVOCATION": 0.695974,
+    "USER_ROLE": 0.997567,
+    "ROLE_PERMISSION": 0.494322,
+    "PERMISSION_APPLICATION": 0.9244
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.750209,
+      "username": 0.738614,
+      "email": 0.750282,
+      "role ids": 0.766072
+    },
+    "ROLE": {
+      "role id": 0.761716,
+      "role name": 0.756338,
+      "permission ids": 0.765052
+    },
+    "PERMISSION": {
+      "permission id": 0.756449,
+      "permission name": 0.755088
+    },
+    "APPLICATION": {
+      "application id": 0.76123,
+      "application code": 0.764208,
+      "application type": 0.765374,
+      "description": 0.775422,
+      "creation date": 0.759496
+    },
+    "WEB_SERVICE": {
+      "web service id": 0.764268,
+      "service code": 0.76916,
+      "description": 0.777883
+    },
+    "ERROR": {
+      "error id": 0.751441,
+      "error code": 0.750857,
+      "description": 0.759699,
+      "error timestamp": 0.749088,
+      "return status": 0.748352
+    },
+    "MONITOR_DATUM": {
+      "monitor datum id": 0.751441,
+      "invocation time": 0.750776,
+      "return status": 0.75108,
+      "delay time": 0.748545,
+      "performance metric": 0.758393,
+      "success rate": 0.75285,
+      "invocation count": 0.750061,
+      "period start": 0.746868,
+      "period end": 0.744479,
+      "user id": 0.75718,
+      "application id": 0.763041,
+      "web service id": 0.765881,
+      "error id": 0.755316
+    },
+    "INVOCATION": {
+      "invocation id": 0.740496,
+      "web service id": 0.761217,
+      "user id": 0.749636,
+      "invocation timestamp": 0.739877,
+      "return status": 0.743144,
+      "delay time": 0.734775,
+      "performance metric": 0.757061
+    },
+    "USER_ROLE": {
+      "user_role_id": 0.997567,
+      "user_id": 0.997567,
+      "role_id": 0.997567,
+      "ID_USER_ROLE": 0.997567,
+      "ID_USER": 0.997567,
+      "ID_ROLE": 0.997567
+    },
+    "ROLE_PERMISSION": {
+      "role_permission_id": 0.494322,
+      "role_id": 0.494322,
+      "permission_id": 0.494322,
+      "ID_ROLE_PERMISSION": 0.494322,
+      "ID_ROLE": 0.494322,
+      "ID_PERMISSION": 0.494322
+    },
+    "PERMISSION_APPLICATION": {
+      "permission_application_id": 0.9244,
+      "permission_id": 0.9244,
+      "application_id": 0.9244,
+      "ID_PERMISSION_APPLICATION": 0.9244,
+      "ID_PERMISSION": 0.9244,
+      "ID_APPLICATION": 0.9244
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "description": "One USER can be associated with many USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997567
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "description": "One ROLE can be associated with many USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997567
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.494322
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.494322
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_APPLICATION",
+      "description": "One PERMISSION can be associated with many PERMISSION_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9244
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "PERMISSION_APPLICATION",
+      "description": "One APPLICATION can be associated with many PERMISSION_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9244
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEB_SERVICE",
+      "description": "An application can expose multiple web services",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9965
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MONITOR_DATUM",
+      "description": "A user can generate many monitor datum records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.17055
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "MONITOR_DATUM",
+      "description": "Monitor datum records are associated with a single application",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.313117
+    },
+    {
+      "entity_1": "WEB_SERVICE",
+      "entity_2": "MONITOR_DATUM",
+      "description": "Each monitor datum references the invoked web service",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001897
+    },
+    {
+      "entity_1": "ERROR",
+      "entity_2": "MONITOR_DATUM",
+      "description": "An error can be recorded in many monitor datum entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001024
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INVOCATION",
+      "description": "A user can perform multiple invocations of web services",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.522632
+    },
+    {
+      "entity_1": "WEB_SERVICE",
+      "entity_2": "INVOCATION",
+      "description": "Each invocation is related to a single web service",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000519
+    }
+  ],
+  "processing_time": 37.98
+}

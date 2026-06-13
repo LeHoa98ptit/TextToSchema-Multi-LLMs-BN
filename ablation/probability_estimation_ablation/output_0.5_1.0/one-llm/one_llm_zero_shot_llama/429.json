@@ -1,0 +1,87 @@
+{
+  "filename": "429.txt",
+  "entity": {
+    "USER": 0.817574,
+    "DISH": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.746343,
+    "STATISTIC": 0.694809,
+    "ASSOC_ORDER_DETAIL_STATISTIC": 1e-06
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.731776,
+      "password": 0.74937,
+      "role": 0.757857
+    },
+    "DISH": {
+      "price": 0.759503,
+      "category": 0.772646,
+      "availability": 0.768655,
+      "status": 0.773044
+    },
+    "ORDER": {
+      "order_id": 0.744531,
+      "order_time": 0.744483,
+      "total": 0.756817,
+      "order_status": 0.752488
+    },
+    "ORDER_DETAIL": {
+      "dish_id": 0.766487,
+      "quantity": 0.766402
+    },
+    "STATISTIC": {
+      "total_sale": 0.757922,
+      "sale_date": 0.755315,
+      "dish_id": 0.764588
+    },
+    "ASSOC_ORDER_DETAIL_STATISTIC": {
+      "assoc_order_detail_statistic_id": 1e-06,
+      "order_detail_id": 1e-06,
+      "statistic_id": 1e-06
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.998412
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.99998
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.155481
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ASSOC_ORDER_DETAIL_STATISTIC",
+      "description": "One ORDER_DETAIL can be associated with many ASSOC_ORDER_DETAIL_STATISTIC.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "STATISTIC",
+      "entity_2": "ASSOC_ORDER_DETAIL_STATISTIC",
+      "description": "One STATISTIC can be associated with many ASSOC_ORDER_DETAIL_STATISTIC.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "STATISTIC",
+      "cardinality": "1:N",
+      "probability": 0.045188
+    }
+  ],
+  "processing_time": 16.58
+}

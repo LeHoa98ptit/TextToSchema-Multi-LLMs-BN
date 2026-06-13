@@ -1,0 +1,121 @@
+{
+  "entity": [
+    "ADMINISTRATOR",
+    "DORMITORY_MANAGER",
+    "STUDENT",
+    "MAINTENANCE_STAFF",
+    "BUILDING",
+    "DORMITORY",
+    "APPLICATION",
+    "ANNOUNCEMENT",
+    "MAINTENANCE_RECORD"
+  ],
+  "attribute": {
+    "ADMINISTRATOR": [
+      "username",
+      "password"
+    ],
+    "DORMITORY_MANAGER": [
+      "username",
+      "password"
+    ],
+    "STUDENT": [
+      "student id",
+      "gender",
+      "belong dormitory",
+      "class"
+    ],
+    "MAINTENANCE_STAFF": [
+      "staff id",
+      "username",
+      "password"
+    ],
+    "BUILDING": [
+      "building id",
+      "building type",
+      "location",
+      "description",
+      "responsible dormitory manager"
+    ],
+    "DORMITORY": [
+      "dormitory id",
+      "dormitory type",
+      "number",
+      "bed",
+      "belong building",
+      "support facility",
+      "responsible dormitory manager"
+    ],
+    "APPLICATION": [
+      "application id",
+      "application type",
+      "applicant student id",
+      "application content",
+      "application time",
+      "application status",
+      "administrator processing opinion"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement id",
+      "announcement title",
+      "announcement content",
+      "release time",
+      "administrator id"
+    ],
+    "MAINTENANCE_RECORD": [
+      "maintenance record id",
+      "dormitory id",
+      "fault description",
+      "repair time",
+      "maintenance staff id",
+      "maintenance situation",
+      "completion time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY_MANAGER",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DORMITORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "BUILDING",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.6475,
+  "ilp_runtime": 0.049
+}

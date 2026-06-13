@@ -1,0 +1,64 @@
+{
+  "entity": [
+    "CHESS_PIECE",
+    "CHESSBOARD",
+    "QUALITY_INSPECTION",
+    "DEFECT_TYPE",
+    "QUALITY_ALERT"
+  ],
+  "attribute": {
+    "CHESS_PIECE": [
+      "piece id",
+      "color",
+      "position"
+    ],
+    "CHESSBOARD": [
+      "chessboard id"
+    ],
+    "QUALITY_INSPECTION": [
+      "inspection id",
+      "piece id",
+      "inspection time",
+      "result",
+      "defect type id"
+    ],
+    "DEFECT_TYPE": [
+      "defect type id",
+      "defect description"
+    ],
+    "QUALITY_ALERT": [
+      "alert id",
+      "inspection id",
+      "defect type id",
+      "alert time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEFECT_TYPE",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 18.554,
+  "ilp_runtime": 0.971
+}

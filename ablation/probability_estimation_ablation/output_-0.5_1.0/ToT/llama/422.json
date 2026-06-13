@@ -1,0 +1,134 @@
+{
+  "filename": "422.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PROJECT": 0.622459,
+    "PROJECT_VERSION": 0.508074,
+    "TASK": 0.622459,
+    "CODE_SUBMISSION": 0.53748,
+    "ASSOC_USER_PROJECT": 0.573548,
+    "ASSOC_USER_TASK": 0.015639
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.505164,
+      "password": 0.516267,
+      "email": 0.513465,
+      "phone": 0.501925,
+      "role": 0.523325,
+      "registration_time": 0.51762,
+      "login_time": 0.513485
+    },
+    "PROJECT": {
+      "project_name": 0.541198,
+      "project_introduction": 0.547134,
+      "creation_time": 0.546357,
+      "project_status": 0.545228,
+      "responsible_person": 0.533668
+    },
+    "PROJECT_VERSION": {
+      "version_number": 0.535181,
+      "release_date": 0.534735,
+      "version_description": 0.545859,
+      "stable_version": 0.526297
+    },
+    "TASK": {
+      "task_name": 0.536641,
+      "task_status": 0.536396,
+      "start_time": 0.530517,
+      "end_time": 0.536623,
+      "task_description": 0.54903,
+      "version_number": 0.539061
+    },
+    "CODE_SUBMISSION": {
+      "submission_time": 0.529208,
+      "submission_description": 0.538607,
+      "code_path": 0.521667,
+      "project_version": 0.542533
+    },
+    "ASSOC_USER_PROJECT": {
+      "assoc_user_project_id": 0.573548,
+      "user_id": 0.573548,
+      "project_id": 0.573548
+    },
+    "ASSOC_USER_TASK": {
+      "assoc_user_task_id": 0.015639,
+      "user_id": 0.015639,
+      "task_id": 0.015639
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One USER can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.573548
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.573548
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_VERSION",
+      "cardinality": "1:N",
+      "description": "A project can have multiple versions.",
+      "probability": 0.983424
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A project can have multiple tasks.",
+      "probability": 0.954928
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_TASK",
+      "description": "One USER can be associated with many ASSOC_USER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015639
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_USER_TASK",
+      "description": "One TASK can be associated with many ASSOC_USER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015639
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A user can make multiple code submissions.",
+      "probability": 0.737173
+    },
+    {
+      "entity_1": "PROJECT_VERSION",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A project version can have multiple tasks.",
+      "probability": 0.956896
+    },
+    {
+      "entity_1": "PROJECT_VERSION",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A project version can have multiple code submissions.",
+      "probability": 2.8e-05
+    }
+  ],
+  "processing_time": 22.12,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Combined PROJECT_MANAGER, DEVELOPER, and TESTER entities into the USER entity with a role attribute, and added relationships between PROJECT_VERSION and TASK, and PROJECT_VERSION and CODE_SUBMISSION to track tasks and code submissions for each version."
+  }
+}

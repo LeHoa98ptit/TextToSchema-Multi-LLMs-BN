@@ -1,0 +1,135 @@
+{
+  "filename": "355.txt",
+  "entity": {
+    "RACE": 0.817574,
+    "HORSE": 0.817574,
+    "BET": 0.817574,
+    "BETTOR": 0.817574,
+    "TRACK": 0.733333,
+    "RACE_HORSE": 0.763253,
+    "RACE_RESULT": 0.752651,
+    "BET_RESULT": 0.739621
+  },
+  "attribute": {
+    "RACE": {
+      "race id": 0.761506,
+      "track id": 0.766862,
+      "start time": 0.757675,
+      "end time": 0.751416,
+      "result": 0.762688
+    },
+    "HORSE": {
+      "horse id": 0.756541,
+      "name": 0.756792
+    },
+    "BET": {
+      "bet id": 0.749848,
+      "race id": 0.764073,
+      "bettor id": 0.761527,
+      "amount": 0.754498,
+      "bet time": 0.755513
+    },
+    "BETTOR": {
+      "bettor id": 0.760183,
+      "phone number": 0.755548,
+      "name": 0.756236
+    },
+    "TRACK": {
+      "track id": 0.754587,
+      "name": 0.757163
+    },
+    "RACE_HORSE": {
+      "race id": 0.773114,
+      "horse id": 0.769766,
+      "horse number": 0.769979,
+      "rank": 0.774112
+    },
+    "RACE_RESULT": {
+      "race id": 0.770295,
+      "winner horse id": 0.772664,
+      "winning time": 0.765758
+    },
+    "BET_RESULT": {
+      "bet id": 0.765016,
+      "selected horse id": 0.777584,
+      "expected rank": 0.7635,
+      "actual rank": 0.765319,
+      "is win": 0.766327
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TRACK",
+      "entity_2": "RACE",
+      "description": "A track hosts many races",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000637
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "RACE_HORSE",
+      "description": "A race includes multiple race_horse entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.937136
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "RACE_HORSE",
+      "description": "A horse can participate in multiple race_horse entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.360944
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "BET",
+      "description": "A race can have many bets placed on it",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.044753
+    },
+    {
+      "entity_1": "BETTOR",
+      "entity_2": "BET",
+      "description": "A bettor can place many bets",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.18593
+    },
+    {
+      "entity_1": "BET",
+      "entity_2": "BET_RESULT",
+      "description": "Each bet has a single result record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.991063
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "BET_RESULT",
+      "description": "A horse can be selected in many bet results",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.016283
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "RACE_RESULT",
+      "description": "Each race has one result record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.993472
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "RACE_RESULT",
+      "description": "A horse can be the winner in many race results",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001323
+    }
+  ],
+  "processing_time": 38.14
+}

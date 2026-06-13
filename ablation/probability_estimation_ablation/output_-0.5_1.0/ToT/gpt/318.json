@@ -1,0 +1,125 @@
+{
+  "filename": "318.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "MENU": 0.622459,
+    "USER_ROLE": 0.542348,
+    "ROLE_MENU": 0.531707,
+    "AUDIT_LOG": 0.4294
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.525587,
+      "username": 0.505682,
+      "password_hash": 0.520501,
+      "email": 0.517428,
+      "status": 0.534032,
+      "created_at": 0.515275,
+      "updated_at": 0.510566
+    },
+    "ROLE": {
+      "roleid": 0.550226,
+      "rolename": 0.549287,
+      "description": 0.555939,
+      "is_active": 0.536216,
+      "created_at": 0.538944,
+      "updated_at": 0.532918
+    },
+    "MENU": {
+      "menuid": 0.547821,
+      "label": 0.543785,
+      "url": 0.544601,
+      "parent_menu_id": 0.542565,
+      "order_index": 0.526634,
+      "icon": 0.546609,
+      "is_visible": 0.535157,
+      "created_at": 0.534853,
+      "updated_at": 0.526151
+    },
+    "USER_ROLE": {
+      "userid": 0.550877,
+      "roleid": 0.555763,
+      "assigned_at": 0.540506,
+      "assigned_by": 0.541913
+    },
+    "ROLE_MENU": {
+      "roleid": 0.568313,
+      "menuid": 0.568165,
+      "granted_at": 0.564343,
+      "granted_by": 0.569427
+    },
+    "AUDIT_LOG": {
+      "logid": 0.510922,
+      "entity_name": 0.497599,
+      "entity_id": 0.497866,
+      "action_type": 0.513911,
+      "performed_by": 0.507236,
+      "performed_at": 0.498217,
+      "details": 0.517543
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user may hold multiple role assignments, each with audit info",
+      "probability": 0.999598
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users",
+      "probability": 0.998271
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_MENU",
+      "cardinality": "1:N",
+      "description": "Roles are linked to many menu permissions, with grant metadata",
+      "probability": 0.975328
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ROLE_MENU",
+      "cardinality": "1:N",
+      "description": "Menu items can be granted to many roles",
+      "probability": 0.985193
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "description": "Self‑referencing relationship to model multi‑level menu hierarchy",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "All changes performed by a user are recorded in audit logs",
+      "probability": 0.954091
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Role modifications are also logged",
+      "probability": 0.00035
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Menu changes generate audit entries",
+      "probability": 2e-06
+    }
+  ],
+  "processing_time": 33.34,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

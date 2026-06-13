@@ -1,0 +1,208 @@
+{
+  "entity": [
+    "INGREDIENT",
+    "INGREDIENT_TYPE",
+    "TORTILLA",
+    "TORTILLA_INGREDIENT",
+    "USER",
+    "ROLE",
+    "USER_ROLE",
+    "PERMISSION",
+    "ROLE_PERMISSION",
+    "SALE",
+    "SALE_ITEM",
+    "PRODUCTION",
+    "PRODUCTION_USAGE"
+  ],
+  "attribute": {
+    "INGREDIENT": [
+      "ingredient_id",
+      "name",
+      "type_id",
+      "unit",
+      "cost_per_unit",
+      "current_stock",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "INGREDIENT_TYPE": [
+      "type_id",
+      "type_name",
+      "description",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "TORTILLA": [
+      "tortilla_id",
+      "design_name",
+      "creation_timestamp",
+      "size_cm",
+      "standard_price",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "TORTILLA_INGREDIENT": [
+      "tortilla_id",
+      "ingredient_id",
+      "quantity_required",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "is_active",
+      "created_at",
+      "last_login",
+      "created_by",
+      "updated_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description",
+      "parent_role_id",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "USER_ROLE": [
+      "user_id",
+      "role_id",
+      "assigned_at",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name",
+      "description",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE_PERMISSION": [
+      "role_id",
+      "permission_id",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "SALE": [
+      "sale_id",
+      "sale_timestamp",
+      "customer_user_id",
+      "total_amount",
+      "payment_method",
+      "status",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "SALE_ITEM": [
+      "sale_id",
+      "tortilla_id",
+      "quantity",
+      "unit_price",
+      "line_total",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCTION": [
+      "production_id",
+      "production_timestamp",
+      "operator_user_id",
+      "batch_number",
+      "total_output",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCTION_USAGE": [
+      "production_id",
+      "ingredient_id",
+      "quantity_used",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "INGREDIENT_TYPE",
+      "entity_2": "INGREDIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TORTILLA",
+      "entity_2": "TORTILLA_INGREDIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "TORTILLA_INGREDIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION",
+      "entity_2": "PRODUCTION_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 115.6037,
+  "ilp_runtime": 0.246
+}

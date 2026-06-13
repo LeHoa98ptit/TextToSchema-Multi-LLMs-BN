@@ -1,0 +1,105 @@
+{
+  "filename": "343.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "PHONE_NUMBER": 0.790245,
+    "VEHICLE": 0.817574,
+    "INSURANCE": 0.817574,
+    "INSURANCE_COMPANY": 0.782977,
+    "INSURANCE_TYPE": 0.774623,
+    "VEHICLE_DRIVER": 0.970986
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel id": 0.771731,
+      "address": 0.767341
+    },
+    "PHONE_NUMBER": {
+      "personnel id": 0.773088,
+      "phone number": 0.749415
+    },
+    "VEHICLE": {
+      "vin": 0.751484,
+      "manufacturer": 0.754803,
+      "model": 0.758506,
+      "year": 0.755313,
+      "driver id": 0.768129
+    },
+    "VEHICLE_DRIVER": {
+      "vehicle vin": 0.970986,
+      "personnel id": 0.970986,
+      "vehicle_driver_id": 0.970986,
+      "vehicle_id": 0.970986,
+      "personnel_id": 0.970986
+    },
+    "INSURANCE": {
+      "insurance id": 0.763949,
+      "vehicle vin": 0.757952,
+      "insurance type id": 0.767834,
+      "insurance company id": 0.763561,
+      "cost": 0.741325,
+      "content": 0.765276,
+      "purchase date": 0.745997,
+      "validity end date": 0.744951
+    },
+    "INSURANCE_TYPE": {
+      "insurance type id": 0.769275,
+      "type name": 0.762597
+    },
+    "INSURANCE_COMPANY": {
+      "insurance company id": 0.764388,
+      "company name": 0.75805
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PHONE_NUMBER",
+      "description": "A personnel can have multiple phone numbers",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.227048
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_DRIVER",
+      "description": "One VEHICLE can be associated with many VEHICLE_DRIVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.970986
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VEHICLE_DRIVER",
+      "description": "One PERSONNEL can be associated with many VEHICLE_DRIVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.970986
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "INSURANCE",
+      "description": "A vehicle can have multiple insurance records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.612027
+    },
+    {
+      "entity_1": "INSURANCE_TYPE",
+      "entity_2": "INSURANCE",
+      "description": "Each insurance record is of a specific insurance type",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999923
+    },
+    {
+      "entity_1": "INSURANCE_COMPANY",
+      "entity_2": "INSURANCE",
+      "description": "An insurance company can issue multiple insurance records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999967
+    }
+  ],
+  "processing_time": 23.53
+}

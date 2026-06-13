@@ -1,0 +1,189 @@
+{
+  "filename": "441.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "USER": 0.817574,
+    "ROLE": 0.711955,
+    "PERMISSION": 0.719705,
+    "ROLE_PERMISSION": 0.688582,
+    "TRANSACTION": 0.817574,
+    "BUDGET_ADJUSTMENT": 0.762729,
+    "ALERT": 0.75371,
+    "REPORT": 0.722441,
+    "DEPARTMENT": 0.698592
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.753364,
+      "title": 0.757766,
+      "description": 0.769657,
+      "start_date": 0.746718,
+      "end_date": 0.748643,
+      "total_budget": 0.768931,
+      "remaining_fund": 0.768169,
+      "status": 0.762284,
+      "created_at": 0.746561,
+      "updated_at": 0.742123,
+      "department_id": 0.765772
+    },
+    "USER": {
+      "user_id": 0.739633,
+      "name": 0.734337,
+      "email": 0.740038,
+      "role_id": 0.742756,
+      "department_id": 0.753041,
+      "created_at": 0.735076
+    },
+    "ROLE": {
+      "role_id": 0.740184,
+      "role_name": 0.74417
+    },
+    "PERMISSION": {
+      "permission_id": 0.742955,
+      "permission_name": 0.747397,
+      "description": 0.759257
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.7427,
+      "permission_id": 0.743455
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.732917,
+      "project_id": 0.75283,
+      "user_id": 0.740795,
+      "transaction_time": 0.733663,
+      "purpose": 0.752572,
+      "description": 0.752572,
+      "amount": 0.750301,
+      "transaction_type": 0.739338
+    },
+    "BUDGET_ADJUSTMENT": {
+      "adjustment_id": 0.751985,
+      "project_id": 0.765536,
+      "adjustment_date": 0.748932,
+      "amount": 0.75325,
+      "reason": 0.754953,
+      "approved_by_user_id": 0.761012
+    },
+    "ALERT": {
+      "alert_id": 0.725607,
+      "project_id": 0.74426,
+      "alert_type": 0.727799,
+      "generated_at": 0.725227,
+      "message": 0.728769,
+      "resolved_flag": 0.723259,
+      "resolved_by_user_id": 0.729192,
+      "resolved_at": 0.725449
+    },
+    "REPORT": {
+      "report_id": 0.749422,
+      "generated_by_user_id": 0.741671,
+      "generated_at": 0.745309,
+      "report_type": 0.754475,
+      "criteria": 0.764118
+    },
+    "DEPARTMENT": {
+      "department_id": 0.748672,
+      "name": 0.754521,
+      "manager_user_id": 0.752387
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A project can have many fund transactions",
+      "probability": 0.01327
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user can record multiple transactions",
+      "probability": 0.992601
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BUDGET_ADJUSTMENT",
+      "cardinality": "1:N",
+      "description": "A project may have several budget adjustments",
+      "probability": 0.17417
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BUDGET_ADJUSTMENT",
+      "cardinality": "1:N",
+      "description": "A user can approve many budget adjustments",
+      "probability": 0.992546
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ALERT",
+      "cardinality": "1:N",
+      "description": "System creates multiple alerts for a project (overspend, idle fund, etc.)",
+      "probability": 0.354251
+    },
+    {
+      "entity_1": "ALERT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "An alert can be resolved by one user",
+      "probability": 0.213747
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "Multiple reports can be generated for a project",
+      "probability": 0.796665
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A user can generate many reports",
+      "probability": 0.330312
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A department oversees multiple projects",
+      "probability": 0.395522
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "Users belong to a department",
+      "probability": 0.982201
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users",
+      "probability": 0.997053
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can have multiple permissions via the bridge table",
+      "probability": 0.998065
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be linked to many roles via the bridge table",
+      "probability": 0.999654
+    }
+  ],
+  "processing_time": 18.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Normalized permission handling by introducing PERMISSION and ROLE_PERMISSION entities, removing the denormalized permission_set attribute. Added resolved_by_user_id and resolved_at to ALERT to track which user clears an alert. Kept DEPARTMENT as an optional organizational unit while preserving its relationships. Updated relationships to reflect the new many‑to‑many role‑permission mapping and the alert resolution link. All original strengths (project, transaction, budget adjustment, reporting, role‑based access) are retained."
+  }
+}

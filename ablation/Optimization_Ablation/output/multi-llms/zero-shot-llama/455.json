@@ -1,0 +1,68 @@
+{
+  "entity": [
+    "VEHICLE",
+    "PARKING_SPACE",
+    "PARKING_LOT",
+    "ENTRY_POINT",
+    "ENTRY",
+    "ASSOC_PARKING_SPACE_PARKING_LOT"
+  ],
+  "attribute": {
+    "VEHICLE": [
+      "vehicle id",
+      "entry time",
+      "exit time"
+    ],
+    "PARKING_SPACE": [
+      "parking space id",
+      "status"
+    ],
+    "PARKING_LOT": [
+      "parking lot id",
+      "available spaces"
+    ],
+    "ENTRY_POINT": [
+      "entry point id",
+      "entry time"
+    ],
+    "ENTRY": [
+      "entry_id",
+      "vehicle_id",
+      "parking_space_id",
+      "entry_time"
+    ],
+    "ASSOC_PARKING_SPACE_PARKING_LOT": [
+      "assoc_parking_space_parking_lot_id",
+      "parking_space_id",
+      "parking_lot_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "ENTRY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARKING_SPACE",
+      "entity_2": "ENTRY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARKING_SPACE",
+      "entity_2": "ASSOC_PARKING_SPACE_PARKING_LOT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARKING_LOT",
+      "entity_2": "ASSOC_PARKING_SPACE_PARKING_LOT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 92.9936,
+  "ilp_runtime": 0.09
+}

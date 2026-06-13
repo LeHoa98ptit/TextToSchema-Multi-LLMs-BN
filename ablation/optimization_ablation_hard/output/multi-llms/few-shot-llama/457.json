@@ -1,0 +1,76 @@
+{
+  "entity": [
+    "PRODUCT",
+    "SUPPLIER",
+    "SUPPLY_REQUEST",
+    "DELIVERY_NOTIFICATION",
+    "STOCK_OUT_NOTIFICATION",
+    "PROCUREMENT"
+  ],
+  "attribute": {
+    "PRODUCT": [
+      "product id",
+      "name",
+      "inventory quantity",
+      "last update date"
+    ],
+    "SUPPLIER": [
+      "supplier id",
+      "name",
+      "address",
+      "contact information"
+    ],
+    "SUPPLY_REQUEST": [
+      "request id",
+      "chain supermarket id",
+      "product id",
+      "requested quantity",
+      "request date"
+    ],
+    "DELIVERY_NOTIFICATION": [
+      "notification id",
+      "request id",
+      "delivery date"
+    ],
+    "STOCK_OUT_NOTIFICATION": [
+      "notification id",
+      "request id",
+      "stock out date"
+    ],
+    "PROCUREMENT": [
+      "procurement id",
+      "product id",
+      "supplier id",
+      "purchase quantity",
+      "purchase date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "STOCK_OUT_NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 16.9328,
+  "ilp_runtime": 0.049
+}

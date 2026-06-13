@@ -1,0 +1,102 @@
+{
+  "filename": "276.txt",
+  "entity": {
+    "MAINTENANCE_TECHNICIAN": 0.782569,
+    "MAINTENANCE_TEAM": 0.803245,
+    "CUSTOMER": 0.817574,
+    "MAINTENANCE_TASK": 0.798106,
+    "MAINTENANCE_PRODUCT": 0.774413,
+    "FEEDBACK": 0.817574
+  },
+  "attribute": {
+    "MAINTENANCE_TECHNICIAN": {
+      "name": 0.777704,
+      "phone_number": 0.777473,
+      "position": 0.784568,
+      "employment_date": 0.776465,
+      "gender": 0.77731
+    },
+    "MAINTENANCE_TEAM": {
+      "team_leader": 0.77267,
+      "team_responsibility": 0.775109,
+      "total_number_of_members": 0.774207
+    },
+    "CUSTOMER": {
+      "name": 0.75319,
+      "phone_number": 0.749951,
+      "address": 0.751144,
+      "customer_satisfaction_level": 0.767189
+    },
+    "MAINTENANCE_TASK": {
+      "maintenance_time": 0.777398,
+      "maintenance_duration": 0.775099,
+      "cost": 0.767762,
+      "result": 0.779584,
+      "customer_feedback": 0.785063
+    },
+    "MAINTENANCE_PRODUCT": {
+      "product_name": 0.761889,
+      "product_model": 0.764194
+    },
+    "FEEDBACK": {
+      "feedback_description": 0.755006,
+      "resolution_result": 0.743421
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TECHNICIAN",
+      "cardinality": "1:N",
+      "description": "A maintenance team can have multiple maintenance technicians",
+      "probability": 0.871252
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple maintenance tasks",
+      "probability": 0.830338
+    },
+    {
+      "entity_1": "MAINTENANCE_TECHNICIAN",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A maintenance technician can perform multiple maintenance tasks",
+      "probability": 0.332538
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "MAINTENANCE_PRODUCT",
+      "cardinality": "1:N",
+      "description": "A maintenance task can be related to multiple maintenance products",
+      "probability": 0.56376
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:1",
+      "description": "A maintenance task can have one feedback",
+      "probability": 0.336295
+    },
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "description": "A maintenance team can serve multiple customers",
+      "probability": 0.433589
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "MAINTENANCE_TEAM",
+      "cardinality": "N:1",
+      "description": "A customer can be served by one maintenance team",
+      "probability": 0.433589
+    }
+  ],
+  "processing_time": 24.09,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added relationships between maintenance team and customer to enhance model completeness and accuracy, while retaining existing strengths and ensuring optimal final model"
+  }
+}

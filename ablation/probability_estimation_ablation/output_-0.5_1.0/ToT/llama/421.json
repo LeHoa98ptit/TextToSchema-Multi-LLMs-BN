@@ -1,0 +1,90 @@
+{
+  "filename": "421.txt",
+  "entity": {
+    "USER": 0.478513,
+    "PROPERTY": 0.622459,
+    "TRANSACTION": 0.622459,
+    "PROPERTY_RECORD": 0.52473
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.500396,
+      "password": 0.517822,
+      "email": 0.515396,
+      "phone_number": 0.513434,
+      "role": 0.527115,
+      "account_id": 0.511027,
+      "creation_timestamp": 0.521019,
+      "update_timestamp": 0.513672
+    },
+    "PROPERTY": {
+      "title": 0.543576,
+      "description": 0.550595,
+      "location": 0.551531,
+      "area": 0.550561,
+      "rent": 0.562235,
+      "image": 0.533779,
+      "status": 0.552258,
+      "creation_timestamp": 0.536665,
+      "update_timestamp": 0.527495
+    },
+    "TRANSACTION": {
+      "lease_start_date": 0.540447,
+      "lease_end_date": 0.536659,
+      "total_rent": 0.546926,
+      "transaction_status": 0.512153,
+      "property_id": 0.52565,
+      "tenant_id": 0.535951,
+      "creation_timestamp": 0.517179,
+      "update_timestamp": 0.509036
+    },
+    "PROPERTY_RECORD": {
+      "property_id": 0.536705,
+      "owner_id": 0.539096,
+      "record_timestamp": 0.530385,
+      "transaction_id": 0.528789
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "description": "A user can own multiple properties",
+      "probability": 0.936195
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "PROPERTY_RECORD",
+      "cardinality": "1:N",
+      "description": "A property can have multiple records",
+      "probability": 0.999993
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A property can have multiple transactions",
+      "probability": 0.999216
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple transactions",
+      "probability": 0.9926
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PROPERTY_RECORD",
+      "cardinality": "1:1",
+      "description": "A transaction is associated with one property record",
+      "probability": 0.999062
+    }
+  ],
+  "processing_time": 14.38,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged the ACCOUNT entity with the USER entity to reduce redundancy, and clarified the relationship between PROPERTY_RECORD and TRANSACTION by adding a transaction_id attribute to PROPERTY_RECORD and a property_id attribute to TRANSACTION."
+  }
+}

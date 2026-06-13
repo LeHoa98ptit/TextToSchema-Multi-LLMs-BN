@@ -1,0 +1,121 @@
+{
+  "filename": "426.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ATTRACTION": 0.817574,
+    "RESERVATION": 0.687144,
+    "COMMENT": 0.817574,
+    "AUTHORIZATION": 0.710333,
+    "LOCATION": 0.720169,
+    "RATING": 0.702995,
+    "ASSOC_USER_ATTRACTION": 0.990449
+  },
+  "attribute": {
+    "USER": {
+      "account_number": 0.757991,
+      "password": 0.761027,
+      "nickname": 0.755083,
+      "bio": 0.75106,
+      "wechat_id": 0.761322
+    },
+    "ATTRACTION": {
+      "picture": 0.741399,
+      "reference_price": 0.742859,
+      "text_description": 0.755981
+    },
+    "RESERVATION": {
+      "reservation_time": 0.756523,
+      "ticket_purchase_time": 0.761109,
+      "number_ticket_purchase": 0.763615,
+      "total_cost": 0.753298
+    },
+    "COMMENT": {
+      "comment_time": 0.755248,
+      "comment_content": 0.754905,
+      "comment_status": 0.75779
+    },
+    "AUTHORIZATION": {
+      "authorization_token": 0.757826,
+      "expiration_time": 0.755074
+    },
+    "LOCATION": {
+      "location_name": 0.740678,
+      "location_address": 0.741088,
+      "location_coordinates": 0.735262
+    },
+    "RATING": {
+      "rating_value": 0.743266,
+      "rating_count": 0.74512
+    },
+    "ASSOC_USER_ATTRACTION": {
+      "assoc_user_attraction_id": 0.990449,
+      "user_id": 0.990449,
+      "attraction_id": 0.990449
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ATTRACTION",
+      "description": "One USER can be associated with many ASSOC_USER_ATTRACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990449
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ASSOC_USER_ATTRACTION",
+      "description": "One ATTRACTION can be associated with many ASSOC_USER_ATTRACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990449
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple reservations",
+      "probability": 0.552151
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can submit multiple comments",
+      "probability": 0.962507
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "An attraction can have multiple comments",
+      "probability": 0.021523
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:1",
+      "description": "A user has one authorization token",
+      "probability": 0.999876
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "description": "An attraction is located at one location",
+      "probability": 0.464909
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "RATING",
+      "cardinality": "1:1",
+      "description": "An attraction has one rating",
+      "probability": 0.978746
+    }
+  ],
+  "processing_time": 22.18,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for location and rating to improve data normalization and reduce data redundancy"
+  }
+}

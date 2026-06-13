@@ -1,0 +1,119 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CONTACT_INFO",
+    "CREDIT_CARD",
+    "AIRLINE",
+    "FLIGHT",
+    "RESERVATION",
+    "TICKET",
+    "PAYMENT",
+    "PAYMENT_METHOD"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name"
+    ],
+    "CONTACT_INFO": [
+      "contact_info_id",
+      "customer_id",
+      "email",
+      "phone",
+      "address"
+    ],
+    "CREDIT_CARD": [
+      "credit_card_id",
+      "customer_id",
+      "card_number",
+      "expiry_date",
+      "card_holder_name",
+      "billing_address"
+    ],
+    "AIRLINE": [
+      "airline_id",
+      "name",
+      "contact_phone",
+      "contact_email"
+    ],
+    "FLIGHT": [
+      "flight_id",
+      "flight_number",
+      "origin",
+      "destination",
+      "departure_time",
+      "arrival_time",
+      "airline_id"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "reservation_date",
+      "reservation_time",
+      "customer_id",
+      "total_price",
+      "status"
+    ],
+    "TICKET": [
+      "ticket_id",
+      "reservation_id",
+      "flight_id",
+      "seat_number",
+      "class",
+      "price",
+      "status"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "reservation_id",
+      "payment_date",
+      "payment_method_id",
+      "amount"
+    ],
+    "PAYMENT_METHOD": [
+      "payment_method_id",
+      "method_name",
+      "method_details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.1489,
+  "ilp_runtime": 0.043
+}

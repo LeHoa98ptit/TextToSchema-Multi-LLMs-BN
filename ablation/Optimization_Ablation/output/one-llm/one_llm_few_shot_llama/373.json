@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "PROJECT",
+    "ORGANIZATION",
+    "FUNDING_SOURCE",
+    "BUDGET_ALLOCATION",
+    "DEPARTMENT",
+    "ASSOC_PROJECT_FUNDING_SOURCE"
+  ],
+  "attribute": {
+    "PROJECT": [
+      "project_code",
+      "project_name",
+      "objective_name",
+      "start_date",
+      "end_date"
+    ],
+    "ORGANIZATION": [
+      "organization_id",
+      "organization_name",
+      "organization_type"
+    ],
+    "FUNDING_SOURCE": [
+      "funding_source_id",
+      "funding_source_name",
+      "funding_amount"
+    ],
+    "BUDGET_ALLOCATION": [
+      "budget_allocation_id",
+      "allocation_ratio",
+      "allocation_amount"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name"
+    ],
+    "ASSOC_PROJECT_FUNDING_SOURCE": [
+      "assoc_project_funding_source_id",
+      "project_id",
+      "funding_source_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ORGANIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_PROJECT_FUNDING_SOURCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FUNDING_SOURCE",
+      "entity_2": "ASSOC_PROJECT_FUNDING_SOURCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BUDGET_ALLOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 22.0515,
+  "ilp_runtime": 0.039
+}

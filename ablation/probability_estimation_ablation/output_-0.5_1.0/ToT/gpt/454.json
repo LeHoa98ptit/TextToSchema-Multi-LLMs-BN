@@ -1,0 +1,167 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "PRODUCT": 0.622459,
+    "DISTRIBUTION_CENTER": 0.521886,
+    "SUPPLY_REQUEST": 0.585938,
+    "SUPPLY_REQUEST_LINE": 0.537877,
+    "DISTRIBUTION_ORDER": 0.533948,
+    "DISTRIBUTION_ORDER_LINE": 0.481359,
+    "PURCHASE_ORDER": 0.526899,
+    "PURCHASE_ORDER_LINE": 0.482782,
+    "INVENTORY": 0.622459
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.544703,
+      "name": 0.544661,
+      "address": 0.544836,
+      "phone": 0.540348,
+      "email": 0.545046
+    },
+    "PRODUCT": {
+      "product_id": 0.522066,
+      "name": 0.530751,
+      "unit_price": 0.52584
+    },
+    "DISTRIBUTION_CENTER": {
+      "center_id": 0.527496,
+      "name": 0.538496,
+      "location": 0.538965,
+      "phone": 0.539004
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.547315,
+      "supermarket_id": 0.564765,
+      "request_date": 0.545334,
+      "status": 0.565045
+    },
+    "SUPPLY_REQUEST_LINE": {
+      "request_id": 0.544761,
+      "product_id": 0.554974,
+      "quantity_requested": 0.566267
+    },
+    "DISTRIBUTION_ORDER": {
+      "order_id": 0.524569,
+      "request_id": 0.535491,
+      "center_id": 0.528703,
+      "order_date": 0.524196,
+      "status": 0.547437
+    },
+    "DISTRIBUTION_ORDER_LINE": {
+      "order_id": 0.526474,
+      "product_id": 0.539639,
+      "quantity_dispatched": 0.54725,
+      "unit_price": 0.534337
+    },
+    "PURCHASE_ORDER": {
+      "purchase_id": 0.529226,
+      "center_id": 0.535368,
+      "purchase_date": 0.524439,
+      "status": 0.549912
+    },
+    "PURCHASE_ORDER_LINE": {
+      "purchase_id": 0.531195,
+      "product_id": 0.538,
+      "quantity_ordered": 0.551555,
+      "unit_price": 0.53655
+    },
+    "INVENTORY": {
+      "center_id": 0.543477,
+      "product_id": 0.546333,
+      "quantity_on_hand": 0.554781
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A supermarket can submit many supply requests",
+      "probability": 0.010762
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "SUPPLY_REQUEST_LINE",
+      "cardinality": "1:N",
+      "description": "Each supply request contains multiple line items specifying product and quantity",
+      "probability": 0.572637
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST_LINE",
+      "cardinality": "1:N",
+      "description": "A product can appear in many supply request lines",
+      "probability": 0.072201
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:1",
+      "description": "Each supply request generates exactly one distribution order",
+      "probability": 0.067748
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "description": "A distribution center fulfills many distribution orders",
+      "probability": 0.971072
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "DISTRIBUTION_ORDER_LINE",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple line items (product, quantity, price)",
+      "probability": 0.999991
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DISTRIBUTION_ORDER_LINE",
+      "cardinality": "1:N",
+      "description": "A product can be included in many distribution order lines",
+      "probability": 0.563205
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "description": "When inventory is insufficient, a center creates many purchase orders",
+      "probability": 0.030331
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_LINE",
+      "cardinality": "1:N",
+      "description": "A purchase order contains multiple line items (product, quantity, price)",
+      "probability": 0.999667
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER_LINE",
+      "cardinality": "1:N",
+      "description": "A product can appear in many purchase order lines",
+      "probability": 0.552425
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A distribution center holds inventory records for many products",
+      "probability": 0.000335
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "Each product has inventory information per distribution center",
+      "probability": 0.933658
+    }
+  ],
+  "processing_time": 14.44,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing key attributes (e.g., unit_price, quantity fields, status, dates). Introduced associative line-item entities (SUPPLY_REQUEST_LINE, DISTRIBUTION_ORDER_LINE, PURCHASE_ORDER_LINE) to capture quantities and prices in many‑to‑many relationships. Added an INVENTORY associative entity to track stock per distribution center. Expanded supermarket contact info and clarified foreign keys. Refined relationship cardinalities and descriptions for clearer business rule representation while preserving the original core entities."
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "USER_ROLE",
+    "PROPERTY",
+    "PROPERTY_STATUS",
+    "LEASE",
+    "TRANSACTION_STATUS",
+    "ADDRESS",
+    "IMAGE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "phone",
+      "first_name",
+      "last_name",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "USER_ROLE": [
+      "user_id",
+      "role_id",
+      "assigned_at"
+    ],
+    "PROPERTY": [
+      "property_id",
+      "title",
+      "description",
+      "area",
+      "rent_amount",
+      "status_id",
+      "owner_id",
+      "address_id",
+      "created_at",
+      "updated_at"
+    ],
+    "PROPERTY_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "LEASE": [
+      "lease_id",
+      "property_id",
+      "tenant_id",
+      "lease_start_date",
+      "lease_end_date",
+      "total_rent",
+      "deposit_amount",
+      "payment_frequency",
+      "transaction_status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "TRANSACTION_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "postal_code",
+      "country"
+    ],
+    "IMAGE": [
+      "image_id",
+      "property_id",
+      "url",
+      "alt_text",
+      "is_primary",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROPERTY_STATUS",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "LEASE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEASE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION_STATUS",
+      "entity_2": "LEASE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 70.3628,
+  "ilp_runtime": 0.048
+}

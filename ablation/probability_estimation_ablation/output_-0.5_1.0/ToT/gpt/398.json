@@ -1,0 +1,125 @@
+{
+  "filename": "398.txt",
+  "entity": {
+    "DISH": 0.622459,
+    "CATEGORY": 0.469961,
+    "TABLE": 0.622459,
+    "CUSTOMER": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_DISH": 0.554483,
+    "SERVICE": 0.622459
+  },
+  "attribute": {
+    "DISH": {
+      "dish_id": 0.542102,
+      "dish_name": 0.544912,
+      "dish_price": 0.545192,
+      "description": 0.550694,
+      "is_available": 0.541719,
+      "category_id": 0.543276
+    },
+    "CATEGORY": {
+      "category_id": 0.512898,
+      "category_name": 0.513185,
+      "description": 0.533815
+    },
+    "TABLE": {
+      "table_id": 0.521924,
+      "seat_number": 0.533145,
+      "location": 0.537429
+    },
+    "CUSTOMER": {
+      "customer_id": 0.531129,
+      "name": 0.535651,
+      "gender": 0.546122,
+      "phone_number": 0.52713,
+      "email": 0.52252
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.538316,
+      "name": 0.543839,
+      "age": 0.532508,
+      "gender": 0.543238,
+      "salary": 0.525752,
+      "position": 0.544103
+    },
+    "ORDER": {
+      "order_id": 0.522653,
+      "order_date": 0.51825,
+      "dining_time": 0.559176,
+      "total_amount": 0.525344,
+      "table_id": 0.531073,
+      "customer_id": 0.534796
+    },
+    "ORDER_DISH": {
+      "order_id": 0.548022,
+      "dish_id": 0.5496,
+      "quantity": 0.558783,
+      "price_at_order": 0.548175
+    },
+    "SERVICE": {
+      "service_id": 0.524761,
+      "order_id": 0.534207,
+      "employee_id": 0.544975,
+      "service_time": 0.520723,
+      "notes": 0.536862
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DISH",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each dish belongs to one category",
+      "probability": 0.004381
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "A customer can place many orders",
+      "probability": 0.9641
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "TABLE",
+      "cardinality": "N:1",
+      "description": "Many orders can be served at the same table",
+      "probability": 0.571184
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DISH",
+      "cardinality": "1:N",
+      "description": "An order can contain multiple dish line items",
+      "probability": 0.993396
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DISH",
+      "cardinality": "1:N",
+      "description": "A dish can appear in many order line items",
+      "probability": 0.99998
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "description": "Each service record is performed by one employee",
+      "probability": 0.997631
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "ORDER",
+      "cardinality": "N:1",
+      "description": "An order can have multiple service records (e.g., different staff for different stages)",
+      "probability": 0.609332
+    }
+  ],
+  "processing_time": 14.13,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit foreign key attributes (table_id, customer_id) to ORDER and (order_id, dish_id) to ORDER_DISH, removing the surrogate order_dish_id. Changed SERVICE‑ORDER cardinality from 1:1 to N:1 to allow multiple service actions per order. Included category_id in DISH attributes for clearer FK representation. Retained useful optional attributes (description, is_available, location, email, position, notes) and kept the associative entity ORDER_DISH to capture quantity and price at order. Updated relationship descriptions accordingly."
+  }
+}

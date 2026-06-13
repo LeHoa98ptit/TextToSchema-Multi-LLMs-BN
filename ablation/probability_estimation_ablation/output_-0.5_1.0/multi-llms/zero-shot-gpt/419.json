@@ -1,0 +1,170 @@
+{
+  "filename": "419.txt",
+  "entity": {
+    "USER": 0.622459,
+    "DISH": 0.622459,
+    "INGREDIENT": 0.471008,
+    "DISH_CLASSIFICATION": 0.541554,
+    "ORDER": 0.622459,
+    "ORDER_DETAIL": 0.505275,
+    "DELIVERY": 0.622459,
+    "SHOPPING_CART": 0.444579,
+    "CART_ITEM": 0.435044,
+    "DISH_INGREDIENT": 0.160613
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.516393,
+      "username": 0.50029,
+      "password": 0.517127,
+      "phone": 0.519017,
+      "address": 0.52131,
+      "registration time": 0.516681,
+      "account status": 0.526823
+    },
+    "DISH": {
+      "dish id": 0.548075,
+      "price": 0.548094,
+      "taste": 0.538059,
+      "recommendation index": 0.555224,
+      "special feature": 0.554896,
+      "recommendation status": 0.564721,
+      "classification id": 0.551237
+    },
+    "INGREDIENT": {
+      "ingredient id": 0.508233,
+      "name": 0.509221
+    },
+    "DISH_CLASSIFICATION": {
+      "classification id": 0.549522,
+      "cuisine type": 0.556585,
+      "special feature": 0.550822,
+      "recommendation status": 0.56148
+    },
+    "ORDER": {
+      "order id": 0.532532,
+      "user id": 0.530297,
+      "order time": 0.528313,
+      "order status": 0.540436,
+      "delivery id": 0.531781
+    },
+    "ORDER_DETAIL": {
+      "order id": 0.535819,
+      "dish id": 0.563041,
+      "quantity": 0.548156,
+      "unit price": 0.541611,
+      "total price": 0.544139
+    },
+    "DELIVERY": {
+      "delivery id": 0.525417,
+      "order id": 0.531048,
+      "delivery address": 0.525878,
+      "delivery time": 0.517067,
+      "delivery person": 0.518881
+    },
+    "SHOPPING_CART": {
+      "cart id": 0.533104,
+      "user id": 0.535909,
+      "status": 0.548401,
+      "created at": 0.535404,
+      "settled at": 0.531338,
+      "total amount": 0.534213
+    },
+    "CART_ITEM": {
+      "cart id": 0.529007,
+      "dish id": 0.557124,
+      "quantity": 0.545947,
+      "unit price": 0.533166,
+      "total price": 0.531975
+    },
+    "DISH_INGREDIENT": {
+      "dish_ingredient_id": 0.160613,
+      "dish_id": 0.160613,
+      "ingredient_id": 0.160613,
+      "id_DISH_INGREDIENT": 0.160613
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DISH_CLASSIFICATION",
+      "entity_2": "DISH",
+      "description": "Each dish belongs to one classification; a classification can have many dishes",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999673
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_INGREDIENT",
+      "description": "One DISH can be associated with many DISH_INGREDIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.160613
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "DISH_INGREDIENT",
+      "description": "One INGREDIENT can be associated with many DISH_INGREDIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.160613
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "description": "A user can have multiple shopping carts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996412
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "CART_ITEM",
+      "description": "A shopping cart contains multiple cart items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999086
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "CART_ITEM",
+      "description": "Each cart item refers to one dish",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002599
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place multiple orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998749
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "description": "An order consists of multiple order detail records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "description": "Each order detail references one dish",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.22972
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "description": "Each order has one delivery record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.007303
+    }
+  ],
+  "processing_time": 43.13
+}

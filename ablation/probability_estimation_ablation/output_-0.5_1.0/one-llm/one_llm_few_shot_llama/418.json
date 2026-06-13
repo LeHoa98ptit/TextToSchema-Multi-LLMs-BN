@@ -1,0 +1,106 @@
+{
+  "filename": "418.txt",
+  "entity": {
+    "USER": 0.622459,
+    "INCOME": 0.622459,
+    "EXPENSE": 0.553173,
+    "TYPE": 0.622459,
+    "ANNOUNCEMENT": 0.517393,
+    "ASSOC_USER_ANNOUNCEMENT": 0.980066
+  },
+  "attribute": {
+    "USER": {
+      "gender": 0.535791,
+      "age": 0.518313,
+      "contact_information": 0.538598,
+      "address": 0.527346,
+      "email": 0.527684,
+      "login": 0.529687,
+      "password": 0.522918,
+      "user_type": 0.534369,
+      "status": 0.541561,
+      "security_question": 0.536068,
+      "answer": 0.515069
+    },
+    "INCOME": {
+      "income_type": 0.54854,
+      "remark": 0.534165,
+      "time": 0.521567,
+      "status": 0.550285
+    },
+    "EXPENSE": {
+      "expense_type": 0.537133,
+      "remark": 0.528806,
+      "time": 0.523294,
+      "status": 0.548707
+    },
+    "TYPE": {
+      "type_status": 0.528814
+    },
+    "ANNOUNCEMENT": {
+      "title": 0.515183,
+      "content": 0.531768,
+      "publication_time": 0.523499,
+      "status": 0.525714
+    },
+    "ASSOC_USER_ANNOUNCEMENT": {
+      "assoc_user_announcement_id": 0.980066,
+      "user_id": 0.980066,
+      "announcement_id": 0.980066
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "INCOME",
+      "cardinality": "1:N",
+      "description": "Each user can have many incomes, and each income is linked to one user.",
+      "probability": 0.999221
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EXPENSE",
+      "cardinality": "1:N",
+      "description": "Each user can have many expenses, and each expense is linked to one user.",
+      "probability": 0.997112
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TYPE",
+      "cardinality": "1:1",
+      "description": "Each user is linked to one type, and each type is linked to one user.",
+      "probability": 0.183086
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One USER can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980066
+    },
+    {
+      "entity_1": "ANNOUNCEMENT",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One ANNOUNCEMENT can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980066
+    },
+    {
+      "entity_1": "INCOME",
+      "entity_2": "TYPE",
+      "cardinality": "1:1",
+      "description": "Each income is linked to one type, and each type is linked to one income.",
+      "probability": 0.86915
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "TYPE",
+      "cardinality": "1:1",
+      "description": "Each expense is linked to one type, and each type is linked to one expense.",
+      "probability": 0.011758
+    }
+  ],
+  "processing_time": 18.21
+}

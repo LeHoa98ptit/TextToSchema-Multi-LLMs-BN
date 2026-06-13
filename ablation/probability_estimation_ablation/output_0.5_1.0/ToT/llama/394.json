@@ -1,0 +1,96 @@
+{
+  "filename": "394.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ADMINISTRATOR": 0.817574,
+    "MENU": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.736808,
+      "password": 0.754316,
+      "phone_number": 0.751471,
+      "address": 0.754793,
+      "registration_time": 0.752244,
+      "login_time": 0.75005
+    },
+    "ADMINISTRATOR": {
+      "administrator_id": 0.758532,
+      "password": 0.759685,
+      "login_ip": 0.753433,
+      "login_time": 0.753864
+    },
+    "MENU": {
+      "menu_id": 0.749492,
+      "dish_price": 0.766517,
+      "image": 0.754009,
+      "description": 0.767601,
+      "dish_name": 0.764836
+    },
+    "ORDER": {
+      "order_id": 0.75761,
+      "order_status": 0.756959,
+      "creation_time": 0.757124,
+      "order_remark": 0.753556,
+      "order_modification_time": 0.752037,
+      "user_id": 0.762564
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.755367,
+      "order_id": 0.757082,
+      "menu_id": 0.760746,
+      "quantity": 0.764243
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.998864
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple menus",
+      "probability": 0.320154
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.999937
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "MENU",
+      "cardinality": "N:1",
+      "description": "An order item is associated with one menu item",
+      "probability": 0.974841
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple orders",
+      "probability": 0.002974
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADMINISTRATOR",
+      "cardinality": "N:1",
+      "description": "A user is managed by an administrator",
+      "probability": 0.093917
+    }
+  ],
+  "processing_time": 23.11,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for order items to handle cases where an order contains multiple menu items, and updated relationships to reflect this change."
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "entity": [
+    "STUDENT",
+    "INSTRUCTOR",
+    "COURSE",
+    "ENROLLMENT",
+    "HOMEWORK",
+    "HOMEWORK_SUBMISSION",
+    "GRADE"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "first_name",
+      "last_name",
+      "class",
+      "phone",
+      "email",
+      "date_of_birth"
+    ],
+    "INSTRUCTOR": [
+      "instructor_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email",
+      "office"
+    ],
+    "COURSE": [
+      "course_id",
+      "instructor_id",
+      "course_code",
+      "title",
+      "description",
+      "credits"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id",
+      "student_id",
+      "course_id",
+      "enrollment_date",
+      "status"
+    ],
+    "HOMEWORK": [
+      "homework_id",
+      "course_id",
+      "title",
+      "description",
+      "due_date",
+      "max_score"
+    ],
+    "HOMEWORK_SUBMISSION": [
+      "submission_id",
+      "homework_id",
+      "student_id",
+      "content",
+      "submission_time",
+      "is_successful",
+      "attempt_number",
+      "notification_status",
+      "student_notified_at",
+      "instructor_notified_at"
+    ],
+    "GRADE": [
+      "grade_id",
+      "submission_id",
+      "score",
+      "feedback_text",
+      "graded_at",
+      "feedback_provided_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "HOMEWORK_SUBMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOMEWORK_SUBMISSION",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.6056,
+  "ilp_runtime": 0.076
+}

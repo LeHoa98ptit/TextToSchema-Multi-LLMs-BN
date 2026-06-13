@@ -1,0 +1,74 @@
+{
+  "filename": "465.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EMAIL": 0.817574,
+    "ATTACHMENT": 0.817574,
+    "EMAIL_ATTACHMENT": 0.807462
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.739083,
+      "email address": 0.767141,
+      "password hash": 0.742008,
+      "account creation time": 0.747159
+    },
+    "EMAIL": {
+      "email id": 0.763322,
+      "sender id": 0.76536,
+      "recipient id": 0.760802,
+      "send time": 0.764752,
+      "subject": 0.774636,
+      "content": 0.778588
+    },
+    "ATTACHMENT": {
+      "attachment id": 0.750081,
+      "file path": 0.756236,
+      "file size": 0.760293,
+      "upload time": 0.752242
+    },
+    "EMAIL_ATTACHMENT": {
+      "email attachment id": 0.768753,
+      "email id": 0.770339,
+      "attachment id": 0.766162,
+      "email_attachment_id": 0.052501,
+      "email_id": 0.052501,
+      "attachment_id": 0.052501
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "description": "A user can send many emails; each email has exactly one sender",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999649
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "description": "A user can receive many emails; each email has exactly one recipient",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999649
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL_ATTACHMENT",
+      "description": "One EMAIL can be associated with many EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052501
+    },
+    {
+      "entity_1": "ATTACHMENT",
+      "entity_2": "EMAIL_ATTACHMENT",
+      "description": "One ATTACHMENT can be associated with many EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052501
+    }
+  ],
+  "processing_time": 14.17
+}

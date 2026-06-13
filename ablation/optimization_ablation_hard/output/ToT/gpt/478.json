@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "USER",
+    "BICYCLE",
+    "LOCATION",
+    "TRIP",
+    "PAYMENT",
+    "FAULT",
+    "BILLING_RULE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "name",
+      "email",
+      "phone_number",
+      "credit_status",
+      "registration_date"
+    ],
+    "BICYCLE": [
+      "bicycle_id",
+      "serial_number",
+      "current_location_id",
+      "status",
+      "unlock_code",
+      "purchase_date"
+    ],
+    "LOCATION": [
+      "location_id",
+      "latitude",
+      "longitude",
+      "address"
+    ],
+    "TRIP": [
+      "trip_id",
+      "user_id",
+      "bicycle_id",
+      "start_location_id",
+      "end_location_id",
+      "billing_rule_id",
+      "start_time",
+      "end_time",
+      "distance",
+      "cost",
+      "payment_status"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "trip_id",
+      "amount",
+      "payment_method",
+      "payment_time",
+      "status"
+    ],
+    "FAULT": [
+      "fault_id",
+      "user_id",
+      "bicycle_id",
+      "description",
+      "report_time",
+      "resolved_time",
+      "severity"
+    ],
+    "BILLING_RULE": [
+      "rule_id",
+      "billing_method",
+      "unit_price",
+      "minimum_fee",
+      "description",
+      "effective_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIP",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIP",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAULT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BILLING_RULE",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.5702,
+  "ilp_runtime": 0.095
+}

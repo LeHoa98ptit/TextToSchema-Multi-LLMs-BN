@@ -1,0 +1,134 @@
+{
+  "entity": [
+    "COMPANY",
+    "CONFERENCE",
+    "DISCOUNT_CODE",
+    "MEETING",
+    "OFFER",
+    "PARTICIPANT",
+    "ROOM",
+    "SCHEDULE",
+    "SPEAKER",
+    "TICKET",
+    "TICKET_RECORD",
+    "WORKSHOP"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company id"
+    ],
+    "CONFERENCE": [
+      "conference id"
+    ],
+    "DISCOUNT_CODE": [
+      "code",
+      "code type"
+    ],
+    "MEETING": [
+      "meeting id",
+      "description",
+      "date",
+      "start time",
+      "end time",
+      "room id"
+    ],
+    "OFFER": [
+      "offer id",
+      "offer type",
+      "conference id"
+    ],
+    "PARTICIPANT": [
+      "participant id",
+      "company id",
+      "email"
+    ],
+    "ROOM": [
+      "room id"
+    ],
+    "SCHEDULE": [
+      "schedule id",
+      "conference id"
+    ],
+    "SPEAKER": [
+      "speaker id",
+      "company id",
+      "description"
+    ],
+    "TICKET": [
+      "ticket id",
+      "description",
+      "price",
+      "offer id"
+    ],
+    "TICKET_RECORD": [
+      "ticket record id",
+      "participant id",
+      "ticket id",
+      "discount code",
+      "net price"
+    ],
+    "WORKSHOP": [
+      "workshop id",
+      "description",
+      "requirement",
+      "location",
+      "date",
+      "start time",
+      "end time",
+      "capacity",
+      "participant limit"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OFFER",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "TICKET_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "TICKET_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT_CODE",
+      "entity_2": "TICKET_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "WORKSHOP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 55.202,
+  "ilp_runtime": 0.062
+}

@@ -1,0 +1,80 @@
+{
+  "filename": "395.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "MEAL_CARD": 0.801835,
+    "LOCATION": 0.817574,
+    "TRANSACTION": 0.714859,
+    "CONSUMPTION_RECORD": 0.802438
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.765866,
+      "department": 0.775661,
+      "contact_info": 0.767257
+    },
+    "MEAL_CARD": {
+      "card_balance": 0.773006,
+      "card_number": 0.767063,
+      "recharge_history": 0.771192
+    },
+    "LOCATION": {
+      "location_name": 0.731245,
+      "location_type": 0.735029,
+      "location_description": 0.740761
+    },
+    "TRANSACTION": {
+      "transaction_time": 0.744059,
+      "transaction_amount": 0.748947,
+      "transaction_type": 0.747676
+    },
+    "CONSUMPTION_RECORD": {
+      "record_time": 0.757038,
+      "record_location": 0.75467,
+      "record_amount": 0.761222,
+      "record_details": 0.764729
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "MEAL_CARD",
+      "cardinality": "1:1",
+      "description": "A student has one meal card",
+      "probability": 0.478947
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A meal card can have multiple transactions",
+      "probability": 0.806484
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "CONSUMPTION_RECORD",
+      "cardinality": "1:1",
+      "description": "A transaction is related to one consumption record",
+      "probability": 0.887243
+    },
+    {
+      "entity_1": "CONSUMPTION_RECORD",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "A consumption record is related to one location",
+      "probability": 0.993133
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CONSUMPTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A student can have multiple consumption records",
+      "probability": 0.950874
+    }
+  ],
+  "processing_time": 16.97,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added recharge_history attribute to MEAL_CARD, location_description attribute to LOCATION, transaction_type attribute to TRANSACTION, and record_details attribute to CONSUMPTION_RECORD. Also added a relationship between STUDENT and CONSUMPTION_RECORD to capture the student's consumption history."
+  }
+}

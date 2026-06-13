@@ -1,0 +1,52 @@
+{
+  "entity": [
+    "PRODUCTION_PROCESS",
+    "OPERATOR",
+    "MONITORING_RECORD",
+    "DEPARTMENT",
+    "ASSOC_MONITORING_RECORD_OPERATOR"
+  ],
+  "attribute": {
+    "PRODUCTION_PROCESS": [
+      "start_time",
+      "end_time",
+      "operator_id"
+    ],
+    "OPERATOR": [
+      "operator_id",
+      "department_id",
+      "contact_information"
+    ],
+    "MONITORING_RECORD": [
+      "recording_time",
+      "monitor_parameter",
+      "production_process_id",
+      "operator_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "contact_information"
+    ],
+    "ASSOC_MONITORING_RECORD_OPERATOR": [
+      "assoc_monitoring_record_operator_id",
+      "monitoring_record_id",
+      "operator_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_RECORD",
+      "entity_2": "ASSOC_MONITORING_RECORD_OPERATOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ASSOC_MONITORING_RECORD_OPERATOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.242,
+  "ilp_runtime": 0.087
+}

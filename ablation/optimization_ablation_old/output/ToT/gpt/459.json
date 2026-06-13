@@ -1,0 +1,107 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "PROJECT",
+    "EMPLOYEE_PROJECT",
+    "POSITION",
+    "EDUCATION_LEVEL",
+    "ASSOC_EMPLOYEE_PROJECT"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "dept_no",
+      "dept_name",
+      "manager_emp_no",
+      "location"
+    ],
+    "EMPLOYEE": [
+      "emp_no",
+      "first_name",
+      "last_name",
+      "dept_no",
+      "salary",
+      "position_id",
+      "education_level_id",
+      "hire_date"
+    ],
+    "PROJECT": [
+      "proj_no",
+      "proj_name",
+      "dept_no",
+      "responsible_emp_no",
+      "start_date",
+      "end_date",
+      "budget"
+    ],
+    "EMPLOYEE_PROJECT": [
+      "emp_no",
+      "proj_no",
+      "assignment_role",
+      "allocation_percent",
+      "start_date",
+      "end_date"
+    ],
+    "POSITION": [
+      "position_id",
+      "title",
+      "grade"
+    ],
+    "EDUCATION_LEVEL": [
+      "education_level_id",
+      "level_name",
+      "description"
+    ],
+    "ASSOC_EMPLOYEE_PROJECT": [
+      "assoc_employee_project_id",
+      "employee_id",
+      "project_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EDUCATION_LEVEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_EMPLOYEE_PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.7574,
+  "ilp_runtime": 0.07
+}

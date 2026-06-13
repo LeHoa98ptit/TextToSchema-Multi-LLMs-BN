@@ -1,0 +1,84 @@
+{
+  "filename": "379.txt",
+  "entity": {
+    "INVOICE": 0.817574,
+    "CUSTOMER": 0.817574,
+    "TERM": 0.817574,
+    "PAYMENT": 0.817574
+  },
+  "attribute": {
+    "INVOICE": {
+      "invoice_id": 0.769552,
+      "date": 0.769039,
+      "total": 0.773563,
+      "status": 0.780682,
+      "note": 0.779169,
+      "payment_date": 0.768266,
+      "payment_mime_type": 0.767562,
+      "electronic_version_content": 0.77807
+    },
+    "CUSTOMER": {
+      "customer_id": 0.752492,
+      "address": 0.753235,
+      "contact_person": 0.756424,
+      "contact_information": 0.767677,
+      "customer_type": 0.762162,
+      "industry": 0.761356
+    },
+    "TERM": {
+      "term_id": 0.747815,
+      "description": 0.761569,
+      "payment_day": 0.759471,
+      "interest_rate": 0.755024
+    },
+    "PAYMENT": {
+      "payment_id": 0.75197,
+      "payment_date": 0.75189,
+      "amount": 0.755882,
+      "payment_method": 0.7545,
+      "term_id": 0.760959
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "An invoice belongs to one customer",
+      "probability": 0.504089
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "TERM",
+      "cardinality": "N:1",
+      "description": "An invoice is associated with one term",
+      "probability": 0.234225
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "An invoice can have multiple payments",
+      "probability": 0.99029
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple invoices",
+      "probability": 0.504089
+    },
+    {
+      "entity_1": "TERM",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "A term can have multiple payments",
+      "probability": 0.613229
+    }
+  ],
+  "processing_time": 19.99,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added customer_type and industry attributes to the CUSTOMER entity, and added a term_id attribute to the PAYMENT entity to reflect the payment terms associated with each payment. Also, added a relationship between the TERM entity and the PAYMENT entity."
+  }
+}

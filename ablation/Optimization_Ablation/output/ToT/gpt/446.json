@@ -1,0 +1,108 @@
+{
+  "entity": [
+    "USER",
+    "CROP",
+    "SENSOR",
+    "METEOROLOGY",
+    "SUPPLY",
+    "ACTION",
+    "GROWTH_MODEL",
+    "EVALUATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone_number",
+      "registration_time",
+      "login_time",
+      "role"
+    ],
+    "CROP": [
+      "crop_id",
+      "crop_type",
+      "model_id"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type",
+      "location",
+      "burial_depth",
+      "deployment_time",
+      "crop_id"
+    ],
+    "METEOROLOGY": [
+      "record_id",
+      "sensor_id",
+      "timestamp",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind_speed",
+      "light_intensity",
+      "location"
+    ],
+    "SUPPLY": [
+      "supply_id",
+      "supply_time",
+      "location",
+      "water_amount",
+      "fertilizer_amount",
+      "user_id",
+      "crop_id"
+    ],
+    "ACTION": [
+      "action_id",
+      "action_time",
+      "location",
+      "action_type",
+      "detail",
+      "user_id",
+      "crop_id"
+    ],
+    "GROWTH_MODEL": [
+      "model_id",
+      "model_name",
+      "model_parameters",
+      "creation_time"
+    ],
+    "EVALUATION": [
+      "evaluation_id",
+      "evaluation_time",
+      "metric_name",
+      "metric_value",
+      "location",
+      "model_id",
+      "crop_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SUPPLY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "ACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "GROWTH_MODEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.3057,
+  "ilp_runtime": 0.054
+}

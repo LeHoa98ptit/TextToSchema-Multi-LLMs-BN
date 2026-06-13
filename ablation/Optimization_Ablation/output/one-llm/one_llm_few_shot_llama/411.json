@@ -1,0 +1,120 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CONTACT_PERSON",
+    "ADDRESS",
+    "ORDER",
+    "ORDER_DETAIL",
+    "PRODUCT",
+    "PAYMENT",
+    "BRAND",
+    "ASSOC_ORDER_DETAIL_PRODUCT",
+    "ASSOC_PRODUCT_BRAND"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "customer_name",
+      "customer_type",
+      "credit_rating"
+    ],
+    "CONTACT_PERSON": [
+      "contact_person_id",
+      "contact_person_name",
+      "phone",
+      "email"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "zip"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_time",
+      "order_status"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "product_quantity",
+      "unit_price",
+      "total"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "product_specification",
+      "unit_price",
+      "inventory_quantity",
+      "production_date"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "payment_method",
+      "payment_status",
+      "payment_time"
+    ],
+    "BRAND": [
+      "brand_id",
+      "brand_name"
+    ],
+    "ASSOC_ORDER_DETAIL_PRODUCT": [
+      "assoc_order_detail_product_id",
+      "order_detail_id",
+      "product_id"
+    ],
+    "ASSOC_PRODUCT_BRAND": [
+      "assoc_product_brand_id",
+      "product_id",
+      "brand_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 81.1079,
+  "ilp_runtime": 0.083
+}

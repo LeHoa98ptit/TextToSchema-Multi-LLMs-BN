@@ -1,0 +1,125 @@
+{
+  "filename": "353.txt",
+  "entity": {
+    "PAGE": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "USER": 0.486603,
+    "PAGE_GROUP": 0.512173,
+    "PERMISSION": 0.622459,
+    "ASSOC_USER_PAGE": 0.948073,
+    "ASSOC_PAGE_PAGE_GROUP": 0.999771,
+    "ASSOC_ADMINISTRATOR_PERMISSION": 0.886467
+  },
+  "attribute": {
+    "PAGE": {
+      "title": 0.532558,
+      "alias": 0.530887,
+      "display_order": 0.525446,
+      "style": 0.544975,
+      "redirection_target": 0.510292,
+      "visibility": 0.540075
+    },
+    "ADMINISTRATOR": {
+      "username": 0.533987,
+      "email": 0.531708,
+      "detail": 0.560319
+    },
+    "USER": {
+      "username": 0.502228,
+      "email": 0.519838,
+      "detail": 0.544203
+    },
+    "PAGE_GROUP": {
+      "group_name": 0.521489,
+      "description": 0.537394
+    },
+    "PERMISSION": {
+      "permission_name": 0.528479,
+      "description": 0.542473
+    },
+    "ASSOC_USER_PAGE": {
+      "assoc_user_page_id": 0.948073,
+      "user_id": 0.948073,
+      "page_id": 0.948073
+    },
+    "ASSOC_PAGE_PAGE_GROUP": {
+      "assoc_page_page_group_id": 0.999771,
+      "page_id": 0.999771,
+      "page_group_id": 0.999771
+    },
+    "ASSOC_ADMINISTRATOR_PERMISSION": {
+      "assoc_administrator_permission_id": 0.886467,
+      "administrator_id": 0.886467,
+      "permission_id": 0.886467
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PAGE",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple pages",
+      "probability": 0.002187
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PAGE",
+      "description": "One USER can be associated with many ASSOC_USER_PAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.948073
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "ASSOC_USER_PAGE",
+      "description": "One PAGE can be associated with many ASSOC_USER_PAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.948073
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "ASSOC_PAGE_PAGE_GROUP",
+      "description": "One PAGE can be associated with many ASSOC_PAGE_PAGE_GROUP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999771
+    },
+    {
+      "entity_1": "PAGE_GROUP",
+      "entity_2": "ASSOC_PAGE_PAGE_GROUP",
+      "description": "One PAGE_GROUP can be associated with many ASSOC_PAGE_PAGE_GROUP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999771
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ASSOC_ADMINISTRATOR_PERMISSION",
+      "description": "One ADMINISTRATOR can be associated with many ASSOC_ADMINISTRATOR_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.886467
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ADMINISTRATOR_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ADMINISTRATOR_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.886467
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PAGE_GROUP",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple page groups",
+      "probability": 0.007159
+    }
+  ],
+  "processing_time": 12.58,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'visibility' attribute to PAGE entity, added relationship between ADMINISTRATOR and PAGE_GROUP, removed redundant relationships, ensured all entities and relationships are properly documented and validated"
+  }
+}

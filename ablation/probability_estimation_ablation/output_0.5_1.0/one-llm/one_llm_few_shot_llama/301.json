@@ -1,0 +1,88 @@
+{
+  "filename": "301.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SEAT": 0.817574,
+    "TEMPLATE": 0.694512,
+    "RESERVATION": 0.817574,
+    "ASSOC_USER_SEAT": 0.98234
+  },
+  "attribute": {
+    "USER": {
+      "contact_number": 0.744385,
+      "email_address": 0.740971,
+      "unique_id": 0.744453
+    },
+    "SEAT": {
+      "seat_location": 0.766998,
+      "x_coordinate": 0.761048,
+      "y_coordinate": 0.759845,
+      "row": 0.761856,
+      "column": 0.768665,
+      "type": 0.76629,
+      "price": 0.756789,
+      "creation_time": 0.767058,
+      "update_time": 0.765472,
+      "validity": 0.76844,
+      "seat_flag": 0.762252
+    },
+    "TEMPLATE": {
+      "template_description": 0.753298,
+      "occasion": 0.751017,
+      "time_period": 0.749442
+    },
+    "RESERVATION": {
+      "reservation_id": 0.768793,
+      "seat_id": 0.773433,
+      "user_id": 0.765295,
+      "reservation_time": 0.76671,
+      "purchase_time": 0.770857,
+      "status": 0.769444
+    },
+    "ASSOC_USER_SEAT": {
+      "assoc_user_seat_id": 0.98234,
+      "user_id": 0.98234,
+      "seat_id": 0.98234
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Each user can have many reservations, and each reservation is made by one user.",
+      "probability": 0.555079
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Each seat can be reserved many times, and each reservation is for one seat.",
+      "probability": 0.999593
+    },
+    {
+      "entity_1": "TEMPLATE",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "description": "Each template can be used for many seats, and each seat is associated with one template.",
+      "probability": 0.975247
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_SEAT",
+      "description": "One USER can be associated with many ASSOC_USER_SEAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98234
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "ASSOC_USER_SEAT",
+      "description": "One SEAT can be associated with many ASSOC_USER_SEAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98234
+    }
+  ],
+  "processing_time": 17.42
+}

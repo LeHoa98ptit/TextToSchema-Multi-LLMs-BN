@@ -1,0 +1,137 @@
+{
+  "filename": "373.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "FUND": 0.622459,
+    "ORGANIZATION": 0.539368,
+    "DEPARTMENT": 0.498625,
+    "ACTIVITY": 0.622459,
+    "CHANGE_HISTORY": 0.418411,
+    "QUERY": 0.449844,
+    "ASSOC_ACTIVITY_PROJECT": 0.420784,
+    "ASSOC_QUERY_PROJECT": 0.929882
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_code": 0.531077,
+      "objective_name": 0.528676,
+      "start_date": 0.517761,
+      "end_date": 0.520847
+    },
+    "FUND": {
+      "fund_amount": 0.546932,
+      "source": 0.541398,
+      "allocation_ratio": 0.545772
+    },
+    "ORGANIZATION": {
+      "organization_name": 0.535642,
+      "organization_type": 0.543385
+    },
+    "DEPARTMENT": {
+      "department_name": 0.532178,
+      "department_code": 0.532401
+    },
+    "ACTIVITY": {
+      "activity_code": 0.504664,
+      "activity_name": 0.502643,
+      "activity_type": 0.50862
+    },
+    "CHANGE_HISTORY": {
+      "change_id": 0.49874,
+      "project_code": 0.521578,
+      "fund_amount": 0.536407,
+      "change_date": 0.496726,
+      "change_description": 0.509845
+    },
+    "QUERY": {
+      "query_id": 0.49561,
+      "query_name": 0.499866,
+      "query_criteria": 0.51107,
+      "query_result": 0.497061
+    },
+    "ASSOC_ACTIVITY_PROJECT": {
+      "assoc_activity_project_id": 0.420784,
+      "activity_id": 0.420784,
+      "project_id": 0.420784
+    },
+    "ASSOC_QUERY_PROJECT": {
+      "assoc_query_project_id": 0.929882,
+      "query_id": 0.929882,
+      "project_id": 0.929882
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "FUND",
+      "cardinality": "1:N",
+      "description": "A project can have multiple funds",
+      "probability": 0.845073
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "An organization can have multiple projects",
+      "probability": 0.944719
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A department can have multiple projects",
+      "probability": 0.834703
+    },
+    {
+      "entity_1": "ACTIVITY",
+      "entity_2": "ASSOC_ACTIVITY_PROJECT",
+      "description": "One ACTIVITY can be associated with many ASSOC_ACTIVITY_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.420784
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_ACTIVITY_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_ACTIVITY_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.420784
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CHANGE_HISTORY",
+      "cardinality": "1:N",
+      "description": "A project can have multiple change histories",
+      "probability": 0.821851
+    },
+    {
+      "entity_1": "FUND",
+      "entity_2": "CHANGE_HISTORY",
+      "cardinality": "1:N",
+      "description": "A fund can have multiple change histories",
+      "probability": 0.912662
+    },
+    {
+      "entity_1": "QUERY",
+      "entity_2": "ASSOC_QUERY_PROJECT",
+      "description": "One QUERY can be associated with many ASSOC_QUERY_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.929882
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_QUERY_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_QUERY_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.929882
+    }
+  ],
+  "processing_time": 23.7,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added CHANGE_HISTORY entity to track changes to project and fund information, and QUERY entity to support powerful query capabilities."
+  }
+}

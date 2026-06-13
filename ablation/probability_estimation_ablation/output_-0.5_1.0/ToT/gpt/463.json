@@ -1,0 +1,94 @@
+{
+  "filename": "463.txt",
+  "entity": {
+    "MALL": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "EMERGENCY_CONTACT": 0.603268
+  },
+  "attribute": {
+    "MALL": {
+      "mall_id": 0.543228,
+      "name": 0.534005,
+      "address": 0.542643,
+      "phone": 0.536431,
+      "email": 0.538471
+    },
+    "DEPARTMENT": {
+      "department_id": 0.545191,
+      "mall_id": 0.557543,
+      "name": 0.55051,
+      "location": 0.547841,
+      "distribution_area": 0.550978,
+      "phone": 0.552116,
+      "floor_number": 0.553487,
+      "manager_employee_id": 0.557751,
+      "manager_tenure_start": 0.549159,
+      "manager_tenure_end": 0.547317
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.546768,
+      "department_id": 0.557398,
+      "first_name": 0.547425,
+      "last_name": 0.5448,
+      "position": 0.551297,
+      "phone": 0.548782,
+      "salary": 0.522142,
+      "hire_date": 0.536055,
+      "email": 0.542199,
+      "is_manager": 0.544197,
+      "manager_tenure_start": 0.548379,
+      "manager_tenure_end": 0.546729
+    },
+    "EMERGENCY_CONTACT": {
+      "contact_id": 0.535607,
+      "employee_id": 0.551986,
+      "contact_name": 0.537314,
+      "contact_phone": 0.537227,
+      "relationship": 0.542107,
+      "priority": 0.539371
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MALL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "Each mall hosts multiple departments",
+      "probability": 0.989751
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee belongs to one department",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:0..1",
+      "description": "A department may have one employee designated as manager",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMERGENCY_CONTACT",
+      "cardinality": "1:N",
+      "description": "An employee may register several emergency contacts",
+      "probability": 0.8253
+    }
+  ],
+  "processing_time": 9.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Replaced the EMP_DEPT junction table with a direct department_id foreign key in EMPLOYEE to reflect the rule that an employee belongs to a single department at a time, improving efficiency. Merged the MANAGER entity into EMPLOYEE by adding is_manager flag and manager tenure attributes, and added manager_employee_id plus tenure fields in DEPARTMENT to capture the current manager relationship without a separate table. Consolidated attribute naming (using 'phone' consistently). Added foreign key attributes (mall_id, department_id, manager_employee_id) to make relationships explicit and removed redundant entities while preserving all required information."
+  }
+}

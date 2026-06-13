@@ -1,0 +1,117 @@
+{
+  "filename": "399.txt",
+  "entity": {
+    "USER": 0.622459,
+    "CODE": 0.622459,
+    "PROBLEM": 0.622459,
+    "PROJECT": 0.622459,
+    "SIGN": 0.622459,
+    "CODE_COMMENT": 0.524655,
+    "PROBLEM_SUBMISSION": 0.490601
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.51471,
+      "password": 0.529426,
+      "email": 0.526276,
+      "registration_time": 0.529449,
+      "personal_information": 0.536409,
+      "user_role": 0.528892,
+      "experience_level": 0.53606
+    },
+    "CODE": {
+      "code_content": 0.525018,
+      "upload_time": 0.518078,
+      "code_id": 0.519911,
+      "problem_id": 0.531943
+    },
+    "PROBLEM": {
+      "problem_description": 0.548214,
+      "difficulty_level": 0.541034,
+      "creation_time": 0.534212,
+      "problem_id": 0.531965
+    },
+    "PROJECT": {
+      "project_description": 0.554932,
+      "creation_time": 0.542344,
+      "project_id": 0.532413
+    },
+    "SIGN": {
+      "sign_time": 0.522828,
+      "sign_date": 0.518543,
+      "sign_status": 0.522517
+    },
+    "CODE_COMMENT": {
+      "comment_content": 0.510867,
+      "comment_time": 0.513863
+    },
+    "PROBLEM_SUBMISSION": {
+      "submission_time": 0.527374,
+      "submission_status": 0.527576,
+      "code_id": 0.527927
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE",
+      "cardinality": "1:N",
+      "description": "A user can upload multiple codes",
+      "probability": 0.983267
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROBLEM",
+      "cardinality": "1:N",
+      "description": "A user can submit answers to multiple problems",
+      "probability": 0.997568
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A user can create multiple projects",
+      "probability": 0.745131
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SIGN",
+      "cardinality": "1:N",
+      "description": "A user can have multiple sign records",
+      "probability": 0.919888
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "CODE_COMMENT",
+      "cardinality": "1:N",
+      "description": "A code can have multiple comments",
+      "probability": 0.999601
+    },
+    {
+      "entity_1": "PROBLEM",
+      "entity_2": "PROBLEM_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A problem can have multiple submissions",
+      "probability": 0.869441
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "PROBLEM",
+      "cardinality": "N:1",
+      "description": "A code is a solution to a problem",
+      "probability": 0.994989
+    },
+    {
+      "entity_1": "PROBLEM_SUBMISSION",
+      "entity_2": "CODE",
+      "cardinality": "1:1",
+      "description": "A problem submission is associated with a code",
+      "probability": 0.998934
+    }
+  ],
+  "processing_time": 24.95,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added user role and experience level to the USER entity, added problem id to the CODE entity, and added relationships between CODE and PROBLEM, and between PROBLEM_SUBMISSION and CODE."
+  }
+}

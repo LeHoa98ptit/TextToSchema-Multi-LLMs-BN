@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "CHARACTER",
+    "CLASS",
+    "CATEGORY",
+    "GAME",
+    "CHARACTER_GAME",
+    "CHARACTER_ATTRIBUTE",
+    "ASSOC_CHARACTER_GAME"
+  ],
+  "attribute": {
+    "CHARACTER": [
+      "character_id (PK)",
+      "name (VARCHAR(100))",
+      "class_id (FK → CLASS.class_id)",
+      "star_level (SMALLINT)",
+      "rarity (SMALLINT)"
+    ],
+    "CLASS": [
+      "class_id (PK)",
+      "class_name (VARCHAR(100))",
+      "category_id (FK → CATEGORY.category_id)"
+    ],
+    "CATEGORY": [
+      "category_id (PK)",
+      "category_name (VARCHAR(100))"
+    ],
+    "GAME": [
+      "game_id (PK)",
+      "game_name (VARCHAR(100))"
+    ],
+    "CHARACTER_GAME": [
+      "character_id (PK, FK → CHARACTER.character_id)",
+      "game_id (PK, FK → GAME.game_id)",
+      "acquisition_date (DATE)"
+    ],
+    "CHARACTER_ATTRIBUTE": [
+      "attribute_id (PK)",
+      "character_id (FK → CHARACTER.character_id)",
+      "attr_name (VARCHAR(50))",
+      "attr_value (VARCHAR(255))",
+      "UNIQUE (character_id, attr_name)"
+    ],
+    "ASSOC_CHARACTER_GAME": [
+      "assoc_character_game_id",
+      "character_id",
+      "game_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CLASS",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHARACTER",
+      "entity_2": "ASSOC_CHARACTER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "ASSOC_CHARACTER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHARACTER",
+      "entity_2": "CHARACTER_ATTRIBUTE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 53.5076,
+  "ilp_runtime": 0.043
+}

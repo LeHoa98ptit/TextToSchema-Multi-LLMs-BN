@@ -1,0 +1,102 @@
+{
+  "entity": [
+    "MONITORING_SITE",
+    "MONITORING_PERSONNEL",
+    "MAINTENANCE_PERSONNEL",
+    "MONITORING_SESSION",
+    "MAINTENANCE_ACTIVITY",
+    "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+    "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL"
+  ],
+  "attribute": {
+    "MONITORING_SITE": [
+      "location",
+      "responsible_person"
+    ],
+    "MONITORING_PERSONNEL": [
+      "contact_detail"
+    ],
+    "MAINTENANCE_PERSONNEL": [
+      "contact_detail"
+    ],
+    "MONITORING_SESSION": [
+      "air_quality",
+      "water_quality",
+      "noise_level",
+      "timestamp"
+    ],
+    "MAINTENANCE_ACTIVITY": [
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_cost"
+    ],
+    "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL": [
+      "assoc_monitoring_session_monitoring_personnel_id",
+      "monitoring_session_id",
+      "monitoring_personnel_id"
+    ],
+    "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL": [
+      "assoc_maintenance_activity_maintenance_personnel_id",
+      "maintenance_activity_id",
+      "maintenance_personnel_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 60.7049,
+  "ilp_runtime": 0.087
+}

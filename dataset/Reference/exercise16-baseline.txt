@@ -1,0 +1,28 @@
+{
+  "entity": [
+    "RealEstateAgent",
+    "Owner",
+    "Renter",
+    "Guarantor",
+    "Property",
+    "Agreement",
+    "Payments"
+  ],
+  "attribut": {
+    "RealEstateAgent": ["id_realEstate","name","phoneNumber","email"],
+    "Owner": ["id_owner","name","phoneNumber","email"],
+    "Renter": ["id_renter","name","phoneNumber","salary","email"],
+    "Guarantor": ["id_guarantor","name","phoneNumber","email"],
+    "Property": ["id_property","address","rentValue","id_owner","lastMaintenanceDate","id_realEstate"],
+    "Agreement": ["id_agreement","id_property","id_renter","rentInitialDate","rentFinalDate","activeContract","monthlyRent","depositAmount","clauses","id_guarantor","depositRefunded"],
+    "Payments": ["id_payment","id_rent","monthReference","yearReference","amountPaid","paymentAccount","receivingAccount","paymentDate"]
+  },
+  "relationship": [
+    {"entity_1":"Owner","entity_2":"Property","cardinality":"1:N"},
+    {"entity_1":"RealEstateAgent","entity_2":"Property","cardinality":"1:N"},
+    {"entity_1":"Property","entity_2":"Agreement","cardinality":"1:N"},
+    {"entity_1":"Renter","entity_2":"Agreement","cardinality":"1:N"},
+    {"entity_1":"Agreement","entity_2":"Payments","cardinality":"1:N"},
+    {"entity_1":"Agreement","entity_2":"Guarantor","cardinality":"1:1"}
+  ]
+}

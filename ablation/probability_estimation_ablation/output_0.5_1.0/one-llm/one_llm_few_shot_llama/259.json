@@ -1,0 +1,113 @@
+{
+  "filename": "259.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EMAIL_ACCOUNT": 0.771641,
+    "ADDRESS_BOOK": 0.76015,
+    "CONTACT": 0.751383,
+    "EMAIL": 0.817574,
+    "ATTACHMENT": 0.817574,
+    "ASSOC_USER_EMAIL": 0.999587,
+    "ASSOC_EMAIL_ATTACHMENT": 0.053468
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.74224,
+      "password": 0.750599
+    },
+    "EMAIL_ACCOUNT": {
+      "email_address": 0.766486,
+      "password": 0.766102
+    },
+    "ADDRESS_BOOK": {
+      "address_book_id": 0.76584
+    },
+    "CONTACT": {
+      "contact_id": 0.749121,
+      "phone_number": 0.746377,
+      "work_address": 0.755769,
+      "email_address": 0.763639
+    },
+    "EMAIL": {
+      "email_id": 0.761159,
+      "sender_address": 0.763817,
+      "recipient_address": 0.765408,
+      "email_status": 0.764342,
+      "subject": 0.775403,
+      "content": 0.774747,
+      "send_time": 0.758069,
+      "receive_time": 0.760365
+    },
+    "ATTACHMENT": {
+      "attachment_id": 0.755074,
+      "filename": 0.757051,
+      "attachment_size": 0.758671
+    },
+    "ASSOC_USER_EMAIL": {
+      "assoc_user_email_id": 0.999587,
+      "user_id": 0.999587,
+      "email_id": 0.999587
+    },
+    "ASSOC_EMAIL_ATTACHMENT": {
+      "assoc_email_attachment_id": 0.053468,
+      "email_id": 0.053468,
+      "attachment_id": 0.053468
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL_ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple email accounts.",
+      "probability": 0.99961
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS_BOOK",
+      "cardinality": "1:1",
+      "description": "Each user has one address book.",
+      "probability": 0.623737
+    },
+    {
+      "entity_1": "ADDRESS_BOOK",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "An address book can have multiple contacts.",
+      "probability": 0.023613
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EMAIL",
+      "description": "One USER can be associated with many ASSOC_USER_EMAIL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999587
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ASSOC_USER_EMAIL",
+      "description": "One EMAIL can be associated with many ASSOC_USER_EMAIL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999587
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ASSOC_EMAIL_ATTACHMENT",
+      "description": "One EMAIL can be associated with many ASSOC_EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.053468
+    },
+    {
+      "entity_1": "ATTACHMENT",
+      "entity_2": "ASSOC_EMAIL_ATTACHMENT",
+      "description": "One ATTACHMENT can be associated with many ASSOC_EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.053468
+    }
+  ],
+  "processing_time": 21.91
+}

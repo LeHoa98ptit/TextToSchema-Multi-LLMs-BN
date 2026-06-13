@@ -1,0 +1,98 @@
+{
+  "entity": [
+    "PROTECTION_AREA",
+    "LOCATION",
+    "PERSON",
+    "SPECIES",
+    "OBSERVATION",
+    "ENVIRONMENTAL_RECORD",
+    "SENSOR",
+    "RECORDER"
+  ],
+  "attribute": {
+    "PROTECTION_AREA": [
+      "area_id",
+      "name",
+      "description",
+      "location_id",
+      "person_id"
+    ],
+    "LOCATION": [
+      "location_id",
+      "latitude",
+      "longitude",
+      "description"
+    ],
+    "PERSON": [
+      "person_id",
+      "full_name",
+      "role",
+      "phone",
+      "email"
+    ],
+    "SPECIES": [
+      "species_id",
+      "scientific_name",
+      "common_name",
+      "type",
+      "conservation_status"
+    ],
+    "OBSERVATION": [
+      "observation_id",
+      "observation_time",
+      "quantity",
+      "growth_status",
+      "area_id",
+      "species_id",
+      "person_id"
+    ],
+    "ENVIRONMENTAL_RECORD": [
+      "record_id",
+      "record_time",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "area_id",
+      "sensor_id"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type",
+      "installation_date",
+      "recorder_id"
+    ],
+    "RECORDER": [
+      "recorder_id",
+      "model",
+      "manufacturer"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "OBSERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "ENVIRONMENTAL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "ENVIRONMENTAL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.5966,
+  "ilp_runtime": 0.058
+}

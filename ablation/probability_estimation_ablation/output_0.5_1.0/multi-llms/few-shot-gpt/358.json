@@ -1,0 +1,274 @@
+{
+  "filename": "358.txt",
+  "entity": {
+    "TENANT": 0.817574,
+    "PROCESS_DEFINITION": 0.76904,
+    "PROCESS_INSTANCE": 0.788649,
+    "TASK": 0.817574,
+    "TASK_TYPE": 0.748061,
+    "SCHEDULED_TASK": 0.741005,
+    "EXECUTION_INSTANCE": 0.792851,
+    "TASK_EXECUTION": 0.789647,
+    "LOCK_INFORMATION": 0.702117,
+    "EXCEPTION_INFORMATION": 0.697854,
+    "REPEAT_CONFIGURATION": 0.651559,
+    "PROCESSOR_CONFIGURATION": 0.687187
+  },
+  "attribute": {
+    "TENANT": {
+      "tenant id": 0.749588
+    },
+    "PROCESS_DEFINITION": {
+      "process definition id": 0.763825
+    },
+    "PROCESS_INSTANCE": {
+      "process instance id": 0.762385,
+      "process definition id": 0.766491,
+      "tenant id": 0.768207
+    },
+    "TASK_TYPE": {
+      "task type id": 0.763452
+    },
+    "TASK": {
+      "task id": 0.766724,
+      "task type id": 0.765031,
+      "execution instance id": 0.769305,
+      "start time": 0.764086,
+      "end time": 0.763921,
+      "execution result": 0.767909,
+      "exception information id": 0.770793,
+      "lock information id": 0.771762,
+      "tenant id": 0.773051
+    },
+    "SCHEDULED_TASK": {
+      "scheduled task id": 0.766473,
+      "task id": 0.767636,
+      "expiration time": 0.764776,
+      "repeat configuration id": 0.768688,
+      "processor configuration id": 0.773428,
+      "tenant id": 0.773008
+    },
+    "EXECUTION_INSTANCE": {
+      "execution instance id": 0.755534,
+      "process instance id": 0.762811,
+      "process definition id": 0.767992,
+      "tenant id": 0.760235
+    },
+    "TASK_EXECUTION": {
+      "task execution id": 0.770818,
+      "task id": 0.770258,
+      "execution instance id": 0.769344,
+      "start time": 0.765487,
+      "end time": 0.764869,
+      "execution result": 0.768691,
+      "exception information id": 0.7722,
+      "tenant id": 0.774836
+    },
+    "LOCK_INFORMATION": {
+      "lock information id": 0.751973,
+      "lock timestamp": 0.751733,
+      "locked by": 0.752839,
+      "tenant id": 0.757986
+    },
+    "EXCEPTION_INFORMATION": {
+      "exception information id": 0.753016,
+      "exception message": 0.751498,
+      "stack trace": 0.751642,
+      "occurrence time": 0.760236,
+      "retry count": 0.754248,
+      "tenant id": 0.758548
+    },
+    "REPEAT_CONFIGURATION": {
+      "repeat configuration id": 0.746848,
+      "repeat interval seconds": 0.74911,
+      "repeat count": 0.747998,
+      "cron expression": 0.750564,
+      "tenant id": 0.7528
+    },
+    "PROCESSOR_CONFIGURATION": {
+      "processor configuration id": 0.758696,
+      "config data": 0.758084,
+      "enabled": 0.755379,
+      "tenant id": 0.762962
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "description": "A process definition can have many process instances; each instance refers to one definition.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.978956
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "EXECUTION_INSTANCE",
+      "description": "A process definition can be executed in many execution instances; each execution instance references one definition.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.91118
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "EXECUTION_INSTANCE",
+      "description": "A process instance can have multiple execution instances; each execution instance belongs to one process instance.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997266
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK",
+      "description": "An execution instance can contain many tasks; each task is linked to one execution instance.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9681
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK_EXECUTION",
+      "description": "An execution instance can have many task execution records; each task execution belongs to one execution instance.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997467
+    },
+    {
+      "entity_1": "TASK_TYPE",
+      "entity_2": "TASK",
+      "description": "A task type can be used by many tasks; each task has one task type.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999989
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "LOCK_INFORMATION",
+      "description": "Each task may have one lock information record; each lock information belongs to one task.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.967052
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXCEPTION_INFORMATION",
+      "description": "A task can be associated with one exception information record; each exception information record belongs to one task.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.979681
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "description": "A task can be executed many times; each task execution references one task.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999965
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "EXCEPTION_INFORMATION",
+      "description": "A task execution may have one exception information record; each exception information record belongs to one task execution.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.581217
+    },
+    {
+      "entity_1": "SCHEDULED_TASK",
+      "entity_2": "TASK",
+      "description": "A scheduled task is linked to exactly one task; each task can have at most one scheduled task entry.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.99998
+    },
+    {
+      "entity_1": "SCHEDULED_TASK",
+      "entity_2": "REPEAT_CONFIGURATION",
+      "description": "A scheduled task may have one repeat configuration; each repeat configuration belongs to one scheduled task.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.001317
+    },
+    {
+      "entity_1": "SCHEDULED_TASK",
+      "entity_2": "PROCESSOR_CONFIGURATION",
+      "description": "A scheduled task may have one processor configuration; each processor configuration belongs to one scheduled task.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.300232
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESS_INSTANCE",
+      "description": "A tenant can own many process instances; each process instance is associated with one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012892
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "EXECUTION_INSTANCE",
+      "description": "A tenant can have many execution instances; each execution instance belongs to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.696981
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "TASK",
+      "description": "A tenant can have many tasks; each task is scoped to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004495
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "SCHEDULED_TASK",
+      "description": "A tenant can define many scheduled tasks; each scheduled task belongs to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000101
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "TASK_EXECUTION",
+      "description": "A tenant can have many task execution records; each task execution is associated with one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.016219
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "LOCK_INFORMATION",
+      "description": "A tenant can own many lock information records; each lock information belongs to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014668
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "EXCEPTION_INFORMATION",
+      "description": "A tenant can have many exception information records; each exception information belongs to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003421
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "REPEAT_CONFIGURATION",
+      "description": "A tenant can define many repeat configurations; each repeat configuration is scoped to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002276
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESSOR_CONFIGURATION",
+      "description": "A tenant can have many processor configurations; each processor configuration belongs to one tenant.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.779233
+    }
+  ],
+  "processing_time": 61.66
+}

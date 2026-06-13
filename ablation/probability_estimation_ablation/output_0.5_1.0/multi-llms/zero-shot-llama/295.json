@@ -1,0 +1,91 @@
+{
+  "filename": "295.txt",
+  "entity": {
+    "FUTURE_COMPANY": 0.808145,
+    "TRADER": 0.817574,
+    "CLIENT": 0.817574,
+    "TRANSACTION": 0.817574,
+    "TRANSACTION_RECORD": 0.799777,
+    "ASSOC_CLIENT_TRANSACTION": 0.493039
+  },
+  "attribute": {
+    "FUTURE_COMPANY": {
+      "company id": 0.777795,
+      "hire date": 0.773484
+    },
+    "TRADER": {
+      "trader id": 0.772538,
+      "contact number": 0.769103
+    },
+    "CLIENT": {
+      "client id": 0.757397,
+      "client d number": 0.76193,
+      "contact number": 0.760359
+    },
+    "TRANSACTION": {
+      "transaction id": 0.766131,
+      "future code": 0.791374,
+      "transaction type": 0.774968,
+      "transaction quantity": 0.772321,
+      "transaction price": 0.764941,
+      "transaction time": 0.765045
+    },
+    "TRANSACTION_RECORD": {
+      "transaction record id": 0.766174,
+      "trader id": 0.777264,
+      "transaction id": 0.765997,
+      "risk level": 0.767772,
+      "transaction_record_id": 0.596579,
+      "trader_id": 0.596579,
+      "transaction_id": 0.596579
+    },
+    "ASSOC_CLIENT_TRANSACTION": {
+      "assoc_client_transaction_id": 0.493039,
+      "client_id": 0.493039,
+      "transaction_id": 0.493039
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FUTURE_COMPANY",
+      "entity_2": "TRADER",
+      "description": "A future company employs multiple traders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.955373
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "TRANSACTION_RECORD",
+      "description": "One TRADER can be associated with many TRANSACTION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.596579
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_RECORD",
+      "description": "One TRANSACTION can be associated with many TRANSACTION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.596579
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_CLIENT_TRANSACTION",
+      "description": "One CLIENT can be associated with many ASSOC_CLIENT_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.493039
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_CLIENT_TRANSACTION",
+      "description": "One TRANSACTION can be associated with many ASSOC_CLIENT_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.493039
+    }
+  ],
+  "processing_time": 11.88
+}

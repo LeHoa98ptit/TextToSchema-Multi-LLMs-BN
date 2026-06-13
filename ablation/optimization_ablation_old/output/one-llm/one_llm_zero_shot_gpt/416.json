@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "USER",
+    "COMPANY",
+    "JOB",
+    "RESUME",
+    "CONVERSATION",
+    "MESSAGE",
+    "BOARD_MESSAGE",
+    "ASSOC_USER_CONVERSATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "avatar",
+      "nickname",
+      "registration_time",
+      "role"
+    ],
+    "COMPANY": [
+      "company_id",
+      "name",
+      "address",
+      "profile",
+      "contact_information"
+    ],
+    "JOB": [
+      "job_id",
+      "title",
+      "content",
+      "requirement",
+      "category",
+      "salary",
+      "education_level",
+      "work_location"
+    ],
+    "RESUME": [
+      "resume_id",
+      "content",
+      "submission_time"
+    ],
+    "CONVERSATION": [
+      "conversation_id",
+      "created_time"
+    ],
+    "MESSAGE": [
+      "message_id",
+      "content",
+      "send_time"
+    ],
+    "BOARD_MESSAGE": [
+      "board_message_id",
+      "content",
+      "message_time"
+    ],
+    "ASSOC_USER_CONVERSATION": [
+      "assoc_user_conversation_id",
+      "user_id",
+      "conversation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "JOB",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BOARD_MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.7015,
+  "ilp_runtime": 0.044
+}

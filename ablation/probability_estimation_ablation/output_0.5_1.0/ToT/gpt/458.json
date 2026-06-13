@@ -1,0 +1,141 @@
+{
+  "filename": "458.txt",
+  "entity": {
+    "MEMBER": 0.817574,
+    "ADDRESS": 0.719665,
+    "BOOK": 0.817574,
+    "AUTHOR": 0.745622,
+    "BOOK_AUTHOR": 0.749923,
+    "PUBLISHER": 0.805495,
+    "BOOK_TYPE": 0.730153,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.792523
+  },
+  "attribute": {
+    "MEMBER": {
+      "member_id": 0.751791,
+      "username": 0.750482,
+      "password": 0.760746,
+      "telephone": 0.760802,
+      "points_balance": 0.757097,
+      "total_spent": 0.752668,
+      "address_id": 0.757139
+    },
+    "ADDRESS": {
+      "address_id": 0.750924,
+      "member_id": 0.758333,
+      "street": 0.750903,
+      "city": 0.749258,
+      "postal_code": 0.754554
+    },
+    "BOOK": {
+      "book_id": 0.762566,
+      "title": 0.753901,
+      "isbn": 0.767666,
+      "price": 0.756067,
+      "publication_date": 0.755457,
+      "publisher_id": 0.764061,
+      "type_id": 0.759603
+    },
+    "AUTHOR": {
+      "author_id": 0.742996,
+      "name": 0.743369
+    },
+    "BOOK_AUTHOR": {
+      "book_id": 0.759096,
+      "author_id": 0.753928
+    },
+    "PUBLISHER": {
+      "publisher_id": 0.753344,
+      "name": 0.754507,
+      "address": 0.75632
+    },
+    "BOOK_TYPE": {
+      "type_id": 0.758364,
+      "type_name": 0.759722
+    },
+    "ORDER": {
+      "order_id": 0.753141,
+      "member_id": 0.760898,
+      "sale_date": 0.758349,
+      "shipping_date": 0.745927,
+      "shipping_address_id": 0.750214
+    },
+    "ORDER_DETAIL": {
+      "order_id": 0.760607,
+      "book_id": 0.774601,
+      "quantity": 0.772259,
+      "unit_price": 0.765327
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each member has a single mailing address",
+      "probability": 0.064012
+    },
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A member can place many orders",
+      "probability": 0.998193
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order detail lines",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "BOOK",
+      "cardinality": "N:1",
+      "description": "Each order detail references a single book",
+      "probability": 0.061387
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "description": "A book can be linked to multiple authors",
+      "probability": 0.998676
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "description": "An author can be linked to multiple books",
+      "probability": 0.999972
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_TYPE",
+      "cardinality": "N:1",
+      "description": "Each book belongs to one type/category",
+      "probability": 0.999318
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "PUBLISHER",
+      "cardinality": "N:1",
+      "description": "Each book is published by one publisher",
+      "probability": 0.397154
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "Orders are shipped to a (possibly member) address",
+      "probability": 0.854605
+    }
+  ],
+  "processing_time": 10.09,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged POINTS and EXPENDITURE into MEMBER as attributes points_balance and total_spent, reducing table count. Kept ADDRESS as a separate entity to support both member mailing address and distinct shipping addresses, with a 1:1 relationship to MEMBER and N:1 to ORDER. Added foreign keys publisher_id and type_id directly in BOOK for clearer referential integrity. Ensured BOOK.isbn is unique (implicit natural key). Defined composite primary key (order_id, book_id) for ORDER_DETAIL to guarantee unique line items. Retained normalized AUTHOR, PUBLISHER, BOOK_TYPE, and many‑to‑many BOOK‑AUTHOR via BOOK_AUTHOR. Documented cascade intent through relationship descriptions."
+  }
+}

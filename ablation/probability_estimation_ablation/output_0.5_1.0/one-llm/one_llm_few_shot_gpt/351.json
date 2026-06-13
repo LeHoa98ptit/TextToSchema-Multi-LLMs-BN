@@ -1,0 +1,143 @@
+{
+  "filename": "351.txt",
+  "entity": {
+    "USER": 0.745869,
+    "ROLE": 0.732609,
+    "OBJECT": 0.817574,
+    "PERMISSION": 0.817574,
+    "PERMISSION_ENTRY": 0.779697,
+    "AUDIT_LOG": 0.686649,
+    "ASSOC_USER_ROLE": 0.993911,
+    "ASSOC_ROLE_PERMISSION": 0.299026
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.750212,
+      "username": 0.735451,
+      "full_name": 0.748048,
+      "email": 0.743991,
+      "phone": 0.745162
+    },
+    "ROLE": {
+      "role_id": 0.762157,
+      "role_name": 0.761945,
+      "description": 0.76596
+    },
+    "OBJECT": {
+      "object_id": 0.74733,
+      "object_type": 0.75409,
+      "class_name": 0.746254,
+      "parent_object_id": 0.755112,
+      "owner_id": 0.765515
+    },
+    "PERMISSION": {
+      "permission_id": 0.770594,
+      "permission_name": 0.772361,
+      "description": 0.778023
+    },
+    "PERMISSION_ENTRY": {
+      "entry_id": 0.770533,
+      "granted": 0.775306,
+      "inheritance": 0.788516
+    },
+    "AUDIT_LOG": {
+      "log_id": 0.758712,
+      "timestamp": 0.753276,
+      "outcome": 0.759544,
+      "details": 0.766046
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.993911,
+      "user_id": 0.993911,
+      "role_id": 0.993911
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.299026,
+      "role_id": 0.299026,
+      "permission_id": 0.299026
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "OBJECT",
+      "cardinality": "1:N",
+      "probability": 0.261787
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT",
+      "cardinality": "1:N",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993911
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993911
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.299026
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.299026
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION_ENTRY",
+      "cardinality": "1:N",
+      "probability": 0.038053
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "PERMISSION_ENTRY",
+      "cardinality": "1:N",
+      "probability": 0.001104
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_ENTRY",
+      "cardinality": "1:N",
+      "probability": 0.972692
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "probability": 0.987528
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "probability": 7e-06
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "probability": 0.001099
+    }
+  ],
+  "processing_time": 20.51
+}

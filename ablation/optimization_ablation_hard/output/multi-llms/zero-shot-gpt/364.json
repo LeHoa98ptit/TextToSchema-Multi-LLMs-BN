@@ -1,0 +1,70 @@
+{
+  "entity": [
+    "COMPANY",
+    "USER",
+    "LOGIN_RESPONSE_TYPE",
+    "LOGIN_ATTEMPT",
+    "LOGIN_RESPONSE_RECORD"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company id"
+    ],
+    "USER": [
+      "user id",
+      "company id",
+      "username",
+      "phone number",
+      "job title"
+    ],
+    "LOGIN_RESPONSE_TYPE": [
+      "response type id",
+      "label"
+    ],
+    "LOGIN_ATTEMPT": [
+      "attempt id",
+      "user id"
+    ],
+    "LOGIN_RESPONSE_RECORD": [
+      "record id",
+      "user id",
+      "login time",
+      "response type id",
+      "response label"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_ATTEMPT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOGIN_RESPONSE_TYPE",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOGIN_ATTEMPT",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.8311,
+  "ilp_runtime": 0.066
+}

@@ -1,0 +1,108 @@
+{
+  "filename": "287.txt",
+  "entity": {
+    "PARK": 0.817574,
+    "PERSON": 0.693897,
+    "PLANT_SPECIE": 0.798235,
+    "PARK_PLANT_OBSERVATION": 0.752334,
+    "MAINTENANCE": 0.817574,
+    "MAINTENANCE_ASSIGNMENT": 0.76421
+  },
+  "attribute": {
+    "PARK": {
+      "park_id": 0.764239,
+      "name": 0.760847,
+      "location": 0.76452,
+      "area": 0.7642,
+      "responsible_person_id": 0.774744
+    },
+    "PERSON": {
+      "person_id": 0.739836,
+      "name": 0.730756,
+      "email": 0.737857,
+      "phone": 0.740909
+    },
+    "PLANT_SPECIE": {
+      "specie_id": 0.748895,
+      "common_name": 0.74971,
+      "scientific_name": 0.748335
+    },
+    "PARK_PLANT_OBSERVATION": {
+      "observation_id": 0.777778,
+      "park_id": 0.776053,
+      "specie_id": 0.776222,
+      "recording_time": 0.780024,
+      "recorder_id": 0.779033,
+      "quantity": 0.783787,
+      "growth_status": 0.781679
+    },
+    "MAINTENANCE": {
+      "maintenance_id": 0.760056,
+      "park_id": 0.77744,
+      "maintenance_time": 0.75913,
+      "content": 0.762389,
+      "cost": 0.751192
+    },
+    "MAINTENANCE_ASSIGNMENT": {
+      "maintenance_id": 0.75967,
+      "person_id": 0.759454,
+      "role": 0.762233
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARK",
+      "entity_2": "PARK_PLANT_OBSERVATION",
+      "cardinality": "1:N",
+      "description": "Each park can have many plant observations",
+      "probability": 0.964881
+    },
+    {
+      "entity_1": "PLANT_SPECIE",
+      "entity_2": "PARK_PLANT_OBSERVATION",
+      "cardinality": "1:N",
+      "description": "Each plant species can appear in many observations",
+      "probability": 0.774427
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "PARK_PLANT_OBSERVATION",
+      "cardinality": "1:N",
+      "description": "A person records many plant observations (recorder role)",
+      "probability": 0.063018
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A park can have multiple maintenance records",
+      "probability": 0.83413
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "MAINTENANCE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "Each maintenance event may involve several personnel assignments",
+      "probability": 0.920537
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A person can be assigned to many maintenance events",
+      "probability": 0.959611
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "PARK",
+      "cardinality": "1:N",
+      "description": "A person may be responsible for many parks; each park has one responsible person",
+      "probability": 0.918213
+    }
+  ],
+  "processing_time": 22.76,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added responsible_person_id to PARK and a 1:N relationship between PERSON and PARK to capture the park's responsible person. Removed redundant growth_status from PLANT_SPECIE, keeping it only in observations. Renamed MAINTENANCE_PERSONNEL to MAINTENANCE_ASSIGNMENT for clearer semantics while retaining the role attribute. Preserved all detailed observation and maintenance many‑to‑many structures, ensuring completeness, accuracy, and consistency."
+  }
+}

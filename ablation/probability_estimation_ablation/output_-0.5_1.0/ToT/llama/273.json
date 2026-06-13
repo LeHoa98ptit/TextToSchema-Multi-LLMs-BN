@@ -1,0 +1,79 @@
+{
+  "filename": "273.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "FEEDBACK": 0.622459,
+    "FEEDBACK_ITEM": 0.59356,
+    "RESTAURANT": 0.622459,
+    "PROCESSING_STATUS": 0.601855
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_info": 0.554222,
+      "contact_details": 0.55251
+    },
+    "FEEDBACK": {
+      "feedback_content": 0.5549,
+      "feedback_time": 0.55729,
+      "rating": 0.551227
+    },
+    "FEEDBACK_ITEM": {
+      "item_name": 0.556716,
+      "item_rating": 0.556207,
+      "item_description": 0.560373,
+      "item_suggestion": 0.550836
+    },
+    "RESTAURANT": {
+      "restaurant_info": 0.56838,
+      "address": 0.558854,
+      "phone_number": 0.56054
+    },
+    "PROCESSING_STATUS": {
+      "status": 0.555217,
+      "status_description": 0.55259,
+      "status_updated_time": 0.545843
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "A customer can provide multiple feedback",
+      "probability": 0.995979
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "FEEDBACK_ITEM",
+      "cardinality": "1:N",
+      "description": "One feedback can contain multiple feedback items",
+      "probability": 0.999964
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "RESTAURANT",
+      "cardinality": "N:1",
+      "description": "Multiple feedback can be received by one restaurant",
+      "probability": 0.16251
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "PROCESSING_STATUS",
+      "cardinality": "N:1",
+      "description": "Multiple feedback can have one processing status",
+      "probability": 0.138272
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PROCESSING_STATUS",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple processing status for different feedback",
+      "probability": 0.688101
+    }
+  ],
+  "processing_time": 12.2,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a relationship between CUSTOMER and PROCESSING_STATUS, and added more attributes to FEEDBACK_ITEM to capture detailed feedback information"
+  }
+}

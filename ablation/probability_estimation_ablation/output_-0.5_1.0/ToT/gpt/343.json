@@ -1,0 +1,109 @@
+{
+  "filename": "343.txt",
+  "entity": {
+    "PERSONNEL": 0.622459,
+    "ADDRESS": 0.49505,
+    "PHONE": 0.622459,
+    "PHONE_TYPE": 0.513796,
+    "VEHICLE": 0.622459,
+    "INSURANCE": 0.622459,
+    "INSURANCE_TYPE": 0.558382
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "employee_id PK": 0.553163,
+      "first_name": 0.544859,
+      "last_name": 0.549372,
+      "date_of_birth": 0.545428,
+      "gender": 0.536378
+    },
+    "ADDRESS": {
+      "personnel_id PK, FK → PERSONNEL.employee_id (cascade update, cascade delete)": 0.553635,
+      "street": 0.52374,
+      "city": 0.523914,
+      "state": 0.524963,
+      "zip_code": 0.519314
+    },
+    "PHONE": {
+      "personnel_id FK → PERSONNEL.employee_id (cascade update, cascade delete)": 0.557998,
+      "phone_number": 0.523012,
+      "phone_type_id FK → PHONE_TYPE.phone_type_id": 0.541026,
+      "PRIMARY KEY (personnel_id, phone_number)": 0.556411
+    },
+    "PHONE_TYPE": {
+      "phone_type_id PK": 0.532026,
+      "type_name": 0.53272
+    },
+    "VEHICLE": {
+      "vin PK": 0.522739,
+      "manufacturer": 0.531059,
+      "model": 0.536064,
+      "year": 0.531746,
+      "license_plate": 0.5432,
+      "driver_id FK → PERSONNEL.employee_id (cascade update, cascade delete)": 0.562317
+    },
+    "INSURANCE": {
+      "insurance_id PK": 0.541492,
+      "policy_number": 0.543564,
+      "insurance_type_id FK → INSURANCE_TYPE.insurance_type_id": 0.558278,
+      "company_name": 0.544137,
+      "cost": 0.513214,
+      "purchase_date": 0.527716,
+      "expiry_date": 0.518193,
+      "vehicle_vin FK → VEHICLE.vin (cascade update, cascade delete)": 0.546299
+    },
+    "INSURANCE_TYPE": {
+      "insurance_type_id PK": 0.546011,
+      "type_name": 0.546026
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each personnel has exactly one address; address uses personnel_id as its primary key.",
+      "probability": 0.48804
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PHONE",
+      "cardinality": "1:N",
+      "description": "A personnel can have multiple phone numbers; uniqueness enforced by composite PK (personnel_id, phone_number).",
+      "probability": 0.643282
+    },
+    {
+      "entity_1": "PHONE",
+      "entity_2": "PHONE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each phone record references a phone type lookup.",
+      "probability": 0.992652
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A personnel may be the driver of many vehicles.",
+      "probability": 0.970206
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "INSURANCE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple insurance policies over its lifetime.",
+      "probability": 0.634253
+    },
+    {
+      "entity_1": "INSURANCE",
+      "entity_2": "INSURANCE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each insurance record references an insurance type lookup.",
+      "probability": 0.999923
+    }
+  ],
+  "processing_time": 30.18,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested refinements: ADDRESS is now a weak entity using PERSONNEL.employee_id as its PK, eliminating the surrogate address_id and enforcing the 1:1 relationship at the key level. PHONE now uses a composite primary key (personnel_id, phone_number) instead of a surrogate phone_id, matching the domain description and guaranteeing uniqueness per personnel. Added lookup tables PHONE_TYPE and INSURANCE_TYPE to normalize type attributes and improve data integrity. Explicit cascade‑update (and cascade‑delete) rules are documented on all foreign keys. Retained the clear entity separation, full attribute coverage, and relationship definitions from the best candidate while improving efficiency and consistency."
+  }
+}

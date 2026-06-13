@@ -1,0 +1,70 @@
+{
+  "filename": "348.txt",
+  "entity": {
+    "PLUGIN": 0.817574,
+    "EXECUTION": 0.817574,
+    "AUDIT": 0.809891,
+    "SQL_STATEMENT": 0.678437
+  },
+  "attribute": {
+    "PLUGIN": {
+      "version": 0.767148,
+      "type": 0.77367,
+      "description": 0.774875
+    },
+    "EXECUTION": {
+      "start_time": 0.75503,
+      "end_time": 0.756518,
+      "status": 0.764437,
+      "plugin_id": 0.765073,
+      "execution_description": 0.764898
+    },
+    "AUDIT": {
+      "audit_id": 0.760058,
+      "execution_id": 0.766294,
+      "audit_time": 0.765148,
+      "audit_result": 0.76017
+    },
+    "SQL_STATEMENT": {
+      "statement_id": 0.748715,
+      "execution_id": 0.756782,
+      "statement": 0.751222,
+      "statement_result": 0.745823
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "EXECUTION",
+      "cardinality": "1:N",
+      "description": "A plugin can have multiple executions",
+      "probability": 0.241551
+    },
+    {
+      "entity_1": "EXECUTION",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "An execution can have multiple audits",
+      "probability": 0.915531
+    },
+    {
+      "entity_1": "EXECUTION",
+      "entity_2": "SQL_STATEMENT",
+      "cardinality": "1:N",
+      "description": "An execution can have multiple sql statements",
+      "probability": 0.067183
+    },
+    {
+      "entity_1": "AUDIT",
+      "entity_2": "SQL_STATEMENT",
+      "cardinality": "1:N",
+      "description": "An audit can be associated with multiple sql statements",
+      "probability": 0.038187
+    }
+  ],
+  "processing_time": 13.62,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'description' attribute to PLUGIN entity, 'execution_description' attribute to EXECUTION entity, 'audit_result' attribute to AUDIT entity, 'statement_result' attribute to SQL_STATEMENT entity, and an additional relationship between AUDIT and SQL_STATEMENT entities to improve completeness and efficiency."
+  }
+}

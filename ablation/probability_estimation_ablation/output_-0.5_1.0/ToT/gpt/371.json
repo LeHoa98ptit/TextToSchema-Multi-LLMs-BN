@@ -1,0 +1,107 @@
+{
+  "filename": "371.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ACCOUNT": 0.622459,
+    "SERVICE_PROVIDER": 0.438094,
+    "SESSION": 0.622459,
+    "VERIFICATION_REQUEST": 0.578325,
+    "TOKEN_HISTORY": 0.532056
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.535033,
+      "username": 0.518597,
+      "email": 0.544348,
+      "email_verified_at": 0.532009,
+      "avatar_url": 0.523143,
+      "created_at": 0.517989,
+      "updated_at": 0.517416
+    },
+    "ACCOUNT": {
+      "account_id": 0.53908,
+      "user_id": 0.542111,
+      "service_provider_id": 0.531669,
+      "external_account_id": 0.524584,
+      "refresh_token": 0.528582,
+      "access_token": 0.5368,
+      "access_token_expires_at": 0.528879,
+      "created_at": 0.524485,
+      "updated_at": 0.521968
+    },
+    "SERVICE_PROVIDER": {
+      "service_provider_id": 0.517673,
+      "provider_name": 0.514003,
+      "provider_type": 0.516805,
+      "created_at": 0.513223,
+      "updated_at": 0.509015
+    },
+    "SESSION": {
+      "session_id": 0.529646,
+      "user_id": 0.540102,
+      "session_token": 0.530118,
+      "access_token": 0.53119,
+      "expires_at": 0.521162,
+      "created_at": 0.520677,
+      "updated_at": 0.516528
+    },
+    "VERIFICATION_REQUEST": {
+      "verification_request_id": 0.537872,
+      "user_id": 0.549645,
+      "verification_token": 0.539219,
+      "expires_at": 0.527391,
+      "created_at": 0.528292,
+      "updated_at": 0.524066
+    },
+    "TOKEN_HISTORY": {
+      "token_history_id": 0.524051,
+      "account_id": 0.536899,
+      "token_type": 0.524095,
+      "token_value": 0.520371,
+      "issued_at": 0.525953,
+      "expires_at": 0.52329
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "One user can own multiple accounts",
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "SERVICE_PROVIDER",
+      "cardinality": "N:1",
+      "description": "Each account is issued by a single service provider",
+      "probability": 0.981335
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SESSION",
+      "cardinality": "1:N",
+      "description": "A user may have several active sessions",
+      "probability": 0.044479
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "VERIFICATION_REQUEST",
+      "cardinality": "1:N",
+      "description": "Multiple verification requests can be issued for a user",
+      "probability": 0.997839
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TOKEN_HISTORY",
+      "cardinality": "1:N",
+      "description": "An account can have multiple token history records for audit",
+      "probability": 0.011666
+    }
+  ],
+  "processing_time": 21.52,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added UNIQUE constraint on USER.email and VERIFICATION_REQUEST.verification_token; introduced external_account_id in ACCOUNT for provider‑specific identifiers; created TOKEN_HISTORY entity to capture token rotation audit; defined cascade delete/update rules for all foreign keys (e.g., deleting a USER cascades to ACCOUNT, SESSION, VERIFICATION_REQUEST); recommended indexes on foreign key columns (user_id, service_provider_id, account_id) and on frequently queried fields (session_token, verification_token); ensured consistent naming and attribute ordering across entities."
+  }
+}

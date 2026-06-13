@@ -1,0 +1,156 @@
+{
+  "entity": [
+    "TENANT",
+    "PROCESS_DEFINITION",
+    "PROCESS_INSTANCE",
+    "TASK",
+    "TASK_TYPE",
+    "SCHEDULED_TASK",
+    "EXECUTION_INSTANCE",
+    "TASK_EXECUTION",
+    "LOCK_INFORMATION",
+    "EXCEPTION_INFORMATION",
+    "PROCESSOR_CONFIGURATION"
+  ],
+  "attribute": {
+    "TENANT": [
+      "tenant id"
+    ],
+    "PROCESS_DEFINITION": [
+      "process definition id"
+    ],
+    "PROCESS_INSTANCE": [
+      "process instance id",
+      "process definition id",
+      "tenant id"
+    ],
+    "TASK": [
+      "task id",
+      "task type id",
+      "execution instance id",
+      "start time",
+      "end time",
+      "execution result",
+      "exception information id",
+      "lock information id",
+      "tenant id"
+    ],
+    "TASK_TYPE": [
+      "task type id"
+    ],
+    "SCHEDULED_TASK": [
+      "scheduled task id",
+      "task id",
+      "expiration time",
+      "repeat configuration id",
+      "processor configuration id",
+      "tenant id"
+    ],
+    "EXECUTION_INSTANCE": [
+      "execution instance id",
+      "process instance id",
+      "process definition id",
+      "tenant id"
+    ],
+    "TASK_EXECUTION": [
+      "task execution id",
+      "task id",
+      "execution instance id",
+      "start time",
+      "end time",
+      "execution result",
+      "exception information id",
+      "tenant id"
+    ],
+    "LOCK_INFORMATION": [
+      "lock information id",
+      "lock timestamp",
+      "locked by",
+      "tenant id"
+    ],
+    "EXCEPTION_INFORMATION": [
+      "exception information id",
+      "exception message",
+      "stack trace",
+      "occurrence time",
+      "retry count",
+      "tenant id"
+    ],
+    "PROCESSOR_CONFIGURATION": [
+      "processor configuration id",
+      "config data",
+      "enabled",
+      "tenant id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_TYPE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "LOCK_INFORMATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXCEPTION_INFORMATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULED_TASK",
+      "entity_2": "TASK",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESSOR_CONFIGURATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 84.6086,
+  "ilp_runtime": 0.099
+}

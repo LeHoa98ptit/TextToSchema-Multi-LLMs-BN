@@ -1,0 +1,97 @@
+{
+  "filename": "286.txt",
+  "entity": {
+    "THEATER": 0.817574,
+    "ACTOR": 0.817574,
+    "PERFORMANCE": 0.817574,
+    "VENUE": 0.817574,
+    "RECORD": 0.817574,
+    "ASSOC_ACTOR_PERFORMANCE": 0.814601
+  },
+  "attribute": {
+    "THEATER": {
+      "name": 0.775486,
+      "address": 0.776869,
+      "seating_capacity": 0.78413
+    },
+    "ACTOR": {
+      "email": 0.768742,
+      "phone_number": 0.766449,
+      "actor_id": 0.766186
+    },
+    "PERFORMANCE": {
+      "start_time": 0.760247,
+      "end_time": 0.758949,
+      "performance_id": 0.758383
+    },
+    "VENUE": {
+      "venue_id": 0.775304,
+      "address": 0.77358,
+      "seating_capacity": 0.781347
+    },
+    "RECORD": {
+      "record_id": 0.749078,
+      "performance_id": 0.764795,
+      "actor_id": 0.775976,
+      "participation_status": 0.769226,
+      "role": 0.776591,
+      "fee": 0.750937
+    },
+    "ASSOC_ACTOR_PERFORMANCE": {
+      "assoc_actor_performance_id": 0.814601,
+      "actor_id": 0.814601,
+      "performance_id": 0.814601
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "THEATER",
+      "entity_2": "VENUE",
+      "cardinality": "1:1",
+      "description": "A theater is associated with one venue",
+      "probability": 0.995853
+    },
+    {
+      "entity_1": "THEATER",
+      "entity_2": "PERFORMANCE",
+      "cardinality": "1:N",
+      "description": "A theater can have multiple performances",
+      "probability": 0.933245
+    },
+    {
+      "entity_1": "ACTOR",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "description": "An actor can have multiple records of participation",
+      "probability": 0.999518
+    },
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "description": "A performance can have multiple records of actor participation",
+      "probability": 0.281647
+    },
+    {
+      "entity_1": "ACTOR",
+      "entity_2": "ASSOC_ACTOR_PERFORMANCE",
+      "description": "One ACTOR can be associated with many ASSOC_ACTOR_PERFORMANCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.814601
+    },
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "ASSOC_ACTOR_PERFORMANCE",
+      "description": "One PERFORMANCE can be associated with many ASSOC_ACTOR_PERFORMANCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.814601
+    }
+  ],
+  "processing_time": 13.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant 'venue_id' attribute from THEATER entity and 'theater_id' attribute from PERFORMANCE entity. Added 'role' and 'fee' attributes to RECORD entity to capture more information about actor participation."
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "entity": [
+    "USER",
+    "SENSOR",
+    "METEOROLOGY",
+    "CROP",
+    "GROWTH_MODEL",
+    "SUPPLY",
+    "ACTION",
+    "EVALUATION",
+    "ASSOC_SENSOR_SUPPLY"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "registration_time",
+      "login_time",
+      "role"
+    ],
+    "SENSOR": [
+      "location",
+      "burial_depth",
+      "data_collection_time"
+    ],
+    "METEOROLOGY": [
+      "timestamp",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind_speed",
+      "light_intensity",
+      "location"
+    ],
+    "CROP": [
+      "type",
+      "growth_model"
+    ],
+    "GROWTH_MODEL": [
+      "model_parameter",
+      "creation_time"
+    ],
+    "SUPPLY": [
+      "supply_time",
+      "location",
+      "type",
+      "detail"
+    ],
+    "ACTION": [
+      "time",
+      "location",
+      "type",
+      "detail"
+    ],
+    "EVALUATION": [
+      "evaluation_metric",
+      "value",
+      "location",
+      "evaluation_time"
+    ],
+    "ASSOC_SENSOR_SUPPLY": [
+      "assoc_sensor_supply_id",
+      "sensor_id",
+      "supply_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SUPPLY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EVALUATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "ASSOC_SENSOR_SUPPLY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLY",
+      "entity_2": "ASSOC_SENSOR_SUPPLY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 24.218,
+  "ilp_runtime": 0.044
+}

@@ -1,0 +1,111 @@
+{
+  "filename": "277.txt",
+  "entity": {
+    "HOUSEKEEPER": 0.817574,
+    "CUSTOMER": 0.817574,
+    "SERVICE_TEAM": 0.752595,
+    "SERVICE_TASK": 0.752017,
+    "SERVICE": 0.817574,
+    "ASSOC_CUSTOMER_HOUSEKEEPER": 0.426388
+  },
+  "attribute": {
+    "HOUSEKEEPER": {
+      "staff_id": 0.776508,
+      "contact_number": 0.773276,
+      "service_type": 0.785579,
+      "year_experience": 0.776878,
+      "professional_skill": 0.773638
+    },
+    "CUSTOMER": {
+      "customer_id": 0.756155,
+      "customer_phone": 0.755887,
+      "service_date": 0.759389,
+      "service_address": 0.763565
+    },
+    "SERVICE_TEAM": {
+      "team_id": 0.753689
+    },
+    "SERVICE_TASK": {
+      "task_id": 0.755824,
+      "service_type": 0.764295,
+      "service_duration": 0.76395,
+      "service_completion": 0.764651
+    },
+    "SERVICE": {
+      "service_id": 0.760953,
+      "service_fee": 0.763267,
+      "service_effectiveness": 0.772543,
+      "customer_evaluation": 0.773446,
+      "housekeeper_performance_evaluation": 0.78661
+    },
+    "ASSOC_CUSTOMER_HOUSEKEEPER": {
+      "assoc_customer_housekeeper_id": 0.426388,
+      "customer_id": 0.426388,
+      "housekeeper_id": 0.426388
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SERVICE_TEAM",
+      "entity_2": "HOUSEKEEPER",
+      "description": "Each service team can have multiple housekeepers, and each housekeeper is part of one service team.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.007168
+    },
+    {
+      "entity_1": "HOUSEKEEPER",
+      "entity_2": "SERVICE_TASK",
+      "description": "Each housekeeper can complete multiple service tasks, and each service task is completed by one housekeeper.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.946958
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SERVICE",
+      "description": "Each customer can have multiple services, and each service is for one customer.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.998365
+    },
+    {
+      "entity_1": "SERVICE_TASK",
+      "entity_2": "SERVICE",
+      "description": "Each service task is part of one service, and each service can have multiple service tasks.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.999965
+    },
+    {
+      "entity_1": "HOUSEKEEPER",
+      "entity_2": "SERVICE",
+      "description": "Each housekeeper can provide multiple services, and each service is provided by one housekeeper.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.554417
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_HOUSEKEEPER",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_HOUSEKEEPER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.426388
+    },
+    {
+      "entity_1": "HOUSEKEEPER",
+      "entity_2": "ASSOC_CUSTOMER_HOUSEKEEPER",
+      "description": "One HOUSEKEEPER can be associated with many ASSOC_CUSTOMER_HOUSEKEEPER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.426388
+    }
+  ],
+  "processing_time": 17.94
+}

@@ -1,0 +1,116 @@
+{
+  "filename": "302.txt",
+  "entity": {
+    "DOCTOR": 0.532205,
+    "PATIENT": 0.622459,
+    "MEDICINE": 0.586909,
+    "INVENTORY": 0.447791,
+    "DEPARTMENT": 0.461153,
+    "MEDICATION_RECORD": 0.512622,
+    "CONSULTATION": 0.622459
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor id": 0.544224,
+      "gender": 0.536521,
+      "telephone number": 0.552818,
+      "date of birth": 0.540514,
+      "age": 0.536181,
+      "department id": 0.551321,
+      "level": 0.546972
+    },
+    "PATIENT": {
+      "patient id": 0.549354,
+      "gender": 0.540251,
+      "date of birth": 0.538106,
+      "age": 0.534523,
+      "phone": 0.542715,
+      "address": 0.550813,
+      "emergency contact number": 0.546395
+    },
+    "MEDICINE": {
+      "medicine id": 0.551846,
+      "function": 0.540437,
+      "unit price": 0.539821
+    },
+    "INVENTORY": {
+      "inventory id": 0.522392,
+      "medicine id": 0.553452,
+      "quantity": 0.528888
+    },
+    "DEPARTMENT": {
+      "department id": 0.535573,
+      "department name": 0.52896
+    },
+    "MEDICATION_RECORD": {
+      "medication record id": 0.561875,
+      "patient id": 0.566534,
+      "medicine id": 0.562648,
+      "dosage": 0.559249,
+      "frequency": 0.558766,
+      "precaution": 0.552827,
+      "prescription time": 0.552148,
+      "addition": 0.561017
+    },
+    "CONSULTATION": {
+      "consultation id": 0.547121,
+      "patient id": 0.554539,
+      "doctor id": 0.553111,
+      "consultation time": 0.536724,
+      "diagnosis": 0.541716,
+      "result": 0.541491,
+      "treatment recommendation": 0.541605
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DOCTOR",
+      "description": "Each doctor is affiliated with one department, while a department can have many doctors.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005254
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "INVENTORY",
+      "description": "Each inventory record stores quantity for a specific medicine; a medicine can have multiple inventory records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003017
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RECORD",
+      "description": "A patient can have many medication records, each record belongs to one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997158
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RECORD",
+      "description": "A medicine can appear in many medication records, each record references one medicine.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.916285
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "description": "A patient can have many consultations, each consultation is for one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994093
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "description": "A doctor can conduct many consultations, each consultation involves one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.346724
+    }
+  ],
+  "processing_time": 3.65
+}

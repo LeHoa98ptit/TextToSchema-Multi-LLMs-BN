@@ -1,0 +1,165 @@
+{
+  "filename": "402.txt",
+  "entity": {
+    "DOCTOR": 0.501325,
+    "DEPARTMENT": 0.622459,
+    "PATIENT": 0.495675,
+    "DIAGNOSIS_TREATMENT": 0.568467,
+    "WARD": 0.622459,
+    "REGISTRATION_CATEGORY": 0.533724,
+    "DRUG": 0.622459,
+    "DRUG_LIST": 0.524805,
+    "PRESCRIPTION": 0.512098
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor_id": 0.538718,
+      "first_name": 0.544909,
+      "last_name": 0.542708,
+      "gender": 0.537605,
+      "title": 0.539133,
+      "date_of_birth": 0.533487,
+      "employment_date": 0.534818,
+      "work_permit_number": 0.53864,
+      "department_id": 0.54616
+    },
+    "DEPARTMENT": {
+      "department_id": 0.533862,
+      "department_number": 0.537292,
+      "department_name": 0.539242,
+      "personnel_count": 0.548774,
+      "phone_number": 0.537981,
+      "address": 0.53689
+    },
+    "PATIENT": {
+      "patient_id": 0.542771,
+      "first_name": 0.545379,
+      "last_name": 0.542774,
+      "gender": 0.53858,
+      "date_of_birth": 0.531067,
+      "age": 0.527524,
+      "contact_phone": 0.542025,
+      "contact_email": 0.531368,
+      "address": 0.547349,
+      "registration_date": 0.533355,
+      "ward_id": 0.553666,
+      "category_id": 0.551945,
+      "diagnosis_summary": 0.552852,
+      "consultation_date": 0.533741
+    },
+    "DIAGNOSIS_TREATMENT": {
+      "case_number": 0.541177,
+      "diagnosis_date": 0.524141,
+      "diagnosis_detail": 0.544954,
+      "treatment_detail": 0.544222,
+      "doctor_id": 0.541441,
+      "patient_id": 0.541612
+    },
+    "WARD": {
+      "ward_id": 0.535037,
+      "ward_number": 0.542206,
+      "total_beds": 0.544007,
+      "occupied_beds": 0.540936,
+      "ward_level": 0.540999,
+      "department_id": 0.54739
+    },
+    "REGISTRATION_CATEGORY": {
+      "category_id": 0.520263,
+      "category_code": 0.529019,
+      "category_description": 0.53875
+    },
+    "DRUG": {
+      "drug_id": 0.541252,
+      "drug_name": 0.538082,
+      "quantity_in_stock": 0.535764,
+      "unit_price": 0.538112,
+      "barcode": 0.54086,
+      "list_id": 0.554233
+    },
+    "DRUG_LIST": {
+      "list_id": 0.555132,
+      "list_number": 0.559196,
+      "list_name": 0.555294,
+      "creation_date": 0.542868
+    },
+    "PRESCRIPTION": {
+      "prescription_id": 0.534326,
+      "case_number": 0.544542,
+      "drug_id": 0.543334,
+      "dosage": 0.531961,
+      "frequency": 0.531927,
+      "duration": 0.523409,
+      "prescription_date": 0.526754
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each doctor belongs to one department; a department employs many doctors",
+      "probability": 0.005535
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WARD",
+      "cardinality": "1:N",
+      "description": "A department manages multiple wards",
+      "probability": 0.868037
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "WARD",
+      "cardinality": "N:1",
+      "description": "Each patient is admitted to one ward; a ward hosts many patients",
+      "probability": 6.6e-05
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "REGISTRATION_CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each patient registers under a single registration category",
+      "probability": 0.01484
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple diagnosis/treatment cases",
+      "probability": 0.999338
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "description": "A doctor can create many diagnosis/treatment records",
+      "probability": 0.96805
+    },
+    {
+      "entity_1": "DIAGNOSIS_TREATMENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "Each diagnosis/treatment case may generate many prescriptions",
+      "probability": 0.138863
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A drug can appear in many prescriptions",
+      "probability": 0.01017
+    },
+    {
+      "entity_1": "DRUG_LIST",
+      "entity_2": "DRUG",
+      "cardinality": "1:N",
+      "description": "A drug list groups multiple drugs",
+      "probability": 0.999149
+    }
+  ],
+  "processing_time": 22.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit foreign‑key attributes (department_id in DOCTOR, ward_id and category_id in PATIENT, doctor_id and patient_id in DIAGNOSIS_TREATMENT, department_id in WARD, list_id in DRUG) to enforce relationships. Standardised date attribute names (date_of_birth, diagnosis_date, prescription_date, registration_date). Included missing domain details: department_number, patient address, registration_date, and prescription_date. Clarified many‑to‑many drug usage via the PRESCRIPTION associative entity. Ensured all eight core entities and their essential relationships are represented with clear cardinalities."
+  }
+}

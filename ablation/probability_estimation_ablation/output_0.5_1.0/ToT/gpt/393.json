@@ -1,0 +1,176 @@
+{
+  "filename": "393.txt",
+  "entity": {
+    "PATIENT": 0.817574,
+    "REGISTRATION": 0.817574,
+    "REGISTRATION_CATEGORY": 0.755044,
+    "DIAGNOSIS": 0.790543,
+    "TREATMENT": 0.817574,
+    "WARD": 0.817574,
+    "BED": 0.703183,
+    "PATIENT_WARD_ASSIGNMENT": 0.744445,
+    "DRUG": 0.817574,
+    "PRESCRIPTION": 0.740468,
+    "PRESCRIPTION_DETAIL": 0.742232
+  },
+  "attribute": {
+    "PATIENT": {
+      "patient_id": 0.761266,
+      "first_name": 0.764214,
+      "last_name": 0.760527,
+      "gender": 0.761932,
+      "date_of_birth": 0.752754,
+      "phone": 0.759366,
+      "email": 0.755866,
+      "address": 0.763821
+    },
+    "REGISTRATION": {
+      "registration_id": 0.738074,
+      "registration_date": 0.732357,
+      "patient_id": 0.759104,
+      "category_id": 0.744725,
+      "registration_type": 0.746965,
+      "payer_name": 0.736095,
+      "payer_type": 0.739222,
+      "insurance_number": 0.743809
+    },
+    "REGISTRATION_CATEGORY": {
+      "category_id": 0.743181,
+      "name": 0.753002,
+      "description": 0.762619,
+      "fee": 0.737903
+    },
+    "DIAGNOSIS": {
+      "diagnosis_id": 0.754309,
+      "patient_id": 0.761971,
+      "diagnosis_date": 0.747028,
+      "diagnosis_code": 0.756428,
+      "description": 0.756906
+    },
+    "TREATMENT": {
+      "treatment_id": 0.753416,
+      "diagnosis_id": 0.758092,
+      "treatment_date": 0.744927,
+      "notes": 0.753337
+    },
+    "WARD": {
+      "ward_id": 0.751218,
+      "name": 0.752457,
+      "floor": 0.754763,
+      "capacity": 0.754232
+    },
+    "BED": {
+      "bed_id": 0.740418,
+      "ward_id": 0.750544,
+      "bed_number": 0.746453,
+      "status": 0.749676
+    },
+    "PATIENT_WARD_ASSIGNMENT": {
+      "assignment_id": 0.76901,
+      "patient_id": 0.77141,
+      "bed_id": 0.77313,
+      "admission_date": 0.762878,
+      "discharge_date": 0.759846,
+      "status": 0.773691
+    },
+    "DRUG": {
+      "drug_id": 0.755879,
+      "name": 0.755588,
+      "generic_name": 0.749964,
+      "dosage_form": 0.758108,
+      "strength": 0.743371,
+      "price": 0.744533,
+      "stock_quantity": 0.756101
+    },
+    "PRESCRIPTION": {
+      "prescription_id": 0.750645,
+      "patient_id": 0.760156,
+      "prescription_date": 0.746754
+    },
+    "PRESCRIPTION_DETAIL": {
+      "prescription_detail_id": 0.762988,
+      "prescription_id": 0.759933,
+      "drug_id": 0.765691,
+      "dosage": 0.759531,
+      "frequency": 0.764187,
+      "duration": 0.759059
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A patient may have multiple registrations over time",
+      "probability": 0.817494
+    },
+    {
+      "entity_1": "REGISTRATION_CATEGORY",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "Each registration belongs to one category",
+      "probability": 0.999189
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS",
+      "cardinality": "1:N",
+      "description": "A patient can receive many diagnoses",
+      "probability": 0.961551
+    },
+    {
+      "entity_1": "DIAGNOSIS",
+      "entity_2": "TREATMENT",
+      "cardinality": "1:N",
+      "description": "Each diagnosis may have multiple treatment records",
+      "probability": 0.983216
+    },
+    {
+      "entity_1": "WARD",
+      "entity_2": "BED",
+      "cardinality": "1:N",
+      "description": "A ward contains many beds",
+      "probability": 0.001698
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PATIENT_WARD_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A patient can be assigned to many beds over different stays",
+      "probability": 0.361118
+    },
+    {
+      "entity_1": "BED",
+      "entity_2": "PATIENT_WARD_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A bed can host many assignments over time",
+      "probability": 0.076396
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple prescriptions",
+      "probability": 0.027441
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PRESCRIPTION_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each prescription can contain many drug line items",
+      "probability": 0.706486
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "PRESCRIPTION_DETAIL",
+      "cardinality": "1:N",
+      "description": "A drug can appear in many prescription details",
+      "probability": 0.883285
+    }
+  ],
+  "processing_time": 30.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added payer information (payer_name, payer_type, insurance_number) to REGISTRATION to support insurance/payment tracking. Introduced a 'status' attribute in PATIENT_WARD_ASSIGNMENT for quick identification of current admissions. Clarified uniqueness by enforcing a UNIQUE constraint on (patient_id, registration_date) in REGISTRATION (not shown in attributes). Recommended a composite key (prescription_id, drug_id) in PRESCRIPTION_DETAIL to prevent duplicate drug lines per prescription. These changes enhance completeness, accuracy, and real‑world usability while preserving the robust structure of candidate_2."
+  }
+}

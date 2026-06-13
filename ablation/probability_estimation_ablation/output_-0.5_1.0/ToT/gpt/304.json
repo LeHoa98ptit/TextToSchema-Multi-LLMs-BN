@@ -1,0 +1,124 @@
+{
+  "filename": "304.txt",
+  "entity": {
+    "ROLE": 0.622459,
+    "PERMISSION": 0.622459,
+    "ROLE_PERMISSION": 0.602071,
+    "ROLE_ATTRIBUTE": 0.532604,
+    "SYSTEM_DATUM": 0.5028,
+    "AUDIT_LOG": 0.423383
+  },
+  "attribute": {
+    "ROLE": {
+      "role_id": 0.542819,
+      "name": 0.53929,
+      "description": 0.557893,
+      "is_active": 0.538417,
+      "created_at": 0.535306,
+      "updated_at": 0.540184
+    },
+    "PERMISSION": {
+      "permission_id": 0.53752,
+      "code": 0.542028,
+      "description": 0.560355,
+      "category": 0.554827,
+      "created_at": 0.527079,
+      "updated_at": 0.534837
+    },
+    "ROLE_PERMISSION": {
+      "role_permission_id": 0.54874,
+      "role_id": 0.54922,
+      "permission_id": 0.548121,
+      "created_at": 0.540878,
+      "updated_at": 0.54681
+    },
+    "ROLE_ATTRIBUTE": {
+      "attribute_id": 0.539255,
+      "role_id": 0.541525,
+      "name": 0.54861,
+      "value": 0.553281,
+      "created_at": 0.53486,
+      "updated_at": 0.539209
+    },
+    "SYSTEM_DATUM": {
+      "datum_id": 0.523498,
+      "name": 0.531788,
+      "value": 0.524465,
+      "description": 0.542325,
+      "created_at": 0.521636,
+      "updated_at": 0.521874
+    },
+    "AUDIT_LOG": {
+      "audit_id": 0.515981,
+      "entity_name": 0.51592,
+      "entity_id": 0.514997,
+      "action_type": 0.521715,
+      "performed_by": 0.514941,
+      "performed_at": 0.508317,
+      "details": 0.530444
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can be linked to multiple role‑permission assignments",
+      "probability": 0.990566
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be linked to multiple role‑permission assignments",
+      "probability": 0.998667
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_ATTRIBUTE",
+      "cardinality": "1:N",
+      "description": "A role can have multiple custom attributes",
+      "probability": 0.999974
+    },
+    {
+      "entity_1": "ROLE_PERMISSION",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Changes to role‑permission links are recorded in audit logs",
+      "probability": 2.2e-05
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Audits of role creation, updates and deletions",
+      "probability": 9.6e-05
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Audits of permission creation, updates and deletions",
+      "probability": 0.000198
+    },
+    {
+      "entity_1": "ROLE_ATTRIBUTE",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Audits of role attribute changes",
+      "probability": 1.5e-05
+    },
+    {
+      "entity_1": "SYSTEM_DATUM",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Audits of system datum modifications",
+      "probability": 4.1e-05
+    }
+  ],
+  "processing_time": 27.56,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Simplified ROLE_PERMISSION by removing redundant audit‑specific columns (granted_by, is_revoked, revoked_at) and relying on the central AUDIT_LOG for change tracking. Unified attribute naming across ROLE_ATTRIBUTE and SYSTEM_DATUM (using 'name' and 'value'). Added explicit audit relationships for ROLE, PERMISSION, and ROLE_ATTRIBUTE to ensure uniform traceability. Retained timestamps and many‑to‑many modeling while removing unnecessary complexity, improving efficiency and completeness."
+  }
+}

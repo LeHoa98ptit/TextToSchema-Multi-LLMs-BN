@@ -1,0 +1,72 @@
+{
+  "filename": "327.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "RESOURCE": 0.622459,
+    "ADDRESS": 0.622459,
+    "ASSOC_ORDER_RESOURCE": 0.487462
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "phone_number": 0.534012,
+      "customer_id": 0.533802
+    },
+    "ORDER": {
+      "order_id": 0.518477,
+      "currency": 0.535327,
+      "start_time": 0.521384,
+      "order_type": 0.522467
+    },
+    "RESOURCE": {
+      "resource_id": 0.503708,
+      "resource_type": 0.511096
+    },
+    "ADDRESS": {
+      "address_id": 0.523665,
+      "country": 0.536538,
+      "city": 0.539618,
+      "postal_code": 0.534454,
+      "district": 0.538964,
+      "street_address": 0.530968
+    },
+    "ASSOC_ORDER_RESOURCE": {
+      "assoc_order_resource_id": 0.487462,
+      "order_id": 0.487462,
+      "resource_id": 0.487462
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each customer can place multiple orders, and each order is placed by exactly one customer.",
+      "probability": 0.964193
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "Each customer can have multiple addresses, and each address is associated with exactly one customer.",
+      "probability": 0.371177
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_RESOURCE",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_RESOURCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.487462
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "ASSOC_ORDER_RESOURCE",
+      "description": "One RESOURCE can be associated with many ASSOC_ORDER_RESOURCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.487462
+    }
+  ],
+  "processing_time": 11.16
+}

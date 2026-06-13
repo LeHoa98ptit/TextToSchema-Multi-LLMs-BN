@@ -1,0 +1,120 @@
+{
+  "entity": [
+    "SUPERMARKET",
+    "PRODUCT",
+    "DISTRIBUTION_DEPARTMENT",
+    "PURCHASE_ORDER",
+    "PAYMENT_ORDER",
+    "SUPPLY_REQUEST",
+    "DISTRIBUTION_NOTIFICATION",
+    "INVENTORY",
+    "SUPPLIER",
+    "STOCKOUT_NOTIFICATION"
+  ],
+  "attribute": {
+    "SUPERMARKET": [
+      "supermarket_id",
+      "name",
+      "address",
+      "manager_name",
+      "phone"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "description",
+      "unit_price"
+    ],
+    "DISTRIBUTION_DEPARTMENT": [
+      "department_id",
+      "name",
+      "address",
+      "manager_name",
+      "phone"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_order_id",
+      "purchase_date",
+      "quantity",
+      "unit_price",
+      "supplier_id",
+      "product_id"
+    ],
+    "PAYMENT_ORDER": [
+      "payment_order_id",
+      "payment_date",
+      "payment_status",
+      "amount",
+      "purchase_order_id"
+    ],
+    "SUPPLY_REQUEST": [
+      "request_id",
+      "request_time",
+      "quantity",
+      "supermarket_id",
+      "product_id"
+    ],
+    "DISTRIBUTION_NOTIFICATION": [
+      "notification_id",
+      "distribution_time",
+      "quantity",
+      "request_id",
+      "product_id",
+      "department_id"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "quantity",
+      "storage_location",
+      "supermarket_id",
+      "product_id"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "address",
+      "phone"
+    ],
+    "STOCKOUT_NOTIFICATION": [
+      "stockout_id",
+      "notification_date",
+      "required_quantity",
+      "product_id",
+      "supermarket_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISTRIBUTION_NOTIFICATION",
+      "entity_2": "DISTRIBUTION_DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT_ORDER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.3902,
+  "ilp_runtime": 0.069
+}

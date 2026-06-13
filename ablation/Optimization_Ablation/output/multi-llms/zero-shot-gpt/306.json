@@ -1,0 +1,162 @@
+{
+  "entity": [
+    "TASK",
+    "SCHEDULER",
+    "TRIGGER",
+    "LOCK",
+    "SIMPLE_TRIGGER",
+    "CRON_TRIGGER",
+    "COMPLEX_TRIGGER",
+    "BLOB_TRIGGER",
+    "TASK_TRIGGER",
+    "SCHEDULER_TASK",
+    "SCHEDULER_LOCK",
+    "TASK_DEPENDENCY"
+  ],
+  "attribute": {
+    "TASK": [
+      "task id",
+      "description",
+      "class persistence flag",
+      "concurrent execution flag",
+      "depend task id"
+    ],
+    "SCHEDULER": [
+      "scheduler id",
+      "status",
+      "configuration",
+      "log"
+    ],
+    "TRIGGER": [
+      "trigger id",
+      "trigger type"
+    ],
+    "LOCK": [
+      "lock id",
+      "lock status",
+      "lock description"
+    ],
+    "SIMPLE_TRIGGER": [
+      "trigger id",
+      "repeat count",
+      "repeat interval",
+      "trigger count"
+    ],
+    "CRON_TRIGGER": [
+      "trigger id",
+      "cron expression",
+      "timezone"
+    ],
+    "COMPLEX_TRIGGER": [
+      "trigger id",
+      "attr string",
+      "attr integer",
+      "attr long",
+      "attr decimal",
+      "attr boolean"
+    ],
+    "BLOB_TRIGGER": [
+      "trigger id",
+      "binary data"
+    ],
+    "TASK_TRIGGER": [
+      "task id",
+      "trigger id",
+      "execution time",
+      "priority",
+      "trigger status",
+      "start time",
+      "end time",
+      "calendar",
+      "fault instruction",
+      "pk",
+      "task_trigger_id",
+      "task_id",
+      "trigger_id"
+    ],
+    "SCHEDULER_TASK": [
+      "scheduler id",
+      "task id",
+      "pk",
+      "scheduler_task_id",
+      "scheduler_id",
+      "task_id"
+    ],
+    "SCHEDULER_LOCK": [
+      "scheduler id",
+      "lock id",
+      "acquisition time",
+      "release time",
+      "pk"
+    ],
+    "TASK_DEPENDENCY": [
+      "task_dependency_id",
+      "task_id",
+      "pk"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCK",
+      "entity_2": "SCHEDULER_LOCK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "SIMPLE_TRIGGER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "CRON_TRIGGER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "COMPLEX_TRIGGER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "BLOB_TRIGGER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_DEPENDENCY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 155.7593,
+  "ilp_runtime": 0.026
+}

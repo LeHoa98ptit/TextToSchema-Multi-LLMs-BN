@@ -1,0 +1,96 @@
+{
+  "filename": "409.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "SHOPPING_CART": 0.573782,
+    "ORDER": 0.622459,
+    "ASSOC_PRODUCT_SHOPPING_CART": 0.255125,
+    "ASSOC_ORDER_PRODUCT": 0.002087
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.50532,
+      "password": 0.528232,
+      "email": 0.528545
+    },
+    "PRODUCT": {
+      "product_id": 0.531498,
+      "price": 0.531681,
+      "inventory_quantity": 0.558085,
+      "description": 0.537946
+    },
+    "SHOPPING_CART": {
+      "cart_id": 0.537812,
+      "user_id": 0.543019,
+      "product_id": 0.545513,
+      "quantity": 0.564325
+    },
+    "ORDER": {
+      "order_id": 0.520086,
+      "user_id": 0.525243,
+      "creation_time": 0.521266,
+      "order_status": 0.523687,
+      "payment_status": 0.532674
+    },
+    "ASSOC_PRODUCT_SHOPPING_CART": {
+      "assoc_product_shopping_cart_id": 0.255125,
+      "product_id": 0.255125,
+      "shopping_cart_id": 0.255125
+    },
+    "ASSOC_ORDER_PRODUCT": {
+      "assoc_order_product_id": 0.002087,
+      "order_id": 0.002087,
+      "product_id": 0.002087
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:N",
+      "description": "Each user can have one or many shopping carts.",
+      "probability": 0.997473
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each user can place one or many orders.",
+      "probability": 0.999083
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_SHOPPING_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.255125
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_PRODUCT_SHOPPING_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.255125
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002087
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002087
+    }
+  ],
+  "processing_time": 11.57
+}

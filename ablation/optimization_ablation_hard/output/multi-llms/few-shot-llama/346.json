@@ -1,0 +1,74 @@
+{
+  "entity": [
+    "EXPENSE",
+    "ACCOUNTING_ACCOUNT",
+    "COMPANY_ACCOUNT",
+    "USER",
+    "EXPENSE_ACCOUNTING_ACCOUNT",
+    "EXPENSE_COMPANY_ACCOUNT"
+  ],
+  "attribute": {
+    "EXPENSE": [
+      "expense id",
+      "description",
+      "amount",
+      "month",
+      "due date",
+      "payment date",
+      "expense status"
+    ],
+    "ACCOUNTING_ACCOUNT": [
+      "accounting account id"
+    ],
+    "COMPANY_ACCOUNT": [
+      "company account id"
+    ],
+    "USER": [
+      "user id"
+    ],
+    "EXPENSE_ACCOUNTING_ACCOUNT": [
+      "expense_accounting_account_id",
+      "expense_id",
+      "accounting_account_id"
+    ],
+    "EXPENSE_COMPANY_ACCOUNT": [
+      "expense_company_account_id",
+      "expense_id",
+      "company_account_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "EXPENSE_ACCOUNTING_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNTING_ACCOUNT",
+      "entity_2": "EXPENSE_ACCOUNTING_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "EXPENSE_COMPANY_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY_ACCOUNT",
+      "entity_2": "EXPENSE_COMPANY_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EXPENSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.6709,
+  "ilp_runtime": 0.084
+}

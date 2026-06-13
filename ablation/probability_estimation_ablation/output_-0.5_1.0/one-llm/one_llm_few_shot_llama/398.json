@@ -1,0 +1,118 @@
+{
+  "filename": "398.txt",
+  "entity": {
+    "MENU": 0.479586,
+    "TABLE": 0.622459,
+    "CUSTOMER": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ORDER": 0.622459,
+    "SERVICE": 0.622459,
+    "ASSOC_MENU_ORDER": 0.350333,
+    "ASSOC_EMPLOYEE_ORDER": 0.000504
+  },
+  "attribute": {
+    "MENU": {
+      "dish": 0.559838,
+      "dish_category": 0.553044,
+      "dish_price": 0.557351
+    },
+    "TABLE": {
+      "table_id": 0.521924,
+      "seat_number": 0.533145
+    },
+    "CUSTOMER": {
+      "customer_id": 0.531129,
+      "customer_gender": 0.544626,
+      "phone_number": 0.52713
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.538316,
+      "employee_age": 0.538261,
+      "employee_gender": 0.545317,
+      "salary": 0.525752
+    },
+    "ORDER": {
+      "order_id": 0.522653,
+      "table_id": 0.531073,
+      "dining_time": 0.559176
+    },
+    "SERVICE": {
+      "service_id": 0.524761,
+      "employee_id": 0.544975,
+      "order_id": 0.534207
+    },
+    "ASSOC_MENU_ORDER": {
+      "assoc_menu_order_id": 0.350333,
+      "menu_id": 0.350333,
+      "order_id": 0.350333
+    },
+    "ASSOC_EMPLOYEE_ORDER": {
+      "assoc_employee_order_id": 0.000504,
+      "employee_id": 0.000504,
+      "order_id": 0.000504
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TABLE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each table can have many orders, and each order is associated with exactly one table.",
+      "probability": 0.661472
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each customer can have many orders, and each order is associated with exactly one customer.",
+      "probability": 0.963626
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "Each employee can provide many services, and each service is provided by exactly one employee.",
+      "probability": 0.998175
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "Each order can have many services, and each service is associated with exactly one order.",
+      "probability": 0.644238
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ASSOC_MENU_ORDER",
+      "description": "One MENU can be associated with many ASSOC_MENU_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.350333
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_MENU_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_MENU_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.350333
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_ORDER",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000504
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_EMPLOYEE_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_EMPLOYEE_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000504
+    }
+  ],
+  "processing_time": 16.87
+}

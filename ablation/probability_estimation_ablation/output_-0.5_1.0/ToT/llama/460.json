@@ -1,0 +1,101 @@
+{
+  "filename": "460.txt",
+  "entity": {
+    "STORE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "SUPPLIER": 0.475569,
+    "PROCUREMENT": 0.476218,
+    "ASSOC_STORE_SUPPLIER": 0.128211
+  },
+  "attribute": {
+    "STORE": {
+      "store_id": 0.530321,
+      "name": 0.539196,
+      "address": 0.535331,
+      "contact_number": 0.526702
+    },
+    "DEPARTMENT": {
+      "department_id": 0.537772,
+      "name": 0.546685,
+      "location": 0.544011,
+      "contact_number": 0.533332
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.546418,
+      "name": 0.549831,
+      "position": 0.556434,
+      "phone_number": 0.54152,
+      "salary": 0.535898
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.529937,
+      "name": 0.528404,
+      "address": 0.534258,
+      "contact_number": 0.526068
+    },
+    "PROCUREMENT": {
+      "procurement_id": 0.536289,
+      "order_date": 0.526021,
+      "total_cost": 0.520655,
+      "store_id": 0.547304,
+      "supplier_id": 0.537462
+    },
+    "ASSOC_STORE_SUPPLIER": {
+      "assoc_store_supplier_id": 0.128211,
+      "store_id": 0.128211,
+      "supplier_id": 0.128211
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STORE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A store can have multiple departments",
+      "probability": 0.998386
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department can have multiple employees",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "ASSOC_STORE_SUPPLIER",
+      "description": "One STORE can be associated with many ASSOC_STORE_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.128211
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_STORE_SUPPLIER",
+      "description": "One SUPPLIER can be associated with many ASSOC_STORE_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.128211
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "PROCUREMENT",
+      "cardinality": "1:N",
+      "description": "A store can have multiple procurements",
+      "probability": 0.330166
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple procurements",
+      "probability": 0.306607
+    }
+  ],
+  "processing_time": 9.21,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, added store_id and supplier_id to PROCUREMENT to simplify the structure and maintain completeness and accuracy."
+  }
+}

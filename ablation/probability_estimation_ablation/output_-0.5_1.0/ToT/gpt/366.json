@@ -1,0 +1,89 @@
+{
+  "filename": "366.txt",
+  "entity": {
+    "ENGINEER": 0.622459,
+    "ENGINEER_STATUS": 0.556606,
+    "MACHINE": 0.622459,
+    "MACHINE_COST_HISTORY": 0.486678,
+    "ENGINEER_MACHINE": 0.594621,
+    "MIGRATION_HISTORY": 0.540387
+  },
+  "attribute": {
+    "ENGINEER": {
+      "engineer_id": 0.542892,
+      "first_name": 0.536676,
+      "last_name": 0.541473,
+      "email": 0.534,
+      "hire_date": 0.536866
+    },
+    "ENGINEER_STATUS": {
+      "status_id": 0.543728,
+      "engineer_id": 0.550622,
+      "status": 0.55139,
+      "effective_date": 0.540521
+    },
+    "MACHINE": {
+      "machine_id": 0.533133,
+      "model": 0.540525,
+      "serial_number": 0.522227,
+      "purchase_date": 0.529372
+    },
+    "MACHINE_COST_HISTORY": {
+      "cost_id": 0.533171,
+      "machine_id": 0.539451,
+      "cost": 0.533119,
+      "effective_date": 0.534766
+    },
+    "ENGINEER_MACHINE": {
+      "assignment_id": 0.548814,
+      "engineer_id": 0.553713,
+      "machine_id": 0.548081,
+      "role": 0.563211,
+      "start_date": 0.540861,
+      "end_date": 0.547774
+    },
+    "MIGRATION_HISTORY": {
+      "migration_id": 0.526147,
+      "migration_date": 0.526041,
+      "source_version": 0.53174,
+      "target_version": 0.533843,
+      "description": 0.54409,
+      "executed_by": 0.523762
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ENGINEER_STATUS",
+      "cardinality": "1:N",
+      "description": "An engineer can have multiple status records over time",
+      "probability": 0.999977
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "MACHINE_COST_HISTORY",
+      "cardinality": "1:N",
+      "description": "A machine can have many cost entries reflecting price changes",
+      "probability": 0.002003
+    },
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "description": "One engineer may be assigned to many machines (historical and current)",
+      "probability": 0.99998
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "description": "One machine may be serviced by many engineers over its lifecycle",
+      "probability": 0.678733
+    }
+  ],
+  "processing_time": 15.44,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested UNIQUE constraint on (engineer_id, machine_id, start_date) in ENGINEER_MACHINE to prevent overlapping assignments. Added a CHECK constraint on ENGINEER_STATUS.status to restrict values to a predefined list (e.g., 'Active', 'Inactive', 'On Leave'). Recommended and documented indexes on foreign‑key columns (engineer_id, machine_id) for performance. Clarified that a NULL end_date in ENGINEER_MACHINE denotes a current assignment. Considered but retained separate audit tables (ENGINEER_STATUS, MACHINE_COST_HISTORY) for clear temporal tracking, noting they could be abstracted to a generic AUDIT_HISTORY if future expansion requires."
+  }
+}

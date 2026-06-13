@@ -1,0 +1,135 @@
+{
+  "filename": "451.txt",
+  "entity": {
+    "INTRUSION_DETECTION_RECORD": 0.525154,
+    "RESPONSE_PLAN": 0.521013,
+    "KNOWLEDGE": 0.622459,
+    "ALARM_INFORMATION": 0.570478,
+    "INTELLIGENT_CONTROL_SYSTEM": 0.491626,
+    "KNOWLEDGE_BASE_MANAGEMENT_SYSTEM": 0.560231,
+    "ASSOC_RESPONSE_PLAN_KNOWLEDGE": 0.293665,
+    "ASSOC_KNOWLEDGE_RESPONSE_PLAN": 0.293665
+  },
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": {
+      "record_id": 0.544126,
+      "detection_time": 0.553155,
+      "source_ip_address": 0.540857,
+      "destination_ip_address": 0.539904,
+      "source_port_number": 0.541919,
+      "destination_port_number": 0.542069,
+      "attack_type": 0.555946,
+      "threat_level": 0.556876
+    },
+    "RESPONSE_PLAN": {
+      "plan_id": 0.513579,
+      "plan_generation_time": 0.512585,
+      "plan_type": 0.514335,
+      "detailed_plan_content": 0.513254,
+      "execution_status": 0.518584
+    },
+    "KNOWLEDGE": {
+      "knowledge_id": 0.529224,
+      "knowledge_category": 0.531795,
+      "knowledge_description": 0.535545,
+      "knowledge_source": 0.533266,
+      "knowledge_reliability": 0.530849
+    },
+    "ALARM_INFORMATION": {
+      "alarm_id": 0.54386,
+      "alarm_time": 0.542112,
+      "alarm_level": 0.549035,
+      "alarm_content": 0.547051,
+      "processing_status": 0.556003
+    },
+    "INTELLIGENT_CONTROL_SYSTEM": {
+      "system_id": 0.542029,
+      "system_type": 0.543234,
+      "control_algorithm": 0.536193,
+      "optimization_technique": 0.53607
+    },
+    "KNOWLEDGE_BASE_MANAGEMENT_SYSTEM": {
+      "system_id": 0.55154,
+      "management_type": 0.552367,
+      "knowledge_update_frequency": 0.549306,
+      "knowledge_validation_process": 0.542106
+    },
+    "ASSOC_RESPONSE_PLAN_KNOWLEDGE": {
+      "assoc_response_plan_knowledge_id": 0.293665,
+      "response_plan_id": 0.293665,
+      "knowledge_id": 0.293665
+    },
+    "ASSOC_KNOWLEDGE_RESPONSE_PLAN": {
+      "assoc_knowledge_response_plan_id": 0.293665,
+      "knowledge_id": 0.293665,
+      "response_plan_id": 0.293665
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "description": "Intrusion detection record triggers response plan",
+      "probability": 0.466986
+    },
+    {
+      "entity_1": "RESPONSE_PLAN",
+      "entity_2": "ASSOC_RESPONSE_PLAN_KNOWLEDGE",
+      "description": "One RESPONSE_PLAN can be associated with many ASSOC_RESPONSE_PLAN_KNOWLEDGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.293665
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "ASSOC_RESPONSE_PLAN_KNOWLEDGE",
+      "description": "One KNOWLEDGE can be associated with many ASSOC_RESPONSE_PLAN_KNOWLEDGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.293665
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM_INFORMATION",
+      "cardinality": "1:N",
+      "description": "Intrusion detection record triggers alarm information",
+      "probability": 0.999811
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "ASSOC_KNOWLEDGE_RESPONSE_PLAN",
+      "description": "One KNOWLEDGE can be associated with many ASSOC_KNOWLEDGE_RESPONSE_PLAN.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.293665
+    },
+    {
+      "entity_1": "RESPONSE_PLAN",
+      "entity_2": "ASSOC_KNOWLEDGE_RESPONSE_PLAN",
+      "description": "One RESPONSE_PLAN can be associated with many ASSOC_KNOWLEDGE_RESPONSE_PLAN.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.293665
+    },
+    {
+      "entity_1": "INTELLIGENT_CONTROL_SYSTEM",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "description": "Intelligent control system generates response plan",
+      "probability": 0.844265
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE_MANAGEMENT_SYSTEM",
+      "entity_2": "KNOWLEDGE",
+      "cardinality": "1:N",
+      "description": "Knowledge base management system maintains knowledge",
+      "probability": 0.08371
+    }
+  ],
+  "processing_time": 17.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added entities for intelligent control system and knowledge base management system, and established relationships between these entities and existing entities to provide a more comprehensive view of the system."
+  }
+}

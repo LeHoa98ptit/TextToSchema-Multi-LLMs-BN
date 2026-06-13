@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "LOG",
+    "OPERATOR",
+    "ACCOUNT",
+    "ROLE",
+    "PERMISSION",
+    "LOG_CATEGORY",
+    "AUDIT_EVENT",
+    "ASSOC_ROLE_PERMISSION"
+  ],
+  "attribute": {
+    "LOG": [
+      "log_id",
+      "level",
+      "content",
+      "current_status",
+      "category_id",
+      "created_by_account_id",
+      "created_at",
+      "updated_at",
+      "deleted_at"
+    ],
+    "OPERATOR": [
+      "operator_id",
+      "full_name",
+      "contact_info"
+    ],
+    "ACCOUNT": [
+      "account_id",
+      "username",
+      "password_hash",
+      "operator_id"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name",
+      "description"
+    ],
+    "LOG_CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "AUDIT_EVENT": [
+      "audit_id",
+      "log_id",
+      "operator_id",
+      "event_type",
+      "event_timestamp",
+      "details"
+    ],
+    "ASSOC_ROLE_PERMISSION": [
+      "assoc_role_permission_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "LOG_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.4081,
+  "ilp_runtime": 0.135
+}

@@ -1,0 +1,66 @@
+{
+  "entity": [
+    "PRODUCT",
+    "SUPPLIER",
+    "SUPPLY_REQUEST",
+    "NOTIFICATION",
+    "PROCUREMENT_LIST"
+  ],
+  "attribute": {
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "inventory_quantity",
+      "update_date"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "address",
+      "phone",
+      "email"
+    ],
+    "SUPPLY_REQUEST": [
+      "request_id",
+      "supermarket_id",
+      "product_id",
+      "request_quantity",
+      "request_date"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "request_id",
+      "notification_type",
+      "notification_date"
+    ],
+    "PROCUREMENT_LIST": [
+      "list_id",
+      "product_id",
+      "supplier_id",
+      "purchase_quantity",
+      "purchase_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT_LIST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT_LIST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 9.9347,
+  "ilp_runtime": 0.039
+}

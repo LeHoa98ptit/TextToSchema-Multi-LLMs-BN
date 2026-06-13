@@ -1,0 +1,193 @@
+{
+  "filename": "388.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "JOB_ASSIGNMENT": 0.729739,
+    "PERFORMANCE_APPRAISAL": 0.679266,
+    "SALARY": 0.717014,
+    "SALARY_CALCULATION": 0.686025,
+    "PROJECT": 0.817574,
+    "PROJECT_PROGRESS": 0.705764,
+    "PROJECT_SUPPLIER": 0.760623,
+    "SUPPLIER": 0.817574,
+    "ATTENDANCE": 0.69589
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.759352,
+      "first_name": 0.756882,
+      "last_name": 0.755649,
+      "date_of_birth": 0.761024,
+      "hire_date": 0.75942,
+      "position": 0.76679,
+      "salary_number": 0.760585,
+      "creation_time": 0.767314,
+      "update_time": 0.758678
+    },
+    "JOB_ASSIGNMENT": {
+      "assignment_id": 0.753358,
+      "employee_id": 0.7609,
+      "project_id": 0.758138,
+      "role": 0.764391,
+      "start_date": 0.754766,
+      "end_date": 0.755963,
+      "allocation_percent": 0.762569,
+      "creation_time": 0.762892,
+      "update_time": 0.753446
+    },
+    "PERFORMANCE_APPRAISAL": {
+      "appraisal_id": 0.74398,
+      "employee_id": 0.755582,
+      "period_start": 0.753037,
+      "period_end": 0.753099,
+      "rating": 0.744125,
+      "comments": 0.743077,
+      "creation_time": 0.752339,
+      "update_time": 0.743794
+    },
+    "SALARY": {
+      "salary_id": 0.751992,
+      "employee_id": 0.759845,
+      "calculation_id": 0.754781,
+      "pay_date": 0.754917,
+      "gross_amount": 0.748645,
+      "net_amount": 0.752977,
+      "creation_time": 0.764214,
+      "update_time": 0.756802
+    },
+    "SALARY_CALCULATION": {
+      "calculation_id": 0.755437,
+      "base_salary": 0.756258,
+      "bonus": 0.748075,
+      "deductions": 0.753854,
+      "taxes": 0.747751,
+      "creation_time": 0.76436,
+      "update_time": 0.758195
+    },
+    "PROJECT": {
+      "project_id": 0.746345,
+      "project_name": 0.748533,
+      "description": 0.763663,
+      "budget": 0.762871,
+      "start_date": 0.748733,
+      "end_date": 0.751549,
+      "creation_time": 0.755856,
+      "update_time": 0.747946
+    },
+    "PROJECT_PROGRESS": {
+      "progress_id": 0.749959,
+      "project_id": 0.751288,
+      "status": 0.761387,
+      "percent_complete": 0.760011,
+      "last_update": 0.748846,
+      "creation_time": 0.760418,
+      "update_time": 0.752794
+    },
+    "PROJECT_SUPPLIER": {
+      "proj_sup_id": 0.759645,
+      "project_id": 0.761412,
+      "supplier_id": 0.761571,
+      "supply_type": 0.767136,
+      "contract_value": 0.758514,
+      "creation_time": 0.7686,
+      "update_time": 0.760711
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.749295,
+      "supplier_name": 0.751694,
+      "address": 0.744839,
+      "contact_person": 0.744722,
+      "phone": 0.740714,
+      "email": 0.746024,
+      "parent_supplier_id": 0.748618,
+      "creation_time": 0.758142,
+      "update_time": 0.749114
+    },
+    "ATTENDANCE": {
+      "attendance_id": 0.751794,
+      "employee_id": 0.76045,
+      "clock_in": 0.746927,
+      "clock_out": 0.743346,
+      "attendance_date": 0.756035,
+      "creation_time": 0.759514,
+      "update_time": 0.752704
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "JOB_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An employee can have many job assignments",
+      "probability": 0.99896
+    },
+    {
+      "entity_1": "JOB_ASSIGNMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "description": "Each job assignment is linked to one project",
+      "probability": 0.593199
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PERFORMANCE_APPRAISAL",
+      "cardinality": "1:N",
+      "description": "An employee can receive multiple performance appraisals",
+      "probability": 0.038962
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY",
+      "cardinality": "1:N",
+      "description": "An employee can have many salary payments",
+      "probability": 0.937392
+    },
+    {
+      "entity_1": "SALARY",
+      "entity_2": "SALARY_CALCULATION",
+      "cardinality": "1:1",
+      "description": "Each salary payment is based on a single salary calculation record",
+      "probability": 0.999373
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_PROGRESS",
+      "cardinality": "1:1",
+      "description": "Each project has one current progress record (history can be kept by adding rows over time)",
+      "probability": 0.999889
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_SUPPLIER",
+      "cardinality": "1:N",
+      "description": "A project can involve many supplier contracts",
+      "probability": 0.995742
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROJECT_SUPPLIER",
+      "cardinality": "1:N",
+      "description": "A supplier can supply many projects",
+      "probability": 0.992142
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "An employee can generate many attendance records",
+      "probability": 0.998051
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER",
+      "cardinality": "1:N",
+      "description": "A supplier can be the parent of multiple child suppliers (hierarchical relationship)",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 987.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant PROJECT_EMPLOYEE entity and consolidated employee‑project linkage into JOB_ASSIGNMENT. Simplified supplier hierarchy by adding a self‑referencing parent_supplier_id attribute to SUPPLIER and eliminating the separate SUPPLIER_RELATIONSHIP table. Kept PROJECT_PROGRESS as a separate table to allow historical snapshots while still maintaining a 1:1 current progress link. Ensured consistent naming of foreign keys and date attributes, and clarified cascade relationships in documentation."
+  }
+}

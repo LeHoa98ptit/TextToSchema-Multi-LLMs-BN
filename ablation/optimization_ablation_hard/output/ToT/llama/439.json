@@ -1,0 +1,67 @@
+{
+  "entity": [
+    "USER",
+    "ORDER",
+    "RECYCLING_REQUEST",
+    "PAYMENT",
+    "RATING"
+  ],
+  "attribute": {
+    "USER": [
+      "name",
+      "phone_number",
+      "wechat_id"
+    ],
+    "ORDER": [
+      "order_id",
+      "status",
+      "total_cost",
+      "payment_method"
+    ],
+    "RECYCLING_REQUEST": [
+      "request_id",
+      "location",
+      "time",
+      "waste_item_type",
+      "quantity"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "amount",
+      "payment_time"
+    ],
+    "RATING": [
+      "rating_id",
+      "rating_value",
+      "comment"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.9107,
+  "ilp_runtime": 0.021
+}

@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "MEDICAL_INSTITUTION",
+    "DEPARTMENT",
+    "MEDICAL_WASTE",
+    "PERSONNEL",
+    "VEHICLE",
+    "INBOUND_PROCESS",
+    "OUTBOUND_PROCESS",
+    "TEMPORARY_STORAGE"
+  ],
+  "attribute": {
+    "MEDICAL_INSTITUTION": [
+      "name",
+      "address",
+      "contact",
+      "institution_id"
+    ],
+    "DEPARTMENT": [
+      "description",
+      "department_id",
+      "institution_id"
+    ],
+    "MEDICAL_WASTE": [
+      "type",
+      "weight",
+      "generation_time",
+      "collection_time",
+      "status",
+      "traceability_code",
+      "waste_category",
+      "disposal_method"
+    ],
+    "PERSONNEL": [
+      "role",
+      "contact",
+      "personnel_id",
+      "institution_id"
+    ],
+    "VEHICLE": [
+      "license_plate",
+      "model",
+      "capacity",
+      "vehicle_id",
+      "institution_id"
+    ],
+    "INBOUND_PROCESS": [
+      "batch_number",
+      "expect_quantity",
+      "actual_quantity",
+      "expect_weight",
+      "actual_weight",
+      "inbound_time",
+      "collector_id",
+      "confirmer_id"
+    ],
+    "OUTBOUND_PROCESS": [
+      "batch_number",
+      "outbound_quantity",
+      "outbound_weight",
+      "outbound_time",
+      "transporter_id",
+      "confirmer_id",
+      "start_time",
+      "end_time"
+    ],
+    "TEMPORARY_STORAGE": [
+      "storage_time",
+      "storage_location",
+      "storage_capacity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INBOUND_PROCESS",
+      "entity_2": "OUTBOUND_PROCESS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.6989,
+  "ilp_runtime": 0.054
+}

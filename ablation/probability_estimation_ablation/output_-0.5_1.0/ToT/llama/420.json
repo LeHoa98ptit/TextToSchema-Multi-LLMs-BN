@@ -1,0 +1,222 @@
+{
+  "filename": "420.txt",
+  "entity": {
+    "USER": 0.622459,
+    "NEWS": 0.489751,
+    "VIDEO": 0.622459,
+    "INSTRUCTOR": 0.472129,
+    "ORDER": 0.622459,
+    "COLLECTION": 0.485854,
+    "LEARN_RECORD": 0.532405,
+    "NEWS_CATEGORY": 0.529366,
+    "VIDEO_CATEGORY": 0.511173,
+    "PAYMENT": 0.622459,
+    "INSTRUCTOR_QUALIFICATION": 0.449176,
+    "VIDEO_CATEGORY_DETAIL": 0.487403,
+    "ASSOC_NEWS_NEWS_CATEGORY": 0.9952,
+    "ASSOC_VIDEO_VIDEO_CATEGORY": 0.989874
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.505262,
+      "password": 0.511966,
+      "phone_number": 0.501418,
+      "wechat_openid": 0.498199,
+      "qq_number": 0.515987,
+      "email": 0.509302,
+      "registration_time": 0.512234,
+      "account_status": 0.517747
+    },
+    "NEWS": {
+      "title": 0.512902,
+      "content": 0.519414,
+      "publication_time": 0.513996,
+      "read_count": 0.520379,
+      "news_status": 0.511095
+    },
+    "VIDEO": {
+      "title": 0.537378,
+      "description": 0.541405,
+      "cover_image": 0.529633,
+      "duration": 0.533631,
+      "directory_structure": 0.543442,
+      "course_count": 0.567224,
+      "total_duration": 0.537278,
+      "price": 0.532511,
+      "video_status": 0.541147
+    },
+    "INSTRUCTOR": {
+      "avatar": 0.529488,
+      "title": 0.545657,
+      "introduction": 0.542956,
+      "year": 0.536723,
+      "teaching_experience": 0.547518,
+      "professional_field": 0.54332,
+      "teaching_achievement": 0.541852
+    },
+    "ORDER": {
+      "order_time": 0.506604,
+      "payment_method": 0.51001,
+      "payment_status": 0.516485,
+      "payment_time": 0.511826,
+      "order_status": 0.515621
+    },
+    "COLLECTION": {
+      "collection_time": 0.520879,
+      "collection_status": 0.522652,
+      "validity": 0.523265,
+      "order": 0.52847
+    },
+    "LEARN_RECORD": {
+      "purchase_time": 0.542903,
+      "expiration_time": 0.533988,
+      "learn_progress": 0.544369,
+      "view_duration": 0.538452,
+      "viewing_time": 0.541253,
+      "completion_status": 0.540886
+    },
+    "NEWS_CATEGORY": {
+      "category": 0.528935,
+      "sort_order": 0.521259
+    },
+    "VIDEO_CATEGORY": {
+      "category": 0.555357,
+      "parent_category": 0.542948
+    },
+    "PAYMENT": {
+      "payment_method": 0.511489,
+      "payment_status": 0.516362,
+      "payment_time": 0.512463
+    },
+    "INSTRUCTOR_QUALIFICATION": {
+      "qualification_type": 0.540128,
+      "qualification_level": 0.540011,
+      "qualification_year": 0.537532,
+      "qualification_institution": 0.537667
+    },
+    "VIDEO_CATEGORY_DETAIL": {
+      "category_description": 0.550281,
+      "category_keywords": 0.547796,
+      "category_image": 0.543565
+    },
+    "ASSOC_NEWS_NEWS_CATEGORY": {
+      "assoc_news_news_category_id": 0.9952,
+      "news_id": 0.9952,
+      "news_category_id": 0.9952
+    },
+    "ASSOC_VIDEO_VIDEO_CATEGORY": {
+      "assoc_video_video_category_id": 0.989874,
+      "video_id": 0.989874,
+      "video_category_id": 0.989874
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.999119
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A video can have multiple orders",
+      "probability": 0.138466
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLECTION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple collections",
+      "probability": 0.980528
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "COLLECTION",
+      "cardinality": "1:N",
+      "description": "A video can be in multiple collections",
+      "probability": 0.078449
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "VIDEO",
+      "cardinality": "1:N",
+      "description": "An instructor can teach multiple videos",
+      "probability": 0.138963
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "INSTRUCTOR_QUALIFICATION",
+      "cardinality": "1:N",
+      "description": "An instructor can have multiple qualifications",
+      "probability": 0.999951
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEARN_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can have multiple learn records",
+      "probability": 0.992355
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "LEARN_RECORD",
+      "cardinality": "1:N",
+      "description": "A video can have multiple learn records",
+      "probability": 0.991861
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "ASSOC_NEWS_NEWS_CATEGORY",
+      "description": "One NEWS can be associated with many ASSOC_NEWS_NEWS_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9952
+    },
+    {
+      "entity_1": "NEWS_CATEGORY",
+      "entity_2": "ASSOC_NEWS_NEWS_CATEGORY",
+      "description": "One NEWS_CATEGORY can be associated with many ASSOC_NEWS_NEWS_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9952
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "ASSOC_VIDEO_VIDEO_CATEGORY",
+      "description": "One VIDEO can be associated with many ASSOC_VIDEO_VIDEO_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989874
+    },
+    {
+      "entity_1": "VIDEO_CATEGORY",
+      "entity_2": "ASSOC_VIDEO_VIDEO_CATEGORY",
+      "description": "One VIDEO_CATEGORY can be associated with many ASSOC_VIDEO_VIDEO_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989874
+    },
+    {
+      "entity_1": "VIDEO_CATEGORY",
+      "entity_2": "VIDEO_CATEGORY_DETAIL",
+      "cardinality": "1:1",
+      "description": "A video category is associated with one video category detail",
+      "probability": 0.999977
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order is associated with one payment",
+      "probability": 0.85687
+    }
+  ],
+  "processing_time": 46.54,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added INSTRUCTOR_QUALIFICATION and VIDEO_CATEGORY_DETAIL entities to provide more detailed attributes for instructor qualifications and video categories. Also, reviewed and refined relationships between entities to ensure accuracy and consistency."
+  }
+}

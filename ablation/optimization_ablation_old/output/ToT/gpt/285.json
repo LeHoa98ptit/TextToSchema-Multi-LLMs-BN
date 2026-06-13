@@ -1,0 +1,108 @@
+{
+  "entity": [
+    "ADVERTISEMENT",
+    "CONTENT",
+    "SCHEDULE",
+    "BROADCAST",
+    "RATING",
+    "CUSTOMER",
+    "AD_CUSTOMER_TARGET",
+    "BROADCAST_VIEW"
+  ],
+  "attribute": {
+    "ADVERTISEMENT": [
+      "ad_id",
+      "title",
+      "description",
+      "total_duration",
+      "created_at"
+    ],
+    "CONTENT": [
+      "content_id",
+      "ad_id",
+      "media_type",
+      "file_path",
+      "length_seconds"
+    ],
+    "SCHEDULE": [
+      "schedule_id",
+      "ad_id",
+      "start_date",
+      "end_date",
+      "repeat_pattern",
+      "status"
+    ],
+    "BROADCAST": [
+      "broadcast_id",
+      "schedule_id",
+      "actual_start",
+      "actual_end",
+      "actual_duration",
+      "rating_id",
+      "status"
+    ],
+    "RATING": [
+      "rating_id",
+      "score",
+      "comments",
+      "rated_at"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "email",
+      "phone",
+      "address"
+    ],
+    "AD_CUSTOMER_TARGET": [
+      "ad_customer_id",
+      "ad_id",
+      "customer_id",
+      "campaign_start",
+      "campaign_end",
+      "priority",
+      "budget"
+    ],
+    "BROADCAST_VIEW": [
+      "view_id",
+      "broadcast_id",
+      "customer_id",
+      "view_timestamp",
+      "viewer_device"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "AD_CUSTOMER_TARGET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "AD_CUSTOMER_TARGET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BROADCAST",
+      "entity_2": "BROADCAST_VIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BROADCAST_VIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.5522,
+  "ilp_runtime": 0.042
+}

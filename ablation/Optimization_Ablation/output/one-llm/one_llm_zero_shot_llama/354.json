@@ -1,0 +1,63 @@
+{
+  "entity": [
+    "IMAGE",
+    "USER",
+    "SEND_RECORD",
+    "SEND_LINK"
+  ],
+  "attribute": {
+    "IMAGE": [
+      "image_id",
+      "image_url",
+      "image_description",
+      "compress_signature",
+      "upload_original",
+      "compressed_version_url"
+    ],
+    "USER": [
+      "user_id",
+      "phone_number",
+      "user_information"
+    ],
+    "SEND_RECORD": [
+      "send_id",
+      "sender",
+      "send_time",
+      "image_id"
+    ],
+    "SEND_LINK": [
+      "link_id",
+      "send_time",
+      "image_id",
+      "download_link"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SEND_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SEND_RECORD",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "IMAGE",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 20.777,
+  "ilp_runtime": 0.08
+}

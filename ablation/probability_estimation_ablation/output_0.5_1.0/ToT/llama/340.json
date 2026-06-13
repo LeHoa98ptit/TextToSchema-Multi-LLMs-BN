@@ -1,0 +1,137 @@
+{
+  "filename": "340.txt",
+  "entity": {
+    "APPLICATION": 0.817574,
+    "LANGUAGE": 0.817574,
+    "REGION": 0.817574,
+    "COUNTRY": 0.736993,
+    "RESOURCE": 0.817574,
+    "RESOURCE_KEY": 0.740045,
+    "RESOURCE_VALUE": 0.75397,
+    "RESOURCE_FILE": 0.800321,
+    "ASSOC_RESOURCE_RESOURCE_KEY": 0.999889,
+    "ASSOC_RESOURCE_RESOURCE_VALUE": 0.999759
+  },
+  "attribute": {
+    "APPLICATION": {
+      "name": 0.751256,
+      "description": 0.764511,
+      "version": 0.755821
+    },
+    "LANGUAGE": {
+      "iso_code": 0.768822,
+      "name": 0.760333,
+      "code": 0.765495
+    },
+    "REGION": {
+      "name": 0.762294,
+      "code": 0.761801,
+      "description": 0.760783
+    },
+    "COUNTRY": {
+      "name": 0.756425,
+      "iso_code": 0.770254,
+      "code": 0.762883
+    },
+    "RESOURCE": {
+      "id": 0.755902,
+      "key": 0.763474,
+      "value": 0.759496,
+      "version": 0.765,
+      "file_type": 0.756116,
+      "last_update_date": 0.739203
+    },
+    "RESOURCE_KEY": {
+      "key": 0.760935,
+      "description": 0.76828,
+      "version": 0.767558
+    },
+    "RESOURCE_VALUE": {
+      "value": 0.759922,
+      "content": 0.762791,
+      "version": 0.766825
+    },
+    "RESOURCE_FILE": {
+      "file_name": 0.752935,
+      "file_path": 0.749762,
+      "file_size": 0.754481
+    },
+    "ASSOC_RESOURCE_RESOURCE_KEY": {
+      "assoc_resource_resource_key_id": 0.999889,
+      "resource_id": 0.999889,
+      "resource_key_id": 0.999889
+    },
+    "ASSOC_RESOURCE_RESOURCE_VALUE": {
+      "assoc_resource_resource_value_id": 0.999759,
+      "resource_id": 0.999759,
+      "resource_value_id": 0.999759
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:N",
+      "description": "An application has multiple resources",
+      "probability": 0.970357
+    },
+    {
+      "entity_1": "LANGUAGE",
+      "entity_2": "REGION",
+      "cardinality": "1:N",
+      "description": "A language is used in multiple regions",
+      "probability": 0.03981
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "COUNTRY",
+      "cardinality": "1:N",
+      "description": "A region belongs to multiple countries",
+      "probability": 0.27284
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "ASSOC_RESOURCE_RESOURCE_KEY",
+      "description": "One RESOURCE can be associated with many ASSOC_RESOURCE_RESOURCE_KEY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999889
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "ASSOC_RESOURCE_RESOURCE_KEY",
+      "description": "One RESOURCE_KEY can be associated with many ASSOC_RESOURCE_RESOURCE_KEY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999889
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "ASSOC_RESOURCE_RESOURCE_VALUE",
+      "description": "One RESOURCE can be associated with many ASSOC_RESOURCE_RESOURCE_VALUE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999759
+    },
+    {
+      "entity_1": "RESOURCE_VALUE",
+      "entity_2": "ASSOC_RESOURCE_RESOURCE_VALUE",
+      "description": "One RESOURCE_VALUE can be associated with many ASSOC_RESOURCE_RESOURCE_VALUE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999759
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_FILE",
+      "cardinality": "1:1",
+      "description": "A resource is associated with one resource file",
+      "probability": 0.999975
+    }
+  ],
+  "processing_time": 29.69,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added RESOURCE_FILE entity to capture file-related information, added file_type and last_update_date attributes to RESOURCE entity, and normalized many-to-many relationships between resources and keys/values to improve data consistency and reduce redundancy."
+  }
+}

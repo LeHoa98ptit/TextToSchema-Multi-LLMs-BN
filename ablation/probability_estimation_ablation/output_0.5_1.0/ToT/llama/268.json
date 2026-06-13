@@ -1,0 +1,108 @@
+{
+  "filename": "268.txt",
+  "entity": {
+    "HOTEL": 0.752595,
+    "RESTAURANT": 0.817574,
+    "CUSTOMER": 0.817574,
+    "RESERVATION": 0.817574,
+    "DISH": 0.747552,
+    "PRICE_CATEGORY": 0.806371,
+    "PAYMENT_METHOD": 0.67577
+  },
+  "attribute": {
+    "HOTEL": {
+      "hotel_id": 0.768824,
+      "name": 0.769067,
+      "location": 0.772939,
+      "address": 0.771009,
+      "phone_number": 0.768707
+    },
+    "RESTAURANT": {
+      "restaurant_id": 0.7812,
+      "name": 0.781348,
+      "operating_hour": 0.789526,
+      "capacity": 0.781225,
+      "cuisine": 0.778167
+    },
+    "CUSTOMER": {
+      "customer_id": 0.757389,
+      "name": 0.761769,
+      "information": 0.768542,
+      "email": 0.749895,
+      "phone_number": 0.759878
+    },
+    "RESERVATION": {
+      "reservation_id": 0.764817,
+      "reservation_time": 0.768662,
+      "number_diner": 0.78261,
+      "table_number": 0.77351,
+      "status": 0.76563,
+      "payment_method": 0.759936
+    },
+    "DISH": {
+      "dish_id": 0.7653,
+      "name": 0.764746,
+      "description": 0.767063,
+      "price": 0.767421,
+      "nutritional_info": 0.763055
+    },
+    "PRICE_CATEGORY": {
+      "price_category_id": 0.75428,
+      "category_name": 0.758622,
+      "price_range": 0.754088
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.739715,
+      "method_name": 0.74206
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "RESTAURANT",
+      "cardinality": "1:N",
+      "description": "A hotel can have multiple restaurants",
+      "probability": 0.998528
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A restaurant can have multiple reservations",
+      "probability": 0.911008
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can make multiple reservations",
+      "probability": 0.006334
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "description": "A restaurant can offer multiple dishes",
+      "probability": 0.713118
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "PRICE_CATEGORY",
+      "cardinality": "1:1",
+      "description": "A dish belongs to one price category",
+      "probability": 0.020622
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:1",
+      "description": "A reservation is associated with one payment method",
+      "probability": 0.782514
+    }
+  ],
+  "processing_time": 20.16,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique identifiers for each entity, included payment methods and nutritional information for dishes, and expanded the model to capture additional details while maintaining simplicity and clarity."
+  }
+}

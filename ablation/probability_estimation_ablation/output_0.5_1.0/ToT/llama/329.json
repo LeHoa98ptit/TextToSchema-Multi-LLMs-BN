@@ -1,0 +1,121 @@
+{
+  "filename": "329.txt",
+  "entity": {
+    "USER": 0.817574,
+    "STOCK": 0.817574,
+    "PORTFOLIO": 0.743912,
+    "LOG": 0.716629,
+    "COMPANY": 0.748457,
+    "HALL_OF_FAME": 0.710189,
+    "LOGIN_HISTORY": 0.723762,
+    "COMPANY_DESCRIPTION": 0.715388,
+    "ASSOC_PORTFOLIO_STOCK": 0.760861
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.740108,
+      "virtual_currency_balance": 0.751236,
+      "registration_date": 0.742256
+    },
+    "STOCK": {
+      "stock_code": 0.761837,
+      "stock_price": 0.75564,
+      "issue_date": 0.757043
+    },
+    "PORTFOLIO": {
+      "earning": 0.760965,
+      "stock_quantity": 0.763684,
+      "investment_date": 0.755925
+    },
+    "LOG": {
+      "date": 0.745824,
+      "record_value": 0.750454,
+      "activity_type": 0.754129
+    },
+    "COMPANY": {
+      "company_name": 0.754311
+    },
+    "HALL_OF_FAME": {
+      "user_id": 0.749248,
+      "earning_value": 0.754319,
+      "ranking": 0.742009
+    },
+    "LOGIN_HISTORY": {
+      "login_date": 0.74337,
+      "login_time": 0.742991
+    },
+    "COMPANY_DESCRIPTION": {
+      "description": 0.759651
+    },
+    "ASSOC_PORTFOLIO_STOCK": {
+      "assoc_portfolio_stock_id": 0.760861,
+      "portfolio_id": 0.760861,
+      "stock_id": 0.760861
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PORTFOLIO",
+      "cardinality": "1:N",
+      "description": "A user can have multiple portfolios",
+      "probability": 0.972273
+    },
+    {
+      "entity_1": "PORTFOLIO",
+      "entity_2": "ASSOC_PORTFOLIO_STOCK",
+      "description": "One PORTFOLIO can be associated with many ASSOC_PORTFOLIO_STOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.760861
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "ASSOC_PORTFOLIO_STOCK",
+      "description": "One STOCK can be associated with many ASSOC_PORTFOLIO_STOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.760861
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "A user can have multiple log entries",
+      "probability": 0.998935
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "description": "A stock is issued by one company",
+      "probability": 0.965284
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HALL_OF_FAME",
+      "cardinality": "1:N",
+      "description": "A user can have multiple hall of fame entries",
+      "probability": 0.043206
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_HISTORY",
+      "cardinality": "1:N",
+      "description": "A user can have multiple login history entries",
+      "probability": 0.96302
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "COMPANY_DESCRIPTION",
+      "cardinality": "1:1",
+      "description": "A company has one company description",
+      "probability": 0.999624
+    }
+  ],
+  "processing_time": 20.79,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for user login history and company description to improve data normalization and reduce data redundancy."
+  }
+}

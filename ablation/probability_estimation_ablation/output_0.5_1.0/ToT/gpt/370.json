@@ -1,0 +1,239 @@
+{
+  "filename": "370.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ADDRESS": 0.721658,
+    "PAYMENT_METHOD": 0.67907,
+    "MANUFACTURER": 0.739467,
+    "FLAVOR": 0.728574,
+    "PRODUCT": 0.817574,
+    "CART": 0.79838,
+    "CART_ITEM": 0.761932,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "STATUS_HISTORY": 0.680724,
+    "PROMOTION": 0.727426,
+    "ORDER_PROMOTION": 0.741542
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.745815,
+      "username": 0.739107,
+      "phone": 0.754821,
+      "email": 0.748628,
+      "password_hash": 0.735978,
+      "created_at": 0.739399,
+      "updated_at": 0.736667
+    },
+    "ADDRESS": {
+      "addressid": 0.741518,
+      "userid": 0.745428,
+      "street": 0.742176,
+      "city": 0.740969,
+      "state": 0.739138,
+      "zip": 0.743598,
+      "country": 0.741432,
+      "created_at": 0.737151,
+      "updated_at": 0.733615
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.744622,
+      "userid": 0.752393,
+      "method_type": 0.745491,
+      "provider": 0.760086,
+      "account_number": 0.754123,
+      "expiry_date": 0.742226,
+      "created_at": 0.746222,
+      "updated_at": 0.739297
+    },
+    "MANUFACTURER": {
+      "manufacturer_id": 0.754615,
+      "name": 0.753231,
+      "country": 0.750294,
+      "created_at": 0.753061,
+      "updated_at": 0.746089
+    },
+    "FLAVOR": {
+      "flavor_id": 0.752048,
+      "name": 0.748017,
+      "description": 0.752561,
+      "created_at": 0.749658,
+      "updated_at": 0.742059
+    },
+    "PRODUCT": {
+      "product_id": 0.762161,
+      "name": 0.764103,
+      "manufacturer_id": 0.762728,
+      "flavor_id": 0.766329,
+      "puff_count": 0.773052,
+      "unit_price": 0.75822,
+      "stock_quantity": 0.769836,
+      "sku": 0.757076,
+      "created_at": 0.757131,
+      "updated_at": 0.752176
+    },
+    "CART": {
+      "cart_id": 0.756057,
+      "userid": 0.760139,
+      "created_at": 0.75651,
+      "updated_at": 0.74766
+    },
+    "CART_ITEM": {
+      "cart_item_id": 0.752894,
+      "cart_id": 0.755275,
+      "product_id": 0.761505,
+      "quantity": 0.775373,
+      "added_at": 0.754999,
+      "created_at": 0.755175,
+      "updated_at": 0.749904
+    },
+    "ORDER": {
+      "order_id": 0.748339,
+      "userid": 0.754783,
+      "address_id": 0.746969,
+      "payment_method_id": 0.747898,
+      "order_date": 0.747269,
+      "status": 0.758509,
+      "total_amount": 0.756654,
+      "created_at": 0.748665,
+      "updated_at": 0.74366
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.752494,
+      "order_id": 0.75288,
+      "product_id": 0.763491,
+      "quantity": 0.77488,
+      "unit_price": 0.759869,
+      "line_total": 0.759635,
+      "created_at": 0.752222,
+      "updated_at": 0.748567
+    },
+    "STATUS_HISTORY": {
+      "status_history_id": 0.735625,
+      "order_id": 0.740628,
+      "status": 0.739404,
+      "changed_at": 0.732168,
+      "notes": 0.738692,
+      "created_at": 0.734438,
+      "updated_at": 0.733177
+    },
+    "PROMOTION": {
+      "promotion_id": 0.747061,
+      "code": 0.754164,
+      "description": 0.751897,
+      "discount_type": 0.749773,
+      "discount_value": 0.746065,
+      "start_date": 0.742564,
+      "end_date": 0.743526,
+      "active_flag": 0.739339,
+      "created_at": 0.744333,
+      "updated_at": 0.741527
+    },
+    "ORDER_PROMOTION": {
+      "order_promotion_id": 0.750832,
+      "order_id": 0.751473,
+      "promotion_id": 0.754364,
+      "discount_amount": 0.752699,
+      "created_at": 0.753031,
+      "updated_at": 0.749032
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A user can have multiple shipping addresses",
+      "probability": 0.962509
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:N",
+      "description": "A user can store several payment methods",
+      "probability": 0.999598
+    },
+    {
+      "entity_1": "MANUFACTURER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each manufacturer produces many products",
+      "probability": 0.995746
+    },
+    {
+      "entity_1": "FLAVOR",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each flavor can be used in many products",
+      "probability": 0.162308
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "description": "Each user has a single active cart",
+      "probability": 0.992343
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "description": "A cart contains many cart items",
+      "probability": 0.999352
+    },
+    {
+      "entity_1": "CART_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each cart item references one product",
+      "probability": 0.913096
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can place many orders",
+      "probability": 0.999083
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each order item references one product",
+      "probability": 0.971554
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "STATUS_HISTORY",
+      "cardinality": "1:N",
+      "description": "An order can have many status change records",
+      "probability": 0.007318
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PROMOTION",
+      "cardinality": "1:N",
+      "description": "An order may be linked to zero or more applied promotions",
+      "probability": 0.926492
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "ORDER_PROMOTION",
+      "cardinality": "1:N",
+      "description": "A promotion can be applied to many orders",
+      "probability": 0.399063
+    }
+  ],
+  "processing_time": 1339.47,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added UNIQUE constraints on USER.phone and USER.email (not shown in JSON). Introduced STATUS_HISTORY entity to track order status changes over time. Added PROMOTION and ORDER_PROMOTION entities to support coupon/discount handling. Included audit fields (created_at, updated_at) on all major tables for traceability. Clarified cardinalities and ensured associative tables (CART_ITEM, ORDER_ITEM, ORDER_PROMOTION) capture quantities and pricing. Retained the comprehensive, normalized structure of candidate 2 while extending functionality for future business needs."
+  }
+}

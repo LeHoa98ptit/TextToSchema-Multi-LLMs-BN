@@ -1,0 +1,111 @@
+{
+  "entity": [
+    "DOCTOR",
+    "LEVEL",
+    "PATIENT",
+    "ADDRESS",
+    "EMERGENCY_CONTACT",
+    "MEDICINE",
+    "INVENTORY",
+    "CONSULTATION",
+    "PRESCRIPTION",
+    "PRESCRIPTION_MEDICINE"
+  ],
+  "attribute": {
+    "DOCTOR": [
+      "doctor_id",
+      "name",
+      "gender",
+      "phone",
+      "birth_date",
+      "age",
+      "department_id",
+      "level_id"
+    ],
+    "LEVEL": [
+      "level_id",
+      "title",
+      "description"
+    ],
+    "PATIENT": [
+      "patient_id",
+      "name",
+      "gender",
+      "birth_date",
+      "age",
+      "phone",
+      "address_id",
+      "emergency_contact_id"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "zip"
+    ],
+    "EMERGENCY_CONTACT": [
+      "contact_id",
+      "name",
+      "relation",
+      "phone"
+    ],
+    "MEDICINE": [
+      "medicine_id",
+      "name",
+      "unit",
+      "price",
+      "description"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "medicine_id",
+      "quantity",
+      "last_stocked_date"
+    ],
+    "CONSULTATION": [
+      "consultation_id",
+      "patient_id",
+      "doctor_id",
+      "consultation_time",
+      "diagnosis",
+      "treatment_recommendation"
+    ],
+    "PRESCRIPTION": [
+      "prescription_id",
+      "patient_id",
+      "doctor_id",
+      "prescription_date",
+      "notes"
+    ],
+    "PRESCRIPTION_MEDICINE": [
+      "prescription_id",
+      "medicine_id",
+      "dosage",
+      "frequency",
+      "precaution"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "PRESCRIPTION_MEDICINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.7756,
+  "ilp_runtime": 0.083
+}

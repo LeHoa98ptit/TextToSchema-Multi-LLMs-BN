@@ -1,0 +1,197 @@
+{
+  "filename": "369.txt",
+  "entity": {
+    "CONTENT": 0.622459,
+    "USER": 0.622459,
+    "PERMISSION": 0.622459,
+    "WORKFLOW": 0.622459,
+    "WORKFLOW_TYPE": 0.509824,
+    "WORKFLOW_STATE": 0.53733,
+    "CONTENT_VERSION": 0.493025,
+    "LOG": 0.481958,
+    "OPERATION": 0.622459,
+    "COMMENT": 0.481309,
+    "ADMINISTRATOR": 0.514971,
+    "USER_PERMISSION": 0.992227
+  },
+  "attribute": {
+    "CONTENT": {
+      "content id": 0.531734,
+      "content body": 0.541048
+    },
+    "USER": {
+      "user id": 0.509744,
+      "username": 0.497492
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.527942,
+      "user id": 0.525836,
+      "admin name": 0.533081
+    },
+    "PERMISSION": {
+      "permission id": 0.514762,
+      "permission name": 0.520226,
+      "description": 0.533733
+    },
+    "WORKFLOW_TYPE": {
+      "workflow type id": 0.519133,
+      "type name": 0.526492,
+      "description": 0.545292
+    },
+    "WORKFLOW_STATE": {
+      "workflow state id": 0.52069,
+      "state name": 0.526924,
+      "state order": 0.526142
+    },
+    "WORKFLOW": {
+      "workflow id": 0.520576,
+      "workflow type id": 0.519741,
+      "content id": 0.53572,
+      "current state id": 0.520043,
+      "started at": 0.530961,
+      "ended at": 0.521305
+    },
+    "CONTENT_VERSION": {
+      "version id": 0.527827,
+      "content id": 0.532962,
+      "version number": 0.530382,
+      "version data": 0.540543,
+      "created at": 0.532949
+    },
+    "OPERATION": {
+      "operation id": 0.519692,
+      "operation type": 0.529106,
+      "operation time": 0.521123,
+      "user id": 0.520802,
+      "content id": 0.534045,
+      "comment ids": 0.520003
+    },
+    "LOG": {
+      "log id": 0.511707,
+      "operation id": 0.523505,
+      "timestamp": 0.514307,
+      "user id": 0.512318,
+      "details": 0.534468
+    },
+    "COMMENT": {
+      "comment id": 0.500376,
+      "operation id": 0.51354,
+      "user id": 0.50696,
+      "comment text": 0.510305,
+      "created at": 0.499229
+    },
+    "USER_PERMISSION": {
+      "user_permission_id": 0.992227,
+      "user_id": 0.992227,
+      "permission_id": 0.992227,
+      "id_USER_PERMISSION": 0.992227
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION",
+      "description": "A user performs many operations; each operation is performed by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990843
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "OPERATION",
+      "description": "Operations are performed on content items; a content item can have many operations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.909578
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "COMMENT",
+      "description": "An operation may have multiple comments; each comment belongs to one operation",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012889
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "description": "A user can write many comments; each comment is authored by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963197
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "description": "Each operation generates a single log entry for audit",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.953027
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADMINISTRATOR",
+      "description": "An administrator is a specific user with admin privileges",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.306658
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PERMISSION",
+      "description": "One USER can be associated with many USER_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992227
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "USER_PERMISSION",
+      "description": "One PERMISSION can be associated with many USER_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992227
+    },
+    {
+      "entity_1": "WORKFLOW_TYPE",
+      "entity_2": "WORKFLOW",
+      "description": "A workflow type can be used for many workflow instances",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999954
+    },
+    {
+      "entity_1": "WORKFLOW_TYPE",
+      "entity_2": "WORKFLOW_STATE",
+      "description": "A workflow type defines multiple possible workflow states",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999877
+    },
+    {
+      "entity_1": "WORKFLOW_STATE",
+      "entity_2": "WORKFLOW",
+      "description": "A workflow references its current state; a state can be current for many workflows",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999984
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "WORKFLOW",
+      "description": "Content items can have multiple workflow instances over time",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.009045
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "CONTENT_VERSION",
+      "description": "A content item can have many versions; each version belongs to one content item",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999861
+    }
+  ],
+  "processing_time": 40.61
+}

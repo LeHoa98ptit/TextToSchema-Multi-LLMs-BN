@@ -1,0 +1,91 @@
+{
+  "filename": "343.txt",
+  "entity": {
+    "PERSONNEL": 0.622459,
+    "PHONE_NUMBER": 0.580883,
+    "VEHICLE": 0.622459,
+    "INSURANCE": 0.622459,
+    "INSURANCE_COMPANY": 0.570306,
+    "INSURANCE_TYPE": 0.558382
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel id": 0.554313,
+      "address": 0.548189
+    },
+    "PHONE_NUMBER": {
+      "personnel id": 0.556219,
+      "phone number": 0.523856,
+      "primary key": 0.535324
+    },
+    "VEHICLE": {
+      "vin": 0.526611,
+      "manufacturer": 0.531059,
+      "model": 0.536064,
+      "year": 0.531746,
+      "driver id": 0.549284
+    },
+    "INSURANCE": {
+      "insurance id": 0.543503,
+      "vehicle vin": 0.535312,
+      "insurance type id": 0.548874,
+      "insurance company id": 0.542969,
+      "cost": 0.513214,
+      "purchase date": 0.519335,
+      "validity start date": 0.518185,
+      "validity end date": 0.517958,
+      "content": 0.545332
+    },
+    "INSURANCE_COMPANY": {
+      "company id": 0.544804,
+      "company name": 0.535445
+    },
+    "INSURANCE_TYPE": {
+      "type id": 0.553017,
+      "type name": 0.541646
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PHONE_NUMBER",
+      "description": "A personnel can have multiple phone numbers; each phone number belongs to one personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.23742
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VEHICLE",
+      "description": "A personnel can be assigned as driver for multiple vehicles; each vehicle has exactly one driver.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.97491
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "INSURANCE",
+      "description": "A vehicle can have multiple insurance records; each insurance record is linked to one vehicle.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.610937
+    },
+    {
+      "entity_1": "INSURANCE_TYPE",
+      "entity_2": "INSURANCE",
+      "description": "An insurance type can be used for many insurance records; each insurance record has one type.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999922
+    },
+    {
+      "entity_1": "INSURANCE_COMPANY",
+      "entity_2": "INSURANCE",
+      "description": "An insurance company can issue multiple insurance records; each insurance record is issued by one company.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999967
+    }
+  ],
+  "processing_time": 3.05
+}

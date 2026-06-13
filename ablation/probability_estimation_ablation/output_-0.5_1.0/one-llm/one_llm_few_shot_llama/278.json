@@ -1,0 +1,111 @@
+{
+  "filename": "278.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "PROJECT_MANAGER": 0.49905,
+    "SAFETY_INSPECTION": 0.601807,
+    "INSPECTOR": 0.522784,
+    "TRACK_RECORD": 0.554088,
+    "ASSOC_PROJECT_SAFETY_INSPECTION": 0.034894
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.52905,
+      "project_name": 0.531599,
+      "construction_start_date": 0.554029,
+      "expect_completion_date": 0.542675,
+      "actual_completion_date": 0.538099,
+      "project_budget": 0.535074,
+      "project_location": 0.530651
+    },
+    "PROJECT_MANAGER": {
+      "project_manager_id": 0.535728,
+      "full_name": 0.53607
+    },
+    "SAFETY_INSPECTION": {
+      "safety_inspection_id": 0.548223,
+      "inspection_date": 0.555674,
+      "inspection_content": 0.55668,
+      "inspection_result": 0.554932
+    },
+    "INSPECTOR": {
+      "inspector_id": 0.534225,
+      "full_name": 0.534646
+    },
+    "TRACK_RECORD": {
+      "track_record_id": 0.526287,
+      "tracking_date": 0.533855,
+      "track_content": 0.531459,
+      "track_result": 0.529427
+    },
+    "ASSOC_PROJECT_SAFETY_INSPECTION": {
+      "assoc_project_safety_inspection_id": 0.034894,
+      "project_id": 0.034894,
+      "safety_inspection_id": 0.034894
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_MANAGER",
+      "description": "Each project is managed by exactly one project manager, and each project manager can manage many projects.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.997748
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "SAFETY_INSPECTION",
+      "description": "Each project can have many safety inspections, and each safety inspection is related to exactly one project.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.034894
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TRACK_RECORD",
+      "description": "Each project can have many track records, and each track record is related to exactly one project.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.989636
+    },
+    {
+      "entity_1": "SAFETY_INSPECTION",
+      "entity_2": "INSPECTOR",
+      "description": "Each safety inspection is conducted by exactly one inspector, and each inspector can conduct many safety inspections.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.999062
+    },
+    {
+      "entity_1": "SAFETY_INSPECTION",
+      "entity_2": "TRACK_RECORD",
+      "description": "Each safety inspection can have many track records, and each track record is related to exactly one safety inspection.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.200076
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_PROJECT_SAFETY_INSPECTION",
+      "description": "One PROJECT can be associated with many ASSOC_PROJECT_SAFETY_INSPECTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.034894
+    },
+    {
+      "entity_1": "SAFETY_INSPECTION",
+      "entity_2": "ASSOC_PROJECT_SAFETY_INSPECTION",
+      "description": "One SAFETY_INSPECTION can be associated with many ASSOC_PROJECT_SAFETY_INSPECTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.034894
+    }
+  ],
+  "processing_time": 20.54
+}

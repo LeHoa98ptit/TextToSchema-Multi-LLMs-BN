@@ -1,0 +1,144 @@
+{
+  "filename": "416.txt",
+  "entity": {
+    "USER": 0.622459,
+    "COMPANY": 0.622459,
+    "JOB": 0.622459,
+    "CONVERSATION": 0.622459,
+    "MESSAGE_BOARD": 0.591628,
+    "RESUME": 0.502125,
+    "JOB_CATEGORY": 0.507424,
+    "ASSOC_USER_JOB": 0.71863,
+    "ASSOC_JOB_RESUME": 0.411686
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.501081,
+      "password": 0.518062,
+      "email": 0.519656,
+      "avatar": 0.506286,
+      "nickname": 0.509419,
+      "registration_time": 0.522317,
+      "role": 0.530659,
+      "resume_id": 0.537098
+    },
+    "COMPANY": {
+      "company_name": 0.529921,
+      "company_address": 0.529132,
+      "company_profile": 0.541317,
+      "contact_information": 0.545873,
+      "company_description": 0.54768
+    },
+    "JOB": {
+      "job_title": 0.551227,
+      "content": 0.56735,
+      "requirement": 0.565698,
+      "job_category_id": 0.546641,
+      "salary": 0.524652,
+      "education_level": 0.559212,
+      "work_location": 0.540836,
+      "job_status": 0.551683
+    },
+    "CONVERSATION": {
+      "conversation_id": 0.523627,
+      "message_content": 0.540287,
+      "send_time": 0.52987,
+      "conversation_status": 0.53699
+    },
+    "MESSAGE_BOARD": {
+      "message_id": 0.526387,
+      "message_content": 0.536799,
+      "message_time": 0.532463,
+      "message_type": 0.534362
+    },
+    "RESUME": {
+      "resume_id": 0.53737,
+      "resume_content": 0.547117,
+      "resume_status": 0.54574,
+      "skills": 0.551886,
+      "work_experience": 0.552049
+    },
+    "JOB_CATEGORY": {
+      "job_category_id": 0.544847,
+      "job_category_name": 0.549187,
+      "job_category_description": 0.561227
+    },
+    "ASSOC_USER_JOB": {
+      "assoc_user_job_id": 0.71863,
+      "user_id": 0.71863,
+      "job_id": 0.71863
+    },
+    "ASSOC_JOB_RESUME": {
+      "assoc_job_resume_id": 0.411686,
+      "job_id": 0.411686,
+      "resume_id": 0.411686
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CONVERSATION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple conversations",
+      "probability": 0.986
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "JOB",
+      "cardinality": "1:N",
+      "description": "A company can post multiple job openings",
+      "probability": 0.922682
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_JOB",
+      "description": "One USER can be associated with many ASSOC_USER_JOB.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.71863
+    },
+    {
+      "entity_1": "JOB",
+      "entity_2": "ASSOC_USER_JOB",
+      "description": "One JOB can be associated with many ASSOC_USER_JOB.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.71863
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESUME",
+      "cardinality": "1:1",
+      "description": "A user has one resume",
+      "probability": 0.130396
+    },
+    {
+      "entity_1": "JOB",
+      "entity_2": "ASSOC_JOB_RESUME",
+      "description": "One JOB can be associated with many ASSOC_JOB_RESUME.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.411686
+    },
+    {
+      "entity_1": "RESUME",
+      "entity_2": "ASSOC_JOB_RESUME",
+      "description": "One RESUME can be associated with many ASSOC_JOB_RESUME.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.411686
+    },
+    {
+      "entity_1": "JOB",
+      "entity_2": "JOB_CATEGORY",
+      "cardinality": "1:N",
+      "description": "A job category can have multiple jobs",
+      "probability": 0.899392
+    }
+  ],
+  "processing_time": 26.08,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more attributes to the RESUME entity, including skills and work experience. Added a separate entity for job categories to improve data normalization."
+  }
+}

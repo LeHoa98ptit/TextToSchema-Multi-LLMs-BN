@@ -1,0 +1,97 @@
+{
+  "filename": "439.txt",
+  "entity": {
+    "USER": 0.817574,
+    "MERCHANT": 0.817574,
+    "RECYCLING_REQUEST": 0.711237,
+    "ORDER": 0.817574,
+    "PAYMENT": 0.817574,
+    "RATING": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.749545,
+      "mobile_phone_number": 0.751055,
+      "wechat_id": 0.74815,
+      "registration_date": 0.745487
+    },
+    "MERCHANT": {
+      "merchant_id": 0.767098,
+      "account_info": 0.77053,
+      "registration_date": 0.759509
+    },
+    "RECYCLING_REQUEST": {
+      "request_id": 0.761294,
+      "waste_item_type": 0.776228,
+      "quantity": 0.778041,
+      "location": 0.770039,
+      "request_time": 0.762926
+    },
+    "ORDER": {
+      "order_id": 0.74448,
+      "request_id": 0.749581,
+      "merchant_id": 0.761699,
+      "order_status": 0.748179,
+      "order_time": 0.741924
+    },
+    "PAYMENT": {
+      "payment_id": 0.753901,
+      "order_id": 0.754032,
+      "payment_method": 0.756013,
+      "payment_time": 0.75261,
+      "amount": 0.754838
+    },
+    "RATING": {
+      "rating_id": 0.740584,
+      "order_id": 0.742451,
+      "user_id": 0.746341,
+      "rating": 0.737574,
+      "comment": 0.74318
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:N",
+      "description": "Each user can have many recycling requests, and each recycling request is made by one user.",
+      "probability": 0.985104
+    },
+    {
+      "entity_1": "MERCHANT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each merchant can fulfill many orders, and each order is fulfilled by one merchant.",
+      "probability": 0.023464
+    },
+    {
+      "entity_1": "RECYCLING_REQUEST",
+      "entity_2": "ORDER",
+      "cardinality": "1:1",
+      "description": "Each recycling request is associated with one order, and each order is associated with one recycling request.",
+      "probability": 0.000263
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each order is associated with one payment, and each payment is associated with one order.",
+      "probability": 0.874175
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "cardinality": "1:1",
+      "description": "Each order can have one rating, and each rating is associated with one order.",
+      "probability": 0.547376
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "description": "Each user can give many ratings, and each rating is given by one user.",
+      "probability": 0.994533
+    }
+  ],
+  "processing_time": 25.3
+}

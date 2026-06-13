@@ -1,0 +1,88 @@
+{
+  "filename": "389.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "COURSE": 0.817574,
+    "ENROLLMENT": 0.743835,
+    "GRADE": 0.74604
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.772592,
+      "gender": 0.772527,
+      "age": 0.76475,
+      "phone": 0.764787,
+      "address": 0.770799,
+      "email": 0.767313
+    },
+    "TEACHER": {
+      "name": 0.765274,
+      "gender": 0.765971,
+      "title": 0.767141,
+      "phone": 0.761166,
+      "address": 0.765778,
+      "email": 0.762196
+    },
+    "COURSE": {
+      "name": 0.765584,
+      "credit": 0.754915,
+      "class_hour": 0.770732,
+      "location": 0.764376,
+      "number": 0.770588
+    },
+    "ENROLLMENT": {
+      "selection_time": 0.757255,
+      "status": 0.75925,
+      "enrollment_date": 0.75657,
+      "drop_date": 0.753834
+    },
+    "GRADE": {
+      "grade": 0.753396,
+      "description": 0.758791,
+      "grade_date": 0.760659
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have multiple enrollments, but an enrollment is associated with one student.",
+      "probability": 0.999919
+    },
+    {
+      "entity_1": "ENROLLMENT",
+      "entity_2": "COURSE",
+      "cardinality": "1:1",
+      "description": "An enrollment is associated with one course, and a course can have multiple enrollments.",
+      "probability": 0.247166
+    },
+    {
+      "entity_1": "ENROLLMENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "description": "An enrollment is associated with one grade, and a grade is associated with one enrollment.",
+      "probability": 0.127782
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "A teacher can teach multiple courses, but a course is taught by one teacher.",
+      "probability": 0.991931
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A teacher can teach multiple enrollments, and an enrollment is taught by one teacher.",
+      "probability": 0.191966
+    }
+  ],
+  "processing_time": 23.4,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added address and email attributes to STUDENT and TEACHER entities, added enrollment_date and drop_date attributes to ENROLLMENT entity, added grade_date attribute to GRADE entity, and added a relationship between TEACHER and ENROLLMENT entities."
+  }
+}

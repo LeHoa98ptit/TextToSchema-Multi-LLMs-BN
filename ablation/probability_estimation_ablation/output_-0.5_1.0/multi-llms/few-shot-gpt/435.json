@@ -1,0 +1,107 @@
+{
+  "filename": "435.txt",
+  "entity": {
+    "PROBE": 0.622459,
+    "SCIENTIFIC_INSTRUMENT": 0.565374,
+    "CELESTIAL_BODY": 0.596499,
+    "OBSERVATION": 0.622459,
+    "MISSION": 0.622459
+  },
+  "attribute": {
+    "PROBE": {
+      "probe id": 0.542426,
+      "weight": 0.535729,
+      "launch date": 0.54475,
+      "service life": 0.550228,
+      "instrument ids": 0.555063,
+      "operational status": 0.56077,
+      "remaining fuel": 0.532824,
+      "flight trajectory": 0.537691,
+      "target celestial body id": 0.549067
+    },
+    "SCIENTIFIC_INSTRUMENT": {
+      "instrument id": 0.538355,
+      "weight": 0.528844,
+      "power consumption": 0.526794,
+      "accuracy": 0.53361,
+      "operating parameters": 0.546683,
+      "calibration datum": 0.532818
+    },
+    "CELESTIAL_BODY": {
+      "celestial body id": 0.529439,
+      "type": 0.527934,
+      "orbital parameters": 0.538209,
+      "physical characteristics": 0.535994
+    },
+    "OBSERVATION": {
+      "observation id": 0.526283,
+      "probe id": 0.544294,
+      "celestial body id": 0.537642,
+      "observation time": 0.519878,
+      "observation datum": 0.532486,
+      "observation result": 0.517871,
+      "observation accuracy": 0.527029,
+      "research value": 0.536927
+    },
+    "MISSION": {
+      "mission id": 0.536369,
+      "probe id": 0.554741,
+      "target celestial body id": 0.543908,
+      "mission execution status": 0.547077,
+      "scientific datum acquisition status": 0.565953,
+      "mission priority": 0.548514,
+      "resource allocation": 0.547548
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "SCIENTIFIC_INSTRUMENT",
+      "description": "A probe is configured with multiple scientific instruments; each instrument belongs to one probe.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999565
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "PROBE",
+      "description": "A celestial body can be the target of many probes; each probe targets one celestial body.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.886535
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "OBSERVATION",
+      "description": "A probe records many observations; each observation is made by one probe.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983613
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "OBSERVATION",
+      "description": "A celestial body can be observed many times; each observation concerns one celestial body.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.859983
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "MISSION",
+      "description": "A probe can participate in many missions; each mission involves one probe.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.037029
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "MISSION",
+      "description": "A celestial body can be the target of many missions; each mission targets one celestial body.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996701
+    }
+  ],
+  "processing_time": 4.56
+}

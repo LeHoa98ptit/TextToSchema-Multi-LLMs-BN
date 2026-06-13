@@ -1,0 +1,94 @@
+{
+  "entity": [
+    "PART",
+    "SUPPLIER",
+    "CUSTOMER",
+    "ORDER",
+    "COUNTRY",
+    "REGION",
+    "ORDER_DETAIL"
+  ],
+  "attribute": {
+    "PART": [
+      "part_number",
+      "specification",
+      "unit_price",
+      "inventory_level"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "contact_person",
+      "phone",
+      "email",
+      "credit_rating"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "contact_information",
+      "payment_method"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_time",
+      "customer_id",
+      "delivery_date",
+      "order_status"
+    ],
+    "COUNTRY": [
+      "country_name",
+      "country_code"
+    ],
+    "REGION": [
+      "region_name",
+      "region_code"
+    ],
+    "ORDER_DETAIL": [
+      "order_id",
+      "part_number",
+      "supplier_id",
+      "quantity",
+      "unit_price",
+      "total"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "COUNTRY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.3287,
+  "ilp_runtime": 0.034
+}

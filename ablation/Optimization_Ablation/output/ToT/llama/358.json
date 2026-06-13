@@ -1,0 +1,72 @@
+{
+  "entity": [
+    "PROCESS_DEFINITION",
+    "PROCESS_INSTANCE",
+    "TASK",
+    "TASK_EXECUTION",
+    "TENANT",
+    "EXCEPTION",
+    "SCHEDULE"
+  ],
+  "attribute": {
+    "PROCESS_DEFINITION": [
+      "name",
+      "description"
+    ],
+    "PROCESS_INSTANCE": [
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "TASK": [
+      "task_type",
+      "execution_result",
+      "priority_level",
+      "deadline"
+    ],
+    "TASK_EXECUTION": [
+      "start_time",
+      "end_time",
+      "result",
+      "execution_status"
+    ],
+    "TENANT": [
+      "tenant_id",
+      "name",
+      "description"
+    ],
+    "EXCEPTION": [
+      "exception_type",
+      "message",
+      "timestamp"
+    ],
+    "SCHEDULE": [
+      "schedule_id",
+      "frequency_type",
+      "expiration_time",
+      "repeat_interval"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.9696,
+  "ilp_runtime": 0.075
+}

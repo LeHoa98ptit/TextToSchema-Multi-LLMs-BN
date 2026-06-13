@@ -1,0 +1,121 @@
+{
+  "filename": "410.txt",
+  "entity": {
+    "USER": 0.702765,
+    "VEHICLE": 0.817574,
+    "VEHICLE_MAINTENANCE": 0.76484,
+    "VEHICLE_DEPARTURE": 0.765541,
+    "VEHICLE_MAINTENANCE_APPLICATION": 0.749228,
+    "REPAIR_SHOP": 0.73208,
+    "ANNOUNCEMENT": 0.717116,
+    "TOKEN": 0.687058
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.736469,
+      "user_password": 0.73329,
+      "role": 0.744704
+    },
+    "VEHICLE": {
+      "vehicle_id": 0.762546,
+      "vehicle_photo": 0.766784,
+      "vehicle_status": 0.768785,
+      "vehicle_category": 0.775872
+    },
+    "VEHICLE_MAINTENANCE": {
+      "maintenance_id": 0.771595,
+      "maintenance_time": 0.771626,
+      "maintenance_detail": 0.779817,
+      "review": 0.776306,
+      "review_reply": 0.773093
+    },
+    "VEHICLE_DEPARTURE": {
+      "departure_id": 0.762422,
+      "departure_time": 0.759916,
+      "departure_note": 0.766081
+    },
+    "VEHICLE_MAINTENANCE_APPLICATION": {
+      "application_id": 0.768781,
+      "application_time": 0.767942,
+      "application_reason": 0.769449,
+      "review": 0.77888,
+      "review_reply": 0.775414
+    },
+    "REPAIR_SHOP": {
+      "repair_shop_id": 0.756155,
+      "shop_contact_person": 0.75242,
+      "contact_number": 0.750097
+    },
+    "ANNOUNCEMENT": {
+      "announcement_id": 0.739196,
+      "title": 0.737711,
+      "content": 0.745448,
+      "creation_time": 0.739197
+    },
+    "TOKEN": {
+      "token_id": 0.737201,
+      "token_value": 0.73483,
+      "creation_time": 0.738255,
+      "expiration_time": 0.73904
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A user can manage many vehicles, but each vehicle is managed by one user.",
+      "probability": 0.997586
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many maintenance records, but each maintenance record is for one vehicle.",
+      "probability": 0.999847
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_DEPARTURE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many departure records, but each departure record is for one vehicle.",
+      "probability": 0.999841
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_MAINTENANCE_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many maintenance applications, but each maintenance application is for one vehicle.",
+      "probability": 0.999695
+    },
+    {
+      "entity_1": "REPAIR_SHOP",
+      "entity_2": "VEHICLE_MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A repair shop can perform many vehicle maintenance tasks, but each maintenance task is performed by one repair shop.",
+      "probability": 0.865683
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "description": "A user can publish many announcements, but each announcement is published by one user.",
+      "probability": 0.977588
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TOKEN",
+      "cardinality": "1:N",
+      "description": "A user can have many tokens, but each token is associated with one user.",
+      "probability": 0.964266
+    },
+    {
+      "entity_1": "VEHICLE_MAINTENANCE_APPLICATION",
+      "entity_2": "VEHICLE_MAINTENANCE",
+      "cardinality": "1:1",
+      "description": "A vehicle maintenance application is associated with one vehicle maintenance record.",
+      "probability": 0.999997
+    }
+  ],
+  "processing_time": 40.0
+}

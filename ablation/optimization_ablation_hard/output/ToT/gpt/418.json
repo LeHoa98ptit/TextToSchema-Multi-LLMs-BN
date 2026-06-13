@@ -1,0 +1,135 @@
+{
+  "entity": [
+    "USER",
+    "USER_TYPE",
+    "SECURITY_QUESTION",
+    "USER_SECURITY_ANSWER",
+    "TRANSACTION",
+    "TRANSACTION_TYPE",
+    "ANNOUNCEMENT",
+    "USER_ANNOUNCEMENT",
+    "ASSOC_USER_ANNOUNCEMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "gender",
+      "age",
+      "phone",
+      "address",
+      "email",
+      "password",
+      "status",
+      "user_type_id"
+    ],
+    "USER_TYPE": [
+      "user_type_id",
+      "type_name",
+      "description",
+      "status"
+    ],
+    "SECURITY_QUESTION": [
+      "question_id",
+      "question_text",
+      "status"
+    ],
+    "USER_SECURITY_ANSWER": [
+      "user_id",
+      "question_id",
+      "answer",
+      "status"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "user_id",
+      "amount",
+      "type_id",
+      "remark",
+      "transaction_time",
+      "status"
+    ],
+    "TRANSACTION_TYPE": [
+      "type_id",
+      "type_name",
+      "category",
+      "status"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "title",
+      "content",
+      "publication_time",
+      "status"
+    ],
+    "USER_ANNOUNCEMENT": [
+      "user_id",
+      "announcement_id",
+      "read_flag",
+      "read_time"
+    ],
+    "ASSOC_USER_ANNOUNCEMENT": [
+      "assoc_user_announcement_id",
+      "user_id",
+      "announcement_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_SECURITY_ANSWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SECURITY_QUESTION",
+      "entity_2": "USER_SECURITY_ANSWER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ANNOUNCEMENT",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_ANNOUNCEMENT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_ANNOUNCEMENT",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 74.5485,
+  "ilp_runtime": 0.031
+}

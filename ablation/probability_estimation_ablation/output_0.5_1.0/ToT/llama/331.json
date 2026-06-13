@@ -1,0 +1,140 @@
+{
+  "filename": "331.txt",
+  "entity": {
+    "PLAYER": 0.817574,
+    "MATCH": 0.817574,
+    "BATTLE": 0.817574,
+    "GAME": 0.817574,
+    "EVENT": 0.723862,
+    "ASSOC_PLAYER_MATCH": 0.268499,
+    "ASSOC_BATTLE_PLAYER": 0.065903,
+    "ASSOC_PLAYER_EVENT": 0.001503
+  },
+  "attribute": {
+    "PLAYER": {
+      "username": 0.753426,
+      "contactinformation": 0.763123,
+      "accountstatus": 0.766754,
+      "score": 0.756514
+    },
+    "MATCH": {
+      "matchtype": 0.756156,
+      "starttime": 0.761912,
+      "endtime": 0.761941,
+      "matchresult": 0.759421
+    },
+    "BATTLE": {
+      "battlestarttime": 0.749267,
+      "battleendtime": 0.756006,
+      "winlossstatus": 0.758072
+    },
+    "GAME": {
+      "gametype": 0.760245,
+      "gamedescription": 0.766585
+    },
+    "EVENT": {
+      "eventname": 0.748075,
+      "eventstartdate": 0.744331,
+      "eventenddate": 0.743878,
+      "eventdescription": 0.750949
+    },
+    "ASSOC_PLAYER_MATCH": {
+      "assoc_player_match_id": 0.268499,
+      "player_id": 0.268499,
+      "match_id": 0.268499
+    },
+    "ASSOC_BATTLE_PLAYER": {
+      "assoc_battle_player_id": 0.065903,
+      "battle_id": 0.065903,
+      "player_id": 0.065903
+    },
+    "ASSOC_PLAYER_EVENT": {
+      "assoc_player_event_id": 0.001503,
+      "player_id": 0.001503,
+      "event_id": 0.001503
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_MATCH",
+      "description": "One PLAYER can be associated with many ASSOC_PLAYER_MATCH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.268499
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "ASSOC_PLAYER_MATCH",
+      "description": "One MATCH can be associated with many ASSOC_PLAYER_MATCH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.268499
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE",
+      "cardinality": "1:N",
+      "description": "A match can have many battles",
+      "probability": 0.997253
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "ASSOC_BATTLE_PLAYER",
+      "description": "One BATTLE can be associated with many ASSOC_BATTLE_PLAYER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.065903
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_BATTLE_PLAYER",
+      "description": "One PLAYER can be associated with many ASSOC_BATTLE_PLAYER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.065903
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "description": "A game can have many matches",
+      "probability": 0.225553
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "description": "An event can have many matches",
+      "probability": 0.886644
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "GAME",
+      "cardinality": "1:N",
+      "description": "An event can feature many games",
+      "probability": 0.833349
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_EVENT",
+      "description": "One PLAYER can be associated with many ASSOC_PLAYER_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001503
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "ASSOC_PLAYER_EVENT",
+      "description": "One EVENT can be associated with many ASSOC_PLAYER_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001503
+    }
+  ],
+  "processing_time": 18.56,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added EVENT entity to capture event-specific information and relationships, integrated improvement suggestions from the evaluation, fixed identified issues, retained strengths, and ensured the final model is optimal"
+  }
+}

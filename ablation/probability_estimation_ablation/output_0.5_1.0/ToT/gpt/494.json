@@ -1,0 +1,119 @@
+{
+  "filename": "494.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ARTICLE": 0.817574,
+    "CATEGORY": 0.817574,
+    "COMMENT": 0.817574,
+    "ARTICLE_CATEGORY": 0.74996
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.750842,
+      "username": 0.744882,
+      "password": 0.754941,
+      "nickname": 0.751349,
+      "gender": 0.76639,
+      "creation_time": 0.755922,
+      "biography": 0.768572,
+      "email": 0.753307,
+      "phone": 0.746169,
+      "last_login_time": 0.743591,
+      "status": 0.765002
+    },
+    "ARTICLE": {
+      "article_id": 0.754026,
+      "title": 0.758205,
+      "author_id": 0.754546,
+      "cover_image_link": 0.745336,
+      "summary": 0.762116,
+      "permission": 0.769132,
+      "status": 0.761603,
+      "content": 0.772346,
+      "like_count": 0.760631,
+      "dislike_count": 0.752269,
+      "read_count": 0.758267,
+      "creation_time": 0.757866,
+      "update_timestamp": 0.74753,
+      "is_featured": 0.750284
+    },
+    "CATEGORY": {
+      "category_id": 0.745896,
+      "name": 0.756104,
+      "parent_category_id": 0.744195,
+      "level": 0.763703,
+      "description": 0.770015,
+      "icon_link": 0.744415
+    },
+    "COMMENT": {
+      "comment_id": 0.748573,
+      "article_id": 0.758383,
+      "user_id": 0.755709,
+      "reply_comment_id": 0.747531,
+      "content": 0.771821,
+      "creation_time": 0.753034,
+      "status": 0.759017,
+      "like_count": 0.756357
+    },
+    "ARTICLE_CATEGORY": {
+      "article_id": 0.756491,
+      "category_id": 0.755861
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ARTICLE",
+      "cardinality": "1:N",
+      "description": "A user authors many articles",
+      "probability": 0.513135
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ARTICLE_CATEGORY",
+      "cardinality": "1:N",
+      "description": "An article can be linked to multiple category assignments",
+      "probability": 0.997793
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ARTICLE_CATEGORY",
+      "cardinality": "1:N",
+      "description": "A category can be linked to multiple article assignments",
+      "probability": 0.998379
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can write many comments",
+      "probability": 0.961151
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "An article can have many comments",
+      "probability": 0.00344
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "0..1:N",
+      "description": "Comments may reply to a parent comment, forming a thread (cascade delete on parent comment)",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "Categories are organized in a hierarchy via parent_category_id (cascade delete on parent category)",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 10.67,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added optional user fields (email, phone, last_login_time, status); added article update_timestamp and is_featured flag; added comment status and like_count; clarified cascade delete semantics in hierarchical relationships; retained lean associative entity for many‑to‑many article‑category mapping and all original strengths."
+  }
+}

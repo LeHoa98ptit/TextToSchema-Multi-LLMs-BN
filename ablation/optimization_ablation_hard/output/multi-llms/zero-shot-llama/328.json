@@ -1,0 +1,112 @@
+{
+  "entity": [
+    "SURVEY",
+    "QUESTION",
+    "OPTION",
+    "RESPONDENT",
+    "ANSWER",
+    "ASSOC_SURVEY_QUESTION",
+    "ASSOC_QUESTION_OPTION"
+  ],
+  "attribute": {
+    "SURVEY": [
+      "survey id",
+      "title",
+      "description",
+      "access restriction",
+      "start time",
+      "end time",
+      "access rule",
+      "public password",
+      "status",
+      "logo url",
+      "background image url",
+      "anonymity setting"
+    ],
+    "QUESTION": [
+      "question id",
+      "title",
+      "description",
+      "require status",
+      "validation type",
+      "display order",
+      "display style",
+      "evaluation status",
+      "evaluation score"
+    ],
+    "OPTION": [
+      "option id",
+      "content",
+      "display order",
+      "correct answer status"
+    ],
+    "RESPONDENT": [
+      "respondent id"
+    ],
+    "ANSWER": [
+      "answer id",
+      "question id",
+      "respondent id",
+      "answer type",
+      "submission time",
+      "answer content",
+      "answer_id",
+      "survey_id",
+      "respondent_id",
+      "question_id",
+      "answer_type",
+      "submission_time",
+      "answer_content"
+    ],
+    "ASSOC_SURVEY_QUESTION": [
+      "assoc_survey_question_id",
+      "survey_id",
+      "question_id"
+    ],
+    "ASSOC_QUESTION_OPTION": [
+      "assoc_question_option_id",
+      "question_id",
+      "option_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "ASSOC_SURVEY_QUESTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ASSOC_SURVEY_QUESTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ASSOC_QUESTION_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPTION",
+      "entity_2": "ASSOC_QUESTION_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESPONDENT",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 53.5945,
+  "ilp_runtime": 0.043
+}

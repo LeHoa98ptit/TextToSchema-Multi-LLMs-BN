@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "EQUIPMENT",
+    "MINE",
+    "PERSONNEL",
+    "MAINTENANCE_EVENT",
+    "STATISTICAL_ANALYSIS",
+    "ASSOC_EQUIPMENT_MINE",
+    "ASSOC_PERSONNEL_MAINTENANCE_EVENT"
+  ],
+  "attribute": {
+    "EQUIPMENT": [
+      "model",
+      "purchase_date",
+      "maintenance_cost"
+    ],
+    "MINE": [
+      "location",
+      "mine_type"
+    ],
+    "PERSONNEL": [
+      "contact_number",
+      "name",
+      "role"
+    ],
+    "MAINTENANCE_EVENT": [
+      "maintenance_date",
+      "maintenance_content",
+      "maintenance_cost"
+    ],
+    "STATISTICAL_ANALYSIS": [
+      "analysis_date",
+      "equipment_usage",
+      "maintenance_frequency"
+    ],
+    "ASSOC_EQUIPMENT_MINE": [
+      "assoc_equipment_mine_id",
+      "equipment_id",
+      "mine_id"
+    ],
+    "ASSOC_PERSONNEL_MAINTENANCE_EVENT": [
+      "assoc_personnel_maintenance_event_id",
+      "personnel_id",
+      "maintenance_event_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EQUIPMENT_MINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "ASSOC_EQUIPMENT_MINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.5306,
+  "ilp_runtime": 0.056
+}

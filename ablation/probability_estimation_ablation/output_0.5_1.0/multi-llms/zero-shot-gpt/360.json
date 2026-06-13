@@ -1,0 +1,149 @@
+{
+  "filename": "360.txt",
+  "entity": {
+    "LOG": 0.817574,
+    "LOG_LEVEL": 0.753748,
+    "CATEGORY": 0.709797,
+    "OPERATOR": 0.817574,
+    "ACCOUNT": 0.716852,
+    "USER": 0.715612,
+    "ROLE": 0.727307,
+    "PERMISSION": 0.695678,
+    "OPERATION": 0.817574,
+    "ROLE_PERMISSION": 0.574651
+  },
+  "attribute": {
+    "LOG": {
+      "log id": 0.761186,
+      "log level id": 0.764375,
+      "content": 0.771505,
+      "category id": 0.759961,
+      "created at": 0.759661,
+      "modified at": 0.752589,
+      "deleted at": 0.756118,
+      "operation id": 0.769444,
+      "operator id": 0.760552
+    },
+    "LOG_LEVEL": {
+      "log level id": 0.765237,
+      "level name": 0.767093,
+      "description": 0.778236
+    },
+    "CATEGORY": {
+      "category id": 0.742207,
+      "name": 0.747242,
+      "description": 0.762237
+    },
+    "OPERATOR": {
+      "operator id": 0.742605,
+      "account id": 0.753215
+    },
+    "ACCOUNT": {
+      "account id": 0.747027,
+      "username": 0.739001,
+      "password": 0.749727,
+      "contact information": 0.755669
+    },
+    "USER": {
+      "user id": 0.74082,
+      "name": 0.733184,
+      "role id": 0.749129
+    },
+    "ROLE": {
+      "role id": 0.750571,
+      "role name": 0.748523,
+      "description": 0.76398
+    },
+    "PERMISSION": {
+      "permission id": 0.745195,
+      "permission name": 0.746435,
+      "description": 0.762996
+    },
+    "OPERATION": {
+      "operation id": 0.756053,
+      "operation time": 0.754298,
+      "operation type": 0.757352,
+      "execution content": 0.761492
+    },
+    "ROLE_PERMISSION": {
+      "role_permission_id": 0.574651,
+      "role_id": 0.574651,
+      "permission_id": 0.574651
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LOG_LEVEL",
+      "entity_2": "LOG",
+      "description": "Each log entry is assigned one log level; a log level can be used by many logs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999995
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "LOG",
+      "description": "Each log belongs to one category; a category can contain many logs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005482
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "description": "Each log records one operation; an operation can be recorded in many logs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.965204
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "LOG",
+      "description": "Each log is performed by one operator; an operator can perform many logs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.611714
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ACCOUNT",
+      "description": "Each operator possesses exactly one account; each account belongs to one operator.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.772473
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "description": "Each user has one account; each account is associated with one user.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "A role can be assigned to many users; each user has one role.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997482
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.574651
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.574651
+    }
+  ],
+  "processing_time": 31.47
+}

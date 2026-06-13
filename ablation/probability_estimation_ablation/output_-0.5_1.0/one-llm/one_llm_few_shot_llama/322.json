@@ -1,0 +1,80 @@
+{
+  "filename": "322.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "DEVICE": 0.622459,
+    "SITE": 0.622459,
+    "USER": 0.622459,
+    "ASSOC_EMPLOYEE_DEVICE": 0.24662
+  },
+  "attribute": {
+    "COMPANY": {
+      "website_address": 0.540317,
+      "creation_time": 0.536698
+    },
+    "EMPLOYEE": {
+      "name": 0.555982,
+      "position": 0.551013,
+      "salary": 0.535458
+    },
+    "DEVICE": {
+      "device_id": 0.529472
+    },
+    "SITE": {
+      "hostname": 0.525559,
+      "mark": 0.51965
+    },
+    "USER": {
+      "username": 0.514499,
+      "email": 0.535036,
+      "password": 0.533049,
+      "login_time": 0.530288
+    },
+    "ASSOC_EMPLOYEE_DEVICE": {
+      "assoc_employee_device_id": 0.24662,
+      "employee_id": 0.24662,
+      "device_id": 0.24662
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A company can have many employees, and each employee belongs to one company.",
+      "probability": 0.83223
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_DEVICE",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_DEVICE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.24662
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_EMPLOYEE_DEVICE",
+      "description": "One DEVICE can be associated with many ASSOC_EMPLOYEE_DEVICE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.24662
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "description": "A user can create many sites, and each site is created by one user.",
+      "probability": 0.962002
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each user corresponds to one employee, and each employee has one user account.",
+      "probability": 0.038296
+    }
+  ],
+  "processing_time": 10.75
+}

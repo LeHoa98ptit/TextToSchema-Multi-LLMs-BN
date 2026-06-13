@@ -1,0 +1,67 @@
+{
+  "filename": "462.txt",
+  "entity": {
+    "MEMBER": 0.622459,
+    "BOOK": 0.622459,
+    "ORDER": 0.622459,
+    "ASSOC_ORDER_BOOK": 0.011855
+  },
+  "attribute": {
+    "MEMBER": {
+      "username": 0.522569,
+      "password": 0.532453,
+      "address": 0.534137,
+      "postal_code": 0.529758,
+      "phone_number": 0.524429,
+      "consumption_point": 0.522618
+    },
+    "BOOK": {
+      "book_id": 0.563786,
+      "category": 0.56292,
+      "book_title": 0.551084,
+      "author": 0.546016,
+      "publisher": 0.562484,
+      "publication_date": 0.553113,
+      "isbn": 0.571155,
+      "price": 0.554562
+    },
+    "ORDER": {
+      "order_id": 0.519207,
+      "sale_order_date": 0.52993,
+      "shipping_date": 0.515254,
+      "order_date": 0.520034,
+      "late_shipping_date": 0.511481
+    },
+    "ASSOC_ORDER_BOOK": {
+      "assoc_order_book_id": 0.011855,
+      "order_id": 0.011855,
+      "book_id": 0.011855
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each member can have many orders, and each order is associated with exactly one member.",
+      "probability": 0.997966
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_BOOK",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011855
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_ORDER_BOOK",
+      "description": "One BOOK can be associated with many ASSOC_ORDER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011855
+    }
+  ],
+  "processing_time": 10.82
+}

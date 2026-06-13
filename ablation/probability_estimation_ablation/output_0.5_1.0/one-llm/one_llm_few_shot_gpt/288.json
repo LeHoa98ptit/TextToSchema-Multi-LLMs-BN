@@ -1,0 +1,108 @@
+{
+  "filename": "288.txt",
+  "entity": {
+    "SITE": 0.817574,
+    "MONITORING_PERSONNEL": 0.7709,
+    "MAINTENANCE_PERSONNEL": 0.806823,
+    "MONITORING_SESSION": 0.751905,
+    "MAINTENANCE_ACTIVITY": 0.773871,
+    "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL": 0.913138,
+    "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL": 0.843067
+  },
+  "attribute": {
+    "SITE": {
+      "site_id": 0.737867,
+      "name": 0.7426,
+      "location": 0.748741
+    },
+    "MONITORING_PERSONNEL": {
+      "personnel_id": 0.778711,
+      "name": 0.774302,
+      "contact_detail": 0.780024,
+      "scope": 0.782317
+    },
+    "MAINTENANCE_PERSONNEL": {
+      "personnel_id": 0.77345,
+      "name": 0.769469,
+      "contact_detail": 0.77905,
+      "scope": 0.781042
+    },
+    "MONITORING_SESSION": {
+      "session_id": 0.751081,
+      "air_quality": 0.769775,
+      "water_quality": 0.769995,
+      "noise_level": 0.758758,
+      "timestamp": 0.752392,
+      "result": 0.754014
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "activity_id": 0.763165,
+      "maintenance_time": 0.770343,
+      "maintenance_content": 0.771436,
+      "maintenance_cost": 0.770474
+    },
+    "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL": {
+      "assoc_monitoring_session_monitoring_personnel_id": 0.913138,
+      "monitoring_session_id": 0.913138,
+      "monitoring_personnel_id": 0.913138
+    },
+    "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL": {
+      "assoc_maintenance_activity_maintenance_personnel_id": 0.843067,
+      "maintenance_activity_id": 0.843067,
+      "maintenance_personnel_id": 0.843067
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "probability": 0.001087
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "probability": 0.022753
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+      "description": "One MONITORING_SESSION can be associated with many ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.913138
+    },
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+      "description": "One MONITORING_PERSONNEL can be associated with many ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.913138
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "probability": 0.431303
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL",
+      "description": "One MAINTENANCE_ACTIVITY can be associated with many ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.843067
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL",
+      "description": "One MAINTENANCE_PERSONNEL can be associated with many ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.843067
+    }
+  ],
+  "processing_time": 17.55
+}

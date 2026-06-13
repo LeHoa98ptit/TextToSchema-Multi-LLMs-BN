@@ -1,0 +1,152 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EQUIPMENT": 0.817574,
+    "CONSUMABLE": 0.817574,
+    "CHEMICAL": 0.817574,
+    "COURSE": 0.817574,
+    "USAGE_RECORD": 0.731903,
+    "PURCHASE_RECORD": 0.735673,
+    "ASSOC_USER_EQUIPMENT": 0.948035,
+    "ASSOC_USER_COURSE": 0.829184,
+    "ASSOC_EQUIPMENT_COURSE": 0.146572
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.732466,
+      "password": 0.742258,
+      "phone_number": 0.738089,
+      "associated_unit": 0.752516,
+      "role": 0.754492
+    },
+    "EQUIPMENT": {
+      "equipment_model": 0.773436,
+      "category": 0.773969,
+      "manufacturer": 0.760797,
+      "status": 0.770308,
+      "acquisition_time": 0.765302
+    },
+    "CONSUMABLE": {
+      "category": 0.763592,
+      "inventory_quantity": 0.770072,
+      "status": 0.757565,
+      "purchase_time": 0.751835
+    },
+    "CHEMICAL": {
+      "chemical_name": 0.752076,
+      "inventory_quantity": 0.775189,
+      "status": 0.754547,
+      "purchase_time": 0.757492
+    },
+    "COURSE": {
+      "course_name": 0.763739,
+      "class_time": 0.763655,
+      "class_location": 0.762315,
+      "course_description": 0.772295
+    },
+    "USAGE_RECORD": {
+      "usage_time": 0.755452,
+      "user_id": 0.750463,
+      "equipment_id": 0.765427,
+      "purpose": 0.759425
+    },
+    "PURCHASE_RECORD": {
+      "purchase_time": 0.749317,
+      "user_id": 0.744781,
+      "consumable_id": 0.748663,
+      "quantity": 0.759237
+    },
+    "ASSOC_USER_EQUIPMENT": {
+      "assoc_user_equipment_id": 0.948035,
+      "user_id": 0.948035,
+      "equipment_id": 0.948035
+    },
+    "ASSOC_USER_COURSE": {
+      "assoc_user_course_id": 0.829184,
+      "user_id": 0.829184,
+      "course_id": 0.829184
+    },
+    "ASSOC_EQUIPMENT_COURSE": {
+      "assoc_equipment_course_id": 0.146572,
+      "equipment_id": 0.146572,
+      "course_id": 0.146572
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One USER can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.948035
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One EQUIPMENT can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.948035
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_COURSE",
+      "description": "One USER can be associated with many ASSOC_USER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.829184
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_USER_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_USER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.829184
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EQUIPMENT_COURSE",
+      "description": "One EQUIPMENT can be associated with many ASSOC_EQUIPMENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.146572
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_EQUIPMENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_EQUIPMENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.146572
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "description": "An equipment can have multiple usage records",
+      "probability": 0.999623
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "description": "A consumable can have multiple purchase records",
+      "probability": 0.958284
+    },
+    {
+      "entity_1": "CHEMICAL",
+      "entity_2": "CONSUMABLE",
+      "cardinality": "1:1",
+      "description": "A chemical is a type of consumable",
+      "probability": 0.441466
+    }
+  ],
+  "processing_time": 29.44,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant STORAGE entity, improved naming consistency, and added a relationship between CHEMICAL and CONSUMABLE to reflect their hierarchical structure."
+  }
+}

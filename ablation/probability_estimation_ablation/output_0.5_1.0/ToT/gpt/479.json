@@ -1,0 +1,151 @@
+{
+  "filename": "479.txt",
+  "entity": {
+    "SUBSIDIARY": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "FAMILY_MEMBER": 0.711832,
+    "VERIFICATION_LOG": 0.675836,
+    "PROPERTY": 0.737787,
+    "AGENT": 0.712058,
+    "ADMIN": 0.741351,
+    "EXPORT_LOG": 0.666189,
+    "LISTING": 0.708746
+  },
+  "attribute": {
+    "SUBSIDIARY": {
+      "subsidiary_id": 0.78145,
+      "name": 0.777133,
+      "manager_employee_id": 0.787341,
+      "contact_address": 0.772795,
+      "phone_number": 0.774361
+    },
+    "DEPARTMENT": {
+      "department_id": 0.762821,
+      "name": 0.771642,
+      "address": 0.765434,
+      "phone_number": 0.757651,
+      "subsidiary_id": 0.7813,
+      "supervisor_employee_id": 0.767939
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.76727,
+      "name": 0.767465,
+      "position": 0.766686,
+      "phone_number": 0.760916,
+      "department_id": 0.773325
+    },
+    "FAMILY_MEMBER": {
+      "family_member_id": 0.755651,
+      "employee_id": 0.766522,
+      "name": 0.751115,
+      "relationship": 0.750528
+    },
+    "VERIFICATION_LOG": {
+      "log_id": 0.740989,
+      "employee_id": 0.760825,
+      "verification_date": 0.734672,
+      "status": 0.743112,
+      "remarks": 0.743226
+    },
+    "PROPERTY": {
+      "property_id": 0.739732,
+      "address": 0.750608,
+      "type": 0.744974,
+      "price": 0.734205,
+      "status": 0.750314,
+      "listed_date": 0.745271,
+      "removal_date": 0.740783
+    },
+    "AGENT": {
+      "agent_id": 0.752079,
+      "name": 0.752594,
+      "license_number": 0.75052,
+      "phone_number": 0.750498
+    },
+    "ADMIN": {
+      "admin_id": 0.752783,
+      "name": 0.759039,
+      "email": 0.755796
+    },
+    "EXPORT_LOG": {
+      "export_id": 0.739352,
+      "admin_id": 0.748438,
+      "export_date": 0.732635,
+      "record_count": 0.7351,
+      "notes": 0.741189,
+      "status": 0.740033
+    },
+    "LISTING": {
+      "listing_id": 0.74701,
+      "property_id": 0.74384,
+      "agent_id": 0.75291,
+      "listing_date": 0.742216,
+      "commission_rate": 0.744305,
+      "listing_status": 0.743773
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUBSIDIARY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "Each subsidiary can own multiple departments.",
+      "probability": 0.999869
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees (staff). The department's supervisor is identified by supervisor_employee_id.",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "FAMILY_MEMBER",
+      "cardinality": "1:N",
+      "description": "An employee may have several family members recorded.",
+      "probability": 0.091481
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "VERIFICATION_LOG",
+      "cardinality": "1:N",
+      "description": "Each employee can have multiple identity‑verification log entries.",
+      "probability": 0.579321
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "LISTING",
+      "cardinality": "1:N",
+      "description": "A property can appear in many listings.",
+      "probability": 0.578067
+    },
+    {
+      "entity_1": "AGENT",
+      "entity_2": "LISTING",
+      "cardinality": "1:N",
+      "description": "An agent can be associated with many listings.",
+      "probability": 0.007157
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "ADMIN",
+      "cardinality": "N:1",
+      "description": "Each property is approved by one administrator; an admin may approve many properties.",
+      "probability": 8.7e-05
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "EXPORT_LOG",
+      "cardinality": "1:N",
+      "description": "Administrators generate many export logs.",
+      "probability": 4.2e-05
+    }
+  ],
+  "processing_time": 14.66,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Consolidated the duplicate Department‑Employee supervisor relationship into a supervisor_employee_id attribute, removing the separate 1:1 relationship. Introduced a LISTING associative entity to properly model the N:M Property‑Agent relationship and capture listing‑specific details (listing_date, commission_rate, status). Added removal_date to PROPERTY for tracking long‑term sale removals. Added a status attribute to EXPORT_LOG for export outcome tracking. Clarified foreign‑key roles in attribute lists and relationship descriptions to aid physical design."
+  }
+}

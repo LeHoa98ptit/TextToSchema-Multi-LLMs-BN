@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "SEAT",
+    "SEAT_LAYOUT_TEMPLATE",
+    "USER",
+    "RESERVATION",
+    "ASSOC_RESERVATION_SEAT"
+  ],
+  "attribute": {
+    "SEAT": [
+      "seat_id",
+      "layout_template_id",
+      "location_x",
+      "location_y",
+      "row_number",
+      "column_number",
+      "seat_type",
+      "price",
+      "created_at",
+      "updated_at",
+      "is_valid",
+      "status"
+    ],
+    "SEAT_LAYOUT_TEMPLATE": [
+      "template_id",
+      "description",
+      "occasion",
+      "time_period",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "user_id",
+      "full_name",
+      "contact_number",
+      "email_address",
+      "created_at",
+      "updated_at"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "user_id",
+      "reservation_time",
+      "total_price",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "ASSOC_RESERVATION_SEAT": [
+      "assoc_reservation_seat_id",
+      "reservation_id",
+      "seat_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SEAT_LAYOUT_TEMPLATE",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 56.62,
+  "ilp_runtime": 0.029
+}

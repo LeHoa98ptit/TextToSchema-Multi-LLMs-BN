@@ -1,0 +1,131 @@
+{
+  "entity": [
+    "PARTICIPANT",
+    "CONFERENCE",
+    "TICKET",
+    "PURCHASE",
+    "WORKSHOP",
+    "MEETING",
+    "SPEAKER",
+    "ASSOC_MEETING_SPEAKER",
+    "ASSOC_PARTICIPANT_WORKSHOP",
+    "ASSOC_PARTICIPANT_MEETING"
+  ],
+  "attribute": {
+    "PARTICIPANT": [
+      "participant_id",
+      "company",
+      "email"
+    ],
+    "CONFERENCE": [
+      "conference_id",
+      "name"
+    ],
+    "TICKET": [
+      "ticket_id",
+      "description",
+      "price"
+    ],
+    "PURCHASE": [
+      "purchase_id",
+      "net_price"
+    ],
+    "WORKSHOP": [
+      "workshop_id",
+      "description",
+      "requirement",
+      "location",
+      "date",
+      "start_time",
+      "end_time",
+      "capacity"
+    ],
+    "MEETING": [
+      "meeting_id",
+      "description",
+      "date",
+      "start_time",
+      "end_time",
+      "room"
+    ],
+    "SPEAKER": [
+      "speaker_id",
+      "name",
+      "company",
+      "description"
+    ],
+    "ASSOC_MEETING_SPEAKER": [
+      "assoc_meeting_speaker_id",
+      "meeting_id",
+      "speaker_id"
+    ],
+    "ASSOC_PARTICIPANT_WORKSHOP": [
+      "assoc_participant_workshop_id",
+      "participant_id",
+      "workshop_id"
+    ],
+    "ASSOC_PARTICIPANT_MEETING": [
+      "assoc_participant_meeting_id",
+      "participant_id",
+      "meeting_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PURCHASE",
+      "entity_2": "TICKET",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "MEETING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "ASSOC_MEETING_SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "ASSOC_MEETING_SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "ASSOC_PARTICIPANT_WORKSHOP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKSHOP",
+      "entity_2": "ASSOC_PARTICIPANT_WORKSHOP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "ASSOC_PARTICIPANT_MEETING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "ASSOC_PARTICIPANT_MEETING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 73.0179,
+  "ilp_runtime": 0.049
+}

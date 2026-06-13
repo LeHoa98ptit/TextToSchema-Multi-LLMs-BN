@@ -1,0 +1,86 @@
+{
+  "filename": "500.txt",
+  "entity": {
+    "TASK": 0.817574,
+    "USER": 0.817574,
+    "ROLE": 0.817574,
+    "TASK_TYPE": 0.795808,
+    "TASK_STATUS": 0.804065,
+    "TASK_PRIORITY": 0.80048
+  },
+  "attribute": {
+    "TASK": {
+      "task_id": 0.767643,
+      "task_description": 0.783189,
+      "task_deadline": 0.774765,
+      "task_progress": 0.772356,
+      "task_status_id": 0.771348,
+      "task_priority_id": 0.773703
+    },
+    "USER": {
+      "user_id": 0.735414,
+      "username": 0.733992,
+      "password": 0.743544,
+      "email": 0.745485,
+      "role_id": 0.747577
+    },
+    "ROLE": {
+      "role_id": 0.74982,
+      "role_description": 0.766579
+    },
+    "TASK_TYPE": {
+      "task_type_id": 0.766183,
+      "task_type_description": 0.779701
+    },
+    "TASK_STATUS": {
+      "task_status_id": 0.772437,
+      "status_description": 0.783443
+    },
+    "TASK_PRIORITY": {
+      "task_priority_id": 0.773614,
+      "task_priority_description": 0.785874
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "description": "A task is assigned to one user",
+      "probability": 0.03213
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "1:1",
+      "description": "A user has one role",
+      "probability": 0.997543
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TYPE",
+      "cardinality": "1:1",
+      "description": "A task has one task type",
+      "probability": 0.999989
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_STATUS",
+      "cardinality": "1:N",
+      "description": "A task can have multiple task statuses",
+      "probability": 0.999887
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_PRIORITY",
+      "cardinality": "1:1",
+      "description": "A task has one task priority",
+      "probability": 0.999629
+    }
+  ],
+  "processing_time": 933.41,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute task_type_id from TASK entity, removed N:M relationship between USER and TASK, and added more detailed descriptions for the relationships."
+  }
+}

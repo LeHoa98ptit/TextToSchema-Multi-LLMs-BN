@@ -1,0 +1,188 @@
+{
+  "filename": "457.txt",
+  "entity": {
+    "SUPERMARKET": 0.716121,
+    "PRODUCT": 0.817574,
+    "SUPPLIER": 0.767812,
+    "SUPPLY_REQUEST": 0.793671,
+    "REQUEST_LINE": 0.702661,
+    "DELIVERY_NOTIFICATION": 0.76166,
+    "STOCK_NOTIFICATION": 0.748664,
+    "PROCUREMENT_LIST": 0.766132,
+    "PROCUREMENT_ITEM": 0.779748
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.768885,
+      "name": 0.767116,
+      "street": 0.76286,
+      "city": 0.764231,
+      "state": 0.760284,
+      "zip_code": 0.760892,
+      "phone": 0.763328,
+      "email": 0.770931
+    },
+    "PRODUCT": {
+      "product_id": 0.74833,
+      "sku": 0.753724,
+      "name": 0.754969,
+      "category": 0.759755,
+      "unit_price": 0.747993,
+      "inventory_quantity": 0.779123,
+      "last_update_date": 0.745708
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.764901,
+      "name": 0.767874,
+      "street": 0.767525,
+      "city": 0.770029,
+      "state": 0.762514,
+      "zip_code": 0.761108,
+      "contact_name": 0.767988,
+      "contact_phone": 0.759963,
+      "contact_email": 0.765943
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.76697,
+      "supermarket_id": 0.781406,
+      "request_date": 0.767689,
+      "status": 0.780864,
+      "total_quantity": 0.772564
+    },
+    "REQUEST_LINE": {
+      "line_id": 0.737407,
+      "request_id": 0.739562,
+      "product_id": 0.75147,
+      "supplier_id": 0.763983,
+      "requested_quantity": 0.764413,
+      "requested_price": 0.752101
+    },
+    "DELIVERY_NOTIFICATION": {
+      "notification_id": 0.755784,
+      "request_line_id": 0.757026,
+      "request_id": 0.758557,
+      "delivery_date": 0.758371,
+      "delivered_quantity": 0.774037
+    },
+    "STOCK_NOTIFICATION": {
+      "notification_id": 0.758084,
+      "request_line_id": 0.760188,
+      "request_id": 0.761567,
+      "stock_date": 0.756046,
+      "shortage_quantity": 0.77575
+    },
+    "PROCUREMENT_LIST": {
+      "list_id": 0.766547,
+      "creation_date": 0.765654,
+      "approved_by": 0.765176
+    },
+    "PROCUREMENT_ITEM": {
+      "item_id": 0.761045,
+      "list_id": 0.764526,
+      "product_id": 0.764319,
+      "supplier_id": 0.769074,
+      "purchase_quantity": 0.775983,
+      "purchase_price": 0.762686,
+      "expected_delivery_date": 0.764823,
+      "status": 0.774832
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A supermarket can create many supply requests",
+      "probability": 0.010698
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "REQUEST_LINE",
+      "cardinality": "1:N",
+      "description": "Each supply request contains one or more request lines",
+      "probability": 0.001358
+    },
+    {
+      "entity_1": "REQUEST_LINE",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "A request line references a single product",
+      "probability": 0.045839
+    },
+    {
+      "entity_1": "REQUEST_LINE",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "A request line indicates the preferred supplier for the product",
+      "probability": 0.214358
+    },
+    {
+      "entity_1": "REQUEST_LINE",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "cardinality": "1:1",
+      "description": "A delivery notification is generated for a fulfilled request line",
+      "probability": 0.008056
+    },
+    {
+      "entity_1": "REQUEST_LINE",
+      "entity_2": "STOCK_NOTIFICATION",
+      "cardinality": "1:1",
+      "description": "A stock notification is generated when inventory is insufficient for a request line",
+      "probability": 0.003068
+    },
+    {
+      "entity_1": "DELIVERY_NOTIFICATION",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "N:1",
+      "description": "Each delivery notification belongs to the parent supply request for reporting purposes",
+      "probability": 0.94185
+    },
+    {
+      "entity_1": "STOCK_NOTIFICATION",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "N:1",
+      "description": "Each stock notification belongs to the parent supply request for reporting purposes",
+      "probability": 0.156165
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "Deliveries are issued per product",
+      "probability": 0.049012
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "STOCK_NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "Stock shortage alerts are generated per product",
+      "probability": 0.007543
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT_ITEM",
+      "cardinality": "1:N",
+      "description": "A supplier can supply many procurement items",
+      "probability": 0.87575
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can appear in many procurement items",
+      "probability": 0.853587
+    },
+    {
+      "entity_1": "PROCUREMENT_LIST",
+      "entity_2": "PROCUREMENT_ITEM",
+      "cardinality": "1:N",
+      "description": "A procurement list aggregates multiple procurement items",
+      "probability": 0.999454
+    }
+  ],
+  "processing_time": 17.98,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added foreign keys from DELIVERY_NOTIFICATION and STOCK_NOTIFICATION to SUPPLY_REQUEST for easier request‑level reporting. Introduced a STATUS attribute on PROCUREMENT_ITEM to track purchase progress. Modeled REQUEST_LINE as a weak entity by including request_id in its attributes, enforcing uniqueness within a request. Expanded relationships to reflect the new foreign keys while retaining the original strong points of the model."
+  }
+}

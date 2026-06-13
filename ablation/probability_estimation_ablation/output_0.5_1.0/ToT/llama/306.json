@@ -1,0 +1,109 @@
+{
+  "filename": "306.txt",
+  "entity": {
+    "TASK": 0.817574,
+    "TRIGGER": 0.817574,
+    "SCHEDULER": 0.817574,
+    "LOCK": 0.817574,
+    "ASSOC_TASK_TRIGGER": 0.852062,
+    "ASSOC_TRIGGER_TASK": 0.852062
+  },
+  "attribute": {
+    "TASK": {
+      "task_d": 0.759173,
+      "task_description": 0.764483,
+      "class_persistence_flag": 0.755626,
+      "concurrent_execution_flag": 0.763797,
+      "execution_time": 0.759427,
+      "priority": 0.766856,
+      "trigger_status": 0.768414,
+      "start_time": 0.759902,
+      "end_time": 0.760263,
+      "calendar": 0.759856,
+      "fault_instruction": 0.755353
+    },
+    "TRIGGER": {
+      "trigger_d": 0.751856,
+      "trigger_type": 0.757191,
+      "repeat_count": 0.75965,
+      "repeat_interval": 0.761245,
+      "trigger_count": 0.759996
+    },
+    "SCHEDULER": {
+      "scheduler_d": 0.76273,
+      "scheduler_status": 0.764765,
+      "scheduler_configuration": 0.761897,
+      "scheduler_log": 0.757641
+    },
+    "LOCK": {
+      "lock_d": 0.740521,
+      "lock_status": 0.750173,
+      "lock_description": 0.750906,
+      "acquisition_time": 0.745655,
+      "release_time": 0.746181
+    },
+    "ASSOC_TASK_TRIGGER": {
+      "assoc_task_trigger_id": 0.852062,
+      "task_id": 0.852062,
+      "trigger_id": 0.852062
+    },
+    "ASSOC_TRIGGER_TASK": {
+      "assoc_trigger_task_id": 0.852062,
+      "trigger_id": 0.852062,
+      "task_id": 0.852062
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TASK_TRIGGER",
+      "description": "One TASK can be associated with many ASSOC_TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.852062
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "ASSOC_TASK_TRIGGER",
+      "description": "One TRIGGER can be associated with many ASSOC_TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.852062
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A scheduler can schedule multiple tasks",
+      "probability": 0.988204
+    },
+    {
+      "entity_1": "LOCK",
+      "entity_2": "SCHEDULER",
+      "cardinality": "1:N",
+      "description": "A lock can be associated with multiple schedulers",
+      "probability": 0.453121
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "ASSOC_TRIGGER_TASK",
+      "description": "One TRIGGER can be associated with many ASSOC_TRIGGER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.852062
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TRIGGER_TASK",
+      "description": "One TASK can be associated with many ASSOC_TRIGGER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.852062
+    }
+  ],
+  "processing_time": 33.05,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant entities (SIMPLE_TRIGGER, CRON_TRIGGER, COMPLEX_TRIGGER) and retained only the essential entities and attributes, ensuring accuracy, consistency, and efficiency."
+  }
+}

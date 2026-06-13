@@ -1,0 +1,87 @@
+{
+  "filename": "324.txt",
+  "entity": {
+    "GEOGRAPHIC_LOCATION": 0.797332,
+    "IP_ADDRESS": 0.796441,
+    "COUNTRY": 0.817574,
+    "CONTINENT": 0.754007,
+    "PROVIDER": 0.725817,
+    "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER": 0.971288
+  },
+  "attribute": {
+    "GEOGRAPHIC_LOCATION": {
+      "latitude": 0.773643,
+      "longitude": 0.773941,
+      "altitude": 0.763413
+    },
+    "IP_ADDRESS": {
+      "ip": 0.766414,
+      "network": 0.763038
+    },
+    "COUNTRY": {
+      "iso_code": 0.765231,
+      "name": 0.7513,
+      "european_union": 0.756289
+    },
+    "CONTINENT": {
+      "name": 0.749139,
+      "code": 0.758978
+    },
+    "PROVIDER": {
+      "name": 0.753735,
+      "type": 0.756771
+    },
+    "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER": {
+      "assoc_geographic_location_provider_id": 0.971288,
+      "geographic_location_id": 0.971288,
+      "provider_id": 0.971288
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "cardinality": "1:1",
+      "description": "Each IP address is associated with one geographic location.",
+      "probability": 0.996563
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "Each geographic location is associated with one country, and each country can have many geographic locations.",
+      "probability": 0.992178
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "N:1",
+      "description": "Each country is associated with one continent, and each continent can have many countries.",
+      "probability": 0.898795
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "PROVIDER",
+      "cardinality": "N:1",
+      "description": "Each IP address is associated with one provider, and each provider can have many IP addresses.",
+      "probability": 0.984352
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER",
+      "description": "One GEOGRAPHIC_LOCATION can be associated with many ASSOC_GEOGRAPHIC_LOCATION_PROVIDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971288
+    },
+    {
+      "entity_1": "PROVIDER",
+      "entity_2": "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER",
+      "description": "One PROVIDER can be associated with many ASSOC_GEOGRAPHIC_LOCATION_PROVIDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971288
+    }
+  ],
+  "processing_time": 14.16
+}

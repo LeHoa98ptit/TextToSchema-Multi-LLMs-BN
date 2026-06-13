@@ -1,0 +1,71 @@
+{
+  "filename": "261.txt",
+  "entity": {
+    "VOTER": 0.817574,
+    "DISTRICT": 0.817574,
+    "ADDRESS": 0.817574,
+    "TOWN": 0.750915,
+    "CITY": 0.744102
+  },
+  "attribute": {
+    "VOTER": {
+      "voter_id": 0.777485,
+      "name": 0.773367,
+      "registration_status": 0.777931,
+      "eligible": 0.773606
+    },
+    "DISTRICT": {
+      "district_id": 0.776497,
+      "type": 0.773266,
+      "description": 0.774341
+    },
+    "ADDRESS": {
+      "address_id": 0.760803,
+      "street": 0.761636,
+      "zip": 0.756423
+    },
+    "TOWN": {
+      "town_id": 0.765398,
+      "name": 0.758524
+    },
+    "CITY": {
+      "city_id": 0.764426,
+      "name": 0.757369
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "VOTER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "A voter has one residential address",
+      "probability": 7.8e-05
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "TOWN",
+      "cardinality": "1:1",
+      "description": "An address is located in one town",
+      "probability": 0.140327
+    },
+    {
+      "entity_1": "TOWN",
+      "entity_2": "DISTRICT",
+      "cardinality": "1:1",
+      "description": "A town is part of one district",
+      "probability": 0.830614
+    },
+    {
+      "entity_1": "DISTRICT",
+      "entity_2": "CITY",
+      "cardinality": "1:1",
+      "description": "A district is part of one city",
+      "probability": 0.968131
+    }
+  ],
+  "processing_time": 13.6,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes 'city' and 'town' from ADDRESS entity, and simplified relationships by introducing a hierarchical structure: CITY -> DISTRICT -> TOWN -> ADDRESS"
+  }
+}

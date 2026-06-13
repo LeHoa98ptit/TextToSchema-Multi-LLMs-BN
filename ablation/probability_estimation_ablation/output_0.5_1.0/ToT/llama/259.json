@@ -1,0 +1,94 @@
+{
+  "filename": "259.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EMAIL_ACCOUNT": 0.771641,
+    "CONTACT": 0.751383,
+    "EMAIL": 0.817574,
+    "ATTACHMENT": 0.817574,
+    "EMAIL_STATUS": 0.75384
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.74224,
+      "password": 0.750599
+    },
+    "EMAIL_ACCOUNT": {
+      "email_address": 0.766486,
+      "password": 0.766102,
+      "account_type": 0.76046
+    },
+    "CONTACT": {
+      "phone_number": 0.746377,
+      "work_address": 0.755769,
+      "email_address": 0.763639,
+      "contact_name": 0.754502
+    },
+    "EMAIL": {
+      "subject": 0.775403,
+      "content": 0.774747,
+      "send_time": 0.758069,
+      "receive_time": 0.760365,
+      "email_status_id": 0.759491
+    },
+    "ATTACHMENT": {
+      "attachment_id": 0.755074,
+      "filename": 0.757051,
+      "attachment_size": 0.758671,
+      "email_id": 0.768313
+    },
+    "EMAIL_STATUS": {
+      "email_status_id": 0.758802,
+      "status_description": 0.764847
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL_ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple email accounts",
+      "probability": 0.999612
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple contacts",
+      "probability": 0.999507
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "A user can send and receive multiple emails",
+      "probability": 0.999589
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ATTACHMENT",
+      "cardinality": "1:N",
+      "description": "An email can have multiple attachments",
+      "probability": 0.055618
+    },
+    {
+      "entity_1": "EMAIL_ACCOUNT",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "An email account can send and receive multiple emails",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL_STATUS",
+      "cardinality": "N:1",
+      "description": "An email is associated with one email status",
+      "probability": 0.999748
+    }
+  ],
+  "processing_time": 23.14,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for email status to improve data normalization and reduce data redundancy, removed email from user attributes to avoid data redundancy"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "entity": [
+    "USER",
+    "PROFILE",
+    "POST",
+    "FOLLOW_RELATIONSHIP",
+    "NOTIFICATION",
+    "ASSOC_USER_FOLLOW_RELATIONSHIP"
+  ],
+  "attribute": {
+    "USER": [
+      "account d",
+      "email",
+      "password",
+      "verification status",
+      "account status"
+    ],
+    "PROFILE": [
+      "account d"
+    ],
+    "POST": [
+      "post d",
+      "publisher account d",
+      "content",
+      "publish time",
+      "attachment",
+      "link"
+    ],
+    "FOLLOW_RELATIONSHIP": [
+      "follower account d",
+      "followee account d",
+      "follow d",
+      "follow_relationship_id",
+      "user_id",
+      "follower_account_d",
+      "followee_account_d"
+    ],
+    "NOTIFICATION": [
+      "notification d",
+      "notification type",
+      "recipient account d",
+      "related post",
+      "notification time"
+    ],
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": [
+      "assoc_user_follow_relationship_id",
+      "user_id",
+      "follow_relationship_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FOLLOW_RELATIONSHIP",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 113.2982,
+  "ilp_runtime": 0.042
+}

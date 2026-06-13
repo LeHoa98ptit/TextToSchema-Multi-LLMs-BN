@@ -1,0 +1,182 @@
+{
+  "filename": "347.txt",
+  "entity": {
+    "MODEL": 0.817574,
+    "MODEL_TYPE": 0.795646,
+    "MODEL_RUN": 0.743683,
+    "DATASET": 0.817574,
+    "DATASET_VARIABLE": 0.754156,
+    "HYPERPARAMETER": 0.817574,
+    "PERFORMANCE_METRIC": 0.684839,
+    "LEADERBOARD": 0.704912,
+    "TAG": 0.817574,
+    "ASSOC_MODEL_LEADERBOARD": 0.27317,
+    "ASSOC_DATASET_TAG": 0.130716
+  },
+  "attribute": {
+    "MODEL": {
+      "model_id": 0.751274,
+      "model_name": 0.754147,
+      "model_description": 0.757963,
+      "model_implementation": 0.755645
+    },
+    "MODEL_TYPE": {
+      "model_type_id": 0.749368,
+      "model_type_name": 0.751934,
+      "model_type_description": 0.755418
+    },
+    "MODEL_RUN": {
+      "model_run_id": 0.756391,
+      "start_time": 0.753035,
+      "end_time": 0.758566,
+      "runtime": 0.758875,
+      "run_path": 0.749785,
+      "model_id": 0.756741
+    },
+    "DATASET": {
+      "dataset_id": 0.75518,
+      "dataset_name": 0.754947,
+      "dataset_description": 0.763192,
+      "owner": 0.755794,
+      "license": 0.754182,
+      "visibility": 0.754613,
+      "url": 0.755804,
+      "creation_date": 0.753807,
+      "update_date": 0.751699,
+      "datum_size": 0.752985,
+      "number_row": 0.758552,
+      "number_column": 0.75722
+    },
+    "DATASET_VARIABLE": {
+      "dataset_variable_id": 0.753338,
+      "datum_type": 0.75469,
+      "unique_value": 0.751734,
+      "null_value": 0.748036,
+      "dataset_id": 0.753133
+    },
+    "HYPERPARAMETER": {
+      "hyperparameter_id": 0.758127,
+      "hyperparameter_name": 0.758274,
+      "hyperparameter_description": 0.764225,
+      "hyperparameter_value": 0.760692
+    },
+    "PERFORMANCE_METRIC": {
+      "performance_metric_id": 0.758573,
+      "metric_name": 0.755057,
+      "metric_description": 0.760671,
+      "rmse": 0.752307,
+      "mse": 0.755901,
+      "mae": 0.761303,
+      "rmsle": 0.752618
+    },
+    "LEADERBOARD": {
+      "leaderboard_id": 0.754072,
+      "leaderboard_name": 0.754641,
+      "leaderboard_description": 0.758083
+    },
+    "TAG": {
+      "tag_id": 0.738449,
+      "tag_name": 0.739474,
+      "tag_description": 0.745059
+    },
+    "ASSOC_MODEL_LEADERBOARD": {
+      "assoc_model_leaderboard_id": 0.27317,
+      "model_id": 0.27317,
+      "leaderboard_id": 0.27317
+    },
+    "ASSOC_DATASET_TAG": {
+      "assoc_dataset_tag_id": 0.130716,
+      "dataset_id": 0.130716,
+      "tag_id": 0.130716
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_TYPE",
+      "description": "Each model is associated with one model type, and each model type can have many models.",
+      "cardinality": "N:1",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.993085
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_RUN",
+      "description": "Each model can have many model runs, and each model run is associated with one model.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.998402
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "DATASET",
+      "description": "Each model run is associated with one dataset, and each dataset can be used for many model runs.",
+      "cardinality": "N:1",
+      "is_identifying": false,
+      "associative_entity": "DATA_MAP",
+      "probability": 0.152227
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE",
+      "description": "Each dataset has many dataset variables, and each dataset variable is associated with one dataset.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.999953
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "HYPERPARAMETER",
+      "description": "Each model can have many hyperparameters, and each hyperparameter is associated with one model.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": "HYPERPARAMETER_VALUE",
+      "probability": 0.388423
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "PERFORMANCE_METRIC",
+      "description": "Each model run is associated with one performance metric, and each performance metric can be used for many model runs.",
+      "cardinality": "N:1",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.120707
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "ASSOC_MODEL_LEADERBOARD",
+      "description": "One MODEL can be associated with many ASSOC_MODEL_LEADERBOARD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.27317
+    },
+    {
+      "entity_1": "LEADERBOARD",
+      "entity_2": "ASSOC_MODEL_LEADERBOARD",
+      "description": "One LEADERBOARD can be associated with many ASSOC_MODEL_LEADERBOARD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.27317
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "ASSOC_DATASET_TAG",
+      "description": "One DATASET can be associated with many ASSOC_DATASET_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.130716
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_DATASET_TAG",
+      "description": "One TAG can be associated with many ASSOC_DATASET_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.130716
+    }
+  ],
+  "processing_time": 56.29
+}

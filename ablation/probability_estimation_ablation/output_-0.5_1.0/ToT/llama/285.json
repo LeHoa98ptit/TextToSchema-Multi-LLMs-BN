@@ -1,0 +1,89 @@
+{
+  "filename": "285.txt",
+  "entity": {
+    "ADVERTISER": 0.575786,
+    "ADVERTISEMENT": 0.622459,
+    "CUSTOMER": 0.622459,
+    "BROADCAST": 0.622459,
+    "RATING": 0.445665,
+    "ASSOC_CUSTOMER_BROADCAST": 0.880159
+  },
+  "attribute": {
+    "ADVERTISER": {
+      "name": 0.551953,
+      "email": 0.547268,
+      "address": 0.544147
+    },
+    "ADVERTISEMENT": {
+      "content": 0.56455,
+      "duration": 0.555544,
+      "start_time": 0.55102,
+      "end_time": 0.5513
+    },
+    "CUSTOMER": {
+      "email": 0.532854,
+      "contact_number": 0.52495,
+      "location": 0.531638,
+      "viewing_history": 0.535888,
+      "preferences": 0.538081
+    },
+    "BROADCAST": {
+      "broadcast_time": 0.543856,
+      "broadcast_duration": 0.545082,
+      "rating": 0.545254
+    },
+    "RATING": {
+      "rating_value": 0.517111,
+      "rating_description": 0.527888
+    },
+    "ASSOC_CUSTOMER_BROADCAST": {
+      "assoc_customer_broadcast_id": 0.880159,
+      "customer_id": 0.880159,
+      "broadcast_id": 0.880159
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADVERTISER",
+      "entity_2": "ADVERTISEMENT",
+      "cardinality": "1:N",
+      "description": "An advertiser can have multiple advertisements",
+      "probability": 0.999934
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "BROADCAST",
+      "cardinality": "1:N",
+      "description": "An advertisement can have multiple broadcasts",
+      "probability": 0.884654
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_BROADCAST",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_BROADCAST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.880159
+    },
+    {
+      "entity_1": "BROADCAST",
+      "entity_2": "ASSOC_CUSTOMER_BROADCAST",
+      "description": "One BROADCAST can be associated with many ASSOC_CUSTOMER_BROADCAST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.880159
+    },
+    {
+      "entity_1": "BROADCAST",
+      "entity_2": "RATING",
+      "cardinality": "1:1",
+      "description": "A broadcast has one rating",
+      "probability": 0.000268
+    }
+  ],
+  "processing_time": 13.09,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added viewing_history and preferences attributes to the CUSTOMER entity to enhance the system's ability to track customer behavior"
+  }
+}

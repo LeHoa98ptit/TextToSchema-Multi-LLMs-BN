@@ -1,0 +1,112 @@
+{
+  "entity": [
+    "USER",
+    "BUILDING",
+    "DORMITORY",
+    "STUDENT",
+    "APPLICATION",
+    "MAINTENANCE_RECORD",
+    "ANNOUNCEMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "role"
+    ],
+    "BUILDING": [
+      "building id",
+      "type",
+      "location",
+      "description",
+      "manager username"
+    ],
+    "DORMITORY": [
+      "dormitory id",
+      "type",
+      "number",
+      "bed count",
+      "building id",
+      "support facilities",
+      "manager username"
+    ],
+    "STUDENT": [
+      "student id",
+      "gender",
+      "class",
+      "dormitory id"
+    ],
+    "APPLICATION": [
+      "application id",
+      "application type",
+      "student id",
+      "application content",
+      "application time",
+      "application status",
+      "admin opinion",
+      "processed by"
+    ],
+    "MAINTENANCE_RECORD": [
+      "maintenance record id",
+      "dormitory id",
+      "fault description",
+      "repair time",
+      "maintenance staff username",
+      "maintenance situation",
+      "completion time"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement id",
+      "title",
+      "content",
+      "release time",
+      "admin username"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.6179,
+  "ilp_runtime": 0.064
+}

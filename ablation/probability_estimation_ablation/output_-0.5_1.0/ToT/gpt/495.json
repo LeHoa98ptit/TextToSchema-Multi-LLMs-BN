@@ -1,0 +1,181 @@
+{
+  "filename": "495.txt",
+  "entity": {
+    "DOCTOR": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "PERSONNEL": 0.516619,
+    "WARD": 0.622459,
+    "PATIENT": 0.622459,
+    "MEDICINE": 0.622459,
+    "DIAGNOSIS": 0.622459,
+    "CONSULTATION": 0.479237,
+    "PRESCRIPTION": 0.51567,
+    "MEDICATION_RETRIEVAL": 0.504525
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor_id": 0.54413,
+      "name": 0.541067,
+      "gender": 0.53431,
+      "title": 0.536276,
+      "years_of_service": 0.543243,
+      "phone": 0.537923,
+      "department_id": 0.549677
+    },
+    "DEPARTMENT": {
+      "department_id": 0.535897,
+      "name": 0.533332,
+      "person_in_charge_id": 0.532467,
+      "total_staff": 0.543852,
+      "location": 0.529237,
+      "phone": 0.534502
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.536969,
+      "name": 0.535854,
+      "role": 0.52664,
+      "department_id": 0.541349,
+      "hire_date": 0.520794,
+      "phone": 0.530213
+    },
+    "WARD": {
+      "ward_id": 0.539711,
+      "bed_count": 0.544974,
+      "level": 0.534661,
+      "location": 0.531002,
+      "status": 0.536689
+    },
+    "PATIENT": {
+      "patient_id": 0.554525,
+      "name": 0.545407,
+      "gender": 0.538913,
+      "age": 0.532467,
+      "contact": 0.537198,
+      "admission_date": 0.534044,
+      "discharge_date": 0.532959,
+      "ward_id": 0.561434
+    },
+    "MEDICINE": {
+      "medicine_id": 0.548249,
+      "name": 0.54132,
+      "quantity_on_hand": 0.54187,
+      "unit_price": 0.539191,
+      "sale_price": 0.5287,
+      "remark": 0.534057
+    },
+    "DIAGNOSIS": {
+      "diagnosis_id": 0.529585,
+      "description": 0.514672,
+      "diagnosis_date": 0.515652
+    },
+    "CONSULTATION": {
+      "consultation_id": 0.53319,
+      "patient_id": 0.551091,
+      "doctor_id": 0.546485,
+      "consultation_time": 0.521148,
+      "diagnosis_id": 0.541756,
+      "treatment": 0.525487,
+      "remarks": 0.52253
+    },
+    "PRESCRIPTION": {
+      "prescription_id": 0.536444,
+      "consultation_id": 0.544111,
+      "medicine_id": 0.544168,
+      "dosage": 0.526855,
+      "frequency": 0.532542,
+      "duration": 0.519852,
+      "quantity_prescribed": 0.540167
+    },
+    "MEDICATION_RETRIEVAL": {
+      "retrieval_id": 0.549005,
+      "patient_id": 0.554188,
+      "medicine_id": 0.54707,
+      "retrieval_time": 0.538334,
+      "quantity_dispensed": 0.547732
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each doctor belongs to one department; a department has many doctors.",
+      "probability": 0.005519
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each personnel member belongs to one department.",
+      "probability": 0.962361
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:1",
+      "description": "person_in_charge_id references a single personnel member who heads the department.",
+      "probability": 0.962361
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "WARD",
+      "cardinality": "N:1",
+      "description": "A patient is assigned to one ward at a time.",
+      "probability": 4e-05
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "description": "Each consultation involves one patient.",
+      "probability": 0.993992
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "DOCTOR",
+      "cardinality": "N:1",
+      "description": "Each consultation is performed by one doctor.",
+      "probability": 0.264112
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "DIAGNOSIS",
+      "cardinality": "1:1",
+      "description": "Each consultation has exactly one diagnosis record.",
+      "probability": 0.016443
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "CONSULTATION",
+      "cardinality": "N:1",
+      "description": "A prescription is issued during a specific consultation.",
+      "probability": 0.053332
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "MEDICINE",
+      "cardinality": "N:1",
+      "description": "Each prescription references one medicine.",
+      "probability": 0.001489
+    },
+    {
+      "entity_1": "MEDICATION_RETRIEVAL",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "description": "Retrieval records link to the patient receiving the medicine.",
+      "probability": 0.963145
+    },
+    {
+      "entity_1": "MEDICATION_RETRIEVAL",
+      "entity_2": "MEDICINE",
+      "cardinality": "N:1",
+      "description": "Retrieval records specify which medicine was dispensed.",
+      "probability": 0.941304
+    }
+  ],
+  "processing_time": 16.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added department_id to DOCTOR and person_in_charge_id to DEPARTMENT to enforce foreign‑key integrity. Introduced a weak DIAGNOSIS entity and linked it 1:1 with CONSULTATION, removing the redundant diagnosis attribute from CONSULTATION. Added a status attribute to WARD for occupancy tracking. Renamed medicine inventory attribute to quantity_on_hand and kept both unit_price and sale_price. Included ward_id in PATIENT and clarified foreign‑key relationships. Added a 1:1 relationship between DEPARTMENT and its head (PERSONNEL). All suggested cardinalities now match the domain description and redundancy is minimized."
+  }
+}

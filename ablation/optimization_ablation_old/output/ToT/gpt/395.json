@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "STUDENT",
+    "DEPARTMENT",
+    "MEAL_CARD",
+    "RECHARGE",
+    "TRANSACTION",
+    "LOCATION",
+    "LOCATION_TYPE",
+    "STATISTICS",
+    "CONTACT_INFO"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "first_name",
+      "last_name",
+      "department_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name"
+    ],
+    "MEAL_CARD": [
+      "card_id",
+      "card_number",
+      "balance",
+      "issue_date",
+      "student_id"
+    ],
+    "RECHARGE": [
+      "recharge_id",
+      "amount",
+      "recharge_date",
+      "card_id",
+      "location_id",
+      "payment_method"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "timestamp",
+      "amount",
+      "card_id",
+      "location_id",
+      "payment_method"
+    ],
+    "LOCATION": [
+      "location_id",
+      "name",
+      "type_id"
+    ],
+    "LOCATION_TYPE": [
+      "type_id",
+      "type_name",
+      "description"
+    ],
+    "STATISTICS": [
+      "stats_id",
+      "stats_date",
+      "total_recharges",
+      "total_consumption",
+      "average_balance",
+      "location_type_id"
+    ],
+    "CONTACT_INFO": [
+      "contact_id",
+      "student_id",
+      "contact_type",
+      "email",
+      "phone"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "LOCATION_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.797,
+  "ilp_runtime": 0.041
+}

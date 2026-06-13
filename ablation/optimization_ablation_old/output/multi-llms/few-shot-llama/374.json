@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "SUPERVISORY_DEPARTMENT",
+    "WORK_UNIT",
+    "RESOURCE",
+    "RESOURCE_TRANSACTION",
+    "APPROVAL_DOCUMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password",
+      "email"
+    ],
+    "ROLE": [
+      "role id",
+      "role name"
+    ],
+    "SUPERVISORY_DEPARTMENT": [
+      "department id",
+      "department name",
+      "responsibility description"
+    ],
+    "WORK_UNIT": [
+      "work unit id",
+      "work unit name",
+      "responsibility description"
+    ],
+    "RESOURCE": [
+      "resource id",
+      "resource code",
+      "resource name"
+    ],
+    "RESOURCE_TRANSACTION": [
+      "transaction id",
+      "work unit id",
+      "resource code",
+      "receiver user id",
+      "storage location",
+      "budget year",
+      "resource acquisition value",
+      "transaction time",
+      "operator"
+    ],
+    "APPROVAL_DOCUMENT": [
+      "document id",
+      "document name",
+      "document content"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPERVISORY_DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.973,
+  "ilp_runtime": 0.045
+}

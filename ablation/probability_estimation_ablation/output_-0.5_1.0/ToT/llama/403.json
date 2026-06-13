@@ -1,0 +1,132 @@
+{
+  "filename": "403.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "BOOK": 0.622459,
+    "CATEGORY": 0.466774,
+    "BORROWING_RECORD": 0.425166,
+    "RETURN_RECORD": 0.519615,
+    "AUDIT": 0.463764,
+    "ASSOC_BOOK_CATEGORY": 0.996498
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_number": 0.546563,
+      "grade": 0.530943,
+      "major": 0.532744,
+      "contact_number": 0.542157,
+      "email": 0.540684
+    },
+    "ADMINISTRATOR": {
+      "job_number": 0.525637,
+      "contact_number": 0.527337,
+      "email": 0.524968,
+      "position": 0.532196
+    },
+    "BOOK": {
+      "book_number": 0.55202,
+      "title": 0.533579,
+      "author": 0.530813,
+      "publisher": 0.542706,
+      "publication_date": 0.545713,
+      "stock_quantity": 0.545617,
+      "borrow_quantity": 0.555427
+    },
+    "CATEGORY": {
+      "category_name": 0.513877,
+      "category_description": 0.522651
+    },
+    "BORROWING_RECORD": {
+      "borrow_date": 0.54028,
+      "return_date": 0.533922,
+      "review_status": 0.552154,
+      "student_number": 0.559325,
+      "book_number": 0.560833
+    },
+    "RETURN_RECORD": {
+      "return_date": 0.514077,
+      "review_status": 0.523667,
+      "student_number": 0.546061,
+      "book_number": 0.551
+    },
+    "AUDIT": {
+      "audit_date": 0.519689,
+      "audit_result": 0.523115,
+      "administrator_job_number": 0.529901,
+      "book_number": 0.559155,
+      "borrowing_status": 0.54842,
+      "audit_comments": 0.515233
+    },
+    "ASSOC_BOOK_CATEGORY": {
+      "assoc_book_category_id": 0.996498,
+      "book_id": 0.996498,
+      "category_id": 0.996498
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "BORROWING_RECORD",
+      "cardinality": "1:N",
+      "description": "A student can have multiple borrowing records",
+      "probability": 0.986924
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "BORROWING_RECORD",
+      "cardinality": "1:N",
+      "description": "An administrator can review multiple borrowing records",
+      "probability": 0.988349
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROWING_RECORD",
+      "cardinality": "1:N",
+      "description": "A book can have multiple borrowing records",
+      "probability": 0.999935
+    },
+    {
+      "entity_1": "BORROWING_RECORD",
+      "entity_2": "RETURN_RECORD",
+      "cardinality": "1:1",
+      "description": "A borrowing record can have one return record",
+      "probability": 0.095652
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "An administrator can perform multiple audits",
+      "probability": 0.028696
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "A book can have multiple audits",
+      "probability": 0.896195
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "description": "One BOOK can be associated with many ASSOC_BOOK_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996498
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_BOOK_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996498
+    }
+  ],
+  "processing_time": 31.01,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added CATEGORY entity, many-to-many relationship between BOOK and CATEGORY, and audit_comments attribute to AUDIT entity"
+  }
+}

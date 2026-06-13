@@ -1,0 +1,134 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "PET",
+    "BREED",
+    "GROOMER",
+    "SPECIALIZATION",
+    "GROOMER_SPECIALIZATION",
+    "SERVICE",
+    "GROOMING_SESSION",
+    "RATING"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "full_name",
+      "phone",
+      "email",
+      "street_address",
+      "city",
+      "postal_code"
+    ],
+    "PET": [
+      "pet_id",
+      "pet_name",
+      "age_months",
+      "weight_kg",
+      "fur_type",
+      "color",
+      "breed_id",
+      "owner_customer_id"
+    ],
+    "BREED": [
+      "breed_id",
+      "breed_name",
+      "size_category",
+      "typical_grooming_needs"
+    ],
+    "GROOMER": [
+      "groomer_id",
+      "full_name",
+      "years_experience",
+      "overall_rating",
+      "certified"
+    ],
+    "SPECIALIZATION": [
+      "specialization_id",
+      "description"
+    ],
+    "GROOMER_SPECIALIZATION": [
+      "groomer_id",
+      "specialization_id",
+      "proficiency_level"
+    ],
+    "SERVICE": [
+      "service_id",
+      "service_name",
+      "standard_duration_min",
+      "base_price"
+    ],
+    "GROOMING_SESSION": [
+      "session_id",
+      "session_date",
+      "session_time",
+      "status",
+      "notes",
+      "actual_duration_min",
+      "final_price",
+      "service_id",
+      "groomer_id",
+      "pet_id"
+    ],
+    "RATING": [
+      "rating_id",
+      "session_id",
+      "customer_id",
+      "stars",
+      "comment",
+      "rating_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PET",
+      "entity_2": "BREED",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOMER_SPECIALIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPECIALIZATION",
+      "entity_2": "GROOMER_SPECIALIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PET",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.3656,
+  "ilp_runtime": 0.053
+}

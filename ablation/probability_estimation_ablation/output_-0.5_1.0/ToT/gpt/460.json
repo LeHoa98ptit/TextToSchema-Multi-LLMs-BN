@@ -1,0 +1,81 @@
+{
+  "filename": "460.txt",
+  "entity": {
+    "STORE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "SUPPLIER": 0.475569,
+    "PROCUREMENT": 0.476218
+  },
+  "attribute": {
+    "STORE": {
+      "store_id": 0.530321,
+      "store_name": 0.5338,
+      "address": 0.535331,
+      "contact_number": 0.526702
+    },
+    "DEPARTMENT": {
+      "department_id": 0.537772,
+      "department_name": 0.542733,
+      "location": 0.544011,
+      "contact_number": 0.533332,
+      "store_id": 0.553814
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.546418,
+      "employee_name": 0.551326,
+      "position": 0.556434,
+      "phone_number": 0.54152,
+      "salary": 0.535898,
+      "department_id": 0.552738
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.529937,
+      "supplier_name": 0.532664,
+      "contact_number": 0.526068
+    },
+    "PROCUREMENT": {
+      "procurement_id": 0.536289,
+      "date": 0.522886,
+      "total_amount": 0.526369,
+      "status": 0.535308,
+      "supplier_id": 0.537462,
+      "store_id": 0.547304
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STORE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A store contains many departments",
+      "probability": 0.998387
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees",
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "PROCUREMENT",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "Each procurement is made from one supplier",
+      "probability": 0.202293
+    },
+    {
+      "entity_1": "PROCUREMENT",
+      "entity_2": "STORE",
+      "cardinality": "N:1",
+      "description": "Each procurement is for one store",
+      "probability": 0.254947
+    }
+  ],
+  "processing_time": 5.59,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Removed the redundant EMPLOYEE‑STORE relationship, linking EMPLOYEE to DEPARTMENT and DEPARTMENT to STORE instead. Added foreign key attributes (store_id in DEPARTMENT, department_id in EMPLOYEE, supplier_id and store_id in PROCUREMENT) to reflect these relationships. Introduced an optional 'status' attribute for PROCUREMENT to support workflow tracking. Ensured all attribute names follow consistent snake_case convention and clarified primary key presence."
+  }
+}

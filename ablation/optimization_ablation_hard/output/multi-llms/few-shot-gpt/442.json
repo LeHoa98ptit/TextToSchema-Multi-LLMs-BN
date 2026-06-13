@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "MEDICAL_WASTE",
+    "MEDICAL_INSTITUTION",
+    "DEPARTMENT",
+    "PERSONNEL",
+    "VEHICLE",
+    "WASTE_BATCH"
+  ],
+  "attribute": {
+    "MEDICAL_WASTE": [
+      "waste id",
+      "waste type",
+      "weight",
+      "generation time",
+      "collection time",
+      "current status",
+      "traceability code",
+      "institution id",
+      "department id",
+      "designated personnel id"
+    ],
+    "MEDICAL_INSTITUTION": [
+      "institution id",
+      "name",
+      "address",
+      "contact phone",
+      "contact email"
+    ],
+    "DEPARTMENT": [
+      "department id",
+      "institution id",
+      "name",
+      "description"
+    ],
+    "PERSONNEL": [
+      "personnel id",
+      "institution id",
+      "name",
+      "role",
+      "contact phone",
+      "contact email"
+    ],
+    "VEHICLE": [
+      "vehicle id",
+      "institution id",
+      "license plate number",
+      "model",
+      "capacity"
+    ],
+    "WASTE_BATCH": [
+      "batch number",
+      "expected quantity",
+      "actual quantity",
+      "expected weight",
+      "actual weight",
+      "inbound time",
+      "collector id",
+      "inbound confirmer id",
+      "outbound quantity",
+      "outbound weight",
+      "outbound time",
+      "transporter id",
+      "outbound confirmer id",
+      "vehicle id",
+      "vehicle start time",
+      "vehicle end time",
+      "recipient"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "WASTE_BATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.6552,
+  "ilp_runtime": 0.145
+}

@@ -1,0 +1,63 @@
+{
+  "entity": [
+    "INTRUSION_DETECTION_RECORD",
+    "RESPONSE_PLAN",
+    "KNOWLEDGE_BASE_ENTRY",
+    "ALARM"
+  ],
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": [
+      "record id",
+      "detection time",
+      "source ip address",
+      "destination ip address",
+      "source port number",
+      "destination port number",
+      "attack type",
+      "threat level"
+    ],
+    "RESPONSE_PLAN": [
+      "plan id",
+      "plan generation time",
+      "plan type",
+      "detailed plan content",
+      "execution status"
+    ],
+    "KNOWLEDGE_BASE_ENTRY": [
+      "knowledge id",
+      "knowledge category",
+      "knowledge description",
+      "knowledge source",
+      "knowledge reliability"
+    ],
+    "ALARM": [
+      "alarm id",
+      "alarm time",
+      "alarm level",
+      "alarm content",
+      "processing status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE_ENTRY",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE_ENTRY",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.4811,
+  "ilp_runtime": 0.045
+}

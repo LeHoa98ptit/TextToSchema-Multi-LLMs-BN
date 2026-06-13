@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "TECHNICIAN",
+    "TEAM",
+    "TEAM_MEMBER",
+    "CUSTOMER",
+    "MAINTENANCETASK",
+    "PRODUCT",
+    "ASSIGNMENT",
+    "FEEDBACK"
+  ],
+  "attribute": {
+    "TECHNICIAN": [
+      "technician_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "phone",
+      "email",
+      "position",
+      "employment_date",
+      "skill_set"
+    ],
+    "TEAM": [
+      "team_id",
+      "team_name",
+      "responsibility",
+      "total_members",
+      "leader_id"
+    ],
+    "TEAM_MEMBER": [
+      "team_id",
+      "technician_id",
+      "join_date",
+      "end_date",
+      "role_in_team"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "company_name",
+      "contact_name",
+      "phone",
+      "email",
+      "address"
+    ],
+    "MAINTENANCETASK": [
+      "task_id",
+      "product_id",
+      "customer_id",
+      "description",
+      "request_date",
+      "scheduled_start",
+      "scheduled_end",
+      "duration",
+      "cost",
+      "status",
+      "result"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "model_number",
+      "warranty_expiration"
+    ],
+    "ASSIGNMENT": [
+      "task_id",
+      "technician_id",
+      "assigned_date",
+      "role"
+    ],
+    "FEEDBACK": [
+      "feedback_id",
+      "task_id",
+      "customer_id",
+      "satisfaction_score",
+      "comments",
+      "feedback_date",
+      "resolution_result",
+      "version"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TEAM",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCETASK",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.2981,
+  "ilp_runtime": 0.05
+}

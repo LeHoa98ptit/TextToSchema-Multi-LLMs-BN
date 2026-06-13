@@ -1,0 +1,50 @@
+{
+  "entity": [
+    "TRANSACTION",
+    "DISCOUNT",
+    "TRANSACTION_DETAIL",
+    "ASSOC_TRANSACTION_DISCOUNT"
+  ],
+  "attribute": {
+    "TRANSACTION": [
+      "transaction_id",
+      "transaction_time",
+      "total_amount",
+      "actual_payment",
+      "billing_method_id"
+    ],
+    "DISCOUNT": [
+      "discount_id",
+      "discount_name",
+      "discount_value",
+      "discount_type"
+    ],
+    "TRANSACTION_DETAIL": [
+      "detail_id",
+      "transaction_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "ASSOC_TRANSACTION_DISCOUNT": [
+      "assoc_transaction_discount_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "ASSOC_TRANSACTION_DISCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 18.2841,
+  "ilp_runtime": 0.074
+}

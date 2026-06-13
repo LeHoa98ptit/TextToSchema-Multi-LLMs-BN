@@ -1,0 +1,130 @@
+{
+  "entity": [
+    "HOTEL",
+    "ROOM",
+    "ROOM_TYPE",
+    "CUSTOMER",
+    "RESERVATION",
+    "RESERVATION_DETAIL",
+    "PAYMENT",
+    "RESERVATION_STATUS",
+    "PAYMENT_METHOD",
+    "PAYMENT_STATUS"
+  ],
+  "attribute": {
+    "HOTEL": [
+      "hotel_id",
+      "name",
+      "address",
+      "phone"
+    ],
+    "ROOM": [
+      "room_id",
+      "room_number",
+      "hotel_id",
+      "room_type_id",
+      "base_price"
+    ],
+    "ROOM_TYPE": [
+      "room_type_id",
+      "type_name",
+      "description",
+      "extra_price"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "customer_id",
+      "reservation_date",
+      "status_id",
+      "total_amount",
+      "cancellation_date"
+    ],
+    "RESERVATION_DETAIL": [
+      "reservation_detail_id",
+      "reservation_id",
+      "room_id",
+      "check_in_date",
+      "check_out_date",
+      "price_per_night"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "reservation_id",
+      "payment_date",
+      "amount",
+      "method_id",
+      "status_id"
+    ],
+    "RESERVATION_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "PAYMENT_METHOD": [
+      "method_id",
+      "method_name"
+    ],
+    "PAYMENT_STATUS": [
+      "status_id",
+      "status_name"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROOM_TYPE",
+      "entity_2": "ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "RESERVATION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION_STATUS",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT_STATUS",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 86.7963,
+  "ilp_runtime": 0.101
+}

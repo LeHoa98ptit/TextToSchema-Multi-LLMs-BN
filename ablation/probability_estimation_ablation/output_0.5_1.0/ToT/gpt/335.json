@@ -1,0 +1,102 @@
+{
+  "filename": "335.txt",
+  "entity": {
+    "OSS_BUCKET": 0.762675,
+    "OSS_ACCESS": 0.752762,
+    "USER": 0.817574,
+    "TENANT": 0.817574,
+    "PERMISSION_TYPE": 0.769679
+  },
+  "attribute": {
+    "OSS_BUCKET": {
+      "bucket_id": 0.774189,
+      "bucket_name": 0.769901,
+      "description": 0.773253,
+      "tenant_id": 0.78376,
+      "created_at": 0.766842,
+      "created_by": 0.772608,
+      "updated_at": 0.761834,
+      "updated_by": 0.767615
+    },
+    "OSS_ACCESS": {
+      "permission_id": 0.775897,
+      "bucket_id": 0.77779,
+      "user_id": 0.765651,
+      "permission_type_id": 0.773762,
+      "access_key": 0.769943,
+      "secret_key": 0.760118,
+      "status": 0.763533,
+      "create_time": 0.760462,
+      "description": 0.770965,
+      "creator_user_id": 0.769394,
+      "updated_at": 0.749571,
+      "updated_by": 0.756084
+    },
+    "USER": {
+      "user_id": 0.754108,
+      "username": 0.73605,
+      "password_hash": 0.756857,
+      "tenant_id": 0.770225,
+      "created_at": 0.749721,
+      "created_by": 0.752271,
+      "updated_at": 0.747712,
+      "updated_by": 0.750134
+    },
+    "TENANT": {
+      "tenant_id": 0.766711,
+      "tenant_name": 0.765342,
+      "status": 0.764704,
+      "created_at": 0.760655,
+      "created_by": 0.764873,
+      "updated_at": 0.756342,
+      "updated_by": 0.761169
+    },
+    "PERMISSION_TYPE": {
+      "permission_type_id": 0.770635,
+      "type_name": 0.768221,
+      "description": 0.776993
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OSS_BUCKET",
+      "entity_2": "OSS_ACCESS",
+      "cardinality": "1:N",
+      "description": "A bucket can have many access permission records",
+      "probability": 0.084222
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OSS_ACCESS",
+      "cardinality": "1:N",
+      "description": "A user can be granted many permissions",
+      "probability": 0.032015
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A tenant owns multiple users",
+      "probability": 0.952116
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "OSS_BUCKET",
+      "cardinality": "1:N",
+      "description": "A tenant can create multiple buckets",
+      "probability": 0.033043
+    },
+    {
+      "entity_1": "PERMISSION_TYPE",
+      "entity_2": "OSS_ACCESS",
+      "cardinality": "1:N",
+      "description": "Each permission record references a permission type",
+      "probability": 0.047866
+    }
+  ],
+  "processing_time": 32.66,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added PERMISSION_TYPE entity and replaced OSS_ACCESS.type with permission_type_id foreign key for extensibility. Replaced plain USER.password with password_hash to store hashed credentials. Introduced audit fields (created_at, created_by, updated_at, updated_by) on OSS_BUCKET, USER, TENANT, and OSS_ACCESS for change tracking. Defined composite unique constraint on (bucket_id, user_id) in OSS_ACCESS (not shown in JSON) to prevent duplicate permissions. Retained core entities and relationships while enhancing security, extensibility, and auditability."
+  }
+}

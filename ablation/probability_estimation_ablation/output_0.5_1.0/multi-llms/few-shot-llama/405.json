@@ -1,0 +1,98 @@
+{
+  "filename": "405.txt",
+  "entity": {
+    "DRUG": 0.817574,
+    "DOCTOR": 0.817574,
+    "PATIENT": 0.817574,
+    "PRESCRIPTION": 0.817574,
+    "OUTPATIENT_CONSULTATION": 0.77619,
+    "PAYMENT": 0.817574
+  },
+  "attribute": {
+    "DRUG": {
+      "drug id": 0.762927,
+      "name": 0.756417,
+      "specifications": 0.769285,
+      "usage": 0.763524
+    },
+    "DOCTOR": {
+      "doctor id": 0.76042,
+      "name": 0.763476,
+      "address": 0.764272,
+      "phone number": 0.760871
+    },
+    "PATIENT": {
+      "patient id": 0.763065,
+      "name": 0.763129,
+      "address": 0.766625,
+      "phone number": 0.759609
+    },
+    "PRESCRIPTION": {
+      "prescription id": 0.763041,
+      "medical orders": 0.774222,
+      "date": 0.755368,
+      "category": 0.775048,
+      "prescribing doctor": 0.768422,
+      "remarks": 0.761488
+    },
+    "OUTPATIENT_CONSULTATION": {
+      "consultation id": 0.76508
+    },
+    "PAYMENT": {
+      "payment id": 0.747392,
+      "payment amount": 0.749985,
+      "discounts": 0.746266
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "description": "A doctor can prescribe many prescriptions, and each prescription is prescribed by one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.034727
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "OUTPATIENT_CONSULTATION",
+      "description": "A patient can have many outpatient consultations, and each consultation is for one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.950449
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "OUTPATIENT_CONSULTATION",
+      "description": "A doctor can have many outpatient consultations, and each consultation is with one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.169415
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PAYMENT",
+      "description": "A prescription can have many payments, and each payment is for one prescription.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.195484
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "PRESCRIPTION",
+      "description": "A drug can be prescribed in many prescriptions, and each prescription can include many drugs, but the text does not explicitly state this many-to-many relationship, so we use 1:N.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.093462
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "description": "A patient can have many prescriptions, and each prescription is for one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.116303
+    }
+  ],
+  "processing_time": 28.91
+}

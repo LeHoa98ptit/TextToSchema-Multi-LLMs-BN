@@ -1,0 +1,139 @@
+{
+  "entity": [
+    "MODEL",
+    "MODEL_TYPE",
+    "MODEL_RUN",
+    "DATASET",
+    "DATASET_METADATA",
+    "DATASET_VARIABLE_DETAILS",
+    "TAG",
+    "HYPERPARAMETER",
+    "HYPERPARAMETER_VALUE",
+    "HYPERPARAMETER_DEF_VALUES",
+    "PERFORMANCE_METRIC",
+    "LEADERBOARD",
+    "LEADERBOARD_METADATA"
+  ],
+  "attribute": {
+    "MODEL": [
+      "model_id",
+      "name",
+      "description",
+      "status",
+      "max_number",
+      "family",
+      "stack",
+      "exist",
+      "implementation",
+      "created_at",
+      "updated_at"
+    ],
+    "MODEL_TYPE": [
+      "model_type_id",
+      "type_name",
+      "description"
+    ],
+    "MODEL_RUN": [
+      "run_id",
+      "execution_time",
+      "start_time",
+      "end_time",
+      "runtime",
+      "run_path",
+      "created_at",
+      "updated_at"
+    ],
+    "DATASET": [
+      "dataset_id",
+      "name",
+      "owner",
+      "license",
+      "visibility",
+      "url",
+      "creation_date",
+      "update_date",
+      "datum_size",
+      "number_of_rows",
+      "number_of_columns"
+    ],
+    "DATASET_METADATA": [
+      "dataset_id",
+      "metadata_info"
+    ],
+    "DATASET_VARIABLE_DETAILS": [
+      "variable_id",
+      "dataset_id",
+      "datum_type",
+      "number_unique_values",
+      "number_null_values",
+      "variable_name"
+    ],
+    "TAG": [
+      "tag_id",
+      "name",
+      "description"
+    ],
+    "HYPERPARAMETER": [
+      "hyperparameter_id",
+      "name",
+      "description"
+    ],
+    "HYPERPARAMETER_VALUE": [
+      "hyperparameter_value_id",
+      "model_id",
+      "hyperparameter_id",
+      "value"
+    ],
+    "HYPERPARAMETER_DEF_VALUES": [
+      "model_type_id",
+      "hyperparameter_id",
+      "default_value"
+    ],
+    "PERFORMANCE_METRIC": [
+      "metric_id",
+      "name",
+      "description"
+    ],
+    "LEADERBOARD": [
+      "leaderboard_id",
+      "name",
+      "description",
+      "created_at"
+    ],
+    "LEADERBOARD_METADATA": [
+      "leaderboard_id",
+      "model_id",
+      "metric_id",
+      "score",
+      "rank"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL_TYPE",
+      "entity_2": "MODEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_RUN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE_DETAILS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_METADATA",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.7847,
+  "ilp_runtime": 0.033
+}

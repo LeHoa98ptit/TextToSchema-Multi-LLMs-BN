@@ -1,0 +1,82 @@
+{
+  "filename": "261.txt",
+  "entity": {
+    "VOTER": 0.622459,
+    "ADDRESS": 0.622459,
+    "VOTING_DISTRICT": 0.561389,
+    "DISTRICT": 0.622459,
+    "CITY": 0.516844,
+    "TOWN": 0.525852
+  },
+  "attribute": {
+    "VOTER": {
+      "voter id": 0.566516,
+      "residential address id": 0.572773,
+      "registration status": 0.564142,
+      "is eligible": 0.55973,
+      "voting district id": 0.571982
+    },
+    "ADDRESS": {
+      "address id": 0.541414,
+      "detailed address": 0.540538,
+      "address type": 0.546914
+    },
+    "VOTING_DISTRICT": {
+      "voting district id": 0.56734,
+      "district id": 0.56785
+    },
+    "DISTRICT": {
+      "district id": 0.557474,
+      "district type": 0.556041
+    },
+    "CITY": {
+      "city id": 0.544213
+    },
+    "TOWN": {
+      "town id": 0.541392
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "VOTER",
+      "description": "Each address can be the residential address of many voters; each voter has one residential address.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 8e-05
+    },
+    {
+      "entity_1": "VOTING_DISTRICT",
+      "entity_2": "VOTER",
+      "description": "Each voting district registers many voters; each voter belongs to one voting district.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999744
+    },
+    {
+      "entity_1": "DISTRICT",
+      "entity_2": "VOTING_DISTRICT",
+      "description": "Each district can have multiple voting districts; each voting district is associated with one district.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "DISTRICT",
+      "entity_2": "TOWN",
+      "description": "A district contains many towns; each town belongs to one district.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.921868
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "DISTRICT",
+      "description": "A large city contains multiple districts; each district is part of one city.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980318
+    }
+  ],
+  "processing_time": 2.1
+}

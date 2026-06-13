@@ -1,0 +1,133 @@
+{
+  "entity": [
+    "USER",
+    "ADMINISTRATOR",
+    "TEACHER",
+    "STUDENT",
+    "DORMITORY",
+    "DORM_ROOM",
+    "COURSE",
+    "ENROLLMENT",
+    "GRADE",
+    "REPAIR_REQUEST"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "user_id",
+      "office_number"
+    ],
+    "TEACHER": [
+      "teacher_id",
+      "user_id",
+      "department",
+      "title"
+    ],
+    "STUDENT": [
+      "student_id",
+      "user_id",
+      "first_name",
+      "last_name",
+      "birthdate",
+      "enrollment_year"
+    ],
+    "DORMITORY": [
+      "dorm_id",
+      "name",
+      "address",
+      "total_rooms"
+    ],
+    "DORM_ROOM": [
+      "room_id",
+      "room_number",
+      "capacity",
+      "dorm_id"
+    ],
+    "COURSE": [
+      "course_id",
+      "course_code",
+      "title",
+      "credits",
+      "teacher_id"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id",
+      "student_id",
+      "course_id",
+      "enroll_date"
+    ],
+    "GRADE": [
+      "grade_id",
+      "enrollment_id",
+      "grade_value",
+      "graded_on"
+    ],
+    "REPAIR_REQUEST": [
+      "request_id",
+      "student_id",
+      "room_id",
+      "description",
+      "status",
+      "submitted_at",
+      "resolved_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TEACHER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "STUDENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "DORM_ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DORM_ROOM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ENROLLMENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 61.7834,
+  "ilp_runtime": 0.058
+}

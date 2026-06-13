@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "COMPANY",
+    "CLIENT",
+    "SERVICE",
+    "SUBSCRIPTION",
+    "OPERATOR",
+    "ASSOC_CLIENT_SERVICE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "address"
+    ],
+    "CLIENT": [
+      "client_id",
+      "name",
+      "address",
+      "phone"
+    ],
+    "SERVICE": [
+      "service_id",
+      "transmission_type",
+      "transmission_rate",
+      "price"
+    ],
+    "SUBSCRIPTION": [
+      "subscription_id",
+      "subscription_time",
+      "end_time"
+    ],
+    "OPERATOR": [
+      "operator_id",
+      "name",
+      "license_number"
+    ],
+    "ASSOC_CLIENT_SERVICE": [
+      "assoc_client_service_id",
+      "client_id",
+      "service_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_CLIENT_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "ASSOC_CLIENT_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.9391,
+  "ilp_runtime": 0.025
+}

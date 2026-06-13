@@ -1,0 +1,165 @@
+{
+  "filename": "356.txt",
+  "entity": {
+    "WORK_ITEM": 0.580347,
+    "ATTRIBUTE": 0.622459,
+    "ATTRIBUTE_VALUE": 0.555644,
+    "STATUS": 0.622459,
+    "WORK_ITEM_STATUS_HISTORY": 0.497925,
+    "LINK": 0.622459,
+    "LINK_TYPE": 0.4989,
+    "USER": 0.489951,
+    "WORK_ITEM_AUDIT": 0.515895
+  },
+  "attribute": {
+    "WORK_ITEM": {
+      "id": 0.553773,
+      "description": 0.577334,
+      "creation_date": 0.551408,
+      "update_date": 0.546025,
+      "current_status_id": 0.553783,
+      "is_active": 0.545804
+    },
+    "ATTRIBUTE": {
+      "id": 0.525833,
+      "name": 0.52907,
+      "data_type": 0.519651,
+      "is_active": 0.520772
+    },
+    "ATTRIBUTE_VALUE": {
+      "id": 0.524368,
+      "work_item_id": 0.549314,
+      "attribute_id": 0.518013,
+      "value": 0.532159
+    },
+    "STATUS": {
+      "id": 0.533368,
+      "name": 0.53636,
+      "description": 0.553522
+    },
+    "WORK_ITEM_STATUS_HISTORY": {
+      "id": 0.560237,
+      "work_item_id": 0.559151,
+      "status_id": 0.558528,
+      "changed_at": 0.548806,
+      "changed_by": 0.550332
+    },
+    "LINK": {
+      "id": 0.515196,
+      "source_work_item_id": 0.542589,
+      "target_work_item_id": 0.549786,
+      "link_type_id": 0.514176,
+      "parent_link_id": 0.5141,
+      "created_at": 0.504724,
+      "is_active": 0.516053
+    },
+    "LINK_TYPE": {
+      "id": 0.519216,
+      "name": 0.520588,
+      "description": 0.545342
+    },
+    "USER": {
+      "id": 0.502344,
+      "username": 0.49966,
+      "email": 0.505871
+    },
+    "WORK_ITEM_AUDIT": {
+      "id": 0.550598,
+      "work_item_id": 0.550049,
+      "action_type": 0.540482,
+      "action_timestamp": 0.542085,
+      "user_id": 0.538066
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "WORK_ITEM",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "description": "Each work item has one current status; a status can be current for many work items",
+      "probability": 0.591684
+    },
+    {
+      "entity_1": "WORK_ITEM",
+      "entity_2": "ATTRIBUTE_VALUE",
+      "cardinality": "1:N",
+      "description": "A work item can have many attribute values",
+      "probability": 0.402624
+    },
+    {
+      "entity_1": "ATTRIBUTE_VALUE",
+      "entity_2": "ATTRIBUTE",
+      "cardinality": "N:1",
+      "description": "Each attribute value references one attribute definition",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "WORK_ITEM",
+      "entity_2": "WORK_ITEM_STATUS_HISTORY",
+      "cardinality": "1:N",
+      "description": "Status changes are recorded; a work item can have many history records",
+      "probability": 0.769922
+    },
+    {
+      "entity_1": "WORK_ITEM_STATUS_HISTORY",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "description": "Each history record references the status it represents",
+      "probability": 0.324954
+    },
+    {
+      "entity_1": "WORK_ITEM_STATUS_HISTORY",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each history record records the user who performed the status change",
+      "probability": 0.111599
+    },
+    {
+      "entity_1": "LINK",
+      "entity_2": "WORK_ITEM",
+      "cardinality": "N:1",
+      "description": "Link.source_work_item_id points to a work item; a work item can be source of many links",
+      "probability": 0.021415
+    },
+    {
+      "entity_1": "LINK",
+      "entity_2": "WORK_ITEM",
+      "cardinality": "N:1",
+      "description": "Link.target_work_item_id points to a work item; a work item can be target of many links",
+      "probability": 0.021415
+    },
+    {
+      "entity_1": "LINK",
+      "entity_2": "LINK_TYPE",
+      "cardinality": "N:1",
+      "description": "Each link references a link type definition",
+      "probability": 0.914816
+    },
+    {
+      "entity_1": "LINK",
+      "entity_2": "LINK",
+      "cardinality": "N:1",
+      "description": "Optional hierarchical links: parent_link_id references another link record",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "WORK_ITEM_AUDIT",
+      "entity_2": "WORK_ITEM",
+      "cardinality": "N:1",
+      "description": "Audit records are linked to the work item they pertain to",
+      "probability": 0.999976
+    },
+    {
+      "entity_1": "WORK_ITEM_AUDIT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Audit records store the user who performed the action",
+      "probability": 0.99788
+    }
+  ],
+  "processing_time": 20.54,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Consolidated created_by/updated_by into a dedicated WORK_ITEM_AUDIT table for extensible audit trails. Added soft‑delete flag (is_active) to WORK_ITEM, ATTRIBUTE, and LINK. Introduced LINK_TYPE entity to normalize link_type values and support future extensions. Added parent_link_id to LINK for hierarchical link structures. Enforced uniqueness of ATTRIBUTE_VALUE per (work_item_id, attribute_id) via a logical constraint (not shown in JSON). Updated relationships to reflect new entities and removed direct USER relationships from WORK_ITEM, relying on audit records for creation/update tracking."
+  }
+}

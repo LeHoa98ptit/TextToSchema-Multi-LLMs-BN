@@ -1,0 +1,93 @@
+{
+  "filename": "489.txt",
+  "entity": {
+    "APPLICATION": 0.817574,
+    "CHANNEL": 0.817574,
+    "CLIENT": 0.817574,
+    "CHANNEL_SUBSCRIPTION": 0.767723,
+    "EVENT_LOG": 0.751383,
+    "ASSOC_CLIENT_APPLICATION": 0.491493
+  },
+  "attribute": {
+    "APPLICATION": {
+      "appid": 0.751577,
+      "name": 0.756283,
+      "description": 0.771291
+    },
+    "CHANNEL": {
+      "channel_id": 0.753915,
+      "name": 0.754379,
+      "status": 0.767157,
+      "type": 0.760086
+    },
+    "CLIENT": {
+      "d_user": 0.749547,
+      "username": 0.747007,
+      "email": 0.756144
+    },
+    "CHANNEL_SUBSCRIPTION": {
+      "subscription_id": 0.756572,
+      "client_id": 0.761024,
+      "channel_id": 0.757735
+    },
+    "EVENT_LOG": {
+      "event_id": 0.747104,
+      "event_type": 0.750364,
+      "timestamp": 0.75159,
+      "payload": 0.761547,
+      "channel_id": 0.756845
+    },
+    "ASSOC_CLIENT_APPLICATION": {
+      "assoc_client_application_id": 0.491493,
+      "client_id": 0.491493,
+      "application_id": 0.491493
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CHANNEL",
+      "cardinality": "1:N",
+      "description": "Each application can have multiple channels, and each channel belongs to one application.",
+      "probability": 0.838987
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "CHANNEL_SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "Each channel can have multiple subscriptions, and each subscription belongs to one channel.",
+      "probability": 0.999796
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "CHANNEL_SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "Each client can have multiple subscriptions, and each subscription belongs to one client.",
+      "probability": 0.954912
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "EVENT_LOG",
+      "cardinality": "1:N",
+      "description": "Each channel can have multiple event logs, and each event log belongs to one channel.",
+      "probability": 0.06253
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_CLIENT_APPLICATION",
+      "description": "One CLIENT can be associated with many ASSOC_CLIENT_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.491493
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_CLIENT_APPLICATION",
+      "description": "One APPLICATION can be associated with many ASSOC_CLIENT_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.491493
+    }
+  ],
+  "processing_time": 15.93
+}

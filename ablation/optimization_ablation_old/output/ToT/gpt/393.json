@@ -1,0 +1,138 @@
+{
+  "entity": [
+    "PATIENT",
+    "REGISTRATION",
+    "REGISTRATION_CATEGORY",
+    "DIAGNOSIS",
+    "TREATMENT",
+    "WARD",
+    "BED",
+    "PATIENT_WARD_ASSIGNMENT",
+    "DRUG",
+    "PRESCRIPTION",
+    "PRESCRIPTION_DETAIL"
+  ],
+  "attribute": {
+    "PATIENT": [
+      "patient_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "date_of_birth",
+      "phone",
+      "email",
+      "address"
+    ],
+    "REGISTRATION": [
+      "registration_id",
+      "registration_date",
+      "patient_id",
+      "category_id",
+      "registration_type",
+      "payer_name",
+      "payer_type",
+      "insurance_number"
+    ],
+    "REGISTRATION_CATEGORY": [
+      "category_id",
+      "name",
+      "description",
+      "fee"
+    ],
+    "DIAGNOSIS": [
+      "diagnosis_id",
+      "patient_id",
+      "diagnosis_date",
+      "diagnosis_code",
+      "description"
+    ],
+    "TREATMENT": [
+      "treatment_id",
+      "diagnosis_id",
+      "treatment_date",
+      "notes"
+    ],
+    "WARD": [
+      "ward_id",
+      "name",
+      "floor",
+      "capacity"
+    ],
+    "BED": [
+      "bed_id",
+      "ward_id",
+      "bed_number",
+      "status"
+    ],
+    "PATIENT_WARD_ASSIGNMENT": [
+      "assignment_id",
+      "patient_id",
+      "bed_id",
+      "admission_date",
+      "discharge_date",
+      "status"
+    ],
+    "DRUG": [
+      "drug_id",
+      "name",
+      "generic_name",
+      "dosage_form",
+      "strength",
+      "price",
+      "stock_quantity"
+    ],
+    "PRESCRIPTION": [
+      "prescription_id",
+      "patient_id",
+      "prescription_date"
+    ],
+    "PRESCRIPTION_DETAIL": [
+      "prescription_detail_id",
+      "prescription_id",
+      "drug_id",
+      "dosage",
+      "frequency",
+      "duration"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REGISTRATION_CATEGORY",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DIAGNOSIS",
+      "entity_2": "TREATMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PRESCRIPTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "PRESCRIPTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 45.6594,
+  "ilp_runtime": 0.041
+}

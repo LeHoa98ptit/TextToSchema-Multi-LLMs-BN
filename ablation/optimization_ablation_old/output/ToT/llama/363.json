@@ -1,0 +1,84 @@
+{
+  "entity": [
+    "BOOK",
+    "READER",
+    "BORROW",
+    "RESERVATION",
+    "LIBRARY"
+  ],
+  "attribute": {
+    "BOOK": [
+      "isbn",
+      "title",
+      "author",
+      "publisher",
+      "publication_date",
+      "price",
+      "number_copy_available",
+      "library_location",
+      "shelf_number"
+    ],
+    "READER": [
+      "reader_id",
+      "library_card_number",
+      "gender",
+      "age",
+      "phone",
+      "email",
+      "address",
+      "reader_type",
+      "maximum_borrowing_limit"
+    ],
+    "BORROW": [
+      "borrow_id",
+      "borrowing_time",
+      "actual_return_date",
+      "borrowing_status"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "reservation_time",
+      "reservation_expiration_time",
+      "reservation_status"
+    ],
+    "LIBRARY": [
+      "library_id",
+      "library_name",
+      "library_address"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "BORROW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LIBRARY",
+      "entity_2": "BOOK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LIBRARY",
+      "entity_2": "READER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.0803,
+  "ilp_runtime": 0.035
+}

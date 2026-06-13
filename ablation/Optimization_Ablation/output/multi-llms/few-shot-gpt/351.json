@@ -1,0 +1,82 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "OBJECT",
+    "PERMISSION",
+    "OWNER",
+    "PERMISSION_ENTRY",
+    "AUDIT_LOG",
+    "ACCESS_ATTEMPT"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "role id"
+    ],
+    "ROLE": [
+      "role id",
+      "role name"
+    ],
+    "OBJECT": [
+      "object id",
+      "object type",
+      "parent object id"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "permission type"
+    ],
+    "OWNER": [
+      "owner id",
+      "contact information"
+    ],
+    "PERMISSION_ENTRY": [
+      "permission entry id",
+      "object id",
+      "permission id",
+      "authorized"
+    ],
+    "AUDIT_LOG": [
+      "audit log id",
+      "access attempt id",
+      "status",
+      "log timestamp"
+    ],
+    "ACCESS_ATTEMPT": [
+      "attempt id",
+      "user id",
+      "object id",
+      "attempt time",
+      "result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "ACCESS_ATTEMPT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCESS_ATTEMPT",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.5671,
+  "ilp_runtime": 0.032
+}

@@ -1,0 +1,96 @@
+{
+  "filename": "459.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "PROJECT": 0.622459,
+    "PROJECT_PARTICIPATION": 0.519615
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_number": 0.530197,
+      "company_name": 0.529992,
+      "company_address": 0.528449,
+      "company_history": 0.53024,
+      "mission_statement": 0.527078
+    },
+    "DEPARTMENT": {
+      "department_number": 0.532612,
+      "department_name": 0.542736,
+      "department_manager": 0.551981,
+      "department_description": 0.550796
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.559687,
+      "employee_name": 0.561243,
+      "salary": 0.54561,
+      "position": 0.564423,
+      "education_level": 0.564072,
+      "employee_address": 0.553792
+    },
+    "PROJECT": {
+      "project_number": 0.53905,
+      "project_name": 0.529216,
+      "project_description": 0.538065,
+      "project_start_date": 0.521698,
+      "project_end_date": 0.526506,
+      "responsible_person": 0.544326
+    },
+    "PROJECT_PARTICIPATION": {
+      "project_number": 0.546501,
+      "employee_number": 0.5653,
+      "participation_date": 0.535612,
+      "role": 0.549443
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A company has multiple departments",
+      "probability": 0.874106
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department has multiple employees",
+      "probability": 0.999914
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:1",
+      "description": "A project is associated with one department",
+      "probability": 0.804418
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "A project has multiple participations",
+      "probability": 0.999861
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PROJECT_PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "An employee can participate in multiple projects",
+      "probability": 0.529344
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A company has multiple projects",
+      "probability": 0.36191
+    }
+  ],
+  "processing_time": 12.26,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added company history and mission statement attributes to the COMPANY entity, and added a relationship between the COMPANY entity and the PROJECT entity to reflect the company's overall project portfolio."
+  }
+}

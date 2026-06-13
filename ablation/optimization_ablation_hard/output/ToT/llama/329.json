@@ -1,0 +1,95 @@
+{
+  "entity": [
+    "USER",
+    "STOCK",
+    "PORTFOLIO",
+    "LOG",
+    "COMPANY",
+    "LOGIN_HISTORY",
+    "COMPANY_DESCRIPTION",
+    "ASSOC_PORTFOLIO_STOCK"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "virtual_currency_balance",
+      "registration_date"
+    ],
+    "STOCK": [
+      "stock_code",
+      "stock_price",
+      "issue_date"
+    ],
+    "PORTFOLIO": [
+      "earning",
+      "stock_quantity",
+      "investment_date"
+    ],
+    "LOG": [
+      "date",
+      "record_value",
+      "activity_type"
+    ],
+    "COMPANY": [
+      "company_name"
+    ],
+    "LOGIN_HISTORY": [
+      "login_date",
+      "login_time"
+    ],
+    "COMPANY_DESCRIPTION": [
+      "description"
+    ],
+    "ASSOC_PORTFOLIO_STOCK": [
+      "assoc_portfolio_stock_id",
+      "portfolio_id",
+      "stock_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PORTFOLIO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PORTFOLIO",
+      "entity_2": "ASSOC_PORTFOLIO_STOCK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "ASSOC_PORTFOLIO_STOCK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "COMPANY_DESCRIPTION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.0712,
+  "ilp_runtime": 0.055
+}

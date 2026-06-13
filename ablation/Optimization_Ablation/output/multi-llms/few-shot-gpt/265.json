@@ -1,0 +1,83 @@
+{
+  "entity": [
+    "CHESS_PIECE",
+    "CHESSBOARD",
+    "BATCH",
+    "QUALITY_INSPECTION",
+    "DEFECT_TYPE",
+    "QUALITY_ALERT",
+    "QUALITY_INSPECTION_MODEL",
+    "PRODUCTION_PROCESS"
+  ],
+  "attribute": {
+    "CHESS_PIECE": [
+      "piece id",
+      "color",
+      "position"
+    ],
+    "CHESSBOARD": [
+      "chessboard id"
+    ],
+    "BATCH": [
+      "batch id",
+      "production line id",
+      "batch number"
+    ],
+    "QUALITY_INSPECTION": [
+      "inspection id",
+      "piece id",
+      "inspection time",
+      "result",
+      "defect type id"
+    ],
+    "DEFECT_TYPE": [
+      "defect type id",
+      "defect description"
+    ],
+    "QUALITY_ALERT": [
+      "alert id",
+      "inspection id",
+      "defect type id",
+      "alert time"
+    ],
+    "QUALITY_INSPECTION_MODEL": [
+      "model id",
+      "model name",
+      "model version"
+    ],
+    "PRODUCTION_PROCESS": [
+      "process id",
+      "model id",
+      "running time seconds",
+      "result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEFECT_TYPE",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 20.5083,
+  "ilp_runtime": 0.19
+}

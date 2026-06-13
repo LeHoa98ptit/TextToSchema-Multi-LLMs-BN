@@ -1,0 +1,98 @@
+{
+  "filename": "470.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "MENU_ITEM": 0.424262,
+    "ORDER": 0.622459,
+    "PAYMENT_REQUEST": 0.593825,
+    "DELIVERY": 0.622459,
+    "DELIVERY_PERSON": 0.558752,
+    "RESTAURANT_STAFF": 0.518741,
+    "ORDER_MENU_ITEM": 0.121886
+  },
+  "attribute": {
+    "entities": {
+      "employee": 0.542861,
+      "menu item": 0.537329,
+      "order": 0.537258,
+      "payment request": 0.547658,
+      "delivery": 0.539672,
+      "delivery person": 0.537419,
+      "restaurant staff": 0.563659
+    },
+    "ORDER_MENU_ITEM": {
+      "order_menu_item_id": 0.121886,
+      "order_id": 0.121886,
+      "menu_item_id": 0.121886,
+      "quantity": 0.121886,
+      "total_price": 0.121886
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ORDER",
+      "description": "Employee places Order",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000507
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_MENU_ITEM",
+      "description": "One ORDER can be associated with many ORDER_MENU_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.121886
+    },
+    {
+      "entity_1": "MENU_ITEM",
+      "entity_2": "ORDER_MENU_ITEM",
+      "description": "One MENU_ITEM can be associated with many ORDER_MENU_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.121886
+    },
+    {
+      "entity_1": "RESTAURANT_STAFF",
+      "entity_2": "PAYMENT_REQUEST",
+      "description": "Restaurant staff generates Payment Request",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994506
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "description": "Order has an associated Payment Request",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.284148
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PAYMENT_REQUEST",
+      "description": "Payment Request references the Employee who placed the order",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.221603
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "description": "Order has a Delivery record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.020444
+    },
+    {
+      "entity_1": "DELIVERY",
+      "entity_2": "DELIVERY_PERSON",
+      "description": "Delivery is performed by Delivery Person",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999772
+    }
+  ],
+  "processing_time": 1.81
+}

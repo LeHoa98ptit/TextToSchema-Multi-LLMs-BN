@@ -1,0 +1,185 @@
+{
+  "filename": "445.txt",
+  "entity": {
+    "PERSONNEL": 0.622459,
+    "PERSONNEL_TYPE": 0.568148,
+    "UNIT": 0.622459,
+    "UNIT_TYPE": 0.507374,
+    "ADMINISTRATOR": 0.514971,
+    "ROLE": 0.511773,
+    "HEALTH_INFORMATION": 0.5265,
+    "TRAVEL_TRAJECTORY": 0.442382,
+    "VISITOR": 0.622459,
+    "APPOINTMENT": 0.622459,
+    "VISIT_RECORD": 0.503175,
+    "ACCESS_RECORD": 0.52251,
+    "ACCESS_CONTROL_DEVICE": 0.527447
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel id": 0.552523,
+      "personnel type id": 0.554276,
+      "phone number": 0.541517,
+      "email": 0.537869
+    },
+    "PERSONNEL_TYPE": {
+      "personnel type id": 0.555094,
+      "type name": 0.54775
+    },
+    "UNIT": {
+      "unit id": 0.533095,
+      "unit type id": 0.535701,
+      "unit name": 0.533097
+    },
+    "UNIT_TYPE": {
+      "unit type id": 0.53283,
+      "type name": 0.52956
+    },
+    "ADMINISTRATOR": {
+      "administrator id": 0.533996,
+      "role id": 0.533421
+    },
+    "ROLE": {
+      "role id": 0.525869,
+      "role name": 0.521103
+    },
+    "HEALTH_INFORMATION": {
+      "health info id": 0.546236,
+      "personnel id": 0.561031,
+      "temperature": 0.534053,
+      "symptom": 0.536497,
+      "health code color": 0.538046,
+      "recorded at": 0.549765
+    },
+    "TRAVEL_TRAJECTORY": {
+      "trajectory id": 0.503444,
+      "personnel id": 0.527269,
+      "trajectory data": 0.515009,
+      "recorded at": 0.506441
+    },
+    "VISITOR": {
+      "visitor id": 0.531873,
+      "phone number": 0.52522,
+      "email": 0.52467
+    },
+    "APPOINTMENT": {
+      "appointment id": 0.530628,
+      "visitor id": 0.538591,
+      "personnel id": 0.548419,
+      "entry time": 0.52712,
+      "exit time": 0.522719,
+      "status": 0.537178
+    },
+    "VISIT_RECORD": {
+      "visit record id": 0.527433,
+      "visitor id": 0.53193,
+      "personnel id": 0.552464,
+      "entry time": 0.531529,
+      "exit time": 0.525387,
+      "status": 0.535862
+    },
+    "ACCESS_RECORD": {
+      "access record id": 0.52606,
+      "personnel id": 0.551759,
+      "device id": 0.523367,
+      "entry time": 0.528419,
+      "exit time": 0.523215
+    },
+    "ACCESS_CONTROL_DEVICE": {
+      "device id": 0.534226,
+      "device location": 0.532969,
+      "device status": 0.542191
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL_TYPE",
+      "entity_2": "PERSONNEL",
+      "description": "Each personnel has one type, each type can be assigned to many personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99918
+    },
+    {
+      "entity_1": "UNIT_TYPE",
+      "entity_2": "UNIT",
+      "description": "Each unit belongs to one unit type, each unit type can have many units.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998181
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ADMINISTRATOR",
+      "description": "Each administrator is assigned one role, each role can be assigned to many administrators.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.960276
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_INFORMATION",
+      "description": "Each health information record belongs to one personnel, a personnel can have many health records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001947
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "TRAVEL_TRAJECTORY",
+      "description": "Each travel trajectory record is linked to one personnel, a personnel can have many trajectory records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.755737
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "description": "A visitor can create many appointments, each appointment is for one visitor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.875981
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "description": "A personnel can be scheduled for many appointments, each appointment involves one personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99773
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "VISIT_RECORD",
+      "description": "A visitor can have many visit records, each visit record refers to one visitor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998549
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VISIT_RECORD",
+      "description": "A personnel can have many visit records, each visit record involves one personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983435
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "description": "Each access record is generated for one personnel, a personnel can have many access records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971141
+    },
+    {
+      "entity_1": "ACCESS_CONTROL_DEVICE",
+      "entity_2": "ACCESS_RECORD",
+      "description": "Each access record is associated with one access control device, a device can generate many access records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.90754
+    }
+  ],
+  "processing_time": 7.18
+}

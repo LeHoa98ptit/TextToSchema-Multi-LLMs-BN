@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "PLAYER",
+    "GAME",
+    "SINGLE_PLAYER_GAME",
+    "PLAYER_COMMUNICATION",
+    "PLAYER_BATTLE"
+  ],
+  "attribute": {
+    "PLAYER": [
+      "player id",
+      "username",
+      "password",
+      "phone number",
+      "registration time"
+    ],
+    "GAME": [
+      "game id",
+      "game rule",
+      "game content",
+      "max players"
+    ],
+    "SINGLE_PLAYER_GAME": [
+      "player id",
+      "game id",
+      "game start time",
+      "game end time",
+      "game status"
+    ],
+    "PLAYER_COMMUNICATION": [
+      "player id",
+      "second player id",
+      "communication start time",
+      "communication end time",
+      "communication content"
+    ],
+    "PLAYER_BATTLE": [
+      "player id",
+      "second player id",
+      "game id",
+      "battle start time",
+      "battle end time",
+      "battle result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_COMMUNICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 29.4046,
+  "ilp_runtime": 0.188
+}

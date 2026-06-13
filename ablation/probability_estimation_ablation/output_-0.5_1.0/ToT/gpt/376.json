@@ -1,0 +1,162 @@
+{
+  "filename": "376.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "TECHNICIAN": 0.622459,
+    "CAR_MODEL": 0.532828,
+    "REPAIR_TASK": 0.595488,
+    "PART": 0.622459,
+    "SUPPLIER": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_PART": 0.525852,
+    "REPAIR_TASK_PART": 0.586957
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.530723,
+      "first_name": 0.536772,
+      "last_name": 0.532495,
+      "phone": 0.53208,
+      "email": 0.526534,
+      "address": 0.528448,
+      "date_of_birth": 0.529565
+    },
+    "TECHNICIAN": {
+      "technician_id": 0.547702,
+      "first_name": 0.547546,
+      "last_name": 0.546778,
+      "phone": 0.539894,
+      "email": 0.5373,
+      "address": 0.541805,
+      "hire_date": 0.540766,
+      "skill_level": 0.553088
+    },
+    "CAR_MODEL": {
+      "model_id": 0.521219,
+      "make": 0.529333,
+      "model": 0.529749,
+      "year": 0.521458,
+      "engine_type": 0.523279
+    },
+    "REPAIR_TASK": {
+      "task_id": 0.528932,
+      "customer_id": 0.543439,
+      "technician_id": 0.555657,
+      "model_id": 0.531282,
+      "status": 0.542269,
+      "creation_date": 0.527106,
+      "completion_date": 0.527946,
+      "estimated_hours": 0.528248,
+      "total_cost": 0.538084
+    },
+    "PART": {
+      "part_id": 0.528433,
+      "serial_number": 0.528757,
+      "description": 0.536626,
+      "unit_price": 0.526846,
+      "weight": 0.5185,
+      "quantity_on_hand": 0.529636,
+      "reorder_level": 0.52862,
+      "last_restock_date": 0.518473,
+      "supplier_id": 0.54188
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.535535,
+      "name": 0.531747,
+      "contact_name": 0.535533,
+      "contact_phone": 0.532823,
+      "email": 0.529749,
+      "address": 0.530889,
+      "rating": 0.525018
+    },
+    "ORDER": {
+      "order_id": 0.517328,
+      "task_id": 0.534124,
+      "order_date": 0.510099,
+      "delivery_status": 0.532713,
+      "total_amount": 0.520872
+    },
+    "ORDER_PART": {
+      "order_id": 0.524281,
+      "part_id": 0.532927,
+      "quantity_ordered": 0.53463,
+      "unit_price_at_order": 0.51643
+    },
+    "REPAIR_TASK_PART": {
+      "task_id": 0.534541,
+      "part_id": 0.537082,
+      "quantity_used": 0.553913,
+      "unit_price_at_use": 0.536384
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "description": "A customer can request many repair tasks",
+      "probability": 0.372919
+    },
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "description": "A technician may handle multiple repair tasks",
+      "probability": 0.993874
+    },
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "description": "Each repair task is linked to a specific car model",
+      "probability": 0.728643
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PART",
+      "cardinality": "1:N",
+      "description": "A supplier provides many parts; each part has one supplier",
+      "probability": 0.055937
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "REPAIR_TASK_PART",
+      "cardinality": "1:N",
+      "description": "A repair task can use many part line items",
+      "probability": 0.999982
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "REPAIR_TASK_PART",
+      "cardinality": "1:N",
+      "description": "A part can appear in many repair‑task line items",
+      "probability": 0.947555
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:1",
+      "description": "Each repair task has a single associated order",
+      "probability": 0.05008
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PART",
+      "cardinality": "1:N",
+      "description": "An order can contain many ordered part line items",
+      "probability": 0.999878
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ORDER_PART",
+      "cardinality": "1:N",
+      "description": "A part can be ordered in many orders",
+      "probability": 0.997661
+    }
+  ],
+  "processing_time": 29.38,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Created a dedicated ORDER_PART associative entity to correctly model the many‑to‑many relationship between orders and parts and capture ordered quantities and pricing. Merged inventory attributes into PART, removing the separate INVENTORY entity for a simpler schema while preserving stock tracking fields. Removed the order_id from REPAIR_TASK_PART, separating order information from part usage on a repair task. Added explicit foreign‑key attributes (e.g., supplier_id in PART) and clarified relationship cardinalities. Retained all strong entities and relationships from the previous high‑scoring design."
+  }
+}

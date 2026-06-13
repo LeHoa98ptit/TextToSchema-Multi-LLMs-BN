@@ -1,0 +1,195 @@
+{
+  "filename": "411.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "CUSTOMER_CLASSIFICATION": 0.50675,
+    "CONTACT_PERSON": 0.474547,
+    "PRODUCT": 0.622459,
+    "PRODUCT_CLASSIFICATION": 0.486753,
+    "CATEGORY": 0.473625,
+    "BRAND": 0.511348,
+    "SUPPLIER": 0.501625,
+    "ORDER": 0.622459,
+    "ORDER_DETAIL": 0.505275,
+    "PAYMENT": 0.622459,
+    "PAYMENT_METHOD": 0.537703
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.544399,
+      "customer_name": 0.550463,
+      "tax_id": 0.527329,
+      "registration_date": 0.531574,
+      "address": 0.543059,
+      "phone": 0.546603,
+      "email": 0.544464,
+      "website": 0.550161
+    },
+    "CUSTOMER_CLASSIFICATION": {
+      "customer_id": 0.552266,
+      "customer_type": 0.55652,
+      "credit_rating": 0.554744,
+      "segment": 0.565358
+    },
+    "CONTACT_PERSON": {
+      "contact_id": 0.510378,
+      "customer_id": 0.537366,
+      "first_name": 0.517079,
+      "last_name": 0.518551,
+      "position": 0.522469,
+      "mobile": 0.518518,
+      "email": 0.515205
+    },
+    "PRODUCT": {
+      "product_id": 0.509126,
+      "product_name": 0.514753,
+      "sku": 0.518234,
+      "specification": 0.539369,
+      "unit_price": 0.523855,
+      "inventory_qty": 0.536436,
+      "production_date": 0.519385,
+      "expiry_date": 0.511742,
+      "weight": 0.512305,
+      "dimensions": 0.510774
+    },
+    "PRODUCT_CLASSIFICATION": {
+      "product_id": 0.512535,
+      "category_id": 0.512745,
+      "brand_id": 0.518861,
+      "supplier_id": 0.530596
+    },
+    "CATEGORY": {
+      "category_id": 0.502661,
+      "category_name": 0.508655,
+      "parent_category_id": 0.498871
+    },
+    "BRAND": {
+      "brand_id": 0.513415,
+      "brand_name": 0.51696,
+      "brand_origin": 0.506396
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.522146,
+      "supplier_name": 0.527459,
+      "contact_name": 0.527719,
+      "contact_phone": 0.528231,
+      "address": 0.525414,
+      "email": 0.528803
+    },
+    "ORDER": {
+      "order_id": 0.511316,
+      "customer_id": 0.537883,
+      "order_date": 0.51581,
+      "required_delivery_date": 0.510771,
+      "order_status": 0.517546,
+      "shipping_method": 0.505501,
+      "total_amount": 0.525823
+    },
+    "ORDER_DETAIL": {
+      "order_id": 0.5199,
+      "product_id": 0.523227,
+      "quantity": 0.541012,
+      "unit_price": 0.53702,
+      "discount": 0.53085,
+      "line_total": 0.532867
+    },
+    "PAYMENT": {
+      "payment_id": 0.521958,
+      "order_id": 0.52262,
+      "payment_method_id": 0.518129,
+      "payment_status": 0.527812,
+      "payment_time": 0.523646,
+      "amount_paid": 0.524168,
+      "transaction_reference": 0.528069
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.518658,
+      "method_name": 0.521549,
+      "description": 0.543218
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CLASSIFICATION",
+      "cardinality": "1:1",
+      "description": "Each customer has one classification record",
+      "probability": 0.99869
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "cardinality": "1:N",
+      "description": "A customer may have multiple contact persons",
+      "probability": 0.748708
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_CLASSIFICATION",
+      "cardinality": "1:1",
+      "description": "Each product links to its category, brand, and supplier",
+      "probability": 0.963989
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A category contains many products",
+      "probability": 0.00026
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A brand can have many products",
+      "probability": 0.994234
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supplier provides many products",
+      "probability": 0.03901
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Customers place multiple orders",
+      "probability": 0.964177
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order detail lines",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "A product can appear in many order detail lines",
+      "probability": 0.999192
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each order has a single payment record",
+      "probability": 0.88831
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "One payment method can be used for many payments",
+      "probability": 0.999921
+    }
+  ],
+  "processing_time": 22.43,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

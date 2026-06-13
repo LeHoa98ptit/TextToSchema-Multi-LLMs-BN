@@ -1,0 +1,91 @@
+{
+  "entity": [
+    "USER",
+    "PRODUCT",
+    "PRODUCT_PHOTO",
+    "TRANSACTION",
+    "REVIEW"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "phone_number",
+      "email",
+      "avatar_url",
+      "nickname",
+      "gender",
+      "age",
+      "location",
+      "personal_introduction",
+      "id_card_photo_url",
+      "facial_recognition_data",
+      "phone_verified",
+      "email_verified",
+      "registration_date",
+      "last_login"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "seller_id",
+      "title",
+      "description",
+      "condition",
+      "original_price",
+      "sell_price",
+      "negotiation_range",
+      "validity_period_start",
+      "validity_period_end",
+      "location",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCT_PHOTO": [
+      "photo_id",
+      "product_id",
+      "photo_url",
+      "order_index"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "product_id",
+      "buyer_id",
+      "seller_id",
+      "transaction_time",
+      "transaction_status",
+      "transaction_location",
+      "transaction_method"
+    ],
+    "REVIEW": [
+      "review_id",
+      "transaction_id",
+      "rating",
+      "comment",
+      "review_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_PHOTO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REVIEW",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.5972,
+  "ilp_runtime": 0.043
+}

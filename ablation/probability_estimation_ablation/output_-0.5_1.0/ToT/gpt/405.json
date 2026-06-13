@@ -1,0 +1,137 @@
+{
+  "filename": "405.txt",
+  "entity": {
+    "DRUG": 0.622459,
+    "DOCTOR": 0.622459,
+    "PATIENT": 0.622459,
+    "PRESCRIPTION": 0.622459,
+    "PAYMENT": 0.622459,
+    "CONSULTATION": 0.479237,
+    "PRESCRIPTION_DRUG": 0.590154,
+    "ASSOC_PRESCRIPTION_DRUG": 0.101888
+  },
+  "attribute": {
+    "DRUG": {
+      "drug_id": 0.541962,
+      "name": 0.533235,
+      "specification": 0.551695,
+      "usage": 0.542918,
+      "price": 0.527108
+    },
+    "DOCTOR": {
+      "doctor_id": 0.542717,
+      "name": 0.542852,
+      "address": 0.543947,
+      "phone": 0.540701
+    },
+    "PATIENT": {
+      "patient_id": 0.546127,
+      "name": 0.542377,
+      "address": 0.547197,
+      "phone": 0.53863
+    },
+    "PRESCRIPTION": {
+      "prescription_id": 0.547676,
+      "order_date": 0.541089,
+      "category": 0.558983,
+      "remark": 0.540588
+    },
+    "PAYMENT": {
+      "payment_id": 0.520872,
+      "payment_date": 0.518963,
+      "amount": 0.522878,
+      "discount": 0.518137,
+      "payment_method": 0.523366
+    },
+    "CONSULTATION": {
+      "consultation_id": 0.534639,
+      "consultation_date": 0.52683,
+      "notes": 0.544028
+    },
+    "PRESCRIPTION_DRUG": {
+      "prescription_id": 0.553885,
+      "drug_id": 0.552588,
+      "dosage": 0.544312,
+      "frequency": 0.544881,
+      "quantity": 0.55144,
+      "duration": 0.534152
+    },
+    "ASSOC_PRESCRIPTION_DRUG": {
+      "assoc_prescription_drug_id": 0.101888,
+      "prescription_id": 0.101888,
+      "drug_id": 0.101888
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "description": "A doctor conducts many consultations; each consultation is with one doctor",
+      "probability": 0.353188
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "description": "A patient may have many consultations; each consultation involves one patient",
+      "probability": 0.994179
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:1",
+      "description": "Each consultation results in a single prescription; each prescription originates from one consultation",
+      "probability": 0.497103
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A doctor writes many prescriptions; each prescription is authored by one doctor",
+      "probability": 0.035067
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A patient can receive many prescriptions; each prescription belongs to one patient",
+      "probability": 0.116174
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "ASSOC_PRESCRIPTION_DRUG",
+      "description": "One PRESCRIPTION can be associated with many ASSOC_PRESCRIPTION_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.101888
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_PRESCRIPTION_DRUG",
+      "description": "One DRUG can be associated with many ASSOC_PRESCRIPTION_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.101888
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each prescription generates a single payment record",
+      "probability": 0.154351
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "A patient can make many payments; each payment is made by one patient",
+      "probability": 0.99988
+    }
+  ],
+  "processing_time": 13.19,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added CONSULTATION entity to capture outpatient visit details and linked it to DOCTOR, PATIENT, and PRESCRIPTION. Introduced associative entity PRESCRIPTION_DRUG to model the N:M relationship between PRESCRIPTION and DRUG with dosage, frequency, quantity, and duration attributes. Expanded attributes for DRUG (price), PAYMENT (payment_method), and CONSULTATION (notes). Refined relationships for clearer cardinalities and added missing links while preserving core strengths of the original model."
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "filename": "411.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "CONTACT_PERSON": 0.710559,
+    "CUSTOMER_CLASSIFICATION": 0.736334,
+    "PRODUCT": 0.817574,
+    "PRODUCT_CATEGORY": 0.720068,
+    "BRAND": 0.739891,
+    "SUPPLIER": 0.732335,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "PAYMENT": 0.817574
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.765744,
+      "customer name": 0.770251,
+      "address": 0.763626,
+      "phone": 0.766196,
+      "email": 0.764647
+    },
+    "CONTACT_PERSON": {
+      "contact person id": 0.742232,
+      "customer id": 0.758971,
+      "contact name": 0.745161,
+      "contact phone": 0.745721,
+      "contact email": 0.745609
+    },
+    "CUSTOMER_CLASSIFICATION": {
+      "classification id": 0.768186,
+      "customer id": 0.772933,
+      "customer type": 0.778813,
+      "credit rating": 0.775716
+    },
+    "PRODUCT": {
+      "product id": 0.742282,
+      "product name": 0.743129,
+      "product specification": 0.759191,
+      "unit price": 0.747151,
+      "inventory quantity": 0.760948,
+      "production date": 0.746466,
+      "category id": 0.743591,
+      "brand id": 0.740141,
+      "supplier id": 0.749802
+    },
+    "PRODUCT_CATEGORY": {
+      "category id": 0.742191,
+      "category name": 0.745793
+    },
+    "BRAND": {
+      "brand id": 0.738804,
+      "brand name": 0.740555
+    },
+    "SUPPLIER": {
+      "supplier id": 0.748352,
+      "supplier name": 0.750251,
+      "contact phone": 0.75411,
+      "contact email": 0.75262
+    },
+    "ORDER": {
+      "order id": 0.744905,
+      "customer id": 0.761029,
+      "order time": 0.744805,
+      "order status": 0.752001
+    },
+    "ORDER_ITEM": {
+      "order item id": 0.744102,
+      "order id": 0.744615,
+      "product id": 0.744862,
+      "quantity": 0.756713,
+      "unit price": 0.753234,
+      "total price": 0.752094
+    },
+    "PAYMENT": {
+      "payment id": 0.751533,
+      "order id": 0.752136,
+      "payment method": 0.758656,
+      "payment status": 0.756941,
+      "payment time": 0.751151
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "description": "A customer can have multiple contact persons; each contact person belongs to one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.749473
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CLASSIFICATION",
+      "description": "Each customer has one classification record containing type and credit rating.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.998718
+    },
+    {
+      "entity_1": "PRODUCT_CATEGORY",
+      "entity_2": "PRODUCT",
+      "description": "A product category groups many products; each product belongs to one category.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.749646
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "PRODUCT",
+      "description": "A brand can have many products; each product is associated with one brand.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994026
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "description": "A supplier supplies many products; each product is supplied by one supplier.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.042055
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place multiple orders; each order is placed by one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963713
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "An order contains multiple order items; each order item belongs to one order.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "description": "A product can appear in many order items; each order item references one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96962
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "description": "An order can have multiple payments; each payment is linked to one order.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.909899
+    }
+  ],
+  "processing_time": 33.17
+}

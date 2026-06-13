@@ -1,0 +1,107 @@
+{
+  "filename": "482.txt",
+  "entity": {
+    "CLIENT": 0.622459,
+    "VEHICLE": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "MAINTENANCE_ORDER": 0.539542,
+    "CONTACT": 0.519315,
+    "ASSOC_EMPLOYEE_MAINTENANCE_ORDER": 0.676092
+  },
+  "attribute": {
+    "CLIENT": {
+      "client_number": 0.526961,
+      "client_type": 0.521146,
+      "discount_rate": 0.520022,
+      "contact_person": 0.527165,
+      "contact_phone_number": 0.526878,
+      "contact_email": 0.513602
+    },
+    "VEHICLE": {
+      "license_plate_number": 0.540327,
+      "model": 0.536151,
+      "color": 0.532612,
+      "vehicle_category": 0.546205,
+      "maintenance_history": 0.553309
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.545048,
+      "employee_position": 0.542935,
+      "phone_number": 0.541932,
+      "home_address": 0.533789
+    },
+    "DEPARTMENT": {
+      "department_number": 0.523494,
+      "supervisor": 0.536993,
+      "phone_number": 0.524855
+    },
+    "MAINTENANCE_ORDER": {
+      "order_number": 0.546956,
+      "order_date": 0.533308,
+      "order_status": 0.546541,
+      "maintenance_content": 0.558421,
+      "man_hour": 0.551618,
+      "task_status": 0.552331
+    },
+    "CONTACT": {
+      "contact_name": 0.51448
+    },
+    "ASSOC_EMPLOYEE_MAINTENANCE_ORDER": {
+      "assoc_employee_maintenance_order_id": 0.676092,
+      "employee_id": 0.676092,
+      "maintenance_order_id": 0.676092
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A client can have multiple vehicles",
+      "probability": 0.267523
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "An employee belongs to one department",
+      "probability": 0.999888
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_MAINTENANCE_ORDER",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_MAINTENANCE_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.676092
+    },
+    {
+      "entity_1": "MAINTENANCE_ORDER",
+      "entity_2": "ASSOC_EMPLOYEE_MAINTENANCE_ORDER",
+      "description": "One MAINTENANCE_ORDER can be associated with many ASSOC_EMPLOYEE_MAINTENANCE_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.676092
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "CONTACT",
+      "cardinality": "1:1",
+      "description": "A client has one contact person",
+      "probability": 0.001328
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE_ORDER",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple maintenance orders",
+      "probability": 0.883533
+    }
+  ],
+  "processing_time": 12.32,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged MAINTENANCE_TASK into MAINTENANCE_ORDER, added maintenance_history to VEHICLE, and task_status to MAINTENANCE_ORDER. Removed redundant attributes and improved relationships for better efficiency and consistency."
+  }
+}

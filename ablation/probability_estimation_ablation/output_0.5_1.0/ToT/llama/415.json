@@ -1,0 +1,72 @@
+{
+  "filename": "415.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SERVER": 0.817574,
+    "CHAT_RECORD": 0.743302,
+    "SERVER_CONFIGURATION": 0.788215
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.739436,
+      "password": 0.745749,
+      "email": 0.748626,
+      "ip_address": 0.752176,
+      "port_number": 0.754622,
+      "login_time": 0.741559,
+      "login_status": 0.745452
+    },
+    "SERVER": {
+      "server_ip_address": 0.748639,
+      "server_port_number": 0.749054,
+      "max_client_connection": 0.759228,
+      "receive_buffer_size": 0.759669
+    },
+    "CHAT_RECORD": {
+      "message_content": 0.771881,
+      "send_time": 0.76625,
+      "sender": 0.7716,
+      "receiver": 0.772108,
+      "message_id": 0.768495
+    },
+    "SERVER_CONFIGURATION": {
+      "protocol": 0.775559,
+      "dynamic_adjustment": 0.749533
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can have multiple chat records",
+      "probability": 0.889067
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "SERVER_CONFIGURATION",
+      "cardinality": "1:1",
+      "description": "A server has one server configuration",
+      "probability": 0.976666
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A server can have multiple users",
+      "probability": 0.956531
+    },
+    {
+      "entity_1": "CHAT_RECORD",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A chat record is associated with one sender and one receiver",
+      "probability": 0.889067
+    }
+  ],
+  "processing_time": 14.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Combined login verification and user information into a single entity, removed redundant entities and attributes, and added a relationship between chat records and users to improve data integrity and consistency."
+  }
+}

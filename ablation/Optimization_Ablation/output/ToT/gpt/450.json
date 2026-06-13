@@ -1,0 +1,162 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "USER",
+    "ROLE",
+    "ASSET_CATEGORY",
+    "ASSET_STATUS",
+    "CIRCULATION_STATUS",
+    "ACTION_TYPE",
+    "ASSET",
+    "CIRCULATION_RECORD",
+    "ASSET_AUDIT"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "dept_id",
+      "dept_name",
+      "dept_description",
+      "manager_user_id",
+      "created_at"
+    ],
+    "USER": [
+      "user_id",
+      "user_name",
+      "email",
+      "role_id",
+      "hire_date",
+      "dept_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "role_description"
+    ],
+    "ASSET_CATEGORY": [
+      "category_id",
+      "category_type",
+      "category_description",
+      "parent_category_id"
+    ],
+    "ASSET_STATUS": [
+      "status_id",
+      "status_name",
+      "status_description"
+    ],
+    "CIRCULATION_STATUS": [
+      "circ_status_id",
+      "circ_status_name",
+      "circ_status_description"
+    ],
+    "ACTION_TYPE": [
+      "action_type_id",
+      "action_name",
+      "action_description"
+    ],
+    "ASSET": [
+      "asset_id",
+      "asset_tag",
+      "category_id",
+      "dept_id",
+      "status_id",
+      "scrap_indicator",
+      "purchase_date",
+      "warranty_expiry",
+      "creator_user_id",
+      "created_at",
+      "updater_user_id",
+      "updated_at"
+    ],
+    "CIRCULATION_RECORD": [
+      "record_id",
+      "asset_id",
+      "user_id",
+      "circ_status_id",
+      "action_type_id",
+      "start_timestamp",
+      "end_timestamp",
+      "remarks"
+    ],
+    "ASSET_AUDIT": [
+      "audit_id",
+      "asset_id",
+      "changed_field",
+      "old_value",
+      "new_value",
+      "changed_by_user_id",
+      "changed_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ASSET_CATEGORY",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ASSET_STATUS",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CIRCULATION_STATUS",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACTION_TYPE",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ASSET",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ASSET",
+      "entity_2": "ASSET_AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET_AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 77.7483,
+  "ilp_runtime": 0.061
+}

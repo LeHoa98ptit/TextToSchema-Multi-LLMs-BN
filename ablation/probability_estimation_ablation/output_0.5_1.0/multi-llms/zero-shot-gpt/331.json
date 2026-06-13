@@ -1,0 +1,108 @@
+{
+  "filename": "331.txt",
+  "entity": {
+    "PLAYER": 0.817574,
+    "MATCH": 0.817574,
+    "EVENT": 0.723862,
+    "GAME": 0.817574,
+    "BATTLE_RECORD": 0.755433,
+    "PLAYER_PARTICIPATION": 0.749153,
+    "MATCH_RESULT": 0.75226
+  },
+  "attribute": {
+    "PLAYER": {
+      "player id": 0.758039,
+      "username": 0.753426,
+      "contact information": 0.769904,
+      "account status": 0.766802
+    },
+    "MATCH": {
+      "match id": 0.757557,
+      "match type": 0.762619,
+      "start time": 0.764059,
+      "end time": 0.764153,
+      "event id": 0.757024
+    },
+    "EVENT": {
+      "event id": 0.745872,
+      "event name": 0.748094
+    },
+    "GAME": {
+      "game id": 0.760089,
+      "game name": 0.762335,
+      "game category": 0.768236
+    },
+    "PLAYER_PARTICIPATION": {
+      "participation id": 0.776943,
+      "match id": 0.777043,
+      "player id": 0.772975
+    },
+    "MATCH_RESULT": {
+      "match result id": 0.751033,
+      "match id": 0.752855,
+      "player id": 0.766766,
+      "player score": 0.769551,
+      "win loss status": 0.76307,
+      "ranking": 0.766021
+    },
+    "BATTLE_RECORD": {
+      "battle record id": 0.763381,
+      "match id": 0.769301,
+      "side": 0.766427,
+      "battle start time": 0.762919,
+      "battle end time": 0.761968,
+      "win loss status": 0.763781
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_PARTICIPATION",
+      "description": "A player can have multiple participation records linking to matches",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99038
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "PLAYER_PARTICIPATION",
+      "description": "A match can involve multiple player participations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.227841
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "MATCH_RESULT",
+      "description": "A player can have multiple result records for different matches",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.039994
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "MATCH_RESULT",
+      "description": "A match can produce multiple result records for participating players",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99996
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE_RECORD",
+      "description": "A match can contain multiple battle records detailing individual battles",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999754
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MATCH",
+      "description": "An event can host multiple matches",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.883418
+    }
+  ],
+  "processing_time": 25.6
+}

@@ -1,0 +1,54 @@
+{
+  "filename": "280.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "PERSON": 0.490576,
+    "ASSIGNMENT": 0.49805
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.540925,
+      "title": 0.547631,
+      "type": 0.552916,
+      "budget": 0.55808,
+      "filming_start": 0.568303,
+      "filming_end": 0.564591
+    },
+    "PERSON": {
+      "person_id": 0.51217,
+      "name": 0.515826,
+      "email": 0.51791,
+      "phone": 0.509713
+    },
+    "ASSIGNMENT": {
+      "assignment_id": 0.5123,
+      "project_id": 0.535132,
+      "person_id": 0.521729,
+      "role": 0.532162,
+      "start_date": 0.513783,
+      "end_date": 0.511894,
+      "details": 0.530658
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A person can have multiple assignments (e.g., acting, directing) across projects.",
+      "probability": 0.185322
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A project can have many assignments linking it to personnel with specific roles.",
+      "probability": 0.088011
+    }
+  ],
+  "processing_time": 8.3,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added ENUM/ CHECK constraint on ASSIGNMENT.role to restrict values to 'Director', 'Actor', 'Producer' (and future roles). Included foreign‑key attributes project_id and person_id in ASSIGNMENT for referential integrity. Added optional 'details' attribute for role‑specific information (e.g., character name, director experience). Documented business rule (to be enforced via trigger or application logic) that each PROJECT must have at least one Assignment with role='Director'."
+  }
+}

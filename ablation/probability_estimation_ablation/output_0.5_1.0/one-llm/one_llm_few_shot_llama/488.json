@@ -1,0 +1,106 @@
+{
+  "filename": "488.txt",
+  "entity": {
+    "DEPARTMENT": 0.817574,
+    "WORK_ORDER": 0.743359,
+    "EMAIL_CONFIGURATION": 0.747118,
+    "EMPLOYEE": 0.817574,
+    "EMAIL_SERVER": 0.794244,
+    "ASSOC_EMPLOYEE_EMAIL_SERVER": 0.996928,
+    "ASSOC_WORK_ORDER_EMAIL_SERVER": 0.032502
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department_description": 0.776064,
+      "email_address": 0.781647,
+      "sort_order": 0.77518
+    },
+    "WORK_ORDER": {
+      "work_order_id": 0.765228,
+      "customer_id": 0.76771,
+      "department_id": 0.782204,
+      "work_order_status": 0.768651,
+      "auto_reply_disabled": 0.768971,
+      "hide_user": 0.769303
+    },
+    "EMAIL_CONFIGURATION": {
+      "email_server_host": 0.760922,
+      "port_number": 0.75959,
+      "login_username": 0.759761,
+      "password": 0.765196
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.765392,
+      "name": 0.766542,
+      "email": 0.781552
+    },
+    "EMAIL_SERVER": {
+      "email_server_id": 0.759649,
+      "host_address": 0.756904,
+      "maintenance_status": 0.770164
+    },
+    "ASSOC_EMPLOYEE_EMAIL_SERVER": {
+      "assoc_employee_email_server_id": 0.996928,
+      "employee_id": 0.996928,
+      "email_server_id": 0.996928
+    },
+    "ASSOC_WORK_ORDER_EMAIL_SERVER": {
+      "assoc_work_order_email_server_id": 0.032502,
+      "work_order_id": 0.032502,
+      "email_server_id": 0.032502
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORK_ORDER",
+      "description": "Each work order is associated with exactly one department, and each department can have many work orders.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.102016
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMAIL_CONFIGURATION",
+      "description": "Each department has one email configuration, and each email configuration is associated with one department.",
+      "cardinality": "1:1",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.906357
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_EMAIL_SERVER",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996928
+    },
+    {
+      "entity_1": "EMAIL_SERVER",
+      "entity_2": "ASSOC_EMPLOYEE_EMAIL_SERVER",
+      "description": "One EMAIL_SERVER can be associated with many ASSOC_EMPLOYEE_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996928
+    },
+    {
+      "entity_1": "WORK_ORDER",
+      "entity_2": "ASSOC_WORK_ORDER_EMAIL_SERVER",
+      "description": "One WORK_ORDER can be associated with many ASSOC_WORK_ORDER_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032502
+    },
+    {
+      "entity_1": "EMAIL_SERVER",
+      "entity_2": "ASSOC_WORK_ORDER_EMAIL_SERVER",
+      "description": "One EMAIL_SERVER can be associated with many ASSOC_WORK_ORDER_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032502
+    }
+  ],
+  "processing_time": 18.37
+}

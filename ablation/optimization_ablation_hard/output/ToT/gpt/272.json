@@ -1,0 +1,131 @@
+{
+  "entity": [
+    "RANCH",
+    "LIVESTOCK",
+    "HEALTH_EVENT",
+    "HEALTH_EVENT_TYPE",
+    "VACCINATION",
+    "VACCINE",
+    "FEED",
+    "FEED_TYPE",
+    "MOVEMENT",
+    "MOVEMENT_TYPE",
+    "STATUS"
+  ],
+  "attribute": {
+    "RANCH": [
+      "ranch_id",
+      "name",
+      "address",
+      "phone",
+      "manager_name"
+    ],
+    "LIVESTOCK": [
+      "livestock_id",
+      "tag_number",
+      "birth_date",
+      "gender",
+      "weight",
+      "species_id",
+      "ranch_id"
+    ],
+    "HEALTH_EVENT": [
+      "event_id",
+      "livestock_id",
+      "event_time",
+      "event_type_id",
+      "status_id",
+      "notes"
+    ],
+    "HEALTH_EVENT_TYPE": [
+      "event_type_id",
+      "type_name",
+      "description"
+    ],
+    "VACCINATION": [
+      "vaccination_id",
+      "livestock_id",
+      "vaccine_id",
+      "vaccination_time",
+      "dose",
+      "status_id"
+    ],
+    "VACCINE": [
+      "vaccine_id",
+      "vaccine_name",
+      "manufacturer",
+      "required_interval_days"
+    ],
+    "FEED": [
+      "feed_id",
+      "livestock_id",
+      "feed_type_id",
+      "feed_time",
+      "quantity",
+      "unit"
+    ],
+    "FEED_TYPE": [
+      "feed_type_id",
+      "feed_name",
+      "nutrient_profile",
+      "supplier"
+    ],
+    "MOVEMENT": [
+      "movement_id",
+      "livestock_id",
+      "movement_type_id",
+      "movement_time",
+      "remarks"
+    ],
+    "MOVEMENT_TYPE": [
+      "movement_type_id",
+      "type_name",
+      "description"
+    ],
+    "STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RANCH",
+      "entity_2": "LIVESTOCK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HEALTH_EVENT_TYPE",
+      "entity_2": "HEALTH_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VACCINE",
+      "entity_2": "VACCINATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "VACCINATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FEED_TYPE",
+      "entity_2": "FEED",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MOVEMENT_TYPE",
+      "entity_2": "MOVEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 67.5986,
+  "ilp_runtime": 0.024
+}

@@ -1,0 +1,159 @@
+{
+  "filename": "400.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "PERMISSION": 0.4975,
+    "COLLEGE": 0.464634,
+    "BOOK": 0.622459,
+    "USER_BOOK": 0.512922,
+    "ROLE_PERMISSION": 0.529715,
+    "NOTIFICATION": 0.622459,
+    "ASSOC_ROLE_PERMISSION": 0.495276,
+    "ASSOC_USER_BOOK": 0.118368
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.520781,
+      "username": 0.508251,
+      "email": 0.529822,
+      "password_hash": 0.509744,
+      "password_salt": 0.517598,
+      "registration_time": 0.524044,
+      "college_id": 0.529477,
+      "roleid": 0.541768,
+      "user_type": 0.526222,
+      "is_active": 0.522113,
+      "created_at": 0.511841,
+      "updated_at": 0.507801
+    },
+    "ROLE": {
+      "roleid": 0.540822,
+      "rolename": 0.540885,
+      "description": 0.555388,
+      "created_at": 0.530751,
+      "updated_at": 0.526471
+    },
+    "PERMISSION": {
+      "permissionid": 0.527015,
+      "permission_name": 0.528435,
+      "description": 0.551304,
+      "created_at": 0.516703,
+      "updated_at": 0.51348
+    },
+    "COLLEGE": {
+      "collegeid": 0.518241,
+      "collegename": 0.520908,
+      "address": 0.524653,
+      "created_at": 0.523299,
+      "updated_at": 0.522891
+    },
+    "BOOK": {
+      "bookid": 0.542121,
+      "title": 0.534635,
+      "author": 0.533385,
+      "publisher": 0.546699,
+      "publication_date": 0.532496,
+      "category": 0.547497,
+      "isbn": 0.53774,
+      "created_at": 0.524657,
+      "updated_at": 0.52476
+    },
+    "USER_BOOK": {
+      "userid": 0.544795,
+      "bookid": 0.55036,
+      "borrow_date": 0.52598,
+      "due_date": 0.536202,
+      "return_date": 0.528602,
+      "status": 0.563775,
+      "created_at": 0.5329,
+      "updated_at": 0.530914
+    },
+    "ROLE_PERMISSION": {
+      "roleid": 0.540475,
+      "permissionid": 0.536651,
+      "created_at": 0.529697,
+      "updated_at": 0.526042
+    },
+    "NOTIFICATION": {
+      "notificationid": 0.529802,
+      "title": 0.533822,
+      "content": 0.5427,
+      "release_date": 0.525093,
+      "publisher_userid": 0.537996,
+      "is_active": 0.521892,
+      "created_at": 0.519052,
+      "updated_at": 0.512458
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.495276,
+      "role_id": 0.495276,
+      "permission_id": 0.495276
+    },
+    "ASSOC_USER_BOOK": {
+      "assoc_user_book_id": 0.118368,
+      "user_id": 0.118368,
+      "book_id": 0.118368
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLEGE",
+      "cardinality": "N:1",
+      "description": "Each user belongs to one college; a college can have many users",
+      "probability": 0.174662
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "Each user is assigned one role; a role can be assigned to many users",
+      "probability": 0.997663
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.495276
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.495276
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_BOOK",
+      "description": "One USER can be associated with many ASSOC_USER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.118368
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_USER_BOOK",
+      "description": "One BOOK can be associated with many ASSOC_USER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.118368
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can publish many notifications; publisher_userid references USER",
+      "probability": 0.998989
+    }
+  ],
+  "processing_time": 18.16,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique constraints for USER.username and USER.email (implied by business rules). Replaced plain password with password_hash and added password_salt for security. Introduced user_type attribute to distinguish student/teacher beyond role. Added status attribute to USER_BOOK to indicate loan state (e.g., 'active', 'returned'). Included audit fields (created_at, updated_at, is_active) for most entities to support soft‑delete and tracking. Added isbn to BOOK for richer bibliographic data. Updated relationship descriptions for clarity and ensured all associative entities are explicitly represented."
+  }
+}

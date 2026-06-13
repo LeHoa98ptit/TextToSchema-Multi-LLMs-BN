@@ -1,0 +1,146 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.530138,
+    "PICKING_LIST": 0.432024,
+    "DELIVERY_ORDER": 0.566111,
+    "INVOICE": 0.622459,
+    "ACCOUNT_RECEIVABLE_REPORT": 0.464833,
+    "ASSOC_ORDER_ITEM_PRODUCT": 0.85105,
+    "ASSOC_PICKING_LIST_PRODUCT": 1.3e-05
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.528647,
+      "name": 0.532157,
+      "contact_information": 0.533228,
+      "address": 0.52441
+    },
+    "PRODUCT": {
+      "product_id": 0.51282,
+      "product_name": 0.514028,
+      "price": 0.51421,
+      "inventory_quantity": 0.543358
+    },
+    "ORDER": {
+      "order_id": 0.533766,
+      "order_date": 0.531974,
+      "order_status": 0.539397
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.534329,
+      "order_id": 0.536437,
+      "product_id": 0.53313,
+      "order_quantity": 0.54745
+    },
+    "PICKING_LIST": {
+      "picking_list_id": 0.507547,
+      "order_id": 0.528653,
+      "product_id": 0.511604,
+      "pick_quantity": 0.525275,
+      "pick_status": 0.510584
+    },
+    "DELIVERY_ORDER": {
+      "delivery_order_id": 0.536463,
+      "order_id": 0.53912,
+      "delivery_time": 0.537633,
+      "delivery_status": 0.545421
+    },
+    "INVOICE": {
+      "invoice_id": 0.535235,
+      "order_id": 0.546956,
+      "invoice_date": 0.533222,
+      "invoice_total": 0.540638
+    },
+    "ACCOUNT_RECEIVABLE_REPORT": {
+      "report_id": 0.528864,
+      "order_id": 0.539337,
+      "report_date": 0.526969,
+      "receivable_amount": 0.532311
+    },
+    "ASSOC_ORDER_ITEM_PRODUCT": {
+      "assoc_order_item_product_id": 0.85105,
+      "order_item_id": 0.85105,
+      "product_id": 0.85105
+    },
+    "ASSOC_PICKING_LIST_PRODUCT": {
+      "assoc_picking_list_product_id": 1.3e-05,
+      "picking_list_id": 1.3e-05,
+      "product_id": 1.3e-05
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.942682
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.99933
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "ASSOC_ORDER_ITEM_PRODUCT",
+      "description": "One ORDER_ITEM can be associated with many ASSOC_ORDER_ITEM_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.85105
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_ITEM_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_ITEM_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.85105
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "cardinality": "1:N",
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "PICKING_LIST",
+      "entity_2": "ASSOC_PICKING_LIST_PRODUCT",
+      "description": "One PICKING_LIST can be associated with many ASSOC_PICKING_LIST_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.3e-05
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PICKING_LIST_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_PICKING_LIST_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.3e-05
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.991852
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "probability": 0.92555
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ACCOUNT_RECEIVABLE_REPORT",
+      "cardinality": "1:N",
+      "probability": 0.0
+    }
+  ],
+  "processing_time": 20.43
+}

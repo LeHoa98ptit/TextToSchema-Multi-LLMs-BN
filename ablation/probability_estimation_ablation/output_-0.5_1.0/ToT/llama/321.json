@@ -1,0 +1,135 @@
+{
+  "filename": "321.txt",
+  "entity": {
+    "USER": 0.622459,
+    "TEAM": 0.622459,
+    "MATCH": 0.622459,
+    "EVENT": 0.622459,
+    "SPONSOR": 0.483631,
+    "MEMBERSHIP": 0.622459,
+    "MARKETING_ACTIVITY": 0.520938,
+    "EVENT_INFORMATION": 0.542795,
+    "ASSOC_USER_TEAM": 0.753861
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.511807,
+      "email": 0.522029,
+      "password": 0.515278,
+      "firstname": 0.518057,
+      "lastname": 0.512464,
+      "birthdate": 0.508556,
+      "social_info": 0.536381,
+      "friend_relationships": 0.532401,
+      "personal_interests": 0.535441
+    },
+    "TEAM": {
+      "teamname": 0.531839,
+      "description": 0.545697,
+      "logo": 0.534421,
+      "stadium": 0.540336
+    },
+    "MATCH": {
+      "matchdate": 0.520416,
+      "result": 0.520568,
+      "score": 0.52472,
+      "location": 0.518049
+    },
+    "EVENT": {
+      "eventname": 0.52261,
+      "location": 0.522249,
+      "date": 0.514872,
+      "description": 0.532382
+    },
+    "SPONSOR": {
+      "sponsorname": 0.521398,
+      "description": 0.528719,
+      "logo": 0.523374
+    },
+    "MEMBERSHIP": {
+      "membershipid": 0.521203,
+      "membersince": 0.53272,
+      "fees": 0.518629
+    },
+    "MARKETING_ACTIVITY": {
+      "activity_name": 0.53398,
+      "activity_date": 0.525664,
+      "target_audience": 0.54354
+    },
+    "EVENT_INFORMATION": {
+      "event_details": 0.528891,
+      "event_schedule": 0.526407,
+      "event_tickets": 0.534919
+    },
+    "ASSOC_USER_TEAM": {
+      "assoc_user_team_id": 0.753861,
+      "user_id": 0.753861,
+      "team_id": 0.753861
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_TEAM",
+      "description": "One USER can be associated with many ASSOC_USER_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.753861
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "ASSOC_USER_TEAM",
+      "description": "One TEAM can be associated with many ASSOC_USER_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.753861
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "description": "A team can participate in multiple matches",
+      "probability": 0.537674
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "description": "An event can have multiple matches",
+      "probability": 0.881211
+    },
+    {
+      "entity_1": "SPONSOR",
+      "entity_2": "TEAM",
+      "cardinality": "1:N",
+      "description": "A sponsor can sponsor multiple teams",
+      "probability": 0.938342
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MEMBERSHIP",
+      "cardinality": "1:1",
+      "description": "A user can have one membership",
+      "probability": 0.998357
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "MARKETING_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "A team can have multiple marketing activities",
+      "probability": 0.088703
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_INFORMATION",
+      "cardinality": "1:1",
+      "description": "An event can have one event information",
+      "probability": 0.999805
+    }
+  ],
+  "processing_time": 32.96,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added attributes to the USER entity, including social information and friend relationships. Added separate entities for marketing activities and event information to improve the model's completeness and accuracy."
+  }
+}

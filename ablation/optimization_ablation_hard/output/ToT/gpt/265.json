@@ -1,0 +1,116 @@
+{
+  "entity": [
+    "COMPANY",
+    "PRODUCTION_LINE",
+    "BATCH",
+    "CHESSBOARD",
+    "CHESS_PIECE",
+    "INSPECTION",
+    "DEFECT",
+    "QUALITY_ALERT",
+    "MODEL_RUN",
+    "INSPECTION_DEFECT"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "address"
+    ],
+    "PRODUCTION_LINE": [
+      "line_id",
+      "name",
+      "capacity"
+    ],
+    "BATCH": [
+      "batch_id",
+      "production_date",
+      "shift"
+    ],
+    "CHESSBOARD": [
+      "board_id",
+      "board_model",
+      "material"
+    ],
+    "CHESS_PIECE": [
+      "piece_id",
+      "piece_type",
+      "color",
+      "position_x",
+      "position_y",
+      "material"
+    ],
+    "INSPECTION": [
+      "inspection_id",
+      "inspection_timestamp",
+      "inspector",
+      "result",
+      "notes"
+    ],
+    "DEFECT": [
+      "defect_id",
+      "defect_type",
+      "severity",
+      "description"
+    ],
+    "QUALITY_ALERT": [
+      "alert_id",
+      "alert_timestamp",
+      "severity_level",
+      "resolved_flag"
+    ],
+    "MODEL_RUN": [
+      "run_id",
+      "run_timestamp",
+      "runtime_seconds",
+      "predicted_quality",
+      "actual_quality"
+    ],
+    "INSPECTION_DEFECT": [
+      "inspection_defect_id",
+      "inspection_id",
+      "defect_id",
+      "notes"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PRODUCTION_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "INSPECTION_DEFECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEFECT",
+      "entity_2": "INSPECTION_DEFECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEFECT",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "BATCH",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 52.7863,
+  "ilp_runtime": 0.028
+}

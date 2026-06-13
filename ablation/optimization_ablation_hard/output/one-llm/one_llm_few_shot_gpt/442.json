@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "MEDICAL_INSTITUTION",
+    "DEPARTMENT",
+    "PERSONNEL",
+    "VEHICLE",
+    "WASTE_ITEM",
+    "INBOUND_BATCH",
+    "OUTBOUND_BATCH"
+  ],
+  "attribute": {
+    "MEDICAL_INSTITUTION": [
+      "institution_id",
+      "name",
+      "address",
+      "phone"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "description",
+      "institution_id"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "role",
+      "contact_info",
+      "institution_id"
+    ],
+    "VEHICLE": [
+      "vehicle_id",
+      "license_plate",
+      "model",
+      "capacity",
+      "institution_id"
+    ],
+    "WASTE_ITEM": [
+      "waste_id",
+      "waste_type",
+      "weight",
+      "generation_time",
+      "collection_time",
+      "status",
+      "department_id"
+    ],
+    "INBOUND_BATCH": [
+      "batch_number",
+      "expected_quantity",
+      "actual_quantity",
+      "expected_weight",
+      "actual_weight",
+      "inbound_time",
+      "collector_id",
+      "confirmer_id"
+    ],
+    "OUTBOUND_BATCH": [
+      "batch_number",
+      "outbound_quantity",
+      "outbound_weight",
+      "outbound_time",
+      "transporter_id",
+      "confirmer_id",
+      "vehicle_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WASTE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "INBOUND_BATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "OUTBOUND_BATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "OUTBOUND_BATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.6029,
+  "ilp_runtime": 0.054
+}

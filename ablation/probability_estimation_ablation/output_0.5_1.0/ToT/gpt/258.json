@@ -1,0 +1,177 @@
+{
+  "filename": "258.txt",
+  "entity": {
+    "DONOR": 0.817574,
+    "CONTACT_INFO": 0.725518,
+    "ORGANIZATION": 0.760933,
+    "DONOR_ORGANIZATION": 0.770688,
+    "EVENT": 0.817574,
+    "EVENT_ACTIVITY": 0.758065,
+    "DONATION_METHOD": 0.767973,
+    "DONATION": 0.817574,
+    "MESSAGE": 0.70195
+  },
+  "attribute": {
+    "DONOR": {
+      "donor_id": 0.764264,
+      "first_name": 0.762514,
+      "last_name": 0.762943,
+      "date_of_birth": 0.758776,
+      "preferred_contact_info_id": 0.757762
+    },
+    "CONTACT_INFO": {
+      "contact_info_id": 0.737651,
+      "donor_id": 0.759721,
+      "contact_type": 0.742857,
+      "value": 0.742594,
+      "street": 0.744249,
+      "city": 0.746882,
+      "state": 0.741375,
+      "postal_code": 0.737324,
+      "country": 0.740201,
+      "is_primary": 0.742366
+    },
+    "ORGANIZATION": {
+      "organization_id": 0.753001,
+      "org_name": 0.756115,
+      "tax_id": 0.75139,
+      "contact_email": 0.748232,
+      "contact_phone": 0.749541
+    },
+    "DONOR_ORGANIZATION": {
+      "donor_id": 0.77117,
+      "organization_id": 0.772712,
+      "registration_date": 0.76743
+    },
+    "EVENT": {
+      "event_id": 0.741895,
+      "organization_id": 0.753942,
+      "event_name": 0.746476,
+      "event_type": 0.74957,
+      "start_datetime": 0.739101,
+      "end_datetime": 0.738464,
+      "location": 0.745053,
+      "goal_amount": 0.751763,
+      "current_amount": 0.745526,
+      "status": 0.751221
+    },
+    "EVENT_ACTIVITY": {
+      "activity_id": 0.743939,
+      "event_id": 0.744096,
+      "activity_name": 0.747171,
+      "description": 0.761763,
+      "start_datetime": 0.741291,
+      "end_datetime": 0.741196,
+      "status": 0.753022
+    },
+    "DONATION_METHOD": {
+      "method_id": 0.759189,
+      "method_name": 0.761651,
+      "description": 0.775173
+    },
+    "DONATION": {
+      "donation_id": 0.763834,
+      "donor_id": 0.76795,
+      "event_id": 0.768147,
+      "donation_method_id": 0.762906,
+      "donation_datetime": 0.762758,
+      "amount": 0.763379,
+      "currency": 0.758878,
+      "note": 0.760503,
+      "donation_status": 0.767324
+    },
+    "MESSAGE": {
+      "message_id": 0.725532,
+      "donor_id": 0.752917,
+      "event_id": 0.733724,
+      "activity_id": 0.733279,
+      "sent_datetime": 0.731625,
+      "subject": 0.734873,
+      "body": 0.732942
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DONOR",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:N",
+      "description": "A donor can have multiple contact information records (email, phone, address, etc.)",
+      "probability": 0.075949
+    },
+    {
+      "entity_1": "DONOR",
+      "entity_2": "DONOR_ORGANIZATION",
+      "cardinality": "0:N",
+      "description": "A donor may be associated with zero or many charitable organizations",
+      "probability": 0.974487
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "DONOR_ORGANIZATION",
+      "cardinality": "0:N",
+      "description": "An organization can have zero or many donor associations",
+      "probability": 0.978236
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "An organization organizes many fundraising events",
+      "probability": 0.975004
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Each event consists of multiple fundraising activities",
+      "probability": 0.995862
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "An event can receive many donations",
+      "probability": 0.844728
+    },
+    {
+      "entity_1": "DONOR",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "A donor may make many donations",
+      "probability": 0.419558
+    },
+    {
+      "entity_1": "DONATION_METHOD",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "Each donation uses one method; a method can be used for many donations",
+      "probability": 0.998403
+    },
+    {
+      "entity_1": "DONOR",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "System can send many messages to a donor",
+      "probability": 0.059427
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MESSAGE",
+      "cardinality": "0:N",
+      "description": "Messages may be related to an event (optional)",
+      "probability": 0.0414
+    },
+    {
+      "entity_1": "EVENT_ACTIVITY",
+      "entity_2": "MESSAGE",
+      "cardinality": "0:N",
+      "description": "Messages may be related to a specific activity (optional)",
+      "probability": 0.000153
+    }
+  ],
+  "processing_time": 55.31,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Replaced separate ADDRESS and CONTACT entities with a unified CONTACT_INFO entity to streamline contact handling and support address as a contact type. 2. Added DONOR_ORGANIZATION junction table and changed the donor‑organization relationship to optional many‑to‑many, allowing donors to support multiple charities. 3. Introduced optional activity_id in MESSAGE to link communications to specific event activities. 4. Added donation_status attribute to DONATION for audit‑trail (pending, completed, refunded, etc.). 5. Standardized datetime attribute names across EVENT and EVENT_ACTIVITY (start_datetime, end_datetime). 6. Updated relationships and cardinalities to reflect the new structures while preserving existing strengths."
+  }
+}

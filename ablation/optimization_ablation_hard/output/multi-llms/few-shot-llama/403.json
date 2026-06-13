@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "STUDENT",
+    "BOOK",
+    "BOOK_BORROWING",
+    "BOOK_RETURNING",
+    "AUDIT"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student id",
+      "name",
+      "student number",
+      "grade",
+      "major",
+      "contact number",
+      "email"
+    ],
+    "BOOK": [
+      "book id",
+      "title",
+      "author",
+      "publisher",
+      "publication date",
+      "category",
+      "stock quantity",
+      "borrowed quantity"
+    ],
+    "BOOK_BORROWING": [
+      "book borrowing id",
+      "student id",
+      "book id",
+      "borrow date",
+      "return date",
+      "review status"
+    ],
+    "BOOK_RETURNING": [
+      "book returning id",
+      "student id",
+      "book id",
+      "return date",
+      "review status"
+    ],
+    "AUDIT": [
+      "audit id",
+      "administrator id",
+      "book id",
+      "borrowing status",
+      "audit date",
+      "audit result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_BORROWING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "BOOK_RETURNING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_RETURNING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.8495,
+  "ilp_runtime": 0.084
+}

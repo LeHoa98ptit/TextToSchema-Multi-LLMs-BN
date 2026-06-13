@@ -1,0 +1,163 @@
+{
+  "filename": "416.txt",
+  "entity": {
+    "USER": 0.817574,
+    "COMPANY": 0.817574,
+    "JOB": 0.817574,
+    "RESUME": 0.732726,
+    "APPLICATION": 0.71918,
+    "APPLICATION_STATUS": 0.679179,
+    "CONVERSATION": 0.817574,
+    "MESSAGE": 0.817574,
+    "MESSAGE_BOARD": 0.797493,
+    "ASSOC_USER_CONVERSATION": 0.983238
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.739232,
+      "username": 0.731908,
+      "password": 0.74503,
+      "email": 0.746241,
+      "avatar": 0.735974,
+      "nickname": 0.738402,
+      "registration_time": 0.748255,
+      "role": 0.754506
+    },
+    "COMPANY": {
+      "companyid": 0.755334,
+      "name": 0.750224,
+      "address": 0.755076,
+      "profile": 0.767962,
+      "contact_email": 0.753991,
+      "contact_phone": 0.7538
+    },
+    "JOB": {
+      "jobid": 0.769884,
+      "title": 0.766903,
+      "description": 0.775613,
+      "requirements": 0.781006,
+      "category": 0.776574,
+      "salary": 0.750014,
+      "education_level": 0.775209,
+      "work_location": 0.762006,
+      "posted_date": 0.7613,
+      "companyid": 0.767769
+    },
+    "RESUME": {
+      "resumeid": 0.759905,
+      "user_id": 0.756723,
+      "content": 0.768098,
+      "upload_time": 0.748945,
+      "education": 0.763069,
+      "experience": 0.768086,
+      "skills": 0.769997
+    },
+    "APPLICATION": {
+      "applicationid": 0.739919,
+      "user_id": 0.739978,
+      "job_id": 0.762832,
+      "resume_id": 0.757546,
+      "apply_date": 0.744233,
+      "status_id": 0.744481
+    },
+    "APPLICATION_STATUS": {
+      "status_id": 0.745321,
+      "status_name": 0.747196
+    },
+    "CONVERSATION": {
+      "conversationid": 0.75321,
+      "created_at": 0.747161
+    },
+    "MESSAGE": {
+      "messageid": 0.753456,
+      "conversation_id": 0.751391,
+      "sender_id": 0.744912,
+      "content": 0.763788,
+      "send_time": 0.749226
+    },
+    "MESSAGE_BOARD": {
+      "boardid": 0.75446,
+      "user_id": 0.753386,
+      "content": 0.764974,
+      "post_time": 0.751003,
+      "edited_time": 0.748363
+    },
+    "ASSOC_USER_CONVERSATION": {
+      "assoc_user_conversation_id": 0.983238,
+      "user_id": 0.983238,
+      "conversation_id": 0.983238
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RESUME",
+      "cardinality": "1:N",
+      "description": "A user can have multiple resumes",
+      "probability": 0.129648
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A user can submit many job applications",
+      "probability": 0.995827
+    },
+    {
+      "entity_1": "JOB",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A job can receive many applications",
+      "probability": 0.998249
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "JOB",
+      "cardinality": "1:N",
+      "description": "A company posts multiple job openings",
+      "probability": 0.922448
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "Each conversation contains many messages",
+      "probability": 0.997525
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "description": "One USER can be associated with many ASSOC_USER_CONVERSATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983238
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "description": "One CONVERSATION can be associated with many ASSOC_USER_CONVERSATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983238
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE_BOARD",
+      "cardinality": "1:N",
+      "description": "A user can post many board messages",
+      "probability": 0.986605
+    },
+    {
+      "entity_1": "APPLICATION_STATUS",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "Each application references a status value",
+      "probability": 0.98441
+    }
+  ],
+  "processing_time": 11.36,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the redundant USER‑MESSAGE 1:N relationship because sender_id in MESSAGE already defines the link. Added a lookup entity APPLICATION_STATUS to enforce consistent application status values and replaced the status attribute in APPLICATION with a foreign key status_id. Noted that USER.username and USER.email should have unique constraints (implementation detail). Retained all other strengths of the previous model, including comprehensive attributes and necessary relationships."
+  }
+}

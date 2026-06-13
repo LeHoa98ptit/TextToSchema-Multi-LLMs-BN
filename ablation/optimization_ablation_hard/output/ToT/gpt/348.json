@@ -1,0 +1,82 @@
+{
+  "entity": [
+    "PLUGIN",
+    "PLUGIN_TYPE",
+    "PLUGIN_EXECUTION",
+    "AUDIT_LOG",
+    "USER",
+    "STATUS_LOOKUP"
+  ],
+  "attribute": {
+    "PLUGIN": [
+      "plugin_id",
+      "name",
+      "version",
+      "type_id",
+      "created_at",
+      "updated_at"
+    ],
+    "PLUGIN_TYPE": [
+      "type_id",
+      "type_name",
+      "category",
+      "description"
+    ],
+    "PLUGIN_EXECUTION": [
+      "execution_id",
+      "plugin_id",
+      "start_time",
+      "end_time",
+      "status_id",
+      "host",
+      "runtime_ms"
+    ],
+    "AUDIT_LOG": [
+      "audit_id",
+      "execution_id",
+      "user_id",
+      "action",
+      "audit_timestamp",
+      "details"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "full_name",
+      "email"
+    ],
+    "STATUS_LOOKUP": [
+      "status_id",
+      "status_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN_TYPE",
+      "entity_2": "PLUGIN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS_LOOKUP",
+      "entity_2": "PLUGIN_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.6994,
+  "ilp_runtime": 0.068
+}

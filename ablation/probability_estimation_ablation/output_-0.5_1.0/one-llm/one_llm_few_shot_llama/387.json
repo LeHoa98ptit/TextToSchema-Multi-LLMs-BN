@@ -1,0 +1,107 @@
+{
+  "filename": "387.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "AIRLINE": 0.622459,
+    "FLIGHT": 0.622459,
+    "RESERVATION": 0.622459,
+    "PAYMENT": 0.622459,
+    "ASSOC_AIRLINE_CUSTOMER": 0.040533
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.533186,
+      "name": 0.538662,
+      "contact_information": 0.545997,
+      "credit_card_number": 0.534428
+    },
+    "AIRLINE": {
+      "airline_id": 0.548556,
+      "name": 0.549045,
+      "contact_information": 0.561962
+    },
+    "FLIGHT": {
+      "flight_id": 0.543926,
+      "flight_number": 0.551583,
+      "destination": 0.541922,
+      "departure_time": 0.548209,
+      "arrival_time": 0.551084,
+      "airline_id": 0.547521
+    },
+    "RESERVATION": {
+      "reservation_id": 0.537793,
+      "reservation_number": 0.543183,
+      "reservation_date": 0.539385,
+      "reservation_time": 0.540886,
+      "number_of_tickets": 0.546993,
+      "customer_id": 0.548875,
+      "flight_id": 0.551933
+    },
+    "PAYMENT": {
+      "payment_id": 0.523738,
+      "payment_method": 0.52692,
+      "payment_date": 0.52626,
+      "reservation_id": 0.541378
+    },
+    "ASSOC_AIRLINE_CUSTOMER": {
+      "assoc_airline_customer_id": 0.040533,
+      "airline_id": 0.040533,
+      "customer_id": 0.040533
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "description": "Each customer can have many reservations, and each reservation is associated with exactly one customer.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.006325
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "description": "Each airline operates many flights, and each flight is operated by exactly one airline.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "description": "Each flight can have many reservations, and each reservation is associated with exactly one flight.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.966625
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "description": "Each reservation can have one or many payments, and each payment is associated with exactly one reservation.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.984056
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "ASSOC_AIRLINE_CUSTOMER",
+      "description": "One AIRLINE can be associated with many ASSOC_AIRLINE_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.040533
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_AIRLINE_CUSTOMER",
+      "description": "One CUSTOMER can be associated with many ASSOC_AIRLINE_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.040533
+    }
+  ],
+  "processing_time": 20.51
+}

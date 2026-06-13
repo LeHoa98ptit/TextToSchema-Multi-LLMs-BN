@@ -1,0 +1,144 @@
+{
+  "entity": [
+    "BILLING_METHOD",
+    "STORE",
+    "CUSTOMER",
+    "TRANSACTION",
+    "TRANSACTION_LINE",
+    "PAYMENT",
+    "PROMOTION",
+    "DISCOUNT",
+    "TRANSACTION_PROMOTION"
+  ],
+  "attribute": {
+    "BILLING_METHOD": [
+      "method_id",
+      "name",
+      "calculation_rule",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "STORE": [
+      "store_id",
+      "name",
+      "location",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "phone",
+      "email",
+      "loyalty_points",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "transaction_time",
+      "subtotal",
+      "discount_total",
+      "rebate_total",
+      "total_before_payment",
+      "actual_payment",
+      "billing_method_id",
+      "cashier_id",
+      "store_id",
+      "customer_id",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "TRANSACTION_LINE": [
+      "line_id",
+      "transaction_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "transaction_id",
+      "payment_type",
+      "amount",
+      "payment_time",
+      "reference_number",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "PROMOTION": [
+      "promotion_id",
+      "name",
+      "promotion_type",
+      "value",
+      "eligibility_criteria",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "DISCOUNT": [
+      "promotion_id"
+    ],
+    "TRANSACTION_PROMOTION": [
+      "transaction_id",
+      "promotion_id",
+      "amount_applied",
+      "applied_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BILLING_METHOD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION_PROMOTION",
+      "entity_2": "PROMOTION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.6361,
+  "ilp_runtime": 0.068
+}

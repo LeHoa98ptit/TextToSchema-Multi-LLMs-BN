@@ -1,0 +1,143 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "USAGE_RECORD",
+    "COURSE",
+    "CONSUMABLE",
+    "HAZARDOUS_CHEMICAL",
+    "PURCHASE_RECORD",
+    "ISSUANCE_RECORD",
+    "COURSE_REGISTRATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password",
+      "phone number",
+      "associated unit",
+      "user role"
+    ],
+    "EQUIPMENT": [
+      "equipment id",
+      "equipment name",
+      "model",
+      "category",
+      "manufacturer",
+      "status",
+      "acquisition time"
+    ],
+    "USAGE_RECORD": [
+      "usage record id",
+      "usage time",
+      "user id",
+      "purpose of use",
+      "equipment id"
+    ],
+    "COURSE": [
+      "course id",
+      "course name",
+      "class time",
+      "class location",
+      "teacher id"
+    ],
+    "CONSUMABLE": [
+      "consumable id",
+      "consumable name",
+      "category",
+      "inventory quantity",
+      "status"
+    ],
+    "HAZARDOUS_CHEMICAL": [
+      "hazardous chemical id",
+      "chemical name",
+      "inventory quantity",
+      "issuance time",
+      "status"
+    ],
+    "PURCHASE_RECORD": [
+      "purchase record id",
+      "purchase time",
+      "consumable id",
+      "hazardous chemical id"
+    ],
+    "ISSUANCE_RECORD": [
+      "issuance record id",
+      "issuance time",
+      "consumable id",
+      "hazardous chemical id",
+      "user id"
+    ],
+    "COURSE_REGISTRATION": [
+      "course_registration_id",
+      "course_id",
+      "user_id",
+      "registration_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ISSUANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "ISSUANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COURSE_REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.57,
+  "ilp_runtime": 0.04
+}

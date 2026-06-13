@@ -1,0 +1,118 @@
+{
+  "entity": [
+    "MATERIAL",
+    "VENDOR",
+    "SUPPLY_PROJECT",
+    "USER",
+    "PROJECT_MATERIAL",
+    "BILL",
+    "BILL_ITEM",
+    "VERIFICATION_LOG"
+  ],
+  "attribute": {
+    "MATERIAL": [
+      "material_code",
+      "description",
+      "unit",
+      "unit_cost",
+      "vendor_id",
+      "created_at",
+      "updated_at"
+    ],
+    "VENDOR": [
+      "vendor_id",
+      "name",
+      "contact_info",
+      "created_at",
+      "updated_at"
+    ],
+    "SUPPLY_PROJECT": [
+      "project_number",
+      "title",
+      "description",
+      "creation_date",
+      "closing_date",
+      "project_manager_id",
+      "total_estimated_cost",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "user_id",
+      "name",
+      "role",
+      "email",
+      "created_at",
+      "updated_at"
+    ],
+    "PROJECT_MATERIAL": [
+      "id",
+      "project_number",
+      "material_code",
+      "quantity",
+      "unit_cost",
+      "charge",
+      "created_at",
+      "updated_at"
+    ],
+    "BILL": [
+      "bill_number",
+      "project_number",
+      "bill_date",
+      "created_by",
+      "verified_by",
+      "total_amount",
+      "created_at",
+      "updated_at"
+    ],
+    "BILL_ITEM": [
+      "id",
+      "bill_number",
+      "material_code",
+      "quantity",
+      "unit_cost",
+      "charge",
+      "created_at",
+      "updated_at"
+    ],
+    "VERIFICATION_LOG": [
+      "log_id",
+      "bill_number",
+      "verifier_id",
+      "verification_date",
+      "status",
+      "comments",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLY_PROJECT",
+      "entity_2": "PROJECT_MATERIAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "PROJECT_MATERIAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BILL",
+      "entity_2": "BILL_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "VERIFICATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.9288,
+  "ilp_runtime": 0.077
+}

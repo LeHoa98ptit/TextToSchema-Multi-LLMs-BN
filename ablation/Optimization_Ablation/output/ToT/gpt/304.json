@@ -1,0 +1,82 @@
+{
+  "entity": [
+    "ROLE",
+    "PERMISSION",
+    "ROLE_PERMISSION",
+    "ROLE_ATTRIBUTE",
+    "SYSTEM_DATUM",
+    "AUDIT_LOG"
+  ],
+  "attribute": {
+    "ROLE": [
+      "role_id",
+      "name",
+      "description",
+      "is_active",
+      "created_at",
+      "updated_at"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "code",
+      "description",
+      "category",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE_PERMISSION": [
+      "role_permission_id",
+      "role_id",
+      "permission_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE_ATTRIBUTE": [
+      "attribute_id",
+      "role_id",
+      "name",
+      "value",
+      "created_at",
+      "updated_at"
+    ],
+    "SYSTEM_DATUM": [
+      "datum_id",
+      "name",
+      "value",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "AUDIT_LOG": [
+      "audit_id",
+      "entity_name",
+      "entity_id",
+      "action_type",
+      "performed_by",
+      "performed_at",
+      "details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_ATTRIBUTE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.1176,
+  "ilp_runtime": 0.044
+}

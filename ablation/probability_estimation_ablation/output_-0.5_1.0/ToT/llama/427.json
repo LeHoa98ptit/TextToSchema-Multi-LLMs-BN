@@ -1,0 +1,113 @@
+{
+  "filename": "427.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TEACHER": 0.622459,
+    "COURSE": 0.622459,
+    "COURSE_SELECTION": 0.586933,
+    "TEACHING_INFO": 0.528669,
+    "TIMETABLE": 0.459464,
+    "ASSOC_TEACHING_INFO_COURSE": 0.989995
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.551094,
+      "gender": 0.548094,
+      "department": 0.55619,
+      "age": 0.54222,
+      "enrollment_date": 0.556285,
+      "major": 0.541768,
+      "login": 0.553979,
+      "password": 0.551616
+    },
+    "TEACHER": {
+      "name": 0.542263,
+      "gender": 0.540952,
+      "password": 0.550716,
+      "title": 0.542839,
+      "department": 0.54689,
+      "email": 0.542727,
+      "office_hours": 0.54883,
+      "phone_number": 0.547152
+    },
+    "COURSE": {
+      "course_id": 0.558809,
+      "course_name": 0.558047,
+      "credit": 0.538179,
+      "prerequisite": 0.552623
+    },
+    "COURSE_SELECTION": {
+      "student_id": 0.57871,
+      "course_id": 0.572599,
+      "grade": 0.566167
+    },
+    "TEACHING_INFO": {
+      "teacher_id": 0.566414,
+      "course_id": 0.569116,
+      "teaching_location": 0.556223,
+      "class_time": 0.563816
+    },
+    "TIMETABLE": {
+      "student_id": 0.567582,
+      "course_id": 0.565816,
+      "class_time": 0.55262,
+      "location": 0.537453
+    },
+    "ASSOC_TEACHING_INFO_COURSE": {
+      "assoc_teaching_info_course_id": 0.989995,
+      "teaching_info_id": 0.989995,
+      "course_id": 0.989995
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COURSE_SELECTION",
+      "cardinality": "1:N",
+      "description": "A student can have multiple course selections",
+      "probability": 0.996664
+    },
+    {
+      "entity_1": "COURSE_SELECTION",
+      "entity_2": "COURSE",
+      "cardinality": "N:1",
+      "description": "A course selection is related to one course",
+      "probability": 0.999892
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING_INFO",
+      "cardinality": "1:N",
+      "description": "A teacher can have multiple teaching information",
+      "probability": 0.933123
+    },
+    {
+      "entity_1": "TEACHING_INFO",
+      "entity_2": "ASSOC_TEACHING_INFO_COURSE",
+      "description": "One TEACHING_INFO can be associated with many ASSOC_TEACHING_INFO_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989995
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_TEACHING_INFO_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_TEACHING_INFO_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989995
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "TIMETABLE",
+      "cardinality": "1:N",
+      "description": "A student can have multiple timetables",
+      "probability": 0.024039
+    }
+  ],
+  "processing_time": 21.8,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added email, office hours, and phone number attributes to the TEACHER entity. Changed the relationship between TEACHING_INFO and COURSE to many-to-many to allow for multiple teachers to teach the same course."
+  }
+}

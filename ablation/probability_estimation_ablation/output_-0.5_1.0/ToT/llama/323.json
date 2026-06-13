@@ -1,0 +1,96 @@
+{
+  "filename": "323.txt",
+  "entity": {
+    "SALESPERSON": 0.591435,
+    "CUSTOMER": 0.622459,
+    "SALE": 0.622459,
+    "VISIT": 0.459986,
+    "ASSOC_SALESPERSON_CUSTOMER": 0.741612
+  },
+  "attribute": {
+    "SALESPERSON": {
+      "name": 0.560708,
+      "id": 0.55649,
+      "contact_info": 0.559984,
+      "sales_target": 0.554404,
+      "performance_rating": 0.550575
+    },
+    "CUSTOMER": {
+      "name": 0.538049,
+      "id": 0.531715,
+      "address": 0.533768,
+      "contact_person": 0.537251,
+      "purchase_history": 0.538538
+    },
+    "SALE": {
+      "sale_date": 0.540524,
+      "quantity": 0.534044,
+      "transaction_number": 0.539971,
+      "visit_link": 0.535507,
+      "sale_amount": 0.54045,
+      "discount_offered": 0.527795
+    },
+    "VISIT": {
+      "visit_date": 0.507321,
+      "visit_details": 0.519702,
+      "visit_purpose": 0.507379,
+      "visit_outcome": 0.507478
+    },
+    "ASSOC_SALESPERSON_CUSTOMER": {
+      "assoc_salesperson_customer_id": 0.741612,
+      "salesperson_id": 0.741612,
+      "customer_id": 0.741612
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A salesperson can have many sales",
+      "probability": 0.984574
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A customer can have many sales",
+      "probability": 0.990199
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "VISIT",
+      "cardinality": "1:1",
+      "description": "A sale is associated with one visit",
+      "probability": 0.063097
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "VISIT",
+      "cardinality": "1:N",
+      "description": "A salesperson can have many visits",
+      "probability": 3.1e-05
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "ASSOC_SALESPERSON_CUSTOMER",
+      "description": "One SALESPERSON can be associated with many ASSOC_SALESPERSON_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.741612
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_SALESPERSON_CUSTOMER",
+      "description": "One CUSTOMER can be associated with many ASSOC_SALESPERSON_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.741612
+    }
+  ],
+  "processing_time": 19.14,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more detailed attributes for salesperson and customer entities, and re-evaluated the relationships between entities to ensure they accurately reflect the domain description. Added a new relationship between salesperson and customer to capture their interactions."
+  }
+}

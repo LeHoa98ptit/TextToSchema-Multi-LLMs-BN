@@ -1,0 +1,191 @@
+{
+  "filename": "315.txt",
+  "entity": {
+    "PERSONNEL": 0.622459,
+    "STUDENT": 0.488327,
+    "PROFESSOR": 0.485304,
+    "BOOK": 0.622459,
+    "BOOK_COPY": 0.501375,
+    "CATEGORY": 0.474148,
+    "PUBLISHER": 0.495575,
+    "AUTHOR": 0.518841,
+    "BORROW_EVENT": 0.484555,
+    "ASSOC_BOOK_CATEGORY": 0.984667,
+    "ASSOC_BOOK_COPY_CATEGORY": 0.00587,
+    "ASSOC_BOOK_AUTHOR": 0.975557
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel_id": 0.52372,
+      "name": 0.523357,
+      "email": 0.518032,
+      "phone": 0.510006,
+      "address": 0.512787
+    },
+    "STUDENT": {
+      "student_id": 0.519265,
+      "personnel_id": 0.528977,
+      "enrollment_year": 0.515411,
+      "major": 0.515148
+    },
+    "PROFESSOR": {
+      "professor_id": 0.512233,
+      "personnel_id": 0.522507,
+      "department": 0.520138,
+      "title": 0.512131
+    },
+    "BOOK": {
+      "book_id": 0.527196,
+      "title": 0.521511,
+      "isbn": 0.535069,
+      "publication_year": 0.52883,
+      "publisher_id": 0.524158
+    },
+    "BOOK_COPY": {
+      "copy_id": 0.523249,
+      "book_id": 0.530031,
+      "barcode": 0.527951,
+      "acquisition_date": 0.530065,
+      "condition": 0.531106,
+      "is_available": 0.526869
+    },
+    "CATEGORY": {
+      "category_id": 0.501589,
+      "name": 0.514771,
+      "description": 0.517474
+    },
+    "PUBLISHER": {
+      "publisher_id": 0.509027,
+      "name": 0.514409,
+      "address": 0.502354,
+      "contact": 0.514605
+    },
+    "AUTHOR": {
+      "author_id": 0.501,
+      "name": 0.501455,
+      "biography": 0.505167
+    },
+    "BORROW_EVENT": {
+      "borrow_id": 0.506054,
+      "personnel_id": 0.518331,
+      "copy_id": 0.501817,
+      "borrow_date": 0.506325,
+      "due_date": 0.503262,
+      "return_date": 0.502593,
+      "fine_amount": 0.507915,
+      "status": 0.51444
+    },
+    "ASSOC_BOOK_CATEGORY": {
+      "assoc_book_category_id": 0.984667,
+      "book_id": 0.984667,
+      "category_id": 0.984667
+    },
+    "ASSOC_BOOK_COPY_CATEGORY": {
+      "assoc_book_copy_category_id": 0.00587,
+      "book_copy_id": 0.00587,
+      "category_id": 0.00587
+    },
+    "ASSOC_BOOK_AUTHOR": {
+      "assoc_book_author_id": 0.975557,
+      "book_id": 0.975557,
+      "author_id": 0.975557
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "STUDENT",
+      "cardinality": "1:1",
+      "description": "Each student record extends a personnel record",
+      "probability": 0.99723
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PROFESSOR",
+      "cardinality": "1:1",
+      "description": "Each professor record extends a personnel record",
+      "probability": 0.992854
+    },
+    {
+      "entity_1": "PUBLISHER",
+      "entity_2": "BOOK",
+      "cardinality": "1:N",
+      "description": "A publisher can publish many books",
+      "probability": 0.108337
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_COPY",
+      "cardinality": "1:N",
+      "description": "Each book can have multiple physical copies",
+      "probability": 0.999971
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "description": "One BOOK can be associated with many ASSOC_BOOK_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.984667
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_BOOK_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.984667
+    },
+    {
+      "entity_1": "BOOK_COPY",
+      "entity_2": "ASSOC_BOOK_COPY_CATEGORY",
+      "description": "One BOOK_COPY can be associated with many ASSOC_BOOK_COPY_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00587
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_BOOK_COPY_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_BOOK_COPY_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00587
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "description": "One BOOK can be associated with many ASSOC_BOOK_AUTHOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.975557
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "description": "One AUTHOR can be associated with many ASSOC_BOOK_AUTHOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.975557
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROW_EVENT",
+      "cardinality": "1:N",
+      "description": "A personnel can initiate many borrow events",
+      "probability": 0.698775
+    },
+    {
+      "entity_1": "BOOK_COPY",
+      "entity_2": "BORROW_EVENT",
+      "cardinality": "1:N",
+      "description": "A copy can be borrowed many times over its lifetime",
+      "probability": 0.124003
+    }
+  ],
+  "processing_time": 39.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged RETURN_EVENT into BORROW_EVENT by adding return_date, fine_amount, and status attributes, eliminating the redundant 1:1 relationship. Introduced AUTHOR entity with an N:M BOOK‑AUTHOR relationship to capture author details. Added explicit N:M relationship between BOOK_COPY and CATEGORY for copy‑level categorisation. Defined status as an enumerated attribute (e.g., 'borrowed', 'overdue', 'returned') and noted a derived overdue_flag based on due_date and current date. Retained all strong points of the previous model while improving completeness, accuracy, and query efficiency."
+  }
+}

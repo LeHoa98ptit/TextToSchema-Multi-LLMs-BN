@@ -1,0 +1,194 @@
+{
+  "filename": "331.txt",
+  "entity": {
+    "PLAYER": 0.817574,
+    "ORGANIZER": 0.720793,
+    "EVENT": 0.723862,
+    "MATCH": 0.817574,
+    "BATTLE": 0.817574,
+    "BATTLE_PARTICIPANT": 0.756355,
+    "PARTICIPATION": 0.705806,
+    "RESULT": 0.817574,
+    "MATCH_RESULT": 0.75226,
+    "RANKING": 0.700336
+  },
+  "attribute": {
+    "PLAYER": {
+      "player_id": 0.759704,
+      "username": 0.753426,
+      "email": 0.75852,
+      "phone": 0.753413,
+      "status": 0.767141,
+      "registration_date": 0.758468,
+      "date_of_birth": 0.759936
+    },
+    "ORGANIZER": {
+      "organizer_id": 0.741586,
+      "name": 0.753616,
+      "contact_email": 0.742623,
+      "contact_phone": 0.740776,
+      "status": 0.754681
+    },
+    "EVENT": {
+      "event_id": 0.743127,
+      "name": 0.75208,
+      "description": 0.762394,
+      "start_date": 0.745023,
+      "end_date": 0.745764,
+      "location": 0.75003,
+      "status": 0.757046
+    },
+    "MATCH": {
+      "match_id": 0.75368,
+      "event_id": 0.751669,
+      "match_type": 0.750301,
+      "scheduled_start": 0.747498,
+      "actual_start": 0.749021,
+      "actual_end": 0.742383,
+      "status": 0.76563
+    },
+    "BATTLE": {
+      "battle_id": 0.756711,
+      "match_id": 0.76439,
+      "battle_number": 0.755548,
+      "start_time": 0.760207,
+      "end_time": 0.758597
+    },
+    "BATTLE_PARTICIPANT": {
+      "battle_participant_id": 0.765635,
+      "battle_id": 0.764385,
+      "player_id": 0.770525,
+      "side": 0.768038,
+      "is_winner": 0.766514
+    },
+    "PARTICIPATION": {
+      "participation_id": 0.762861,
+      "player_id": 0.772868,
+      "match_id": 0.7691,
+      "join_time": 0.762227,
+      "team": 0.770937,
+      "role": 0.765371
+    },
+    "RESULT": {
+      "result_id": 0.736773,
+      "battle_id": 0.756204,
+      "player_id": 0.757889,
+      "score": 0.751955,
+      "win_loss": 0.750065,
+      "rank": 0.749885
+    },
+    "MATCH_RESULT": {
+      "match_result_id": 0.750117,
+      "match_id": 0.750923,
+      "player_id": 0.763126,
+      "total_score": 0.758637,
+      "win_loss": 0.758073,
+      "rank": 0.760402
+    },
+    "RANKING": {
+      "ranking_id": 0.746633,
+      "event_id": 0.752915,
+      "player_id": 0.763245,
+      "final_rank": 0.750045,
+      "points": 0.753456
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZER",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "An organizer can run many events",
+      "probability": 0.478516
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "description": "Each event contains multiple matches",
+      "probability": 0.883899
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE",
+      "cardinality": "1:N",
+      "description": "A match consists of one or more battles",
+      "probability": 0.996079
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "BATTLE_PARTICIPANT",
+      "cardinality": "1:N",
+      "description": "Each battle has multiple participant entries (sides)",
+      "probability": 0.999765
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "BATTLE_PARTICIPANT",
+      "cardinality": "1:N",
+      "description": "A player can participate in many battle participant records",
+      "probability": 0.051193
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "A player may have many participation records in matches",
+      "probability": 0.037658
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "A match can have many participation entries",
+      "probability": 0.152313
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "description": "Each battle can produce multiple player‑specific result rows",
+      "probability": 0.952655
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "description": "A player can accumulate many results across battles",
+      "probability": 0.456929
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "MATCH_RESULT",
+      "cardinality": "1:N",
+      "description": "Aggregate per‑player results for a match",
+      "probability": 0.999969
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "MATCH_RESULT",
+      "cardinality": "1:N",
+      "description": "A player can have many match‑level result records",
+      "probability": 0.04257
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "RANKING",
+      "cardinality": "1:N",
+      "description": "Final rankings are stored per event",
+      "probability": 0.010328
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "RANKING",
+      "cardinality": "1:N",
+      "description": "A player may have ranking records for multiple events",
+      "probability": 0.394677
+    }
+  ],
+  "processing_time": 50.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added MATCH_RESULT entity for aggregate match‑level scores; introduced BATTLE_PARTICIPANT associative entity to replace fixed side_a/side_b fields, enabling flexible participant modeling and explicit winner flag; confirmed BATTLE‑RESULT cardinality as 1:N; ensured all many‑to‑many links are represented via associative tables; kept existing strengths (Organizer, Event, Match, Battle, Participation, Result, Ranking) while improving extensibility and reporting capability."
+  }
+}

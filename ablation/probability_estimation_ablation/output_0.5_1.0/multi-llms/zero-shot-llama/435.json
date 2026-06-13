@@ -1,0 +1,137 @@
+{
+  "filename": "435.txt",
+  "entity": {
+    "PROBE": 0.817574,
+    "CELESTIAL_BODY": 0.800736,
+    "SCIENTIFIC_INSTRUMENT": 0.779542,
+    "EXPLORATION_MISSION": 0.769519,
+    "PROBE_INSTRUMENT_CONFIGURATION": 0.999645,
+    "PROBE_OBSERVATION": 0.885693,
+    "MISSION_INSTRUMENT": 0.626767
+  },
+  "attribute": {
+    "PROBE": {
+      "probe id": 0.763165,
+      "weight": 0.75826,
+      "launch date": 0.764854,
+      "service life": 0.768808,
+      "operational status": 0.77631,
+      "fuel": 0.756699,
+      "scientific instrument configuration": 0.772908
+    },
+    "CELESTIAL_BODY": {
+      "celestial body id": 0.753598,
+      "type": 0.752475,
+      "orbital parameter": 0.755583,
+      "physical characteristic": 0.75672
+    },
+    "SCIENTIFIC_INSTRUMENT": {
+      "instrument id": 0.76019,
+      "weight": 0.753154,
+      "power consumption": 0.751621,
+      "accuracy": 0.756695,
+      "operating parameter": 0.763952,
+      "calibration datum": 0.756108
+    },
+    "EXPLORATION_MISSION": {
+      "mission id": 0.771086,
+      "probe flight trajectory": 0.770261,
+      "target celestial body": 0.7729,
+      "mission execution status": 0.776699,
+      "scientific datum acquisition status": 0.783419,
+      "mission priority": 0.775612,
+      "resource allocation": 0.773341
+    },
+    "PROBE_INSTRUMENT_CONFIGURATION": {
+      "probe_instrument_configuration_id": 0.999645,
+      "probe_id": 0.999645,
+      "scientific_instrument_id": 0.999645,
+      "configuration_id": 0.999645,
+      "instrument_id": 0.999645
+    },
+    "PROBE_OBSERVATION": {
+      "probe_observation_id": 0.885693,
+      "probe_id": 0.885693,
+      "celestial_body_id": 0.885693,
+      "observation_id": 0.885693,
+      "observation_time": 0.885693,
+      "observation_datum": 0.885693,
+      "observation_result": 0.885693,
+      "observation_accuracy": 0.885693
+    },
+    "MISSION_INSTRUMENT": {
+      "mission_instrument_id": 0.626767,
+      "scientific_instrument_id": 0.626767,
+      "exploration_mission_id": 0.626767,
+      "instrument_id": 0.626767,
+      "mission_id": 0.626767
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "PROBE_INSTRUMENT_CONFIGURATION",
+      "description": "One PROBE can be associated with many PROBE_INSTRUMENT_CONFIGURATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999645
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "PROBE_INSTRUMENT_CONFIGURATION",
+      "description": "One SCIENTIFIC_INSTRUMENT can be associated with many PROBE_INSTRUMENT_CONFIGURATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999645
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "PROBE_OBSERVATION",
+      "description": "One PROBE can be associated with many PROBE_OBSERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.885693
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "PROBE_OBSERVATION",
+      "description": "One CELESTIAL_BODY can be associated with many PROBE_OBSERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.885693
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "EXPLORATION_MISSION",
+      "description": "A probe can be part of multiple exploration missions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.78277
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "EXPLORATION_MISSION",
+      "description": "A celestial body can be the target of multiple exploration missions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961079
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "MISSION_INSTRUMENT",
+      "description": "One SCIENTIFIC_INSTRUMENT can be associated with many MISSION_INSTRUMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.626767
+    },
+    {
+      "entity_1": "EXPLORATION_MISSION",
+      "entity_2": "MISSION_INSTRUMENT",
+      "description": "One EXPLORATION_MISSION can be associated with many MISSION_INSTRUMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.626767
+    }
+  ],
+  "processing_time": 22.89
+}

@@ -1,0 +1,171 @@
+{
+  "filename": "376.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "TECHNICIAN": 0.817574,
+    "REPAIR_TASK": 0.800065,
+    "ORDER": 0.817574,
+    "PART": 0.817574,
+    "SUPPLIER": 0.817574,
+    "CAR_MODEL": 0.756116,
+    "ASSOC_ORDER_PART": 0.010888,
+    "ASSOC_PART_CAR_MODEL": 0.000456,
+    "ASSOC_SUPPLIER_CAR_MODEL": 0.026569
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.757486,
+      "phone_number": 0.75012,
+      "address": 0.752859,
+      "email": 0.751427,
+      "customer_type": 0.761131
+    },
+    "TECHNICIAN": {
+      "name": 0.764624,
+      "contact_address": 0.759608,
+      "specialization": 0.765437,
+      "experience": 0.76465,
+      "certifications": 0.763621
+    },
+    "REPAIR_TASK": {
+      "task_id": 0.75322,
+      "task_status": 0.755265,
+      "creation_date": 0.751855,
+      "completion_date": 0.752483,
+      "task_description": 0.765029
+    },
+    "ORDER": {
+      "order_id": 0.744471,
+      "order_status": 0.752035,
+      "creation_date": 0.740486,
+      "delivery_date": 0.74408,
+      "total_cost": 0.745749
+    },
+    "PART": {
+      "part_id": 0.752847,
+      "description": 0.75892,
+      "price": 0.744654,
+      "serial_number": 0.753089,
+      "part_type": 0.756377
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.758117,
+      "name": 0.755314,
+      "contact_info": 0.763757,
+      "supplier_type": 0.761124,
+      "rating": 0.750289
+    },
+    "CAR_MODEL": {
+      "model_id": 0.747425,
+      "model_name": 0.749483,
+      "description": 0.760219,
+      "year": 0.747606,
+      "make": 0.753519
+    },
+    "ASSOC_ORDER_PART": {
+      "assoc_order_part_id": 0.010888,
+      "order_id": 0.010888,
+      "part_id": 0.010888
+    },
+    "ASSOC_PART_CAR_MODEL": {
+      "assoc_part_car_model_id": 0.000456,
+      "part_id": 0.000456,
+      "car_model_id": 0.000456
+    },
+    "ASSOC_SUPPLIER_CAR_MODEL": {
+      "assoc_supplier_car_model_id": 0.026569,
+      "supplier_id": 0.026569,
+      "car_model_id": 0.026569
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple repair tasks",
+      "probability": 0.373368
+    },
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "description": "A technician can have multiple repair tasks",
+      "probability": 0.993867
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "ORDER",
+      "cardinality": "1:1",
+      "description": "A repair task corresponds to one order",
+      "probability": 0.034298
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PART",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010888
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ASSOC_ORDER_PART",
+      "description": "One PART can be associated with many ASSOC_ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010888
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "A part is supplied by one supplier",
+      "probability": 0.039846
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "CAR_MODEL",
+      "cardinality": "1:1",
+      "description": "A repair task is related to one car model",
+      "probability": 0.729511
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ASSOC_PART_CAR_MODEL",
+      "description": "One PART can be associated with many ASSOC_PART_CAR_MODEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000456
+    },
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "ASSOC_PART_CAR_MODEL",
+      "description": "One CAR_MODEL can be associated with many ASSOC_PART_CAR_MODEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000456
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_SUPPLIER_CAR_MODEL",
+      "description": "One SUPPLIER can be associated with many ASSOC_SUPPLIER_CAR_MODEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.026569
+    },
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "ASSOC_SUPPLIER_CAR_MODEL",
+      "description": "One CAR_MODEL can be associated with many ASSOC_SUPPLIER_CAR_MODEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.026569
+    }
+  ],
+  "processing_time": 34.41,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more attributes to customer, technician, and supplier entities, and added a relationship between supplier and car model entities to capture the supply chain."
+  }
+}

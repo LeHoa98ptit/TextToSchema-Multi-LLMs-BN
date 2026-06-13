@@ -1,0 +1,162 @@
+{
+  "filename": "412.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "MAJOR": 0.497025,
+    "DEPARTMENT": 0.498625,
+    "TEACHER": 0.622459,
+    "EMPLOYEE": 0.50365,
+    "STUDENT_CONTACT": 0.541157,
+    "EMPLOYEE_CONTACT": 0.442703,
+    "COURSE": 0.622459,
+    "ENROLLMENT": 0.622459
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.552689,
+      "first_name": 0.549499,
+      "middle_name": 0.546662,
+      "last_name": 0.551398,
+      "dob": 0.543237,
+      "major_id": 0.551555
+    },
+    "MAJOR": {
+      "major_id": 0.52524,
+      "major_name": 0.524911,
+      "department_id": 0.529794
+    },
+    "DEPARTMENT": {
+      "department_id": 0.524465,
+      "department_name": 0.52845
+    },
+    "TEACHER": {
+      "teacher_id": 0.544171,
+      "employee_id": 0.546477,
+      "first_name": 0.541302,
+      "middle_name": 0.540113,
+      "last_name": 0.542831,
+      "department_id": 0.549472
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.517947,
+      "hire_date": 0.515635,
+      "position": 0.523182,
+      "salary": 0.504011
+    },
+    "STUDENT_CONTACT": {
+      "contact_id": 0.543416,
+      "student_id": 0.549778,
+      "address": 0.54338,
+      "city": 0.543751,
+      "state": 0.54614,
+      "zip": 0.53869,
+      "phone": 0.543217,
+      "alternate_phone": 0.536571,
+      "email": 0.542174
+    },
+    "EMPLOYEE_CONTACT": {
+      "contact_id": 0.516799,
+      "employee_id": 0.516021,
+      "address": 0.520723,
+      "city": 0.514516,
+      "state": 0.520659,
+      "zip": 0.51378,
+      "phone": 0.518291,
+      "alternate_phone": 0.513485,
+      "email": 0.51925
+    },
+    "COURSE": {
+      "course_id": 0.548245,
+      "course_name": 0.548504,
+      "credit": 0.534751,
+      "department_id": 0.551531,
+      "teacher_id": 0.556264
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.541786,
+      "student_id": 0.553231,
+      "course_id": 0.557273,
+      "enrollment_date": 0.536675,
+      "status": 0.540055,
+      "grade_value": 0.550518,
+      "grade_date": 0.548835
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "MAJOR",
+      "cardinality": "N:1",
+      "description": "Each student declares one major",
+      "probability": 0.18788
+    },
+    {
+      "entity_1": "MAJOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each major belongs to a department",
+      "probability": 0.101881
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Every teacher is an employee",
+      "probability": 0.66545
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Teachers are assigned to a department",
+      "probability": 0.001507
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_CONTACT",
+      "cardinality": "1:1",
+      "description": "Each employee has a single contact record",
+      "probability": 0.545999
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENT_CONTACT",
+      "cardinality": "1:1",
+      "description": "Each student has a single contact record",
+      "probability": 0.999453
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHER",
+      "cardinality": "N:1",
+      "description": "Each course is taught by one teacher",
+      "probability": 0.990294
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each course belongs to a department",
+      "probability": 0.001531
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollments",
+      "probability": 0.999946
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can have many enrollments",
+      "probability": 0.441383
+    }
+  ],
+  "processing_time": 18.12,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented evaluation suggestions: split generic CONTACT_INFO into two weak one‑to‑one entities (STUDENT_CONTACT, EMPLOYEE_CONTACT) to enforce strict cardinality and avoid the entity_type discriminator; merged GRADE into ENROLLMENT as grade_value and grade_date because each enrollment yields a single grade, reducing joins; added optional middle_name and alternate_phone attributes for richer profiles; clarified foreign‑key relationships and one‑to‑one constraints in the relationship list; retained comprehensive entities (MAJOR, DEPARTMENT, EMPLOYEE) and relationships for traceability and integrity."
+  }
+}

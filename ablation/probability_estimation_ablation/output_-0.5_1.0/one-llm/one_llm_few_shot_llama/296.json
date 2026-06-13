@@ -1,0 +1,89 @@
+{
+  "filename": "296.txt",
+  "entity": {
+    "FINANCIAL_ADVISOR": 0.60721,
+    "CLIENT": 0.622459,
+    "FINANCIAL_PRODUCT": 0.548448,
+    "INVESTMENT_PORTFOLIO": 0.578617,
+    "TRANSACTION": 0.622459,
+    "ASSOC_FINANCIAL_PRODUCT_INVESTMENT_PORTFOLIO": 0.976386
+  },
+  "attribute": {
+    "FINANCIAL_ADVISOR": {
+      "advisor_id": 0.533517,
+      "hire_date": 0.523606,
+      "contact_number": 0.527963
+    },
+    "CLIENT": {
+      "client_id": 0.517101,
+      "contact_number": 0.512745,
+      "risk_preference": 0.531818,
+      "total_asset": 0.529896
+    },
+    "FINANCIAL_PRODUCT": {
+      "product_code": 0.538049,
+      "product_type": 0.545109,
+      "product_value": 0.537522
+    },
+    "INVESTMENT_PORTFOLIO": {
+      "portfolio_id": 0.537754,
+      "client_id": 0.544872,
+      "product_code": 0.544965,
+      "quantity": 0.543919
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.509565,
+      "portfolio_id": 0.537062,
+      "product_code": 0.523532,
+      "transaction_type": 0.521231,
+      "transaction_quantity": 0.521633,
+      "transaction_price": 0.513062,
+      "transaction_time": 0.505607
+    },
+    "ASSOC_FINANCIAL_PRODUCT_INVESTMENT_PORTFOLIO": {
+      "assoc_financial_product_investment_portfolio_id": 0.976386,
+      "financial_product_id": 0.976386,
+      "investment_portfolio_id": 0.976386
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FINANCIAL_ADVISOR",
+      "entity_2": "CLIENT",
+      "cardinality": "1:N",
+      "description": "Each financial advisor can manage many clients, and each client is managed by one financial advisor.",
+      "probability": 0.644087
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PORTFOLIO",
+      "cardinality": "1:N",
+      "description": "Each client can have many investment portfolios, and each investment portfolio belongs to one client.",
+      "probability": 0.789091
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "ASSOC_FINANCIAL_PRODUCT_INVESTMENT_PORTFOLIO",
+      "description": "One FINANCIAL_PRODUCT can be associated with many ASSOC_FINANCIAL_PRODUCT_INVESTMENT_PORTFOLIO.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976386
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "ASSOC_FINANCIAL_PRODUCT_INVESTMENT_PORTFOLIO",
+      "description": "One INVESTMENT_PORTFOLIO can be associated with many ASSOC_FINANCIAL_PRODUCT_INVESTMENT_PORTFOLIO.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976386
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each investment portfolio can have many transactions, and each transaction belongs to one investment portfolio.",
+      "probability": 0.063248
+    }
+  ],
+  "processing_time": 26.92
+}

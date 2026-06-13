@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "OBJECT",
+    "PERMISSION",
+    "PERMISSION_ENTRY",
+    "AUDIT_LOG",
+    "ASSOC_USER_ROLE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "full_name",
+      "email",
+      "phone"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "OBJECT": [
+      "object_id",
+      "object_type",
+      "class_name",
+      "parent_object_id",
+      "owner_id"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name",
+      "description"
+    ],
+    "PERMISSION_ENTRY": [
+      "entry_id",
+      "granted",
+      "inheritance"
+    ],
+    "AUDIT_LOG": [
+      "log_id",
+      "timestamp",
+      "outcome",
+      "details"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_ENTRY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.6501,
+  "ilp_runtime": 0.052
+}

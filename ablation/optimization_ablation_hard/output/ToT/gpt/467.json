@@ -1,0 +1,148 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "PRODUCT",
+    "PRODUCT_PRICE",
+    "INVENTORY",
+    "ORDER",
+    "ORDER_ITEM",
+    "ORDER_STATUS",
+    "DELIVERY_ORDER",
+    "INVOICE",
+    "ACCOUNT_RECEIVABLE",
+    "RECEIVABLE_REPORT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "tax_id"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "sku",
+      "description"
+    ],
+    "PRODUCT_PRICE": [
+      "price_id",
+      "product_id",
+      "effective_date",
+      "price"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "product_id",
+      "quantity_on_hand",
+      "reorder_point"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "order_date",
+      "requested_delivery_date",
+      "order_status_id",
+      "total_amount"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "ORDER_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "DELIVERY_ORDER": [
+      "delivery_order_id",
+      "order_id",
+      "carrier",
+      "tracking_number",
+      "scheduled_delivery_time",
+      "delivery_status"
+    ],
+    "INVOICE": [
+      "invoice_id",
+      "order_id",
+      "invoice_date",
+      "due_date",
+      "total_amount",
+      "paid_amount",
+      "payment_status"
+    ],
+    "ACCOUNT_RECEIVABLE": [
+      "ar_id",
+      "invoice_id",
+      "customer_id",
+      "outstanding_amount",
+      "aging_bucket"
+    ],
+    "RECEIVABLE_REPORT": [
+      "report_id",
+      "report_date",
+      "total_outstanding",
+      "total_overdue"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_PRICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT_RECEIVABLE",
+      "entity_2": "RECEIVABLE_REPORT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 72.3037,
+  "ilp_runtime": 0.134
+}

@@ -1,0 +1,75 @@
+{
+  "filename": "269.txt",
+  "entity": {
+    "RESTAURANT": 0.817574,
+    "DINING_TABLE": 0.760878,
+    "CUSTOMER": 0.817574,
+    "RESERVATION": 0.817574,
+    "ASSOC_RESERVATION_CUSTOMER": 0.006325
+  },
+  "attribute": {
+    "RESTAURANT": {
+      "restaurant_id": 0.777558,
+      "location": 0.772783
+    },
+    "DINING_TABLE": {
+      "table_number": 0.782982,
+      "seating_capacity": 0.787273
+    },
+    "CUSTOMER": {
+      "customer_id": 0.760686,
+      "customer_information": 0.769538
+    },
+    "RESERVATION": {
+      "reservation_id": 0.771083,
+      "reservation_time": 0.770111,
+      "number_of_diners": 0.788687,
+      "reservation_status": 0.771212
+    },
+    "ASSOC_RESERVATION_CUSTOMER": {
+      "assoc_reservation_customer_id": 0.006325,
+      "reservation_id": 0.006325,
+      "customer_id": 0.006325
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "DINING_TABLE",
+      "cardinality": "1:N",
+      "description": "Each restaurant has multiple dining tables, and each dining table belongs to one restaurant.",
+      "probability": 0.999133
+    },
+    {
+      "entity_1": "DINING_TABLE",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Each dining table can have multiple reservations, and each reservation is for one dining table.",
+      "probability": 0.855346
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Each customer can have multiple reservations, and each reservation is made by one customer.",
+      "probability": 0.006325
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_CUSTOMER",
+      "description": "One RESERVATION can be associated with many ASSOC_RESERVATION_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006325
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_RESERVATION_CUSTOMER",
+      "description": "One CUSTOMER can be associated with many ASSOC_RESERVATION_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006325
+    }
+  ],
+  "processing_time": 10.39
+}

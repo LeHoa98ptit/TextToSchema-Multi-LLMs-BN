@@ -1,0 +1,129 @@
+{
+  "filename": "329.txt",
+  "entity": {
+    "USER": 0.622459,
+    "STOCK": 0.622459,
+    "HOLDING": 0.578081,
+    "TRANSACTION": 0.479262,
+    "LOG": 0.481958,
+    "HALL_OF_FAME": 0.474098
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.515979,
+      "username": 0.51163,
+      "email": 0.516781,
+      "password_hash": 0.512493,
+      "registration_date": 0.514428,
+      "last_login": 0.513618,
+      "virtual_balance": 0.528142,
+      "portfolio_value": 0.543171
+    },
+    "STOCK": {
+      "stock_id": 0.539843,
+      "stock_code": 0.540604,
+      "stock_name": 0.541766,
+      "company_name": 0.540056,
+      "issue_date": 0.534081,
+      "current_price": 0.526629
+    },
+    "HOLDING": {
+      "user_id": 0.51626,
+      "stock_id": 0.535236,
+      "quantity": 0.531951,
+      "average_price": 0.513815,
+      "acquisition_date": 0.521654
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.511853,
+      "user_id": 0.521225,
+      "stock_id": 0.536122,
+      "transaction_type": 0.51782,
+      "quantity": 0.538559,
+      "price_per_share": 0.5203,
+      "transaction_date": 0.509076,
+      "total_value": 0.522365
+    },
+    "LOG": {
+      "log_id": 0.514644,
+      "user_id": 0.51705,
+      "log_date": 0.515477,
+      "activity_type": 0.530153,
+      "activity_detail": 0.536438,
+      "activity_value": 0.535456,
+      "transaction_id": 0.516215,
+      "holding_id": 0.516876
+    },
+    "HALL_OF_FAME": {
+      "entry_id": 0.522546,
+      "user_id": 0.523634,
+      "rank": 0.515587,
+      "total_earnings": 0.521369,
+      "recorded_date": 0.516083,
+      "is_current": 0.517657
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "HOLDING",
+      "cardinality": "1:N",
+      "description": "A user can hold many different stocks; composite PK (user_id, stock_id) ensures one holding per stock per user",
+      "probability": 0.618269
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "HOLDING",
+      "cardinality": "1:N",
+      "description": "A stock can appear in many users' holdings",
+      "probability": 0.993682
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "All buy/sell actions performed by a user are recorded as transactions",
+      "probability": 0.907246
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each transaction involves a single stock",
+      "probability": 0.032648
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "Every user activity generates a log entry",
+      "probability": 0.998823
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "Log entries may reference the transaction that caused the activity (optional)",
+      "probability": 0.105671
+    },
+    {
+      "entity_1": "HOLDING",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "Log entries may reference a holding when the activity pertains to portfolio changes (optional)",
+      "probability": 3.9e-05
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HALL_OF_FAME",
+      "cardinality": "1:N",
+      "description": "A user can have multiple Hall‑of‑Fame snapshots; the latest is flagged with is_current",
+      "probability": 0.005259
+    }
+  ],
+  "processing_time": 35.61,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented composite primary key for HOLDING (user_id, stock_id) eliminating the surrogate holding_id. Added portfolio_value (computed) to USER for quick ranking. Enforced uniqueness of stock_code via attribute list and implied indexing. Defined transaction_type as an enum (BUY, SELL). Extended LOG with optional foreign keys transaction_id and holding_id for richer audit trails. Added is_current flag to HALL_OF_FAME to support historical snapshots while still allowing easy retrieval of the current ranking. Updated relationship descriptions to reflect these changes and added optional LOG relationships to TRANSACTION and HOLDING."
+  }
+}

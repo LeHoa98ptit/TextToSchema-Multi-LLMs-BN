@@ -1,0 +1,84 @@
+{
+  "filename": "298.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "POSITION": 0.622459,
+    "SALARY_LEVEL": 0.59686
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.554977,
+      "first_name": 0.553429,
+      "last_name": 0.550716,
+      "phone_number": 0.55184,
+      "email": 0.545932,
+      "hire_date": 0.547239,
+      "salary": 0.557162,
+      "position_id": 0.556522,
+      "department_id": 0.557391,
+      "salary_level_id": 0.566482,
+      "supervisor_id": 0.550509
+    },
+    "DEPARTMENT": {
+      "department_id": 0.535708,
+      "name": 0.54234,
+      "location": 0.537475,
+      "supervisor_id": 0.546639
+    },
+    "POSITION": {
+      "position_id": 0.522088,
+      "title": 0.534641,
+      "description": 0.530019,
+      "salary_level_id": 0.562745
+    },
+    "SALARY_LEVEL": {
+      "level_id": 0.558257,
+      "grade": 0.544023,
+      "min_salary": 0.54914,
+      "max_salary": 0.54606
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee belongs to one department; a department can have many employees.",
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "Each employee holds one position; a position can be held by many employees.",
+      "probability": 0.983043
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY_LEVEL",
+      "cardinality": "N:1",
+      "description": "Each employee is assigned a salary level; a salary level can apply to many employees.",
+      "probability": 0.933409
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "description": "An employee may be supervised by another employee (self‑referencing).",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "SALARY_LEVEL",
+      "cardinality": "N:1",
+      "description": "Each position is associated with a salary level; many positions can share the same salary level.",
+      "probability": 0.920606
+    }
+  ],
+  "processing_time": 16.35,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Standardized attribute names (phone_number), added missing contact and employment fields (email, hire_date) to EMPLOYEE, introduced a description field for POSITION, replaced redundant salary_grade with a foreign key salary_level_id and added a POSITION‑to‑SALARY_LEVEL relationship, removed the redundant DEPARTMENT‑EMPLOYEE 1:1 relationship by keeping supervisor_id as a foreign key in DEPARTMENT, and documented business rule that employee salary must fall within the associated salary level range."
+  }
+}

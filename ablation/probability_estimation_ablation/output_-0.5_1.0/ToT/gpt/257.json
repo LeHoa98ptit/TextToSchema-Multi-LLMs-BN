@@ -1,0 +1,172 @@
+{
+  "filename": "257.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "CUSTOMER_TYPE": 0.530138,
+    "DISCOUNT": 0.50515,
+    "AIRLINE": 0.570919,
+    "FLIGHT": 0.622459,
+    "HOTEL": 0.523308,
+    "BOOKING": 0.622459,
+    "ORDER": 0.622459,
+    "BOOKING_HOTEL": 0.566602,
+    "ASSOC_BOOKING_HOTEL": 0.997253
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.543652,
+      "first_name": 0.54746,
+      "last_name": 0.541288,
+      "gender": 0.553559,
+      "email": 0.537315,
+      "phone": 0.544418,
+      "type_id": 0.537623
+    },
+    "CUSTOMER_TYPE": {
+      "type_id": 0.535257,
+      "type_name": 0.541683,
+      "base_discount_rate": 0.553504
+    },
+    "DISCOUNT": {
+      "discount_id": 0.526678,
+      "description": 0.543626,
+      "percentage": 0.527965,
+      "valid_from": 0.527063,
+      "valid_to": 0.528445
+    },
+    "AIRLINE": {
+      "airline_id": 0.538638,
+      "airline_name": 0.545496,
+      "contact_number": 0.534507
+    },
+    "FLIGHT": {
+      "flight_number": 0.545859,
+      "flight_date": 0.542858,
+      "departure_airport": 0.541516,
+      "departure_time": 0.545148,
+      "arrival_airport": 0.541289,
+      "arrival_time": 0.544078,
+      "airline_id": 0.538966
+    },
+    "HOTEL": {
+      "hotel_id": 0.547108,
+      "hotel_name": 0.550665,
+      "address": 0.544611,
+      "city": 0.538631,
+      "country": 0.534128
+    },
+    "BOOKING": {
+      "booking_id": 0.551325,
+      "booking_timestamp": 0.550305,
+      "check_in": 0.552991,
+      "check_out": 0.551609,
+      "ticket_order_number": 0.551457,
+      "customer_id": 0.561256,
+      "flight_number": 0.554283,
+      "order_id": 0.545148,
+      "discount_id": 0.551174
+    },
+    "ORDER": {
+      "order_id": 0.511813,
+      "order_timestamp": 0.512124,
+      "ticket_order_number": 0.538498,
+      "customer_id": 0.537288,
+      "discount_id": 0.528718
+    },
+    "BOOKING_HOTEL": {
+      "booking_id": 0.552938,
+      "hotel_id": 0.551437
+    },
+    "ASSOC_BOOKING_HOTEL": {
+      "assoc_booking_hotel_id": 0.997253,
+      "booking_id": 0.997253,
+      "hotel_id": 0.997253
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_TYPE",
+      "cardinality": "N:1",
+      "description": "Each customer belongs to one customer type",
+      "probability": 0.999728
+    },
+    {
+      "entity_1": "CUSTOMER_TYPE",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:N",
+      "description": "A customer type can have multiple discount schemes",
+      "probability": 1.7e-05
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "description": "A discount scheme can be applied to many bookings",
+      "probability": 0.930634
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A discount scheme can be applied to many orders",
+      "probability": 0.822768
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airline operates many flights",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "description": "A flight can be booked by many customers",
+      "probability": 0.980385
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "description": "A customer may have multiple flight‑hotel bookings",
+      "probability": 0.742911
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place many orders",
+      "probability": 0.963447
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "description": "An order can contain several bookings",
+      "probability": 0.634707
+    },
+    {
+      "entity_1": "BOOKING",
+      "entity_2": "ASSOC_BOOKING_HOTEL",
+      "description": "One BOOKING can be associated with many ASSOC_BOOKING_HOTEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997253
+    },
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ASSOC_BOOKING_HOTEL",
+      "description": "One HOTEL can be associated with many ASSOC_BOOKING_HOTEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997253
+    }
+  ],
+  "processing_time": 42.9,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed duplicated discount attributes from BOOKING and ORDER and introduced a single DISCOUNT entity referenced via foreign keys (discount_id) in both tables. Added discount_id to ORDER to capture the discount applied to the whole order. Added order_id to BOOKING to explicitly link each booking to its parent order. Implemented a many‑to‑many relationship between BOOKING and HOTEL through the BOOKING_HOTEL junction table, enabling support for multi‑hotel stays. Retained all previously correct entities and relationships, improved normalization, and ensured a single source of truth for discount information."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "filename": "386.txt",
+  "entity": {
+    "USER": 0.817574,
+    "BLOCK": 0.817574,
+    "TRANSACTION": 0.817574,
+    "USER_TRANSACTION_ROLE": 0.738946
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.751529,
+      "username": 0.7357,
+      "public_key": 0.744952,
+      "address": 0.749214,
+      "creation_time": 0.750816
+    },
+    "BLOCK": {
+      "block_id": 0.749596,
+      "block_hash": 0.749326,
+      "creation_time": 0.748182,
+      "block_size": 0.748215,
+      "previous_block_id": 0.74617
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.764366,
+      "transaction_time": 0.766247,
+      "block_id": 0.766148,
+      "operation_type": 0.769848,
+      "operation_content": 0.769188
+    },
+    "USER_TRANSACTION_ROLE": {
+      "user_id": 0.767341,
+      "transaction_id": 0.767352,
+      "role": 0.767539
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_TRANSACTION_ROLE",
+      "cardinality": "1:N",
+      "description": "A user can participate in many transactions with a specific role (sender or receiver)",
+      "probability": 0.999639
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "USER_TRANSACTION_ROLE",
+      "cardinality": "1:N",
+      "description": "A transaction involves multiple user roles (typically one sender and one receiver)",
+      "probability": 0.999947
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A block contains multiple transactions",
+      "probability": 0.999486
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "BLOCK",
+      "cardinality": "1:N",
+      "description": "Each block references a single predecessor; a block can be predecessor to many subsequent blocks",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 16.99,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Consolidated sender and receiver relationships into the associative entity USER_TRANSACTION_ROLE to make role semantics explicit and avoid duplicate foreign keys. Added explicit primary key attributes and foreign key references. Refined block chaining relationship to 1:N to reflect that one block can be the predecessor of many later blocks. Retained core entities and attributes, preserving simplicity and performance while enhancing clarity and future extensibility."
+  }
+}

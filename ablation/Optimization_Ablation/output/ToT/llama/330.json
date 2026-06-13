@@ -1,0 +1,66 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "IDENTITY_KEY",
+    "AUTHENTICATION_SCHEME",
+    "USER_ROLE_ASSIGNMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password_hash",
+      "email",
+      "status",
+      "display_language",
+      "time_zone",
+      "date_time_format"
+    ],
+    "ROLE": [
+      "role_description",
+      "role_id"
+    ],
+    "IDENTITY_KEY": [
+      "identity_key_value",
+      "identity_key_type"
+    ],
+    "AUTHENTICATION_SCHEME": [
+      "scheme_name",
+      "scheme_description"
+    ],
+    "USER_ROLE_ASSIGNMENT": [
+      "assignment_id",
+      "user_id",
+      "role_id",
+      "assignment_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "IDENTITY_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHENTICATION_SCHEME",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.6503,
+  "ilp_runtime": 0.026
+}

@@ -1,0 +1,121 @@
+{
+  "filename": "340.txt",
+  "entity": {
+    "APPLICATION": 0.622459,
+    "LANGUAGE_REGION": 0.59257,
+    "RESOURCE_FILE": 0.595873,
+    "RESOURCE_KEY": 0.511548,
+    "RESOURCE_VALUE": 0.529939,
+    "COUNTRY": 0.507599,
+    "APPLICATION_LANGUAGE_REGION": 0.961087
+  },
+  "attribute": {
+    "APPLICATION": {
+      "application id": 0.520141
+    },
+    "LANGUAGE_REGION": {
+      "iso code": 0.561947,
+      "name": 0.554464
+    },
+    "RESOURCE_FILE": {
+      "resource file id": 0.531203,
+      "file path": 0.530574,
+      "base language iso": 0.563666,
+      "region iso code": 0.557526,
+      "version": 0.543249,
+      "application id": 0.532501
+    },
+    "RESOURCE_KEY": {
+      "resource key id": 0.534346,
+      "key": 0.539372,
+      "version": 0.548491,
+      "resource file id": 0.536203
+    },
+    "RESOURCE_VALUE": {
+      "resource value id": 0.533824,
+      "value": 0.537989,
+      "content": 0.541912,
+      "version": 0.547474,
+      "resource key id": 0.536502,
+      "language region iso": 0.572017
+    },
+    "COUNTRY": {
+      "country iso code": 0.553656,
+      "country name": 0.536551
+    },
+    "APPLICATION_LANGUAGE_REGION": {
+      "application_language_region_id": 0.961087,
+      "application_id": 0.961087,
+      "language_region_id": 0.961087,
+      "id_APPLICATION_LANGUAGE_REGION": 0.961087,
+      "language_region_iso": 0.961087
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "RESOURCE_FILE",
+      "description": "An application can have multiple resource files; each resource file belongs to one application",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993532
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "RESOURCE_FILE",
+      "description": "Each resource file is created for a base language/region; a language/region can be the base for many resource files",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01718
+    },
+    {
+      "entity_1": "RESOURCE_FILE",
+      "entity_2": "RESOURCE_KEY",
+      "description": "A resource file contains multiple resource keys; each key belongs to one resource file",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999926
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "RESOURCE_VALUE",
+      "description": "Each resource key can have multiple values (one per language/region); each value is linked to one key",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.978549
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "RESOURCE_VALUE",
+      "description": "A resource value is expressed in a specific language/region; a language/region can have many resource values",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.223045
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "LANGUAGE_REGION",
+      "description": "A country can have multiple language/regions; each language/region belongs to one country",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996445
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_LANGUAGE_REGION",
+      "description": "One APPLICATION can be associated with many APPLICATION_LANGUAGE_REGION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961087
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "APPLICATION_LANGUAGE_REGION",
+      "description": "One LANGUAGE_REGION can be associated with many APPLICATION_LANGUAGE_REGION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961087
+    }
+  ],
+  "processing_time": 11.91
+}

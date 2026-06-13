@@ -1,0 +1,138 @@
+{
+  "entity": [
+    "USER",
+    "ACCOUNT",
+    "ACCOUNT_BALANCE_HISTORY",
+    "CURRENCY",
+    "TRANSACTION",
+    "TRANSACTION_TYPE",
+    "TRANSACTION_STATUS",
+    "TRANSACTION_ERROR",
+    "TRANSACTION_AUDIT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "phone",
+      "address",
+      "created_at",
+      "last_login"
+    ],
+    "ACCOUNT": [
+      "account_id",
+      "user_id",
+      "account_number",
+      "account_type",
+      "created_at",
+      "is_active"
+    ],
+    "ACCOUNT_BALANCE_HISTORY": [
+      "history_id",
+      "account_id",
+      "balance",
+      "frozen_amount",
+      "effective_date"
+    ],
+    "CURRENCY": [
+      "currency_code",
+      "currency_name",
+      "symbol",
+      "exchange_rate_to_base"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "source_account_id",
+      "destination_account_id",
+      "amount",
+      "currency_code",
+      "transaction_type_code",
+      "initiated_at",
+      "processed_at",
+      "reference_number"
+    ],
+    "TRANSACTION_TYPE": [
+      "transaction_type_code",
+      "description"
+    ],
+    "TRANSACTION_STATUS": [
+      "status_id",
+      "status_code",
+      "status_description",
+      "updated_at"
+    ],
+    "TRANSACTION_ERROR": [
+      "error_id",
+      "transaction_id",
+      "error_code",
+      "error_message",
+      "error_timestamp"
+    ],
+    "TRANSACTION_AUDIT": [
+      "audit_id",
+      "transaction_id",
+      "changed_by_user_id",
+      "change_timestamp",
+      "change_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ACCOUNT_BALANCE_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION_TYPE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_STATUS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_ERROR",
+      "cardinality": "1:0..1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION_AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 81.3413,
+  "ilp_runtime": 0.059
+}

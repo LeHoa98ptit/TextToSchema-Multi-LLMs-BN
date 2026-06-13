@@ -1,0 +1,130 @@
+{
+  "filename": "323.txt",
+  "entity": {
+    "SALESPERSON": 0.591435,
+    "CUSTOMER": 0.622459,
+    "SALE": 0.622459,
+    "PRODUCT": 0.514446,
+    "SALE_DETAIL": 0.531956,
+    "VISIT": 0.459986,
+    "TEAM": 0.487677
+  },
+  "attribute": {
+    "SALESPERSON": {
+      "salesperson_id": 0.561104,
+      "name": 0.560708,
+      "email": 0.549765,
+      "phone": 0.54893,
+      "hire_date": 0.543629,
+      "team_id": 0.54747,
+      "region": 0.54508
+    },
+    "CUSTOMER": {
+      "customer_id": 0.536367,
+      "name": 0.538049,
+      "address": 0.533768,
+      "phone": 0.52852,
+      "email": 0.527834,
+      "industry": 0.538517
+    },
+    "SALE": {
+      "sale_id": 0.544214,
+      "sale_date": 0.540524,
+      "salesperson_id": 0.56147,
+      "customer_id": 0.551865,
+      "total_amount": 0.533052,
+      "status": 0.532759
+    },
+    "PRODUCT": {
+      "product_id": 0.515037,
+      "name": 0.515487,
+      "category": 0.528392,
+      "unit_price": 0.51393
+    },
+    "SALE_DETAIL": {
+      "sale_detail_id": 0.553619,
+      "sale_id": 0.552865,
+      "product_id": 0.545049,
+      "quantity": 0.5464,
+      "line_total": 0.546712
+    },
+    "VISIT": {
+      "visit_id": 0.503516,
+      "salesperson_id": 0.55314,
+      "customer_id": 0.528109,
+      "visit_date": 0.507321,
+      "purpose": 0.50521,
+      "notes": 0.514339,
+      "outcome": 0.509609,
+      "follow_up_required": 0.501388
+    },
+    "TEAM": {
+      "team_id": 0.511064,
+      "team_name": 0.512525,
+      "manager_id": 0.521502
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TEAM",
+      "entity_2": "SALESPERSON",
+      "cardinality": "1:N",
+      "description": "A team has many salespeople",
+      "probability": 0.130946
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "SALESPERSON",
+      "cardinality": "1:1",
+      "description": "Each team has one manager (a salesperson)",
+      "probability": 0.130946
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A salesperson can make many sales",
+      "probability": 0.984543
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A customer can be linked to many sales",
+      "probability": 0.984338
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "SALE_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each sale can contain multiple sale detail lines",
+      "probability": 0.999767
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SALE_DETAIL",
+      "cardinality": "1:N",
+      "description": "A product can appear in many sale detail lines",
+      "probability": 0.997376
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "VISIT",
+      "cardinality": "1:N",
+      "description": "A salesperson may perform many customer visits",
+      "probability": 3.1e-05
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "VISIT",
+      "cardinality": "1:N",
+      "description": "A customer can receive many visits",
+      "probability": 0.014486
+    }
+  ],
+  "processing_time": 32.26,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit status attribute to SALE for workflow tracking; added outcome and follow_up_required attributes to VISIT to capture visit results; introduced TEAM‑manager relationship (1:1) with manager_id referencing SALESPERSON; clarified foreign‑key intent for team_id in SALESPERSON and manager_id in TEAM; kept consistent snake_case naming; retained all previously strong entities and relationships while enhancing referential integrity and analytical capability."
+  }
+}

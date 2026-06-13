@@ -1,0 +1,105 @@
+{
+  "filename": "372.txt",
+  "entity": {
+    "LEAGUE": 0.622459,
+    "REGION": 0.622459,
+    "PERSON": 0.511023,
+    "USER": 0.622459,
+    "AUDIT": 0.463739
+  },
+  "attribute": {
+    "LEAGUE": {
+      "league_id": 0.551607,
+      "name": 0.551386,
+      "description": 0.566662,
+      "region_id": 0.557587,
+      "parent_league_id": 0.554693,
+      "charge_person_id": 0.546164,
+      "created_at": 0.550429,
+      "created_by": 0.553349,
+      "updated_at": 0.551625,
+      "updated_by": 0.555637,
+      "version_number": 0.554981
+    },
+    "REGION": {
+      "region_id": 0.522108,
+      "name": 0.524347,
+      "description": 0.531064,
+      "created_at": 0.516807,
+      "created_by": 0.519163,
+      "updated_at": 0.518975,
+      "updated_by": 0.52273,
+      "version_number": 0.520358
+    },
+    "PERSON": {
+      "person_id": 0.508068,
+      "first_name": 0.507871,
+      "last_name": 0.508168,
+      "email": 0.508241
+    },
+    "USER": {
+      "user_id": 0.5138,
+      "person_id": 0.509055,
+      "username": 0.5067,
+      "role": 0.528954,
+      "active": 0.518154
+    },
+    "AUDIT": {
+      "audit_id": 0.507833,
+      "entity_name": 0.519517,
+      "entity_id": 0.515526,
+      "action": 0.519489,
+      "timestamp": 0.517398,
+      "user_id": 0.517275
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "REGION",
+      "entity_2": "LEAGUE",
+      "cardinality": "1:N",
+      "description": "Each region can host multiple leagues; each league belongs to one region. Deleting a REGION cascades to its LEAGUE rows.",
+      "probability": 0.638831
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "LEAGUE",
+      "cardinality": "1:N",
+      "description": "A charge person may manage many leagues; each league has one charge person.",
+      "probability": 0.911132
+    },
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "LEAGUE",
+      "cardinality": "1:N",
+      "description": "Self‑referencing hierarchy: a parent league can have many child leagues. Deleting a parent LEAGUE cascades to its child leagues.",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "description": "Each person that logs into the system has exactly one user account.",
+      "probability": 0.978204
+    },
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "Audit records capture create/update/delete actions performed on a league.",
+      "probability": 0.000497
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "Audit records capture create/update/delete actions performed on a region.",
+      "probability": 0.015525
+    }
+  ],
+  "processing_time": 18.08,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added full datum‑tracking audit fields (created_at, created_by, updated_at, updated_by, version_number) to REGION. Extended the generic AUDIT entity to capture changes for all entities and added a REGION‑AUDIT relationship. Documented cascade delete behavior for REGION→LEAGUE and LEAGUE hierarchical deletions. Retained the concise, efficient design and all previously strong relationships."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "PERMISSION",
+    "BUCKET",
+    "USER",
+    "TENANT",
+    "OSS_ACCESS"
+  ],
+  "attribute": {
+    "PERMISSION": [
+      "type",
+      "access_key",
+      "access_password",
+      "secret_key",
+      "status",
+      "create_time",
+      "description",
+      "bucket_id",
+      "user_id",
+      "tenant_id"
+    ],
+    "BUCKET": [
+      "bucket_id",
+      "bucket_name",
+      "creation_time",
+      "bucket_description"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password",
+      "phone_number",
+      "address",
+      "tenant_id"
+    ],
+    "TENANT": [
+      "tenant_id",
+      "tenant_name",
+      "tenant_description"
+    ],
+    "OSS_ACCESS": [
+      "oss_access_id",
+      "bucket_id",
+      "permission_id",
+      "access_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BUCKET",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TENANT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "OSS_ACCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.2267,
+  "ilp_runtime": 0.065
+}

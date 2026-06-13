@@ -1,0 +1,107 @@
+{
+  "filename": "375.txt",
+  "entity": {
+    "DEVICE": 0.622459,
+    "USER": 0.622459,
+    "STAFF": 0.507924,
+    "NETWORK_TRAFFIC": 0.545747,
+    "DEVICE_FAILURE": 0.514746,
+    "DEVICE_MAINTENANCE": 0.527073,
+    "USER_DEVICE_CONNECTION": 0.5012
+  },
+  "attribute": {
+    "DEVICE": {
+      "device_id": 0.526419,
+      "device_type": 0.527392,
+      "ip_address": 0.52067,
+      "installation_location": 0.524784,
+      "installation_time": 0.526606,
+      "device_status": 0.539444
+    },
+    "USER": {
+      "user_id": 0.512653,
+      "username": 0.504511,
+      "password": 0.512099
+    },
+    "STAFF": {
+      "staff_id": 0.52019,
+      "name": 0.51408,
+      "contact_information": 0.527608
+    },
+    "NETWORK_TRAFFIC": {
+      "traffic_id": 0.539142,
+      "device_id": 0.543922,
+      "timestamp": 0.540826,
+      "upload_traffic": 0.532745,
+      "download_traffic": 0.534136,
+      "total_traffic": 0.541299,
+      "traffic_status": 0.548308
+    },
+    "DEVICE_FAILURE": {
+      "failure_id": 0.524297,
+      "device_id": 0.527321,
+      "occurrence_time": 0.535638,
+      "failure_type": 0.523608,
+      "failure_description": 0.525718,
+      "handle_status": 0.526347,
+      "remark": 0.527828
+    },
+    "DEVICE_MAINTENANCE": {
+      "maintenance_id": 0.546459,
+      "device_id": 0.544746,
+      "staff_id": 0.550205,
+      "maintenance_time": 0.545993,
+      "maintenance_content": 0.549567,
+      "maintenance_result": 0.548108,
+      "remark": 0.547517
+    },
+    "USER_DEVICE_CONNECTION": {
+      "connection_id": 0.527961,
+      "user_id": 0.530215,
+      "device_id": 0.531238,
+      "connection_time": 0.531686,
+      "disconnection_time": 0.520158,
+      "bandwidth": 0.537756,
+      "user_ip": 0.526722
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "NETWORK_TRAFFIC",
+      "cardinality": "1:N",
+      "probability": 0.007825
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "probability": 0.992107
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "probability": 0.999726
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "probability": 0.873335
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "cardinality": "1:N",
+      "probability": 0.954172
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "cardinality": "1:N",
+      "probability": 0.999895
+    }
+  ],
+  "processing_time": 39.43
+}

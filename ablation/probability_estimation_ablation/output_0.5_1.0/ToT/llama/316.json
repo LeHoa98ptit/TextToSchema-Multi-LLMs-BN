@@ -1,0 +1,120 @@
+{
+  "filename": "316.txt",
+  "entity": {
+    "EBOOK": 0.736509,
+    "DOCUMENT": 0.817574,
+    "CATEGORY": 0.817574,
+    "USER": 0.817574,
+    "READING_STATISTIC": 0.757625,
+    "LIKES": 0.708498,
+    "ASSOC_EBOOK_CATEGORY": 0.568324,
+    "ASSOC_USER_EBOOK": 0.971287
+  },
+  "attribute": {
+    "EBOOK": {
+      "title": 0.765021,
+      "cover_image": 0.753713,
+      "description": 0.772341
+    },
+    "DOCUMENT": {
+      "content": 0.77479,
+      "description": 0.76807,
+      "read_count": 0.762172
+    },
+    "CATEGORY": {
+      "name": 0.756266,
+      "level": 0.765571,
+      "description": 0.758068
+    },
+    "USER": {
+      "username": 0.735356,
+      "email": 0.744828,
+      "password": 0.747213
+    },
+    "READING_STATISTIC": {
+      "daily_reads": 0.753488,
+      "total_reads": 0.745003
+    },
+    "LIKES": {
+      "like_count": 0.744584,
+      "dislike_count": 0.740396
+    },
+    "ASSOC_EBOOK_CATEGORY": {
+      "assoc_ebook_category_id": 0.568324,
+      "ebook_id": 0.568324,
+      "category_id": 0.568324
+    },
+    "ASSOC_USER_EBOOK": {
+      "assoc_user_ebook_id": 0.971287,
+      "user_id": 0.971287,
+      "ebook_id": 0.971287
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "DOCUMENT",
+      "cardinality": "1:N",
+      "description": "An ebook contains multiple documents",
+      "probability": 0.890681
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "ASSOC_EBOOK_CATEGORY",
+      "description": "One EBOOK can be associated with many ASSOC_EBOOK_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.568324
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_EBOOK_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_EBOOK_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.568324
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EBOOK",
+      "description": "One USER can be associated with many ASSOC_USER_EBOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971287
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "ASSOC_USER_EBOOK",
+      "description": "One EBOOK can be associated with many ASSOC_USER_EBOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971287
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "READING_STATISTIC",
+      "cardinality": "1:1",
+      "description": "A user has a reading statistic",
+      "probability": 0.034434
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "LIKES",
+      "cardinality": "1:1",
+      "description": "An ebook has likes and dislikes",
+      "probability": 0.005443
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "READING_STATISTIC",
+      "cardinality": "1:1",
+      "description": "An ebook has a reading statistic",
+      "probability": 0.007248
+    }
+  ],
+  "processing_time": 17.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'datum' from EBOOK entity, retained strengths from previous model, and added a relationship between EBOOK and READING_STATISTIC to improve clarity and efficiency."
+  }
+}

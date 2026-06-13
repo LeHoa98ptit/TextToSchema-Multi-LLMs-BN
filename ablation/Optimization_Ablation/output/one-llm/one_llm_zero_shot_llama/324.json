@@ -1,0 +1,83 @@
+{
+  "entity": [
+    "GEOGRAPHIC_LOCATION",
+    "IP_ADDRESS",
+    "COUNTRY",
+    "CONTINENT",
+    "PROVIDER",
+    "NETWORK",
+    "ASSOC_IP_ADDRESS_NETWORK"
+  ],
+  "attribute": {
+    "GEOGRAPHIC_LOCATION": [
+      "latitude",
+      "longitude",
+      "country_iso_code"
+    ],
+    "IP_ADDRESS": [
+      "ip",
+      "is_anonymous_proxy",
+      "is_satellite_provider"
+    ],
+    "COUNTRY": [
+      "name",
+      "iso_code",
+      "european_union"
+    ],
+    "CONTINENT": [
+      "name"
+    ],
+    "PROVIDER": [
+      "name"
+    ],
+    "NETWORK": [
+      "network_name",
+      "ip_range"
+    ],
+    "ASSOC_IP_ADDRESS_NETWORK": [
+      "assoc_ip_address_network_id",
+      "ip_address_id",
+      "network_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "PROVIDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "ASSOC_IP_ADDRESS_NETWORK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "NETWORK",
+      "entity_2": "ASSOC_IP_ADDRESS_NETWORK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.5041,
+  "ilp_runtime": 0.365
+}

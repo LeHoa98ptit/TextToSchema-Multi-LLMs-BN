@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "USER",
+    "GROUP_CHAT",
+    "CHAT_RECORD",
+    "USER_GROUP_CHAT",
+    "GROUP_CHAT_REQUEST"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "contact_information",
+      "registration_time",
+      "user_id"
+    ],
+    "GROUP_CHAT": [
+      "group_chat_id",
+      "creator_id",
+      "creation_time",
+      "number_of_members"
+    ],
+    "CHAT_RECORD": [
+      "sender_id",
+      "receiver_id",
+      "message_time",
+      "message_type",
+      "message_content",
+      "message_read"
+    ],
+    "USER_GROUP_CHAT": [
+      "user_id",
+      "group_chat_id",
+      "join_time",
+      "leave_time"
+    ],
+    "GROUP_CHAT_REQUEST": [
+      "user_id",
+      "group_chat_id",
+      "request_time",
+      "request_status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP_CHAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "USER_GROUP_CHAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "GROUP_CHAT_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.4013,
+  "ilp_runtime": 0.035
+}

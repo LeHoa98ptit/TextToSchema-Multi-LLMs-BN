@@ -1,0 +1,179 @@
+{
+  "filename": "272.txt",
+  "entity": {
+    "RANCH": 0.817574,
+    "LIVESTOCK": 0.817574,
+    "LIVESTOCK_SPECIES": 0.79249,
+    "LIVESTOCK_TYPE": 0.781256,
+    "HEALTH_STATUS": 0.809181,
+    "VACCINATION": 0.817574,
+    "VACCINATION_MEASURE": 0.767777,
+    "FEED_CONSUMPTION": 0.750878,
+    "FEED_TYPE": 0.709468,
+    "ENTRY_EXIT_RECORD": 0.78313,
+    "ENTRY_EXIT_TYPE": 0.782007,
+    "VETERINARIAN": 0.703391,
+    "ASSOC_LIVESTOCK_VETERINARIAN": 0.558552
+  },
+  "attribute": {
+    "RANCH": {
+      "address": 0.771645,
+      "name": 0.768193,
+      "location": 0.768508
+    },
+    "LIVESTOCK": {
+      "id": 0.77416,
+      "species": 0.768663,
+      "type": 0.771061,
+      "birth_date": 0.769838,
+      "gender": 0.767201,
+      "weight": 0.762552,
+      "age": 0.763185
+    },
+    "LIVESTOCK_SPECIES": {
+      "name": 0.76564,
+      "description": 0.772937
+    },
+    "LIVESTOCK_TYPE": {
+      "name": 0.769697,
+      "description": 0.775086
+    },
+    "HEALTH_STATUS": {
+      "status": 0.756728,
+      "time": 0.749863,
+      "description": 0.758048
+    },
+    "VACCINATION": {
+      "measure": 0.758148,
+      "time": 0.749761,
+      "status": 0.760071,
+      "description": 0.758452
+    },
+    "VACCINATION_MEASURE": {
+      "name": 0.759468,
+      "description": 0.761381
+    },
+    "FEED_CONSUMPTION": {
+      "time": 0.746911,
+      "type": 0.75445,
+      "consumption": 0.75236,
+      "quantity": 0.754083
+    },
+    "FEED_TYPE": {
+      "name": 0.75173,
+      "description": 0.763807
+    },
+    "ENTRY_EXIT_RECORD": {
+      "time": 0.744201,
+      "type": 0.751379,
+      "description": 0.756279
+    },
+    "ENTRY_EXIT_TYPE": {
+      "name": 0.743061,
+      "description": 0.751866
+    },
+    "VETERINARIAN": {
+      "name": 0.749199,
+      "qualification": 0.757575,
+      "experience": 0.750024
+    },
+    "ASSOC_LIVESTOCK_VETERINARIAN": {
+      "assoc_livestock_veterinarian_id": 0.558552,
+      "livestock_id": 0.558552,
+      "veterinarian_id": 0.558552
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RANCH",
+      "entity_2": "LIVESTOCK",
+      "cardinality": "1:N",
+      "description": "A ranch manages multiple livestock",
+      "probability": 0.897943
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "LIVESTOCK_SPECIES",
+      "cardinality": "N:1",
+      "description": "A livestock belongs to one species",
+      "probability": 0.998504
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "LIVESTOCK_TYPE",
+      "cardinality": "N:1",
+      "description": "A livestock belongs to one type",
+      "probability": 0.999394
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "HEALTH_STATUS",
+      "cardinality": "1:N",
+      "description": "A livestock has multiple health status records",
+      "probability": 2.2e-05
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "VACCINATION",
+      "cardinality": "1:N",
+      "description": "A livestock has multiple vaccination records",
+      "probability": 0.235264
+    },
+    {
+      "entity_1": "VACCINATION",
+      "entity_2": "VACCINATION_MEASURE",
+      "cardinality": "N:1",
+      "description": "A vaccination record is associated with one vaccination measure",
+      "probability": 0.986068
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "FEED_CONSUMPTION",
+      "cardinality": "1:N",
+      "description": "A livestock has multiple feed consumption records",
+      "probability": 0.041996
+    },
+    {
+      "entity_1": "FEED_CONSUMPTION",
+      "entity_2": "FEED_TYPE",
+      "cardinality": "N:1",
+      "description": "A feed consumption record is associated with one feed type",
+      "probability": 0.926886
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "ENTRY_EXIT_RECORD",
+      "cardinality": "1:N",
+      "description": "A livestock has multiple entry/exit records",
+      "probability": 0.009086
+    },
+    {
+      "entity_1": "ENTRY_EXIT_RECORD",
+      "entity_2": "ENTRY_EXIT_TYPE",
+      "cardinality": "N:1",
+      "description": "An entry/exit record is associated with one entry/exit type",
+      "probability": 0.998295
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "ASSOC_LIVESTOCK_VETERINARIAN",
+      "description": "One LIVESTOCK can be associated with many ASSOC_LIVESTOCK_VETERINARIAN.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.558552
+    },
+    {
+      "entity_1": "VETERINARIAN",
+      "entity_2": "ASSOC_LIVESTOCK_VETERINARIAN",
+      "description": "One VETERINARIAN can be associated with many ASSOC_LIVESTOCK_VETERINARIAN.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.558552
+    }
+  ],
+  "processing_time": 33.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added weight and age attributes to the LIVESTOCK entity, added a VETERINARIAN entity, and established a many-to-many relationship between LIVESTOCK and VETERINARIAN to capture the interactions between livestock and veterinarians."
+  }
+}

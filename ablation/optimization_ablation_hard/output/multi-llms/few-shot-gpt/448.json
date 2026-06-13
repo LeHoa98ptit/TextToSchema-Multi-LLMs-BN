@@ -1,0 +1,181 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "UNIT",
+    "EQUIPMENT",
+    "EQUIPMENT_CATEGORY",
+    "MANUFACTURER",
+    "EQUIPMENT_USAGE_RECORD",
+    "COURSE",
+    "CONSUMABLE",
+    "CONSUMABLE_CATEGORY",
+    "CONSUMABLE_TRANSACTION",
+    "HAZARDOUS_CHEMICAL",
+    "CHEMICAL_TRANSACTION",
+    "ASSOC_USER_COURSE"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password",
+      "phone number",
+      "unit id",
+      "role id"
+    ],
+    "ROLE": [
+      "role id",
+      "role name"
+    ],
+    "UNIT": [
+      "unit id",
+      "unit name"
+    ],
+    "EQUIPMENT": [
+      "equipment id",
+      "equipment model",
+      "equipment category id",
+      "manufacturer id",
+      "status",
+      "acquisition date"
+    ],
+    "EQUIPMENT_CATEGORY": [
+      "equipment category id",
+      "category name"
+    ],
+    "MANUFACTURER": [
+      "manufacturer id",
+      "manufacturer name"
+    ],
+    "EQUIPMENT_USAGE_RECORD": [
+      "usage record id",
+      "equipment id",
+      "user id",
+      "usage timestamp",
+      "purpose",
+      "course id"
+    ],
+    "COURSE": [
+      "course id",
+      "course name",
+      "class time",
+      "location id",
+      "teacher id"
+    ],
+    "CONSUMABLE": [
+      "consumable id",
+      "consumable name",
+      "consumable category id",
+      "quantity",
+      "status"
+    ],
+    "CONSUMABLE_CATEGORY": [
+      "consumable category id",
+      "category name"
+    ],
+    "CONSUMABLE_TRANSACTION": [
+      "transaction id",
+      "consumable id",
+      "transaction type",
+      "quantity",
+      "transaction timestamp",
+      "user id"
+    ],
+    "HAZARDOUS_CHEMICAL": [
+      "chemical id",
+      "chemical name",
+      "quantity",
+      "status"
+    ],
+    "CHEMICAL_TRANSACTION": [
+      "transaction id",
+      "chemical id",
+      "transaction type",
+      "quantity",
+      "transaction timestamp",
+      "user id"
+    ],
+    "ASSOC_USER_COURSE": [
+      "assoc_user_course_id",
+      "user_id",
+      "course_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT_CATEGORY",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MANUFACTURER",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_USER_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE_CATEGORY",
+      "entity_2": "CONSUMABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 90.5778,
+  "ilp_runtime": 0.04
+}

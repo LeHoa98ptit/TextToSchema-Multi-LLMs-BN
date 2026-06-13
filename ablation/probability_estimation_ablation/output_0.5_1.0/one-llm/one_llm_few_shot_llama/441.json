@@ -1,0 +1,81 @@
+{
+  "filename": "441.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "TRANSACTION": 0.817574,
+    "USER": 0.817574,
+    "BUDGET": 0.817574,
+    "ASSOC_USER_PROJECT": 0.693317
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.753364,
+      "project_name": 0.756216,
+      "project_description": 0.764351,
+      "project_budget": 0.772083,
+      "remaining_fund": 0.768169
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.732917,
+      "transaction_time": 0.733663,
+      "transaction_purpose": 0.745222,
+      "transaction_amount": 0.743253,
+      "transaction_operator": 0.741093
+    },
+    "USER": {
+      "user_id": 0.739633,
+      "name": 0.734337,
+      "role": 0.756823
+    },
+    "BUDGET": {
+      "budget_id": 0.760588,
+      "budget_amount": 0.760952,
+      "budget_adjustment": 0.756936
+    },
+    "ASSOC_USER_PROJECT": {
+      "assoc_user_project_id": 0.693317,
+      "user_id": 0.693317,
+      "project_id": 0.693317
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each project can have many transactions, and each transaction is associated with one project.",
+      "probability": 0.014465
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each user can perform many transactions, and each transaction is performed by one user.",
+      "probability": 0.992618
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BUDGET",
+      "cardinality": "1:1",
+      "description": "Each project has one budget, and each budget is associated with one project.",
+      "probability": 0.096629
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One USER can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.693317
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.693317
+    }
+  ],
+  "processing_time": 16.69
+}

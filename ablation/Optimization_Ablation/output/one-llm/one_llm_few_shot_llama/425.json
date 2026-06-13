@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "ADMINISTRATOR",
+    "DORMITORY_MANAGER",
+    "MAINTENANCE_STAFF",
+    "STUDENT",
+    "BUILDING",
+    "DORMITORY",
+    "APPLICATION",
+    "MAINTENANCE_RECORD",
+    "ANNOUNCEMENT",
+    "ASSOC_STUDENT_DORMITORY"
+  ],
+  "attribute": {
+    "ADMINISTRATOR": [
+      "username",
+      "password"
+    ],
+    "DORMITORY_MANAGER": [
+      "username",
+      "password"
+    ],
+    "MAINTENANCE_STAFF": [
+      "username",
+      "password"
+    ],
+    "STUDENT": [
+      "student_id",
+      "gender",
+      "class"
+    ],
+    "BUILDING": [
+      "building_id",
+      "type",
+      "location",
+      "description"
+    ],
+    "DORMITORY": [
+      "dormitory_id",
+      "type",
+      "number",
+      "bed"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "application_type",
+      "applicant",
+      "application_content",
+      "application_time",
+      "application_status"
+    ],
+    "MAINTENANCE_RECORD": [
+      "maintenance_record_id",
+      "dormitory_id",
+      "fault_description",
+      "repair_time",
+      "maintenance_staff",
+      "maintenance_situation",
+      "completion_time"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "announcement_title",
+      "announcement_content",
+      "release_time"
+    ],
+    "ASSOC_STUDENT_DORMITORY": [
+      "assoc_student_dormitory_id",
+      "student_id",
+      "dormitory_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DORMITORY_MANAGER",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "ASSOC_STUDENT_DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 72.6927,
+  "ilp_runtime": 0.055
+}

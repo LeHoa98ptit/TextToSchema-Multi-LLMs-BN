@@ -1,0 +1,150 @@
+{
+  "filename": "418.txt",
+  "entity": {
+    "USER": 0.817574,
+    "USER_TYPE": 0.742862,
+    "SECURITY_QUESTION": 0.68884,
+    "USER_SECURITY_ANSWER": 0.726989,
+    "TRANSACTION": 0.733255,
+    "TRANSACTION_TYPE": 0.721758,
+    "ANNOUNCEMENT": 0.744521,
+    "USER_ANNOUNCEMENT": 0.733665,
+    "ASSOC_USER_ANNOUNCEMENT": 0.98009
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.745587,
+      "username": 0.735417,
+      "gender": 0.758305,
+      "age": 0.745221,
+      "phone": 0.743467,
+      "address": 0.752035,
+      "email": 0.752287,
+      "password": 0.748708,
+      "status": 0.762535,
+      "user_type_id": 0.750366
+    },
+    "USER_TYPE": {
+      "user_type_id": 0.753142,
+      "type_name": 0.755513,
+      "description": 0.766561,
+      "status": 0.769202
+    },
+    "SECURITY_QUESTION": {
+      "question_id": 0.752993,
+      "question_text": 0.75688,
+      "status": 0.76324
+    },
+    "USER_SECURITY_ANSWER": {
+      "user_id": 0.752637,
+      "question_id": 0.752421,
+      "answer": 0.754009,
+      "status": 0.760825
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.746331,
+      "user_id": 0.756677,
+      "amount": 0.757123,
+      "type_id": 0.75313,
+      "remark": 0.754005,
+      "transaction_time": 0.746718,
+      "status": 0.761338
+    },
+    "TRANSACTION_TYPE": {
+      "type_id": 0.753969,
+      "type_name": 0.756034,
+      "category": 0.769957,
+      "status": 0.768457
+    },
+    "ANNOUNCEMENT": {
+      "announcement_id": 0.745596,
+      "title": 0.742834,
+      "content": 0.75533,
+      "publication_time": 0.749147,
+      "status": 0.750812
+    },
+    "USER_ANNOUNCEMENT": {
+      "user_id": 0.750326,
+      "announcement_id": 0.748367,
+      "read_flag": 0.744187,
+      "read_time": 0.750243
+    },
+    "ASSOC_USER_ANNOUNCEMENT": {
+      "assoc_user_announcement_id": 0.98009,
+      "user_id": 0.98009,
+      "announcement_id": 0.98009
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_TYPE",
+      "cardinality": "N:1",
+      "description": "Each user belongs to one user type.",
+      "probability": 0.999943
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_SECURITY_ANSWER",
+      "cardinality": "1:N",
+      "description": "A user can have one or more security question answers.",
+      "probability": 0.999109
+    },
+    {
+      "entity_1": "SECURITY_QUESTION",
+      "entity_2": "USER_SECURITY_ANSWER",
+      "cardinality": "N:1",
+      "description": "Each answer references a single security question; a question can be used by many users.",
+      "probability": 0.986307
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user can have many financial transactions.",
+      "probability": 0.954233
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_TYPE",
+      "cardinality": "N:1",
+      "description": "Each transaction is classified by a transaction type (income or expense).",
+      "probability": 0.990979
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One USER can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98009
+    },
+    {
+      "entity_1": "ANNOUNCEMENT",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One ANNOUNCEMENT can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98009
+    },
+    {
+      "entity_1": "USER_ANNOUNCEMENT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each record links to the user who received the announcement.",
+      "probability": 0.999274
+    },
+    {
+      "entity_1": "USER_ANNOUNCEMENT",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "N:1",
+      "description": "Each record links to the announcement that was sent.",
+      "probability": 0.83559
+    }
+  ],
+  "processing_time": 7.21,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Consolidated INCOME and EXPENSE into a single TRANSACTION entity with a reference to TRANSACTION_TYPE, reducing table count and simplifying queries. Introduced USER_SECURITY_ANSWER entity to store the answer and changed the USER‑SECURITY_QUESTION relationship to a 1:N (many answers per user, many users per question) instead of N:M, aligning with typical security‑question usage. Added status attributes consistently across entities. Kept USER_TYPE for extensibility and retained the announcement junction (USER_ANNOUNCEMENT) with explicit foreign‑key relationships for referential integrity. Overall model is more efficient, complete, and consistent."
+  }
+}

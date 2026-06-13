@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "STUDENT",
+    "LECTURER",
+    "TEACHING_STAFF",
+    "COURSE",
+    "HOMEWORK",
+    "SUBMISSION",
+    "GRADE",
+    "NOTIFICATION",
+    "RANDOM_INSPECTION",
+    "RANDOM_INSPECTION_REPORT"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "name",
+      "email",
+      "enrollment_date"
+    ],
+    "LECTURER": [
+      "lecturer_id",
+      "name",
+      "email",
+      "department"
+    ],
+    "TEACHING_STAFF": [
+      "staff_id",
+      "name",
+      "role",
+      "department"
+    ],
+    "COURSE": [
+      "course_id",
+      "title",
+      "code",
+      "semester"
+    ],
+    "HOMEWORK": [
+      "homework_id",
+      "title",
+      "description",
+      "due_date",
+      "max_score",
+      "course_id"
+    ],
+    "SUBMISSION": [
+      "submission_id",
+      "submit_time",
+      "file_path",
+      "status",
+      "student_id",
+      "homework_id"
+    ],
+    "GRADE": [
+      "grade_id",
+      "score",
+      "evaluation",
+      "graded_at",
+      "lecturer_id",
+      "submission_id"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "message",
+      "sent_at",
+      "recipient_type",
+      "recipient_id"
+    ],
+    "RANDOM_INSPECTION": [
+      "inspection_id",
+      "inspection_date",
+      "inspector_staff_id",
+      "grade_id"
+    ],
+    "RANDOM_INSPECTION_REPORT": [
+      "report_id",
+      "comments",
+      "created_at",
+      "inspection_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "LECTURER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RANDOM_INSPECTION",
+      "entity_2": "RANDOM_INSPECTION_REPORT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 44.5827,
+  "ilp_runtime": 0.095
+}

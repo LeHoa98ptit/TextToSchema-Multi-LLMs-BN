@@ -1,0 +1,117 @@
+{
+  "filename": "376.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "TECHNICIAN": 0.622459,
+    "CAR_MODEL": 0.532828,
+    "REPAIR_TASK": 0.595488,
+    "ORDER": 0.622459,
+    "SUPPLIER": 0.622459,
+    "PART": 0.622459,
+    "PART_ORDER": 0.010861
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.532713,
+      "phone number": 0.521349
+    },
+    "TECHNICIAN": {
+      "technician id": 0.545122,
+      "contact address": 0.539487
+    },
+    "CAR_MODEL": {
+      "model id": 0.526923
+    },
+    "REPAIR_TASK": {
+      "task id": 0.531915,
+      "car model id": 0.548246,
+      "customer id": 0.54603,
+      "technician id": 0.55519,
+      "status": 0.542269,
+      "creation date": 0.530825,
+      "completion date": 0.532028
+    },
+    "ORDER": {
+      "order id": 0.525728,
+      "task id": 0.541257,
+      "order creation date": 0.516198,
+      "delivery status": 0.536466
+    },
+    "SUPPLIER": {
+      "supplier id": 0.535519
+    },
+    "PART": {
+      "part id": 0.525631,
+      "serial number": 0.533627,
+      "description": 0.536626,
+      "price": 0.517567,
+      "supplier id": 0.537337,
+      "inventory quantity": 0.549521
+    },
+    "PART_ORDER": {
+      "part_order_id": 0.010861,
+      "part_id": 0.010861,
+      "order_id": 0.010861,
+      "quantity": 0.010861
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "REPAIR_TASK",
+      "description": "Each repair task is for exactly one car model, while a car model can be associated with many repair tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.730972
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REPAIR_TASK",
+      "description": "Each repair task belongs to one customer, and a customer can have multiple repair tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.378069
+    },
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "REPAIR_TASK",
+      "description": "Each repair task is assigned to one technician, while a technician can handle many repair tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993874
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "ORDER",
+      "description": "Each order is created for a single repair task, and a repair task can have multiple orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.049527
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PART",
+      "description": "Each part is supplied by one supplier, while a supplier can supply many parts.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.058521
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "PART_ORDER",
+      "description": "One PART can be associated with many PART_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010861
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PART_ORDER",
+      "description": "One ORDER can be associated with many PART_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010861
+    }
+  ],
+  "processing_time": 3.47
+}

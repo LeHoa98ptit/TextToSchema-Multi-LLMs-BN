@@ -1,0 +1,107 @@
+{
+  "entity": [
+    "MEDICAL_INSTITUTION",
+    "DEPARTMENT",
+    "MEDICAL_WASTE",
+    "PERSONNEL",
+    "VEHICLE",
+    "INBOUND_PROCESS",
+    "OUTBOUND_PROCESS",
+    "TRANSPORTATION"
+  ],
+  "attribute": {
+    "MEDICAL_INSTITUTION": [
+      "medical institution id",
+      "name",
+      "address",
+      "contact information"
+    ],
+    "DEPARTMENT": [
+      "department id",
+      "department name",
+      "description",
+      "medical institution id"
+    ],
+    "MEDICAL_WASTE": [
+      "waste id",
+      "waste type",
+      "weight",
+      "generation time",
+      "collection time",
+      "current status",
+      "traceability code number",
+      "traceability code generation time",
+      "medical institution id",
+      "department id"
+    ],
+    "PERSONNEL": [
+      "personnel id",
+      "name",
+      "role",
+      "contact information",
+      "medical institution id"
+    ],
+    "VEHICLE": [
+      "vehicle id",
+      "license plate number",
+      "model",
+      "capacity",
+      "medical institution id"
+    ],
+    "INBOUND_PROCESS": [
+      "inbound process id",
+      "batch number",
+      "expected quantity",
+      "actual quantity",
+      "expected weight",
+      "actual weight",
+      "inbound time",
+      "collector id",
+      "confirmer id"
+    ],
+    "OUTBOUND_PROCESS": [
+      "outbound process id",
+      "batch number",
+      "outbound quantity",
+      "outbound weight",
+      "outbound time",
+      "transporter id",
+      "confirmer id"
+    ],
+    "TRANSPORTATION": [
+      "transportation id",
+      "start time",
+      "end time",
+      "recipient",
+      "vehicle id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "INBOUND_PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "OUTBOUND_PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "TRANSPORTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.7649,
+  "ilp_runtime": 0.033
+}

@@ -1,0 +1,68 @@
+{
+  "entity": [
+    "COMPANY",
+    "TRADER",
+    "CLIENT",
+    "TRANSACTION",
+    "FUTURE",
+    "ASSOC_TRANSACTION_FUTURE",
+    "ASSOC_TRADER_FUTURE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name"
+    ],
+    "TRADER": [
+      "trader_id",
+      "hire_date",
+      "contact_number"
+    ],
+    "CLIENT": [
+      "client_id",
+      "d_number",
+      "contact_number"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "transaction_type",
+      "transaction_quantity",
+      "transaction_price",
+      "transaction_time"
+    ],
+    "FUTURE": [
+      "future_code",
+      "risk_level"
+    ],
+    "ASSOC_TRANSACTION_FUTURE": [
+      "assoc_transaction_future_id",
+      "transaction_id",
+      "future_id"
+    ],
+    "ASSOC_TRADER_FUTURE": [
+      "assoc_trader_future_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_FUTURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FUTURE",
+      "entity_2": "ASSOC_TRANSACTION_FUTURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "ASSOC_TRADER_FUTURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.6009,
+  "ilp_runtime": 0.142
+}

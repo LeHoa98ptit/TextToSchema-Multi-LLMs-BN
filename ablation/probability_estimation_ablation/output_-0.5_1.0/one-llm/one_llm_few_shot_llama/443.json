@@ -1,0 +1,104 @@
+{
+  "filename": "443.txt",
+  "entity": {
+    "USER": 0.526076,
+    "EQUIPMENT": 0.622459,
+    "STATUS_LOG": 0.437996,
+    "ACCOUNT_ACTIVITY": 0.518941,
+    "ASSOC_USER_EQUIPMENT": 0.893145
+  },
+  "attribute": {
+    "USER": {
+      "login": 0.518117,
+      "password": 0.519038,
+      "register": 0.528128,
+      "mobile_number": 0.516524,
+      "role": 0.53809,
+      "permission": 0.530055
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.56617,
+      "equipment_model": 0.568756,
+      "equipment_status": 0.570025,
+      "calibration_date": 0.545599,
+      "calibration_validity": 0.545531,
+      "calibration_result": 0.540099,
+      "equipment_location": 0.568926,
+      "own_department": 0.566874,
+      "person_charge": 0.560948,
+      "remark": 0.565249
+    },
+    "STATUS_LOG": {
+      "borrower": 0.530673,
+      "borrowing_time": 0.518509,
+      "borrow_equipment_photo": 0.556065,
+      "iou_photo": 0.52867,
+      "recipient": 0.520647,
+      "receive_area": 0.523956,
+      "receive_time": 0.514498,
+      "receive_equipment_photo": 0.554297,
+      "returner": 0.522535,
+      "return_time": 0.509406,
+      "return_equipment_photo": 0.551129,
+      "datum": 0.530708,
+      "monitoring_remark": 0.525802
+    },
+    "ACCOUNT_ACTIVITY": {
+      "borrowing_account": 0.531793,
+      "receive_account": 0.531033,
+      "return_account": 0.528716,
+      "remark": 0.54189
+    },
+    "ASSOC_USER_EQUIPMENT": {
+      "assoc_user_equipment_id": 0.893145,
+      "user_id": 0.893145,
+      "equipment_id": 0.893145
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One USER can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.893145
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One EQUIPMENT can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.893145
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "STATUS_LOG",
+      "description": "Each equipment can have many status logs, and each status log is related to one equipment.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.600884
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "description": "Each equipment can have many account activities, and each account activity is related to one equipment.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.628882
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "description": "Each user can have many account activities, and each account activity is related to one user.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.991875
+    }
+  ],
+  "processing_time": 18.48
+}

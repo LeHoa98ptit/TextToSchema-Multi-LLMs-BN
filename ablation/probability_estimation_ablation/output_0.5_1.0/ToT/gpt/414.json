@@ -1,0 +1,129 @@
+{
+  "filename": "414.txt",
+  "entity": {
+    "SALE_PLAN": 0.805009,
+    "SALE_POINT": 0.802073,
+    "COMPANY": 0.817574,
+    "CITY": 0.817574,
+    "VENUE": 0.817574,
+    "DEVICE": 0.817574,
+    "DEVICE_MODEL": 0.753562,
+    "PLAN_POINT": 0.740852
+  },
+  "attribute": {
+    "SALE_PLAN": {
+      "sale_plan_id": 0.766732,
+      "description": 0.774077,
+      "start_date": 0.766342,
+      "end_date": 0.765066,
+      "company_id": 0.767541
+    },
+    "SALE_POINT": {
+      "sale_point_id": 0.777434,
+      "address": 0.78191,
+      "city_id": 0.781033,
+      "venue_id": 0.785581,
+      "company_id": 0.779356
+    },
+    "COMPANY": {
+      "company_id": 0.747736,
+      "name": 0.748099,
+      "address": 0.753943,
+      "phone": 0.749205
+    },
+    "CITY": {
+      "city_id": 0.754361,
+      "name": 0.751876,
+      "province": 0.745698,
+      "country": 0.751423
+    },
+    "VENUE": {
+      "venue_id": 0.76784,
+      "name": 0.7679,
+      "description": 0.774798,
+      "capacity": 0.767476
+    },
+    "DEVICE_MODEL": {
+      "model_id": 0.74709,
+      "model_name": 0.748693,
+      "manufacturer": 0.753803,
+      "specs": 0.753314
+    },
+    "DEVICE": {
+      "device_id": 0.744836,
+      "serial_number": 0.742527,
+      "model_id": 0.746551,
+      "sale_point_id": 0.775892,
+      "install_date": 0.744763
+    },
+    "PLAN_POINT": {
+      "sale_plan_id": 0.773935,
+      "sale_point_id": 0.777138,
+      "allocation_date": 0.764657,
+      "status": 0.766428
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SALE_PLAN",
+      "cardinality": "1:N",
+      "description": "A company creates many sales plans",
+      "probability": 0.818276
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SALE_POINT",
+      "cardinality": "1:N",
+      "description": "A company owns many sale points",
+      "probability": 0.947936
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "SALE_POINT",
+      "cardinality": "1:N",
+      "description": "A city hosts many sale points",
+      "probability": 0.992012
+    },
+    {
+      "entity_1": "VENUE",
+      "entity_2": "SALE_POINT",
+      "cardinality": "1:N",
+      "description": "A venue can be linked to many sale points",
+      "probability": 0.82944
+    },
+    {
+      "entity_1": "DEVICE_MODEL",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "description": "Each device model can be used for many devices",
+      "probability": 0.999946
+    },
+    {
+      "entity_1": "SALE_POINT",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "description": "A sale point can have multiple devices installed",
+      "probability": 0.082081
+    },
+    {
+      "entity_1": "SALE_PLAN",
+      "entity_2": "PLAN_POINT",
+      "cardinality": "1:N",
+      "description": "A sales plan has many plan‑point allocations",
+      "probability": 0.964201
+    },
+    {
+      "entity_1": "SALE_POINT",
+      "entity_2": "PLAN_POINT",
+      "cardinality": "1:N",
+      "description": "A sale point can appear in many plan‑point allocations",
+      "probability": 0.784596
+    }
+  ],
+  "processing_time": 937.96,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Renamed PLAN_POINT attribute 'plan_id' to 'sale_plan_id' for naming consistency with SALE_PLAN primary key; ensured all foreign‑key attributes are explicitly listed; retained the associative entity PLAN_POINT to capture the many‑to‑many relationship with allocation metadata; kept optional descriptive attributes (phone, country, capacity, specs) as useful extensions; noted that PLAN_POINT can be modeled with a composite primary key (sale_plan_id, sale_point_id) for uniqueness."
+  }
+}

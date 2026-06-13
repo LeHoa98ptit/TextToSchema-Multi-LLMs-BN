@@ -1,0 +1,66 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "MENU",
+    "PERMISSION",
+    "ASSOC_USER_ROLE"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "MENU": [
+      "menu_id",
+      "label",
+      "relative_url",
+      "parent_menu_id"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "role_id",
+      "menu_id",
+      "access_level"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 55.7186,
+  "ilp_runtime": 0.063
+}

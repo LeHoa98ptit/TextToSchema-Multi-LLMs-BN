@@ -1,0 +1,110 @@
+{
+  "filename": "253.txt",
+  "entity": {
+    "USER": 0.817574,
+    "GROUP_CHAT": 0.802881,
+    "CHAT_RECORD": 0.747835,
+    "USER_JOIN_GROUP_CHAT": 0.776225,
+    "USER_LEAVE_GROUP_CHAT": 0.772415,
+    "ASSOC_USER_GROUP_CHAT": 0.367124
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.743581,
+      "password": 0.750463,
+      "contact_information": 0.764305,
+      "registration_time": 0.754207,
+      "user_id": 0.748009
+    },
+    "GROUP_CHAT": {
+      "group_chat_id": 0.770941,
+      "group_chat_creator": 0.773259,
+      "creation_time": 0.776256,
+      "number_of_members": 0.777218
+    },
+    "CHAT_RECORD": {
+      "chat_record_id": 0.771045,
+      "sender_id": 0.776111,
+      "receiver_id": 0.773741,
+      "message_send_time": 0.780204,
+      "message_type": 0.781168,
+      "message_content": 0.784735
+    },
+    "USER_JOIN_GROUP_CHAT": {
+      "user_id": 0.774471,
+      "group_chat_id": 0.771563,
+      "join_time": 0.774811
+    },
+    "USER_LEAVE_GROUP_CHAT": {
+      "user_id": 0.770654,
+      "group_chat_id": 0.768838,
+      "leave_time": 0.770113
+    },
+    "ASSOC_USER_GROUP_CHAT": {
+      "assoc_user_group_chat_id": 0.367124,
+      "user_id": 0.367124,
+      "group_chat_id": 0.367124
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_GROUP_CHAT",
+      "description": "One USER can be associated with many ASSOC_USER_GROUP_CHAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.367124
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "ASSOC_USER_GROUP_CHAT",
+      "description": "One GROUP_CHAT can be associated with many ASSOC_USER_GROUP_CHAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.367124
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can send many chat records, and a chat record is sent by one user.",
+      "probability": 0.750464
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "description": "A group chat can have many chat records, and a chat record belongs to one group chat.",
+      "probability": 0.999444
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_JOIN_GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A user can join many group chats, and a user join record is related to one user.",
+      "probability": 0.391572
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "USER_JOIN_GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A group chat can have many user join records, and a user join record is related to one group chat.",
+      "probability": 0.999578
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_LEAVE_GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A user can leave many group chats, and a user leave record is related to one user.",
+      "probability": 0.156753
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "USER_LEAVE_GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A group chat can have many user leave records, and a user leave record is related to one group chat.",
+      "probability": 0.997565
+    }
+  ],
+  "processing_time": 24.81
+}

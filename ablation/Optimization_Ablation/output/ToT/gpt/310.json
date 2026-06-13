@@ -1,0 +1,44 @@
+{
+  "entity": [
+    "USER",
+    "SESSION",
+    "SESSION_AUDIT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id PK",
+      "username",
+      "password",
+      "email",
+      "phone_number",
+      "creation_time",
+      "last_access_time"
+    ],
+    "SESSION": [
+      "session_id PK",
+      "user_id FK",
+      "creation_time",
+      "last_access_time",
+      "max_inactivity_interval",
+      "expiration_time",
+      "principal_attribute"
+    ],
+    "SESSION_AUDIT": [
+      "audit_id PK",
+      "session_id FK",
+      "event_type",
+      "event_timestamp",
+      "ip_address"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SESSION",
+      "entity_2": "SESSION_AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 14.1671,
+  "ilp_runtime": 0.062
+}

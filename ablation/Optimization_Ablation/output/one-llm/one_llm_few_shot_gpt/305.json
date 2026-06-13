@@ -1,0 +1,68 @@
+{
+  "entity": [
+    "USER",
+    "POST",
+    "NOTIFICATION",
+    "ASSOC_USER_USER"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "email",
+      "password_hash",
+      "verification_status",
+      "account_status",
+      "profile_name",
+      "profile_picture_url",
+      "registration_time",
+      "last_login_time"
+    ],
+    "POST": [
+      "post_id",
+      "publisher_user_id",
+      "content",
+      "publish_time",
+      "attachment_link"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "type",
+      "recipient_user_id",
+      "related_post_id",
+      "notification_time",
+      "is_read"
+    ],
+    "ASSOC_USER_USER": [
+      "assoc_user_user_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 71.4502,
+  "ilp_runtime": 0.039
+}

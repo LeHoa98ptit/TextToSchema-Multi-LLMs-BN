@@ -1,0 +1,124 @@
+{
+  "filename": "413.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "POSITION": 0.713511,
+    "INSTRUCTOR": 0.763669,
+    "COURSE": 0.817574,
+    "ENROLLMENT": 0.714328,
+    "CONTACT_INFO": 0.725518
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.770833,
+      "first_name": 0.76676,
+      "last_name": 0.76819,
+      "gender": 0.772505,
+      "birth_date": 0.766128,
+      "hire_date": 0.768068,
+      "phone": 0.761801,
+      "email": 0.765643,
+      "position_id": 0.772626,
+      "department_id": 0.774222
+    },
+    "DEPARTMENT": {
+      "department_id": 0.758692,
+      "name": 0.764502,
+      "phone": 0.757478,
+      "manager_id": 0.767841
+    },
+    "POSITION": {
+      "position_id": 0.749364,
+      "title": 0.761871,
+      "level": 0.751884,
+      "salary_grade": 0.762029
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.76266,
+      "name": 0.760019,
+      "expertise": 0.758959,
+      "phone": 0.753987,
+      "email": 0.758529
+    },
+    "COURSE": {
+      "course_id": 0.765431,
+      "title": 0.76466,
+      "duration_hours": 0.765624,
+      "description": 0.768996,
+      "instructor_id": 0.76908
+    },
+    "ENROLLMENT": {
+      "employee_id": 0.769076,
+      "course_id": 0.765823,
+      "enrollment_date": 0.751446,
+      "training_date": 0.768924,
+      "score": 0.748107,
+      "pass_status": 0.750424,
+      "retake_flag": 0.7561
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.741603,
+      "employee_id": 0.769934,
+      "contact_type": 0.750522,
+      "contact_value": 0.740952,
+      "is_primary": 0.743872
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "Each employee holds one position; a position can be held by many employees",
+      "probability": 0.966544
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee works in one department; a department has many employees",
+      "probability": 0.999912
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each department has a single manager (referenced by manager_id)",
+      "probability": 0.999912
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "INSTRUCTOR",
+      "cardinality": "N:1",
+      "description": "Each course is taught by one instructor; an instructor can teach many courses",
+      "probability": 0.429761
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "An employee can have many enrollment records (training attempts)",
+      "probability": 0.897172
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can be enrolled by many employees",
+      "probability": 0.094585
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:N",
+      "description": "An employee may have multiple contact records (phone, email, etc.)",
+      "probability": 0.000118
+    }
+  ],
+  "processing_time": 937.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Standardised all attribute names to snake_case. Removed surrogate enrollment_id and defined ENROLLMENT as a weak entity with a composite primary key (employee_id, course_id, training_date). Added UNIQUE constraint concept for DEPARTMENT.manager_id to enforce a single manager per department. Noted a CHECK constraint on PASS_STATUS derived from SCORE. Introduced CONTACT_INFO entity to allow multiple phone/email entries per employee. Retained Position, Instructor, and all many‑to‑many enrollment details, and kept relationship cardinalities consistent with the domain."
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "WORK_ORDER",
+    "EMAIL_CONFIGURATION",
+    "EMPLOYEE",
+    "EMAIL_SERVER",
+    "CUSTOMER",
+    "SYSTEM_USER",
+    "ASSOC_EMPLOYEE_EMAIL_SERVER"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "description",
+      "email_address",
+      "sort_order",
+      "allow_customer_submit",
+      "auto_reply_enabled",
+      "hide_user",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "WORK_ORDER": [
+      "work_order_id",
+      "title",
+      "description",
+      "priority",
+      "status",
+      "submitted_at",
+      "last_updated",
+      "response_email_sent",
+      "customer_id",
+      "department_id",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "EMAIL_CONFIGURATION": [
+      "config_id",
+      "host",
+      "port",
+      "use_ssl",
+      "login_username",
+      "login_password",
+      "default_from_address",
+      "department_id",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "first_name",
+      "last_name",
+      "email",
+      "job_title",
+      "hire_date",
+      "department_id",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "EMAIL_SERVER": [
+      "server_id",
+      "hostname",
+      "ip_address",
+      "operating_system",
+      "maintenance_window",
+      "status",
+      "config_id",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "company_name",
+      "contact_name",
+      "contact_email",
+      "phone_number",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "SYSTEM_USER": [
+      "user_id",
+      "username",
+      "hashed_password",
+      "role",
+      "department_id",
+      "is_active",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "ASSOC_EMPLOYEE_EMAIL_SERVER": [
+      "assoc_employee_email_server_id",
+      "employee_id",
+      "email_server_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMAIL_CONFIGURATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_EMAIL_SERVER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMAIL_SERVER",
+      "entity_2": "ASSOC_EMPLOYEE_EMAIL_SERVER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMAIL_CONFIGURATION",
+      "entity_2": "EMAIL_SERVER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "WORK_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "SYSTEM_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 93.2696,
+  "ilp_runtime": 0.054
+}

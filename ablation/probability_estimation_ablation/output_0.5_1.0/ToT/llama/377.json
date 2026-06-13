@@ -1,0 +1,70 @@
+{
+  "filename": "377.txt",
+  "entity": {
+    "ARTICLE": 0.817574,
+    "TAG": 0.817574,
+    "ARTICLE_TAG": 0.800081,
+    "ASSOC_ARTICLE_TAG": 0.220797
+  },
+  "attribute": {
+    "ARTICLE": {
+      "post_id": 0.765908,
+      "created_at": 0.755317,
+      "title": 0.758633,
+      "content": 0.7626
+    },
+    "TAG": {
+      "tag_id": 0.770973,
+      "name": 0.760914,
+      "description": 0.765241
+    },
+    "ARTICLE_TAG": {
+      "article_tag_id": 0.775533,
+      "post_id": 0.777196,
+      "tag_id": 0.778094,
+      "created_at": 0.766941
+    },
+    "ASSOC_ARTICLE_TAG": {
+      "assoc_article_tag_id": 0.220797,
+      "article_id": 0.220797,
+      "tag_id": 0.220797
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ARTICLE_TAG",
+      "cardinality": "1:N",
+      "description": "An article can have multiple article-tag associations",
+      "probability": 0.999568
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ARTICLE_TAG",
+      "cardinality": "1:N",
+      "description": "A tag can have multiple article-tag associations",
+      "probability": 0.937987
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ASSOC_ARTICLE_TAG",
+      "description": "One ARTICLE can be associated with many ASSOC_ARTICLE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.220797
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_ARTICLE_TAG",
+      "description": "One TAG can be associated with many ASSOC_ARTICLE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.220797
+    }
+  ],
+  "processing_time": 13.26,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a unique identifier 'article_tag_id' to the ARTICLE_TAG entity to improve data integrity, and retained the strengths of the original model while addressing the evaluation feedback."
+  }
+}

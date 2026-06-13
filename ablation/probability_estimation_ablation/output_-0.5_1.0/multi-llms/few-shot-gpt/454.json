@@ -1,0 +1,118 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "DISTRIBUTION_CENTER": 0.521886,
+    "PRODUCT": 0.622459,
+    "SUPPLY_REQUEST": 0.585938,
+    "DISTRIBUTION_ORDER": 0.533948,
+    "PURCHASE_ORDER": 0.526899,
+    "INVENTORY": 0.622459
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket id": 0.545075,
+      "address": 0.544836,
+      "contact info": 0.550623
+    },
+    "DISTRIBUTION_CENTER": {
+      "center id": 0.537374,
+      "center name": 0.534566
+    },
+    "PRODUCT": {
+      "product id": 0.529617,
+      "price": 0.525553
+    },
+    "INVENTORY": {
+      "product id": 0.552262,
+      "quantity": 0.570578
+    },
+    "SUPPLY_REQUEST": {
+      "request id": 0.553939,
+      "supermarket id": 0.569366,
+      "product id": 0.560907,
+      "quantity": 0.57572
+    },
+    "DISTRIBUTION_ORDER": {
+      "order id": 0.531171,
+      "supply request id": 0.556427,
+      "distribution date": 0.531246,
+      "status": 0.547437
+    },
+    "PURCHASE_ORDER": {
+      "purchase order id": 0.530744,
+      "product id": 0.539492,
+      "quantity": 0.56463,
+      "price": 0.534308,
+      "purchase date": 0.528402,
+      "status": 0.549912
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A supermarket can create many supply requests; each supply request is made by one supermarket.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010834
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A distribution center receives many supply requests; each supply request is received by one distribution center.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.100805
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "PRODUCT",
+      "description": "A distribution center manages many products; each product is managed by one distribution center.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004472
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "INVENTORY",
+      "description": "A distribution center holds inventory records for many products; each inventory record belongs to one distribution center.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000318
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A product can be requested in many supply requests; each supply request references one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.765637
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "description": "Each supply request generates exactly one distribution order; each distribution order corresponds to one supply request.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.067085
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER",
+      "description": "A product can be ordered many times via purchase orders; each purchase order is for one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.401525
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "description": "Each product has a single inventory record tracking its quantity; each inventory record refers to one product.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.930612
+    }
+  ],
+  "processing_time": 4.15
+}

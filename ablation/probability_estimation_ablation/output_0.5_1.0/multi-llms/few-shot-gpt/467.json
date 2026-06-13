@@ -1,0 +1,115 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "PICKING_LIST": 0.674015,
+    "DELIVERY_ORDER": 0.780057,
+    "INVOICE": 0.817574,
+    "ACCOUNT_RECEIVABLE_REPORT": 0.702473
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.754283,
+      "contact information": 0.760648
+    },
+    "PRODUCT": {
+      "product id": 0.745646,
+      "product name": 0.745442,
+      "product price": 0.744124,
+      "inventory quantity": 0.768413
+    },
+    "ORDER": {
+      "order id": 0.761335,
+      "customer id": 0.764442,
+      "order date": 0.761788,
+      "order quantity": 0.772733,
+      "order status": 0.770574
+    },
+    "PICKING_LIST": {
+      "picking list id": 0.738856,
+      "order id": 0.754984,
+      "product id": 0.743936,
+      "pick quantity": 0.755339,
+      "pick status": 0.743618
+    },
+    "DELIVERY_ORDER": {
+      "delivery order id": 0.760678,
+      "order id": 0.761631,
+      "delivery time": 0.760953,
+      "delivery status": 0.76865
+    },
+    "INVOICE": {
+      "invoice id": 0.759959,
+      "order id": 0.768833,
+      "invoice date": 0.760205,
+      "customer id": 0.766315
+    },
+    "ACCOUNT_RECEIVABLE_REPORT": {
+      "report id": 0.755042,
+      "order id": 0.762599,
+      "report date": 0.754325,
+      "amount due": 0.758652
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place many orders, each order is placed by exactly one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962687
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "description": "An order can have multiple picking list entries, each entry corresponds to a product to be picked.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 4e-06
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PICKING_LIST",
+      "description": "A product can appear in multiple picking list entries across different orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 3.6e-05
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "description": "Each order generates exactly one delivery order.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999255
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "description": "Each order generates exactly one invoice.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.980784
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "INVOICE",
+      "description": "A customer can have multiple invoices, each invoice is associated with a specific order.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.568625
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ACCOUNT_RECEIVABLE_REPORT",
+      "description": "Each order generates exactly one account receivable report.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 1e-06
+    }
+  ],
+  "processing_time": 24.67
+}

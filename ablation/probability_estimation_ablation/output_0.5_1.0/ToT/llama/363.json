@@ -1,0 +1,100 @@
+{
+  "filename": "363.txt",
+  "entity": {
+    "BOOK": 0.817574,
+    "READER": 0.817574,
+    "BORROW": 0.796101,
+    "RESERVATION": 0.817574,
+    "LIBRARY": 0.817574
+  },
+  "attribute": {
+    "BOOK": {
+      "isbn": 0.779485,
+      "title": 0.76203,
+      "author": 0.761433,
+      "publisher": 0.772737,
+      "publication_date": 0.76556,
+      "price": 0.758672,
+      "number_copy_available": 0.773483,
+      "library_location": 0.771536,
+      "shelf_number": 0.773001
+    },
+    "READER": {
+      "reader_id": 0.757182,
+      "library_card_number": 0.76728,
+      "gender": 0.760315,
+      "age": 0.756711,
+      "phone": 0.760521,
+      "email": 0.761668,
+      "address": 0.763648,
+      "reader_type": 0.76099,
+      "maximum_borrowing_limit": 0.762242
+    },
+    "BORROW": {
+      "borrow_id": 0.746738,
+      "borrowing_time": 0.748714,
+      "actual_return_date": 0.740786,
+      "borrowing_status": 0.754018
+    },
+    "RESERVATION": {
+      "reservation_id": 0.748481,
+      "reservation_time": 0.749621,
+      "reservation_expiration_time": 0.750738,
+      "reservation_status": 0.751598
+    },
+    "LIBRARY": {
+      "library_id": 0.750479,
+      "library_name": 0.754105,
+      "library_address": 0.754896
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROW",
+      "cardinality": "1:N",
+      "description": "A book can have multiple borrow records",
+      "probability": 0.999922
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "BORROW",
+      "cardinality": "1:N",
+      "description": "A reader can have multiple borrow records",
+      "probability": 0.999935
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A book can have multiple reservation records",
+      "probability": 0.112463
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A reader can have multiple reservation records",
+      "probability": 0.729903
+    },
+    {
+      "entity_1": "LIBRARY",
+      "entity_2": "BOOK",
+      "cardinality": "1:N",
+      "description": "A library can have multiple books",
+      "probability": 0.996968
+    },
+    {
+      "entity_1": "LIBRARY",
+      "entity_2": "READER",
+      "cardinality": "1:N",
+      "description": "A library can have multiple readers",
+      "probability": 0.961963
+    }
+  ],
+  "processing_time": 23.73,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes 'number_copy_circulation' and 'loan_period', and added a relationship between 'LIBRARY' and 'READER' to improve completeness and accuracy."
+  }
+}

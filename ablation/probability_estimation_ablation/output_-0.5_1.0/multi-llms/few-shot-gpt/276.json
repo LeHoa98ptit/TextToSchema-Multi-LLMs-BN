@@ -1,0 +1,111 @@
+{
+  "filename": "276.txt",
+  "entity": {
+    "MAINTENANCE_TECHNICIAN": 0.569718,
+    "MAINTENANCE_TEAM": 0.600296,
+    "CUSTOMER": 0.622459,
+    "MAINTENANCE_TASK": 0.592546,
+    "MAINTENANCE_PRODUCT": 0.558087,
+    "FEEDBACK": 0.622459
+  },
+  "attribute": {
+    "MAINTENANCE_TECHNICIAN": {
+      "technician id": 0.561296,
+      "gender": 0.562192,
+      "phone number": 0.560249,
+      "position": 0.572605,
+      "employment date": 0.557474,
+      "team id": 0.56344
+    },
+    "MAINTENANCE_TEAM": {
+      "team id": 0.549324,
+      "team name": 0.547649,
+      "team leader id": 0.552626,
+      "responsibility": 0.562268,
+      "total number member": 0.554878
+    },
+    "CUSTOMER": {
+      "customer id": 0.525739,
+      "phone number": 0.518889,
+      "address": 0.526157
+    },
+    "MAINTENANCE_TASK": {
+      "task id": 0.553287,
+      "maintenance time": 0.560097,
+      "duration minutes": 0.554278,
+      "cost": 0.548774,
+      "result": 0.565434,
+      "customer id": 0.560789,
+      "product id": 0.551679,
+      "satisfaction level": 0.569611,
+      "feedback id": 0.558048
+    },
+    "MAINTENANCE_PRODUCT": {
+      "product id": 0.537973
+    },
+    "FEEDBACK": {
+      "feedback id": 0.517605,
+      "satisfaction level": 0.532844,
+      "resolution result": 0.514187
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TECHNICIAN",
+      "description": "A maintenance team includes multiple technicians; each technician belongs to one team.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.869663
+    },
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TECHNICIAN",
+      "description": "Each maintenance team has exactly one team leader who is a technician.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.869663
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "MAINTENANCE_TASK",
+      "description": "A customer can have many maintenance tasks; each maintenance task is associated with one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.837421
+    },
+    {
+      "entity_1": "MAINTENANCE_PRODUCT",
+      "entity_2": "MAINTENANCE_TASK",
+      "description": "A maintenance product can be involved in many maintenance tasks; each task references one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.632776
+    },
+    {
+      "entity_1": "MAINTENANCE_TECHNICIAN",
+      "entity_2": "MAINTENANCE_TASK",
+      "description": "A technician can be assigned to many maintenance tasks; each task is assigned to one technician.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.244407
+    },
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TASK",
+      "description": "A maintenance team can be responsible for many tasks; each task is linked to one team.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99241
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "FEEDBACK",
+      "description": "Each maintenance task has one customer feedback record; each feedback belongs to one task.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.261502
+    }
+  ],
+  "processing_time": 4.08
+}

@@ -1,0 +1,59 @@
+{
+  "entity": [
+    "SITE",
+    "MONITORING_PERSONNEL",
+    "MAINTENANCE_PERSONNEL",
+    "MONITORING_SESSION",
+    "MAINTENANCE_ACTIVITY"
+  ],
+  "attribute": {
+    "SITE": [
+      "location",
+      "responsible_person",
+      "contact_detail"
+    ],
+    "MONITORING_PERSONNEL": [
+      "contact_detail",
+      "scope",
+      "personnel_id"
+    ],
+    "MAINTENANCE_PERSONNEL": [
+      "contact_detail",
+      "scope",
+      "personnel_id"
+    ],
+    "MONITORING_SESSION": [
+      "timestamp",
+      "monitoring_result",
+      "session_id"
+    ],
+    "MAINTENANCE_ACTIVITY": [
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_cost",
+      "activity_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 17.8363,
+  "ilp_runtime": 0.051
+}

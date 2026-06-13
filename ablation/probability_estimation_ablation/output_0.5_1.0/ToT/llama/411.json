@@ -1,0 +1,135 @@
+{
+  "filename": "411.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "CONTACT_PERSON": 0.710559,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "PAYMENT": 0.817574,
+    "SUPPLIER": 0.732335,
+    "CUSTOMER_CLASSIFICATION": 0.736334,
+    "PRODUCT_CATEGORY": 0.720068,
+    "BRAND": 0.739891,
+    "ASSOC_ORDER_PRODUCT": 0.002139
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.767117,
+      "address": 0.763626,
+      "phone": 0.766196,
+      "email": 0.764647,
+      "customer_type": 0.771456,
+      "credit_rating": 0.769322
+    },
+    "CONTACT_PERSON": {
+      "contact_name": 0.741942,
+      "contact_email": 0.742915
+    },
+    "PRODUCT": {
+      "product_name": 0.742505,
+      "unit_price": 0.749414,
+      "inventory_quantity": 0.758131,
+      "production_date": 0.746036
+    },
+    "ORDER": {
+      "order_time": 0.740243,
+      "order_status": 0.744638,
+      "total": 0.753554
+    },
+    "PAYMENT": {
+      "payment_method": 0.751464,
+      "payment_status": 0.752383,
+      "payment_time": 0.749257
+    },
+    "SUPPLIER": {
+      "supplier_name": 0.752119,
+      "supplier_address": 0.74756
+    },
+    "CUSTOMER_CLASSIFICATION": {
+      "classification_type": 0.768715
+    },
+    "PRODUCT_CATEGORY": {
+      "category_name": 0.742068
+    },
+    "BRAND": {
+      "brand_name": 0.744191
+    },
+    "ASSOC_ORDER_PRODUCT": {
+      "assoc_order_product_id": 0.002139,
+      "order_id": 0.002139,
+      "product_id": 0.002139
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "cardinality": "1:1",
+      "description": "A customer has one contact person",
+      "probability": 0.743861
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.963865
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002139
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002139
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order has one payment",
+      "probability": 0.905167
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "A product is supplied by one supplier",
+      "probability": 0.03228
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CLASSIFICATION",
+      "cardinality": "1:1",
+      "description": "A customer has one customer classification",
+      "probability": 0.999461
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_CATEGORY",
+      "cardinality": "N:1",
+      "description": "A product belongs to one product category",
+      "probability": 0.738829
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "BRAND",
+      "cardinality": "N:1",
+      "description": "A product has one brand",
+      "probability": 0.993577
+    }
+  ],
+  "processing_time": 25.42,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added customer classification information, product category, and brand to the final model to make it more comprehensive."
+  }
+}

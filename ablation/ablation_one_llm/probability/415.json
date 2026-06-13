@@ -1,0 +1,68 @@
+{
+  "filename": "415.txt",
+  "entity": {
+    "USER": 0.817574,
+    "CHAT_RECORD": 0.743302,
+    "SERVER_CONFIGURATION": 0.788215,
+    "ASSOC_USER_CHAT_RECORD": 0.84968
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.739436,
+      "password": 0.745749,
+      "email": 0.748626,
+      "ip_address": 0.752176,
+      "port_number": 0.754622
+    },
+    "CHAT_RECORD": {
+      "message": 0.775026,
+      "sender": 0.7716,
+      "receiver": 0.772108,
+      "message_content": 0.771881,
+      "send_time": 0.76625
+    },
+    "SERVER_CONFIGURATION": {
+      "server_ip_address": 0.752896,
+      "server_port_number": 0.753032,
+      "maximum_client_connection": 0.761325,
+      "receive_buffer_size": 0.763516,
+      "protocol": 0.775559
+    },
+    "ASSOC_USER_CHAT_RECORD": {
+      "assoc_user_chat_record_id": 0.84968,
+      "user_id": 0.84968,
+      "chat_record_id": 0.84968
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CHAT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.84968
+    },
+    {
+      "entity_1": "CHAT_RECORD",
+      "entity_2": "ASSOC_USER_CHAT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.84968
+    },
+    {
+      "entity_1": "SERVER_CONFIGURATION",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "One server configuration can handle many users, but each user is associated with one server configuration.",
+      "probability": 0.093603
+    },
+    {
+      "entity_1": "SERVER_CONFIGURATION",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "description": "One server configuration can handle many chat records, but each chat record is associated with one server configuration.",
+      "probability": 0.001031
+    }
+  ],
+  "processing_time": 6.98
+}

@@ -1,0 +1,119 @@
+{
+  "filename": "455.txt",
+  "entity": {
+    "VEHICLE": 0.622459,
+    "PARKING_SPACE": 0.59491,
+    "ENTRY_POINT": 0.531956,
+    "EXIT_POINT": 0.454055,
+    "OCCUPANCY": 0.471032,
+    "VEHICLE_OWNER": 0.542348,
+    "ASSOC_ENTRY_POINT_EXIT_POINT": 0.918203
+  },
+  "attribute": {
+    "VEHICLE": {
+      "license_plate": 0.531832,
+      "entry_time": 0.540385,
+      "exit_time": 0.542979,
+      "vehicle_type": 0.541944,
+      "owner_id": 0.529475
+    },
+    "PARKING_SPACE": {
+      "space_id": 0.557761,
+      "status": 0.573356,
+      "space_type": 0.56324,
+      "location": 0.563758
+    },
+    "ENTRY_POINT": {
+      "entry_id": 0.520502,
+      "entry_time": 0.522788,
+      "entry_point_type": 0.524233
+    },
+    "EXIT_POINT": {
+      "exit_id": 0.52402,
+      "exit_time": 0.522717,
+      "exit_point_type": 0.526689
+    },
+    "OCCUPANCY": {
+      "occupancy_id": 0.524149,
+      "start_time": 0.520535,
+      "end_time": 0.524429,
+      "parking_space_id": 0.553251,
+      "vehicle_id": 0.53508
+    },
+    "VEHICLE_OWNER": {
+      "owner_id": 0.526203,
+      "name": 0.528055,
+      "contact_info": 0.534624
+    },
+    "ASSOC_ENTRY_POINT_EXIT_POINT": {
+      "assoc_entry_point_exit_point_id": 0.918203,
+      "entry_point_id": 0.918203,
+      "exit_point_id": 0.918203
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "PARKING_SPACE",
+      "cardinality": "1:N",
+      "description": "A vehicle can be assigned to multiple parking spaces over time",
+      "probability": 0.993401
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "ENTRY_POINT",
+      "cardinality": "1:N",
+      "description": "A vehicle can enter through multiple entry points",
+      "probability": 0.016903
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "EXIT_POINT",
+      "cardinality": "1:N",
+      "description": "A vehicle can exit through multiple exit points",
+      "probability": 0.000776
+    },
+    {
+      "entity_1": "OCCUPANCY",
+      "entity_2": "PARKING_SPACE",
+      "cardinality": "1:1",
+      "description": "An occupancy record is associated with one parking space",
+      "probability": 0.23415
+    },
+    {
+      "entity_1": "OCCUPANCY",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:1",
+      "description": "An occupancy record is associated with one vehicle",
+      "probability": 0.91106
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_OWNER",
+      "cardinality": "1:1",
+      "description": "A vehicle is owned by one vehicle owner",
+      "probability": 0.981984
+    },
+    {
+      "entity_1": "ENTRY_POINT",
+      "entity_2": "ASSOC_ENTRY_POINT_EXIT_POINT",
+      "description": "One ENTRY_POINT can be associated with many ASSOC_ENTRY_POINT_EXIT_POINT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.918203
+    },
+    {
+      "entity_1": "EXIT_POINT",
+      "entity_2": "ASSOC_ENTRY_POINT_EXIT_POINT",
+      "description": "One EXIT_POINT can be associated with many ASSOC_ENTRY_POINT_EXIT_POINT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.918203
+    }
+  ],
+  "processing_time": 11.95,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added VEHICLE_OWNER entity, added owner_id attribute to VEHICLE entity, and added relationship between ENTRY_POINT and EXIT_POINT entities to capture the flow of vehicles through the parking lot."
+  }
+}

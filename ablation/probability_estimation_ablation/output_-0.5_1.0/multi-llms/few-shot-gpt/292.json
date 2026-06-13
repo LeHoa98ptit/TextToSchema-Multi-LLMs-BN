@@ -1,0 +1,72 @@
+{
+  "filename": "292.txt",
+  "entity": {
+    "PROPERTY_MANAGEMENT_COMPANY": 0.543639,
+    "FACILITY": 0.622459,
+    "MAINTENANCE_EVENT": 0.535018,
+    "PERSONNEL": 0.622459,
+    "MAINTENANCE_EVENT_PERSONNEL": 0.96673
+  },
+  "attribute": {
+    "PROPERTY_MANAGEMENT_COMPANY": {
+      "company id": 0.56043
+    },
+    "FACILITY": {
+      "facility id": 0.552961,
+      "property management company id": 0.573428,
+      "location": 0.546095
+    },
+    "MAINTENANCE_EVENT": {
+      "maintenance event id": 0.549203,
+      "facility id": 0.565313,
+      "event time": 0.544445,
+      "content": 0.557322,
+      "cost": 0.54571,
+      "personnel ids": 0.563248
+    },
+    "PERSONNEL": {
+      "personnel id": 0.543202,
+      "contact information": 0.556385
+    },
+    "MAINTENANCE_EVENT_PERSONNEL": {
+      "maintenance_event_personnel_id": 0.96673,
+      "maintenance_event_id": 0.96673,
+      "personnel_id": 0.96673
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY_MANAGEMENT_COMPANY",
+      "entity_2": "FACILITY",
+      "description": "A property management company manages many facilities; each facility is managed by one company.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995245
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "MAINTENANCE_EVENT",
+      "description": "A facility can have many maintenance events; each maintenance event occurs at one facility.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.845192
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "MAINTENANCE_EVENT_PERSONNEL",
+      "description": "One MAINTENANCE_EVENT can be associated with many MAINTENANCE_EVENT_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96673
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MAINTENANCE_EVENT_PERSONNEL",
+      "description": "One PERSONNEL can be associated with many MAINTENANCE_EVENT_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96673
+    }
+  ],
+  "processing_time": 1.32
+}

@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "SUPPLIER",
+    "COST_CENTER",
+    "COST_ACCOUNTING",
+    "PRODUCTION_PLAN",
+    "MATERIAL_REQUIREMENT_PLAN",
+    "PRODUCTION_SCHEDULING",
+    "SALE_ORDER",
+    "PURCHASE_ORDER",
+    "MATERIAL"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_info",
+      "address"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_info",
+      "address"
+    ],
+    "COST_CENTER": [
+      "cost_center_id",
+      "name",
+      "description"
+    ],
+    "COST_ACCOUNTING": [
+      "ca_id",
+      "cost_center_id",
+      "expense_amount",
+      "expense_date",
+      "description"
+    ],
+    "PRODUCTION_PLAN": [
+      "plan_id",
+      "product_id",
+      "quantity",
+      "start_date",
+      "end_date"
+    ],
+    "MATERIAL_REQUIREMENT_PLAN": [
+      "mrp_id",
+      "plan_id",
+      "material_id",
+      "required_quantity",
+      "mrp_date"
+    ],
+    "PRODUCTION_SCHEDULING": [
+      "schedule_id",
+      "plan_id",
+      "production_date",
+      "status"
+    ],
+    "SALE_ORDER": [
+      "order_id",
+      "customer_id",
+      "order_date",
+      "total_amount",
+      "status"
+    ],
+    "PURCHASE_ORDER": [
+      "po_id",
+      "supplier_id",
+      "order_date",
+      "total_amount",
+      "status"
+    ],
+    "MATERIAL": [
+      "material_id",
+      "description",
+      "type"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COST_CENTER",
+      "entity_2": "COST_ACCOUNTING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "MATERIAL_REQUIREMENT_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_SCHEDULING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 26.8122,
+  "ilp_runtime": 0.115
+}

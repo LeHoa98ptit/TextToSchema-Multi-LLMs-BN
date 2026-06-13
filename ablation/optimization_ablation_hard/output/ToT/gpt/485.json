@@ -1,0 +1,102 @@
+{
+  "entity": [
+    "PROTECTION_AREA",
+    "LOCATION",
+    "SPECIES",
+    "OBSERVATION",
+    "ENVIRONMENTAL_READING",
+    "SENSOR"
+  ],
+  "attribute": {
+    "PROTECTION_AREA": [
+      "area_id",
+      "name",
+      "size",
+      "establishment_date"
+    ],
+    "LOCATION": [
+      "location_id",
+      "latitude",
+      "longitude",
+      "description"
+    ],
+    "SPECIES": [
+      "species_id",
+      "common_name",
+      "scientific_name",
+      "kingdom",
+      "conservation_status"
+    ],
+    "OBSERVATION": [
+      "observation_id",
+      "observation_time",
+      "quantity",
+      "growth_status",
+      "health_indicator",
+      "recorder_id",
+      "area_id",
+      "species_id"
+    ],
+    "ENVIRONMENTAL_READING": [
+      "reading_id",
+      "reading_time",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind_speed",
+      "sensor_id",
+      "area_id"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type",
+      "model",
+      "serial_number",
+      "installation_date",
+      "maintenance_date",
+      "calibration_date",
+      "firmware_version",
+      "area_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "SPECIES",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ENVIRONMENTAL_READING",
+      "entity_2": "SENSOR",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ENVIRONMENTAL_READING",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.7416,
+  "ilp_runtime": 0.034
+}

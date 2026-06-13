@@ -1,0 +1,179 @@
+{
+  "filename": "429.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ROLE": 0.727088,
+    "DISH": 0.817574,
+    "CATEGORY": 0.709797,
+    "DISH_STATUS": 0.769892,
+    "SHELF": 0.72508,
+    "ORDER": 0.817574,
+    "ORDER_STATUS": 0.749021,
+    "ORDER_DETAIL": 0.746343,
+    "STATISTICS": 0.692536,
+    "DATE_DIM": 0.681028,
+    "PROMOTION": 0.731235
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.740133,
+      "username": 0.731776,
+      "password": 0.74937,
+      "role_id": 0.746818
+    },
+    "ROLE": {
+      "role_id": 0.747841,
+      "role_name": 0.749761,
+      "description": 0.761066
+    },
+    "DISH": {
+      "dish_id": 0.762512,
+      "name": 0.764428,
+      "price": 0.759503,
+      "category_id": 0.762932,
+      "status_id": 0.766122,
+      "shelf_id": 0.762497
+    },
+    "CATEGORY": {
+      "category_id": 0.741834,
+      "category_name": 0.745578,
+      "description": 0.763212
+    },
+    "DISH_STATUS": {
+      "status_id": 0.766656,
+      "status_name": 0.768904,
+      "description": 0.77612
+    },
+    "SHELF": {
+      "shelf_id": 0.746662,
+      "location_code": 0.742576,
+      "description": 0.754421
+    },
+    "ORDER": {
+      "order_id": 0.744531,
+      "user_id": 0.744984,
+      "order_time": 0.744483,
+      "total_amount": 0.751613,
+      "status_id": 0.751311
+    },
+    "ORDER_STATUS": {
+      "status_id": 0.751764,
+      "status_name": 0.753762,
+      "description": 0.768044
+    },
+    "ORDER_DETAIL": {
+      "order_id": 0.750074,
+      "dish_id": 0.766487,
+      "quantity": 0.766402,
+      "unit_price": 0.75717,
+      "promotion_id": 0.754708
+    },
+    "STATISTICS": {
+      "stat_id": 0.744663,
+      "stat_date": 0.743267,
+      "dish_id": 0.764683,
+      "total_quantity": 0.75386,
+      "total_sales": 0.761054
+    },
+    "DATE_DIM": {
+      "date": 0.735791,
+      "year": 0.736874,
+      "month": 0.735092,
+      "day": 0.736176,
+      "weekday": 0.73606
+    },
+    "PROMOTION": {
+      "promotion_id": 0.743961,
+      "promotion_name": 0.74581,
+      "description": 0.756854,
+      "discount_type": 0.743893,
+      "discount_value": 0.741151,
+      "start_date": 0.740386,
+      "end_date": 0.740443
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "Each user is assigned one role (customer or administrator)",
+      "probability": 0.996223
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "A dish belongs to a single category",
+      "probability": 0.001208
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_STATUS",
+      "cardinality": "N:1",
+      "description": "A dish has one availability status",
+      "probability": 0.999942
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "SHELF",
+      "cardinality": "N:1",
+      "description": "A dish is placed on a specific shelf/location",
+      "probability": 0.000238
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Orders are placed by users",
+      "probability": 0.998979
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS",
+      "cardinality": "N:1",
+      "description": "Each order has a status (pending, in progress, complete)",
+      "probability": 0.999145
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ORDER",
+      "cardinality": "N:1",
+      "description": "Order details belong to one order (composite PK order_id, dish_id)",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "DISH",
+      "cardinality": "N:1",
+      "description": "Each order detail references one dish",
+      "probability": 0.582594
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "PROMOTION",
+      "cardinality": "N:1",
+      "description": "An order detail may be linked to a promotion (optional)",
+      "probability": 0.000144
+    },
+    {
+      "entity_1": "STATISTICS",
+      "entity_2": "DISH",
+      "cardinality": "N:1",
+      "description": "Sales statistics are aggregated per dish",
+      "probability": 0.000435
+    },
+    {
+      "entity_1": "STATISTICS",
+      "entity_2": "DATE_DIM",
+      "cardinality": "N:1",
+      "description": "Statistics are recorded for a specific date",
+      "probability": 0.043767
+    }
+  ],
+  "processing_time": 931.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented composite primary key (order_id, dish_id) for ORDER_DETAIL to enforce one line per dish per order and removed surrogate order_detail_id. Added PROMOTION entity with a nullable N:1 relationship to ORDER_DETAIL for future discount handling. Declared UNIQUE constraints on USER.username and DISH.name (not shown in JSON). Specified cascade/restrict rules conceptually for ROLE->USER, CATEGORY->DISH, and DATE_DIM->STATISTICS. Suggested materialized view for pre‑aggregated reporting. The model retains full normalization, lookup tables, and date dimension for robust analytics while adding promotion support and stronger integrity constraints."
+  }
+}

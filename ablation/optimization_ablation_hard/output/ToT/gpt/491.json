@@ -1,0 +1,192 @@
+{
+  "entity": [
+    "USER",
+    "USER_GROUP",
+    "USER_GROUP_MEMBERSHIP",
+    "ROLE",
+    "PERMISSION",
+    "RESOURCE",
+    "MODULE",
+    "POLICY",
+    "USER_ROLE",
+    "ROLE_PERMISSION",
+    "GROUP_ROLE",
+    "PERMISSION_RESOURCE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "first_name",
+      "last_name",
+      "phone",
+      "address",
+      "status",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by",
+      "last_login"
+    ],
+    "USER_GROUP": [
+      "group_id",
+      "group_name",
+      "description",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "USER_GROUP_MEMBERSHIP": [
+      "user_id",
+      "group_id",
+      "assigned_at",
+      "assigned_by"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "action",
+      "description",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "RESOURCE": [
+      "resource_id",
+      "resource_name",
+      "resource_type",
+      "description",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "MODULE": [
+      "module_id",
+      "module_name",
+      "description",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "POLICY": [
+      "policy_id",
+      "policy_name",
+      "description",
+      "effective_date",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "USER_ROLE": [
+      "user_id",
+      "role_id",
+      "assigned_at",
+      "assigned_by"
+    ],
+    "ROLE_PERMISSION": [
+      "role_id",
+      "permission_id",
+      "assigned_at",
+      "assigned_by"
+    ],
+    "GROUP_ROLE": [
+      "group_id",
+      "role_id",
+      "assigned_at",
+      "assigned_by"
+    ],
+    "PERMISSION_RESOURCE": [
+      "permission_id",
+      "resource_id",
+      "action",
+      "is_allowed",
+      "assigned_at",
+      "assigned_by"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP_MEMBERSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_GROUP",
+      "entity_2": "GROUP_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "GROUP_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_RESOURCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "PERMISSION_RESOURCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODULE",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 83.2888,
+  "ilp_runtime": 0.032
+}

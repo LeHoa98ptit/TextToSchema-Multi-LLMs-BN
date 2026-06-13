@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "CONTENT",
+    "USER",
+    "WORKFLOW",
+    "OPERATION",
+    "LOG",
+    "COMMENT",
+    "ASSOC_CONTENT_USER"
+  ],
+  "attribute": {
+    "CONTENT": [
+      "id",
+      "name",
+      "state",
+      "version",
+      "creation_date"
+    ],
+    "USER": [
+      "id",
+      "username",
+      "role",
+      "email"
+    ],
+    "WORKFLOW": [
+      "id",
+      "type",
+      "description",
+      "configuration"
+    ],
+    "OPERATION": [
+      "id",
+      "type",
+      "timestamp",
+      "user_id",
+      "action",
+      "metadata"
+    ],
+    "LOG": [
+      "id",
+      "content_id",
+      "operation_id",
+      "timestamp",
+      "changes",
+      "details"
+    ],
+    "COMMENT": [
+      "id",
+      "content_id",
+      "user_id",
+      "text",
+      "timestamp"
+    ],
+    "ASSOC_CONTENT_USER": [
+      "assoc_content_user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 17.4943,
+  "ilp_runtime": 0.064
+}

@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "CONSUMABLE",
+    "EXPERIMENTAL_COURSE",
+    "USAGE_RECORD",
+    "PURCHASE_RECORD",
+    "ISSUANCE_RECORD"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "associated_unit",
+      "role"
+    ],
+    "EQUIPMENT": [
+      "equipment_model",
+      "category",
+      "manufacturer",
+      "status",
+      "acquisition_time"
+    ],
+    "CONSUMABLE": [
+      "consumable_category",
+      "inventory_quantity",
+      "status"
+    ],
+    "EXPERIMENTAL_COURSE": [
+      "course_class",
+      "time",
+      "location"
+    ],
+    "USAGE_RECORD": [
+      "usage_time",
+      "user",
+      "purpose",
+      "course_association"
+    ],
+    "PURCHASE_RECORD": [
+      "purchase_time",
+      "user",
+      "consumable"
+    ],
+    "ISSUANCE_RECORD": [
+      "issuance_time",
+      "user",
+      "hazardous_chemical"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ISSUANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.5326,
+  "ilp_runtime": 0.159
+}

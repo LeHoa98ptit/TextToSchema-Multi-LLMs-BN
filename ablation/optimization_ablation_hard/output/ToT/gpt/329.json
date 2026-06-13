@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "USER",
+    "STOCK",
+    "HOLDING",
+    "TRANSACTION",
+    "LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "registration_date",
+      "last_login",
+      "virtual_balance",
+      "portfolio_value"
+    ],
+    "STOCK": [
+      "stock_id",
+      "stock_code",
+      "stock_name",
+      "company_name",
+      "issue_date",
+      "current_price"
+    ],
+    "HOLDING": [
+      "user_id",
+      "stock_id",
+      "quantity",
+      "average_price",
+      "acquisition_date"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "user_id",
+      "stock_id",
+      "transaction_type",
+      "quantity",
+      "price_per_share",
+      "transaction_date",
+      "total_value"
+    ],
+    "LOG": [
+      "log_id",
+      "user_id",
+      "log_date",
+      "activity_type",
+      "activity_detail",
+      "activity_value",
+      "transaction_id",
+      "holding_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STOCK",
+      "entity_2": "HOLDING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.5661,
+  "ilp_runtime": 0.04
+}

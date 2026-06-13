@@ -1,0 +1,92 @@
+{
+  "filename": "336.txt",
+  "entity": {
+    "USER": 0.817574,
+    "CATEGORY": 0.817574,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_PRODUCT": 0.79506
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.738397,
+      "username": 0.73537,
+      "email": 0.74755,
+      "password": 0.744902,
+      "creation_time": 0.740732,
+      "update_time": 0.744294
+    },
+    "CATEGORY": {
+      "category_id": 0.752953,
+      "name": 0.763901,
+      "alias": 0.754888,
+      "cover_image_path": 0.747401,
+      "creation_time": 0.75338,
+      "update_time": 0.758197
+    },
+    "PRODUCT": {
+      "product_id": 0.755473,
+      "category_id": 0.763458,
+      "name": 0.754699,
+      "description": 0.762252,
+      "price": 0.754271,
+      "status": 0.759732,
+      "cover_image_path": 0.740765,
+      "creation_time": 0.752886,
+      "update_time": 0.75479
+    },
+    "ORDER": {
+      "order_id": 0.747161,
+      "user_id": 0.747792,
+      "delivery_address": 0.745125,
+      "postal_code": 0.748022,
+      "status": 0.755826,
+      "total_price": 0.753155,
+      "creation_time": 0.748291,
+      "update_time": 0.751574
+    },
+    "ORDER_PRODUCT": {
+      "order_product_id": 0.755821,
+      "order_id": 0.755703,
+      "product_id": 0.759417,
+      "quantity": 0.763635,
+      "creation_time": 0.757043,
+      "update_time": 0.760119
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can place many orders",
+      "probability": 0.998745
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each category groups multiple products",
+      "probability": 0.000259
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PRODUCT",
+      "cardinality": "1:N",
+      "description": "An order contains multiple order‑product records",
+      "probability": 0.999655
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_PRODUCT",
+      "cardinality": "1:N",
+      "description": "A product can appear in many order‑product records",
+      "probability": 0.99906
+    }
+  ],
+  "processing_time": 30.7,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added explicit foreign key 'category_id' to PRODUCT for clear linkage to CATEGORY. Included creation_time and update_time in ORDER_PRODUCT to enable audit tracking. Ensured consistent timestamp naming (creation_time/update_time) across all entities."
+  }
+}

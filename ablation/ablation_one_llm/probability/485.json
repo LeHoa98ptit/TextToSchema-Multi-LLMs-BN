@@ -1,0 +1,91 @@
+{
+  "filename": "485.txt",
+  "entity": {
+    "WETLAND_PROTECTION_AREA": 0.753933,
+    "SPECIE": 0.817574,
+    "RECORD": 0.817574,
+    "PERSONNEL": 0.701175,
+    "SENSOR": 0.70705,
+    "ENVIRONMENTAL_CHANGE": 0.741312,
+    "ASSOC_WETLAND_PROTECTION_AREA_SPECIE": 0.006556
+  },
+  "attribute": {
+    "WETLAND_PROTECTION_AREA": {
+      "location": 0.782128,
+      "description": 0.785877
+    },
+    "SPECIE": {
+      "type": 0.736841,
+      "quantity": 0.737169,
+      "growth_status": 0.742699
+    },
+    "RECORD": {
+      "recording_time": 0.758141,
+      "specie_quantity": 0.755649
+    },
+    "PERSONNEL": {
+      "name": 0.750974,
+      "role": 0.753478
+    },
+    "SENSOR": {
+      "sensor_id": 0.749604,
+      "type": 0.756266
+    },
+    "ENVIRONMENTAL_CHANGE": {
+      "temperature": 0.753171,
+      "humidity": 0.757852,
+      "rainfall": 0.755526,
+      "change_time": 0.753463
+    },
+    "ASSOC_WETLAND_PROTECTION_AREA_SPECIE": {
+      "assoc_wetland_protection_area_specie_id": 0.006556,
+      "wetland_protection_area_id": 0.006556,
+      "specie_id": 0.006556
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "description": "Each wetland protection area can have many records, and each record is associated with one wetland protection area.",
+      "probability": 0.007669
+    },
+    {
+      "entity_1": "RECORD",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "description": "Each record is made by one personnel, and each personnel can make many records.",
+      "probability": 0.999154
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "ASSOC_WETLAND_PROTECTION_AREA_SPECIE",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006556
+    },
+    {
+      "entity_1": "SPECIE",
+      "entity_2": "ASSOC_WETLAND_PROTECTION_AREA_SPECIE",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006556
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "ENVIRONMENTAL_CHANGE",
+      "cardinality": "1:N",
+      "description": "Each sensor can record many environmental changes, and each environmental change is recorded by one sensor.",
+      "probability": 0.311143
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "SENSOR",
+      "cardinality": "1:N",
+      "description": "Each wetland protection area can have many sensors, and each sensor is associated with one wetland protection area.",
+      "probability": 0.700388
+    }
+  ],
+  "processing_time": 9.09
+}

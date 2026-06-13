@@ -1,0 +1,100 @@
+{
+  "entity": [
+    "PRODUCTION",
+    "EQUIPMENT",
+    "USER",
+    "ANNOUNCEMENT",
+    "JOB_POSITION",
+    "INSPECTION",
+    "REPAIR",
+    "QUALITY_REPORT",
+    "ASSOC_USER_EQUIPMENT"
+  ],
+  "attribute": {
+    "PRODUCTION": [
+      "report_type",
+      "date",
+      "production_datum",
+      "completion_status",
+      "metal_recovery_rate",
+      "grade"
+    ],
+    "EQUIPMENT": [
+      "model",
+      "location",
+      "operation_status",
+      "main_category",
+      "subcategory"
+    ],
+    "USER": [
+      "username",
+      "role",
+      "permission_status",
+      "operation_history"
+    ],
+    "ANNOUNCEMENT": [
+      "content",
+      "release_time",
+      "announcement_status"
+    ],
+    "JOB_POSITION": [
+      "position_name",
+      "position_description",
+      "job_requirement",
+      "position_match_rate"
+    ],
+    "INSPECTION": [
+      "inspection_plan",
+      "progress",
+      "inspector",
+      "equipment_id"
+    ],
+    "REPAIR": [
+      "failure_type",
+      "failure_time",
+      "processing_status",
+      "repair_detail",
+      "equipment_id"
+    ],
+    "QUALITY_REPORT": [
+      "recovery_rate",
+      "grade",
+      "metal_grade",
+      "daily_report",
+      "production_id"
+    ],
+    "ASSOC_USER_EQUIPMENT": [
+      "assoc_user_equipment_id",
+      "user_id",
+      "equipment_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "REPAIR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.1455,
+  "ilp_runtime": 0.138
+}

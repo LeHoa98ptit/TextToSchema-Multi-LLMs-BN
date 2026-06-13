@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "STUDENT",
+    "ADMINISTRATOR",
+    "BOOK",
+    "CATEGORY",
+    "BORROWING_RECORD",
+    "AUDIT",
+    "ASSOC_BOOK_CATEGORY"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_number",
+      "grade",
+      "major",
+      "contact_number",
+      "email"
+    ],
+    "ADMINISTRATOR": [
+      "job_number",
+      "contact_number",
+      "email",
+      "position"
+    ],
+    "BOOK": [
+      "book_number",
+      "title",
+      "author",
+      "publisher",
+      "publication_date",
+      "stock_quantity",
+      "borrow_quantity"
+    ],
+    "CATEGORY": [
+      "category_name",
+      "category_description"
+    ],
+    "BORROWING_RECORD": [
+      "borrow_date",
+      "return_date",
+      "review_status",
+      "student_number",
+      "book_number"
+    ],
+    "AUDIT": [
+      "audit_date",
+      "audit_result",
+      "administrator_job_number",
+      "book_number",
+      "borrowing_status",
+      "audit_comments"
+    ],
+    "ASSOC_BOOK_CATEGORY": [
+      "assoc_book_category_id",
+      "book_id",
+      "category_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "BORROWING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "BORROWING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROWING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 65.2519,
+  "ilp_runtime": 0.069
+}

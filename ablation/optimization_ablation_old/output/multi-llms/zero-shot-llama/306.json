@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "TASK",
+    "SCHEDULER",
+    "TRIGGER",
+    "LOCK",
+    "TASK_TRIGGER"
+  ],
+  "attribute": {
+    "TASK": [
+      "task id",
+      "task description",
+      "class persistence flag",
+      "concurrent execution flag"
+    ],
+    "SCHEDULER": [
+      "scheduler id",
+      "scheduler status",
+      "scheduler configuration",
+      "scheduler log"
+    ],
+    "TRIGGER": [
+      "trigger id",
+      "trigger type",
+      "trigger record",
+      "repeat count",
+      "cron expression",
+      "timezone",
+      "blob"
+    ],
+    "LOCK": [
+      "lock id",
+      "lock status",
+      "lock description",
+      "acquisition time",
+      "release time"
+    ],
+    "TASK_TRIGGER": [
+      "task_trigger_id",
+      "task_id",
+      "trigger_id",
+      "execution_time",
+      "execution_time_priority",
+      "trigger_status",
+      "start_time",
+      "end_time",
+      "calendar",
+      "fault_instruction"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.0885,
+  "ilp_runtime": 0.042
+}

@@ -1,0 +1,103 @@
+{
+  "filename": "488.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "WORKORDER": 0.524431,
+    "EMAILCONFIGURATION": 0.546168,
+    "EMPLOYEE": 0.622459,
+    "EMAILSERVER": 0.584773,
+    "ASSOC_EMPLOYEE_EMAILSERVER": 0.448619,
+    "ASSOC_DEPARTMENT_EMPLOYEE": 0.999738
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "departmentdescription": 0.559572,
+      "emailaddress": 0.569256,
+      "sortorder": 0.564943,
+      "autoreplydisabled": 0.548504,
+      "hideuser": 0.554075
+    },
+    "WORKORDER": {
+      "workorderdescription": 0.546275,
+      "respondemail": 0.57142,
+      "pipeline": 0.547984
+    },
+    "EMAILCONFIGURATION": {
+      "emailserverhost": 0.532547,
+      "portnumber": 0.532528,
+      "loginusername": 0.541451,
+      "password": 0.537974
+    },
+    "EMPLOYEE": {
+      "employeename": 0.545542,
+      "email": 0.568254
+    },
+    "EMAILSERVER": {
+      "serveraddress": 0.535123,
+      "maintenancedatetime": 0.538926
+    },
+    "ASSOC_EMPLOYEE_EMAILSERVER": {
+      "assoc_employee_emailserver_id": 0.448619,
+      "employee_id": 0.448619,
+      "emailserver_id": 0.448619
+    },
+    "ASSOC_DEPARTMENT_EMPLOYEE": {
+      "assoc_department_employee_id": 0.999738,
+      "department_id": 0.999738,
+      "employee_id": 0.999738
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORKORDER",
+      "cardinality": "1:N",
+      "probability": 0.003837
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMAILCONFIGURATION",
+      "cardinality": "1:1",
+      "probability": 0.132908
+    },
+    {
+      "entity_1": "EMAILCONFIGURATION",
+      "entity_2": "EMAILSERVER",
+      "cardinality": "1:1",
+      "probability": 0.98014
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_EMAILSERVER",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_EMAILSERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.448619
+    },
+    {
+      "entity_1": "EMAILSERVER",
+      "entity_2": "ASSOC_EMPLOYEE_EMAILSERVER",
+      "description": "One EMAILSERVER can be associated with many ASSOC_EMPLOYEE_EMAILSERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.448619
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_DEPARTMENT_EMPLOYEE",
+      "description": "One DEPARTMENT can be associated with many ASSOC_DEPARTMENT_EMPLOYEE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999738
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_DEPARTMENT_EMPLOYEE",
+      "description": "One EMPLOYEE can be associated with many ASSOC_DEPARTMENT_EMPLOYEE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999738
+    }
+  ],
+  "processing_time": 12.22
+}

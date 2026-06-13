@@ -1,0 +1,124 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "APPLICATION",
+    "APPLICATION_STATUS",
+    "CARD_TYPE",
+    "CREDIT_CARD",
+    "TRANSACTION",
+    "TRANSACTION_STATUS",
+    "NOTIFICATION"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "ssn",
+      "street",
+      "city",
+      "state",
+      "postal_code",
+      "country",
+      "email",
+      "phone_number",
+      "mobile_number"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "customer_id",
+      "submission_date",
+      "requested_limit",
+      "remarks",
+      "status_code",
+      "type_code"
+    ],
+    "APPLICATION_STATUS": [
+      "status_code",
+      "status_description"
+    ],
+    "CARD_TYPE": [
+      "type_code",
+      "type_name",
+      "annual_fee",
+      "reward_program"
+    ],
+    "CREDIT_CARD": [
+      "card_number",
+      "customer_id",
+      "application_id",
+      "type_code",
+      "issue_date",
+      "expiry_date",
+      "credit_limit",
+      "current_balance",
+      "activation_date",
+      "activation_method",
+      "activation_status",
+      "activation_pin"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "card_number",
+      "transaction_timestamp",
+      "merchant_name",
+      "amount",
+      "currency",
+      "description",
+      "status_code"
+    ],
+    "TRANSACTION_STATUS": [
+      "status_code",
+      "status_description"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "customer_id",
+      "card_number",
+      "notification_type",
+      "sent_timestamp",
+      "content"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CARD_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 62.8845,
+  "ilp_runtime": 0.054
+}

@@ -1,0 +1,115 @@
+{
+  "filename": "470.txt",
+  "entity": {
+    "ENTERPRISE": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "MENU": 0.701636,
+    "ORDER": 0.817574,
+    "PAYMENT_REQUEST": 0.798959,
+    "DELIVERY_RECORD": 0.761333,
+    "DELIVERY_PERSON": 0.774884,
+    "RESTAURANT_STAFF": 0.745547,
+    "ASSOC_MENU_ORDER": 0.122613
+  },
+  "attribute": {
+    "ENTERPRISE": {
+      "name": 0.762132,
+      "address": 0.767844
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.759351,
+      "phone_number": 0.763715,
+      "address": 0.768837
+    },
+    "MENU": {
+      "menu_id": 0.74425,
+      "dish_name": 0.756907,
+      "dish_price": 0.760687,
+      "special_offer_indicator": 0.755045
+    },
+    "ORDER": {
+      "order_number": 0.758557,
+      "total_price": 0.749368,
+      "delivery_time": 0.757725,
+      "delivery_address": 0.763979,
+      "payment_method": 0.753911
+    },
+    "PAYMENT_REQUEST": {
+      "payment_status": 0.755251
+    },
+    "DELIVERY_RECORD": {
+      "delivery_time": 0.753878,
+      "delivery_address": 0.758467
+    },
+    "DELIVERY_PERSON": {
+      "delivery_person_id": 0.758424,
+      "phone_number": 0.759333,
+      "address": 0.763411
+    },
+    "RESTAURANT_STAFF": {
+      "staff_id": 0.772852,
+      "phone_number": 0.77158,
+      "address": 0.775549
+    },
+    "ASSOC_MENU_ORDER": {
+      "assoc_menu_order_id": 0.122613,
+      "menu_id": 0.122613,
+      "order_id": 0.122613
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ENTERPRISE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "probability": 0.697409
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.0002
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ASSOC_MENU_ORDER",
+      "description": "One MENU can be associated with many ASSOC_MENU_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122613
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_MENU_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_MENU_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122613
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:1",
+      "probability": 0.099258
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_RECORD",
+      "cardinality": "1:1",
+      "probability": 0.008279
+    },
+    {
+      "entity_1": "DELIVERY_PERSON",
+      "entity_2": "DELIVERY_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.990766
+    },
+    {
+      "entity_1": "RESTAURANT_STAFF",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.153127
+    }
+  ],
+  "processing_time": 26.21
+}

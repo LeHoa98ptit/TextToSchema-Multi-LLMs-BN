@@ -1,0 +1,134 @@
+{
+  "filename": "327.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "ADDRESS": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_LINE": 0.740083,
+    "RESOURCE": 0.817574,
+    "RESOURCE_TYPE": 0.767812,
+    "CURRENCY": 0.736858
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.756837,
+      "first_name": 0.764415,
+      "last_name": 0.760466,
+      "phone_number": 0.756992,
+      "email": 0.761527,
+      "date_of_birth": 0.755796,
+      "created_at": 0.744886,
+      "updated_at": 0.741342
+    },
+    "ADDRESS": {
+      "address_id": 0.749272,
+      "customer_id": 0.759319,
+      "country": 0.758855,
+      "city": 0.761115,
+      "postal_code": 0.757319,
+      "district": 0.760637,
+      "street_address": 0.754736,
+      "is_primary": 0.744593,
+      "created_at": 0.73586,
+      "updated_at": 0.73761
+    },
+    "ORDER": {
+      "order_id": 0.745345,
+      "customer_id": 0.758428,
+      "address_id": 0.756206,
+      "order_date": 0.744638,
+      "currency_code": 0.753388,
+      "start_time": 0.74755,
+      "status": 0.758618,
+      "total_amount": 0.749276,
+      "created_at": 0.737426,
+      "updated_at": 0.738526
+    },
+    "ORDER_LINE": {
+      "order_id": 0.747872,
+      "resource_id": 0.748248,
+      "quantity": 0.758543,
+      "unit_price": 0.752217,
+      "line_total": 0.745981,
+      "created_at": 0.739818,
+      "updated_at": 0.740248
+    },
+    "RESOURCE": {
+      "resource_id": 0.733965,
+      "resource_name": 0.73515,
+      "resource_type_id": 0.735363,
+      "description": 0.755933,
+      "price": 0.738446,
+      "created_at": 0.727691,
+      "updated_at": 0.724509
+    },
+    "RESOURCE_TYPE": {
+      "type_id": 0.736464,
+      "type_name": 0.739653,
+      "description": 0.755376,
+      "created_at": 0.729421,
+      "updated_at": 0.72645
+    },
+    "CURRENCY": {
+      "currency_code": 0.746421,
+      "currency_name": 0.746938,
+      "symbol": 0.740452
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A customer may have multiple addresses",
+      "probability": 0.370323
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place many orders",
+      "probability": 0.964007
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "Each order is shipped to a single address",
+      "probability": 0.855181
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_LINE",
+      "cardinality": "1:N",
+      "description": "Each order consists of one or more order lines",
+      "probability": 0.999252
+    },
+    {
+      "entity_1": "ORDER_LINE",
+      "entity_2": "RESOURCE",
+      "cardinality": "N:1",
+      "description": "An order line references a single resource (product)",
+      "probability": 0.06695
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each resource belongs to one resource type",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CURRENCY",
+      "cardinality": "N:1",
+      "description": "An order is priced in a single currency",
+      "probability": 0.288732
+    }
+  ],
+  "processing_time": 33.29,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the evaluation suggestions: (1) ORDER_LINE now uses a composite primary key (order_id, resource_id) instead of a surrogate key, enforcing one line per resource per order. (2) Added UNIQUE constraint on CUSTOMER.phone_number (not shown in JSON but documented for DDL). (3) Added address_id foreign key to ORDER to capture the delivery address for each order. (4) Introduced audit fields (created_at, updated_at) on all major entities for traceability. (5) Clarified that ORDER.status should be implemented as an ENUM/lookup for consistent status values. (6) Retained the lookup tables RESOURCE_TYPE and CURRENCY, and kept the 1:N relationships that reflect the business rules."
+  }
+}

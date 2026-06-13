@@ -1,0 +1,160 @@
+{
+  "filename": "265.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "CHESS_PIECE": 0.59298,
+    "CHESS_GAME": 0.748719,
+    "CHESSBOARD": 0.622459,
+    "BATCH": 0.438316,
+    "PRODUCTION_LINE": 0.451726,
+    "QUALITY_INSPECTION": 0.597678,
+    "DEFECT_TYPE": 0.452593,
+    "QUALITY_ALERT": 0.507374,
+    "QUALITY_INSPECTION_MODEL": 0.566921
+  },
+  "attribute": {
+    "COMPANY": {
+      "company id": 0.533208,
+      "company name": 0.53972
+    },
+    "CHESS_PIECE": {
+      "chess piece id": 0.55309,
+      "color": 0.554348,
+      "position": 0.555633
+    },
+    "CHESS_GAME": {
+      "chess game id": 0.560937,
+      "chess game name": 0.56085,
+      "chess_game_id": 0.748719,
+      "chess_piece_id": 0.748719,
+      "chessboard_id": 0.748719,
+      "chess_game_name": 0.748719
+    },
+    "CHESSBOARD": {
+      "chessboard id": 0.559169,
+      "chessboard type": 0.56627
+    },
+    "BATCH": {
+      "batch id": 0.508415,
+      "batch number": 0.505876
+    },
+    "PRODUCTION_LINE": {
+      "production line id": 0.537958,
+      "production line name": 0.535575
+    },
+    "QUALITY_INSPECTION": {
+      "quality inspection id": 0.547854,
+      "inspection time": 0.541595,
+      "result": 0.552766
+    },
+    "DEFECT_TYPE": {
+      "defect type id": 0.539296,
+      "defect type name": 0.532957
+    },
+    "QUALITY_ALERT": {
+      "quality alert id": 0.530241,
+      "alert message": 0.526163,
+      "quality_alert_id": 0.450189,
+      "quality_inspection_id": 0.450189,
+      "defect_type_id": 0.450189,
+      "alert_message": 0.450189
+    },
+    "QUALITY_INSPECTION_MODEL": {
+      "quality inspection model id": 0.549281,
+      "model name": 0.549839,
+      "model running time": 0.548846,
+      "model result": 0.552583
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CHESS_PIECE",
+      "description": "Company produces chess piece",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.065275
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "CHESS_GAME",
+      "description": "One CHESS_PIECE can be associated with many CHESS_GAME.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.748719
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_GAME",
+      "description": "One CHESSBOARD can be associated with many CHESS_GAME.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.748719
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "BATCH",
+      "description": "Batch is related to a specific chessboard",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003761
+    },
+    {
+      "entity_1": "BATCH",
+      "entity_2": "PRODUCTION_LINE",
+      "description": "Batch is produced on a production line",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004322
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "QUALITY_INSPECTION",
+      "description": "Company performs quality inspection",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 2e-06
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "QUALITY_INSPECTION",
+      "description": "Chess piece undergoes quality inspection",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.859498
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "description": "One QUALITY_INSPECTION can be associated with many QUALITY_ALERT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.450189
+    },
+    {
+      "entity_1": "DEFECT_TYPE",
+      "entity_2": "QUALITY_ALERT",
+      "description": "One DEFECT_TYPE can be associated with many QUALITY_ALERT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.450189
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "QUALITY_INSPECTION_MODEL",
+      "description": "Company uses a quality inspection model",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 8e-06
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION_MODEL",
+      "entity_2": "QUALITY_INSPECTION",
+      "description": "Quality inspection model is used for quality inspections",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 12.72
+}

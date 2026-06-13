@@ -1,0 +1,66 @@
+{
+  "filename": "386.txt",
+  "entity": {
+    "USER": 0.622459,
+    "BLOCK": 0.622459,
+    "TRANSACTION": 0.622459,
+    "ASSOC_USER_TRANSACTION": 0.990353
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.505934,
+      "public_key": 0.51796,
+      "address": 0.523589,
+      "creation_time": 0.52572
+    },
+    "BLOCK": {
+      "block_hash": 0.523738,
+      "creation_time": 0.522221,
+      "block_size": 0.522263,
+      "previous_block": 0.517134
+    },
+    "TRANSACTION": {
+      "transaction_time": 0.546673,
+      "operation_type": 0.551678,
+      "operation_content": 0.550757,
+      "sender_id": 0.542705,
+      "receiver_id": 0.540682,
+      "block_id": 0.546537
+    },
+    "ASSOC_USER_TRANSACTION": {
+      "assoc_user_transaction_id": 0.990353,
+      "user_id": 0.990353,
+      "transaction_id": 0.990353
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_TRANSACTION",
+      "description": "One USER can be associated with many ASSOC_USER_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990353
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_USER_TRANSACTION",
+      "description": "One TRANSACTION can be associated with many ASSOC_USER_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990353
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A block can contain multiple transactions",
+      "probability": 0.999495
+    }
+  ],
+  "processing_time": 14.19,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed unnecessary OPERATION entity and incorporated its attributes into the TRANSACTION entity to improve efficiency, while retaining the strengths of the original model and addressing identified issues."
+  }
+}

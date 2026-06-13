@@ -1,0 +1,88 @@
+{
+  "filename": "408.txt",
+  "entity": {
+    "COURSE": 0.622459,
+    "CHAPTER": 0.622459,
+    "QUESTION_TYPE": 0.586254,
+    "QUESTION": 0.622459,
+    "ANSWER": 0.559073
+  },
+  "attribute": {
+    "COURSE": {
+      "course_id": 0.554121,
+      "title": 0.547249,
+      "summary": 0.545348,
+      "created_at": 0.532715,
+      "status": 0.545451
+    },
+    "CHAPTER": {
+      "chapter_id": 0.522996,
+      "course_id": 0.55743,
+      "title": 0.529043,
+      "content": 0.54216,
+      "position": 0.530417,
+      "order_index": 0.514446,
+      "created_at": 0.516411,
+      "updated_at": 0.519702
+    },
+    "QUESTION_TYPE": {
+      "type_id": 0.533029,
+      "name": 0.547241,
+      "description": 0.55043
+    },
+    "QUESTION": {
+      "question_id": 0.5321,
+      "chapter_id": 0.541156,
+      "type_id": 0.533778,
+      "text": 0.541637,
+      "points": 0.528916,
+      "difficulty": 0.527615,
+      "created_at": 0.507585,
+      "updated_at": 0.5133
+    },
+    "ANSWER": {
+      "answer_id": 0.517841,
+      "question_id": 0.526605,
+      "text": 0.526748,
+      "is_correct": 0.508376,
+      "order_index": 0.514317,
+      "created_at": 0.501318,
+      "updated_at": 0.50727
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CHAPTER",
+      "cardinality": "1:N",
+      "description": "A course contains multiple ordered chapters",
+      "probability": 0.614173
+    },
+    {
+      "entity_1": "CHAPTER",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "description": "Each chapter includes multiple questions",
+      "probability": 0.761308
+    },
+    {
+      "entity_1": "QUESTION_TYPE",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "description": "A question is assigned a single type",
+      "probability": 0.05203
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "description": "A question has several answer options, one marked as correct",
+      "probability": 0.999555
+    }
+  ],
+  "processing_time": 9.5,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added 'order_index' to CHAPTER and ANSWER for explicit sequencing. Included 'created_at' and 'updated_at' timestamps on CHAPTER, QUESTION, and ANSWER for auditability. Retained core entities and relationships while expanding attribute sets for better examination functionality. Noted that foreign‑key constraints and a UNIQUE constraint on (question_id, is_correct) should be enforced at the DB level to guarantee a single correct answer per question."
+  }
+}

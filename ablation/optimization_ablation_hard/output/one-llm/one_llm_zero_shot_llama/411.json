@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "ADDRESS",
+    "PRODUCT",
+    "BRAND",
+    "ORDER",
+    "ORDER_DETAIL",
+    "PAYMENT",
+    "ASSOC_PRODUCT_BRAND",
+    "ASSOC_ORDER_DETAIL_PRODUCT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "customer_type",
+      "credit_rating"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "zip"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_specification",
+      "unit_price",
+      "inventory_quantity",
+      "production_date"
+    ],
+    "BRAND": [
+      "brand_id",
+      "brand_name"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_time",
+      "order_status"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "product_quantity",
+      "unit_price",
+      "total"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "payment_method",
+      "payment_status",
+      "payment_time"
+    ],
+    "ASSOC_PRODUCT_BRAND": [
+      "assoc_product_brand_id",
+      "product_id",
+      "brand_id"
+    ],
+    "ASSOC_ORDER_DETAIL_PRODUCT": [
+      "assoc_order_detail_product_id",
+      "order_detail_id",
+      "product_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 78.7921,
+  "ilp_runtime": 0.186
+}

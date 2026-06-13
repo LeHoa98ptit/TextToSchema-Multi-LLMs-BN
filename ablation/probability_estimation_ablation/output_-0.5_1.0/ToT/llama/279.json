@@ -1,0 +1,79 @@
+{
+  "filename": "279.txt",
+  "entity": {
+    "PROPERTY": 0.622459,
+    "REPORT": 0.622459,
+    "ANALYSIS": 0.622459,
+    "SALE": 0.622459,
+    "ASSOC_REPORT_ANALYSIS": 0.991266
+  },
+  "attribute": {
+    "PROPERTY": {
+      "address": 0.537023,
+      "area": 0.544617,
+      "sale_price": 0.539633,
+      "sale_date": 0.542686,
+      "property_type": 0.527805
+    },
+    "REPORT": {
+      "report_date": 0.532888,
+      "report_type": 0.535718,
+      "analysis_result": 0.541851,
+      "report_id": 0.529382
+    },
+    "ANALYSIS": {
+      "analysis_id": 0.532239,
+      "analysis_type": 0.537137,
+      "analysis_description": 0.5489
+    },
+    "SALE": {
+      "sale_id": 0.534834,
+      "sale_date": 0.53554,
+      "sale_price": 0.531644,
+      "sale_status": 0.535734,
+      "sale_agent": 0.53137
+    },
+    "ASSOC_REPORT_ANALYSIS": {
+      "assoc_report_analysis_id": 0.991266,
+      "report_id": 0.991266,
+      "analysis_id": 0.991266
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "SALE",
+      "cardinality": "1:1",
+      "description": "A property has one sale",
+      "probability": 0.586498
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A sale can have multiple reports",
+      "probability": 0.009632
+    },
+    {
+      "entity_1": "REPORT",
+      "entity_2": "ASSOC_REPORT_ANALYSIS",
+      "description": "One REPORT can be associated with many ASSOC_REPORT_ANALYSIS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991266
+    },
+    {
+      "entity_1": "ANALYSIS",
+      "entity_2": "ASSOC_REPORT_ANALYSIS",
+      "description": "One ANALYSIS can be associated with many ASSOC_REPORT_ANALYSIS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991266
+    }
+  ],
+  "processing_time": 11.6,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added sale_status and sale_agent attributes to the SALE entity to further capture the complexity of the domain, while retaining the strengths of the original model and addressing the identified issues."
+  }
+}

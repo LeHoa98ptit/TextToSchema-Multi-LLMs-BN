@@ -1,0 +1,97 @@
+{
+  "entity": [
+    "COMPANY",
+    "USER",
+    "API_KEY",
+    "EMPLOYEE",
+    "SITE",
+    "DEVICE",
+    "ASSOC_USER_SITE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "creation_date",
+      "update_date",
+      "website"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password",
+      "salt",
+      "display_name",
+      "role",
+      "last_login_time",
+      "creation_date",
+      "update_date",
+      "company_id"
+    ],
+    "API_KEY": [
+      "api_key_id",
+      "private_key",
+      "creation_date",
+      "update_date",
+      "application_reason",
+      "key_uri",
+      "user_id"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "position",
+      "salary",
+      "creation_date",
+      "update_date",
+      "company_id"
+    ],
+    "SITE": [
+      "site_id",
+      "hostname",
+      "abbreviation",
+      "creation_date",
+      "update_date",
+      "is_deprecated"
+    ],
+    "DEVICE": [
+      "device_id",
+      "creation_date",
+      "update_date",
+      "employee_id"
+    ],
+    "ASSOC_USER_SITE": [
+      "assoc_user_site_id",
+      "user_id",
+      "site_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "API_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_SITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "ASSOC_USER_SITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.7221,
+  "ilp_runtime": 0.067
+}

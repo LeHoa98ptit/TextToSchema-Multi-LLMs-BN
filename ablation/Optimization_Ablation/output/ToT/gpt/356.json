@@ -1,0 +1,119 @@
+{
+  "entity": [
+    "WORK_ITEM",
+    "ATTRIBUTE",
+    "ATTRIBUTE_VALUE",
+    "STATUS",
+    "WORK_ITEM_STATUS_HISTORY",
+    "LINK",
+    "LINK_TYPE",
+    "USER",
+    "WORK_ITEM_AUDIT"
+  ],
+  "attribute": {
+    "WORK_ITEM": [
+      "id",
+      "description",
+      "creation_date",
+      "update_date",
+      "current_status_id",
+      "is_active"
+    ],
+    "ATTRIBUTE": [
+      "id",
+      "name",
+      "data_type",
+      "is_active"
+    ],
+    "ATTRIBUTE_VALUE": [
+      "id",
+      "work_item_id",
+      "attribute_id",
+      "value"
+    ],
+    "STATUS": [
+      "id",
+      "name",
+      "description"
+    ],
+    "WORK_ITEM_STATUS_HISTORY": [
+      "id",
+      "work_item_id",
+      "status_id",
+      "changed_at",
+      "changed_by"
+    ],
+    "LINK": [
+      "id",
+      "source_work_item_id",
+      "target_work_item_id",
+      "link_type_id",
+      "parent_link_id",
+      "created_at",
+      "is_active"
+    ],
+    "LINK_TYPE": [
+      "id",
+      "name",
+      "description"
+    ],
+    "USER": [
+      "id",
+      "username",
+      "email"
+    ],
+    "WORK_ITEM_AUDIT": [
+      "id",
+      "work_item_id",
+      "action_type",
+      "action_timestamp",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "WORK_ITEM",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ATTRIBUTE_VALUE",
+      "entity_2": "ATTRIBUTE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_ITEM",
+      "entity_2": "WORK_ITEM_STATUS_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LINK",
+      "entity_2": "LINK_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LINK",
+      "entity_2": "LINK",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_ITEM_AUDIT",
+      "entity_2": "WORK_ITEM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_ITEM_AUDIT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 67.7854,
+  "ilp_runtime": 0.046
+}

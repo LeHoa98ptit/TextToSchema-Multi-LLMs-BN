@@ -1,0 +1,90 @@
+{
+  "filename": "269.txt",
+  "entity": {
+    "RESTAURANT": 0.817574,
+    "TABLE": 0.817574,
+    "CUSTOMER": 0.817574,
+    "RESERVATION": 0.817574,
+    "RESERVATION_STATUS": 0.806402,
+    "RESERVATION_TABLE": 0.779181
+  },
+  "attribute": {
+    "RESTAURANT": {
+      "restaurant_id": 0.777558,
+      "name": 0.774165,
+      "address": 0.778597
+    },
+    "TABLE": {
+      "table_id": 0.757279,
+      "restaurant_id": 0.779573,
+      "table_number": 0.766358,
+      "location": 0.77117,
+      "seating_capacity": 0.783091
+    },
+    "CUSTOMER": {
+      "customer_id": 0.760686,
+      "first_name": 0.755607,
+      "last_name": 0.759534,
+      "phone": 0.760905,
+      "email": 0.754434
+    },
+    "RESERVATION": {
+      "reservation_id": 0.771083,
+      "customer_id": 0.776333,
+      "reservation_time": 0.770111,
+      "number_of_diners": 0.788687,
+      "special_requests": 0.763008,
+      "status_id": 0.770276
+    },
+    "RESERVATION_STATUS": {
+      "status_id": 0.768956,
+      "status_name": 0.769267
+    },
+    "RESERVATION_TABLE": {
+      "reservation_id": 0.777906,
+      "table_id": 0.778111
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "cardinality": "1:N",
+      "description": "A restaurant owns many tables; each table belongs to one restaurant",
+      "probability": 0.78341
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can make multiple reservations",
+      "probability": 0.006324
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_STATUS",
+      "cardinality": "N:1",
+      "description": "Each reservation has one status; many reservations can share the same status (e.g., Confirmed, Cancelled)",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_TABLE",
+      "cardinality": "1:N",
+      "description": "A reservation can be linked to one or more reservation‑table rows (i.e., one or more tables)",
+      "probability": 0.999936
+    },
+    {
+      "entity_1": "TABLE",
+      "entity_2": "RESERVATION_TABLE",
+      "cardinality": "1:N",
+      "description": "A table can appear in many reservation‑table rows over time",
+      "probability": 0.969801
+    }
+  ],
+  "processing_time": 16.46,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed non‑essential attributes (is_outdoor, loyalty_points) for a leaner schema. Added explicit foreign‑key attributes (restaurant_id in TABLE, customer_id and status_id in RESERVATION). Clarified primary‑key composition for RESERVATION_TABLE (reservation_id, table_id) and noted it as the associative entity for the many‑to‑many relationship between reservations and tables. Corrected the cardinality between RESERVATION and RESERVATION_STATUS to N:1. Added a UNIQUE constraint concept for (restaurant_id, table_number) to enforce real‑world uniqueness (not shown in JSON). Retained all strengths of the previous comprehensive design."
+  }
+}

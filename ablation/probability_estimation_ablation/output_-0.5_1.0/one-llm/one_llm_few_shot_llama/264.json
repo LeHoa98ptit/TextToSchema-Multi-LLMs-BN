@@ -1,0 +1,104 @@
+{
+  "filename": "264.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ROOM": 0.622459,
+    "CUSTOMER": 0.622459,
+    "RESERVATION_APPLICATION": 0.600368,
+    "ARRANGEMENT": 0.5071,
+    "ASSOC_EMPLOYEE_RESERVATION_APPLICATION": 0.213225
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department_number": 0.523981,
+      "department_name": 0.521459,
+      "department_manager": 0.525492
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.541128,
+      "position": 0.545308,
+      "phone_number": 0.537735,
+      "salary": 0.520089
+    },
+    "ROOM": {
+      "room_number": 0.546784,
+      "room_type": 0.544902,
+      "charge": 0.538184,
+      "status": 0.549395
+    },
+    "CUSTOMER": {
+      "customer_number": 0.536366,
+      "unit": 0.537201,
+      "contact_person": 0.527066,
+      "contact_number": 0.52688,
+      "contact_address": 0.516563
+    },
+    "RESERVATION_APPLICATION": {
+      "application_number": 0.53211,
+      "customer_number": 0.542317,
+      "check_time": 0.527753,
+      "number_day": 0.531434,
+      "room_type": 0.552669
+    },
+    "ARRANGEMENT": {
+      "room_number": 0.557623,
+      "customer_gender": 0.558431,
+      "d_number": 0.541908,
+      "check_time": 0.53742,
+      "telephone_number": 0.539329
+    },
+    "ASSOC_EMPLOYEE_RESERVATION_APPLICATION": {
+      "assoc_employee_reservation_application_id": 0.213225,
+      "employee_id": 0.213225,
+      "reservation_application_id": 0.213225
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Each department can have many employees, and each employee belongs to one department.",
+      "probability": 0.999871
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_RESERVATION_APPLICATION",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_RESERVATION_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.213225
+    },
+    {
+      "entity_1": "RESERVATION_APPLICATION",
+      "entity_2": "ASSOC_EMPLOYEE_RESERVATION_APPLICATION",
+      "description": "One RESERVATION_APPLICATION can be associated with many ASSOC_EMPLOYEE_RESERVATION_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.213225
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION_APPLICATION",
+      "cardinality": "1:N",
+      "description": "Each customer can have many reservation applications, and each reservation application corresponds to one customer.",
+      "probability": 0.000753
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "Each room can have many arrangements, and each arrangement corresponds to one room.",
+      "probability": 0.991296
+    },
+    {
+      "entity_1": "RESERVATION_APPLICATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "Each reservation application can have many arrangements, and each arrangement corresponds to one reservation application.",
+      "probability": 0.442894
+    }
+  ],
+  "processing_time": 26.22
+}

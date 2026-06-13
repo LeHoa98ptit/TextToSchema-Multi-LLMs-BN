@@ -1,0 +1,165 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.622459,
+    "UNIT": 0.49775,
+    "EQUIPMENT": 0.622459,
+    "EQUIPMENT_USAGE": 0.555421,
+    "CONSUMABLE": 0.622459,
+    "CONSUMABLE_RECORD": 0.537877,
+    "HAZARDOUS_CHEMICAL": 0.580664,
+    "CHEMICAL_RECORD": 0.533027,
+    "EXPERIMENTAL_COURSE": 0.600608,
+    "ASSOC_USER_EXPERIMENTAL_COURSE": 0.972252,
+    "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE": 0.520775
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.501793,
+      "password": 0.51443,
+      "phone_number": 0.509013,
+      "associated_unit": 0.52799,
+      "role": 0.530641
+    },
+    "UNIT": {
+      "unit_id": 0.519631,
+      "unit_name": 0.523922
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.546808,
+      "name": 0.54236,
+      "model": 0.550155,
+      "category": 0.557461,
+      "manufacturer": 0.539182,
+      "status": 0.552321,
+      "acquisition_time": 0.545367
+    },
+    "EQUIPMENT_USAGE": {
+      "usage_id": 0.546985,
+      "usage_time": 0.54631,
+      "purpose": 0.549289,
+      "course_id": 0.573735
+    },
+    "CONSUMABLE": {
+      "consumable_id": 0.517569,
+      "name": 0.526145,
+      "category": 0.543012,
+      "inventory_quantity": 0.551991,
+      "status": 0.534788
+    },
+    "CONSUMABLE_RECORD": {
+      "record_id": 0.518655,
+      "record_type": 0.524254,
+      "quantity": 0.543707,
+      "record_time": 0.524909
+    },
+    "HAZARDOUS_CHEMICAL": {
+      "chemical_id": 0.531115,
+      "name": 0.522394,
+      "category": 0.539726,
+      "inventory_quantity": 0.558876,
+      "status": 0.533431,
+      "safety_info": 0.537011,
+      "purchase_time": 0.537831
+    },
+    "CHEMICAL_RECORD": {
+      "record_id": 0.528756,
+      "record_type": 0.536104,
+      "quantity": 0.543266,
+      "record_time": 0.532093
+    },
+    "EXPERIMENTAL_COURSE": {
+      "course_id": 0.548088,
+      "name": 0.539453,
+      "class_time": 0.538382,
+      "class_location": 0.540369
+    },
+    "ASSOC_USER_EXPERIMENTAL_COURSE": {
+      "assoc_user_experimental_course_id": 0.972252,
+      "user_id": 0.972252,
+      "experimental_course_id": 0.972252
+    },
+    "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE": {
+      "assoc_equipment_experimental_course_id": 0.520775,
+      "equipment_id": 0.520775,
+      "experimental_course_id": 0.520775
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "probability": 0.981153
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "probability": 0.949104
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "probability": 0.999981
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EXPERIMENTAL_COURSE",
+      "description": "One USER can be associated with many ASSOC_USER_EXPERIMENTAL_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972252
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_USER_EXPERIMENTAL_COURSE",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many ASSOC_USER_EXPERIMENTAL_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972252
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE",
+      "description": "One EQUIPMENT can be associated with many ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.520775
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.520775
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.999064
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.996999
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "CHEMICAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.991259
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.781542
+    }
+  ],
+  "processing_time": 27.61
+}

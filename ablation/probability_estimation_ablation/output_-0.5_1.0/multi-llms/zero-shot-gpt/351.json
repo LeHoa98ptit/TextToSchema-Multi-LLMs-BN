@@ -1,0 +1,117 @@
+{
+  "filename": "351.txt",
+  "entity": {
+    "USER": 0.519166,
+    "ROLE": 0.501975,
+    "OBJECT": 0.622459,
+    "PERMISSION": 0.622459,
+    "AUDIT_LOG": 0.446333,
+    "ACCESS_ATTEMPT": 0.526849
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.526373,
+      "contact info": 0.531331
+    },
+    "ROLE": {
+      "role id": 0.542575,
+      "role name": 0.537108
+    },
+    "OBJECT": {
+      "object id": 0.523343,
+      "object type": 0.534078,
+      "class id": 0.522506,
+      "parent object id": 0.531076,
+      "owner user id": 0.552514
+    },
+    "PERMISSION": {
+      "permission id": 0.555017,
+      "object id": 0.561459,
+      "role id": 0.559177,
+      "is inherited": 0.566519,
+      "permission type": 0.565077
+    },
+    "AUDIT_LOG": {
+      "audit log id": 0.539193,
+      "timestamp": 0.529007,
+      "user id": 0.54354,
+      "object id": 0.546638,
+      "action": 0.544088,
+      "result": 0.535769
+    },
+    "ACCESS_ATTEMPT": {
+      "attempt id": 0.549722,
+      "timestamp": 0.53743,
+      "user id": 0.549474,
+      "object id": 0.547287,
+      "result": 0.550513
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each role can be assigned to many users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997223
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT",
+      "description": "An object may have one parent object and a parent can have many child objects",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "PERMISSION",
+      "description": "Permissions are defined for each object",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.067583
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "PERMISSION",
+      "description": "Permissions are granted to roles",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.491777
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "description": "Audit log entries record actions performed by users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994118
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "AUDIT_LOG",
+      "description": "Audit log entries are associated with objects",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.8e-05
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCESS_ATTEMPT",
+      "description": "Access attempts are made by users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.249034
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "ACCESS_ATTEMPT",
+      "description": "Access attempts target objects",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999478
+    }
+  ],
+  "processing_time": 20.45
+}

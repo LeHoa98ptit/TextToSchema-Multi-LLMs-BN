@@ -1,0 +1,120 @@
+{
+  "filename": "284.txt",
+  "entity": {
+    "RADIO_STATION": 0.600488,
+    "ADVERTISEMENT": 0.622459,
+    "CLIENT": 0.622459,
+    "BROADCAST_TIME_SLOT": 0.561216,
+    "ARRANGEMENT": 0.498225,
+    "ASSOC_ADVERTISEMENT_CLIENT": 0.99677,
+    "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT": 0.341646
+  },
+  "attribute": {
+    "RADIO_STATION": {
+      "name": 0.570245,
+      "location": 0.566537,
+      "contact_info": 0.572046
+    },
+    "ADVERTISEMENT": {
+      "content": 0.556648,
+      "duration": 0.557626
+    },
+    "CLIENT": {
+      "name": 0.524788,
+      "contact_info": 0.529496,
+      "address": 0.526304,
+      "industry": 0.526168
+    },
+    "BROADCAST_TIME_SLOT": {
+      "start_time": 0.564756,
+      "end_time": 0.566497,
+      "day_of_week": 0.555002,
+      "date": 0.569196
+    },
+    "ARRANGEMENT": {
+      "arrangement_date": 0.528189,
+      "start_time": 0.533698,
+      "end_time": 0.534047,
+      "advertisement_id": 0.558513,
+      "client_id": 0.529307,
+      "radio_station_id": 0.576172
+    },
+    "ASSOC_ADVERTISEMENT_CLIENT": {
+      "assoc_advertisement_client_id": 0.99677,
+      "advertisement_id": 0.99677,
+      "client_id": 0.99677
+    },
+    "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT": {
+      "assoc_advertisement_broadcast_time_slot_id": 0.341646,
+      "advertisement_id": 0.341646,
+      "broadcast_time_slot_id": 0.341646
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RADIO_STATION",
+      "entity_2": "BROADCAST_TIME_SLOT",
+      "cardinality": "1:N",
+      "description": "A radio station has multiple broadcast time slots",
+      "probability": 0.99717
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_CLIENT",
+      "description": "One ADVERTISEMENT can be associated with many ASSOC_ADVERTISEMENT_CLIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99677
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_CLIENT",
+      "description": "One CLIENT can be associated with many ASSOC_ADVERTISEMENT_CLIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99677
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT",
+      "description": "One ADVERTISEMENT can be associated with many ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.341646
+    },
+    {
+      "entity_1": "BROADCAST_TIME_SLOT",
+      "entity_2": "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT",
+      "description": "One BROADCAST_TIME_SLOT can be associated with many ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.341646
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "A client can have multiple arrangements",
+      "probability": 0.005851
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "An advertisement can have multiple arrangements",
+      "probability": 0.382992
+    },
+    {
+      "entity_1": "RADIO_STATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "A radio station can have multiple arrangements",
+      "probability": 0.567253
+    }
+  ],
+  "processing_time": 13.07,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes 'type' and 'target_audience' from ADVERTISEMENT entity, added 'radio_station_id' to ARRANGEMENT entity, and added a new relationship between RADIO_STATION and ARRANGEMENT to capture the complexity of the system."
+  }
+}

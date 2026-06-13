@@ -1,0 +1,146 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "EQUIPMENT_USAGE",
+    "CONSUMABLE",
+    "CONSUMABLE_TRANSACTION",
+    "CHEMICAL",
+    "CHEMICAL_TRANSACTION",
+    "COURSE",
+    "COURSE_REGISTRATION",
+    "COURSE_EQUIPMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone_number",
+      "associated_unit",
+      "role"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "name",
+      "model",
+      "category",
+      "manufacturer",
+      "status",
+      "acquisition_time"
+    ],
+    "EQUIPMENT_USAGE": [
+      "usage_id",
+      "usage_time",
+      "purpose",
+      "user_id",
+      "equipment_id",
+      "course_id"
+    ],
+    "CONSUMABLE": [
+      "consumable_id",
+      "name",
+      "category",
+      "inventory_quantity",
+      "status"
+    ],
+    "CONSUMABLE_TRANSACTION": [
+      "transaction_id",
+      "transaction_type",
+      "quantity",
+      "transaction_time",
+      "user_id",
+      "consumable_id"
+    ],
+    "CHEMICAL": [
+      "chemical_id",
+      "name",
+      "category",
+      "inventory_quantity",
+      "status"
+    ],
+    "CHEMICAL_TRANSACTION": [
+      "transaction_id",
+      "transaction_type",
+      "quantity",
+      "transaction_time",
+      "user_id",
+      "chemical_id"
+    ],
+    "COURSE": [
+      "course_id",
+      "name",
+      "class_time",
+      "class_location",
+      "teacher_id"
+    ],
+    "COURSE_REGISTRATION": [
+      "registration_id",
+      "user_id",
+      "course_id"
+    ],
+    "COURSE_EQUIPMENT": [
+      "association_id",
+      "course_id",
+      "equipment_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COURSE_REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "COURSE_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHEMICAL",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 66.2199,
+  "ilp_runtime": 0.057
+}

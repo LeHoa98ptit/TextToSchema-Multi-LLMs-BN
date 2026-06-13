@@ -1,0 +1,147 @@
+{
+  "entity": [
+    "PLAYER",
+    "ORGANIZER",
+    "EVENT",
+    "MATCH",
+    "BATTLE",
+    "BATTLE_PARTICIPANT",
+    "PARTICIPATION",
+    "RESULT",
+    "MATCH_RESULT",
+    "RANKING"
+  ],
+  "attribute": {
+    "PLAYER": [
+      "player_id",
+      "username",
+      "email",
+      "phone",
+      "status",
+      "registration_date",
+      "date_of_birth"
+    ],
+    "ORGANIZER": [
+      "organizer_id",
+      "name",
+      "contact_email",
+      "contact_phone",
+      "status"
+    ],
+    "EVENT": [
+      "event_id",
+      "name",
+      "description",
+      "start_date",
+      "end_date",
+      "location",
+      "status"
+    ],
+    "MATCH": [
+      "match_id",
+      "event_id",
+      "match_type",
+      "scheduled_start",
+      "actual_start",
+      "actual_end",
+      "status"
+    ],
+    "BATTLE": [
+      "battle_id",
+      "match_id",
+      "battle_number",
+      "start_time",
+      "end_time"
+    ],
+    "BATTLE_PARTICIPANT": [
+      "battle_participant_id",
+      "battle_id",
+      "player_id",
+      "side",
+      "is_winner"
+    ],
+    "PARTICIPATION": [
+      "participation_id",
+      "player_id",
+      "match_id",
+      "join_time",
+      "team",
+      "role"
+    ],
+    "RESULT": [
+      "result_id",
+      "battle_id",
+      "player_id",
+      "score",
+      "win_loss",
+      "rank"
+    ],
+    "MATCH_RESULT": [
+      "match_result_id",
+      "match_id",
+      "player_id",
+      "total_score",
+      "win_loss",
+      "rank"
+    ],
+    "RANKING": [
+      "ranking_id",
+      "event_id",
+      "player_id",
+      "final_rank",
+      "points"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZER",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "BATTLE_PARTICIPANT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "PARTICIPATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "MATCH_RESULT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "RANKING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 56.249,
+  "ilp_runtime": 0.084
+}

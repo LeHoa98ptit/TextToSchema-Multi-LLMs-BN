@@ -1,0 +1,97 @@
+{
+  "entity": [
+    "PLATFORM",
+    "USER",
+    "PRODUCT",
+    "SHOPPING_CART",
+    "CART_ITEM",
+    "ORDER",
+    "ORDER_ITEM"
+  ],
+  "attribute": {
+    "PLATFORM": [
+      "platform id"
+    ],
+    "USER": [
+      "user id",
+      "phone number",
+      "address",
+      "payment method"
+    ],
+    "PRODUCT": [
+      "product id",
+      "manufacturer",
+      "flavor",
+      "number of puffs",
+      "unit price",
+      "stock quantity"
+    ],
+    "SHOPPING_CART": [
+      "cart id",
+      "user id"
+    ],
+    "CART_ITEM": [
+      "cart id",
+      "product id",
+      "quantity"
+    ],
+    "ORDER": [
+      "order id",
+      "user id",
+      "order creation time",
+      "order status"
+    ],
+    "ORDER_ITEM": [
+      "order id",
+      "product id",
+      "quantity",
+      "unit price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PLATFORM",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.272,
+  "ilp_runtime": 0.081
+}

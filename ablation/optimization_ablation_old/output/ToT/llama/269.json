@@ -1,0 +1,83 @@
+{
+  "entity": [
+    "RESTAURANT",
+    "TABLE",
+    "CUSTOMER",
+    "RESERVATION",
+    "DINER",
+    "PAYMENT",
+    "ORDER",
+    "ASSOC_RESERVATION_DINER"
+  ],
+  "attribute": {
+    "RESTAURANT": [
+      "name",
+      "location",
+      "phone_number",
+      "email"
+    ],
+    "TABLE": [
+      "table_number",
+      "seating_capacity",
+      "location"
+    ],
+    "CUSTOMER": [
+      "customer_info",
+      "contact_number",
+      "email"
+    ],
+    "RESERVATION": [
+      "reservation_time",
+      "reservation_status",
+      "number_of_diners",
+      "special_requests"
+    ],
+    "DINER": [
+      "diner_name",
+      "diner_contact"
+    ],
+    "PAYMENT": [
+      "payment_method",
+      "payment_date",
+      "amount"
+    ],
+    "ORDER": [
+      "order_date",
+      "order_total",
+      "order_status"
+    ],
+    "ASSOC_RESERVATION_DINER": [
+      "assoc_reservation_diner_id",
+      "reservation_id",
+      "diner_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_DINER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DINER",
+      "entity_2": "ASSOC_RESERVATION_DINER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 22.4669,
+  "ilp_runtime": 0.033
+}

@@ -1,0 +1,212 @@
+{
+  "filename": "420.txt",
+  "entity": {
+    "USER": 0.622459,
+    "NEWS": 0.489751,
+    "NEWS_CATEGORY": 0.529366,
+    "VIDEO": 0.622459,
+    "VIDEO_CATEGORY": 0.511173,
+    "INSTRUCTOR": 0.472129,
+    "COLLECTION": 0.981075,
+    "ORDER": 0.981075,
+    "LEARN_RECORD": 0.981075,
+    "INSTRUCTOR_VIDEO": 0.101445
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.505708,
+      "username": 0.505262,
+      "password": 0.511966,
+      "phone number": 0.500402,
+      "wechat openid": 0.502023,
+      "qq number": 0.518597,
+      "email": 0.509302,
+      "registration time": 0.511507,
+      "account status": 0.525129
+    },
+    "NEWS": {
+      "news id": 0.504693,
+      "title": 0.512902,
+      "content": 0.519414,
+      "publication time": 0.511054,
+      "read count": 0.523481,
+      "news status": 0.509692
+    },
+    "NEWS_CATEGORY": {
+      "category id": 0.518133,
+      "sort order": 0.524727
+    },
+    "VIDEO": {
+      "video id": 0.53104,
+      "title": 0.537378,
+      "description": 0.541405,
+      "cover image": 0.533553,
+      "duration": 0.533631,
+      "directory structure": 0.545949,
+      "course count": 0.567697,
+      "total duration": 0.539319,
+      "price": 0.532511,
+      "video status": 0.544971
+    },
+    "VIDEO_CATEGORY": {
+      "category id": 0.546014,
+      "parent category id": 0.540304
+    },
+    "INSTRUCTOR": {
+      "instructor id": 0.538682,
+      "avatar": 0.529488,
+      "title": 0.545657,
+      "introduction": 0.542956,
+      "teaching experience years": 0.541235,
+      "professional field": 0.544654,
+      "teaching achievement": 0.540691
+    },
+    "COLLECTION": {
+      "collection id": 0.514306,
+      "user id": 0.520825,
+      "video id": 0.545832,
+      "collection time": 0.526215,
+      "collection status": 0.532926,
+      "validity": 0.981075,
+      "collection_id": 0.981075,
+      "user_id": 0.981075,
+      "video_id": 0.981075,
+      "collection_time": 0.981075,
+      "collection_status": 0.981075
+    },
+    "ORDER": {
+      "order id": 0.505592,
+      "user id": 0.511186,
+      "video id": 0.536998,
+      "order time": 0.507898,
+      "payment method": 0.516282,
+      "payment status": 0.519904,
+      "payment time": 0.510432,
+      "order status": 0.52215,
+      "order_id": 0.981075,
+      "user_id": 0.981075,
+      "video_id": 0.981075,
+      "order_time": 0.981075,
+      "payment_method": 0.981075,
+      "payment_status": 0.981075,
+      "payment_time": 0.981075,
+      "order_status": 0.981075
+    },
+    "LEARN_RECORD": {
+      "learn record id": 0.537134,
+      "user id": 0.534535,
+      "video id": 0.54915,
+      "purchase time": 0.545853,
+      "expiration time": 0.536179,
+      "progress percent": 0.541476,
+      "view duration": 0.543972,
+      "last view time": 0.541347,
+      "completion status": 0.548607,
+      "learn_record_id": 0.981075,
+      "user_id": 0.981075,
+      "video_id": 0.981075,
+      "purchase_time": 0.981075,
+      "expiration_time": 0.981075,
+      "progress_percent": 0.981075,
+      "view_duration": 0.981075,
+      "last_view_time": 0.981075,
+      "completion_status": 0.981075
+    },
+    "INSTRUCTOR_VIDEO": {
+      "instructor_video_id": 0.101445,
+      "instructor_id": 0.101445,
+      "video_id": 0.101445
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "NEWS_CATEGORY",
+      "entity_2": "NEWS",
+      "description": "Each news item belongs to one news category; a category can contain many news items.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996814
+    },
+    {
+      "entity_1": "VIDEO_CATEGORY",
+      "entity_2": "VIDEO",
+      "description": "Each video is assigned to one video category; a category can have many videos.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995532
+    },
+    {
+      "entity_1": "VIDEO_CATEGORY",
+      "entity_2": "VIDEO_CATEGORY",
+      "description": "A video category can have many sub‑categories; each sub‑category has one parent category.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "INSTRUCTOR_VIDEO",
+      "description": "One INSTRUCTOR can be associated with many INSTRUCTOR_VIDEO.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.101445
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "INSTRUCTOR_VIDEO",
+      "description": "One VIDEO can be associated with many INSTRUCTOR_VIDEO.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.101445
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLECTION",
+      "description": "One USER can be associated with many COLLECTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981075
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "COLLECTION",
+      "description": "One VIDEO can be associated with many COLLECTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981075
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "One USER can be associated with many ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981075
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "ORDER",
+      "description": "One VIDEO can be associated with many ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981075
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEARN_RECORD",
+      "description": "One USER can be associated with many LEARN_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981075
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "LEARN_RECORD",
+      "description": "One VIDEO can be associated with many LEARN_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981075
+    }
+  ],
+  "processing_time": 57.37
+}

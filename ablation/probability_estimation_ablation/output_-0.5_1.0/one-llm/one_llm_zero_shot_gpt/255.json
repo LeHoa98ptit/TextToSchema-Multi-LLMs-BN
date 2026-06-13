@@ -1,0 +1,149 @@
+{
+  "filename": "255.txt",
+  "entity": {
+    "PRODUCTION_STATISTIC": 0.521187,
+    "EQUIPMENT": 0.622459,
+    "INSPECTION_PLAN": 0.448953,
+    "USER": 0.471207,
+    "EQUIPMENT_FAILURE": 0.539194,
+    "REPAIR_WORK_ORDER": 0.521836,
+    "QUALITY_REPORT": 0.540461,
+    "ANNOUNCEMENT": 0.517393,
+    "JOB_POSITION": 0.522285,
+    "ASSOC_USER_JOB_POSITION": 0.018402
+  },
+  "attribute": {
+    "PRODUCTION_STATISTIC": {
+      "statistic_id": 0.543149,
+      "report_type": 0.551347,
+      "report_date": 0.545222,
+      "production_datum": 0.545198,
+      "production_indicator": 0.549126,
+      "completion_status": 0.553294,
+      "metal_recovery_rate": 0.547073,
+      "grade": 0.545857
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.545043,
+      "model": 0.540818,
+      "main_category": 0.553493,
+      "sub_category": 0.548341,
+      "location": 0.536361,
+      "operation_status": 0.564568,
+      "real_time_monitoring": 0.541862,
+      "alarm_notification": 0.526135,
+      "anomaly_case": 0.533375
+    },
+    "INSPECTION_PLAN": {
+      "plan_id": 0.53785,
+      "inspection_date": 0.534137,
+      "progress": 0.547974,
+      "status": 0.548248
+    },
+    "USER": {
+      "user_id": 0.503783,
+      "username": 0.49939,
+      "role": 0.523153,
+      "permission": 0.509617,
+      "status": 0.530979,
+      "operation_history": 0.525446
+    },
+    "EQUIPMENT_FAILURE": {
+      "failure_id": 0.539851,
+      "failure_type": 0.541771,
+      "failure_time": 0.53989,
+      "processing_status": 0.554578
+    },
+    "REPAIR_WORK_ORDER": {
+      "work_order_id": 0.533428,
+      "repair_detail": 0.548469,
+      "progress": 0.544193,
+      "repair_time": 0.536248
+    },
+    "QUALITY_REPORT": {
+      "report_id": 0.546393,
+      "metal_recovery_rate": 0.547233,
+      "incoming_warehouse_sample_grade": 0.550056,
+      "daily_report_grade": 0.540459
+    },
+    "ANNOUNCEMENT": {
+      "announcement_id": 0.515331,
+      "content": 0.522501,
+      "release_time": 0.514741,
+      "status": 0.523882
+    },
+    "JOB_POSITION": {
+      "position_id": 0.536885,
+      "position_name": 0.538107,
+      "description": 0.552182,
+      "responsibility": 0.541282,
+      "requirement": 0.551351
+    },
+    "ASSOC_USER_JOB_POSITION": {
+      "assoc_user_job_position_id": 0.018402,
+      "user_id": 0.018402,
+      "job_position_id": 0.018402
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION_PLAN",
+      "cardinality": "1:N",
+      "probability": 0.647107
+    },
+    {
+      "entity_1": "INSPECTION_PLAN",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "probability": 0.047117
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_FAILURE",
+      "cardinality": "1:N",
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "EQUIPMENT_FAILURE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "probability": 0.860807
+    },
+    {
+      "entity_1": "EQUIPMENT_FAILURE",
+      "entity_2": "REPAIR_WORK_ORDER",
+      "cardinality": "1:1",
+      "probability": 0.000967
+    },
+    {
+      "entity_1": "REPAIR_WORK_ORDER",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "probability": 0.183466
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "probability": 0.958049
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_JOB_POSITION",
+      "description": "One USER can be associated with many ASSOC_USER_JOB_POSITION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.018402
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "ASSOC_USER_JOB_POSITION",
+      "description": "One JOB_POSITION can be associated with many ASSOC_USER_JOB_POSITION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.018402
+    }
+  ],
+  "processing_time": 41.54
+}

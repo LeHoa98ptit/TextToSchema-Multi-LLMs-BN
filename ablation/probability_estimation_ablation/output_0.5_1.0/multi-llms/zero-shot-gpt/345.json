@@ -1,0 +1,122 @@
+{
+  "filename": "345.txt",
+  "entity": {
+    "COURSE": 0.817574,
+    "PROFESSOR": 0.817574,
+    "STUDENT": 0.817574,
+    "SUBJECT": 0.817574,
+    "PREREQUISITE": 0.705016,
+    "SEMESTER": 0.765523,
+    "ENROLLMENT": 0.049157,
+    "COURSE_SUBJECT": 0.988585
+  },
+  "attribute": {
+    "COURSE": {
+      "course code": 0.780657,
+      "course name": 0.779282,
+      "total credit": 0.773958,
+      "coordinator professor id": 0.780721
+    },
+    "PROFESSOR": {
+      "professor id": 0.764764,
+      "email": 0.767133
+    },
+    "STUDENT": {
+      "student id": 0.77433,
+      "email": 0.775628,
+      "date of birth": 0.7702,
+      "total credit completed": 0.771109,
+      "average grade": 0.751603
+    },
+    "SUBJECT": {
+      "subject number": 0.763055,
+      "subject name": 0.765413,
+      "credit": 0.767779,
+      "equivalent subjects": 0.763328
+    },
+    "PREREQUISITE": {
+      "subject id": 0.781948,
+      "prerequisite subject id": 0.781152
+    },
+    "SEMESTER": {
+      "semester id": 0.773027
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.049157,
+      "student_id": 0.049157,
+      "course_id": 0.049157,
+      "id_ENROLLMENT": 0.049157,
+      "id_STUDENT": 0.049157,
+      "id_COURSE": 0.049157,
+      "enrollment_date": 0.049157
+    },
+    "COURSE_SUBJECT": {
+      "course_subject_id": 0.988585,
+      "course_id": 0.988585,
+      "subject_id": 0.988585,
+      "id_COURSE_SUBJECT": 0.988585,
+      "id_COURSE": 0.988585,
+      "id_SUBJECT": 0.988585,
+      "id_SEMESTER": 0.988585
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "COURSE",
+      "description": "A professor coordinates (is the coordinator of) many courses; each course has one coordinating professor",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.764933
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "description": "One STUDENT can be associated with many ENROLLMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.049157
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "description": "One COURSE can be associated with many ENROLLMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.049157
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_SUBJECT",
+      "description": "One COURSE can be associated with many COURSE_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988585
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "COURSE_SUBJECT",
+      "description": "One SUBJECT can be associated with many COURSE_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988585
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "PREREQUISITE",
+      "description": "A subject may have multiple prerequisite records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.035515
+    },
+    {
+      "entity_1": "PREREQUISITE",
+      "entity_2": "SUBJECT",
+      "description": "Each prerequisite record refers to one prerequisite subject",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.035515
+    }
+  ],
+  "processing_time": 15.42
+}

@@ -1,0 +1,79 @@
+{
+  "filename": "429.txt",
+  "entity": {
+    "USER": 0.817574,
+    "DISH": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.746343,
+    "SALE_STATISTIC": 0.738135
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.731776,
+      "password": 0.74937,
+      "role": 0.757857
+    },
+    "DISH": {
+      "dish_id": 0.762512,
+      "price": 0.759503,
+      "category": 0.772646,
+      "availability": 0.768655,
+      "status": 0.773044
+    },
+    "ORDER": {
+      "order_id": 0.744531,
+      "order_time": 0.744483,
+      "total": 0.756817,
+      "order_status": 0.752488
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.751735,
+      "dish_id": 0.766487,
+      "quantity": 0.766402
+    },
+    "SALE_STATISTIC": {
+      "sale_id": 0.757178,
+      "total_sale": 0.757912,
+      "sale_date": 0.754322,
+      "dish_id": 0.773054
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each user can place many orders, and each order is placed by one user.",
+      "probability": 0.999087
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each dish can be part of many order details, and each order detail is for one dish.",
+      "probability": 0.471464
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each order can have many order details, and each order detail is part of one order.",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SALE_STATISTIC",
+      "cardinality": "1:N",
+      "description": "Each order can generate many sale statistics, and each sale statistic is for one order.",
+      "probability": 0.000161
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "SALE_STATISTIC",
+      "cardinality": "1:N",
+      "description": "Each dish can have many sale statistics, and each sale statistic is for one dish.",
+      "probability": 0.000364
+    }
+  ],
+  "processing_time": 23.22
+}

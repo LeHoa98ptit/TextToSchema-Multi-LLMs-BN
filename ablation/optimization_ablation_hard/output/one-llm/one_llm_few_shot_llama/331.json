@@ -1,0 +1,59 @@
+{
+  "entity": [
+    "PLAYER",
+    "MATCH",
+    "BATTLE",
+    "GAME",
+    "ASSOC_PLAYER_GAME"
+  ],
+  "attribute": {
+    "PLAYER": [
+      "username",
+      "contact_information",
+      "account_status"
+    ],
+    "MATCH": [
+      "match_type",
+      "start_time",
+      "end_time",
+      "match_result"
+    ],
+    "BATTLE": [
+      "battle_start_time",
+      "battle_end_time",
+      "win_loss_status"
+    ],
+    "GAME": [
+      "game_type",
+      "game_result",
+      "rank_datum"
+    ],
+    "ASSOC_PLAYER_GAME": [
+      "assoc_player_game_id",
+      "player_id",
+      "game_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "ASSOC_PLAYER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.603,
+  "ilp_runtime": 0.071
+}

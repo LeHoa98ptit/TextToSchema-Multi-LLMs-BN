@@ -1,0 +1,134 @@
+{
+  "filename": "474.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "ASSIGNMENT": 0.817574,
+    "COURSE": 0.705702,
+    "GRADE": 0.817574,
+    "EVALUATION": 0.817574,
+    "NOTIFICATION": 0.697749,
+    "SUBMISSION": 0.796231
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.768483,
+      "class": 0.770479,
+      "email": 0.768175
+    },
+    "INSTRUCTOR": {
+      "name": 0.770775,
+      "course": 0.77587,
+      "department": 0.774922
+    },
+    "ASSIGNMENT": {
+      "score": 0.780351,
+      "evaluation": 0.777181,
+      "submission_date": 0.769303,
+      "course_id": 0.781697
+    },
+    "COURSE": {
+      "name": 0.765491,
+      "code": 0.779329,
+      "credits": 0.768075
+    },
+    "GRADE": {
+      "score": 0.77072,
+      "evaluation": 0.773087,
+      "assignment_id": 0.780655
+    },
+    "EVALUATION": {
+      "comment": 0.744877,
+      "grade_id": 0.771698
+    },
+    "NOTIFICATION": {
+      "message": 0.732424,
+      "student_id": 0.758197,
+      "assignment_id": 0.754801,
+      "notification_date": 0.72513
+    },
+    "SUBMISSION": {
+      "submission_date": 0.747896,
+      "assignment_id": 0.769517,
+      "student_id": 0.77184,
+      "file": 0.759474
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A student can submit multiple assignments",
+      "probability": 0.854655
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "An instructor can teach multiple courses",
+      "probability": 0.657529
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An instructor can grade multiple assignments",
+      "probability": 0.554138
+    },
+    {
+      "entity_1": "ASSIGNMENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "description": "An assignment has one grade",
+      "probability": 0.195375
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "EVALUATION",
+      "cardinality": "1:1",
+      "description": "A grade has one evaluation",
+      "probability": 0.332354
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A student can receive multiple notifications",
+      "probability": 0.006929
+    },
+    {
+      "entity_1": "ASSIGNMENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "An assignment can trigger multiple notifications",
+      "probability": 0.014876
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A student can make multiple submissions",
+      "probability": 0.01398
+    },
+    {
+      "entity_1": "ASSIGNMENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "An assignment can have multiple submissions",
+      "probability": 0.078735
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A course can have multiple assignments",
+      "probability": 0.12045
+    }
+  ],
+  "processing_time": 19.74,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'NOTIFICATION' and 'SUBMISSION' entities to track notifications and assignment submissions, and added relationships to integrate these entities with existing entities"
+  }
+}

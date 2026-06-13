@@ -1,0 +1,75 @@
+{
+  "filename": "274.txt",
+  "entity": {
+    "USER": 0.817574,
+    "FEEDBACK": 0.817574,
+    "CUSTOMER_SERVICE_REPRESENTATIVE": 0.783215,
+    "PROCESSING_RESULT": 0.782092,
+    "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK": 0.862312
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.739363,
+      "contact_number": 0.751122,
+      "email": 0.757851
+    },
+    "FEEDBACK": {
+      "content": 0.778591,
+      "time": 0.775886,
+      "processing_status": 0.779024,
+      "processing_time": 0.774397,
+      "processor": 0.772563
+    },
+    "CUSTOMER_SERVICE_REPRESENTATIVE": {
+      "contact_information": 0.771738,
+      "work_status": 0.771962,
+      "employee_id": 0.761415
+    },
+    "PROCESSING_RESULT": {
+      "result": 0.757588,
+      "description": 0.76898
+    },
+    "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK": {
+      "assoc_customer_service_representative_feedback_id": 0.862312,
+      "customer_service_representative_id": 0.862312,
+      "feedback_id": 0.862312
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "A user can provide multiple feedback",
+      "probability": 0.993803
+    },
+    {
+      "entity_1": "CUSTOMER_SERVICE_REPRESENTATIVE",
+      "entity_2": "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK",
+      "description": "One CUSTOMER_SERVICE_REPRESENTATIVE can be associated with many ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.862312
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK",
+      "description": "One FEEDBACK can be associated with many ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.862312
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "PROCESSING_RESULT",
+      "cardinality": "1:1",
+      "description": "A feedback has one processing result",
+      "probability": 0.952828
+    }
+  ],
+  "processing_time": 10.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the 'COMPANY' entity as it was not essential for the feedback management system, and added a 'processor' attribute to the 'FEEDBACK' entity to record the customer service representative who handled the feedback."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "filename": "334.txt",
+  "entity": {
+    "USER": 0.622459,
+    "POST": 0.622459,
+    "COMMENT": 0.622459,
+    "USER_FOLLOW": 0.50225,
+    "POST_LIKE": 0.517493
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.543791,
+      "avatar_path": 0.533366,
+      "password": 0.537521,
+      "date_birth": 0.534171,
+      "username": 0.530952
+    },
+    "POST": {
+      "post_id": 0.521221,
+      "post_title": 0.516297,
+      "post_content": 0.527844,
+      "post_date": 0.51487,
+      "poster": 0.539621
+    },
+    "COMMENT": {
+      "comment_id": 0.539474,
+      "comment_content": 0.542252,
+      "comment_date": 0.531629,
+      "commenter": 0.54402,
+      "post": 0.54792
+    },
+    "USER_FOLLOW": {
+      "follower": 0.545845,
+      "followed": 0.549421
+    },
+    "POST_LIKE": {
+      "user": 0.557254,
+      "post": 0.545049
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create many posts",
+      "probability": 0.861971
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can create many comments",
+      "probability": 0.960377
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments",
+      "probability": 0.017783
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_FOLLOW",
+      "cardinality": "1:N",
+      "description": "A user can follow many users",
+      "probability": 0.999805
+    },
+    {
+      "entity_1": "USER_FOLLOW",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A follow relationship is associated with one followed user",
+      "probability": 0.999805
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST_LIKE",
+      "cardinality": "1:N",
+      "description": "A user can like many posts",
+      "probability": 0.520302
+    },
+    {
+      "entity_1": "POST_LIKE",
+      "entity_2": "POST",
+      "cardinality": "N:1",
+      "description": "A like relationship is associated with one post",
+      "probability": 0.782657
+    }
+  ],
+  "processing_time": 15.53,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for user follows and post likes to improve efficiency and consistency, removed redundant relationships, and retained essential attributes and relationships."
+  }
+}

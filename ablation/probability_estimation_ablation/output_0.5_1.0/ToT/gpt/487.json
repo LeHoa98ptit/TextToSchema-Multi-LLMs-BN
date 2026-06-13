@@ -1,0 +1,95 @@
+{
+  "filename": "487.txt",
+  "entity": {
+    "CODE_SYSTEM": 0.788599,
+    "CODE": 0.817574,
+    "RELATIONSHIP_TYPE": 0.742021,
+    "CODE_RELATIONSHIP": 0.802358,
+    "AUDIT_LOG": 0.686649
+  },
+  "attribute": {
+    "CODE_SYSTEM": {
+      "system_id": 0.755453,
+      "system_name": 0.755869,
+      "system_owner": 0.757428,
+      "created_at": 0.750519,
+      "updated_at": 0.749787
+    },
+    "CODE": {
+      "code_id": 0.754349,
+      "code_value": 0.755501,
+      "code_description": 0.757651,
+      "system_id": 0.755073,
+      "is_active": 0.742275,
+      "created_at": 0.74007,
+      "updated_at": 0.738183
+    },
+    "RELATIONSHIP_TYPE": {
+      "type_id": 0.750275,
+      "type_name": 0.752516,
+      "type_description": 0.755471
+    },
+    "CODE_RELATIONSHIP": {
+      "rel_id": 0.758561,
+      "type_id": 0.760206,
+      "source_code_id": 0.75909,
+      "target_code_id": 0.759552,
+      "valid_from": 0.761583,
+      "valid_to": 0.762311,
+      "created_by": 0.757865,
+      "created_at": 0.75441,
+      "modified_by": 0.758645,
+      "modified_at": 0.756639
+    },
+    "AUDIT_LOG": {
+      "audit_id": 0.74473,
+      "rel_id": 0.74446,
+      "action": 0.748618,
+      "performed_by": 0.745151,
+      "performed_at": 0.740364,
+      "change_summary": 0.746392
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CODE_SYSTEM",
+      "entity_2": "CODE",
+      "cardinality": "1:N",
+      "description": "Each CODE belongs to exactly one CODE_SYSTEM (CODE.system_id → CODE_SYSTEM.system_id)",
+      "probability": 0.999827
+    },
+    {
+      "entity_1": "RELATIONSHIP_TYPE",
+      "entity_2": "CODE_RELATIONSHIP",
+      "cardinality": "1:N",
+      "description": "Each CODE_RELATIONSHIP uses one RELATIONSHIP_TYPE (CODE_RELATIONSHIP.type_id → RELATIONSHIP_TYPE.type_id)",
+      "probability": 3.1e-05
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "CODE_RELATIONSHIP",
+      "cardinality": "1:N",
+      "description": "A CODE can appear as the source in many CODE_RELATIONSHIP records (CODE_RELATIONSHIP.source_code_id → CODE.code_id)",
+      "probability": 0.999973
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "CODE_RELATIONSHIP",
+      "cardinality": "1:N",
+      "description": "A CODE can appear as the target in many CODE_RELATIONSHIP records (CODE_RELATIONSHIP.target_code_id → CODE.code_id)",
+      "probability": 0.999973
+    },
+    {
+      "entity_1": "CODE_RELATIONSHIP",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "Each CODE_RELATIONSHIP may have multiple AUDIT_LOG entries documenting changes (AUDIT_LOG.rel_id → CODE_RELATIONSHIP.rel_id)",
+      "probability": 0.011736
+    }
+  ],
+  "processing_time": 6.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Replaced the derived unique_constraint_hash with a natural composite UNIQUE constraint on (source_code_id, target_code_id, type_id) to enforce relationship uniqueness directly in the DB. Removed the unnecessary hash attribute from CODE_RELATIONSHIP. Added explicit foreign‑key descriptions in the relationships to guarantee referential integrity. Retained the RELATIONSHIP_TYPE lookup for extensibility and kept the multi‑row AUDIT_LOG for full change history. Clarified source vs. target role in CODE‑CODE_RELATIONSHIP relationships. All original strengths (time validity, audit, code system hierarchy) are preserved."
+  }
+}

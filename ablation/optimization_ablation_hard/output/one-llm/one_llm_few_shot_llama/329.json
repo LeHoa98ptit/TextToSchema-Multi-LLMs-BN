@@ -1,0 +1,65 @@
+{
+  "entity": [
+    "USER",
+    "STOCK",
+    "PORTFOLIO",
+    "LOG_ENTRY",
+    "ASSOC_STOCK_PORTFOLIO"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "virtual_currency_balance"
+    ],
+    "STOCK": [
+      "stock_code",
+      "stock_price",
+      "issue_date",
+      "company"
+    ],
+    "PORTFOLIO": [
+      "portfolio_id",
+      "stock_code",
+      "quantity",
+      "earning"
+    ],
+    "LOG_ENTRY": [
+      "log_id",
+      "date",
+      "record_value"
+    ],
+    "ASSOC_STOCK_PORTFOLIO": [
+      "assoc_stock_portfolio_id",
+      "stock_id",
+      "portfolio_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG_ENTRY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PORTFOLIO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "ASSOC_STOCK_PORTFOLIO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PORTFOLIO",
+      "entity_2": "ASSOC_STOCK_PORTFOLIO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 15.2686,
+  "ilp_runtime": 0.081
+}

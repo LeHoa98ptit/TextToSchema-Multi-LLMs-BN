@@ -1,0 +1,120 @@
+{
+  "filename": "459.txt",
+  "entity": {
+    "DEPARTMENT": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "PROJECT": 0.817574,
+    "EMPLOYEE_PROJECT": 0.76262,
+    "POSITION": 0.708457,
+    "EDUCATION_LEVEL": 0.700588,
+    "ASSOC_EMPLOYEE_PROJECT": 0.785671
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "dept_no": 0.761993,
+      "dept_name": 0.764917,
+      "manager_emp_no": 0.764049,
+      "location": 0.759475
+    },
+    "EMPLOYEE": {
+      "emp_no": 0.766526,
+      "first_name": 0.766019,
+      "last_name": 0.768908,
+      "dept_no": 0.775817,
+      "salary": 0.765477,
+      "position_id": 0.7716,
+      "education_level_id": 0.775162,
+      "hire_date": 0.762145
+    },
+    "PROJECT": {
+      "proj_no": 0.753584,
+      "proj_name": 0.750688,
+      "dept_no": 0.769665,
+      "responsible_emp_no": 0.757698,
+      "start_date": 0.74578,
+      "end_date": 0.750734,
+      "budget": 0.755428
+    },
+    "EMPLOYEE_PROJECT": {
+      "emp_no": 0.774896,
+      "proj_no": 0.782303,
+      "assignment_role": 0.779012,
+      "allocation_percent": 0.776363,
+      "start_date": 0.766157,
+      "end_date": 0.770497
+    },
+    "POSITION": {
+      "position_id": 0.746712,
+      "title": 0.757044,
+      "grade": 0.754272
+    },
+    "EDUCATION_LEVEL": {
+      "education_level_id": 0.75459,
+      "level_name": 0.754586,
+      "description": 0.753186
+    },
+    "ASSOC_EMPLOYEE_PROJECT": {
+      "assoc_employee_project_id": 0.785671,
+      "employee_id": 0.785671,
+      "project_id": 0.785671
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees (EMPLOYEE.dept_no → DEPARTMENT.dept_no).",
+      "probability": 0.999913
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A department can run multiple projects (PROJECT.dept_no → DEPARTMENT.dept_no).",
+      "probability": 0.834501
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "Each employee holds one position (EMPLOYEE.position_id → POSITION.position_id).",
+      "probability": 0.983106
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EDUCATION_LEVEL",
+      "cardinality": "N:1",
+      "description": "Each employee has one education level (EMPLOYEE.education_level_id → EDUCATION_LEVEL.education_level_id).",
+      "probability": 0.882291
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_PROJECT",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.785671
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_EMPLOYEE_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_EMPLOYEE_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.785671
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each project has one responsible person (PROJECT.responsible_emp_no → EMPLOYEE.emp_no).",
+      "probability": 0.785671
+    }
+  ],
+  "processing_time": 8.24,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the redundant manager relationship; manager is now represented solely by the manager_emp_no foreign key attribute in DEPARTMENT. Added explicit foreign‑key references in relationship descriptions for clarity. Ensured lookup tables POSITION and EDUCATION_LEVEL remain to avoid redundancy. The model retains full normalization, comprehensive participation details, and clear cardinalities while eliminating duplication."
+  }
+}

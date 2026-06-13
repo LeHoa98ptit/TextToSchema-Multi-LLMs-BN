@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "PERSONNEL",
+    "ADDRESS",
+    "PHONE",
+    "PHONE_TYPE",
+    "VEHICLE",
+    "INSURANCE",
+    "INSURANCE_TYPE"
+  ],
+  "attribute": {
+    "PERSONNEL": [
+      "employee_id PK",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "gender"
+    ],
+    "ADDRESS": [
+      "personnel_id PK, FK → PERSONNEL.employee_id (cascade update, cascade delete)",
+      "street",
+      "city",
+      "state",
+      "zip_code"
+    ],
+    "PHONE": [
+      "personnel_id FK → PERSONNEL.employee_id (cascade update, cascade delete)",
+      "phone_number",
+      "phone_type_id FK → PHONE_TYPE.phone_type_id",
+      "PRIMARY KEY (personnel_id, phone_number)"
+    ],
+    "PHONE_TYPE": [
+      "phone_type_id PK",
+      "type_name"
+    ],
+    "VEHICLE": [
+      "vin PK",
+      "manufacturer",
+      "model",
+      "year",
+      "license_plate",
+      "driver_id FK → PERSONNEL.employee_id (cascade update, cascade delete)"
+    ],
+    "INSURANCE": [
+      "insurance_id PK",
+      "policy_number",
+      "insurance_type_id FK → INSURANCE_TYPE.insurance_type_id",
+      "company_name",
+      "cost",
+      "purchase_date",
+      "expiry_date",
+      "vehicle_vin FK → VEHICLE.vin (cascade update, cascade delete)"
+    ],
+    "INSURANCE_TYPE": [
+      "insurance_type_id PK",
+      "type_name"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PHONE",
+      "entity_2": "PHONE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSURANCE",
+      "entity_2": "INSURANCE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.2171,
+  "ilp_runtime": 0.076
+}

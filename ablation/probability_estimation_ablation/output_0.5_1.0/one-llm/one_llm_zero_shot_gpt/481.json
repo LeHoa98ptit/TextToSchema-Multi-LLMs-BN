@@ -1,0 +1,136 @@
+{
+  "filename": "481.txt",
+  "entity": {
+    "EXPERT": 0.712222,
+    "MONITORING_RULE": 0.797671,
+    "CROP": 0.817574,
+    "CROP_TYPE": 0.774221,
+    "SENSOR": 0.817574,
+    "SENSOR_DATA": 0.768365,
+    "ANALYSIS_RESULT": 0.74549,
+    "PREDICTION_RESULT": 0.717339,
+    "ASSOC_MONITORING_RULE_CROP": 0.003363,
+    "ASSOC_MONITORING_RULE_SENSOR_DATA": 0.089134
+  },
+  "attribute": {
+    "EXPERT": {
+      "expert_id": 0.746512,
+      "name": 0.744721,
+      "contact_info": 0.746253
+    },
+    "MONITORING_RULE": {
+      "rule_id": 0.762372,
+      "description": 0.77504,
+      "condition_expression": 0.763474,
+      "created_at": 0.756672
+    },
+    "CROP": {
+      "crop_id": 0.76784,
+      "name": 0.763962,
+      "planting_date": 0.768311,
+      "harvest_date": 0.768198
+    },
+    "CROP_TYPE": {
+      "type_id": 0.758756,
+      "name": 0.764587,
+      "description": 0.770033
+    },
+    "SENSOR": {
+      "sensor_id": 0.755397,
+      "sensor_type": 0.762423,
+      "location": 0.758971,
+      "installation_date": 0.75784
+    },
+    "SENSOR_DATA": {
+      "data_id": 0.762779,
+      "collection_time": 0.769991,
+      "data_type": 0.768174,
+      "value": 0.770419
+    },
+    "ANALYSIS_RESULT": {
+      "analysis_id": 0.744558,
+      "result_value": 0.739284,
+      "analysis_time": 0.746879
+    },
+    "PREDICTION_RESULT": {
+      "prediction_id": 0.735817,
+      "predicted_value": 0.731146,
+      "prediction_time": 0.736891
+    },
+    "ASSOC_MONITORING_RULE_CROP": {
+      "assoc_monitoring_rule_crop_id": 0.003363,
+      "monitoring_rule_id": 0.003363,
+      "crop_id": 0.003363
+    },
+    "ASSOC_MONITORING_RULE_SENSOR_DATA": {
+      "assoc_monitoring_rule_sensor_data_id": 0.089134,
+      "monitoring_rule_id": 0.089134,
+      "sensor_data_id": 0.089134
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPERT",
+      "entity_2": "MONITORING_RULE",
+      "cardinality": "1:N",
+      "probability": 0.038264
+    },
+    {
+      "entity_1": "MONITORING_RULE",
+      "entity_2": "ASSOC_MONITORING_RULE_CROP",
+      "description": "One MONITORING_RULE can be associated with many ASSOC_MONITORING_RULE_CROP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003363
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "ASSOC_MONITORING_RULE_CROP",
+      "description": "One CROP can be associated with many ASSOC_MONITORING_RULE_CROP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003363
+    },
+    {
+      "entity_1": "CROP_TYPE",
+      "entity_2": "CROP",
+      "cardinality": "1:N",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "SENSOR_DATA",
+      "cardinality": "1:N",
+      "probability": 0.99385
+    },
+    {
+      "entity_1": "MONITORING_RULE",
+      "entity_2": "ASSOC_MONITORING_RULE_SENSOR_DATA",
+      "description": "One MONITORING_RULE can be associated with many ASSOC_MONITORING_RULE_SENSOR_DATA.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.089134
+    },
+    {
+      "entity_1": "SENSOR_DATA",
+      "entity_2": "ASSOC_MONITORING_RULE_SENSOR_DATA",
+      "description": "One SENSOR_DATA can be associated with many ASSOC_MONITORING_RULE_SENSOR_DATA.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.089134
+    },
+    {
+      "entity_1": "SENSOR_DATA",
+      "entity_2": "ANALYSIS_RESULT",
+      "cardinality": "1:N",
+      "probability": 0.084668
+    },
+    {
+      "entity_1": "ANALYSIS_RESULT",
+      "entity_2": "PREDICTION_RESULT",
+      "cardinality": "1:N",
+      "probability": 0.960122
+    }
+  ],
+  "processing_time": 18.96
+}

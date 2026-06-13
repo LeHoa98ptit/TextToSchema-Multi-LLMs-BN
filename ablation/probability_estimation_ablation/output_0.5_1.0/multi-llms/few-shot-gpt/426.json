@@ -1,0 +1,132 @@
+{
+  "filename": "426.txt",
+  "entity": {
+    "USER": 0.817574,
+    "AUTHORIZATION": 0.710333,
+    "ATTRACTION": 0.817574,
+    "BOOKMARK": 0.681115,
+    "RESERVATION": 0.687144,
+    "COMMENT": 0.817574,
+    "REVIEW": 0.717217
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.751315,
+      "account number": 0.758917,
+      "password hash": 0.754443,
+      "nickname": 0.755083,
+      "bio": 0.75106
+    },
+    "AUTHORIZATION": {
+      "auth id": 0.756366,
+      "user id": 0.762033,
+      "wechat openid": 0.770611,
+      "access token": 0.764754,
+      "refresh token": 0.752517,
+      "expires at": 0.746604
+    },
+    "ATTRACTION": {
+      "attraction id": 0.743905,
+      "name": 0.744494,
+      "picture urls": 0.743739,
+      "reference price": 0.741838,
+      "description": 0.745416
+    },
+    "BOOKMARK": {
+      "bookmark id": 0.745086,
+      "user id": 0.756202,
+      "attraction id": 0.7529,
+      "created at": 0.751438
+    },
+    "RESERVATION": {
+      "reservation id": 0.759718,
+      "user id": 0.767031,
+      "attraction id": 0.757659,
+      "reservation time": 0.752936,
+      "ticket purchase time": 0.756376,
+      "ticket quantity": 0.756745
+    },
+    "COMMENT": {
+      "comment id": 0.755607,
+      "user id": 0.760586,
+      "attraction id": 0.755185,
+      "comment time": 0.753756,
+      "content": 0.761371,
+      "status": 0.761469
+    },
+    "REVIEW": {
+      "review id": 0.747721,
+      "attraction id": 0.751066,
+      "rating": 0.743433,
+      "review text": 0.751695,
+      "review time": 0.743833
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "description": "Each user has a single WeChat authorization record, and each authorization record belongs to one user.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999852
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BOOKMARK",
+      "description": "A user can create many bookmarks; each bookmark is created by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989526
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "BOOKMARK",
+      "description": "An attraction can be bookmarked by many users; each bookmark refers to one attraction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.530181
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "description": "A user can make many reservations; each reservation is made by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.55373
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "RESERVATION",
+      "description": "An attraction can have many reservations; each reservation is for one attraction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.214461
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "description": "A user can post many comments; each comment is authored by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961975
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "COMMENT",
+      "description": "An attraction can receive many comments; each comment is associated with one attraction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.021502
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "REVIEW",
+      "description": "An attraction can have many reviews; each review pertains to one attraction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989558
+    }
+  ],
+  "processing_time": 29.24
+}

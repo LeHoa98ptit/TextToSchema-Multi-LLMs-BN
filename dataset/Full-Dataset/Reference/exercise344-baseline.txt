@@ -1,0 +1,106 @@
+{
+  "entity": [
+    "User",
+    "Application",
+    "Web Service",
+    "Error Information",
+    "Service Monitoring",
+    "Statistics",
+    "Permissions",
+    "Error and Monitoring Association"
+  ],
+  "attribut": {
+    "User": [
+      "user ID",
+      "username",
+      "email"
+    ],
+    "Application": [
+      "application ID",
+      "code",
+      "name",
+      "type"
+    ],
+    "Web Service": [
+      "service ID",
+      "application ID",
+      "name",
+      "description",
+      "creation date"
+    ],
+    "Error Information": [
+      "error ID",
+      "service ID",
+      "error code",
+      "error description",
+      "occurrence time",
+      "return status"
+    ],
+    "Service Monitoring": [
+      "monitoring ID",
+      "service ID",
+      "call time",
+      "return status",
+      "delay time"
+    ],
+    "Statistics": [
+      "statistic ID",
+      "service ID",
+      "time period",
+      "call count",
+      "success rate"
+    ],
+    "Permissions": [
+      "permission ID",
+      "user ID",
+      "application ID",
+      "role"
+    ],
+    "Error and Monitoring Association": [
+      "error ID",
+      "monitoring ID"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Application",
+      "entity_2": "Web Service",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Web Service",
+      "entity_2": "Error Information",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Web Service",
+      "entity_2": "Service Monitoring",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Web Service",
+      "entity_2": "Statistics",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Application",
+      "entity_2": "Permissions",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "Permissions",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Service Monitoring",
+      "entity_2": "Error and Monitoring Association",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Error Information",
+      "entity_2": "Error and Monitoring Association",
+      "cardinality": "1:N"
+    }
+  ]
+}

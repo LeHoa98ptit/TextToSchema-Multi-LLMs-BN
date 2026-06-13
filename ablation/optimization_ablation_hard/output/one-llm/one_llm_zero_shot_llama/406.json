@@ -1,0 +1,155 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "SUPPLIER",
+    "EMPLOYEE",
+    "COST_CENTER",
+    "PRODUCTION_PLAN",
+    "PRODUCTION_SCHEDULING",
+    "SALE_ORDER",
+    "PURCHASE_ORDER",
+    "MATERIAL",
+    "WAREHOUSE",
+    "PROJECT_PLAN",
+    "PROJECT_PROGRESS",
+    "INVENTORY",
+    "ASSOC_EMPLOYEE_COST_CENTER"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "customer_name",
+      "contact_information",
+      "address"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "supplier_name",
+      "contact_information",
+      "address"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "employee_name",
+      "position",
+      "hire_date",
+      "salary"
+    ],
+    "COST_CENTER": [
+      "cost_center_id",
+      "cost_center_name",
+      "date"
+    ],
+    "PRODUCTION_PLAN": [
+      "production_plan_id",
+      "product",
+      "production_quantity",
+      "start_date",
+      "end_date"
+    ],
+    "PRODUCTION_SCHEDULING": [
+      "production_scheduling_id",
+      "production_plan_id",
+      "production_date",
+      "scheduling_status"
+    ],
+    "SALE_ORDER": [
+      "sale_order_id",
+      "customer_id",
+      "order_date",
+      "total"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_order_id",
+      "supplier_id",
+      "order_date",
+      "total"
+    ],
+    "MATERIAL": [
+      "material_id",
+      "material_name",
+      "description",
+      "type"
+    ],
+    "WAREHOUSE": [
+      "warehouse_id",
+      "warehouse_name",
+      "address"
+    ],
+    "PROJECT_PLAN": [
+      "project_plan_id",
+      "project_name",
+      "start_date",
+      "end_date",
+      "execution_status"
+    ],
+    "PROJECT_PROGRESS": [
+      "project_progress_id",
+      "project_plan_id",
+      "progress"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "material_id",
+      "warehouse_id",
+      "quantity"
+    ],
+    "ASSOC_EMPLOYEE_COST_CENTER": [
+      "assoc_employee_cost_center_id",
+      "employee_id",
+      "cost_center_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_COST_CENTER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COST_CENTER",
+      "entity_2": "ASSOC_EMPLOYEE_COST_CENTER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_SCHEDULING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT_PLAN",
+      "entity_2": "PROJECT_PROGRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WAREHOUSE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.4857,
+  "ilp_runtime": 0.06
+}

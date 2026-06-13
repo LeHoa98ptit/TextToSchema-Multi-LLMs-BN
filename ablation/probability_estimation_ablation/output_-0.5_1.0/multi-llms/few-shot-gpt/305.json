@@ -1,0 +1,82 @@
+{
+  "filename": "305.txt",
+  "entity": {
+    "USER": 0.622459,
+    "POST": 0.622459,
+    "FOLLOW_RELATIONSHIP": 0.531931,
+    "NOTIFICATION": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.532802,
+      "email": 0.540105,
+      "password hash": 0.517514,
+      "verification status": 0.54578,
+      "account status": 0.551103,
+      "created at": 0.5318
+    },
+    "POST": {
+      "post id": 0.520704,
+      "publisher user id": 0.547248,
+      "content": 0.529788,
+      "publish time": 0.532766,
+      "attachment url": 0.509919
+    },
+    "FOLLOW_RELATIONSHIP": {
+      "follower user id": 0.54954,
+      "followee user id": 0.552098,
+      "follow time": 0.539789,
+      "primary key": 0.540774
+    },
+    "NOTIFICATION": {
+      "notification id": 0.526333,
+      "notification type": 0.529571,
+      "recipient user id": 0.539006,
+      "related post id": 0.533171,
+      "notification time": 0.520181
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW_RELATIONSHIP",
+      "description": "A user can follow many other users, creating multiple follow relationship records where the user is the follower.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.857626
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW_RELATIONSHIP",
+      "description": "A user can be followed by many other users, resulting in multiple follow relationship records where the user is the followee.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.857626
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "description": "A user can publish many posts, each post is authored by exactly one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.863018
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "description": "A user can receive many notifications, each notification is addressed to exactly one recipient user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997678
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "description": "A post can generate many notifications, each notification may be related to exactly one post.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.986125
+    }
+  ],
+  "processing_time": 2.94
+}

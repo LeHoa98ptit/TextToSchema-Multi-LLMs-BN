@@ -1,0 +1,126 @@
+{
+  "filename": "447.txt",
+  "entity": {
+    "USER": 0.817574,
+    "FINANCIAL_DOCUMENT": 0.75606,
+    "NOTIFICATION": 0.817574,
+    "SYSTEM_CONFIGURATION": 0.727366,
+    "UNIT": 0.728317,
+    "ROLE": 0.727088,
+    "DOCUMENT_CATEGORY": 0.732883,
+    "DOCUMENT_LEVEL": 0.746872,
+    "VALIDITY_STATUS": 0.691
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.738435,
+      "password": 0.746835,
+      "phone_number": 0.739251,
+      "unit_id": 0.744436,
+      "role_id": 0.753663
+    },
+    "FINANCIAL_DOCUMENT": {
+      "document_title": 0.760115,
+      "document_number": 0.760205,
+      "issue_unit_id": 0.75842,
+      "issue_date": 0.758145,
+      "document_category_id": 0.761101,
+      "document_level_id": 0.762168,
+      "validity_status_id": 0.764385,
+      "remark": 0.760935,
+      "attachment_path": 0.757708,
+      "created_by": 0.76118,
+      "created_at": 0.76038
+    },
+    "NOTIFICATION": {
+      "notification_content": 0.753029,
+      "issue_date": 0.746677,
+      "notification_status": 0.748031,
+      "published_by": 0.750758
+    },
+    "SYSTEM_CONFIGURATION": {
+      "configuration_record": 0.762393,
+      "database_directory": 0.761705,
+      "datum_type": 0.75195,
+      "file_upload_directory": 0.76248
+    },
+    "UNIT": {
+      "unit_name": 0.739369
+    },
+    "ROLE": {
+      "role_name": 0.755219
+    },
+    "DOCUMENT_CATEGORY": {
+      "category_name": 0.749729
+    },
+    "DOCUMENT_LEVEL": {
+      "level_name": 0.752341
+    },
+    "VALIDITY_STATUS": {
+      "status_name": 0.753426
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple financial documents",
+      "probability": 0.99163
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can publish multiple notifications",
+      "probability": 0.998532
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A unit can have multiple users",
+      "probability": 0.995159
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A role can have multiple users",
+      "probability": 0.997523
+    },
+    {
+      "entity_1": "DOCUMENT_CATEGORY",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "description": "A document category can have multiple financial documents",
+      "probability": 0.820063
+    },
+    {
+      "entity_1": "DOCUMENT_LEVEL",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "description": "A document level can have multiple financial documents",
+      "probability": 0.95381
+    },
+    {
+      "entity_1": "VALIDITY_STATUS",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "description": "A validity status can have multiple financial documents",
+      "probability": 0.000924
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "description": "A unit can have multiple financial documents",
+      "probability": 0.877855
+    }
+  ],
+  "processing_time": 1010.0,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationships, added created_by and created_at attributes to FINANCIAL_DOCUMENT, and added published_by attribute to NOTIFICATION. Also, changed attribute naming for consistency and added unit_id and role_id to USER entity for better relationship representation."
+  }
+}

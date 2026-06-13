@@ -1,0 +1,229 @@
+{
+  "filename": "496.txt",
+  "entity": {
+    "USER": 0.817574,
+    "USER_AUTH": 0.727445,
+    "USER_PROFILE": 0.749679,
+    "USER_SECURITY": 0.739794,
+    "CATEGORY": 0.710127,
+    "PRODUCT": 0.817574,
+    "PRODUCT_PHOTO": 0.743302,
+    "PRODUCT_STATUS": 0.719604,
+    "LOCATION": 0.817574,
+    "TRANSACTION": 0.817574,
+    "TRANSACTION_METHOD": 0.760332,
+    "EVALUATION": 0.716405
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.736095,
+      "username": 0.734214,
+      "password_hash": 0.732857,
+      "phone": 0.750554,
+      "email": 0.746618,
+      "registration_date": 0.739862,
+      "last_login": 0.735112
+    },
+    "USER_AUTH": {
+      "auth_id": 0.729635,
+      "user_id": 0.733037,
+      "id_card_number": 0.735896,
+      "id_card_photo": 0.738385,
+      "facial_data": 0.740455,
+      "auth_status": 0.735446,
+      "auth_timestamp": 0.727692
+    },
+    "USER_PROFILE": {
+      "profile_id": 0.733794,
+      "user_id": 0.735492,
+      "avatar_url": 0.7326,
+      "nickname": 0.736498,
+      "gender": 0.741684,
+      "birthdate": 0.733216,
+      "location_id": 0.730002,
+      "introduction": 0.756967
+    },
+    "USER_SECURITY": {
+      "security_id": 0.740448,
+      "user_id": 0.740345,
+      "phone_bound": 0.741261,
+      "email_bound": 0.738733,
+      "two_factor_enabled": 0.746172,
+      "password_last_changed": 0.733435
+    },
+    "CATEGORY": {
+      "category_id": 0.738923,
+      "name": 0.748816,
+      "parent_category_id": 0.736426,
+      "description": 0.755566
+    },
+    "PRODUCT": {
+      "product_id": 0.746753,
+      "seller_id": 0.755822,
+      "title": 0.755898,
+      "description": 0.759884,
+      "condition": 0.749652,
+      "original_price": 0.750459,
+      "sell_price": 0.750556,
+      "negotiation_min": 0.757505,
+      "negotiation_max": 0.7573,
+      "validity_start": 0.755186,
+      "validity_end": 0.752948,
+      "location_id": 0.743634,
+      "status_id": 0.748816,
+      "created_at": 0.74565,
+      "updated_at": 0.745079
+    },
+    "PRODUCT_PHOTO": {
+      "photo_id": 0.744184,
+      "product_id": 0.747558,
+      "photo_url": 0.747398,
+      "order_index": 0.742266
+    },
+    "PRODUCT_STATUS": {
+      "status_id": 0.746974,
+      "status_name": 0.749373
+    },
+    "LOCATION": {
+      "location_id": 0.727828,
+      "city": 0.738669,
+      "district": 0.736676,
+      "address_detail": 0.739463
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.749368,
+      "buyer_id": 0.757441,
+      "seller_id": 0.756972,
+      "product_id": 0.757029,
+      "transaction_time": 0.750859,
+      "method_id": 0.745375,
+      "status": 0.758436,
+      "total_amount": 0.751137,
+      "location_id": 0.743543
+    },
+    "TRANSACTION_METHOD": {
+      "method_id": 0.743383,
+      "method_name": 0.74822
+    },
+    "EVALUATION": {
+      "evaluation_id": 0.730554,
+      "transaction_id": 0.74715,
+      "reviewer_id": 0.736415,
+      "rating": 0.74332,
+      "comment": 0.740597,
+      "eval_time": 0.729641
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_AUTH",
+      "cardinality": "1:1",
+      "description": "Each user has one authentication record",
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PROFILE",
+      "cardinality": "1:1",
+      "description": "Each user has one personal profile",
+      "probability": 0.99984
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_SECURITY",
+      "cardinality": "1:1",
+      "description": "Each user has one security‑setting record",
+      "probability": 0.999863
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A user can publish multiple products",
+      "probability": 0.015436
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_PHOTO",
+      "cardinality": "1:N",
+      "description": "A product can have up to nine photos",
+      "probability": 0.999893
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_STATUS",
+      "cardinality": "1:1",
+      "description": "Each product has a current status (sale, sold, removed, etc.)",
+      "probability": 0.999551
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each product belongs to one category",
+      "probability": 0.000186
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Product’s transaction location",
+      "probability": 0.011525
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Transaction references a buyer user",
+      "probability": 0.992635
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Transaction references a seller user",
+      "probability": 0.992635
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Transaction is linked to the sold product",
+      "probability": 0.355452
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_METHOD",
+      "cardinality": "N:1",
+      "description": "Transaction uses a specific payment/delivery method",
+      "probability": 0.999916
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "EVALUATION",
+      "cardinality": "1:1",
+      "description": "A transaction may have one evaluation record",
+      "probability": 0.598157
+    },
+    {
+      "entity_1": "EVALUATION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Evaluation is written by a user (reviewer)",
+      "probability": 0.994433
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Transaction location (pickup/delivery point)",
+      "probability": 0.996691
+    }
+  ],
+  "processing_time": 28.12,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

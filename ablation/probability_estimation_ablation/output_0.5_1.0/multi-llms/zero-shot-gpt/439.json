@@ -1,0 +1,108 @@
+{
+  "filename": "439.txt",
+  "entity": {
+    "USER": 0.817574,
+    "MERCHANT": 0.817574,
+    "RECYCLING_REQUEST": 0.711237,
+    "ORDER": 0.817574,
+    "ADMINISTRATOR": 0.720391,
+    "RATING": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.75276,
+      "mobile phone number": 0.752484,
+      "wechat id": 0.751283
+    },
+    "MERCHANT": {
+      "merchant id": 0.766806,
+      "merchant name": 0.762302
+    },
+    "RECYCLING_REQUEST": {
+      "request id": 0.767415,
+      "user id": 0.771216,
+      "waste item type": 0.782171,
+      "waste quantity": 0.782282,
+      "location": 0.770039,
+      "request time": 0.766861
+    },
+    "ORDER": {
+      "order id": 0.750484,
+      "request id": 0.755371,
+      "merchant id": 0.764732,
+      "status": 0.759851,
+      "payment information": 0.764688,
+      "order timestamp": 0.74471
+    },
+    "RATING": {
+      "rating id": 0.740593,
+      "order id": 0.747304,
+      "user id": 0.749603,
+      "rating score": 0.736174,
+      "comment": 0.74318
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.748367,
+      "admin name": 0.74646
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "description": "A user can post many recycling requests; each request is posted by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9839
+    },
+    {
+      "entity_1": "RECYCLING_REQUEST",
+      "entity_2": "ORDER",
+      "description": "Each recycling request results in a single order; each order corresponds to one request",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.000258
+    },
+    {
+      "entity_1": "MERCHANT",
+      "entity_2": "ORDER",
+      "description": "A merchant can fulfill many orders; each order is fulfilled by one merchant",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.023519
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RATING",
+      "description": "A user can give many ratings; each rating is given by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994536
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "description": "Each order can have one rating; each rating refers to one order",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.557255
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "USER",
+      "description": "An administrator can access information of many users; each user can be accessed by an administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.22997
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MERCHANT",
+      "description": "An administrator can access information of many merchants; each merchant can be accessed by an administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001146
+    }
+  ],
+  "processing_time": 321.45
+}

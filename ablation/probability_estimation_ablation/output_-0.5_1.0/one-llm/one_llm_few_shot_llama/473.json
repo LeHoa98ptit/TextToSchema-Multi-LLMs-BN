@@ -1,0 +1,76 @@
+{
+  "filename": "473.txt",
+  "entity": {
+    "PUBLICATION": 0.622459,
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "ASSOC_PUBLICATION_ORDER": 0.298989
+  },
+  "attribute": {
+    "PUBLICATION": {
+      "title": 0.552118,
+      "author": 0.547939,
+      "price": 0.547749,
+      "type": 0.563063
+    },
+    "CUSTOMER": {
+      "customer_id": 0.522191,
+      "phone": 0.526894,
+      "email": 0.527831,
+      "password": 0.528866,
+      "registration_status": 0.530872
+    },
+    "ORDER": {
+      "order_id": 0.519477,
+      "shipping_address": 0.522965,
+      "payment_method": 0.517633,
+      "order_status": 0.522826,
+      "order_time": 0.516389
+    },
+    "ADMINISTRATOR": {
+      "administrator_id": 0.515832,
+      "phone": 0.525386,
+      "email": 0.521883,
+      "password": 0.518931
+    },
+    "ASSOC_PUBLICATION_ORDER": {
+      "assoc_publication_order_id": 0.298989,
+      "publication_id": 0.298989,
+      "order_id": 0.298989
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PUBLICATION",
+      "entity_2": "ASSOC_PUBLICATION_ORDER",
+      "description": "One PUBLICATION can be associated with many ASSOC_PUBLICATION_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.298989
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_PUBLICATION_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_PUBLICATION_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.298989
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each customer can have many orders, but each order is associated with exactly one customer.",
+      "probability": 0.965585
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PUBLICATION",
+      "cardinality": "1:N",
+      "description": "Each administrator can maintain many publications, but each publication is associated with exactly one administrator.",
+      "probability": 0.02297
+    }
+  ],
+  "processing_time": 9.38
+}

@@ -1,0 +1,181 @@
+{
+  "filename": "420.txt",
+  "entity": {
+    "USER": 0.817574,
+    "NEWS": 0.722922,
+    "NEWS_CATEGORY": 0.753543,
+    "VIDEO": 0.817574,
+    "VIDEO_CATEGORY": 0.739756,
+    "INSTRUCTOR": 0.70856,
+    "COLLECTION": 0.719786,
+    "ORDER": 0.817574,
+    "PAYMENT": 0.817574,
+    "LEARNING_RECORD": 0.751737
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.735524,
+      "username": 0.735177,
+      "password": 0.740367,
+      "phone number": 0.731375,
+      "wechat openid": 0.732647,
+      "name": 0.737339,
+      "qq number": 0.745437,
+      "email": 0.738311,
+      "registration time": 0.740013,
+      "account status": 0.750372
+    },
+    "NEWS": {
+      "news id": 0.734733,
+      "title": 0.741086,
+      "content": 0.746058,
+      "publication time": 0.739664,
+      "read count": 0.749133
+    },
+    "NEWS_CATEGORY": {
+      "category id": 0.745084,
+      "category name": 0.749244,
+      "sort order": 0.750071
+    },
+    "VIDEO": {
+      "video id": 0.754789,
+      "title": 0.759473,
+      "description": 0.762421,
+      "cover image": 0.756653,
+      "duration": 0.756711,
+      "directory structure": 0.765723,
+      "course count": 0.781164,
+      "total duration": 0.760897,
+      "price": 0.755881
+    },
+    "VIDEO_CATEGORY": {
+      "category id": 0.76577,
+      "category name": 0.767634,
+      "parent category": 0.766322
+    },
+    "INSTRUCTOR": {
+      "instructor id": 0.76043,
+      "name": 0.762514,
+      "avatar": 0.753634,
+      "title": 0.765512,
+      "introduction": 0.763551,
+      "years of teaching experience": 0.761795,
+      "professional field": 0.764785,
+      "teaching achievements": 0.762905
+    },
+    "COLLECTION": {
+      "collection id": 0.742162,
+      "user id": 0.747127,
+      "video id": 0.765638,
+      "collection time": 0.751188,
+      "collection status": 0.756188
+    },
+    "ORDER": {
+      "order id": 0.735434,
+      "user id": 0.739766,
+      "video id": 0.759193,
+      "order time": 0.737225,
+      "order status": 0.748129
+    },
+    "PAYMENT": {
+      "payment id": 0.736447,
+      "payment amount": 0.740687,
+      "payment method": 0.743786,
+      "payment status": 0.745384,
+      "payment time": 0.73928
+    },
+    "LEARNING_RECORD": {
+      "learning record id": 0.756916,
+      "user id": 0.756661,
+      "video id": 0.769252,
+      "purchase time": 0.765357,
+      "expiration time": 0.759523,
+      "viewing duration": 0.768017,
+      "last viewing time": 0.765403,
+      "completion status": 0.766102
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLECTION",
+      "description": "A user can have many collections, but each collection belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980264
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "COLLECTION",
+      "description": "A video can be in many collections, but each collection is for one video.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.078132
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can have many orders, but each order belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999119
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "ORDER",
+      "description": "A video can have many orders, but each order is for one video.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.138481
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "description": "Each order has one payment, and each payment is for one order.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.897912
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEARNING_RECORD",
+      "description": "A user can have many learning records, but each learning record belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980895
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "LEARNING_RECORD",
+      "description": "A video can have many learning records, but each learning record is for one video.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992503
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "NEWS_CATEGORY",
+      "description": "A news category can have many news, but each news belongs to one news category.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996745
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "VIDEO_CATEGORY",
+      "description": "A video category can have many videos, but each video belongs to one video category.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995546
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "VIDEO",
+      "description": "An instructor can have many videos, but each video has one instructor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.142156
+    }
+  ],
+  "processing_time": 67.72
+}

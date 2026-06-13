@@ -1,0 +1,83 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "ROLE",
+    "EMPLOYEE",
+    "ROLE_DEPT",
+    "EMP_ROLE",
+    "SALARY_HISTORY",
+    "LEAVE"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "dept_id",
+      "name",
+      "description"
+    ],
+    "ROLE": [
+      "role_id",
+      "name",
+      "base_salary"
+    ],
+    "EMPLOYEE": [
+      "emp_id",
+      "first_name",
+      "last_name",
+      "email",
+      "hire_date",
+      "dept_id"
+    ],
+    "ROLE_DEPT": [
+      "role_id",
+      "dept_id"
+    ],
+    "EMP_ROLE": [
+      "emp_id",
+      "role_id",
+      "start_date",
+      "end_date"
+    ],
+    "SALARY_HISTORY": [
+      "salary_id",
+      "emp_id",
+      "amount",
+      "effective_date"
+    ],
+    "LEAVE": [
+      "leave_id",
+      "emp_id",
+      "leave_type",
+      "start_date",
+      "end_date",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_DEPT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ROLE_DEPT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMP_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.3425,
+  "ilp_runtime": 0.066
+}

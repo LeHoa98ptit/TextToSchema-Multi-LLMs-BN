@@ -1,0 +1,83 @@
+{
+  "entity": [
+    "COMPANY",
+    "USER",
+    "USER_PROFILE",
+    "LOGIN_ATTEMPT",
+    "LOGIN_RESPONSE_TYPE",
+    "LOGIN_RESPONSE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "company_name",
+      "created_at"
+    ],
+    "USER": [
+      "user_id",
+      "company_id",
+      "username",
+      "phone_number",
+      "job_title"
+    ],
+    "USER_PROFILE": [
+      "user_id",
+      "email",
+      "status"
+    ],
+    "LOGIN_ATTEMPT": [
+      "attempt_id",
+      "user_id",
+      "attempt_time",
+      "ip_address",
+      "device_info",
+      "success_flag"
+    ],
+    "LOGIN_RESPONSE_TYPE": [
+      "type_id",
+      "response_label"
+    ],
+    "LOGIN_RESPONSE": [
+      "response_id",
+      "attempt_id",
+      "type_id",
+      "login_time",
+      "response_message",
+      "response_label"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PROFILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_ATTEMPT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOGIN_ATTEMPT",
+      "entity_2": "LOGIN_RESPONSE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOGIN_RESPONSE_TYPE",
+      "entity_2": "LOGIN_RESPONSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.372,
+  "ilp_runtime": 0.049
+}

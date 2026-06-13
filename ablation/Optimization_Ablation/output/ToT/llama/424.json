@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "USER",
+    "SYSTEM",
+    "LOGIN",
+    "SESSION",
+    "AUTHORIZATION",
+    "ASSOC_USER_SYSTEM"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "email",
+      "account_status",
+      "login_status"
+    ],
+    "SYSTEM": [
+      "system_id",
+      "system_domain",
+      "access_time",
+      "callback_url",
+      "secret_key",
+      "token_validity_period",
+      "enable_approval",
+      "require_login"
+    ],
+    "LOGIN": [
+      "login_time",
+      "login_ip"
+    ],
+    "SESSION": [
+      "token",
+      "expiration_time",
+      "logout_time"
+    ],
+    "AUTHORIZATION": [
+      "authorization_time",
+      "effective_time",
+      "expiration_time"
+    ],
+    "ASSOC_USER_SYSTEM": [
+      "assoc_user_system_id",
+      "user_id",
+      "system_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_SYSTEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "ASSOC_USER_SYSTEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOGIN",
+      "entity_2": "SESSION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 51.3443,
+  "ilp_runtime": 0.067
+}

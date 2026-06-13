@@ -1,0 +1,130 @@
+{
+  "entity": [
+    "USER",
+    "MERCHANT",
+    "RECYCLING_REQUEST",
+    "ORDER",
+    "ORDER_ITEM",
+    "PAYMENT",
+    "RATING",
+    "ADMIN",
+    "ITEM_CATALOG",
+    "ORDER_STATUS_LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "name",
+      "phone",
+      "wechat_id",
+      "email",
+      "password_hash",
+      "registration_date"
+    ],
+    "MERCHANT": [
+      "merchantid",
+      "name",
+      "phone",
+      "address",
+      "business_license",
+      "registration_date"
+    ],
+    "RECYCLING_REQUEST": [
+      "requestid",
+      "user_id",
+      "request_time",
+      "status",
+      "scheduled_time",
+      "location",
+      "notes"
+    ],
+    "ORDER": [
+      "orderid",
+      "request_id",
+      "merchant_id",
+      "acceptance_time",
+      "fulfillment_time",
+      "total_amount",
+      "payment_status"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "item_type",
+      "quantity",
+      "unit_price"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "order_id",
+      "amount",
+      "method",
+      "payment_time",
+      "transaction_id",
+      "audited_by_admin_id"
+    ],
+    "RATING": [
+      "rating_id",
+      "order_id",
+      "user_id",
+      "score",
+      "comment",
+      "rating_time",
+      "reviewed_by_admin_id"
+    ],
+    "ADMIN": [
+      "admin_id",
+      "name",
+      "email",
+      "role",
+      "last_login"
+    ],
+    "ITEM_CATALOG": [
+      "item_type_id",
+      "description",
+      "recyclable_category",
+      "base_price"
+    ],
+    "ORDER_STATUS_LOG": [
+      "log_id",
+      "order_id",
+      "status",
+      "changed_at",
+      "admin_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "cardinality": "1:0..1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 44.4011,
+  "ilp_runtime": 0.088
+}

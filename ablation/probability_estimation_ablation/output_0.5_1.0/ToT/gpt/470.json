@@ -1,0 +1,139 @@
+{
+  "filename": "470.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "MENU": 0.701636,
+    "DISH": 0.702598,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "DELIVERY_PERSON": 0.774884,
+    "DELIVERY": 0.817574,
+    "PAYMENT_REQUEST": 0.798959,
+    "RESTAURANT_STAFF": 0.745547
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.759351,
+      "name": 0.764635,
+      "phone_number": 0.763715,
+      "address": 0.768837,
+      "department": 0.76371
+    },
+    "MENU": {
+      "menu_id": 0.74425,
+      "name": 0.752648,
+      "effective_date": 0.744636
+    },
+    "DISH": {
+      "dish_id": 0.754912,
+      "name": 0.758382,
+      "price": 0.753844,
+      "special_offer_indicator": 0.76635,
+      "menu_id": 0.759023
+    },
+    "ORDER": {
+      "order_number": 0.758557,
+      "employee_id": 0.765748,
+      "order_date": 0.750884,
+      "total_price": 0.749368,
+      "payment_method": 0.753911,
+      "payment_status": 0.759477
+    },
+    "ORDER_ITEM": {
+      "order_number": 0.761708,
+      "dish_id": 0.767066,
+      "quantity": 0.768999,
+      "line_total": 0.75999
+    },
+    "DELIVERY_PERSON": {
+      "delivery_person_id": 0.758424,
+      "name": 0.755394,
+      "phone_number": 0.759333,
+      "address": 0.763411
+    },
+    "DELIVERY": {
+      "delivery_id": 0.757294,
+      "order_number": 0.764646,
+      "delivery_person_id": 0.757627,
+      "delivery_time": 0.755849,
+      "delivery_address": 0.759923,
+      "status": 0.760252
+    },
+    "PAYMENT_REQUEST": {
+      "request_id": 0.754551,
+      "order_number": 0.765046,
+      "amount": 0.762587,
+      "request_date": 0.752921,
+      "status": 0.763627
+    },
+    "RESTAURANT_STAFF": {
+      "staff_id": 0.772852,
+      "name": 0.773031,
+      "role": 0.773379,
+      "phone_number": 0.77158
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Employees place many orders",
+      "probability": 0.000519
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999979
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "DISH",
+      "cardinality": "N:1",
+      "description": "Each order item references one dish",
+      "probability": 0.04451
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "description": "A menu lists many dishes",
+      "probability": 0.290979
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "description": "An order may have one delivery record",
+      "probability": 0.020332
+    },
+    {
+      "entity_1": "DELIVERY",
+      "entity_2": "DELIVERY_PERSON",
+      "cardinality": "N:1",
+      "description": "A delivery person can handle many deliveries",
+      "probability": 0.999779
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:1",
+      "description": "Each order generates a single payment request",
+      "probability": 0.281554
+    },
+    {
+      "entity_1": "RESTAURANT_STAFF",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:N",
+      "description": "Restaurant staff create many payment requests",
+      "probability": 0.994499
+    }
+  ],
+  "processing_time": 12.93,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the redundant EMPLOYEE→PAYMENT_REQUEST relationship and the employee_id attribute from PAYMENT_REQUEST. Added a STATUS attribute to DELIVERY to track delivery progress. Updated the model to reflect these changes while preserving all required entities, attributes, and accurate relationships."
+  }
+}

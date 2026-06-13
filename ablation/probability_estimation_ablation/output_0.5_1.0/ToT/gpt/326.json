@@ -1,0 +1,149 @@
+{
+  "filename": "326.txt",
+  "entity": {
+    "USER": 0.817574,
+    "TASK": 0.817574,
+    "FILE": 0.817574,
+    "STATUS": 0.714757,
+    "PRIORITY": 0.713143,
+    "ASSIGNMENT": 0.737923,
+    "COMMENT": 0.7161,
+    "TASK_FILE": 0.802976
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.741628,
+      "username": 0.736987,
+      "password": 0.744935,
+      "email": 0.744582,
+      "date_of_birth": 0.743139,
+      "created_at": 0.734335,
+      "avatar_file_id": 0.749537
+    },
+    "TASK": {
+      "task_id": 0.765805,
+      "title": 0.76964,
+      "description": 0.777016,
+      "creation_date": 0.765471,
+      "completion_date": 0.76335,
+      "remark": 0.772947,
+      "status_id": 0.763974,
+      "priority_id": 0.765137
+    },
+    "FILE": {
+      "file_id": 0.75156,
+      "file_name": 0.749734,
+      "file_type": 0.753225,
+      "file_size": 0.748337,
+      "file_path": 0.743362,
+      "uploaded_at": 0.746883
+    },
+    "STATUS": {
+      "status_id": 0.748459,
+      "status_name": 0.750889,
+      "description": 0.757062
+    },
+    "PRIORITY": {
+      "priority_id": 0.751226,
+      "priority_level": 0.751111,
+      "description": 0.759788
+    },
+    "ASSIGNMENT": {
+      "assignment_id": 0.749956,
+      "task_id": 0.764804,
+      "creator_user_id": 0.74948,
+      "assignee_user_id": 0.751326,
+      "assigned_at": 0.742317
+    },
+    "COMMENT": {
+      "comment_id": 0.740067,
+      "task_id": 0.761785,
+      "user_id": 0.744326,
+      "comment_text": 0.736424,
+      "commented_at": 0.736305
+    },
+    "TASK_FILE": {
+      "task_file_id": 0.773642,
+      "task_id": 0.773225,
+      "file_id": 0.770067,
+      "attached_at": 0.763604
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A user (creator) can create many assignment records.",
+      "probability": 0.991333
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A user (assignee) can be assigned to many tasks via assignment.",
+      "probability": 0.991333
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FILE",
+      "cardinality": "1:1",
+      "description": "A user may have one avatar file (avatar_file_id). Deleting the avatar file cascades nullify the avatar reference.",
+      "probability": 0.99396
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "STATUS",
+      "cardinality": "1:1",
+      "description": "Each task has exactly one status.",
+      "probability": 0.673747
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "PRIORITY",
+      "cardinality": "1:1",
+      "description": "Each task has exactly one priority level.",
+      "probability": 0.176344
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A task can have multiple assignment records (history of assignees). Deleting a task cascades its assignments.",
+      "probability": 0.504655
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A task can have many comments. Deleting a task cascades its comments.",
+      "probability": 0.016445
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_FILE",
+      "cardinality": "1:N",
+      "description": "A task can be linked to many task‑file rows. Deleting a task cascades its task‑file links.",
+      "probability": 0.999806
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "TASK_FILE",
+      "cardinality": "1:N",
+      "description": "A file can be linked to many task‑file rows. Deleting a file cascades its task‑file links.",
+      "probability": 0.987234
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can write many comments on tasks.",
+      "probability": 0.926896
+    }
+  ],
+  "processing_time": 32.41,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Renamed TASK_STATUS and TASK_PRIORITY to STATUS and PRIORITY for naming consistency. Added avatar_file_id FK in USER to reference FILE, with a 1:1 optional relationship and cascade rule. Updated TASK to include status_id and priority_id foreign keys. Kept ASSIGNMENT as a history table, preserving creator and assignee roles. Retained COMMENT and TASK_FILE entities for richer functionality while documenting cascade behaviors. Overall model remains simple, extensible, and fully supports the domain requirements."
+  }
+}

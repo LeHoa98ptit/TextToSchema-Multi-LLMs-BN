@@ -1,0 +1,97 @@
+{
+  "entity": [
+    "USER",
+    "PRODUCT",
+    "CATEGORY",
+    "PRODUCT_PHOTO",
+    "LOCATION",
+    "TRANSACTION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "phone_number",
+      "email",
+      "password_hash",
+      "avatar",
+      "nickname",
+      "gender",
+      "age",
+      "location_id",
+      "personal_introduction",
+      "id_card_photo",
+      "facial_recognition_data",
+      "phone_bound",
+      "email_bound",
+      "registration_date",
+      "last_login"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "seller_id",
+      "title",
+      "description",
+      "condition_description",
+      "original_price",
+      "sell_price",
+      "negotiation_range",
+      "validity_start_date",
+      "validity_end_date",
+      "status",
+      "category_id",
+      "transaction_location_id",
+      "created_at",
+      "updated_at"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "parent_category_id"
+    ],
+    "PRODUCT_PHOTO": [
+      "photo_id",
+      "product_id",
+      "photo_url",
+      "order_index"
+    ],
+    "LOCATION": [
+      "location_id",
+      "name",
+      "address_detail"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "product_id",
+      "buyer_id",
+      "seller_id",
+      "status",
+      "transaction_time",
+      "transaction_location_id",
+      "method",
+      "evaluation_rating",
+      "evaluation_comment"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_PHOTO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.5987,
+  "ilp_runtime": 0.034
+}

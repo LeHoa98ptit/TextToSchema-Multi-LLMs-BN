@@ -1,0 +1,156 @@
+{
+  "filename": "490.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "SUPPLIER": 0.622459,
+    "PART": 0.622459,
+    "ORDER": 0.622459,
+    "COUNTRY": 0.534769,
+    "REGION": 0.5267,
+    "QUOTATION": 0.459216,
+    "ORDER_HISTORY": 0.50515,
+    "CREDIT_RECORD": 0.5064,
+    "ASSOC_SUPPLIER_PART": 0.055391,
+    "ASSOC_ORDER_PART": 0.010907
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_d": 0.530266,
+      "contact_information": 0.534057,
+      "payment_method": 0.524294
+    },
+    "SUPPLIER": {
+      "supplier_d": 0.55081,
+      "contact_person": 0.541109,
+      "phone": 0.54235,
+      "email": 0.550337,
+      "credit_rating": 0.545707,
+      "geographical_location": 0.557403
+    },
+    "PART": {
+      "number": 0.521185,
+      "specification": 0.53763,
+      "unit_price": 0.530846,
+      "inventory_level": 0.549329
+    },
+    "ORDER": {
+      "order_d": 0.525008,
+      "order_time": 0.51478,
+      "delivery_date": 0.518872,
+      "order_status": 0.520986,
+      "total": 0.536583
+    },
+    "COUNTRY": {
+      "country_name": 0.514672
+    },
+    "REGION": {
+      "region_name": 0.521701
+    },
+    "QUOTATION": {
+      "quotation_id": 0.492212,
+      "quantity": 0.512914,
+      "unit_price": 0.512408
+    },
+    "ORDER_HISTORY": {
+      "order_id": 0.51792,
+      "customer_id": 0.532009,
+      "order_date": 0.517781
+    },
+    "CREDIT_RECORD": {
+      "customer_id": 0.52382,
+      "credit_score": 0.515786,
+      "credit_limit": 0.516665
+    },
+    "ASSOC_SUPPLIER_PART": {
+      "assoc_supplier_part_id": 0.055391,
+      "supplier_id": 0.055391,
+      "part_id": 0.055391
+    },
+    "ASSOC_ORDER_PART": {
+      "assoc_order_part_id": 0.010907,
+      "order_id": 0.010907,
+      "part_id": 0.010907
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.96416
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_SUPPLIER_PART",
+      "description": "One SUPPLIER can be associated with many ASSOC_SUPPLIER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.055391
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ASSOC_SUPPLIER_PART",
+      "description": "One PART can be associated with many ASSOC_SUPPLIER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.055391
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PART",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010907
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ASSOC_ORDER_PART",
+      "description": "One PART can be associated with many ASSOC_ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010907
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "QUOTATION",
+      "cardinality": "1:N",
+      "description": "A supplier can provide multiple quotations",
+      "probability": 0.086946
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "A customer is located in a country",
+      "probability": 0.010048
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "A supplier is located in a country",
+      "probability": 0.99433
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER_HISTORY",
+      "cardinality": "1:N",
+      "description": "A customer has multiple order histories",
+      "probability": 0.233182
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_RECORD",
+      "cardinality": "1:1",
+      "description": "A customer has one credit record",
+      "probability": 0.976036
+    }
+  ],
+  "processing_time": 15.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added ORDER_HISTORY and CREDIT_RECORD entities to manage order history and credit records, removed redundant attributes and relationships, and simplified the model"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "filename": "279.txt",
+  "entity": {
+    "PROPERTY": 0.817574,
+    "REPORT": 0.817574,
+    "ANALYSIS": 0.817574,
+    "SALE": 0.817574,
+    "ASSOC_REPORT_ANALYSIS": 0.991266
+  },
+  "attribute": {
+    "PROPERTY": {
+      "address": 0.759212,
+      "area": 0.764758,
+      "sale_price": 0.761127,
+      "sale_date": 0.763355,
+      "property_type": 0.752378
+    },
+    "REPORT": {
+      "report_date": 0.75616,
+      "report_type": 0.758251,
+      "analysis_result": 0.762746,
+      "report_id": 0.753555
+    },
+    "ANALYSIS": {
+      "analysis_id": 0.755679,
+      "analysis_type": 0.759296,
+      "analysis_description": 0.767853
+    },
+    "SALE": {
+      "sale_id": 0.757599,
+      "sale_date": 0.75812,
+      "sale_price": 0.755238,
+      "sale_status": 0.758263,
+      "sale_agent": 0.755034
+    },
+    "ASSOC_REPORT_ANALYSIS": {
+      "assoc_report_analysis_id": 0.991266,
+      "report_id": 0.991266,
+      "analysis_id": 0.991266
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "SALE",
+      "cardinality": "1:1",
+      "description": "A property has one sale",
+      "probability": 0.586498
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A sale can have multiple reports",
+      "probability": 0.009632
+    },
+    {
+      "entity_1": "REPORT",
+      "entity_2": "ASSOC_REPORT_ANALYSIS",
+      "description": "One REPORT can be associated with many ASSOC_REPORT_ANALYSIS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991266
+    },
+    {
+      "entity_1": "ANALYSIS",
+      "entity_2": "ASSOC_REPORT_ANALYSIS",
+      "description": "One ANALYSIS can be associated with many ASSOC_REPORT_ANALYSIS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991266
+    }
+  ],
+  "processing_time": 11.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added sale_status and sale_agent attributes to the SALE entity to further capture the complexity of the domain, while retaining the strengths of the original model and addressing the identified issues."
+  }
+}

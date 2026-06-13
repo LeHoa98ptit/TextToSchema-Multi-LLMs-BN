@@ -1,0 +1,94 @@
+{
+  "entity": [
+    "SITE",
+    "PERSON",
+    "CONTACT_INFO",
+    "MONITORING_SESSION",
+    "MONITORING_RESULT",
+    "MAINTENANCE_ACTIVITY",
+    "ASSOC_PERSON_MAINTENANCE_ACTIVITY"
+  ],
+  "attribute": {
+    "SITE": [
+      "site_id",
+      "site_code",
+      "name",
+      "latitude",
+      "longitude",
+      "address"
+    ],
+    "PERSON": [
+      "person_id",
+      "first_name",
+      "last_name",
+      "role",
+      "scope"
+    ],
+    "CONTACT_INFO": [
+      "contact_id",
+      "person_id",
+      "phone",
+      "email",
+      "postal_address"
+    ],
+    "MONITORING_SESSION": [
+      "session_id",
+      "site_id",
+      "timestamp",
+      "result_summary"
+    ],
+    "MONITORING_RESULT": [
+      "result_id",
+      "session_id",
+      "parameter",
+      "value",
+      "unit"
+    ],
+    "MAINTENANCE_ACTIVITY": [
+      "activity_id",
+      "site_id",
+      "maintenance_time",
+      "content",
+      "cost"
+    ],
+    "ASSOC_PERSON_MAINTENANCE_ACTIVITY": [
+      "assoc_person_maintenance_activity_id",
+      "person_id",
+      "maintenance_activity_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "MONITORING_RESULT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSOC_PERSON_MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "ASSOC_PERSON_MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 21.9546,
+  "ilp_runtime": 0.05
+}

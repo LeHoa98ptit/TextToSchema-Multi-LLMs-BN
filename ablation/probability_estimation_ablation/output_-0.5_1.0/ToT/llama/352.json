@@ -1,0 +1,114 @@
+{
+  "filename": "352.txt",
+  "entity": {
+    "SUPPLIER": 0.622459,
+    "CUSTOMER": 0.622459,
+    "PRODUCT": 0.622459,
+    "INVOICE": 0.622459,
+    "INVOICE_PRODUCT": 0.601471,
+    "ORDER_STATUS": 0.441519,
+    "RETURN": 0.464311
+  },
+  "attribute": {
+    "SUPPLIER": {
+      "name": 0.538469,
+      "address": 0.542569,
+      "phone_number": 0.536103,
+      "supplier_id": 0.542238
+    },
+    "CUSTOMER": {
+      "name": 0.533931,
+      "phone_number": 0.521774,
+      "address": 0.531448,
+      "email": 0.535838,
+      "customer_id": 0.527878
+    },
+    "PRODUCT": {
+      "description": 0.53148,
+      "purchase_price": 0.53039,
+      "sell_price": 0.52466,
+      "inventory_quantity": 0.55554,
+      "minimum_inventory_quantity": 0.546833,
+      "product_id": 0.518168
+    },
+    "INVOICE": {
+      "invoice_date": 0.535107,
+      "tax": 0.543386,
+      "total_value": 0.539954,
+      "invoice_id": 0.541206,
+      "customer_id": 0.549104
+    },
+    "INVOICE_PRODUCT": {
+      "quantity": 0.562658,
+      "product_id": 0.545683,
+      "invoice_id": 0.545764
+    },
+    "ORDER_STATUS": {
+      "status_id": 0.516087,
+      "status_description": 0.529817
+    },
+    "RETURN": {
+      "return_id": 0.490922,
+      "return_date": 0.492073,
+      "return_reason": 0.492523,
+      "invoice_id": 0.528479,
+      "product_id": 0.506507
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supplier can provide multiple products",
+      "probability": 0.037031
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple invoices",
+      "probability": 0.57223
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "INVOICE_PRODUCT",
+      "cardinality": "1:N",
+      "description": "An invoice can contain multiple invoice products",
+      "probability": 0.997864
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVOICE_PRODUCT",
+      "cardinality": "1:N",
+      "description": "A product can be in multiple invoice products",
+      "probability": 0.999165
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "ORDER_STATUS",
+      "cardinality": "1:1",
+      "description": "An invoice has one order status",
+      "probability": 0.011743
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "RETURN",
+      "cardinality": "1:N",
+      "description": "An invoice can have multiple returns",
+      "probability": 0.615973
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "RETURN",
+      "cardinality": "1:N",
+      "description": "A product can be returned multiple times",
+      "probability": 0.070338
+    }
+  ],
+  "processing_time": 26.45,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added ORDER_STATUS and RETURN entities to track order status and manage returns, and established relationships between INVOICE, ORDER_STATUS, and RETURN to improve data consistency and support for specific queries and reports."
+  }
+}

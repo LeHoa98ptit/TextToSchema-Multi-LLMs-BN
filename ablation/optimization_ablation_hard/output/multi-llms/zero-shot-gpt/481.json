@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "AGRICULTURAL_EXPERT",
+    "MONITORING_RULE",
+    "SENSOR",
+    "MONITORING_DATUM",
+    "DATA_COLLECTION_SYSTEM",
+    "DATA_PROCESSING",
+    "PREDICTION_RESULT"
+  ],
+  "attribute": {
+    "AGRICULTURAL_EXPERT": [
+      "expert id"
+    ],
+    "MONITORING_RULE": [
+      "rule id",
+      "rule definition"
+    ],
+    "SENSOR": [
+      "sensor id",
+      "location"
+    ],
+    "MONITORING_DATUM": [
+      "datum id",
+      "sensor id",
+      "crop id",
+      "data type",
+      "collection time",
+      "datum value"
+    ],
+    "DATA_COLLECTION_SYSTEM": [
+      "system id",
+      "system name"
+    ],
+    "DATA_PROCESSING": [
+      "processing id",
+      "processing time",
+      "method"
+    ],
+    "PREDICTION_RESULT": [
+      "prediction id",
+      "datum id",
+      "predicted value",
+      "model name"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "AGRICULTURAL_EXPERT",
+      "entity_2": "MONITORING_RULE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATA_COLLECTION_SYSTEM",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATA_COLLECTION_SYSTEM",
+      "entity_2": "SENSOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATA_PROCESSING",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_DATUM",
+      "entity_2": "PREDICTION_RESULT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 17.8321,
+  "ilp_runtime": 0.091
+}

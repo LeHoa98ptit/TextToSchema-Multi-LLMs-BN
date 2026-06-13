@@ -1,0 +1,146 @@
+{
+  "filename": "498.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "CLASS": 0.744654,
+    "SPORT_TEAM": 0.799248,
+    "DORMITORY": 0.731412,
+    "SCHOOL": 0.817574,
+    "ADMINISTRATOR": 0.742671,
+    "COACH": 0.728633,
+    "BUILDING": 0.713205,
+    "ASSOC_STUDENT_SPORT_TEAM": 0.008662
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.759562,
+      "full_name": 0.762513,
+      "gender": 0.765543,
+      "age": 0.757206,
+      "email": 0.757729,
+      "phone_number": 0.757073,
+      "enrollment_date": 0.75343,
+      "dorm_id": 0.760644
+    },
+    "CLASS": {
+      "class_id": 0.745802,
+      "class_number": 0.753149,
+      "classroom": 0.765511,
+      "grade": 0.755361,
+      "school_id": 0.766802
+    },
+    "SPORT_TEAM": {
+      "team_id": 0.7522,
+      "team_name": 0.757196,
+      "activity_time": 0.760019,
+      "activity_venue": 0.756987,
+      "school_id": 0.767184,
+      "coach_id": 0.752213
+    },
+    "DORMITORY": {
+      "dorm_id": 0.761756,
+      "dorm_number": 0.766378,
+      "capacity": 0.764655,
+      "building_id": 0.758753,
+      "admin_id": 0.762416
+    },
+    "SCHOOL": {
+      "school_id": 0.76592,
+      "school_name": 0.768653,
+      "address": 0.763204
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.744811,
+      "admin_name": 0.750965,
+      "role": 0.75303
+    },
+    "COACH": {
+      "coach_id": 0.750073,
+      "coach_name": 0.752694,
+      "phone_number": 0.749612,
+      "email": 0.750788
+    },
+    "BUILDING": {
+      "building_id": 0.737102,
+      "building_number": 0.744455,
+      "address": 0.736451
+    },
+    "ASSOC_STUDENT_SPORT_TEAM": {
+      "assoc_student_sport_team_id": 0.008662,
+      "student_id": 0.008662,
+      "sport_team_id": 0.008662
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CLASS",
+      "cardinality": "N:1",
+      "description": "Each student is assigned to one class; a class has many students",
+      "probability": 0.999223
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_SPORT_TEAM",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_SPORT_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.008662
+    },
+    {
+      "entity_1": "SPORT_TEAM",
+      "entity_2": "ASSOC_STUDENT_SPORT_TEAM",
+      "description": "One SPORT_TEAM can be associated with many ASSOC_STUDENT_SPORT_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.008662
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DORMITORY",
+      "cardinality": "N:1",
+      "description": "Each student lives in one dormitory",
+      "probability": 0.999923
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "SCHOOL",
+      "cardinality": "N:1",
+      "description": "Classes belong to a school",
+      "probability": 0.000777
+    },
+    {
+      "entity_1": "SPORT_TEAM",
+      "entity_2": "SCHOOL",
+      "cardinality": "N:1",
+      "description": "Sport teams are managed by a school",
+      "probability": 0.844988
+    },
+    {
+      "entity_1": "SPORT_TEAM",
+      "entity_2": "COACH",
+      "cardinality": "N:1",
+      "description": "Each sport team has one coach; a coach may oversee multiple teams",
+      "probability": 0.001199
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "ADMINISTRATOR",
+      "cardinality": "1:1",
+      "description": "Each dormitory has one administrator responsible for it",
+      "probability": 0.573596
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "BUILDING",
+      "cardinality": "N:1",
+      "description": "Dormitories are located within a building",
+      "probability": 0.542915
+    }
+  ],
+  "processing_time": 9.39,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Normalized coach information into a separate COACH entity and linked it to SPORT_TEAM (N:1). Introduced a BUILDING entity to capture building details and replaced the raw building_number attribute in DORMITORY with a foreign key to BUILDING. Added optional student contact and enrollment attributes (phone_number, enrollment_date). Clarified foreign key attributes (e.g., dorm_id, coach_id, building_id). Kept original strengths—compactness, correct core relationships—while enhancing completeness, accuracy, and future extensibility."
+  }
+}

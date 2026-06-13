@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "POSITION",
+    "EMPLOYEE",
+    "SALARY_REPORT",
+    "EMPLOYEE_HIERARCHY",
+    "ASSOC_EMPLOYEE_EMPLOYEE"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "department_id",
+      "department_name",
+      "department_description"
+    ],
+    "POSITION": [
+      "position_id",
+      "position_name",
+      "position_salary",
+      "department_id"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "employee_name",
+      "employee_position",
+      "superior_manager",
+      "department_id"
+    ],
+    "SALARY_REPORT": [
+      "report_id",
+      "report_date",
+      "department_id",
+      "position_id",
+      "total_salary"
+    ],
+    "EMPLOYEE_HIERARCHY": [
+      "hierarchy_id",
+      "employee_id",
+      "superior_id",
+      "subordinate_id"
+    ],
+    "ASSOC_EMPLOYEE_EMPLOYEE": [
+      "assoc_employee_employee_id",
+      "employee_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "POSITION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 78.2532,
+  "ilp_runtime": 0.048
+}

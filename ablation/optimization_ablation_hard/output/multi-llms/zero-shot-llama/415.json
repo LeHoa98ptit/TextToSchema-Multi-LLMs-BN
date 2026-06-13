@@ -1,0 +1,84 @@
+{
+  "entity": [
+    "USER",
+    "MESSAGE",
+    "SERVER",
+    "SERVER_CONFIGURATION",
+    "MESSAGE_RECORD",
+    "USER_LOGIN"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email",
+      "ip address",
+      "port number",
+      "login time"
+    ],
+    "MESSAGE": [
+      "message id",
+      "sender",
+      "receiver",
+      "message content",
+      "send time"
+    ],
+    "SERVER": [
+      "server id",
+      "ip address",
+      "port number"
+    ],
+    "SERVER_CONFIGURATION": [
+      "server id",
+      "max client connections",
+      "receive buffer size",
+      "protocol"
+    ],
+    "MESSAGE_RECORD": [
+      "message_record_id",
+      "user_id",
+      "message_id",
+      "send_time"
+    ],
+    "USER_LOGIN": [
+      "user_login_id",
+      "user_id",
+      "server_id",
+      "login_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "MESSAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_LOGIN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "USER_LOGIN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "SERVER_CONFIGURATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 80.5224,
+  "ilp_runtime": 0.044
+}

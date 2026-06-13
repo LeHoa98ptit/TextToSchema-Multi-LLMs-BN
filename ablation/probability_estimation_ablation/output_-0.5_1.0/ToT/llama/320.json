@@ -1,0 +1,161 @@
+{
+  "filename": "320.txt",
+  "entity": {
+    "PRODUCT": 0.622459,
+    "STYLE": 0.622459,
+    "FEATURE": 0.622459,
+    "SKU": 0.622459,
+    "PHOTO": 0.622459,
+    "CATEGORY": 0.488377,
+    "PRICE": 0.622459,
+    "ASSOC_STYLE_FEATURE": 0.882046,
+    "ASSOC_FEATURE_CATEGORY": 0.976373,
+    "ASSOC_PRICE_SKU": 0.084617
+  },
+  "attribute": {
+    "PRODUCT": {
+      "product_id": 0.54314,
+      "product_name": 0.547682,
+      "product_slogan": 0.541975,
+      "product_description": 0.558818,
+      "product_category_id": 0.539661
+    },
+    "STYLE": {
+      "style_id": 0.511675,
+      "style_name": 0.515348,
+      "sale_price": 0.541518,
+      "original_price": 0.528474,
+      "default_style": 0.509056
+    },
+    "FEATURE": {
+      "feature_id": 0.521209,
+      "feature_name": 0.525608,
+      "feature_value": 0.527928
+    },
+    "SKU": {
+      "sku_id": 0.512674,
+      "size": 0.522107,
+      "stock_quantity": 0.534361,
+      "sku_price_id": 0.520537
+    },
+    "PHOTO": {
+      "photo_id": 0.51505,
+      "photo_url": 0.523679,
+      "thumbnail_url": 0.520997
+    },
+    "CATEGORY": {
+      "category_id": 0.511513,
+      "category_name": 0.513609
+    },
+    "PRICE": {
+      "price_id": 0.517785,
+      "price_value": 0.51824,
+      "price_type": 0.523618
+    },
+    "ASSOC_STYLE_FEATURE": {
+      "assoc_style_feature_id": 0.882046,
+      "style_id": 0.882046,
+      "feature_id": 0.882046
+    },
+    "ASSOC_FEATURE_CATEGORY": {
+      "assoc_feature_category_id": 0.976373,
+      "feature_id": 0.976373,
+      "category_id": 0.976373
+    },
+    "ASSOC_PRICE_SKU": {
+      "assoc_price_sku_id": 0.084617,
+      "price_id": 0.084617,
+      "sku_id": 0.084617
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "STYLE",
+      "cardinality": "1:N",
+      "description": "A product can have multiple styles",
+      "probability": 0.011469
+    },
+    {
+      "entity_1": "STYLE",
+      "entity_2": "ASSOC_STYLE_FEATURE",
+      "description": "One STYLE can be associated with many ASSOC_STYLE_FEATURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.882046
+    },
+    {
+      "entity_1": "FEATURE",
+      "entity_2": "ASSOC_STYLE_FEATURE",
+      "description": "One FEATURE can be associated with many ASSOC_STYLE_FEATURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.882046
+    },
+    {
+      "entity_1": "FEATURE",
+      "entity_2": "ASSOC_FEATURE_CATEGORY",
+      "description": "One FEATURE can be associated with many ASSOC_FEATURE_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976373
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_FEATURE_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_FEATURE_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976373
+    },
+    {
+      "entity_1": "STYLE",
+      "entity_2": "SKU",
+      "cardinality": "1:N",
+      "description": "A style can have multiple SKUs",
+      "probability": 0.175146
+    },
+    {
+      "entity_1": "STYLE",
+      "entity_2": "PHOTO",
+      "cardinality": "1:N",
+      "description": "A style can have multiple photos",
+      "probability": 0.001668
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "A product belongs to one category",
+      "probability": 0.000188
+    },
+    {
+      "entity_1": "STYLE",
+      "entity_2": "PRICE",
+      "cardinality": "1:N",
+      "description": "A style can have multiple prices",
+      "probability": 0.29193
+    },
+    {
+      "entity_1": "PRICE",
+      "entity_2": "ASSOC_PRICE_SKU",
+      "description": "One PRICE can be associated with many ASSOC_PRICE_SKU.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.084617
+    },
+    {
+      "entity_1": "SKU",
+      "entity_2": "ASSOC_PRICE_SKU",
+      "description": "One SKU can be associated with many ASSOC_PRICE_SKU.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.084617
+    }
+  ],
+  "processing_time": 29.87,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added relationships between features and categories, and between prices and SKUs to enhance model completeness and accuracy. Retained strengths from the original model and fixed identified issues."
+  }
+}

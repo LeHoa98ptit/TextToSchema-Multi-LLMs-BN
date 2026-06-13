@@ -1,0 +1,132 @@
+{
+  "filename": "324.txt",
+  "entity": {
+    "USER": 0.756355,
+    "IP_ADDRESS": 0.796441,
+    "GEOGRAPHIC_LOCATION": 0.797332,
+    "COUNTRY": 0.817574,
+    "CONTINENT": 0.754007,
+    "PROVIDER": 0.725817,
+    "IP_NETWORK": 0.769573,
+    "GEOLOCATION_DATUM": 0.746664
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.74247
+    },
+    "IP_ADDRESS": {
+      "ip address": 0.766653,
+      "user id": 0.763915,
+      "ip network id": 0.753478,
+      "provider id": 0.761412,
+      "is anonymous proxy": 0.757902,
+      "is satellite provider": 0.771032
+    },
+    "GEOGRAPHIC_LOCATION": {
+      "location id": 0.774353,
+      "ip address": 0.784377,
+      "continent id": 0.765457,
+      "country id": 0.773135
+    },
+    "COUNTRY": {
+      "country id": 0.756623,
+      "country name": 0.754224,
+      "iso code": 0.766073,
+      "is eu member": 0.752489
+    },
+    "CONTINENT": {
+      "continent id": 0.747191,
+      "continent name": 0.746808
+    },
+    "PROVIDER": {
+      "provider id": 0.747621,
+      "provider name": 0.752362,
+      "provider type": 0.755159
+    },
+    "IP_NETWORK": {
+      "network id": 0.744002,
+      "network cidr": 0.752305
+    },
+    "GEOLOCATION_DATUM": {
+      "datum id": 0.767514,
+      "source": 0.771895,
+      "last updated": 0.768533,
+      "integrity status": 0.774229
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "IP_ADDRESS",
+      "description": "A user can have multiple IP addresses; each IP address belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.935511
+    },
+    {
+      "entity_1": "PROVIDER",
+      "entity_2": "IP_ADDRESS",
+      "description": "A provider supplies many IP addresses; each IP address is associated with one provider.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.984375
+    },
+    {
+      "entity_1": "CONTINENT",
+      "entity_2": "COUNTRY",
+      "description": "A continent contains many countries; each country belongs to one continent.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.89883
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "IP_NETWORK",
+      "description": "A country can have multiple IP networks; each IP network is located in one country.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.696598
+    },
+    {
+      "entity_1": "CONTINENT",
+      "entity_2": "IP_NETWORK",
+      "description": "A continent can contain many IP networks; each IP network belongs to one continent.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.255198
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "description": "A country includes many geographic locations; each geographic location is within one country.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992101
+    },
+    {
+      "entity_1": "CONTINENT",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "description": "A continent contains many geographic locations; each geographic location is situated in one continent.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.106522
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "IP_ADDRESS",
+      "description": "A geographic location can be associated with many IP addresses; each IP address maps to one geographic location.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996696
+    },
+    {
+      "entity_1": "GEOLOCATION_DATUM",
+      "entity_2": "IP_NETWORK",
+      "description": "A geolocation datum can be referenced by many IP networks; each IP network links to one datum for integrity.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.946465
+    }
+  ],
+  "processing_time": 28.31
+}

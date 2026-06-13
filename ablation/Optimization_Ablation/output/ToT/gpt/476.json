@@ -1,0 +1,190 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "SALE_ORDER",
+    "ORDER_DETAIL",
+    "PRODUCT",
+    "RAW_MATERIAL",
+    "SUPPLIER",
+    "PURCHASE_ORDER",
+    "PURCHASE_ORDER_LINE",
+    "INVENTORY",
+    "PRODUCT_BOM",
+    "PRODUCTION_PLAN",
+    "PRODUCTION_PLAN_LINE",
+    "DELIVERY",
+    "FINANCIAL_RECORD"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_number",
+      "email",
+      "address"
+    ],
+    "SALE_ORDER": [
+      "order_id",
+      "customer_id",
+      "order_date",
+      "expected_delivery_date",
+      "order_status",
+      "total_amount",
+      "notes"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "product_type",
+      "selling_price",
+      "description"
+    ],
+    "RAW_MATERIAL": [
+      "material_id",
+      "material_name",
+      "unit_of_measure",
+      "current_stock",
+      "reorder_point",
+      "safety_stock"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "supplier_name",
+      "contact_number",
+      "email",
+      "address",
+      "rating"
+    ],
+    "PURCHASE_ORDER": [
+      "po_id",
+      "supplier_id",
+      "order_date",
+      "expected_arrival_date",
+      "po_status",
+      "total_amount"
+    ],
+    "PURCHASE_ORDER_LINE": [
+      "po_line_id",
+      "po_id",
+      "material_id",
+      "quantity_ordered",
+      "unit_price",
+      "line_total",
+      "received_quantity",
+      "line_status"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "item_type",
+      "item_id",
+      "quantity_on_hand",
+      "location"
+    ],
+    "PRODUCT_BOM": [
+      "bom_id",
+      "product_id",
+      "material_id",
+      "quantity_required",
+      "unit_of_measure"
+    ],
+    "PRODUCTION_PLAN": [
+      "plan_id",
+      "plan_date",
+      "status",
+      "total_quantity"
+    ],
+    "PRODUCTION_PLAN_LINE": [
+      "plan_line_id",
+      "plan_id",
+      "product_id",
+      "quantity_to_produce",
+      "material_id",
+      "material_quantity_used"
+    ],
+    "DELIVERY": [
+      "delivery_id",
+      "order_id",
+      "delivery_time",
+      "delivery_address",
+      "delivery_status",
+      "carrier_name",
+      "tracking_number"
+    ],
+    "FINANCIAL_RECORD": [
+      "record_id",
+      "transaction_type",
+      "related_order_id",
+      "related_po_id",
+      "amount",
+      "transaction_date",
+      "status",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_BOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_PLAN_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 74.689,
+  "ilp_runtime": 0.06
+}

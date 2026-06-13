@@ -1,0 +1,120 @@
+{
+  "filename": "370.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PRODUCT": 0.817574,
+    "MANUFACTURER": 0.739467,
+    "ORDER": 0.817574,
+    "SHOPPING_CART": 0.800353,
+    "PAYMENT_METHOD": 0.67907,
+    "ASSOC_SHOPPING_CART_PRODUCT": 0.256516,
+    "ASSOC_ORDER_PRODUCT": 0.002083
+  },
+  "attribute": {
+    "USER": {
+      "phone_number": 0.757113,
+      "address": 0.752174
+    },
+    "PRODUCT": {
+      "unique_id": 0.762072,
+      "flavor": 0.760716,
+      "number": 0.772404,
+      "puff": 0.767724,
+      "unit_price": 0.75822,
+      "stock_quantity": 0.769836
+    },
+    "MANUFACTURER": {
+      "name": 0.753231
+    },
+    "ORDER": {
+      "order_creation_time": 0.748201,
+      "order_status": 0.748208
+    },
+    "SHOPPING_CART": {
+      "record_quantity": 0.772174
+    },
+    "PAYMENT_METHOD": {
+      "payment_type": 0.746105
+    },
+    "ASSOC_SHOPPING_CART_PRODUCT": {
+      "assoc_shopping_cart_product_id": 0.256516,
+      "shopping_cart_id": 0.256516,
+      "product_id": 0.256516
+    },
+    "ASSOC_ORDER_PRODUCT": {
+      "assoc_order_product_id": 0.002083,
+      "order_id": 0.002083,
+      "product_id": 0.002083
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each user can have many orders, and each order is associated with exactly one user.",
+      "probability": 0.999094
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "description": "Each user has exactly one shopping cart, and each shopping cart is associated with exactly one user.",
+      "probability": 0.997508
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.256516
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.256516
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002083
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002083
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "MANUFACTURER",
+      "cardinality": "1:1",
+      "description": "Each product is associated with exactly one manufacturer, and each manufacturer can have many products.",
+      "probability": 0.995753
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:N",
+      "description": "Each user can have many payment methods, and each payment method is associated with exactly one user.",
+      "probability": 0.999594
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:1",
+      "description": "Each order is associated with exactly one payment method, and each payment method can be used for many orders.",
+      "probability": 0.036464
+    }
+  ],
+  "processing_time": 16.54
+}

@@ -1,0 +1,69 @@
+{
+  "filename": "408.txt",
+  "entity": {
+    "COURSE": 0.622459,
+    "CHAPTER": 0.622459,
+    "QUESTION_TYPE": 0.586254,
+    "QUESTION": 0.622459
+  },
+  "attribute": {
+    "COURSE": {
+      "course_id": 0.554121,
+      "course_name": 0.553011,
+      "course_description": 0.559398
+    },
+    "CHAPTER": {
+      "chapter_id": 0.522996,
+      "chapter_name": 0.52573,
+      "chapter_content": 0.533983,
+      "chapter_order": 0.522657
+    },
+    "QUESTION_TYPE": {
+      "question_type_id": 0.535648,
+      "question_type_name": 0.538885
+    },
+    "QUESTION": {
+      "question_id": 0.5321,
+      "question_content": 0.543346,
+      "correct_answer": 0.518503,
+      "alternative_answer": 0.519068,
+      "question_difficulty": 0.525618,
+      "question_category": 0.547674
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CHAPTER",
+      "cardinality": "1:N",
+      "description": "A course has multiple chapters",
+      "probability": 0.613496
+    },
+    {
+      "entity_1": "CHAPTER",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "description": "A chapter has multiple questions",
+      "probability": 0.757242
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "QUESTION_TYPE",
+      "cardinality": "1:1",
+      "description": "A question has one question type",
+      "probability": 0.091643
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "description": "A course has multiple questions through chapters",
+      "probability": 0.930239
+    }
+  ],
+  "processing_time": 11.58,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added chapter_order attribute to CHAPTER entity, added question_difficulty and question_category attributes to QUESTION entity, and added a relationship between COURSE and QUESTION to capture the indirect relationship"
+  }
+}

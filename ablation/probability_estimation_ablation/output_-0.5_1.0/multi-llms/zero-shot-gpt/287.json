@@ -1,0 +1,88 @@
+{
+  "filename": "287.txt",
+  "entity": {
+    "PARK": 0.622459,
+    "PLANT_SPECIE": 0.592739,
+    "PERSON": 0.454724,
+    "MAINTENANCE_ACTIVITY": 0.557322,
+    "PARK_PLANT_SPECIE": 0.254081
+  },
+  "attribute": {
+    "PARK": {
+      "park id": 0.542048,
+      "location": 0.544289,
+      "area": 0.543849,
+      "responsible person id": 0.559368
+    },
+    "PLANT_SPECIE": {
+      "plant specie id": 0.522851,
+      "species name": 0.517014,
+      "quantity": 0.534889,
+      "growth status": 0.532634
+    },
+    "PERSON": {
+      "person id": 0.510157,
+      "name": 0.499615,
+      "role": 0.512678
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "maintenance activity id": 0.542888,
+      "maintenance time": 0.539732,
+      "content": 0.546028,
+      "personnel id": 0.549583,
+      "cost": 0.538931,
+      "park id": 0.565165
+    },
+    "PARK_PLANT_SPECIE": {
+      "park_plant_specie_id": 0.254081,
+      "park_id": 0.254081,
+      "plant_specie_id": 0.254081,
+      "id_PARK_PLANT_SPECIE": 0.254081,
+      "recording_time": 0.254081,
+      "recorder_person_id": 0.254081
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSON",
+      "entity_2": "PARK",
+      "description": "A person (responsible person) can be assigned to manage multiple parks, each park has one responsible person",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.919494
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "PARK_PLANT_SPECIE",
+      "description": "One PARK can be associated with many PARK_PLANT_SPECIE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.254081
+    },
+    {
+      "entity_1": "PLANT_SPECIE",
+      "entity_2": "PARK_PLANT_SPECIE",
+      "description": "One PLANT_SPECIE can be associated with many PARK_PLANT_SPECIE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.254081
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "description": "A park can have multiple maintenance activities; each activity is performed at one park",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997822
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "description": "A person (maintenance personnel) can perform multiple maintenance activities; each activity is performed by one person",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.951269
+    }
+  ],
+  "processing_time": 6.77
+}

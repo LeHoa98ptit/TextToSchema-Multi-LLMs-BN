@@ -1,0 +1,172 @@
+{
+  "entity": [
+    "GENERAL_LEDGER",
+    "ACCOUNT_RECEIVABLE",
+    "ACCOUNT_PAYABLE",
+    "CUSTOMER",
+    "SUPPLIER",
+    "COST_CENTER",
+    "COST_ACCOUNTING",
+    "EMPLOYEE",
+    "PERFORMANCE",
+    "PRODUCT",
+    "PRODUCTION_PLAN",
+    "MATERIAL",
+    "MATERIAL_REQUIREMENT_PLAN",
+    "PRODUCTION_SCHEDULING",
+    "SALE_ORDER",
+    "PURCHASE_ORDER",
+    "WAREHOUSE",
+    "INVENTORY",
+    "PROJECT_PLAN",
+    "SUPPLIER_MATERIAL"
+  ],
+  "attribute": {
+    "GENERAL_LEDGER": [
+      "ledger_id",
+      "account_date",
+      "account_time",
+      "description",
+      "amount"
+    ],
+    "ACCOUNT_RECEIVABLE": [
+      "receivable_id",
+      "customer_id",
+      "amount",
+      "receivable_date"
+    ],
+    "ACCOUNT_PAYABLE": [
+      "payable_id",
+      "supplier_id",
+      "amount",
+      "payable_date"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_info",
+      "address"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_info",
+      "address"
+    ],
+    "COST_CENTER": [
+      "cost_center_id",
+      "name",
+      "description"
+    ],
+    "COST_ACCOUNTING": [
+      "cost_id",
+      "cost_center_id",
+      "amount",
+      "cost_date",
+      "description"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "name",
+      "position",
+      "hire_date",
+      "salary"
+    ],
+    "PERFORMANCE": [
+      "performance_id",
+      "employee_id",
+      "evaluation_date",
+      "score",
+      "comments"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "description"
+    ],
+    "PRODUCTION_PLAN": [
+      "plan_id",
+      "product_id",
+      "quantity",
+      "start_date",
+      "end_date"
+    ],
+    "MATERIAL": [
+      "material_id",
+      "description",
+      "type"
+    ],
+    "MATERIAL_REQUIREMENT_PLAN": [
+      "mrp_id",
+      "production_plan_id",
+      "material_id",
+      "required_quantity",
+      "mrp_date"
+    ],
+    "PRODUCTION_SCHEDULING": [
+      "schedule_id",
+      "production_plan_id",
+      "production_date",
+      "status"
+    ],
+    "SALE_ORDER": [
+      "sale_order_id",
+      "customer_id",
+      "order_date",
+      "total_amount"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_order_id",
+      "supplier_id",
+      "order_date",
+      "total_amount"
+    ],
+    "WAREHOUSE": [
+      "warehouse_id",
+      "address"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "material_id",
+      "warehouse_id",
+      "quantity",
+      "last_updated"
+    ],
+    "PROJECT_PLAN": [
+      "project_id",
+      "name",
+      "start_date",
+      "end_date",
+      "execution_status",
+      "progress"
+    ],
+    "SUPPLIER_MATERIAL": [
+      "supplier_id",
+      "material_id",
+      "supply_price",
+      "supply_lead_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "MATERIAL_REQUIREMENT_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_SCHEDULING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WAREHOUSE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.0499,
+  "ilp_runtime": 0.134
+}

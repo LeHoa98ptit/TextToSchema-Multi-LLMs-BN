@@ -1,0 +1,160 @@
+{
+  "filename": "446.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SENSOR": 0.817574,
+    "METEOROLOGICAL_DATA": 0.773994,
+    "CROP": 0.817574,
+    "GROWTH_MODEL": 0.801469,
+    "WATER_SUPPLY": 0.688947,
+    "FERTILIZER_SUPPLY": 0.702807,
+    "CROP_ACTION": 0.771376,
+    "MODEL_EVALUATION": 0.754656
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.744258,
+      "username": 0.737563,
+      "password hash": 0.741678,
+      "phone number": 0.742644,
+      "registration time": 0.747013,
+      "last login time": 0.740887,
+      "role": 0.75023
+    },
+    "SENSOR": {
+      "sensor id": 0.753445,
+      "sensor type": 0.75456,
+      "measurement types": 0.755309,
+      "deployment time": 0.759285,
+      "burial depth": 0.748939,
+      "location": 0.753734
+    },
+    "METEOROLOGICAL_DATA": {
+      "meteorological id": 0.764618,
+      "recorded at": 0.76516,
+      "temperature": 0.755679,
+      "humidity": 0.761787,
+      "rainfall": 0.762094,
+      "wind speed": 0.757873,
+      "light intensity": 0.761222,
+      "location": 0.763109
+    },
+    "CROP": {
+      "crop id": 0.766539,
+      "crop type": 0.77099,
+      "growth model id": 0.780291
+    },
+    "GROWTH_MODEL": {
+      "model id": 0.763432,
+      "model parameters": 0.765456,
+      "creation time": 0.760288,
+      "crop id": 0.781562
+    },
+    "WATER_SUPPLY": {
+      "water supply id": 0.754168,
+      "user id": 0.759527,
+      "crop id": 0.775661,
+      "supply time": 0.750803,
+      "location": 0.750632
+    },
+    "FERTILIZER_SUPPLY": {
+      "fertilizer supply id": 0.761828,
+      "user id": 0.771483,
+      "crop id": 0.772835,
+      "supply time": 0.762142,
+      "location": 0.760878
+    },
+    "CROP_ACTION": {
+      "action id": 0.751388,
+      "user id": 0.758982,
+      "crop id": 0.761866,
+      "action type": 0.755013,
+      "action time": 0.758372,
+      "details": 0.766671,
+      "location": 0.76202
+    },
+    "MODEL_EVALUATION": {
+      "evaluation id": 0.753878,
+      "growth model id": 0.760638,
+      "evaluation time": 0.751877,
+      "metric name": 0.752594,
+      "metric value": 0.753908,
+      "location": 0.757023
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "WATER_SUPPLY",
+      "description": "A user can record many water supply events for crops",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.59258
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "WATER_SUPPLY",
+      "description": "A crop can receive many water supply records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.121236
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FERTILIZER_SUPPLY",
+      "description": "A user can record many fertilizer supply events for crops",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.215536
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "FERTILIZER_SUPPLY",
+      "description": "A crop can receive many fertilizer supply records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002673
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CROP_ACTION",
+      "description": "A user can perform many actions on crops (planting, fertilizing, etc.)",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.045903
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "CROP_ACTION",
+      "description": "A crop can have many recorded actions performed by users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999921
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGICAL_DATA",
+      "description": "A sensor records many meteorological data measurements",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.5879
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "GROWTH_MODEL",
+      "description": "Each crop is associated with a single growth model",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.405847
+    },
+    {
+      "entity_1": "GROWTH_MODEL",
+      "entity_2": "MODEL_EVALUATION",
+      "description": "A growth model can have multiple evaluation records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000604
+    }
+  ],
+  "processing_time": 1025.26
+}

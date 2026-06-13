@@ -1,0 +1,110 @@
+{
+  "filename": "331.txt",
+  "entity": {
+    "PLAYER": 0.622459,
+    "MATCH": 0.622459,
+    "BATTLE": 0.622459,
+    "EVENT": 0.490926,
+    "PLAYER_MATCH": 0.267887,
+    "PLAYER_BATTLE": 0.066054
+  },
+  "attribute": {
+    "PLAYER": {
+      "player id": 0.535431,
+      "username": 0.529209,
+      "contact information": 0.551757,
+      "account status": 0.547442
+    },
+    "MATCH": {
+      "match id": 0.534776,
+      "match type": 0.541676,
+      "start time": 0.543655,
+      "end time": 0.543784,
+      "participant player ids": 0.560325,
+      "match result": 0.53934,
+      "player score": 0.549053,
+      "win loss status": 0.544528,
+      "ranking": 0.551009
+    },
+    "BATTLE": {
+      "battle id": 0.535307,
+      "match id": 0.545463,
+      "side a player id": 0.543924,
+      "side b player id": 0.540156,
+      "battle start time": 0.534117,
+      "battle end time": 0.532362,
+      "win loss status": 0.539869,
+      "battle result": 0.533925
+    },
+    "EVENT": {
+      "event id": 0.51917,
+      "event name": 0.522104,
+      "start date": 0.522304,
+      "end date": 0.52247
+    },
+    "PLAYER_MATCH": {
+      "player_match_id": 0.267887,
+      "player_id": 0.267887,
+      "match_id": 0.267887,
+      "player_score": 0.267887,
+      "win_loss_status": 0.267887,
+      "ranking": 0.267887
+    },
+    "PLAYER_BATTLE": {
+      "player_battle_id": 0.066054,
+      "player_id": 0.066054,
+      "battle_id": 0.066054
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_MATCH",
+      "description": "One PLAYER can be associated with many PLAYER_MATCH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.267887
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "PLAYER_MATCH",
+      "description": "One MATCH can be associated with many PLAYER_MATCH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.267887
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE",
+      "description": "A match consists of multiple battles; each battle belongs to a single match.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996119
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_BATTLE",
+      "description": "One PLAYER can be associated with many PLAYER_BATTLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.066054
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "PLAYER_BATTLE",
+      "description": "One BATTLE can be associated with many PLAYER_BATTLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.066054
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MATCH",
+      "description": "An event comprises multiple matches; each match is associated with a single event.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.886654
+    }
+  ],
+  "processing_time": 3.45
+}

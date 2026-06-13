@@ -1,0 +1,146 @@
+{
+  "filename": "461.txt",
+  "entity": {
+    "PRODUCT": 0.622459,
+    "DISTRIBUTION_PERSONNEL": 0.540114,
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "STORAGE_LOCATION": 0.413867,
+    "CATEGORY": 0.473625,
+    "ORDER_HISTORY": 0.50515,
+    "ASSOC_ORDER_PRODUCT": 0.002116,
+    "ASSOC_STORAGE_LOCATION_CATEGORY": 0.0021
+  },
+  "attribute": {
+    "PRODUCT": {
+      "unit_price": 0.521899,
+      "stock_quantity": 0.535081,
+      "unit_measurement": 0.531458,
+      "category_id": 0.51408,
+      "description": 0.530661,
+      "storage_location_id": 0.518055
+    },
+    "DISTRIBUTION_PERSONNEL": {
+      "phone": 0.558197,
+      "gender": 0.558833,
+      "position": 0.563854,
+      "personnel_id": 0.557189
+    },
+    "CUSTOMER": {
+      "gender": 0.543691,
+      "age": 0.526848,
+      "phone": 0.529322,
+      "address": 0.52527,
+      "customer_id": 0.52016
+    },
+    "ORDER": {
+      "order_creation_time": 0.516175,
+      "product_quantity": 0.537476,
+      "total_order_price": 0.524095,
+      "delivery_address": 0.532749,
+      "order_status": 0.527674,
+      "estimate_delivery_time": 0.526083,
+      "customer_id": 0.525659,
+      "distribution_personnel_id": 0.553115
+    },
+    "ORDER_HISTORY": {
+      "order_id": 0.511845,
+      "status_update_time": 0.517608,
+      "status_update_description": 0.52538
+    },
+    "STORAGE_LOCATION": {
+      "location_id": 0.509623,
+      "location_name": 0.511737,
+      "location_address": 0.510619
+    },
+    "CATEGORY": {
+      "category_id": 0.50355,
+      "category_name": 0.508932,
+      "category_description": 0.517789
+    },
+    "ASSOC_ORDER_PRODUCT": {
+      "assoc_order_product_id": 0.002116,
+      "order_id": 0.002116,
+      "product_id": 0.002116
+    },
+    "ASSOC_STORAGE_LOCATION_CATEGORY": {
+      "assoc_storage_location_category_id": 0.0021,
+      "storage_location_id": 0.0021,
+      "category_id": 0.0021
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.964285
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002116
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002116
+    },
+    {
+      "entity_1": "DISTRIBUTION_PERSONNEL",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A distribution personnel can be responsible for multiple orders",
+      "probability": 0.000123
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "A category can have multiple products",
+      "probability": 0.000259
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "STORAGE_LOCATION",
+      "cardinality": "1:N",
+      "description": "A storage location can have multiple products",
+      "probability": 0.005212
+    },
+    {
+      "entity_1": "STORAGE_LOCATION",
+      "entity_2": "ASSOC_STORAGE_LOCATION_CATEGORY",
+      "description": "One STORAGE_LOCATION can be associated with many ASSOC_STORAGE_LOCATION_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.0021
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_STORAGE_LOCATION_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_STORAGE_LOCATION_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.0021
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_HISTORY",
+      "cardinality": "1:N",
+      "description": "An order can have multiple status updates",
+      "probability": 0.993635
+    }
+  ],
+  "processing_time": 17.89,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added ORDER_HISTORY entity to track order status updates, and added a many-to-many relationship between STORAGE_LOCATION and CATEGORY to allow for more flexible storage and categorization of products."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "entity": [
+    "USER",
+    "UNIT",
+    "EQUIPMENT",
+    "EQUIPMENT_USAGE",
+    "CONSUMABLE",
+    "CONSUMABLE_RECORD",
+    "HAZARDOUS_CHEMICAL",
+    "CHEMICAL_RECORD",
+    "EXPERIMENTAL_COURSE",
+    "ASSOC_USER_EXPERIMENTAL_COURSE"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "associated_unit",
+      "role"
+    ],
+    "UNIT": [
+      "unit_id",
+      "unit_name"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "name",
+      "model",
+      "category",
+      "manufacturer",
+      "status",
+      "acquisition_time"
+    ],
+    "EQUIPMENT_USAGE": [
+      "usage_id",
+      "usage_time",
+      "purpose",
+      "course_id"
+    ],
+    "CONSUMABLE": [
+      "consumable_id",
+      "name",
+      "category",
+      "inventory_quantity",
+      "status"
+    ],
+    "CONSUMABLE_RECORD": [
+      "record_id",
+      "record_type",
+      "quantity",
+      "record_time"
+    ],
+    "HAZARDOUS_CHEMICAL": [
+      "chemical_id",
+      "name",
+      "category",
+      "inventory_quantity",
+      "status",
+      "safety_info",
+      "purchase_time"
+    ],
+    "CHEMICAL_RECORD": [
+      "record_id",
+      "record_type",
+      "quantity",
+      "record_time"
+    ],
+    "EXPERIMENTAL_COURSE": [
+      "course_id",
+      "name",
+      "class_time",
+      "class_location"
+    ],
+    "ASSOC_USER_EXPERIMENTAL_COURSE": [
+      "assoc_user_experimental_course_id",
+      "user_id",
+      "experimental_course_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EXPERIMENTAL_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_USER_EXPERIMENTAL_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "CHEMICAL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 75.654,
+  "ilp_runtime": 0.065
+}

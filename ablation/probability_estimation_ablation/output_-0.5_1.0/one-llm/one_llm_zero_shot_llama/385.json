@@ -1,0 +1,88 @@
+{
+  "filename": "385.txt",
+  "entity": {
+    "ACCOUNT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "CURRENCY": 0.523508,
+    "USER": 0.526076,
+    "ASSOC_TRANSACTION_CURRENCY": 0.951147,
+    "ASSOC_ACCOUNT_CURRENCY": 0.991576
+  },
+  "attribute": {
+    "ACCOUNT": {
+      "account_balance": 0.550532,
+      "frozen_amount": 0.538027,
+      "account_number": 0.53905
+    },
+    "TRANSACTION": {
+      "transaction_status": 0.551798,
+      "error_information": 0.547103,
+      "failure_reason": 0.541883
+    },
+    "CURRENCY": {
+      "currency_type": 0.530847,
+      "currency_code": 0.525157
+    },
+    "USER": {
+      "user_id": 0.505772,
+      "user_name": 0.506807
+    },
+    "ASSOC_TRANSACTION_CURRENCY": {
+      "assoc_transaction_currency_id": 0.951147,
+      "transaction_id": 0.951147,
+      "currency_id": 0.951147
+    },
+    "ASSOC_ACCOUNT_CURRENCY": {
+      "assoc_account_currency_id": 0.991576,
+      "account_id": 0.991576,
+      "currency_id": 0.991576
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "probability": 0.999972
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "probability": 0.994145
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_CURRENCY",
+      "description": "One TRANSACTION can be associated with many ASSOC_TRANSACTION_CURRENCY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.951147
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "ASSOC_TRANSACTION_CURRENCY",
+      "description": "One CURRENCY can be associated with many ASSOC_TRANSACTION_CURRENCY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.951147
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ASSOC_ACCOUNT_CURRENCY",
+      "description": "One ACCOUNT can be associated with many ASSOC_ACCOUNT_CURRENCY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991576
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "ASSOC_ACCOUNT_CURRENCY",
+      "description": "One CURRENCY can be associated with many ASSOC_ACCOUNT_CURRENCY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991576
+    }
+  ],
+  "processing_time": 10.06
+}

@@ -1,0 +1,106 @@
+{
+  "filename": "469.txt",
+  "entity": {
+    "OWNER": 0.622459,
+    "HOUSING_UNIT": 0.549166,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "FEE": 0.622459,
+    "FEE_TYPE": 0.533923,
+    "FEE_RECEIPT": 0.526675
+  },
+  "attribute": {
+    "OWNER": {
+      "owner id": 0.529432,
+      "workplace": 0.546286,
+      "contact number": 0.528162
+    },
+    "HOUSING_UNIT": {
+      "house number": 0.545977,
+      "floor area": 0.549408
+    },
+    "DEPARTMENT": {
+      "department id": 0.535536,
+      "department phone number": 0.529444
+    },
+    "EMPLOYEE": {
+      "employee id": 0.538807,
+      "date of birth": 0.525522,
+      "gender": 0.534198,
+      "address": 0.542709,
+      "contact number": 0.534831,
+      "position": 0.538378,
+      "password": 0.535975
+    },
+    "FEE_TYPE": {
+      "fee type id": 0.534589,
+      "fee type name": 0.53399
+    },
+    "FEE": {
+      "fee id": 0.527251,
+      "fee type id": 0.532396,
+      "housing unit id": 0.554007,
+      "quantity": 0.529525,
+      "fee standard": 0.525525,
+      "calculation base": 0.532038,
+      "collection month": 0.529895
+    },
+    "FEE_RECEIPT": {
+      "receipt id": 0.525308,
+      "fee id": 0.527444,
+      "receipt date": 0.517525,
+      "amount": 0.521542
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OWNER",
+      "entity_2": "HOUSING_UNIT",
+      "description": "Each owner can own multiple housing units, each housing unit belongs to one owner.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996775
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "description": "Each department has many employees, each employee belongs to one department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "description": "Each department has one supervisor who is an employee.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "FEE_TYPE",
+      "entity_2": "FEE",
+      "description": "Each fee record is of a specific fee type; a fee type can be used for many fees.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999956
+    },
+    {
+      "entity_1": "HOUSING_UNIT",
+      "entity_2": "FEE",
+      "description": "Fees are calculated for a housing unit; a housing unit can have many fee records over time.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001539
+    },
+    {
+      "entity_1": "FEE",
+      "entity_2": "FEE_RECEIPT",
+      "description": "Each fee collection generates one receipt; each receipt corresponds to one fee.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.997142
+    }
+  ],
+  "processing_time": 3.8
+}

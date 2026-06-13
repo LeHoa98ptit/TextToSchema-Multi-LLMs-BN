@@ -1,0 +1,113 @@
+{
+  "filename": "375.txt",
+  "entity": {
+    "DEVICE": 0.817574,
+    "USER": 0.817574,
+    "STAFF": 0.737245,
+    "NETWORK_TRAFFIC": 0.765577,
+    "DEVICE_FAILURE": 0.742499,
+    "MAINTENANCE_RECORD": 0.754415,
+    "USER_CONNECTION": 0.743855
+  },
+  "attribute": {
+    "DEVICE": {
+      "device_type": 0.752069,
+      "ip_address": 0.747009,
+      "installation_location": 0.750114,
+      "installation_time": 0.751481,
+      "device_status": 0.760988
+    },
+    "USER": {
+      "user_id": 0.740895,
+      "user_account": 0.738484,
+      "user_password": 0.736806
+    },
+    "STAFF": {
+      "staff_id": 0.746646,
+      "contact_information": 0.752231
+    },
+    "NETWORK_TRAFFIC": {
+      "device_id": 0.764253,
+      "timestamp": 0.761999,
+      "upload_traffic": 0.756054,
+      "download_traffic": 0.757084,
+      "total_traffic": 0.762344,
+      "traffic_status": 0.767427
+    },
+    "DEVICE_FAILURE": {
+      "device_id": 0.752016,
+      "failure_occurrence_time": 0.754213,
+      "failure_type": 0.749229,
+      "failure_description": 0.750815,
+      "handle_status": 0.751287,
+      "remark": 0.752395
+    },
+    "MAINTENANCE_RECORD": {
+      "maintenance_id": 0.761904,
+      "device_id": 0.769757,
+      "staff_id": 0.763807,
+      "maintenance_time": 0.764605,
+      "maintenance_content": 0.762781,
+      "maintenance_result": 0.761288,
+      "remark": 0.764903
+    },
+    "USER_CONNECTION": {
+      "connection_id": 0.744945,
+      "user_id": 0.744843,
+      "device_id": 0.7562,
+      "connection_time": 0.749168,
+      "disconnection_time": 0.742654,
+      "bandwidth": 0.757301,
+      "user_ip": 0.74409
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "NETWORK_TRAFFIC",
+      "cardinality": "1:N",
+      "description": "A device can have multiple network traffic records",
+      "probability": 0.04144
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "description": "A device can have multiple device failure records",
+      "probability": 0.998399
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "description": "A device can have multiple maintenance records",
+      "probability": 0.993919
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple user connection records",
+      "probability": 0.999984
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "description": "A device can have multiple user connection records",
+      "probability": 0.999849
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "description": "A staff member can have multiple maintenance records",
+      "probability": 0.973211
+    }
+  ],
+  "processing_time": 40.74,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique identifiers to MAINTENANCE_RECORD and USER_CONNECTION entities, removed redundant relationships and attributes to improve efficiency and clarity."
+  }
+}

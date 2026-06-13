@@ -1,0 +1,202 @@
+{
+  "filename": "439.txt",
+  "entity": {
+    "USER": 0.817574,
+    "MERCHANT": 0.817574,
+    "RECYCLING_REQUEST": 0.711237,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "PAYMENT": 0.817574,
+    "RATING": 0.817574,
+    "ADMIN": 0.729206,
+    "ITEM_CATALOG": 0.670997,
+    "ORDER_STATUS_LOG": 0.710477
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.75285,
+      "name": 0.74705,
+      "phone": 0.752703,
+      "wechat_id": 0.74815,
+      "email": 0.753025,
+      "password_hash": 0.746321,
+      "registration_date": 0.745487
+    },
+    "MERCHANT": {
+      "merchantid": 0.765864,
+      "name": 0.761915,
+      "phone": 0.767379,
+      "address": 0.765533,
+      "business_license": 0.761206,
+      "registration_date": 0.759509
+    },
+    "RECYCLING_REQUEST": {
+      "requestid": 0.769729,
+      "user_id": 0.766566,
+      "request_time": 0.762926,
+      "status": 0.775177,
+      "scheduled_time": 0.760889,
+      "location": 0.770039,
+      "notes": 0.776315
+    },
+    "ORDER": {
+      "orderid": 0.751256,
+      "request_id": 0.749581,
+      "merchant_id": 0.761699,
+      "acceptance_time": 0.750446,
+      "fulfillment_time": 0.756117,
+      "total_amount": 0.751135,
+      "payment_status": 0.757874
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.747939,
+      "order_id": 0.748465,
+      "item_type": 0.752493,
+      "quantity": 0.760164,
+      "unit_price": 0.747715
+    },
+    "PAYMENT": {
+      "payment_id": 0.753901,
+      "order_id": 0.754032,
+      "amount": 0.754838,
+      "method": 0.765539,
+      "payment_time": 0.75261,
+      "transaction_id": 0.75435,
+      "audited_by_admin_id": 0.751364
+    },
+    "RATING": {
+      "rating_id": 0.740584,
+      "order_id": 0.742451,
+      "user_id": 0.746341,
+      "score": 0.735946,
+      "comment": 0.74318,
+      "rating_time": 0.741668,
+      "reviewed_by_admin_id": 0.739882
+    },
+    "ADMIN": {
+      "admin_id": 0.740402,
+      "name": 0.750232,
+      "email": 0.749605,
+      "role": 0.752866,
+      "last_login": 0.744705
+    },
+    "ITEM_CATALOG": {
+      "item_type_id": 0.74272,
+      "description": 0.760033,
+      "recyclable_category": 0.753826,
+      "base_price": 0.740468
+    },
+    "ORDER_STATUS_LOG": {
+      "log_id": 0.751514,
+      "order_id": 0.749532,
+      "status": 0.756287,
+      "changed_at": 0.746133,
+      "admin_id": 0.75147
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:N",
+      "description": "A user can submit multiple recycling requests",
+      "probability": 0.98415
+    },
+    {
+      "entity_1": "RECYCLING_REQUEST",
+      "entity_2": "ORDER",
+      "cardinality": "1:0..1",
+      "description": "Each request may generate a single order after merchant acceptance",
+      "probability": 0.000348
+    },
+    {
+      "entity_1": "MERCHANT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A merchant can fulfill many orders",
+      "probability": 0.023529
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of one or more ordered items",
+      "probability": 0.999947
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "ITEM_CATALOG",
+      "cardinality": "N:1",
+      "description": "Each ordered item references a catalog entry for type and pricing",
+      "probability": 0.083246
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Every order has exactly one payment record",
+      "probability": 0.871465
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "cardinality": "1:0..1",
+      "description": "An order may receive a rating after completion",
+      "probability": 0.562134
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "Admins can manage many users",
+      "probability": 0.629329
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "MERCHANT",
+      "cardinality": "1:N",
+      "description": "Admins can manage many merchants",
+      "probability": 3e-05
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "Admins can audit many payment records",
+      "probability": 0.00239
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "description": "Admins can review many ratings",
+      "probability": 0.002265
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS_LOG",
+      "cardinality": "1:N",
+      "description": "An order can have multiple status log entries",
+      "probability": 0.091026
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "ORDER_STATUS_LOG",
+      "cardinality": "1:N",
+      "description": "Admins record status changes for orders",
+      "probability": 5.4e-05
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "ITEM_CATALOG",
+      "cardinality": "1:N",
+      "description": "Admins manage the item catalog",
+      "probability": 6.3e-05
+    }
+  ],
+  "processing_time": 12.31,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added ADMIN audit relationships to PAYMENT and RATING, introduced ORDER_STATUS_LOG entity for detailed order state tracking, linked ADMIN to ORDER_STATUS_LOG for audit entries, added ADMIN management of ITEM_CATALOG, included audit foreign keys in PAYMENT and RATING, and ensured enumerated status fields are represented. These changes address the evaluation suggestions while preserving the comprehensive, normalized structure of the original high‑scoring model."
+  }
+}

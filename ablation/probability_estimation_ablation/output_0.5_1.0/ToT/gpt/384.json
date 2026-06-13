@@ -1,0 +1,215 @@
+{
+  "filename": "384.txt",
+  "entity": {
+    "USER": 0.706864,
+    "TASK": 0.817574,
+    "TASK_PARAMETER": 0.801405,
+    "ORGANISM": 0.817574,
+    "ALGORITHM": 0.697116,
+    "FILE": 0.706179,
+    "OPTION": 0.707216,
+    "ALGORITHM_OPTION": 0.672056,
+    "TASK_ALGORITHM": 0.760714,
+    "TASK_ALGORITHM_OPTION": 0.751196,
+    "TASK_INCLUDE_ORGANISM": 0.780794,
+    "TASK_EXCLUDE_ORGANISM": 0.75423
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.731963,
+      "username": 0.724847,
+      "full_name": 0.735937,
+      "email": 0.733222,
+      "created_at": 0.729982,
+      "updated_at": 0.729468
+    },
+    "TASK": {
+      "task_id": 0.768406,
+      "task_title": 0.765396,
+      "creation_date": 0.76441,
+      "status": 0.766086,
+      "end_date": 0.760835,
+      "status_reason": 0.765097,
+      "query_statement": 0.769543,
+      "owner_id": 0.759124,
+      "file_id": 0.765378,
+      "created_at": 0.756006,
+      "created_by": 0.76304,
+      "updated_at": 0.752861,
+      "updated_by": 0.758658
+    },
+    "TASK_PARAMETER": {
+      "parameter_id": 0.760913,
+      "task_id": 0.766819,
+      "parameter_name": 0.759662,
+      "parameter_value": 0.757508,
+      "data_type": 0.770073,
+      "created_at": 0.754952,
+      "updated_at": 0.750198
+    },
+    "ORGANISM": {
+      "organism_id": 0.768539,
+      "scientific_name": 0.7665,
+      "common_name": 0.767193,
+      "taxonomy_id": 0.770511,
+      "genome_version": 0.775763
+    },
+    "ALGORITHM": {
+      "algorithm_id": 0.745812,
+      "algorithm_name": 0.743425,
+      "version": 0.742735,
+      "description": 0.74753,
+      "created_at": 0.737374,
+      "updated_at": 0.734114
+    },
+    "FILE": {
+      "file_id": 0.742597,
+      "file_path": 0.733887,
+      "file_type": 0.742364,
+      "checksum": 0.749482,
+      "created_at": 0.737283,
+      "updated_at": 0.735382
+    },
+    "OPTION": {
+      "option_id": 0.73894,
+      "option_name": 0.736258,
+      "option_value": 0.730443,
+      "description": 0.748545,
+      "created_at": 0.731786,
+      "updated_at": 0.7298
+    },
+    "ALGORITHM_OPTION": {
+      "algorithm_option_id": 0.742339,
+      "algorithm_id": 0.745134,
+      "option_id": 0.744758,
+      "default_value": 0.735317,
+      "is_required": 0.746004,
+      "created_at": 0.736758,
+      "updated_at": 0.733598
+    },
+    "TASK_ALGORITHM": {
+      "task_algorithm_id": 0.767844,
+      "task_id": 0.769964,
+      "algorithm_id": 0.764429,
+      "execution_order": 0.760251,
+      "created_at": 0.756453,
+      "updated_at": 0.752726
+    },
+    "TASK_ALGORITHM_OPTION": {
+      "task_algorithm_option_id": 0.76583,
+      "task_algorithm_id": 0.767873,
+      "algorithm_option_id": 0.761526,
+      "option_value": 0.757165,
+      "created_at": 0.755028,
+      "updated_at": 0.751619
+    },
+    "TASK_INCLUDE_ORGANISM": {
+      "task_id": 0.787242,
+      "organism_id": 0.788277,
+      "created_at": 0.779785
+    },
+    "TASK_EXCLUDE_ORGANISM": {
+      "task_id": 0.783879,
+      "organism_id": 0.783892,
+      "created_at": 0.777782
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_PARAMETER",
+      "cardinality": "1:N",
+      "description": "A task can have multiple parameters",
+      "probability": 0.999633
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each task is owned by one user (owner_id)",
+      "probability": 0.008162
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "FILE",
+      "cardinality": "N:1",
+      "description": "A task references one executable file",
+      "probability": 0.998493
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_ALGORITHM",
+      "cardinality": "1:N",
+      "description": "A task can be linked to one or more algorithms (pipeline steps)",
+      "probability": 0.999546
+    },
+    {
+      "entity_1": "ALGORITHM",
+      "entity_2": "TASK_ALGORITHM",
+      "cardinality": "1:N",
+      "description": "An algorithm can appear in many task‑algorithm links",
+      "probability": 0.937609
+    },
+    {
+      "entity_1": "ALGORITHM",
+      "entity_2": "ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "description": "An algorithm can have multiple defined options",
+      "probability": 0.998399
+    },
+    {
+      "entity_1": "OPTION",
+      "entity_2": "ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "description": "An option can be used by many algorithms",
+      "probability": 0.74374
+    },
+    {
+      "entity_1": "TASK_ALGORITHM",
+      "entity_2": "TASK_ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "description": "Specific algorithm instance in a task can have multiple option values",
+      "probability": 0.999995
+    },
+    {
+      "entity_1": "ALGORITHM_OPTION",
+      "entity_2": "TASK_ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "description": "Option definition can be overridden per task‑algorithm link",
+      "probability": 0.478982
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_INCLUDE_ORGANISM",
+      "cardinality": "1:N",
+      "description": "Link table for organisms that a task includes",
+      "probability": 0.999942
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXCLUDE_ORGANISM",
+      "cardinality": "1:N",
+      "description": "Link table for organisms that a task excludes",
+      "probability": 0.997597
+    },
+    {
+      "entity_1": "TASK_INCLUDE_ORGANISM",
+      "entity_2": "ORGANISM",
+      "cardinality": "N:1",
+      "description": "Included organism reference",
+      "probability": 0.999435
+    },
+    {
+      "entity_1": "TASK_EXCLUDE_ORGANISM",
+      "entity_2": "ORGANISM",
+      "cardinality": "N:1",
+      "description": "Excluded organism reference",
+      "probability": 0.998799
+    }
+  ],
+  "processing_time": 993.41,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added audit fields (created_at, updated_at, created_by, updated_by) to major tables for traceability. Normalized OPTION by introducing ALGORITHM_OPTION to tie options to specific algorithms and TASK_ALGORITHM_OPTION to capture per‑task option values. Changed TASK‑ALGORITHM relationship to many‑to‑many via TASK_ALGORITHM link, supporting pipelines with multiple algorithms. Kept explicit include/exclude organism link tables for clear semantics. Documented foreign‑key intent through relationship definitions, enhancing referential integrity and consistency."
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "filename": "263.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "LECTURER": 0.817574,
+    "TEACHING_STAFF": 0.744673,
+    "HOMEWORK": 0.817574,
+    "SUBMISSION": 0.796231,
+    "GRADE": 0.817574,
+    "NOTIFICATION": 0.697749,
+    "RANDOM_INSPECTION": 0.802675,
+    "RANDOM_INSPECTION_REPORT": 0.779181,
+    "HOMEWORK_VIEW": 0.038256
+  },
+  "attribute": {
+    "STUDENT": {
+      "student id": 0.764857
+    },
+    "LECTURER": {
+      "lecturer id": 0.756978
+    },
+    "TEACHING_STAFF": {
+      "staff id": 0.761677
+    },
+    "HOMEWORK": {
+      "homework id": 0.770336
+    },
+    "SUBMISSION": {
+      "submission id": 0.744496,
+      "student id": 0.764172,
+      "homework id": 0.776815,
+      "submission timestamp": 0.745573,
+      "file path": 0.742332,
+      "status": 0.755582
+    },
+    "GRADE": {
+      "grade id": 0.765722,
+      "submission id": 0.773041,
+      "lecturer id": 0.771362,
+      "score": 0.769399,
+      "evaluation": 0.772674,
+      "overall evaluation": 0.769696,
+      "grade date": 0.761842
+    },
+    "NOTIFICATION": {
+      "notification id": 0.734911,
+      "recipient type": 0.740289,
+      "recipient id": 0.733901,
+      "notification type": 0.739385,
+      "notification timestamp": 0.733708,
+      "message content": 0.749586
+    },
+    "RANDOM_INSPECTION": {
+      "inspection id": 0.749183,
+      "staff id": 0.753177,
+      "inspection date": 0.747405,
+      "homework id": 0.775278,
+      "opinion": 0.750423
+    },
+    "RANDOM_INSPECTION_REPORT": {
+      "report id": 0.75182,
+      "inspection id": 0.751722,
+      "report content": 0.764966,
+      "report date": 0.750446
+    },
+    "HOMEWORK_VIEW": {
+      "homework_view_id": 0.038256,
+      "student_id": 0.038256,
+      "homework_id": 0.038256,
+      "view_id": 0.038256
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "description": "A student submits many submissions; each submission is made by exactly one student.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.175934
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "SUBMISSION",
+      "description": "Each homework can have many submissions; each submission refers to exactly one homework.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.868032
+    },
+    {
+      "entity_1": "LECTURER",
+      "entity_2": "SUBMISSION",
+      "description": "A lecturer can download many submissions; each submission may be downloaded by a lecturer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.507988
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "NOTIFICATION",
+      "description": "A student can receive many notifications; each notification is sent to exactly one student.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.030563
+    },
+    {
+      "entity_1": "LECTURER",
+      "entity_2": "NOTIFICATION",
+      "description": "A lecturer can receive many notifications; each notification is sent to exactly one lecturer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014116
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "HOMEWORK_VIEW",
+      "description": "One STUDENT can be associated with many HOMEWORK_VIEW.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.038256
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "HOMEWORK_VIEW",
+      "description": "One HOMEWORK can be associated with many HOMEWORK_VIEW.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.038256
+    },
+    {
+      "entity_1": "LECTURER",
+      "entity_2": "GRADE",
+      "description": "A lecturer assigns many grades; each grade is given by exactly one lecturer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006742
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "GRADE",
+      "description": "Each submission receives exactly one grade; each grade corresponds to exactly one submission.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.098698
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "description": "A student views the grade of his/her own submission; each grade is viewed by the owning student.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.698803
+    },
+    {
+      "entity_1": "TEACHING_STAFF",
+      "entity_2": "RANDOM_INSPECTION",
+      "description": "Teaching staff can perform many random inspections; each inspection is performed by one staff member.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002144
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "RANDOM_INSPECTION",
+      "description": "A homework item can be inspected many times; each random inspection concerns exactly one homework.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.041693
+    },
+    {
+      "entity_1": "RANDOM_INSPECTION",
+      "entity_2": "RANDOM_INSPECTION_REPORT",
+      "description": "Each random inspection generates one report; each report belongs to exactly one inspection.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999999
+    }
+  ],
+  "processing_time": 34.91
+}

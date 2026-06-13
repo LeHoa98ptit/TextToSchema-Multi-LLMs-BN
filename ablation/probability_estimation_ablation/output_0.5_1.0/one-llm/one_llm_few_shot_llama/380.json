@@ -1,0 +1,82 @@
+{
+  "filename": "380.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "AIRLINE": 0.817574,
+    "FLIGHT": 0.817574,
+    "RESERVATION": 0.817574,
+    "ASSOC_CUSTOMER_FLIGHT": 0.092412
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "d": 0.762838,
+      "phone": 0.763995,
+      "email": 0.766793
+    },
+    "AIRLINE": {
+      "d": 0.770265,
+      "phone": 0.766823,
+      "address": 0.774584
+    },
+    "FLIGHT": {
+      "flight_number": 0.768492,
+      "departure_location": 0.765566,
+      "destination": 0.765428,
+      "departure_time": 0.767908,
+      "arrival_time": 0.770061,
+      "airline_d": 0.772893
+    },
+    "RESERVATION": {
+      "reservation_d": 0.776754,
+      "customer_d": 0.782235,
+      "flight_number": 0.781231,
+      "reservation_time": 0.773346,
+      "number_ticket": 0.775398
+    },
+    "ASSOC_CUSTOMER_FLIGHT": {
+      "assoc_customer_flight_id": 0.092412,
+      "customer_id": 0.092412,
+      "flight_id": 0.092412
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Each customer can have many reservations.",
+      "probability": 0.006345
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "Each airline can offer many flights.",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Each flight can have many reservations.",
+      "probability": 0.968278
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_FLIGHT",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_FLIGHT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.092412
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "ASSOC_CUSTOMER_FLIGHT",
+      "description": "One FLIGHT can be associated with many ASSOC_CUSTOMER_FLIGHT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.092412
+    }
+  ],
+  "processing_time": 16.77
+}

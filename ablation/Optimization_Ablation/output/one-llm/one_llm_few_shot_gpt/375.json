@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "DEVICE",
+    "USER",
+    "STAFF",
+    "NETWORK_TRAFFIC",
+    "DEVICE_FAILURE",
+    "DEVICE_MAINTENANCE",
+    "USER_DEVICE_CONNECTION"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device_id",
+      "device_type",
+      "ip_address",
+      "installation_location",
+      "installation_time",
+      "device_status"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password"
+    ],
+    "STAFF": [
+      "staff_id",
+      "name",
+      "contact_information"
+    ],
+    "NETWORK_TRAFFIC": [
+      "traffic_id",
+      "device_id",
+      "timestamp",
+      "upload_traffic",
+      "download_traffic",
+      "total_traffic",
+      "traffic_status"
+    ],
+    "DEVICE_FAILURE": [
+      "failure_id",
+      "device_id",
+      "occurrence_time",
+      "failure_type",
+      "failure_description",
+      "handle_status",
+      "remark"
+    ],
+    "DEVICE_MAINTENANCE": [
+      "maintenance_id",
+      "device_id",
+      "staff_id",
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_result",
+      "remark"
+    ],
+    "USER_DEVICE_CONNECTION": [
+      "connection_id",
+      "user_id",
+      "device_id",
+      "connection_time",
+      "disconnection_time",
+      "bandwidth",
+      "user_ip"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 45.9626,
+  "ilp_runtime": 0.026
+}

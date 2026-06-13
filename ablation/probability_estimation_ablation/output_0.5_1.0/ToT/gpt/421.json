@@ -1,0 +1,159 @@
+{
+  "filename": "421.txt",
+  "entity": {
+    "USER": 0.713818,
+    "ROLE": 0.70128,
+    "USER_ROLE": 0.671042,
+    "PROPERTY": 0.817574,
+    "PROPERTY_STATUS": 0.749735,
+    "LEASE": 0.817574,
+    "TRANSACTION_STATUS": 0.757643,
+    "ADDRESS": 0.709365,
+    "IMAGE": 0.708477
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.738098,
+      "username": 0.73137,
+      "password_hash": 0.738408,
+      "email": 0.742997,
+      "phone": 0.736109,
+      "first_name": 0.745253,
+      "last_name": 0.745914,
+      "created_at": 0.737333,
+      "updated_at": 0.739995
+    },
+    "ROLE": {
+      "role_id": 0.73906,
+      "role_name": 0.742969,
+      "description": 0.753836
+    },
+    "USER_ROLE": {
+      "user_id": 0.741973,
+      "role_id": 0.740489,
+      "assigned_at": 0.743076
+    },
+    "PROPERTY": {
+      "property_id": 0.754591,
+      "title": 0.764002,
+      "description": 0.769071,
+      "area": 0.769047,
+      "rent_amount": 0.771793,
+      "status_id": 0.753282,
+      "owner_id": 0.761411,
+      "address_id": 0.761552,
+      "created_at": 0.748223,
+      "updated_at": 0.746257
+    },
+    "PROPERTY_STATUS": {
+      "status_id": 0.750925,
+      "status_name": 0.756999,
+      "description": 0.77076
+    },
+    "LEASE": {
+      "lease_id": 0.757526,
+      "property_id": 0.767581,
+      "tenant_id": 0.76358,
+      "lease_start_date": 0.761098,
+      "lease_end_date": 0.758077,
+      "total_rent": 0.763767,
+      "deposit_amount": 0.760282,
+      "payment_frequency": 0.757322,
+      "transaction_status_id": 0.758395,
+      "created_at": 0.756823,
+      "updated_at": 0.755569
+    },
+    "TRANSACTION_STATUS": {
+      "status_id": 0.740006,
+      "status_name": 0.743503,
+      "description": 0.755962
+    },
+    "ADDRESS": {
+      "address_id": 0.746776,
+      "street": 0.752967,
+      "city": 0.750746,
+      "state": 0.751024,
+      "postal_code": 0.750174,
+      "country": 0.742205
+    },
+    "IMAGE": {
+      "image_id": 0.730606,
+      "property_id": 0.745175,
+      "url": 0.732705,
+      "alt_text": 0.731436,
+      "is_primary": 0.734112,
+      "created_at": 0.733935,
+      "updated_at": 0.734369
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many user-role assignments",
+      "probability": 0.999296
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user can have many role assignments",
+      "probability": 0.999557
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "description": "A user acting as owner can own multiple properties",
+      "probability": 0.917038
+    },
+    {
+      "entity_1": "PROPERTY_STATUS",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "description": "Each property status can be used by many properties",
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:1",
+      "description": "Each property has one address record",
+      "probability": 0.18321
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "IMAGE",
+      "cardinality": "1:N",
+      "description": "A property can have multiple images; one may be marked as primary",
+      "probability": 0.231888
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "LEASE",
+      "cardinality": "1:N",
+      "description": "A property may have many lease agreements over time",
+      "probability": 0.997718
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEASE",
+      "cardinality": "1:N",
+      "description": "A user acting as tenant can be linked to many leases",
+      "probability": 0.999692
+    },
+    {
+      "entity_1": "TRANSACTION_STATUS",
+      "entity_2": "LEASE",
+      "cardinality": "1:N",
+      "description": "Each lease references a transaction status (e.g., active, completed, cancelled)",
+      "probability": 0.999551
+    }
+  ],
+  "processing_time": 11.0,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented many‑to‑many USER‑ROLE relationship via USER_ROLE junction table, removed role_id from USER. Changed IMAGE to a one‑to‑many relationship (PROPERTY 1:N IMAGE) and added property_id foreign key in IMAGE with an is_primary flag. Retained lookup tables for ROLE, PROPERTY_STATUS, and TRANSACTION_STATUS for extensibility. Preserved timestamps and core attributes. Added UNIQUE intent for USER.username and USER.email (not shown in JSON)."
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "filename": "417.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "CATEGORY": 0.817574,
+    "NOTIFICATION": 0.817574,
+    "REPLY": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.743512,
+      "email": 0.755397,
+      "password": 0.747776,
+      "avatar": 0.744532,
+      "registration_date": 0.74343
+    },
+    "POST": {
+      "title": 0.752499,
+      "content": 0.755052,
+      "post_time": 0.74491,
+      "status": 0.76057,
+      "reply_count": 0.766241,
+      "like_count": 0.757624,
+      "favorite_count": 0.752023
+    },
+    "COMMENT": {
+      "comment_content": 0.757064,
+      "post_time": 0.755816,
+      "like_count": 0.765242,
+      "reply_count": 0.767697
+    },
+    "CATEGORY": {
+      "category": 0.765297
+    },
+    "NOTIFICATION": {
+      "notification_message": 0.758016,
+      "notification_content": 0.758687,
+      "read_status": 0.754729
+    },
+    "REPLY": {
+      "reply_content": 0.761103,
+      "post_time": 0.757042
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create multiple posts",
+      "probability": 0.8652
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have multiple comments",
+      "probability": 0.017729
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can create multiple comments",
+      "probability": 0.961761
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "A post can be categorized",
+      "probability": 0.176076
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can receive multiple notifications",
+      "probability": 0.998581
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "REPLY",
+      "cardinality": "1:N",
+      "description": "A comment can have multiple replies",
+      "probability": 0.999776
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPLY",
+      "cardinality": "1:N",
+      "description": "A user can create multiple replies",
+      "probability": 0.994857
+    },
+    {
+      "entity_1": "REPLY",
+      "entity_2": "REPLY",
+      "cardinality": "1:N",
+      "description": "A reply can have multiple nested replies",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 23.93,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a relationship between replies to further enhance the model's completeness and accuracy, allowing for nested replies."
+  }
+}

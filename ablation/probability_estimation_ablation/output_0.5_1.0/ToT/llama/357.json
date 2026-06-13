@@ -1,0 +1,122 @@
+{
+  "filename": "357.txt",
+  "entity": {
+    "LOCATION": 0.817574,
+    "VEHICLE": 0.817574,
+    "VEHICLE_CATEGORY": 0.761042,
+    "RENTAL_PRICE": 0.773328,
+    "USER": 0.817574,
+    "RESERVATION": 0.698571,
+    "NEWS": 0.722922,
+    "PAYMENT": 0.706573
+  },
+  "attribute": {
+    "LOCATION": {
+      "address": 0.747068,
+      "telephone": 0.749094,
+      "business_hour": 0.753511
+    },
+    "VEHICLE": {
+      "license_plate_number": 0.763393,
+      "brand": 0.752968,
+      "model": 0.760936,
+      "photo": 0.759428
+    },
+    "VEHICLE_CATEGORY": {
+      "category": 0.76991,
+      "rental_price_weekday": 0.771497,
+      "rental_price_weekend": 0.770952
+    },
+    "RENTAL_PRICE": {
+      "rental_price_id": 0.757363,
+      "vehicle_license_plate_number": 0.769311,
+      "category": 0.768994,
+      "rental_price_weekday": 0.758093,
+      "rental_price_weekend": 0.756087
+    },
+    "USER": {
+      "user_id": 0.737558,
+      "email_address": 0.741087,
+      "telephone": 0.745422,
+      "postal_code": 0.754789,
+      "city": 0.747562,
+      "credit_card_information": 0.760812
+    },
+    "RESERVATION": {
+      "reservation_id": 0.747635,
+      "reservation_date": 0.746867,
+      "return_date": 0.741468,
+      "vehicle_license_plate_number": 0.76582,
+      "user_id": 0.748949
+    },
+    "NEWS": {
+      "news_id": 0.736519,
+      "news_title": 0.738428,
+      "news_content": 0.745107,
+      "post_date": 0.739435
+    },
+    "PAYMENT": {
+      "payment_id": 0.740186,
+      "payment_method": 0.738991,
+      "payment_date": 0.739907,
+      "amount": 0.738578,
+      "reservation_id": 0.748632
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A location can have multiple vehicles",
+      "probability": 0.45253
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_CATEGORY",
+      "cardinality": "N:1",
+      "description": "A vehicle belongs to one category",
+      "probability": 0.999872
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "RENTAL_PRICE",
+      "cardinality": "1:1",
+      "description": "A vehicle has one rental price",
+      "probability": 0.523482
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple reservations",
+      "probability": 0.549478
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple reservations",
+      "probability": 0.585716
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "NEWS",
+      "cardinality": "1:N",
+      "description": "A location can have multiple news posts",
+      "probability": 0.995018
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "A reservation is associated with one payment",
+      "probability": 0.97361
+    }
+  ],
+  "processing_time": 28.32,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique user ID, normalized VEHICLE entity to separate tables for vehicle categories and rental prices, and added unique IDs for NEWS and PAYMENT entities"
+  }
+}

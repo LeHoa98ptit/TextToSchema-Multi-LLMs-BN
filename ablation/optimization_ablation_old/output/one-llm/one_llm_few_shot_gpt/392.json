@@ -1,0 +1,100 @@
+{
+  "entity": [
+    "USER",
+    "PRODUCT",
+    "CATEGORY",
+    "ORDER",
+    "ORDER_ITEM",
+    "ADMINISTRATOR",
+    "LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "age",
+      "gender",
+      "phone_number",
+      "email",
+      "shipping_address"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "description",
+      "price",
+      "inventory_quantity",
+      "category_id",
+      "created_at",
+      "updated_at"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "order_date",
+      "total_amount",
+      "status",
+      "shipping_address",
+      "payment_status",
+      "payment_date",
+      "shipping_date",
+      "delivery_date"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "subtotal"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "username",
+      "password",
+      "email",
+      "role"
+    ],
+    "LOG": [
+      "log_id",
+      "user_id",
+      "action",
+      "timestamp",
+      "ip_address"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.4884,
+  "ilp_runtime": 0.055
+}

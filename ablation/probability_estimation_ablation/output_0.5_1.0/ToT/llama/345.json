@@ -1,0 +1,136 @@
+{
+  "filename": "345.txt",
+  "entity": {
+    "COURSE": 0.817574,
+    "PROFESSOR": 0.817574,
+    "STUDENT": 0.817574,
+    "SUBJECT": 0.817574,
+    "SEMESTER": 0.765523,
+    "PREREQUISITE": 0.705016,
+    "ASSOC_STUDENT_COURSE": 0.047093,
+    "ASSOC_COURSE_SEMESTER": 0.374611,
+    "ASSOC_STUDENT_PREREQUISITE": 0.098359
+  },
+  "attribute": {
+    "COURSE": {
+      "course_code": 0.779224,
+      "course_name": 0.778462,
+      "total_credit": 0.774641
+    },
+    "PROFESSOR": {
+      "email": 0.767133,
+      "name": 0.761792
+    },
+    "STUDENT": {
+      "email": 0.775628,
+      "date_of_birth": 0.770026,
+      "average_grade": 0.752125
+    },
+    "SUBJECT": {
+      "subject_name": 0.761983,
+      "credit": 0.767779,
+      "equivalent_subject": 0.753429
+    },
+    "SEMESTER": {
+      "semester_name": 0.772326,
+      "start_date": 0.767157,
+      "end_date": 0.766729
+    },
+    "PREREQUISITE": {
+      "prerequisite_subject": 0.77736,
+      "prerequisite_course": 0.777976,
+      "required_grade": 0.774531
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.047093,
+      "student_id": 0.047093,
+      "course_id": 0.047093
+    },
+    "ASSOC_COURSE_SEMESTER": {
+      "assoc_course_semester_id": 0.374611,
+      "course_id": 0.374611,
+      "semester_id": 0.374611
+    },
+    "ASSOC_STUDENT_PREREQUISITE": {
+      "assoc_student_prerequisite_id": 0.098359,
+      "student_id": 0.098359,
+      "prerequisite_id": 0.098359
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "PROFESSOR",
+      "cardinality": "1:N",
+      "description": "A course is taught by one professor, but a professor can teach many courses",
+      "probability": 0.765592
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.047093
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.047093
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "SUBJECT",
+      "cardinality": "1:N",
+      "description": "A course can have many subjects, but a subject is part of one course",
+      "probability": 0.990972
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_COURSE_SEMESTER",
+      "description": "One COURSE can be associated with many ASSOC_COURSE_SEMESTER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.374611
+    },
+    {
+      "entity_1": "SEMESTER",
+      "entity_2": "ASSOC_COURSE_SEMESTER",
+      "description": "One SEMESTER can be associated with many ASSOC_COURSE_SEMESTER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.374611
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "PREREQUISITE",
+      "cardinality": "1:N",
+      "description": "A subject can have many prerequisites, but a prerequisite is related to one subject",
+      "probability": 0.048215
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_PREREQUISITE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_PREREQUISITE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.098359
+    },
+    {
+      "entity_1": "PREREQUISITE",
+      "entity_2": "ASSOC_STUDENT_PREREQUISITE",
+      "description": "One PREREQUISITE can be associated with many ASSOC_STUDENT_PREREQUISITE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.098359
+    }
+  ],
+  "processing_time": 18.51,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute professor_course_coordinator, added required_grade to PREREQUISITE entity, and refined the prerequisite relationship structure for clarity and simplicity"
+  }
+}

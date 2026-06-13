@@ -1,0 +1,121 @@
+{
+  "entity": [
+    "IP_ADDRESS",
+    "IP_NETWORK",
+    "GEO_LOCATION",
+    "COUNTRY",
+    "CONTINENT",
+    "PROVIDER",
+    "DATUM",
+    "IMPORT_BATCH",
+    "USER_QUERY"
+  ],
+  "attribute": {
+    "IP_ADDRESS": [
+      "ip",
+      "version",
+      "is_anonymous_proxy",
+      "is_satellite",
+      "assigned_date",
+      "network_id"
+    ],
+    "IP_NETWORK": [
+      "network_cidr",
+      "start_ip",
+      "end_ip",
+      "allocation_date",
+      "provider_id"
+    ],
+    "GEO_LOCATION": [
+      "latitude",
+      "longitude",
+      "city",
+      "region",
+      "postal_code",
+      "timezone"
+    ],
+    "COUNTRY": [
+      "iso_code",
+      "name",
+      "iso_numeric",
+      "eu_member",
+      "continent_code"
+    ],
+    "CONTINENT": [
+      "code",
+      "name"
+    ],
+    "PROVIDER": [
+      "provider_id",
+      "name",
+      "provider_type",
+      "country_code"
+    ],
+    "DATUM": [
+      "datum_id",
+      "source",
+      "last_update",
+      "checksum",
+      "version"
+    ],
+    "IMPORT_BATCH": [
+      "batch_id",
+      "import_date",
+      "source_file",
+      "status",
+      "version"
+    ],
+    "USER_QUERY": [
+      "query_id",
+      "query_timestamp",
+      "ip_searched",
+      "result_location_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "IP_NETWORK",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "IP_NETWORK",
+      "entity_2": "PROVIDER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "GEO_LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GEO_LOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_QUERY",
+      "entity_2": "IP_ADDRESS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROVIDER",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.3233,
+  "ilp_runtime": 0.123
+}

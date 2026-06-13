@@ -1,0 +1,109 @@
+{
+  "filename": "444.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "COURSE": 0.622459,
+    "INSTRUCTOR": 0.622459,
+    "ATTENDANCE": 0.622459,
+    "LEAVE_REQUEST": 0.510948,
+    "ASSOC_STUDENT_COURSE": 0.042268
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.553252,
+      "age": 0.543802,
+      "phone_number": 0.549342,
+      "game_preference": 0.540752,
+      "gender": 0.548586
+    },
+    "COURSE": {
+      "course_id": 0.547311,
+      "course_location": 0.549692,
+      "credit": 0.537921,
+      "instructor_id": 0.562258
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.558093,
+      "gender": 0.553023,
+      "title": 0.556093,
+      "work_duration": 0.558461
+    },
+    "ATTENDANCE": {
+      "attendance_id": 0.556908,
+      "student_id": 0.566701,
+      "course_id": 0.570477,
+      "check_time": 0.562192,
+      "attendance_status": 0.563609,
+      "class_time": 0.566454,
+      "remark": 0.554436
+    },
+    "LEAVE_REQUEST": {
+      "leave_id": 0.511913,
+      "student_id": 0.547515,
+      "course_id": 0.546052,
+      "leave_time": 0.523266,
+      "class_time": 0.542114,
+      "leave_reason": 0.516171,
+      "leave_status": 0.52373
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.042268,
+      "student_id": 0.042268,
+      "course_id": 0.042268
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "Each student can have many attendances, and each attendance is associated with one student.",
+      "probability": 0.999769
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "LEAVE_REQUEST",
+      "cardinality": "1:N",
+      "description": "Each student can have many leave requests, and each leave request is associated with one student.",
+      "probability": 0.000892
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "Each course can have many attendances, and each attendance is associated with one course.",
+      "probability": 0.028314
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "LEAVE_REQUEST",
+      "cardinality": "1:N",
+      "description": "Each course can have many leave requests, and each leave request is associated with one course.",
+      "probability": 0.014005
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "Each instructor can teach many courses, and each course is taught by one instructor.",
+      "probability": 0.51222
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.042268
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.042268
+    }
+  ],
+  "processing_time": 19.07
+}

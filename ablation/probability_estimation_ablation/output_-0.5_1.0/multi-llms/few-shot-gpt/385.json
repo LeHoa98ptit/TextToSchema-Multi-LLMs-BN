@@ -1,0 +1,94 @@
+{
+  "filename": "385.txt",
+  "entity": {
+    "USER": 0.526076,
+    "ACCOUNT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "CURRENCY": 0.523508,
+    "TRANSACTION_STATUS": 0.60322
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.50757
+    },
+    "ACCOUNT": {
+      "account id": 0.534936,
+      "user id": 0.525593,
+      "currency id": 0.542585,
+      "balance": 0.555913,
+      "frozen amount": 0.54094
+    },
+    "CURRENCY": {
+      "currency id": 0.527073,
+      "currency code": 0.52965,
+      "currency name": 0.526612
+    },
+    "TRANSACTION": {
+      "transaction id": 0.538864,
+      "source account id": 0.540273,
+      "destination account id": 0.543337,
+      "currency id": 0.541545,
+      "amount": 0.550767,
+      "transaction type": 0.561184,
+      "transaction status id": 0.54163,
+      "initiated at": 0.537598,
+      "error message": 0.530211
+    },
+    "TRANSACTION_STATUS": {
+      "status id": 0.538096,
+      "status name": 0.543985,
+      "failure reason": 0.545033
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "description": "A user can own multiple accounts, each account belongs to exactly one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "ACCOUNT",
+      "description": "Each account is denominated in one currency, while a currency can be used by many accounts.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996297
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "description": "An account can initiate many transactions; each transaction has exactly one source account.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997773
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "description": "An account can receive many transactions; each transaction has exactly one destination account.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997773
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "TRANSACTION",
+      "description": "Each transaction is performed in one currency, while a currency can be used in many transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987786
+    },
+    {
+      "entity_1": "TRANSACTION_STATUS",
+      "entity_2": "TRANSACTION",
+      "description": "Each transaction has one status; a status can be assigned to many transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999965
+    }
+  ],
+  "processing_time": 2.63
+}

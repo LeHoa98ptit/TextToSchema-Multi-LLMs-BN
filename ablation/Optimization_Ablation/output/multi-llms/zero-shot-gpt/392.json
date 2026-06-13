@@ -1,0 +1,115 @@
+{
+  "entity": [
+    "USER",
+    "PRODUCT",
+    "ORDER",
+    "CATEGORY",
+    "ADMINISTRATOR",
+    "LOG",
+    "ADDRESS",
+    "ORDER_ITEM"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password",
+      "age",
+      "gender",
+      "phone number",
+      "email",
+      "address id"
+    ],
+    "PRODUCT": [
+      "product id",
+      "name",
+      "description",
+      "price",
+      "inventory quantity",
+      "category id",
+      "created at",
+      "updated at"
+    ],
+    "ORDER": [
+      "order id",
+      "user id",
+      "order date",
+      "status",
+      "shipping address id",
+      "total amount"
+    ],
+    "CATEGORY": [
+      "category id",
+      "name",
+      "description"
+    ],
+    "ADMINISTRATOR": [
+      "admin id",
+      "username",
+      "password",
+      "email"
+    ],
+    "LOG": [
+      "log id",
+      "user id",
+      "action",
+      "timestamp"
+    ],
+    "ADDRESS": [
+      "address id",
+      "street",
+      "city",
+      "state",
+      "zip code",
+      "country"
+    ],
+    "ORDER_ITEM": [
+      "order item id",
+      "order id",
+      "product id",
+      "quantity",
+      "unit price",
+      "total price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.4321,
+  "ilp_runtime": 0.106
+}

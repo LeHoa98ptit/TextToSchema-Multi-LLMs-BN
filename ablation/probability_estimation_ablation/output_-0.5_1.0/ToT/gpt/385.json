@@ -1,0 +1,158 @@
+{
+  "filename": "385.txt",
+  "entity": {
+    "USER": 0.526076,
+    "ACCOUNT": 0.622459,
+    "ACCOUNT_BALANCE_HISTORY": 0.515345,
+    "CURRENCY": 0.523508,
+    "TRANSACTION": 0.622459,
+    "TRANSACTION_TYPE": 0.527746,
+    "TRANSACTION_STATUS": 0.60322,
+    "TRANSACTION_ERROR": 0.531931,
+    "TRANSACTION_AUDIT": 0.523957
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.505772,
+      "username": 0.496626,
+      "email": 0.512226,
+      "phone": 0.50228,
+      "address": 0.510628,
+      "created_at": 0.498611,
+      "last_login": 0.51407
+    },
+    "ACCOUNT": {
+      "account_id": 0.533738,
+      "user_id": 0.523669,
+      "account_number": 0.53905,
+      "account_type": 0.544264,
+      "created_at": 0.516159,
+      "is_active": 0.53195
+    },
+    "ACCOUNT_BALANCE_HISTORY": {
+      "history_id": 0.54643,
+      "account_id": 0.547411,
+      "balance": 0.554556,
+      "frozen_amount": 0.546903,
+      "effective_date": 0.543484
+    },
+    "CURRENCY": {
+      "currency_code": 0.525157,
+      "currency_name": 0.527549,
+      "symbol": 0.520721,
+      "exchange_rate_to_base": 0.515447
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.536521,
+      "source_account_id": 0.535252,
+      "destination_account_id": 0.539904,
+      "amount": 0.550767,
+      "currency_code": 0.54264,
+      "transaction_type_code": 0.542358,
+      "initiated_at": 0.5287,
+      "processed_at": 0.54109,
+      "reference_number": 0.539279
+    },
+    "TRANSACTION_TYPE": {
+      "transaction_type_code": 0.540878,
+      "description": 0.5597
+    },
+    "TRANSACTION_STATUS": {
+      "status_id": 0.536668,
+      "status_code": 0.542907,
+      "status_description": 0.547594,
+      "updated_at": 0.536122
+    },
+    "TRANSACTION_ERROR": {
+      "error_id": 0.520482,
+      "transaction_id": 0.526616,
+      "error_code": 0.528355,
+      "error_message": 0.528096,
+      "error_timestamp": 0.517785
+    },
+    "TRANSACTION_AUDIT": {
+      "audit_id": 0.536213,
+      "transaction_id": 0.540633,
+      "changed_by_user_id": 0.533581,
+      "change_timestamp": 0.528871,
+      "change_description": 0.547125
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A user may own many accounts",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ACCOUNT_BALANCE_HISTORY",
+      "cardinality": "1:N",
+      "description": "Balance snapshots are recorded for each account over time",
+      "probability": 0.998242
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "An account can be the source of many transactions (SOURCE_ACCOUNT role)",
+      "probability": 0.996663
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "An account can be the destination of many transactions (DESTINATION_ACCOUNT role)",
+      "probability": 0.996663
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Transactions are executed in a single currency",
+      "probability": 0.987228
+    },
+    {
+      "entity_1": "TRANSACTION_TYPE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each transaction has exactly one type (deposit, withdrawal, transfer, etc.)",
+      "probability": 0.997334
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_STATUS",
+      "cardinality": "1:1",
+      "description": "Each transaction has exactly one current status",
+      "probability": 0.999961
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_ERROR",
+      "cardinality": "1:0..1",
+      "description": "Failed transactions may have an associated error record",
+      "probability": 0.999994
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_AUDIT",
+      "cardinality": "1:N",
+      "description": "All status changes and important actions on a transaction are audited",
+      "probability": 0.874049
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION_AUDIT",
+      "cardinality": "1:N",
+      "description": "A user can perform many audit actions",
+      "probability": 0.996336
+    }
+  ],
+  "processing_time": 22.51,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added TRANSACTION_TYPE lookup entity to enforce valid transaction types; clarified source and destination account roles in relationships; introduced user_id foreign key in ACCOUNT; noted composite unique constraint on (source_account_id, destination_account_id, initiated_at, reference_number) to prevent duplicate transfers; suggested indexes on transaction_id, account_id, currency_code, status_code; retained balance history as separate entity for audit compliance; documented cascade behavior (deactivate accounts on user deletion) and other domain constraints."
+  }
+}

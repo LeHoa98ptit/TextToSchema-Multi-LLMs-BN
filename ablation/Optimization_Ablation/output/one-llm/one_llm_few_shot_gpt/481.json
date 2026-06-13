@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "EXPERT",
+    "RULE",
+    "CROP",
+    "SENSOR",
+    "DATUM",
+    "ANALYSIS",
+    "PREDICTION"
+  ],
+  "attribute": {
+    "EXPERT": [
+      "expert_id",
+      "name",
+      "email",
+      "phone"
+    ],
+    "RULE": [
+      "rule_id",
+      "description",
+      "criteria",
+      "created_at",
+      "expert_id"
+    ],
+    "CROP": [
+      "crop_id",
+      "name",
+      "crop_type",
+      "field_location",
+      "planted_date",
+      "harvested_date"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type",
+      "location",
+      "installation_date"
+    ],
+    "DATUM": [
+      "datum_id",
+      "sensor_id",
+      "crop_id",
+      "collection_time",
+      "data_type",
+      "value"
+    ],
+    "ANALYSIS": [
+      "analysis_id",
+      "datum_id",
+      "rule_id",
+      "result",
+      "analysis_time"
+    ],
+    "PREDICTION": [
+      "prediction_id",
+      "crop_id",
+      "predicted_value",
+      "prediction_time",
+      "model_name"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DATUM",
+      "entity_2": "ANALYSIS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RULE",
+      "entity_2": "ANALYSIS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 15.9339,
+  "ilp_runtime": 0.064
+}

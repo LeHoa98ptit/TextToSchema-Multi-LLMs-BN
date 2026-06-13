@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "THEATER",
+    "ACTOR",
+    "PERFORMANCE",
+    "VENUE",
+    "RECORD",
+    "ASSOC_ACTOR_PERFORMANCE"
+  ],
+  "attribute": {
+    "THEATER": [
+      "name",
+      "address",
+      "seating_capacity"
+    ],
+    "ACTOR": [
+      "email",
+      "phone_number",
+      "actor_id"
+    ],
+    "PERFORMANCE": [
+      "start_time",
+      "end_time",
+      "performance_id"
+    ],
+    "VENUE": [
+      "venue_id",
+      "address",
+      "seating_capacity"
+    ],
+    "RECORD": [
+      "record_id",
+      "performance_id",
+      "actor_id",
+      "participation_status",
+      "role",
+      "fee"
+    ],
+    "ASSOC_ACTOR_PERFORMANCE": [
+      "assoc_actor_performance_id",
+      "actor_id",
+      "performance_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "THEATER",
+      "entity_2": "VENUE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "THEATER",
+      "entity_2": "PERFORMANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACTOR",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACTOR",
+      "entity_2": "ASSOC_ACTOR_PERFORMANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "ASSOC_ACTOR_PERFORMANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.3596,
+  "ilp_runtime": 0.042
+}

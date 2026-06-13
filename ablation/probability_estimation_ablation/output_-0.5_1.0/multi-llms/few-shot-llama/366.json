@@ -1,0 +1,70 @@
+{
+  "filename": "366.txt",
+  "entity": {
+    "ENGINEER": 0.622459,
+    "MACHINE": 0.622459,
+    "MIGRATION_HISTORY": 0.540387,
+    "ENGINEER_MACHINE_ASSOCIATION": 0.522734
+  },
+  "attribute": {
+    "ENGINEER": {
+      "engineer id": 0.542324,
+      "name": 0.536044,
+      "status": 0.552967,
+      "join date": 0.54067
+    },
+    "MACHINE": {
+      "machine id": 0.536849,
+      "name": 0.536179,
+      "cost": 0.523657,
+      "receiving date": 0.521749
+    },
+    "MIGRATION_HISTORY": {
+      "migration id": 0.528564,
+      "migration date": 0.529118,
+      "source version": 0.537945,
+      "target version": 0.539274,
+      "description": 0.54409
+    },
+    "ENGINEER_MACHINE_ASSOCIATION": {
+      "association id": 0.547304,
+      "engineer id": 0.55581,
+      "machine id": 0.551528
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ENGINEER_MACHINE_ASSOCIATION",
+      "description": "One engineer can be associated with many machines through the association entity.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999779
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "ENGINEER_MACHINE_ASSOCIATION",
+      "description": "One machine can be associated with many engineers through the association entity.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971469
+    },
+    {
+      "entity_1": "MIGRATION_HISTORY",
+      "entity_2": "ENGINEER",
+      "description": "Each migration history record does not directly relate to engineers, but for the sake of database management, we can consider a 1:N relationship where one migration history record is associated with many engineers, but this relationship is not explicitly stated and may not be necessary.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999684
+    },
+    {
+      "entity_1": "MIGRATION_HISTORY",
+      "entity_2": "MACHINE",
+      "description": "Each migration history record does not directly relate to machines, but for the sake of database management, we can consider a 1:N relationship where one migration history record is associated with many machines, but this relationship is not explicitly stated and may not be necessary.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.140101
+    }
+  ],
+  "processing_time": 15.23
+}

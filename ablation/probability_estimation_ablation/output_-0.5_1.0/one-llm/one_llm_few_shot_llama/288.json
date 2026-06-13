@@ -1,0 +1,122 @@
+{
+  "filename": "288.txt",
+  "entity": {
+    "MONITORING_SITE": 0.590154,
+    "MONITORING_PERSONNEL": 0.553148,
+    "MAINTENANCE_PERSONNEL": 0.605754,
+    "MONITORING_SESSION": 0.527173,
+    "MAINTENANCE_ACTIVITY": 0.557322,
+    "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL": 0.987255,
+    "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL": 0.971999
+  },
+  "attribute": {
+    "MONITORING_SITE": {
+      "location": 0.55665,
+      "responsible_person": 0.557126
+    },
+    "MONITORING_PERSONNEL": {
+      "contact_detail": 0.566064
+    },
+    "MAINTENANCE_PERSONNEL": {
+      "contact_detail": 0.56467
+    },
+    "MONITORING_SESSION": {
+      "air_quality": 0.551576,
+      "water_quality": 0.551883,
+      "noise_level": 0.536407,
+      "timestamp": 0.527824
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "maintenance_time": 0.55237,
+      "maintenance_content": 0.5539,
+      "maintenance_cost": 0.552552
+    },
+    "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL": {
+      "assoc_monitoring_session_monitoring_personnel_id": 0.987255,
+      "monitoring_session_id": 0.987255,
+      "monitoring_personnel_id": 0.987255
+    },
+    "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL": {
+      "assoc_maintenance_activity_maintenance_personnel_id": 0.971999,
+      "maintenance_activity_id": 0.971999,
+      "maintenance_personnel_id": 0.971999
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "Each monitoring site is assigned to one or more monitoring personnel.",
+      "probability": 0.949963
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "Each monitoring site is assigned to one or more maintenance personnel.",
+      "probability": 0.183206
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "description": "Each monitoring site can have multiple monitoring sessions.",
+      "probability": 0.991913
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Each monitoring site can have multiple maintenance activities.",
+      "probability": 0.779891
+    },
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "description": "Each monitoring personnel can conduct multiple monitoring sessions.",
+      "probability": 0.987255
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Each maintenance personnel can perform multiple maintenance activities.",
+      "probability": 0.971999
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+      "description": "One MONITORING_SESSION can be associated with many ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987255
+    },
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL",
+      "description": "One MONITORING_PERSONNEL can be associated with many ASSOC_MONITORING_SESSION_MONITORING_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987255
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL",
+      "description": "One MAINTENANCE_ACTIVITY can be associated with many ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971999
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL",
+      "description": "One MAINTENANCE_PERSONNEL can be associated with many ASSOC_MAINTENANCE_ACTIVITY_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971999
+    }
+  ],
+  "processing_time": 14.6
+}

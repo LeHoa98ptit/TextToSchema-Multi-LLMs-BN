@@ -1,0 +1,138 @@
+{
+  "filename": "292.txt",
+  "entity": {
+    "COMPANY": 0.778509,
+    "FACILITY": 0.817574,
+    "LOCATION": 0.746608,
+    "MAINTENANCE_EVENT": 0.757735,
+    "MAINTENANCE_TASK": 0.767955,
+    "PERSONNEL": 0.817574,
+    "CONTACT_INFO": 0.695191,
+    "EVENT_PERSONNEL": 0.757128
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.756721,
+      "name": 0.760298,
+      "headquarters_address": 0.755796,
+      "phone": 0.75313,
+      "email": 0.754044
+    },
+    "FACILITY": {
+      "facility_id": 0.767861,
+      "company_id": 0.773529,
+      "name": 0.767969,
+      "address": 0.767842,
+      "community_type": 0.765218
+    },
+    "LOCATION": {
+      "location_id": 0.740749,
+      "facility_id": 0.763595,
+      "unit_number": 0.755259,
+      "address_line": 0.73789
+    },
+    "MAINTENANCE_EVENT": {
+      "event_id": 0.75764,
+      "facility_id": 0.776005,
+      "event_date": 0.757084,
+      "total_cost": 0.765639,
+      "status": 0.770616
+    },
+    "MAINTENANCE_TASK": {
+      "task_id": 0.758007,
+      "event_id": 0.759188,
+      "location_id": 0.764141,
+      "task_description": 0.773362,
+      "scheduled_start": 0.757073,
+      "scheduled_end": 0.75866,
+      "actual_start": 0.758956,
+      "actual_end": 0.761347,
+      "task_cost": 0.764944,
+      "task_duration_minutes": 0.762802
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.763875,
+      "first_name": 0.756461,
+      "last_name": 0.759192,
+      "position": 0.761244,
+      "employment_type": 0.763947
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.749152,
+      "personnel_id": 0.765482,
+      "phone": 0.755934,
+      "email": 0.752613,
+      "emergency_contact": 0.755611
+    },
+    "EVENT_PERSONNEL": {
+      "event_id": 0.75423,
+      "personnel_id": 0.764904,
+      "role": 0.759133,
+      "hours_worked": 0.760439,
+      "cost_assigned": 0.762311
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "FACILITY",
+      "cardinality": "1:N",
+      "description": "A property management company owns many facilities",
+      "probability": 0.939497
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "LOCATION",
+      "cardinality": "1:N",
+      "description": "Each facility contains multiple residential locations/units",
+      "probability": 0.999322
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "description": "Facilities generate many maintenance events",
+      "probability": 0.842357
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "An event can consist of several detailed tasks",
+      "probability": 0.482479
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A maintenance task is performed for a specific residential location/unit",
+      "probability": 0.032906
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each personnel record has one set of contact details",
+      "probability": 0.006084
+    },
+    {
+      "entity_1": "EVENT_PERSONNEL",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "N:1",
+      "description": "Links each personnel assignment to its maintenance event",
+      "probability": 0.88376
+    },
+    {
+      "entity_1": "EVENT_PERSONNEL",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "description": "Links each assignment to the personnel performing it",
+      "probability": 0.394698
+    }
+  ],
+  "processing_time": 32.26,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed any redundant N:M relationship between MAINTENANCE_EVENT and PERSONNEL; the EVENT_PERSONNEL associative entity now solely captures staffing assignments. Added location_id and task_duration_minutes to MAINTENANCE_TASK to record which unit a task concerns and its duration. Introduced a 1:N relationship between LOCATION and MAINTENANCE_TASK. Standardized all attribute names to snake_case and ensured uniform primary‑key naming (entity_id)."
+  }
+}

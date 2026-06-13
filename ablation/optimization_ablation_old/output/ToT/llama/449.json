@@ -1,0 +1,111 @@
+{
+  "entity": [
+    "EMPLOYEE",
+    "DEPARTMENT",
+    "POSITION",
+    "TRAINING",
+    "EMPLOYEE_POSITION_CHANGE",
+    "EMPLOYEE_DEPARTMENT",
+    "ASSOC_EMPLOYEE_DEPARTMENT",
+    "ASSOC_EMPLOYEE_TRAINING"
+  ],
+  "attribute": {
+    "EMPLOYEE": [
+      "employee_number",
+      "gender",
+      "date_of_birth",
+      "entry_date",
+      "resignation_date",
+      "contact_information",
+      "email_address",
+      "status"
+    ],
+    "DEPARTMENT": [
+      "department_number",
+      "function",
+      "planning_content"
+    ],
+    "POSITION": [
+      "position_number",
+      "responsibility",
+      "requirement"
+    ],
+    "TRAINING": [
+      "training_number",
+      "training_time",
+      "location",
+      "content",
+      "trainer",
+      "trainer_contact_information"
+    ],
+    "EMPLOYEE_POSITION_CHANGE": [
+      "change_date",
+      "reason",
+      "new_position_number",
+      "old_position_number"
+    ],
+    "EMPLOYEE_DEPARTMENT": [
+      "employee_department_id",
+      "employee_number",
+      "department_number",
+      "assignment_date",
+      "end_date"
+    ],
+    "ASSOC_EMPLOYEE_DEPARTMENT": [
+      "assoc_employee_department_id",
+      "employee_id",
+      "department_id"
+    ],
+    "ASSOC_EMPLOYEE_TRAINING": [
+      "assoc_employee_training_id",
+      "employee_id",
+      "training_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_EMPLOYEE_DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRAINING",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_POSITION_CHANGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE_POSITION_CHANGE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 88.8833,
+  "ilp_runtime": 0.044
+}

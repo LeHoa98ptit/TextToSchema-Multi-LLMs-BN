@@ -1,0 +1,77 @@
+{
+  "filename": "319.txt",
+  "entity": {
+    "REGION": 0.622459,
+    "CITY": 0.50215,
+    "POSTAL_CODE": 0.606566,
+    "REGION_MERGE": 0.527422
+  },
+  "attribute": {
+    "REGION": {
+      "regional_code": 0.571421,
+      "regional_name": 0.572016,
+      "regional_level": 0.570857,
+      "pinyin_abbreviation": 0.548406,
+      "parent_regional_id": 0.559389,
+      "center_latitude": 0.547379,
+      "center_longitude": 0.546982
+    },
+    "CITY": {
+      "city_code": 0.536288,
+      "city_name": 0.527208,
+      "regional_code": 0.566321
+    },
+    "POSTAL_CODE": {
+      "postal_code": 0.529858,
+      "city_code": 0.540386
+    },
+    "REGION_MERGE": {
+      "merge_id": 0.536067,
+      "source_regional_code": 0.556358,
+      "target_regional_code": 0.564086,
+      "merge_date": 0.533341
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "REGION",
+      "entity_2": "CITY",
+      "cardinality": "1:N",
+      "description": "A region contains many cities; each city belongs to one region",
+      "probability": 0.839173
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "POSTAL_CODE",
+      "cardinality": "1:N",
+      "description": "A city can have multiple postal codes",
+      "probability": 0.971671
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "REGION",
+      "cardinality": "1:N",
+      "description": "Self‑referencing hierarchy: a region can be parent to many child regions",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "REGION_MERGE",
+      "cardinality": "1:N",
+      "description": "A region can be the source of many merge operations",
+      "probability": 0.99812
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "REGION_MERGE",
+      "cardinality": "1:N",
+      "description": "A region can be the target of many merge operations",
+      "probability": 0.99812
+    }
+  ],
+  "processing_time": 11.63,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Changed CITY‑POSTAL_CODE cardinality to 1:N to reflect multiple postal codes per city. 2. Integrated central coordinate attributes (latitude, longitude) directly into REGION, removing the separate COORDINATE entity for simplicity and efficiency. 3. Added explicit relationships for both source and target sides of REGION_MERGE, ensuring full traceability of merge history. 4. Clarified primary key and foreign key intent in attribute naming and relationships. 5. Kept self‑referencing hierarchy and retained CITY entity for city‑level management while streamlining the overall model."
+  }
+}

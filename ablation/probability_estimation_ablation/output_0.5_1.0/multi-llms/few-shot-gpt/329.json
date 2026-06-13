@@ -1,0 +1,91 @@
+{
+  "filename": "329.txt",
+  "entity": {
+    "USER": 0.817574,
+    "LOG": 0.716629,
+    "STOCK": 0.817574,
+    "COMPANY": 0.748457,
+    "PORTFOLIO": 0.743912,
+    "HALL_OF_FAME": 0.710189
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.743872,
+      "username": 0.740108,
+      "password hash": 0.744931,
+      "virtual currency balance": 0.758457
+    },
+    "LOG": {
+      "log id": 0.744476,
+      "user id": 0.745687,
+      "log date": 0.744623,
+      "record value": 0.757386
+    },
+    "STOCK": {
+      "stock code": 0.762646,
+      "stock price": 0.754297,
+      "issue date": 0.754467,
+      "company id": 0.758063
+    },
+    "COMPANY": {
+      "company id": 0.749285,
+      "company name": 0.751367
+    },
+    "PORTFOLIO": {
+      "portfolio id": 0.751274,
+      "user id": 0.759353,
+      "stock code": 0.764364,
+      "quantity": 0.76353,
+      "earning": 0.760965
+    },
+    "HALL_OF_FAME": {
+      "hall of fame id": 0.739232,
+      "user id": 0.747146,
+      "total earning": 0.747467,
+      "rank": 0.743143
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "description": "Each log entry records activity for exactly one user, while a user can have many log entries.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99894
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "STOCK",
+      "description": "Each stock is issued by one company, and a company can issue multiple stocks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9766
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PORTFOLIO",
+      "description": "A user can hold many portfolio entries, each portfolio entry belongs to a single user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96788
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "PORTFOLIO",
+      "description": "A stock can appear in many portfolio entries, each portfolio entry references one stock.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.706403
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HALL_OF_FAME",
+      "description": "Each hall of fame record is associated with exactly one user, and a user can have at most one hall of fame record.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.025613
+    }
+  ],
+  "processing_time": 25.34
+}

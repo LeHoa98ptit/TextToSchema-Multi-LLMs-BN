@@ -1,0 +1,167 @@
+{
+  "filename": "338.txt",
+  "entity": {
+    "SCHOOL": 0.817574,
+    "COLLEGE": 0.817574,
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "COURSE": 0.817574,
+    "ENROLLMENT": 0.817574,
+    "TEACHING": 0.785566,
+    "CLASSROOM": 0.770352,
+    "ASSOC_COLLEGE_COURSE": 0.002717
+  },
+  "attribute": {
+    "SCHOOL": {
+      "school_id": 0.762355,
+      "name": 0.755139,
+      "address": 0.764686
+    },
+    "COLLEGE": {
+      "college_id": 0.771236,
+      "name": 0.769095,
+      "location": 0.767952,
+      "total_staff": 0.778113,
+      "total_students": 0.776743
+    },
+    "STUDENT": {
+      "student_id": 0.76816,
+      "first_name": 0.765992,
+      "last_name": 0.769159,
+      "gender": 0.763457,
+      "birth_date": 0.767272,
+      "age": 0.762243,
+      "telephone": 0.763301,
+      "email": 0.762382,
+      "registration_time": 0.768786,
+      "status": 0.767102,
+      "college_id": 0.77433
+    },
+    "TEACHER": {
+      "teacher_id": 0.762231,
+      "first_name": 0.759224,
+      "last_name": 0.762156,
+      "gender": 0.755947,
+      "age": 0.755925,
+      "email": 0.757568,
+      "phone": 0.753123,
+      "title": 0.758534,
+      "status": 0.760822,
+      "college_id": 0.776054
+    },
+    "COURSE": {
+      "course_id": 0.765684,
+      "title": 0.760772,
+      "credit": 0.758056,
+      "summary": 0.763138,
+      "class_hour": 0.768299,
+      "status": 0.76227
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.766004,
+      "student_id": 0.77213,
+      "course_id": 0.776197,
+      "enrollment_time": 0.762494,
+      "grade": 0.767884
+    },
+    "TEACHING": {
+      "teaching_id": 0.763894,
+      "teacher_id": 0.764818,
+      "course_id": 0.770785,
+      "classroom_id": 0.767603,
+      "semester": 0.766595,
+      "year": 0.76037,
+      "schedule": 0.762215
+    },
+    "CLASSROOM": {
+      "classroom_id": 0.767602,
+      "building": 0.754036,
+      "room_number": 0.768611,
+      "capacity": 0.767064
+    },
+    "ASSOC_COLLEGE_COURSE": {
+      "assoc_college_course_id": 0.002717,
+      "college_id": 0.002717,
+      "course_id": 0.002717
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SCHOOL",
+      "entity_2": "COLLEGE",
+      "cardinality": "1:N",
+      "description": "A school oversees many colleges",
+      "probability": 0.532776
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "Each college registers many students",
+      "probability": 0.052103
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "TEACHER",
+      "cardinality": "1:N",
+      "description": "Each college employs many teachers",
+      "probability": 0.994634
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "ASSOC_COLLEGE_COURSE",
+      "description": "One COLLEGE can be associated with many ASSOC_COLLEGE_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002717
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_COLLEGE_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_COLLEGE_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002717
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "description": "A teacher can have many teaching assignments (sections)",
+      "probability": 0.995859
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "description": "A course can be taught in many sections/semesters",
+      "probability": 0.999418
+    },
+    {
+      "entity_1": "CLASSROOM",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "description": "A classroom can host many teaching assignments (different sections over time)",
+      "probability": 0.697926
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999941
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can have many students enrolled",
+      "probability": 0.226952
+    }
+  ],
+  "processing_time": 38.22,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested refinements: changed the Course‑Classroom relationship to a many‑to‑many teaching assignment by adding CLASSROOM foreign key and a schedule attribute to the TEACHING entity; introduced N:M relationship between COLLEGE and COURSE to support cross‑college offerings; split contact information into atomic fields (email, phone) for both STUDENT and TEACHER; added a status attribute to STUDENT, TEACHER, and COURSE for lifecycle management; retained all original entities and core attributes while enhancing completeness, accuracy, and flexibility."
+  }
+}

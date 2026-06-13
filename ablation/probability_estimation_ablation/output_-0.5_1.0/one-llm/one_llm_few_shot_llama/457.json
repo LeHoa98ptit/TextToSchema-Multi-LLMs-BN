@@ -1,0 +1,97 @@
+{
+  "filename": "457.txt",
+  "entity": {
+    "SUPERMARKET": 0.481334,
+    "PRODUCT": 0.622459,
+    "SUPPLIER": 0.548844,
+    "SUPPLY_REQUEST": 0.585938,
+    "DELIVERY_NOTIFICATION": 0.540362,
+    "STOCK_NOTIFICATION": 0.522859,
+    "PROCUREMENT_LIST": 0.546515
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "address": 0.554902,
+      "contact_information": 0.561862
+    },
+    "PRODUCT": {
+      "product_id": 0.522417,
+      "inventory_quantity": 0.564774,
+      "update_date": 0.520728
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.544814,
+      "address": 0.556072,
+      "contact_information": 0.562367
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.547674,
+      "supermarket_id": 0.568044,
+      "product_id": 0.555141,
+      "request_quantity": 0.560321,
+      "request_date": 0.548673
+    },
+    "DELIVERY_NOTIFICATION": {
+      "notification_id": 0.53238,
+      "request_id": 0.536133,
+      "delivery_date": 0.53588
+    },
+    "STOCK_NOTIFICATION": {
+      "notification_id": 0.535491,
+      "request_id": 0.540236,
+      "stock_date": 0.532734
+    },
+    "PROCUREMENT_LIST": {
+      "list_id": 0.54709,
+      "product_id": 0.549756,
+      "supplier_id": 0.555561,
+      "purchase_quantity": 0.565848,
+      "purchase_date": 0.5489
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.001543
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.110142
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "cardinality": "1:1",
+      "probability": 0.782334
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "STOCK_NOTIFICATION",
+      "cardinality": "1:1",
+      "probability": 0.040873
+    },
+    {
+      "entity_1": "STOCK_NOTIFICATION",
+      "entity_2": "PROCUREMENT_LIST",
+      "cardinality": "1:N",
+      "probability": 0.003178
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT_LIST",
+      "cardinality": "1:N",
+      "probability": 0.140828
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT_LIST",
+      "cardinality": "1:N",
+      "probability": 0.104678
+    }
+  ],
+  "processing_time": 16.88
+}

@@ -1,0 +1,156 @@
+{
+  "filename": "409.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "CART": 0.622459,
+    "CART_ITEM": 0.545871,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.523807,
+    "ADDRESS": 0.492176,
+    "PAYMENT": 0.499225,
+    "ORDER_STATUS": 0.499375
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.517798,
+      "username": 0.50532,
+      "password": 0.528232,
+      "email": 0.528545,
+      "phone": 0.519545
+    },
+    "PRODUCT": {
+      "product_id": 0.531498,
+      "name": 0.528667,
+      "price": 0.531681,
+      "inventory_quantity": 0.558085,
+      "description": 0.537946
+    },
+    "CART": {
+      "cart_id": 0.531747,
+      "user_id": 0.535999,
+      "created_at": 0.524188
+    },
+    "CART_ITEM": {
+      "cart_item_id": 0.530053,
+      "cart_id": 0.532704,
+      "product_id": 0.537666,
+      "quantity": 0.560655
+    },
+    "ORDER": {
+      "order_id": 0.520086,
+      "user_id": 0.525243,
+      "shipping_address_id": 0.518276,
+      "total_amount": 0.531271,
+      "creation_time": 0.521266,
+      "status_code": 0.524647
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.527576,
+      "order_id": 0.527831,
+      "product_id": 0.538133,
+      "quantity": 0.557098,
+      "unit_price": 0.539526
+    },
+    "ADDRESS": {
+      "address_id": 0.509188,
+      "user_id": 0.513673,
+      "line1": 0.518107,
+      "line2": 0.516467,
+      "city": 0.507317,
+      "state": 0.513044,
+      "zip_code": 0.501718,
+      "country": 0.506409
+    },
+    "PAYMENT": {
+      "payment_id": 0.527049,
+      "order_id": 0.52964,
+      "payment_method": 0.52779,
+      "payment_status": 0.527519,
+      "transaction_id": 0.526424,
+      "amount": 0.533942,
+      "payment_time": 0.524469
+    },
+    "ORDER_STATUS": {
+      "status_code": 0.522125,
+      "description": 0.539079
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "description": "Each user has one active cart",
+      "probability": 0.992344
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "description": "A cart holds multiple cart items",
+      "probability": 0.999362
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can be referenced by many cart items",
+      "probability": 0.869945
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can create many orders",
+      "probability": 0.999079
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can appear in many order items",
+      "probability": 0.957906
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A user may have multiple saved addresses",
+      "probability": 0.838055
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "An order references one shipping address",
+      "probability": 0.703854
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order may have one associated payment record",
+      "probability": 0.879535
+    },
+    {
+      "entity_1": "ORDER_STATUS",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each order status can be used by many orders",
+      "probability": 0.999623
+    }
+  ],
+  "processing_time": 14.64,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added optional ADDRESS entity for user shipping details and linked it to ORDER. Introduced PAYMENT entity to capture payment method, status, transaction info, and linked it 1:1 with ORDER. Normalized order status into ORDER_STATUS lookup table and replaced raw status attribute with foreign key status_code. Kept core entities and line-item tables, ensuring quantity and unit price are stored. Updated relationships accordingly while preserving existing strengths."
+  }
+}

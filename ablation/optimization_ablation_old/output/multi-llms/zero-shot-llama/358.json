@@ -1,0 +1,103 @@
+{
+  "entity": [
+    "PROCESS_DEFINITION",
+    "PROCESS_INSTANCE",
+    "TASK",
+    "TASK_TYPE",
+    "EXECUTION_INSTANCE",
+    "TENANT",
+    "PROCESSOR_CONFIGURATION",
+    "EXECUTION_TASK"
+  ],
+  "attribute": {
+    "PROCESS_DEFINITION": [
+      "id",
+      "number"
+    ],
+    "PROCESS_INSTANCE": [
+      "id",
+      "process definition id"
+    ],
+    "TASK": [
+      "id",
+      "task type",
+      "start time",
+      "end time",
+      "execution result",
+      "exception information"
+    ],
+    "TASK_TYPE": [
+      "id",
+      "lock information"
+    ],
+    "EXECUTION_INSTANCE": [
+      "id",
+      "process instance id",
+      "task id",
+      "execution time",
+      "expiration time",
+      "repeat configuration"
+    ],
+    "TENANT": [
+      "id"
+    ],
+    "PROCESSOR_CONFIGURATION": [
+      "id",
+      "configuration"
+    ],
+    "EXECUTION_TASK": [
+      "execution_task_id",
+      "execution_instance_id",
+      "task_id",
+      "execution_time",
+      "expiration_time",
+      "repeat_configuration"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "EXECUTION_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXECUTION_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESSOR_CONFIGURATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 60.3369,
+  "ilp_runtime": 0.115
+}

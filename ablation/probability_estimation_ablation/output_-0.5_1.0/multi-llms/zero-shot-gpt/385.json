@@ -1,0 +1,113 @@
+{
+  "filename": "385.txt",
+  "entity": {
+    "USER": 0.526076,
+    "ACCOUNT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "TRANSACTION_STATUS": 0.60322,
+    "CURRENCY_TYPE": 0.47031,
+    "ERROR_INFORMATION": 0.494925,
+    "FAILURE_REASON": 0.467272
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.50757
+    },
+    "ACCOUNT": {
+      "account id": 0.534936,
+      "user id": 0.525593,
+      "balance": 0.555913,
+      "frozen amount": 0.54094,
+      "currency type id": 0.545366
+    },
+    "TRANSACTION": {
+      "transaction id": 0.538864,
+      "transaction type": 0.561184,
+      "amount": 0.550767,
+      "source account id": 0.540273,
+      "destination account id": 0.543337,
+      "status id": 0.540046,
+      "transaction timestamp": 0.532869,
+      "error id": 0.527218,
+      "failure reason id": 0.531198
+    },
+    "TRANSACTION_STATUS": {
+      "status id": 0.538096,
+      "status name": 0.543985
+    },
+    "CURRENCY_TYPE": {
+      "currency type id": 0.531821,
+      "currency code": 0.531649,
+      "currency name": 0.531288
+    },
+    "ERROR_INFORMATION": {
+      "error id": 0.511148,
+      "error message": 0.51413,
+      "error code": 0.516053,
+      "error timestamp": 0.511645
+    },
+    "FAILURE_REASON": {
+      "reason id": 0.511739,
+      "reason description": 0.522703
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "description": "A USER can own multiple ACCOUNTs",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "CURRENCY_TYPE",
+      "entity_2": "ACCOUNT",
+      "description": "Each ACCOUNT is linked to one CURRENCY_TYPE, while a CURRENCY_TYPE can be used by many ACCOUNTs",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.642927
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "description": "An ACCOUNT can be the source of many TRANSACTIONs",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996637
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "description": "An ACCOUNT can be the destination of many TRANSACTIONs",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996637
+    },
+    {
+      "entity_1": "TRANSACTION_STATUS",
+      "entity_2": "TRANSACTION",
+      "description": "Each TRANSACTION has one TRANSACTION_STATUS, while a status can be assigned to many TRANSACTIONs",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999943
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ERROR_INFORMATION",
+      "description": "A failed TRANSACTION may have one associated ERROR_INFORMATION record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.998018
+    },
+    {
+      "entity_1": "FAILURE_REASON",
+      "entity_2": "TRANSACTION",
+      "description": "A FAILURE_REASON can be linked to many TRANSACTIONs, each TRANSACTION records at most one reason",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.90537
+    }
+  ],
+  "processing_time": 24.57
+}

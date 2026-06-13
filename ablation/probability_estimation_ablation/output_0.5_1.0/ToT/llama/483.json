@@ -1,0 +1,112 @@
+{
+  "filename": "483.txt",
+  "entity": {
+    "PLATFORM": 0.817574,
+    "USER": 0.817574,
+    "INTERMEDIARY": 0.817574,
+    "OPERATION": 0.817574,
+    "PAYMENT": 0.817574,
+    "ASSOC_USER_OPERATION": 0.989319,
+    "ASSOC_OPERATION_INTERMEDIARY": 0.239561
+  },
+  "attribute": {
+    "PLATFORM": {
+      "platform_id": 0.751891,
+      "platform_name": 0.751278,
+      "platform_address": 0.7493
+    },
+    "USER": {
+      "user_id": 0.741876,
+      "user_name": 0.740322,
+      "contact_information": 0.753088,
+      "registration_method": 0.74842
+    },
+    "INTERMEDIARY": {
+      "intermediary_id": 0.761272,
+      "intermediary_name": 0.763844,
+      "intermediary_status": 0.76775
+    },
+    "OPERATION": {
+      "operation_id": 0.751187,
+      "operation_type": 0.750896,
+      "operation_time": 0.752062
+    },
+    "PAYMENT": {
+      "payment_id": 0.765323,
+      "payment_status": 0.768083,
+      "payment_time": 0.763454,
+      "operation_id": 0.772358,
+      "user_id": 0.766069
+    },
+    "ASSOC_USER_OPERATION": {
+      "assoc_user_operation_id": 0.989319,
+      "user_id": 0.989319,
+      "operation_id": 0.989319
+    },
+    "ASSOC_OPERATION_INTERMEDIARY": {
+      "assoc_operation_intermediary_id": 0.239561,
+      "operation_id": 0.239561,
+      "intermediary_id": 0.239561
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_OPERATION",
+      "description": "One USER can be associated with many ASSOC_USER_OPERATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989319
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "ASSOC_USER_OPERATION",
+      "description": "One OPERATION can be associated with many ASSOC_USER_OPERATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989319
+    },
+    {
+      "entity_1": "PLATFORM",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "description": "A platform can have multiple operations",
+      "probability": 0.019766
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "ASSOC_OPERATION_INTERMEDIARY",
+      "description": "One OPERATION can be associated with many ASSOC_OPERATION_INTERMEDIARY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.239561
+    },
+    {
+      "entity_1": "INTERMEDIARY",
+      "entity_2": "ASSOC_OPERATION_INTERMEDIARY",
+      "description": "One INTERMEDIARY can be associated with many ASSOC_OPERATION_INTERMEDIARY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.239561
+    },
+    {
+      "entity_1": "PAYMENT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A payment is associated with one user",
+      "probability": 0.999795
+    },
+    {
+      "entity_1": "PAYMENT",
+      "entity_2": "OPERATION",
+      "cardinality": "N:1",
+      "description": "A payment is associated with one operation",
+      "probability": 0.90866
+    }
+  ],
+  "processing_time": 13.8,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, refined relationships for better efficiency, and integrated payment with user and operation for a more comprehensive model."
+  }
+}

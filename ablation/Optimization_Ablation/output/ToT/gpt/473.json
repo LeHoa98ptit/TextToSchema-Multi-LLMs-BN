@@ -1,0 +1,155 @@
+{
+  "entity": [
+    "PUBLICATION",
+    "AUTHOR",
+    "PUBLICATION_TYPE",
+    "PUBLICATION_AUTHOR",
+    "CUSTOMER",
+    "ADDRESS",
+    "PAYMENT_METHOD",
+    "ORDER",
+    "ORDER_ITEM",
+    "PROMOTION",
+    "ADMINISTRATOR",
+    "ASSOC_PUBLICATION_AUTHOR"
+  ],
+  "attribute": {
+    "PUBLICATION": [
+      "publication_id",
+      "title",
+      "price",
+      "type_id",
+      "created_at",
+      "updated_at"
+    ],
+    "AUTHOR": [
+      "author_id",
+      "name",
+      "email"
+    ],
+    "PUBLICATION_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "PUBLICATION_AUTHOR": [
+      "publication_id",
+      "author_id",
+      "contribution_role",
+      "author_order"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "phone",
+      "email",
+      "password",
+      "registration_status",
+      "created_at",
+      "updated_at"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "customer_id",
+      "street",
+      "city",
+      "state",
+      "zip",
+      "country"
+    ],
+    "PAYMENT_METHOD": [
+      "payment_id",
+      "method_name",
+      "details"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "order_time",
+      "status",
+      "shipping_address_id",
+      "payment_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "publication_id",
+      "quantity",
+      "unit_price",
+      "promotion_id"
+    ],
+    "PROMOTION": [
+      "promotion_id",
+      "code",
+      "description",
+      "discount_percent",
+      "start_date",
+      "end_date"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "name",
+      "phone",
+      "email",
+      "password"
+    ],
+    "ASSOC_PUBLICATION_AUTHOR": [
+      "assoc_publication_author_id",
+      "publication_id",
+      "author_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PUBLICATION",
+      "entity_2": "ASSOC_PUBLICATION_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "ASSOC_PUBLICATION_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PUBLICATION_AUTHOR",
+      "entity_2": "PUBLICATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PUBLICATION_AUTHOR",
+      "entity_2": "AUTHOR",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PUBLICATION",
+      "entity_2": "PUBLICATION_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 84.9155,
+  "ilp_runtime": 0.089
+}

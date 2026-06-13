@@ -1,0 +1,124 @@
+{
+  "entity": [
+    "FILE",
+    "FILE_TYPE",
+    "STORAGE_LOCATION",
+    "FILE_STATUS",
+    "FILE_COLLECTION",
+    "FILE_COLLECTION_MAP",
+    "REPLICA",
+    "NODE",
+    "DEVICE"
+  ],
+  "attribute": {
+    "FILE": [
+      "file_id",
+      "file_name",
+      "record_count",
+      "size",
+      "creation_time",
+      "update_time",
+      "description",
+      "version_number",
+      "type_id",
+      "status_id",
+      "location_id"
+    ],
+    "FILE_TYPE": [
+      "type_id",
+      "type_name",
+      "type_description"
+    ],
+    "STORAGE_LOCATION": [
+      "location_id",
+      "path",
+      "capacity",
+      "used_space"
+    ],
+    "FILE_STATUS": [
+      "status_id",
+      "status_name",
+      "status_description"
+    ],
+    "FILE_COLLECTION": [
+      "collection_id",
+      "collection_name",
+      "collection_description"
+    ],
+    "FILE_COLLECTION_MAP": [
+      "map_id",
+      "file_id",
+      "collection_id",
+      "added_time"
+    ],
+    "REPLICA": [
+      "replica_id",
+      "file_id",
+      "location_id",
+      "node_id",
+      "device_id",
+      "update_time",
+      "status_id",
+      "version_number",
+      "replica_index"
+    ],
+    "NODE": [
+      "node_id",
+      "node_name",
+      "node_ip",
+      "node_location"
+    ],
+    "DEVICE": [
+      "device_id",
+      "device_name",
+      "device_type",
+      "device_capacity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "FILE",
+      "entity_2": "FILE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "FILE_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "STORAGE_LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REPLICA",
+      "entity_2": "NODE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REPLICA",
+      "entity_2": "DEVICE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "FILE_COLLECTION_MAP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE_COLLECTION",
+      "entity_2": "FILE_COLLECTION_MAP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 66.3847,
+  "ilp_runtime": 0.051
+}

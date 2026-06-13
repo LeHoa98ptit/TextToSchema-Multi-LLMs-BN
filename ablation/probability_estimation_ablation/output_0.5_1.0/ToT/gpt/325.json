@@ -1,0 +1,95 @@
+{
+  "filename": "325.txt",
+  "entity": {
+    "CHARACTER": 0.817574,
+    "CLASS": 0.817574,
+    "CATEGORY": 0.736373,
+    "GAME": 0.817574,
+    "CHARACTER_GAME": 0.764948,
+    "CHARACTER_ATTRIBUTE": 0.745053,
+    "ASSOC_CHARACTER_GAME": 0.996556
+  },
+  "attribute": {
+    "CHARACTER": {
+      "character_id (PK)": 0.775575,
+      "name (VARCHAR(100))": 0.768916,
+      "class_id (FK → CLASS.class_id)": 0.76321,
+      "star_level (SMALLINT)": 0.775975,
+      "rarity (SMALLINT)": 0.772631
+    },
+    "CLASS": {
+      "class_id (PK)": 0.746144,
+      "class_name (VARCHAR(100))": 0.756732,
+      "category_id (FK → CATEGORY.category_id)": 0.745161
+    },
+    "CATEGORY": {
+      "category_id (PK)": 0.75092,
+      "category_name (VARCHAR(100))": 0.757166
+    },
+    "GAME": {
+      "game_id (PK)": 0.769267,
+      "game_name (VARCHAR(100))": 0.775538
+    },
+    "CHARACTER_GAME": {
+      "character_id (PK, FK → CHARACTER.character_id)": 0.782464,
+      "game_id (PK, FK → GAME.game_id)": 0.778623,
+      "acquisition_date (DATE)": 0.768646
+    },
+    "CHARACTER_ATTRIBUTE": {
+      "attribute_id (PK)": 0.768649,
+      "character_id (FK → CHARACTER.character_id)": 0.768581,
+      "attr_name (VARCHAR(50))": 0.763165,
+      "attr_value (VARCHAR(255))": 0.762098,
+      "UNIQUE (character_id, attr_name)": 0.769139
+    },
+    "ASSOC_CHARACTER_GAME": {
+      "assoc_character_game_id": 0.996556,
+      "character_id": 0.996556,
+      "game_id": 0.996556
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CHARACTER",
+      "entity_2": "CLASS",
+      "cardinality": "N:1",
+      "description": "Each character belongs to exactly one class; a class can have many characters.",
+      "probability": 0.30603
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each class is assigned to one category; a category groups many classes.",
+      "probability": 0.801252
+    },
+    {
+      "entity_1": "CHARACTER",
+      "entity_2": "ASSOC_CHARACTER_GAME",
+      "description": "One CHARACTER can be associated with many ASSOC_CHARACTER_GAME.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996556
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "ASSOC_CHARACTER_GAME",
+      "description": "One GAME can be associated with many ASSOC_CHARACTER_GAME.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996556
+    },
+    {
+      "entity_1": "CHARACTER",
+      "entity_2": "CHARACTER_ATTRIBUTE",
+      "cardinality": "1:N",
+      "description": "A character may have multiple custom attributes; each attribute name is unique per character.",
+      "probability": 0.999964
+    }
+  ],
+  "processing_time": 18.19,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Renamed ATTRIBUTE to CHARACTER_ATTRIBUTE for clarity, added a UNIQUE constraint on (character_id, attr_name) to prevent duplicate attributes, refined attribute naming and data types, and documented cascade delete/update intentions for foreign keys to preserve referential integrity."
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "APPLICATION",
+    "ERROR",
+    "INVOCATION",
+    "ASSOC_USER_ROLE",
+    "ASSOC_USER_APPLICATION",
+    "ASSOC_PERMISSION_APPLICATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name",
+      "description"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "code",
+      "type",
+      "description",
+      "creation_date"
+    ],
+    "ERROR": [
+      "error_id",
+      "error_code",
+      "description",
+      "timestamp",
+      "return_status"
+    ],
+    "INVOCATION": [
+      "invocation_id",
+      "invocation_time",
+      "return_status",
+      "delay_time",
+      "performance_metric",
+      "success_rate",
+      "count",
+      "period"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ],
+    "ASSOC_USER_APPLICATION": [
+      "assoc_user_application_id",
+      "user_id",
+      "application_id"
+    ],
+    "ASSOC_PERMISSION_APPLICATION": [
+      "assoc_permission_application_id",
+      "permission_id",
+      "application_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_USER_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_PERMISSION_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_PERMISSION_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 71.8543,
+  "ilp_runtime": 0.129
+}

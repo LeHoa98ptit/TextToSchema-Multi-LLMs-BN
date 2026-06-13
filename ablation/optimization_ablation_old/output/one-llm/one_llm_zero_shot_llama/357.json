@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "LOCATION",
+    "VEHICLE",
+    "CATEGORY",
+    "USER",
+    "RESERVATION",
+    "NEWS",
+    "PAYMENT",
+    "ASSOC_NEWS_LOCATION"
+  ],
+  "attribute": {
+    "LOCATION": [
+      "address",
+      "telephone",
+      "business_hour"
+    ],
+    "VEHICLE": [
+      "license_plate_number",
+      "brand",
+      "model",
+      "photo"
+    ],
+    "CATEGORY": [
+      "rental_price_weekday",
+      "rental_price_weekend"
+    ],
+    "USER": [
+      "email",
+      "telephone",
+      "postal_code",
+      "city"
+    ],
+    "RESERVATION": [
+      "reservation_date",
+      "return_date"
+    ],
+    "NEWS": [
+      "title",
+      "content",
+      "post_date"
+    ],
+    "PAYMENT": [
+      "credit_card_info"
+    ],
+    "ASSOC_NEWS_LOCATION": [
+      "assoc_news_location_id",
+      "news_id",
+      "location_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "ASSOC_NEWS_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ASSOC_NEWS_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.1028,
+  "ilp_runtime": 0.033
+}

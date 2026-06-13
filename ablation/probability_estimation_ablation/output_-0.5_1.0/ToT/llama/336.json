@@ -1,0 +1,92 @@
+{
+  "filename": "336.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_PRODUCT": 0.587999,
+    "PRODUCT": 0.622459,
+    "CATEGORY": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.50551,
+      "email": 0.521384,
+      "password": 0.517893,
+      "creation_time": 0.512442,
+      "update_time": 0.517096
+    },
+    "ORDER": {
+      "delivery_address": 0.518187,
+      "postal_code": 0.522008,
+      "order_status": 0.522954,
+      "total_order_price": 0.527188,
+      "creation_time": 0.522365,
+      "update_time": 0.526731,
+      "user_id": 0.521704
+    },
+    "ORDER_PRODUCT": {
+      "product_quantity": 0.540732,
+      "order_id": 0.532271,
+      "product_id": 0.537302
+    },
+    "PRODUCT": {
+      "product_description": 0.543572,
+      "product_price": 0.534059,
+      "product_status": 0.534413,
+      "cover_image_path": 0.512485,
+      "creation_time": 0.528485,
+      "update_time": 0.531042,
+      "category_id": 0.542828
+    },
+    "CATEGORY": {
+      "category_alias": 0.525019,
+      "cover_image_path": 0.521187,
+      "creation_time": 0.529147,
+      "update_time": 0.535644,
+      "category_description": 0.536735,
+      "parent_category_id": 0.522158
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.998743
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PRODUCT",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order products",
+      "probability": 0.999965
+    },
+    {
+      "entity_1": "ORDER_PRODUCT",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "An order product is related to one product",
+      "probability": 0.999757
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "A product belongs to one category",
+      "probability": 0.000188
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "A category can have multiple subcategories",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 25.95,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added category description to CATEGORY entity, added parent_category_id to CATEGORY entity to represent subcategories, and updated relationships to accurately reflect the data model."
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "filename": "442.txt",
+  "entity": {
+    "MEDICAL_INSTITUTION": 0.611614,
+    "DEPARTMENT": 0.622459,
+    "MEDICAL_WASTE": 0.612041,
+    "PERSONNEL": 0.517318,
+    "VEHICLE": 0.622459,
+    "COLLECTOR": 0.485954,
+    "TRANSPORTER": 0.494575,
+    "CONFIRMER": 0.443443,
+    "INBOUND_PROCESS": 0.93146,
+    "OUTBOUND_PROCESS": 0.980106
+  },
+  "attribute": {
+    "MEDICAL_INSTITUTION": {
+      "address": 0.529139,
+      "contact information": 0.531286,
+      "medical institution id": 0.533291
+    },
+    "DEPARTMENT": {
+      "department description": 0.535568,
+      "medical institution id": 0.535717,
+      "department id": 0.527765
+    },
+    "MEDICAL_WASTE": {
+      "waste type": 0.556613,
+      "weight": 0.546498,
+      "generation time": 0.548859,
+      "collection time": 0.55478,
+      "current status": 0.554977,
+      "traceability code": 0.558209
+    },
+    "PERSONNEL": {
+      "role": 0.535417,
+      "contact information": 0.538683,
+      "personnel id": 0.542598
+    },
+    "VEHICLE": {
+      "license plate number": 0.524726,
+      "model": 0.532255,
+      "capacity": 0.541832,
+      "vehicle id": 0.531687
+    },
+    "COLLECTOR": {
+      "collector id": 0.539068,
+      "personnel id": 0.550651
+    },
+    "TRANSPORTER": {
+      "transporter id": 0.54459,
+      "personnel id": 0.553917
+    },
+    "CONFIRMER": {
+      "confirmer id": 0.511037,
+      "personnel id": 0.534179
+    },
+    "INBOUND_PROCESS": {
+      "batch number": 0.536017,
+      "expect quantity": 0.535233,
+      "actual quantity": 0.539786,
+      "expect weight": 0.536904,
+      "actual weight": 0.539974,
+      "inbound time": 0.527792,
+      "collector id": 0.545525,
+      "confirmer id": 0.529931,
+      "inbound process id": 0.53257,
+      "inbound_process_id": 0.93146,
+      "medical_waste_id": 0.93146,
+      "personnel_id": 0.93146,
+      "batch_number": 0.93146,
+      "expect_quantity": 0.93146,
+      "actual_quantity": 0.93146,
+      "expect_weight": 0.93146,
+      "actual_weight": 0.93146,
+      "inbound_time": 0.93146,
+      "collector_id": 0.93146,
+      "confirmer_id": 0.93146
+    },
+    "OUTBOUND_PROCESS": {
+      "batch number": 0.535382,
+      "outbound quantity": 0.544153,
+      "outbound weight": 0.543299,
+      "outbound time": 0.529292,
+      "transporter id": 0.542848,
+      "confirmer id": 0.530694,
+      "vehicle id": 0.548888,
+      "outbound process id": 0.534341,
+      "outbound_process_id": 0.980106,
+      "medical_waste_id": 0.93146,
+      "personnel_id": 0.980106,
+      "batch_number": 0.980106,
+      "outbound_quantity": 0.980106,
+      "outbound_weight": 0.980106,
+      "outbound_time": 0.980106,
+      "transporter_id": 0.980106,
+      "confirmer_id": 0.980106,
+      "vehicle_id": 0.980106
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "DEPARTMENT",
+      "description": "A medical institution has multiple departments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.626012
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "MEDICAL_WASTE",
+      "description": "A department generates multiple medical waste",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000302
+    },
+    {
+      "entity_1": "MEDICAL_WASTE",
+      "entity_2": "INBOUND_PROCESS",
+      "description": "One MEDICAL_WASTE can be associated with many INBOUND_PROCESS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.93146
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "INBOUND_PROCESS",
+      "description": "One PERSONNEL can be associated with many INBOUND_PROCESS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.93146
+    },
+    {
+      "entity_1": "MEDICAL_WASTE",
+      "entity_2": "OUTBOUND_PROCESS",
+      "description": "One MEDICAL_WASTE can be associated with many OUTBOUND_PROCESS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.93146
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "OUTBOUND_PROCESS",
+      "description": "One PERSONNEL can be associated with many OUTBOUND_PROCESS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980106
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "OUTBOUND_PROCESS",
+      "description": "One VEHICLE can be associated with many OUTBOUND_PROCESS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980106
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "PERSONNEL",
+      "description": "A medical institution has multiple personnel",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998246
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "VEHICLE",
+      "description": "A medical institution has multiple vehicles",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.162022
+    }
+  ],
+  "processing_time": 43.25
+}

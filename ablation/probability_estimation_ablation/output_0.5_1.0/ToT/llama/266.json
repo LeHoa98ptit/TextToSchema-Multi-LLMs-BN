@@ -1,0 +1,103 @@
+{
+  "filename": "266.txt",
+  "entity": {
+    "PIPELINE": 0.817574,
+    "COMPANY": 0.817574,
+    "MAINTENANCE_PERSONNEL": 0.806823,
+    "MAINTENANCE_TASK": 0.798106,
+    "MAINTENANCE_DETAIL": 0.77157,
+    "REAL_TIME_MONITORING": 0.689803
+  },
+  "attribute": {
+    "PIPELINE": {
+      "id": 0.772907,
+      "name": 0.77642,
+      "length": 0.780862,
+      "diameter": 0.775913,
+      "start_point": 0.771162,
+      "end_point": 0.772685
+    },
+    "COMPANY": {
+      "id": 0.752688,
+      "name": 0.757104,
+      "address": 0.751518
+    },
+    "MAINTENANCE_PERSONNEL": {
+      "id": 0.776586,
+      "name": 0.777998,
+      "role": 0.78041
+    },
+    "MAINTENANCE_TASK": {
+      "id": 0.775372,
+      "task_name": 0.770657,
+      "task_description": 0.775993,
+      "start_time": 0.769077,
+      "end_time": 0.773782,
+      "task_status": 0.771779
+    },
+    "MAINTENANCE_DETAIL": {
+      "id": 0.774573,
+      "maintenance_task_id": 0.77572,
+      "pipeline_id": 0.783745,
+      "maintenance_personnel_id": 0.779667,
+      "maintenance_time": 0.776235,
+      "maintenance_result": 0.774131
+    },
+    "REAL_TIME_MONITORING": {
+      "id": 0.75888,
+      "maintenance_task_id": 0.775761,
+      "pipeline_id": 0.779472,
+      "monitoring_time": 0.758707,
+      "performance_evaluation": 0.768282
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PIPELINE",
+      "cardinality": "1:N",
+      "description": "A company manages multiple pipelines",
+      "probability": 0.995741
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A company employs multiple maintenance personnel",
+      "probability": 0.001874
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A maintenance personnel can perform multiple maintenance tasks",
+      "probability": 0.994319
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A pipeline can have multiple maintenance tasks",
+      "probability": 0.994638
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "MAINTENANCE_DETAIL",
+      "cardinality": "1:N",
+      "description": "A maintenance task can have multiple maintenance details",
+      "probability": 0.993788
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "REAL_TIME_MONITORING",
+      "cardinality": "1:N",
+      "description": "A maintenance task can have multiple real-time monitoring records",
+      "probability": 0.4645
+    }
+  ],
+  "processing_time": 18.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'REAL_TIME_MONITORING' entity to track pipeline maintenance task performance and evaluation, and included additional attributes to 'MAINTENANCE_TASK' and 'MAINTENANCE_DETAIL' entities to enhance data completeness."
+  }
+}

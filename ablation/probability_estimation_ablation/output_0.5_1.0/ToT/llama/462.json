@@ -1,0 +1,84 @@
+{
+  "filename": "462.txt",
+  "entity": {
+    "MEMBER": 0.817574,
+    "BOOK": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "PAYMENT_METHOD": 0.669406
+  },
+  "attribute": {
+    "MEMBER": {
+      "username": 0.748445,
+      "password": 0.755838,
+      "address": 0.757084,
+      "postal_code": 0.753835,
+      "phone_number": 0.749846,
+      "consumption_point": 0.748482
+    },
+    "BOOK": {
+      "book_id": 0.77843,
+      "category": 0.777823,
+      "book_title": 0.769422,
+      "author": 0.765771,
+      "publisher": 0.777516,
+      "publication_date": 0.770875,
+      "isbn": 0.783566,
+      "price": 0.771909
+    },
+    "ORDER": {
+      "order_id": 0.745901,
+      "sale_order_date": 0.753963,
+      "shipping_date": 0.742889,
+      "order_date": 0.746528,
+      "late_shipping_date": 0.739993,
+      "payment_method_id": 0.742402
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.744181,
+      "order_id": 0.74573,
+      "book_id": 0.778085,
+      "purchase_quantity": 0.760453
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.739816,
+      "payment_type": 0.742783,
+      "payment_details": 0.751156
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A member can have multiple orders",
+      "probability": 0.997968
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "BOOK",
+      "cardinality": "N:1",
+      "description": "An order item is associated with one book",
+      "probability": 0.001302
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:1",
+      "description": "An order is associated with one payment method",
+      "probability": 0.0044
+    }
+  ],
+  "processing_time": 956.45,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a payment method entity to the final model to enhance the order management system, and updated the order item entity to include foreign keys for order and book, ensuring data consistency and reducing redundancy."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "entity": [
+    "CLIENT",
+    "FINANCIAL_ADVISOR",
+    "FINANCIAL_PRODUCT",
+    "INVESTMENT_PORTFOLIO",
+    "TRANSACTION",
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT"
+  ],
+  "attribute": {
+    "CLIENT": [
+      "client_d",
+      "contact_number",
+      "risk_preference",
+      "total_asset"
+    ],
+    "FINANCIAL_ADVISOR": [
+      "advisor_d",
+      "hire_date",
+      "contact_number"
+    ],
+    "FINANCIAL_PRODUCT": [
+      "product_code",
+      "product_type",
+      "product_value"
+    ],
+    "INVESTMENT_PORTFOLIO": [
+      "portfolio_d",
+      "client_d",
+      "product_code",
+      "quantity"
+    ],
+    "TRANSACTION": [
+      "transaction_d",
+      "portfolio_d",
+      "product_code",
+      "transaction_type",
+      "transaction_quantity",
+      "transaction_price",
+      "transaction_time"
+    ],
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT": [
+      "assoc_investment_portfolio_financial_product_id",
+      "investment_portfolio_id",
+      "financial_product_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "FINANCIAL_ADVISOR",
+      "entity_2": "CLIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 21.3214,
+  "ilp_runtime": 0.042
+}

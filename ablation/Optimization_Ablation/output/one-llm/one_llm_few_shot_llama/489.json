@@ -1,0 +1,61 @@
+{
+  "entity": [
+    "APPLICATION",
+    "CHANNEL",
+    "CLIENT",
+    "CHANNEL_SUBSCRIPTION",
+    "EVENT_LOG"
+  ],
+  "attribute": {
+    "APPLICATION": [
+      "appid",
+      "name",
+      "description"
+    ],
+    "CHANNEL": [
+      "channel_id",
+      "name",
+      "status",
+      "type"
+    ],
+    "CLIENT": [
+      "d_user",
+      "username",
+      "email"
+    ],
+    "CHANNEL_SUBSCRIPTION": [
+      "subscription_id",
+      "client_id",
+      "channel_id"
+    ],
+    "EVENT_LOG": [
+      "event_id",
+      "event_type",
+      "timestamp",
+      "payload",
+      "channel_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CHANNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "CHANNEL_SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "CHANNEL_SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 21.9367,
+  "ilp_runtime": 0.088
+}

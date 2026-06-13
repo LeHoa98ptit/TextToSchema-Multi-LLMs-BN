@@ -1,0 +1,80 @@
+{
+  "filename": "386.txt",
+  "entity": {
+    "USER": 0.817574,
+    "BLOCK": 0.817574,
+    "TRANSACTION": 0.817574,
+    "ASSOC_USER_TRANSACTION": 0.977684,
+    "ASSOC_BLOCK_TRANSACTION": 0.997919
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.7357,
+      "public_key": 0.744952,
+      "address": 0.749214,
+      "creation_time": 0.750816
+    },
+    "BLOCK": {
+      "block_hash": 0.749326,
+      "creation_time": 0.748182,
+      "block_size": 0.748215,
+      "previous_block": 0.744323
+    },
+    "TRANSACTION": {
+      "transaction_time": 0.766247,
+      "operation_type": 0.769848,
+      "operation_content": 0.769188
+    },
+    "ASSOC_USER_TRANSACTION": {
+      "assoc_user_transaction_id": 0.977684,
+      "user_id": 0.977684,
+      "transaction_id": 0.977684
+    },
+    "ASSOC_BLOCK_TRANSACTION": {
+      "assoc_block_transaction_id": 0.997919,
+      "block_id": 0.997919,
+      "transaction_id": 0.997919
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_TRANSACTION",
+      "description": "One USER can be associated with many ASSOC_USER_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977684
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_USER_TRANSACTION",
+      "description": "One TRANSACTION can be associated with many ASSOC_USER_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977684
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "ASSOC_BLOCK_TRANSACTION",
+      "description": "One BLOCK can be associated with many ASSOC_BLOCK_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997919
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_BLOCK_TRANSACTION",
+      "description": "One TRANSACTION can be associated with many ASSOC_BLOCK_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997919
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BLOCK",
+      "cardinality": "1:N",
+      "probability": 0.807389
+    }
+  ],
+  "processing_time": 10.75
+}

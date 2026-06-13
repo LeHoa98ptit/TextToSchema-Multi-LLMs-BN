@@ -1,0 +1,143 @@
+{
+  "filename": "481.txt",
+  "entity": {
+    "AGRICULTURAL_EXPERT": 0.711955,
+    "MONITORING_RULE": 0.797671,
+    "CROP": 0.817574,
+    "SENSOR": 0.817574,
+    "MONITORING_DATUM": 0.800177,
+    "DATA_COLLECTION_SYSTEM": 0.717744,
+    "DATA_PROCESSING": 0.760805,
+    "ANALYSIS_RESULT": 0.74549,
+    "PREDICTION_RESULT": 0.717339
+  },
+  "attribute": {
+    "AGRICULTURAL_EXPERT": {
+      "expert id": 0.770731
+    },
+    "MONITORING_RULE": {
+      "rule id": 0.764002,
+      "rule definition": 0.769956
+    },
+    "CROP": {
+      "crop id": 0.771275,
+      "crop type": 0.775074
+    },
+    "SENSOR": {
+      "sensor id": 0.757936,
+      "location": 0.758971
+    },
+    "MONITORING_DATUM": {
+      "datum id": 0.769855,
+      "sensor id": 0.774069,
+      "crop id": 0.790612,
+      "data type": 0.777526,
+      "collection time": 0.77393,
+      "datum value": 0.771518
+    },
+    "DATA_COLLECTION_SYSTEM": {
+      "system id": 0.762723,
+      "system name": 0.768583
+    },
+    "DATA_PROCESSING": {
+      "processing id": 0.764275,
+      "processing time": 0.761586,
+      "method": 0.771123
+    },
+    "ANALYSIS_RESULT": {
+      "analysis id": 0.747931,
+      "rule id": 0.750218,
+      "datum id": 0.756089,
+      "result summary": 0.741469
+    },
+    "PREDICTION_RESULT": {
+      "prediction id": 0.739776,
+      "datum id": 0.754798,
+      "predicted value": 0.733272,
+      "model name": 0.737176
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "AGRICULTURAL_EXPERT",
+      "entity_2": "MONITORING_RULE",
+      "description": "An agricultural expert maintains one or many monitoring rules",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.839774
+    },
+    {
+      "entity_1": "DATA_COLLECTION_SYSTEM",
+      "entity_2": "MONITORING_DATUM",
+      "description": "The data collection system records multiple monitoring datum entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.900384
+    },
+    {
+      "entity_1": "DATA_COLLECTION_SYSTEM",
+      "entity_2": "SENSOR",
+      "description": "A data collection system includes many sensors",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.97735
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "MONITORING_DATUM",
+      "description": "Each sensor generates multiple monitoring datum records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001342
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "MONITORING_DATUM",
+      "description": "Monitoring datum is associated with a specific crop",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006431
+    },
+    {
+      "entity_1": "MONITORING_RULE",
+      "entity_2": "DATA_PROCESSING",
+      "description": "Data processing operations are performed according to a monitoring rule",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.292408
+    },
+    {
+      "entity_1": "DATA_PROCESSING",
+      "entity_2": "MONITORING_DATUM",
+      "description": "A data processing event processes multiple monitoring datum records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.720666
+    },
+    {
+      "entity_1": "MONITORING_DATUM",
+      "entity_2": "ANALYSIS_RESULT",
+      "description": "Each monitoring datum can produce one or many analysis results",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00093
+    },
+    {
+      "entity_1": "MONITORING_RULE",
+      "entity_2": "ANALYSIS_RESULT",
+      "description": "A monitoring rule can be referenced by multiple analysis results",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032256
+    },
+    {
+      "entity_1": "MONITORING_DATUM",
+      "entity_2": "PREDICTION_RESULT",
+      "description": "Each monitoring datum can generate one or many prediction results",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.308272
+    }
+  ],
+  "processing_time": 21.48
+}

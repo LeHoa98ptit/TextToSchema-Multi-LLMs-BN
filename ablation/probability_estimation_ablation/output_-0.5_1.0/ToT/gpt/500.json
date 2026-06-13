@@ -1,0 +1,97 @@
+{
+  "filename": "500.txt",
+  "entity": {
+    "TASK": 0.622459,
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "TASK_TYPE": 0.589113,
+    "TASK_STATUS": 0.601543,
+    "TASK_PRIORITY": 0.596114
+  },
+  "attribute": {
+    "TASK": {
+      "task_id": 0.548608,
+      "title": 0.557656,
+      "description": 0.574724,
+      "deadline": 0.557614,
+      "progress": 0.566783,
+      "type_id": 0.543544,
+      "status_id": 0.554193,
+      "priority_id": 0.55631,
+      "assigned_user_id": 0.548806,
+      "created_at": 0.533959,
+      "updated_at": 0.537292
+    },
+    "USER": {
+      "user_id": 0.505566,
+      "username": 0.503743,
+      "password_hash": 0.50832,
+      "email": 0.51866,
+      "role_id": 0.52142,
+      "created_at": 0.497272,
+      "updated_at": 0.504974
+    },
+    "ROLE": {
+      "role_id": 0.524394,
+      "role_name": 0.531019,
+      "role_description": 0.547133
+    },
+    "TASK_TYPE": {
+      "type_id": 0.541084,
+      "type_name": 0.545636,
+      "type_description": 0.562835
+    },
+    "TASK_STATUS": {
+      "status_id": 0.554438,
+      "status_name": 0.558504,
+      "status_description": 0.570979
+    },
+    "TASK_PRIORITY": {
+      "priority_id": 0.555366,
+      "priority_name": 0.556973,
+      "priority_description": 0.573183
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each task is assigned to one user; a user can have many tasks.",
+      "probability": 0.043027
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "Each user has one role; a role can be held by many users.",
+      "probability": 0.99758
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TYPE",
+      "cardinality": "N:1",
+      "description": "Each task belongs to one task type.",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_STATUS",
+      "cardinality": "N:1",
+      "description": "Each task has one status.",
+      "probability": 0.999794
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_PRIORITY",
+      "cardinality": "N:1",
+      "description": "Each task has one priority level.",
+      "probability": 0.998952
+    }
+  ],
+  "processing_time": 4.07,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added audit timestamp fields (created_at, updated_at) to TASK and USER for change tracking. Replaced plain-text password with secure password_hash attribute. Kept original one-to-many task assignment semantics while preserving all existing entities, attributes, and relationships for optimal simplicity and efficiency."
+  }
+}

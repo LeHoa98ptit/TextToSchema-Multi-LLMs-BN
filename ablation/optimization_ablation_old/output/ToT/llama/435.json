@@ -1,0 +1,126 @@
+{
+  "entity": [
+    "PROBE",
+    "CELESTIAL_BODY",
+    "SCIENTIFIC_INSTRUMENT",
+    "MISSION",
+    "OBSERVATIONAL_DATUM",
+    "INSTRUMENT_OPERATING_PARAMETER",
+    "CALIBRATION_DATUM",
+    "ASSOC_PROBE_CELESTIAL_BODY",
+    "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT",
+    "ASSOC_MISSION_CELESTIAL_BODY"
+  ],
+  "attribute": {
+    "PROBE": [
+      "weight",
+      "launch_date",
+      "service_life",
+      "operational_status",
+      "remain_fuel"
+    ],
+    "CELESTIAL_BODY": [
+      "type",
+      "orbital_parameter",
+      "physical_characteristic"
+    ],
+    "SCIENTIFIC_INSTRUMENT": [
+      "weight",
+      "power_consumption",
+      "accuracy"
+    ],
+    "MISSION": [
+      "mission_execution_status",
+      "scientific_datum_acquisition_status",
+      "mission_priority",
+      "resource_allocation"
+    ],
+    "OBSERVATIONAL_DATUM": [
+      "observation_time",
+      "observation_datum",
+      "observation_result",
+      "observation_accuracy"
+    ],
+    "INSTRUMENT_OPERATING_PARAMETER": [
+      "parameter_name",
+      "parameter_value"
+    ],
+    "CALIBRATION_DATUM": [
+      "calibration_time",
+      "calibration_result"
+    ],
+    "ASSOC_PROBE_CELESTIAL_BODY": [
+      "assoc_probe_celestial_body_id",
+      "probe_id",
+      "celestial_body_id"
+    ],
+    "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT": [
+      "assoc_probe_scientific_instrument_id",
+      "probe_id",
+      "scientific_instrument_id"
+    ],
+    "ASSOC_MISSION_CELESTIAL_BODY": [
+      "assoc_mission_celestial_body_id",
+      "mission_id",
+      "celestial_body_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "ASSOC_PROBE_CELESTIAL_BODY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "ASSOC_PROBE_CELESTIAL_BODY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "OBSERVATIONAL_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "INSTRUMENT_OPERATING_PARAMETER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "CALIBRATION_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "ASSOC_MISSION_CELESTIAL_BODY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "ASSOC_MISSION_CELESTIAL_BODY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 104.788,
+  "ilp_runtime": 0.083
+}

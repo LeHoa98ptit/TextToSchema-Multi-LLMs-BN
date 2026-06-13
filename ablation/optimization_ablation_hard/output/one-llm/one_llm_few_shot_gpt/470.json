@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "EMPLOYEE",
+    "MENU",
+    "ORDER",
+    "ORDER_ITEM",
+    "DELIVERY_PERSON",
+    "DELIVERY",
+    "PAYMENT_REQUEST"
+  ],
+  "attribute": {
+    "EMPLOYEE": [
+      "employee_id",
+      "full_name",
+      "phone_number",
+      "address"
+    ],
+    "MENU": [
+      "menu_id",
+      "dish_name",
+      "price",
+      "special_offer_indicator"
+    ],
+    "ORDER": [
+      "order_id",
+      "employee_id",
+      "total_price",
+      "delivery_time",
+      "delivery_address",
+      "payment_method",
+      "order_date"
+    ],
+    "ORDER_ITEM": [
+      "order_id",
+      "menu_id",
+      "quantity",
+      "item_price"
+    ],
+    "DELIVERY_PERSON": [
+      "delivery_person_id",
+      "full_name",
+      "phone_number",
+      "address"
+    ],
+    "DELIVERY": [
+      "delivery_id",
+      "order_id",
+      "delivery_time",
+      "delivery_person_id",
+      "delivery_address"
+    ],
+    "PAYMENT_REQUEST": [
+      "payment_request_id",
+      "order_id",
+      "employee_id",
+      "payment_status",
+      "request_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DELIVERY_PERSON",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.0137,
+  "ilp_runtime": 0.045
+}

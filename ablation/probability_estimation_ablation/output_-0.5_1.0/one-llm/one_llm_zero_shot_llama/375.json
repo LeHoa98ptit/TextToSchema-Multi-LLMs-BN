@@ -1,0 +1,145 @@
+{
+  "filename": "375.txt",
+  "entity": {
+    "DEVICE": 0.622459,
+    "USER": 0.622459,
+    "STAFF": 0.507924,
+    "NETWORK_TRAFFIC": 0.545747,
+    "DEVICE_FAILURE": 0.514746,
+    "MAINTENANCE_RECORD": 0.530537,
+    "USER_CONNECTION": 0.516519,
+    "ASSOC_DEVICE_USER": 0.825133,
+    "ASSOC_STAFF_DEVICE": 0.010696
+  },
+  "attribute": {
+    "DEVICE": {
+      "d_type": 0.526114,
+      "ip_address": 0.52067,
+      "installation_location": 0.524784,
+      "installation_time": 0.526606,
+      "device_status": 0.539444
+    },
+    "USER": {
+      "user_d": 0.51283,
+      "user_account": 0.509525,
+      "user_password": 0.507358
+    },
+    "STAFF": {
+      "staff_d": 0.520635,
+      "contact_information": 0.527608
+    },
+    "NETWORK_TRAFFIC": {
+      "device_d": 0.547397,
+      "timestamp": 0.540826,
+      "upload_traffic": 0.532745,
+      "download_traffic": 0.534136,
+      "total_traffic": 0.541299,
+      "traffic_status": 0.548308
+    },
+    "DEVICE_FAILURE": {
+      "device_d": 0.527039,
+      "failure_occurrence_time": 0.530265,
+      "failure_type": 0.523608,
+      "failure_description": 0.525718,
+      "handle_status": 0.526347,
+      "remark": 0.527828
+    },
+    "MAINTENANCE_RECORD": {
+      "device_d": 0.555542,
+      "staff_d": 0.54828,
+      "maintenance_time": 0.544406,
+      "maintenance_content": 0.541898,
+      "maintenance_result": 0.539854,
+      "remark": 0.544818
+    },
+    "USER_CONNECTION": {
+      "user_d": 0.520203,
+      "device_d": 0.53568,
+      "connection_time": 0.523527,
+      "disconnection_time": 0.514947,
+      "bandwidth": 0.534429,
+      "user_ip": 0.516827
+    },
+    "ASSOC_DEVICE_USER": {
+      "assoc_device_user_id": 0.825133,
+      "device_id": 0.825133,
+      "user_id": 0.825133
+    },
+    "ASSOC_STAFF_DEVICE": {
+      "assoc_staff_device_id": 0.010696,
+      "staff_id": 0.010696,
+      "device_id": 0.010696
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "NETWORK_TRAFFIC",
+      "cardinality": "1:N",
+      "probability": 0.007825
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "probability": 0.992107
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.945682
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "probability": 0.999559
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.897206
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_DEVICE_USER",
+      "description": "One DEVICE can be associated with many ASSOC_DEVICE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825133
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_DEVICE_USER",
+      "description": "One USER can be associated with many ASSOC_DEVICE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825133
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "ASSOC_STAFF_DEVICE",
+      "description": "One STAFF can be associated with many ASSOC_STAFF_DEVICE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010696
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_STAFF_DEVICE",
+      "description": "One DEVICE can be associated with many ASSOC_STAFF_DEVICE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010696
+    }
+  ],
+  "processing_time": 34.22
+}

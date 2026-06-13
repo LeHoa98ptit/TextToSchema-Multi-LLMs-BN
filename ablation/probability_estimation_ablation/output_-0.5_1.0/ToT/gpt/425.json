@@ -1,0 +1,185 @@
+{
+  "filename": "425.txt",
+  "entity": {
+    "USER": 0.486603,
+    "ROLE": 0.504025,
+    "BUILDING": 0.481384,
+    "DORMITORY": 0.622459,
+    "STUDENT": 0.622459,
+    "APPLICATION": 0.622459,
+    "MAINTENANCE_RECORD": 0.530537,
+    "MAINTENANCE_STAFF": 0.549116,
+    "ABSENCE_REGISTRATION": 0.42458,
+    "ANNOUNCEMENT": 0.622459,
+    "ASSOC_USER_ROLE": 0.996148
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.515263,
+      "username": 0.502726,
+      "password": 0.523892
+    },
+    "ROLE": {
+      "role_id": 0.515585,
+      "role_name": 0.520104,
+      "description": 0.530301
+    },
+    "BUILDING": {
+      "building_id": 0.518397,
+      "type": 0.524661,
+      "location": 0.51776,
+      "description": 0.53003
+    },
+    "DORMITORY": {
+      "dormitory_id": 0.563824,
+      "type": 0.563128,
+      "number": 0.561035,
+      "bed_total": 0.556197,
+      "building_id": 0.556687
+    },
+    "STUDENT": {
+      "student_id": 0.548973,
+      "name": 0.545829,
+      "gender": 0.541057,
+      "class": 0.539066,
+      "dormitory_id": 0.56751
+    },
+    "APPLICATION": {
+      "application_id": 0.504824,
+      "type": 0.519494,
+      "content": 0.522882,
+      "apply_time": 0.505241,
+      "status": 0.528524,
+      "admin_opinion": 0.525969,
+      "student_id": 0.544987,
+      "processed_by": 0.511522
+    },
+    "MAINTENANCE_RECORD": {
+      "record_id": 0.51889,
+      "dormitory_id": 0.56988,
+      "fault_description": 0.529351,
+      "repair_time": 0.521578,
+      "situation": 0.535267,
+      "completion_time": 0.524704,
+      "staff_id": 0.543129
+    },
+    "MAINTENANCE_STAFF": {
+      "staff_id": 0.547449,
+      "user_id": 0.543118,
+      "name": 0.544097,
+      "contact": 0.537124
+    },
+    "ABSENCE_REGISTRATION": {
+      "absence_id": 0.517891,
+      "student_id": 0.542546,
+      "date": 0.511517,
+      "reason": 0.517437,
+      "status": 0.521609
+    },
+    "ANNOUNCEMENT": {
+      "announcement_id": 0.511256,
+      "title": 0.515204,
+      "content": 0.518385,
+      "release_time": 0.507905,
+      "admin_id": 0.521669
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.996148,
+      "user_id": 0.996148,
+      "role_id": 0.996148
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996148
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996148
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "description": "Each building has one manager (a user)",
+      "probability": 0.649256
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "description": "A building contains many dormitories",
+      "probability": 0.410062
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "description": "Each dormitory has a dedicated dormitory manager (a user)",
+      "probability": 0.983031
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A dormitory hosts many students",
+      "probability": 0.999949
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "Students submit multiple applications",
+      "probability": 0.702367
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each application is processed by one administrator (or other authorized user)",
+      "probability": 0.99654
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "description": "A dormitory can have many maintenance records",
+      "probability": 0.983871
+    },
+    {
+      "entity_1": "MAINTENANCE_STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "description": "A maintenance staff handles many repair records",
+      "probability": 0.617379
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ABSENCE_REGISTRATION",
+      "cardinality": "1:N",
+      "description": "Students may have multiple absence registrations",
+      "probability": 0.389009
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "description": "Administrators publish many announcements",
+      "probability": 0.738419
+    }
+  ],
+  "processing_time": 16.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "entity": [
+    "RealEstateAgent",
+    "Owner",
+    "Renter",
+    "Property",
+    "Agreement",
+    "Payments",
+    "Maintenance",
+    "LeaseExtension"
+  ],
+  "attribut": {
+    "RealEstateAgent": [
+      "id_realEstate",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Owner": [
+      "id_owner",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Renter": [
+      "id_renter",
+      "name",
+      "phoneNumber",
+      "email",
+      "rate"
+    ],
+    "Property": [
+      "id_property",
+      "address",
+      "rentValue",
+      "id_owner",
+      "id_realEstate"
+    ],
+    "Agreement": [
+      "id_agreement",
+      "id_property",
+      "id_renter",
+      "rentInitialDate",
+      "rentFinalDate",
+      "activeContract",
+      "monthlyRent",
+      "depositAmount",
+      "clauses",
+      "depositRefunded",
+      "id_insurance"
+    ],
+    "Payments": [
+      "id_payment",
+      "id_agreement",
+      "monthReference",
+      "yearReference",
+      "amountPaid",
+      "paymentAccount",
+      "receivingAccount",
+      "paymentDate",
+      "paymentMethod"
+    ],
+    "Maintenance": [
+      "id_maintenance",
+      "id_property",
+      "maintenanceDate",
+      "description",
+      "cost",
+      "contractor"
+    ],
+    "LeaseExtension": [
+      "id_extension",
+      "id_agreement",
+      "extensionDate",
+      "oldRentValue",
+      "newRentValue"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Owner",
+      "entity_2": "Property",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "RealEstateAgent",
+      "entity_2": "Property",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Property",
+      "entity_2": "Agreement",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Renter",
+      "entity_2": "Agreement",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Agreement",
+      "entity_2": "Payments",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Property",
+      "entity_2": "Maintenance",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Agreement",
+      "entity_2": "LeaseExtension",
+      "cardinality": "1:N"
+    }
+  ]
+}

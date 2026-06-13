@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "DEVICE",
+    "USER",
+    "STAFF",
+    "NETWORK_TRAFFIC",
+    "DEVICE_FAILURE",
+    "MAINTENANCE_RECORD",
+    "USER_CONNECTION",
+    "ASSOC_DEVICE_USER"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "d_type",
+      "ip_address",
+      "installation_location",
+      "installation_time",
+      "device_status"
+    ],
+    "USER": [
+      "user_d",
+      "user_account",
+      "user_password"
+    ],
+    "STAFF": [
+      "staff_d",
+      "contact_information"
+    ],
+    "NETWORK_TRAFFIC": [
+      "device_d",
+      "timestamp",
+      "upload_traffic",
+      "download_traffic",
+      "total_traffic",
+      "traffic_status"
+    ],
+    "DEVICE_FAILURE": [
+      "device_d",
+      "failure_occurrence_time",
+      "failure_type",
+      "failure_description",
+      "handle_status",
+      "remark"
+    ],
+    "MAINTENANCE_RECORD": [
+      "device_d",
+      "staff_d",
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_result",
+      "remark"
+    ],
+    "USER_CONNECTION": [
+      "user_d",
+      "device_d",
+      "connection_time",
+      "disconnection_time",
+      "bandwidth",
+      "user_ip"
+    ],
+    "ASSOC_DEVICE_USER": [
+      "assoc_device_user_id",
+      "device_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_DEVICE_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_DEVICE_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.4576,
+  "ilp_runtime": 0.051
+}

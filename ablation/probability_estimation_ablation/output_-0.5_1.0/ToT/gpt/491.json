@@ -1,0 +1,214 @@
+{
+  "filename": "491.txt",
+  "entity": {
+    "USER": 0.622459,
+    "USER_GROUP": 0.507649,
+    "USER_GROUP_MEMBERSHIP": 0.478888,
+    "ROLE": 0.622459,
+    "PERMISSION": 0.622459,
+    "RESOURCE": 0.496725,
+    "MODULE": 0.462918,
+    "POLICY": 0.485854,
+    "USER_ROLE": 0.542348,
+    "ROLE_PERMISSION": 0.558259,
+    "GROUP_ROLE": 0.54872,
+    "PERMISSION_RESOURCE": 0.541306
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.526599,
+      "username": 0.511046,
+      "email": 0.527787,
+      "password_hash": 0.518614,
+      "first_name": 0.527057,
+      "last_name": 0.524607,
+      "phone": 0.521385,
+      "address": 0.53207,
+      "status": 0.539088,
+      "created_at": 0.520786,
+      "created_by": 0.519992,
+      "updated_at": 0.516377,
+      "updated_by": 0.516348,
+      "last_login": 0.521006
+    },
+    "USER_GROUP": {
+      "group_id": 0.526942,
+      "group_name": 0.527062,
+      "description": 0.546601,
+      "created_at": 0.527878,
+      "created_by": 0.525448,
+      "updated_at": 0.525361,
+      "updated_by": 0.523048
+    },
+    "USER_GROUP_MEMBERSHIP": {
+      "user_id": 0.530155,
+      "group_id": 0.526494,
+      "assigned_at": 0.529151,
+      "assigned_by": 0.527874
+    },
+    "ROLE": {
+      "role_id": 0.537806,
+      "role_name": 0.541346,
+      "description": 0.55403,
+      "created_at": 0.53709,
+      "created_by": 0.536193,
+      "updated_at": 0.53213,
+      "updated_by": 0.532204
+    },
+    "PERMISSION": {
+      "permission_id": 0.54136,
+      "action": 0.556679,
+      "description": 0.564683,
+      "created_at": 0.53216,
+      "created_by": 0.532087,
+      "updated_at": 0.531033,
+      "updated_by": 0.52967
+    },
+    "RESOURCE": {
+      "resource_id": 0.51288,
+      "resource_name": 0.51278,
+      "resource_type": 0.516959,
+      "description": 0.540272,
+      "created_at": 0.51623,
+      "created_by": 0.516926,
+      "updated_at": 0.507506,
+      "updated_by": 0.508431
+    },
+    "MODULE": {
+      "module_id": 0.505517,
+      "module_name": 0.505883,
+      "description": 0.533239,
+      "created_at": 0.509026,
+      "created_by": 0.512275,
+      "updated_at": 0.499319,
+      "updated_by": 0.502866
+    },
+    "POLICY": {
+      "policy_id": 0.521554,
+      "policy_name": 0.52361,
+      "description": 0.540086,
+      "effective_date": 0.514816,
+      "created_at": 0.523847,
+      "created_by": 0.524296,
+      "updated_at": 0.51471,
+      "updated_by": 0.516198
+    },
+    "USER_ROLE": {
+      "user_id": 0.54507,
+      "role_id": 0.543765,
+      "assigned_at": 0.5423,
+      "assigned_by": 0.541453
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.548024,
+      "permission_id": 0.548516,
+      "assigned_at": 0.547305,
+      "assigned_by": 0.546456
+    },
+    "GROUP_ROLE": {
+      "group_id": 0.53125,
+      "role_id": 0.536149,
+      "assigned_at": 0.536236,
+      "assigned_by": 0.533947
+    },
+    "PERMISSION_RESOURCE": {
+      "permission_id": 0.54011,
+      "resource_id": 0.533957,
+      "action": 0.553639,
+      "is_allowed": 0.541033,
+      "assigned_at": 0.54111,
+      "assigned_by": 0.541982
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP_MEMBERSHIP",
+      "cardinality": "1:N",
+      "description": "A user can have multiple group membership records.",
+      "probability": 0.976896
+    },
+    {
+      "entity_1": "USER_GROUP",
+      "entity_2": "USER_GROUP_MEMBERSHIP",
+      "cardinality": "1:N",
+      "description": "A group can have multiple membership records.",
+      "probability": 0.514573
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user can be assigned multiple roles.",
+      "probability": 0.999707
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users.",
+      "probability": 0.9983
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can be linked to many permission assignments.",
+      "probability": 0.996955
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be granted to many roles.",
+      "probability": 0.999606
+    },
+    {
+      "entity_1": "USER_GROUP",
+      "entity_2": "GROUP_ROLE",
+      "cardinality": "1:N",
+      "description": "A group can be associated with multiple role assignments.",
+      "probability": 0.941373
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "GROUP_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be attached to many groups.",
+      "probability": 0.99842
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_RESOURCE",
+      "cardinality": "1:N",
+      "description": "A permission can apply to multiple resource-action pairs.",
+      "probability": 0.997975
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "PERMISSION_RESOURCE",
+      "cardinality": "1:N",
+      "description": "A resource can be protected by many permission assignments.",
+      "probability": 0.957125
+    },
+    {
+      "entity_1": "MODULE",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:N",
+      "description": "A module groups related resources.",
+      "probability": 0.086204
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "description": "A policy defines constraints for many roles.",
+      "probability": 0.104484
+    }
+  ],
+  "processing_time": 23.4,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented a true many‑to‑many USER‑USER_GROUP relationship via the USER_GROUP_MEMBERSHIP associative entity. Added audit fields (created_by, updated_at, updated_by) to ROLE, PERMISSION, RESOURCE, MODULE, and POLICY for governance. Refined PERMISSION_RESOURCE to include explicit 'action' and a boolean 'is_allowed' flag, and added assignment timestamps and auditor fields. Consolidated naming to singular nouns and clarified primary‑key/foreign‑key intent through associative tables. Retained comprehensive coverage of users, groups, roles, permissions, resources, modules, and policies while improving consistency and traceability."
+  }
+}

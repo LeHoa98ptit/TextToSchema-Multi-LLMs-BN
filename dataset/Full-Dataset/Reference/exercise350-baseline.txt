@@ -1,0 +1,93 @@
+{
+  "entity": [
+    "participant", 
+    "ticket", 
+    "discount_code",
+    "participant_ticket",
+    "meeting",
+    "workshop",
+    "speaker"
+  ],
+  "attribut": {
+    "participant": [
+      "participant id",
+      "name",
+      "company",
+      "email"
+    ],
+    "ticket": [
+      "ticket id",
+      "name",
+      "description",
+      "price",
+      "includes workshops"
+    ],
+    "discount_code": [
+      "discount code id",
+      "code",
+      "name",
+      "type",
+      "amount"
+    ],
+    "participant_ticket": [
+      "participant ticket record id",
+      "participant id",
+      "ticket id",
+      "discount code id",
+      "net price"
+    ],
+    "meeting": [
+      "meeting id",
+      "name",
+      "description",
+      "date",
+      "start time",
+      "end time",
+      "room"
+    ],
+    "workshop": [
+      "workshop id",
+      "name",
+      "description",
+      "requirements",
+      "location",
+      "date",
+      "start time",
+      "end time",
+      "capacity"
+    ],
+    "speaker": [
+      "speaker id",
+      "name",
+      "company",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "participant",
+      "entity_2": "participant_ticket",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "ticket",
+      "entity_2": "participant_ticket",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "discount_code",
+      "entity_2": "participant_ticket",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "meeting",
+      "entity_2": "speaker",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "workshop",
+      "entity_2": "speaker",
+      "cardinality": "1:N"
+    }
+  ]
+}

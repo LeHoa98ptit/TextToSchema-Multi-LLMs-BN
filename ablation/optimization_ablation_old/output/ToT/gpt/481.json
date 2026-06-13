@@ -1,0 +1,147 @@
+{
+  "entity": [
+    "EXPERT",
+    "CROP",
+    "CROP_TYPE",
+    "FIELD",
+    "SENSOR",
+    "SENSOR_TYPE",
+    "SENSOR_LOCATION",
+    "MONITORING_RULE",
+    "MONITORING_DATUM",
+    "DATA_TYPE",
+    "ANALYSIS_RESULT",
+    "PREDICTION_RESULT",
+    "VISUALIZATION"
+  ],
+  "attribute": {
+    "EXPERT": [
+      "expert_id",
+      "full_name",
+      "email",
+      "phone",
+      "specialization"
+    ],
+    "CROP": [
+      "crop_id",
+      "field_id",
+      "crop_type_id",
+      "variety",
+      "planting_date",
+      "expected_harvest_date",
+      "status"
+    ],
+    "CROP_TYPE": [
+      "crop_type_id",
+      "name",
+      "optimal_temperature_min",
+      "optimal_temperature_max",
+      "optimal_rainfall_min",
+      "optimal_rainfall_max"
+    ],
+    "FIELD": [
+      "field_id",
+      "name",
+      "area_hectares",
+      "geo_boundary"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type_id",
+      "location_id",
+      "installation_date",
+      "calibration_date",
+      "status"
+    ],
+    "SENSOR_TYPE": [
+      "sensor_type_id",
+      "type_name",
+      "measurement_unit",
+      "accuracy"
+    ],
+    "SENSOR_LOCATION": [
+      "location_id",
+      "field_id",
+      "latitude",
+      "longitude",
+      "height_meters"
+    ],
+    "MONITORING_RULE": [
+      "rule_id",
+      "expert_id",
+      "crop_type_id",
+      "data_type_id",
+      "condition_expression",
+      "threshold_value",
+      "action_description",
+      "effective_start",
+      "effective_end"
+    ],
+    "MONITORING_DATUM": [
+      "datum_id",
+      "sensor_id",
+      "data_type_id",
+      "collection_timestamp",
+      "value",
+      "quality_flag"
+    ],
+    "DATA_TYPE": [
+      "data_type_id",
+      "name",
+      "description"
+    ],
+    "ANALYSIS_RESULT": [
+      "analysis_id",
+      "datum_id",
+      "rule_id",
+      "result_status",
+      "generated_timestamp",
+      "remarks"
+    ],
+    "PREDICTION_RESULT": [
+      "prediction_id",
+      "crop_id",
+      "model_name",
+      "prediction_timestamp",
+      "predicted_yield",
+      "confidence_interval_low",
+      "confidence_interval_high"
+    ],
+    "VISUALIZATION": [
+      "visual_id",
+      "related_entity_type",
+      "related_entity_id",
+      "visual_type",
+      "url",
+      "created_timestamp"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CROP_TYPE",
+      "entity_2": "CROP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR_TYPE",
+      "entity_2": "SENSOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR_LOCATION",
+      "entity_2": "SENSOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATA_TYPE",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 65.9015,
+  "ilp_runtime": 0.047
+}

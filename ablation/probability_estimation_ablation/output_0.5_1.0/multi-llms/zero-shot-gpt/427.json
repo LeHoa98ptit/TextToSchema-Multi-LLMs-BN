@@ -1,0 +1,112 @@
+{
+  "filename": "427.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "COURSE": 0.817574,
+    "COURSE_SELECTION": 0.794342,
+    "TEACHING_INFORMATION": 0.754378,
+    "STUDENT_TIMETABLE": 0.750915
+  },
+  "attribute": {
+    "STUDENT": {
+      "student id": 0.773472,
+      "gender": 0.767272,
+      "department": 0.773067,
+      "age": 0.763015,
+      "enrollment date": 0.769643,
+      "major": 0.762686,
+      "login": 0.771493,
+      "password": 0.769804
+    },
+    "TEACHER": {
+      "employee id": 0.766931,
+      "gender": 0.762091,
+      "password": 0.769158,
+      "title": 0.763466,
+      "department": 0.766404,
+      "course id": 0.778472
+    },
+    "COURSE": {
+      "course id": 0.770734,
+      "prerequisite course id": 0.77444,
+      "credit": 0.760061
+    },
+    "COURSE_SELECTION": {
+      "student id": 0.78857,
+      "course id": 0.780945,
+      "grade": 0.780096
+    },
+    "TEACHING_INFORMATION": {
+      "teacher id": 0.777772,
+      "course id": 0.781298,
+      "teaching location": 0.769125,
+      "class time": 0.776918
+    },
+    "STUDENT_TIMETABLE": {
+      "student id": 0.783742,
+      "course id": 0.785182,
+      "class time": 0.778076,
+      "location": 0.780041
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COURSE_SELECTION",
+      "description": "A student can have multiple course selection records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994919
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_SELECTION",
+      "description": "A course can be selected by multiple students",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999596
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING_INFORMATION",
+      "description": "A teacher can have multiple teaching information records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.93194
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHING_INFORMATION",
+      "description": "A course can be associated with multiple teaching information records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.83462
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENT_TIMETABLE",
+      "description": "A student can have multiple timetable entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998633
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "STUDENT_TIMETABLE",
+      "description": "A course can appear in multiple student timetables",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.087865
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE",
+      "description": "A course may have one prerequisite course that can be prerequisite for many courses",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999999
+    }
+  ],
+  "processing_time": 29.13
+}

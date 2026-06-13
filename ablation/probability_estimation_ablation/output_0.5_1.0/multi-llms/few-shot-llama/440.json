@@ -1,0 +1,102 @@
+{
+  "filename": "440.txt",
+  "entity": {
+    "DEVICE": 0.817574,
+    "USER": 0.817574,
+    "MAINTENANCE_REQUEST": 0.764984,
+    "DEVICE_INVENTORY": 0.755599,
+    "DEVICE_STATUS": 0.740621
+  },
+  "attribute": {
+    "DEVICE": {
+      "device id": 0.752716,
+      "product name": 0.758193,
+      "device model": 0.7619,
+      "person in charge": 0.760713,
+      "group": 0.764801,
+      "type": 0.759858,
+      "usage location": 0.760337,
+      "department": 0.768918,
+      "ip address": 0.749535,
+      "device images": 0.756911,
+      "qr code": 0.766559,
+      "creation time": 0.750883,
+      "update time": 0.746371
+    },
+    "USER": {
+      "user id": 0.741116,
+      "name": 0.735703,
+      "role": 0.755203,
+      "contact information": 0.758037,
+      "account status": 0.756548
+    },
+    "MAINTENANCE_REQUEST": {
+      "maintenance request id": 0.758141,
+      "device id": 0.767062,
+      "requester id": 0.756206,
+      "maintenance time": 0.756764,
+      "maintenance content": 0.766893,
+      "handling status": 0.761093,
+      "handling personnel": 0.772632,
+      "handling time": 0.755801,
+      "remarks": 0.766602
+    },
+    "DEVICE_INVENTORY": {
+      "inventory id": 0.766454,
+      "device id": 0.765088,
+      "inventory person id": 0.768141,
+      "inventory time": 0.762739,
+      "device location": 0.765617
+    },
+    "DEVICE_STATUS": {
+      "status id": 0.761836,
+      "device id": 0.760268,
+      "current status": 0.765139,
+      "last update time": 0.753709,
+      "remarks": 0.769523
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_INVENTORY",
+      "description": "One device can have many inventory records, but each inventory record belongs to one device.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999937
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_STATUS",
+      "description": "One device can have many status records, but each status record belongs to one device.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "description": "One user can submit many maintenance requests, but each maintenance request is submitted by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998577
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "description": "One device can have many maintenance requests, but each maintenance request is for one device.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.959861
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEVICE_INVENTORY",
+      "description": "One user can be responsible for many device inventory records, but each inventory record is managed by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.770075
+    }
+  ],
+  "processing_time": 37.7
+}

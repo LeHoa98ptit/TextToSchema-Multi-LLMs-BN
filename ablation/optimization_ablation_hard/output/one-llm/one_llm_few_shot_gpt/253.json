@@ -1,0 +1,63 @@
+{
+  "entity": [
+    "USER",
+    "GROUP_CHAT",
+    "CHAT_RECORD",
+    "USER_GROUP_CHAT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "contact_info",
+      "registration_time"
+    ],
+    "GROUP_CHAT": [
+      "group_chat_id",
+      "group_name",
+      "creator_user_id",
+      "creation_time",
+      "member_count"
+    ],
+    "CHAT_RECORD": [
+      "chat_record_id",
+      "sender_user_id",
+      "receiver_user_id",
+      "group_chat_id",
+      "send_time",
+      "message_type",
+      "content",
+      "is_read"
+    ],
+    "USER_GROUP_CHAT": [
+      "user_id",
+      "group_chat_id",
+      "join_time",
+      "note",
+      "leave_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP_CHAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "USER_GROUP_CHAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.4579,
+  "ilp_runtime": 0.048
+}

@@ -1,0 +1,113 @@
+{
+  "filename": "365.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "ADDRESS": 0.485704,
+    "PRODUCT": 0.622459,
+    "ORDER_STATUS": 0.499375,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.586351
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.545072,
+      "email": 0.55364,
+      "password": 0.555353,
+      "first_name": 0.546694,
+      "last_name": 0.543811
+    },
+    "ADDRESS": {
+      "address_id": 0.51218,
+      "customer_id": 0.535537,
+      "street": 0.520738,
+      "city": 0.516408,
+      "state": 0.512343,
+      "zip_code": 0.506864,
+      "country": 0.511616,
+      "address_type": 0.508442
+    },
+    "PRODUCT": {
+      "product_id": 0.525253,
+      "name": 0.52962,
+      "description": 0.543719,
+      "price": 0.529521,
+      "stock_quantity": 0.541876,
+      "image_path": 0.511213
+    },
+    "ORDER_STATUS": {
+      "status_id": 0.521664,
+      "status_name": 0.524537
+    },
+    "ORDER": {
+      "order_id": 0.528959,
+      "customer_id": 0.548982,
+      "order_date": 0.528706,
+      "status_id": 0.525377,
+      "shipping_address_id": 0.522484,
+      "billing_address_id": 0.526751
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.533161,
+      "order_id": 0.533686,
+      "product_id": 0.537853,
+      "quantity": 0.556903,
+      "unit_price": 0.540182
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple addresses (shipping, billing, etc.)",
+      "probability": 0.371284
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place many orders",
+      "probability": 0.962694
+    },
+    {
+      "entity_1": "ORDER_STATUS",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each order has one status; a status can be used by many orders",
+      "probability": 0.999203
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "An order references one shipping address",
+      "probability": 0.874175
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "An order references one billing address",
+      "probability": 0.874175
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order contains one or more order items",
+      "probability": 0.999979
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can appear in many order items",
+      "probability": 0.959043
+    }
+  ],
+  "processing_time": 15.56,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added a normalized ADDRESS entity to support multiple shipping/billing addresses per customer and linked it to ORDER for explicit address references. Introduced ORDER_STATUS lookup table for flexible status management. Removed the derived total_amount attribute from ORDER, making order totals computable from ORDER_ITEM. Included foreign key attributes (customer_id, status_id, shipping_address_id, billing_address_id, order_id, product_id) to enforce referential integrity. Kept core entities and relationships while enhancing normalization and extensibility."
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "filename": "349.txt",
+  "entity": {
+    "FILE": 0.622459,
+    "FILE_TYPE": 0.524431,
+    "STORAGE_LOCATION": 0.533201,
+    "FILE_STATUS": 0.504425,
+    "FILE_COLLECTION": 0.585623,
+    "FILE_COLLECTION_MAP": 0.5383,
+    "REPLICA": 0.622459,
+    "NODE": 0.461775,
+    "DEVICE": 0.486528
+  },
+  "attribute": {
+    "FILE": {
+      "file_id": 0.542633,
+      "file_name": 0.541616,
+      "record_count": 0.550549,
+      "size": 0.553145,
+      "creation_time": 0.545545,
+      "update_time": 0.539268,
+      "description": 0.561789,
+      "version_number": 0.538104,
+      "type_id": 0.538388,
+      "status_id": 0.540411,
+      "location_id": 0.533651
+    },
+    "FILE_TYPE": {
+      "type_id": 0.537388,
+      "type_name": 0.53632,
+      "type_description": 0.544105
+    },
+    "STORAGE_LOCATION": {
+      "location_id": 0.528127,
+      "path": 0.539718,
+      "capacity": 0.547179,
+      "used_space": 0.537029
+    },
+    "FILE_STATUS": {
+      "status_id": 0.538272,
+      "status_name": 0.538043,
+      "status_description": 0.544677
+    },
+    "FILE_COLLECTION": {
+      "collection_id": 0.543822,
+      "collection_name": 0.541473,
+      "collection_description": 0.550451
+    },
+    "FILE_COLLECTION_MAP": {
+      "map_id": 0.53895,
+      "file_id": 0.54672,
+      "collection_id": 0.540113,
+      "added_time": 0.542844
+    },
+    "REPLICA": {
+      "replica_id": 0.517107,
+      "file_id": 0.547529,
+      "location_id": 0.516071,
+      "node_id": 0.51717,
+      "device_id": 0.512284,
+      "update_time": 0.520776,
+      "status_id": 0.518752,
+      "version_number": 0.525546,
+      "replica_index": 0.524421
+    },
+    "NODE": {
+      "node_id": 0.505528,
+      "node_name": 0.502872,
+      "node_ip": 0.498562,
+      "node_location": 0.506971
+    },
+    "DEVICE": {
+      "device_id": 0.496646,
+      "device_name": 0.499481,
+      "device_type": 0.500192,
+      "device_capacity": 0.513822
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FILE",
+      "entity_2": "FILE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each file is assigned one type.",
+      "probability": 0.999975
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "FILE_STATUS",
+      "cardinality": "N:1",
+      "description": "Each file has a single status.",
+      "probability": 0.985117
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "STORAGE_LOCATION",
+      "cardinality": "N:1",
+      "description": "Primary storage location for the file.",
+      "probability": 0.998345
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "REPLICA",
+      "cardinality": "1:N",
+      "description": "A file can have many replicas.",
+      "probability": 0.012934
+    },
+    {
+      "entity_1": "REPLICA",
+      "entity_2": "STORAGE_LOCATION",
+      "cardinality": "N:1",
+      "description": "Each replica resides on a storage location.",
+      "probability": 0.217751
+    },
+    {
+      "entity_1": "REPLICA",
+      "entity_2": "NODE",
+      "cardinality": "N:1",
+      "description": "Replica is hosted on a specific node.",
+      "probability": 0.999581
+    },
+    {
+      "entity_1": "REPLICA",
+      "entity_2": "DEVICE",
+      "cardinality": "N:1",
+      "description": "Replica uses a particular storage device.",
+      "probability": 0.987169
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "FILE_COLLECTION_MAP",
+      "cardinality": "1:N",
+      "description": "A file can appear in many collection mappings.",
+      "probability": 0.998562
+    },
+    {
+      "entity_1": "FILE_COLLECTION",
+      "entity_2": "FILE_COLLECTION_MAP",
+      "cardinality": "1:N",
+      "description": "A collection can contain many file mappings.",
+      "probability": 0.992924
+    }
+  ],
+  "processing_time": 38.53,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit junction table FILE_COLLECTION_MAP to properly implement the N:M relationship between FILE and FILE_COLLECTION with its own surrogate key and timestamp. Updated relationships to reference this map table, preserving many‑to‑many semantics while keeping the schema normalized. Retained all original entities and attributes, ensuring comprehensive coverage of file types, status, storage locations, replicas, nodes, and devices. The model now supports cascade delete semantics (e.g., deleting a FILE cascades to its REPLICA and FILE_COLLECTION_MAP rows) and is ready for indexing of foreign‑key columns."
+  }
+}

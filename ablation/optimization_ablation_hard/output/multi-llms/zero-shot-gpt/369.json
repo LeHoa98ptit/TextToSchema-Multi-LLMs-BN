@@ -1,0 +1,159 @@
+{
+  "entity": [
+    "CONTENT",
+    "USER",
+    "PERMISSION",
+    "WORKFLOW",
+    "WORKFLOW_TYPE",
+    "WORKFLOW_STATE",
+    "CONTENT_VERSION",
+    "LOG",
+    "OPERATION",
+    "COMMENT",
+    "ADMINISTRATOR",
+    "USER_PERMISSION"
+  ],
+  "attribute": {
+    "CONTENT": [
+      "content id",
+      "content body"
+    ],
+    "USER": [
+      "user id",
+      "username"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "permission name",
+      "description"
+    ],
+    "WORKFLOW": [
+      "workflow id",
+      "workflow type id",
+      "content id",
+      "current state id",
+      "started at",
+      "ended at"
+    ],
+    "WORKFLOW_TYPE": [
+      "workflow type id",
+      "type name",
+      "description"
+    ],
+    "WORKFLOW_STATE": [
+      "workflow state id",
+      "state name",
+      "state order"
+    ],
+    "CONTENT_VERSION": [
+      "version id",
+      "content id",
+      "version number",
+      "version data",
+      "created at"
+    ],
+    "LOG": [
+      "log id",
+      "operation id",
+      "timestamp",
+      "user id",
+      "details"
+    ],
+    "OPERATION": [
+      "operation id",
+      "operation type",
+      "operation time",
+      "user id",
+      "content id",
+      "comment ids"
+    ],
+    "COMMENT": [
+      "comment id",
+      "operation id",
+      "user id",
+      "comment text",
+      "created at"
+    ],
+    "ADMINISTRATOR": [
+      "admin id",
+      "user id",
+      "admin name"
+    ],
+    "USER_PERMISSION": [
+      "user_permission_id",
+      "user_id",
+      "permission_id",
+      "id_USER_PERMISSION"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADMINISTRATOR",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "USER_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW_TYPE",
+      "entity_2": "WORKFLOW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW_TYPE",
+      "entity_2": "WORKFLOW_STATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW_STATE",
+      "entity_2": "WORKFLOW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "CONTENT_VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 99.2715,
+  "ilp_runtime": 0.023
+}

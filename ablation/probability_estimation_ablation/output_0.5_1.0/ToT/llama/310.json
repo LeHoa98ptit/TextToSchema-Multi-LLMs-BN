@@ -1,0 +1,49 @@
+{
+  "filename": "310.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SESSION": 0.817574,
+    "PRINCIPAL_ATTRIBUTE": 0.664497
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.746229,
+      "password": 0.759862,
+      "email": 0.759445,
+      "phone_number": 0.75342,
+      "creation_time": 0.767002,
+      "access_time": 0.765344
+    },
+    "SESSION": {
+      "creation_time": 0.771006,
+      "access_time": 0.76935,
+      "expiration_time": 0.774822,
+      "maximum_inactivity_interval": 0.764684
+    },
+    "PRINCIPAL_ATTRIBUTE": {
+      "attribute_value": 0.742043,
+      "user_id": 0.751193
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SESSION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple sessions",
+      "probability": 0.092346
+    },
+    {
+      "entity_1": "SESSION",
+      "entity_2": "PRINCIPAL_ATTRIBUTE",
+      "cardinality": "1:1",
+      "description": "A session has a principal attribute",
+      "probability": 0.044224
+    }
+  ],
+  "processing_time": 8.25,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationship between USER and PRINCIPAL_ATTRIBUTE, added user_id to PRINCIPAL_ATTRIBUTE to maintain association"
+  }
+}

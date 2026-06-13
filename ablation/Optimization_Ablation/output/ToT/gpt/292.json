@@ -1,0 +1,114 @@
+{
+  "entity": [
+    "COMPANY",
+    "FACILITY",
+    "LOCATION",
+    "MAINTENANCE_EVENT",
+    "MAINTENANCE_TASK",
+    "PERSONNEL",
+    "CONTACT_INFO",
+    "EVENT_PERSONNEL"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "headquarters_address",
+      "phone",
+      "email"
+    ],
+    "FACILITY": [
+      "facility_id",
+      "company_id",
+      "name",
+      "address",
+      "community_type"
+    ],
+    "LOCATION": [
+      "location_id",
+      "facility_id",
+      "unit_number",
+      "address_line"
+    ],
+    "MAINTENANCE_EVENT": [
+      "event_id",
+      "facility_id",
+      "event_date",
+      "total_cost",
+      "status"
+    ],
+    "MAINTENANCE_TASK": [
+      "task_id",
+      "event_id",
+      "location_id",
+      "task_description",
+      "scheduled_start",
+      "scheduled_end",
+      "actual_start",
+      "actual_end",
+      "task_cost",
+      "task_duration_minutes"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "first_name",
+      "last_name",
+      "position",
+      "employment_type"
+    ],
+    "CONTACT_INFO": [
+      "contact_id",
+      "personnel_id",
+      "phone",
+      "email",
+      "emergency_contact"
+    ],
+    "EVENT_PERSONNEL": [
+      "event_id",
+      "personnel_id",
+      "role",
+      "hours_worked",
+      "cost_assigned"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "FACILITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT_PERSONNEL",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT_PERSONNEL",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.0107,
+  "ilp_runtime": 0.09
+}

@@ -1,0 +1,176 @@
+{
+  "filename": "263.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "LECTURER": 0.622459,
+    "TEACHING_STAFF": 0.517593,
+    "COURSE": 0.468691,
+    "HOMEWORK": 0.622459,
+    "SUBMISSION": 0.589742,
+    "GRADE": 0.622459,
+    "NOTIFICATION": 0.459241,
+    "RANDOM_INSPECTION": 0.599432,
+    "RANDOM_INSPECTION_REPORT": 0.564858,
+    "ASSOC_STUDENT_COURSE": 0.003645
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.545004,
+      "name": 0.551442,
+      "email": 0.551402,
+      "enrollment_date": 0.53181
+    },
+    "LECTURER": {
+      "lecturer_id": 0.539989,
+      "name": 0.537001,
+      "email": 0.539921,
+      "department": 0.538435
+    },
+    "TEACHING_STAFF": {
+      "staff_id": 0.541073,
+      "name": 0.542638,
+      "role": 0.537966,
+      "department": 0.544049
+    },
+    "COURSE": {
+      "course_id": 0.536957,
+      "title": 0.538011,
+      "code": 0.553713,
+      "semester": 0.535488
+    },
+    "HOMEWORK": {
+      "homework_id": 0.560484,
+      "title": 0.555294,
+      "description": 0.559378,
+      "due_date": 0.543625,
+      "max_score": 0.558714,
+      "course_id": 0.562172
+    },
+    "SUBMISSION": {
+      "submission_id": 0.517107,
+      "submit_time": 0.521514,
+      "file_path": 0.511273,
+      "status": 0.532108,
+      "student_id": 0.546315,
+      "homework_id": 0.561146
+    },
+    "GRADE": {
+      "grade_id": 0.553225,
+      "score": 0.551052,
+      "evaluation": 0.555637,
+      "graded_at": 0.552595,
+      "lecturer_id": 0.55964,
+      "submission_id": 0.55672
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.503387,
+      "message": 0.517278,
+      "sent_at": 0.508677,
+      "recipient_type": 0.507579,
+      "recipient_id": 0.502678
+    },
+    "RANDOM_INSPECTION": {
+      "inspection_id": 0.524924,
+      "inspection_date": 0.524248,
+      "inspector_staff_id": 0.528428,
+      "grade_id": 0.548006
+    },
+    "RANDOM_INSPECTION_REPORT": {
+      "report_id": 0.526156,
+      "comments": 0.534601,
+      "created_at": 0.520379,
+      "inspection_id": 0.528125
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.003645,
+      "student_id": 0.003645,
+      "course_id": 0.003645
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003645
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003645
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "LECTURER",
+      "cardinality": "N:1",
+      "description": "Each course is taught by one lecturer",
+      "probability": 0.698711
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "description": "A course can have multiple homework assignments",
+      "probability": 0.922566
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A student can make many submissions",
+      "probability": 0.176635
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Each homework may receive many submissions",
+      "probability": 0.867357
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "description": "Each submission receives a single grade",
+      "probability": 0.098793
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "When a grade is recorded, a notification is sent to the student (or other recipients)",
+      "probability": 0.870183
+    },
+    {
+      "entity_1": "TEACHING_STAFF",
+      "entity_2": "RANDOM_INSPECTION",
+      "cardinality": "1:N",
+      "description": "Teaching staff can perform many random inspections",
+      "probability": 0.002156
+    },
+    {
+      "entity_1": "RANDOM_INSPECTION",
+      "entity_2": "GRADE",
+      "cardinality": "N:1",
+      "description": "Each inspection targets a specific grade",
+      "probability": 0.544506
+    },
+    {
+      "entity_1": "RANDOM_INSPECTION",
+      "entity_2": "RANDOM_INSPECTION_REPORT",
+      "cardinality": "1:1",
+      "description": "Each inspection produces one report",
+      "probability": 0.999999
+    }
+  ],
+  "processing_time": 40.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

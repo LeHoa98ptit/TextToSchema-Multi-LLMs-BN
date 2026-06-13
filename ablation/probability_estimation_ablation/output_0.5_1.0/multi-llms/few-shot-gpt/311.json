@@ -1,0 +1,98 @@
+{
+  "filename": "311.txt",
+  "entity": {
+    "ORGANIZATION": 0.817574,
+    "PROCESS": 0.817574,
+    "PROCESS_TYPE": 0.732961,
+    "RESOURCE": 0.728475,
+    "EVENT": 0.817574,
+    "EVENT_TYPE": 0.75571
+  },
+  "attribute": {
+    "ORGANIZATION": {
+      "organization id": 0.755893
+    },
+    "PROCESS": {
+      "process id": 0.767275,
+      "parent process id": 0.767268,
+      "organization id": 0.774008,
+      "process type id": 0.764703,
+      "resource id": 0.760482,
+      "status": 0.772,
+      "start time": 0.765849,
+      "end time": 0.766239,
+      "log information": 0.785092
+    },
+    "PROCESS_TYPE": {
+      "process type id": 0.763075
+    },
+    "RESOURCE": {
+      "resource id": 0.739977,
+      "status": 0.754459,
+      "start time": 0.753535,
+      "end time": 0.751
+    },
+    "EVENT": {
+      "event id": 0.750639,
+      "process id": 0.76946,
+      "event type id": 0.749224,
+      "log information": 0.777256,
+      "status": 0.763864,
+      "timestamp": 0.759541
+    },
+    "EVENT_TYPE": {
+      "event type id": 0.748786
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "PROCESS",
+      "description": "An organization initiates multiple processes; each process belongs to one organization",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.897847
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "PROCESS",
+      "description": "A process may have a parent process; one parent can have many child processes",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "PROCESS_TYPE",
+      "entity_2": "PROCESS",
+      "description": "Each process is of a specific type; a process type can be used by many processes",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997642
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "PROCESS",
+      "description": "A process uses a resource; a resource can be assigned to many processes over time",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000572
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "EVENT",
+      "description": "A process generates multiple events; each event is related to one process",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.084927
+    },
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "EVENT",
+      "description": "Each event has a type; a event type can be associated with many events",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999944
+    }
+  ],
+  "processing_time": 18.59
+}

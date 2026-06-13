@@ -1,0 +1,115 @@
+{
+  "entity": [
+    "USER",
+    "PROJECT",
+    "PROJECT_VERSION",
+    "TASK",
+    "CODE_SUBMISSION",
+    "PROJECT_MEMBER"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "phone",
+      "role",
+      "registration_time",
+      "last_login_time",
+      "created_at",
+      "updated_at"
+    ],
+    "PROJECT": [
+      "project_id",
+      "project_name",
+      "project_introduction",
+      "creation_time",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "PROJECT_VERSION": [
+      "version_id",
+      "project_id",
+      "version_number",
+      "release_date",
+      "description",
+      "is_stable",
+      "created_at",
+      "updated_at"
+    ],
+    "TASK": [
+      "task_id",
+      "project_id",
+      "assigned_user_id",
+      "title",
+      "description",
+      "status",
+      "start_time",
+      "end_time",
+      "progress_percent",
+      "created_at",
+      "updated_at"
+    ],
+    "CODE_SUBMISSION": [
+      "submission_id",
+      "user_id",
+      "project_id",
+      "submission_time",
+      "description",
+      "code_path",
+      "commit_hash",
+      "created_at",
+      "updated_at"
+    ],
+    "PROJECT_MEMBER": [
+      "project_id",
+      "user_id",
+      "role_in_project",
+      "join_date",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 44.8558,
+  "ilp_runtime": 0.065
+}

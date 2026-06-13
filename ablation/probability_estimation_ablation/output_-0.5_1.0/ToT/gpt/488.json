@@ -1,0 +1,178 @@
+{
+  "filename": "488.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "WORK_ORDER": 0.51587,
+    "EMAIL_CONFIGURATION": 0.520813,
+    "EMPLOYEE": 0.622459,
+    "EMAIL_SERVER": 0.586787,
+    "CUSTOMER": 0.5058,
+    "SYSTEM_USER": 0.493075,
+    "ASSOC_EMPLOYEE_EMAIL_SERVER": 0.997629
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department_id": 0.554096,
+      "name": 0.556834,
+      "description": 0.556243,
+      "email_address": 0.568392,
+      "sort_order": 0.55917,
+      "allow_customer_submit": 0.545567,
+      "auto_reply_enabled": 0.562036,
+      "hide_user": 0.550679,
+      "created_at": 0.549843,
+      "created_by": 0.54419,
+      "updated_at": 0.554194,
+      "updated_by": 0.549718
+    },
+    "WORK_ORDER": {
+      "work_order_id": 0.545265,
+      "title": 0.54908,
+      "description": 0.559541,
+      "priority": 0.553917,
+      "status": 0.562164,
+      "submitted_at": 0.547225,
+      "last_updated": 0.537567,
+      "response_email_sent": 0.556486,
+      "customer_id": 0.548701,
+      "department_id": 0.569193,
+      "created_at": 0.54431,
+      "created_by": 0.537808,
+      "updated_at": 0.54654,
+      "updated_by": 0.540462
+    },
+    "EMAIL_CONFIGURATION": {
+      "config_id": 0.544646,
+      "host": 0.551179,
+      "port": 0.545125,
+      "use_ssl": 0.532237,
+      "login_username": 0.537771,
+      "login_password": 0.534055,
+      "default_from_address": 0.534697,
+      "department_id": 0.570476,
+      "created_at": 0.541675,
+      "created_by": 0.543201,
+      "updated_at": 0.544364,
+      "updated_by": 0.547122
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.545492,
+      "first_name": 0.540819,
+      "last_name": 0.545158,
+      "email": 0.568254,
+      "job_title": 0.543544,
+      "hire_date": 0.52992,
+      "department_id": 0.56026,
+      "created_at": 0.539765,
+      "created_by": 0.533885,
+      "updated_at": 0.546761,
+      "updated_by": 0.541697
+    },
+    "EMAIL_SERVER": {
+      "server_id": 0.538473,
+      "hostname": 0.536483,
+      "ip_address": 0.534757,
+      "operating_system": 0.549814,
+      "maintenance_window": 0.547769,
+      "status": 0.554904,
+      "config_id": 0.545507,
+      "created_at": 0.537817,
+      "created_by": 0.537183,
+      "updated_at": 0.540623,
+      "updated_by": 0.541092
+    },
+    "CUSTOMER": {
+      "customer_id": 0.521423,
+      "company_name": 0.52766,
+      "contact_name": 0.527553,
+      "contact_email": 0.541088,
+      "phone_number": 0.517336,
+      "created_at": 0.524529,
+      "created_by": 0.51927,
+      "updated_at": 0.528599,
+      "updated_by": 0.524653
+    },
+    "SYSTEM_USER": {
+      "user_id": 0.525762,
+      "username": 0.524323,
+      "hashed_password": 0.513886,
+      "role": 0.546588,
+      "department_id": 0.555894,
+      "is_active": 0.520887,
+      "created_at": 0.525067,
+      "created_by": 0.522297,
+      "updated_at": 0.527392,
+      "updated_by": 0.525933
+    },
+    "ASSOC_EMPLOYEE_EMAIL_SERVER": {
+      "assoc_employee_email_server_id": 0.997629,
+      "employee_id": 0.997629,
+      "email_server_id": 0.997629
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORK_ORDER",
+      "cardinality": "1:N",
+      "description": "A department can have many work orders; each work order belongs to one department.",
+      "probability": 0.100755
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMAIL_CONFIGURATION",
+      "cardinality": "1:N",
+      "description": "A department can define multiple email configurations (pipelines); each configuration belongs to one department.",
+      "probability": 0.906864
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs multiple employees; each employee is assigned to one department.",
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_EMAIL_SERVER",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997629
+    },
+    {
+      "entity_1": "EMAIL_SERVER",
+      "entity_2": "ASSOC_EMPLOYEE_EMAIL_SERVER",
+      "description": "One EMAIL_SERVER can be associated with many ASSOC_EMPLOYEE_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997629
+    },
+    {
+      "entity_1": "EMAIL_CONFIGURATION",
+      "entity_2": "EMAIL_SERVER",
+      "cardinality": "1:N",
+      "description": "One email configuration can be used by many email servers; each server references a single configuration.",
+      "probability": 0.996865
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "WORK_ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can submit multiple work orders; each work order is linked to one customer.",
+      "probability": 0.099773
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "SYSTEM_USER",
+      "cardinality": "1:N",
+      "description": "System users belong to a department; a department can have many system users.",
+      "probability": 0.804365
+    }
+  ],
+  "processing_time": 20.45,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the redundant ownership link of EMAIL_CONFIGURATION to both DEPARTMENT and EMAIL_SERVER; now EMAIL_CONFIGURATION is owned by DEPARTMENT and referenced by EMAIL_SERVER (1:N). Changed DEPARTMENT‑EMAIL_CONFIGURATION relationship to 1:N to support multiple email pipelines per department. Added audit fields (created_at, created_by, updated_at, updated_by) to all core tables for traceability. Ensured boolean attribute names are consistent (auto_reply_enabled, allow_customer_submit). Clarified cardinalities and added descriptive notes for cascade behavior (e.g., deleting a department cascades to its work orders, employees, system users, and email configurations)."
+  }
+}

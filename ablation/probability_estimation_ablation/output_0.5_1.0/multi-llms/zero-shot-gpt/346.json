@@ -1,0 +1,118 @@
+{
+  "filename": "346.txt",
+  "entity": {
+    "EXPENSE": 0.817574,
+    "EXPENSE_RECORD": 0.76581,
+    "EXPENSE_APPLICATION_CENTER": 0.742958,
+    "ACCOUNT": 0.817574,
+    "SUPPLIER": 0.817574,
+    "USER": 0.751084,
+    "FINANCIAL_REPORT": 0.761587
+  },
+  "attribute": {
+    "EXPENSE": {
+      "expense id": 0.771091
+    },
+    "EXPENSE_RECORD": {
+      "expense record id": 0.776935,
+      "description": 0.785103,
+      "month": 0.778878,
+      "date": 0.777189,
+      "payment date": 0.772866,
+      "expense status": 0.780857,
+      "expense id": 0.777286,
+      "application center id": 0.777672,
+      "account id": 0.775342,
+      "supplier id": 0.778466
+    },
+    "EXPENSE_APPLICATION_CENTER": {
+      "application center id": 0.770159,
+      "center name": 0.767012
+    },
+    "ACCOUNT": {
+      "account id": 0.752396,
+      "account number": 0.756121,
+      "account type": 0.764569
+    },
+    "SUPPLIER": {
+      "supplier id": 0.758087,
+      "supplier name": 0.756211
+    },
+    "USER": {
+      "user id": 0.738151,
+      "user name": 0.736458
+    },
+    "FINANCIAL_REPORT": {
+      "report id": 0.770329,
+      "report date": 0.763726,
+      "report type": 0.773455
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "EXPENSE_RECORD",
+      "description": "An expense can have multiple expense records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998977
+    },
+    {
+      "entity_1": "EXPENSE_APPLICATION_CENTER",
+      "entity_2": "EXPENSE",
+      "description": "Each expense is bound to one application center; a center can have many expenses",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998927
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "EXPENSE",
+      "description": "An expense is recorded against one accounting account; an account can be used by many expenses",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993146
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "EXPENSE",
+      "description": "An expense involves one external supplier; a supplier can be linked to many expenses",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011294
+    },
+    {
+      "entity_1": "EXPENSE_APPLICATION_CENTER",
+      "entity_2": "EXPENSE_RECORD",
+      "description": "Each expense record is associated with one application center; a center can have many expense records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99896
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "EXPENSE_RECORD",
+      "description": "Each expense record references one accounting account; an account can be referenced by many expense records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997099
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "EXPENSE_RECORD",
+      "description": "Each expense record is linked to one supplier; a supplier can be linked to many expense records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.308591
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "FINANCIAL_REPORT",
+      "description": "An expense can generate one or more financial reports",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.008
+    }
+  ],
+  "processing_time": 22.13
+}

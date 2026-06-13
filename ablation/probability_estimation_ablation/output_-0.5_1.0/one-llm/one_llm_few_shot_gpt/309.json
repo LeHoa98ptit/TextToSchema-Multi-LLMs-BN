@@ -1,0 +1,110 @@
+{
+  "filename": "309.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "REGION": 0.622459,
+    "INCOME_GROUP": 0.598832,
+    "VEHICLE_SEGMENT": 0.597293,
+    "POLICY": 0.622459,
+    "INSURANCE_TYPE": 0.558382,
+    "PURCHASE": 0.517618,
+    "ASSOC_POLICY_INSURANCE_TYPE": 0.003451
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.531561,
+      "full_name": 0.531519,
+      "email": 0.532427,
+      "phone_number": 0.523644,
+      "gender": 0.53345,
+      "date_of_birth": 0.531933,
+      "marital_status": 0.537066,
+      "region_id": 0.535781,
+      "income_group_id": 0.535252
+    },
+    "REGION": {
+      "region_id": 0.519378,
+      "region_name": 0.519031
+    },
+    "INCOME_GROUP": {
+      "income_group_id": 0.529404,
+      "income_range": 0.528825
+    },
+    "VEHICLE_SEGMENT": {
+      "vehicle_segment_id": 0.545185,
+      "segment_name": 0.54422
+    },
+    "POLICY": {
+      "policy_id": 0.535251,
+      "policy_name": 0.535226,
+      "description": 0.541543
+    },
+    "INSURANCE_TYPE": {
+      "insurance_type_id": 0.56057,
+      "type_name": 0.558944
+    },
+    "PURCHASE": {
+      "purchase_id": 0.523414,
+      "purchase_date": 0.524191,
+      "expiration_date": 0.522134,
+      "premium_amount": 0.539163,
+      "customer_id": 0.530386,
+      "policy_id": 0.538764,
+      "vehicle_segment_id": 0.551268
+    },
+    "ASSOC_POLICY_INSURANCE_TYPE": {
+      "assoc_policy_insurance_type_id": 0.003451,
+      "policy_id": 0.003451,
+      "insurance_type_id": 0.003451
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "REGION",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "probability": 0.994484
+    },
+    {
+      "entity_1": "INCOME_GROUP",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "probability": 0.005714
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "probability": 0.707569
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "probability": 0.221986
+    },
+    {
+      "entity_1": "VEHICLE_SEGMENT",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "probability": 2e-06
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "ASSOC_POLICY_INSURANCE_TYPE",
+      "description": "One POLICY can be associated with many ASSOC_POLICY_INSURANCE_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003451
+    },
+    {
+      "entity_1": "INSURANCE_TYPE",
+      "entity_2": "ASSOC_POLICY_INSURANCE_TYPE",
+      "description": "One INSURANCE_TYPE can be associated with many ASSOC_POLICY_INSURANCE_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003451
+    }
+  ],
+  "processing_time": 19.12
+}

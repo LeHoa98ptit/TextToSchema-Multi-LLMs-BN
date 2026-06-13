@@ -1,0 +1,124 @@
+{
+  "entity": [
+    "PARTICIPANT",
+    "TICKET",
+    "DISCOUNT_CODE",
+    "CONFERENCE_SCHEDULE",
+    "MEETING",
+    "WORKSHOP",
+    "SPEAKER",
+    "ASSOC_PARTICIPANT_TICKET",
+    "ASSOC_PARTICIPANT_DISCOUNT_CODE",
+    "ASSOC_MEETING_SPEAKER"
+  ],
+  "attribute": {
+    "PARTICIPANT": [
+      "d",
+      "email"
+    ],
+    "TICKET": [
+      "d",
+      "description",
+      "price",
+      "type"
+    ],
+    "DISCOUNT_CODE": [
+      "code",
+      "type"
+    ],
+    "CONFERENCE_SCHEDULE": [
+      "description",
+      "date",
+      "start_time",
+      "end_time",
+      "room"
+    ],
+    "MEETING": [
+      "description",
+      "date",
+      "start_time",
+      "end_time",
+      "room"
+    ],
+    "WORKSHOP": [
+      "description",
+      "requirement",
+      "location",
+      "date",
+      "start_time",
+      "end_time",
+      "capacity"
+    ],
+    "SPEAKER": [
+      "company",
+      "description"
+    ],
+    "ASSOC_PARTICIPANT_TICKET": [
+      "assoc_participant_ticket_id",
+      "participant_id",
+      "ticket_id"
+    ],
+    "ASSOC_PARTICIPANT_DISCOUNT_CODE": [
+      "assoc_participant_discount_code_id",
+      "participant_id",
+      "discount_code_id"
+    ],
+    "ASSOC_MEETING_SPEAKER": [
+      "assoc_meeting_speaker_id",
+      "meeting_id",
+      "speaker_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "ASSOC_PARTICIPANT_TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "ASSOC_PARTICIPANT_TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "ASSOC_PARTICIPANT_DISCOUNT_CODE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT_CODE",
+      "entity_2": "ASSOC_PARTICIPANT_DISCOUNT_CODE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE_SCHEDULE",
+      "entity_2": "MEETING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE_SCHEDULE",
+      "entity_2": "WORKSHOP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "ASSOC_MEETING_SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "ASSOC_MEETING_SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.8986,
+  "ilp_runtime": 0.134
+}

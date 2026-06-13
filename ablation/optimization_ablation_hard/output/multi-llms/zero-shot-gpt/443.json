@@ -1,0 +1,123 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "EQUIPMENT",
+    "STATUS_LOG",
+    "ACCOUNT_ACTIVITY_LOG",
+    "USER_PERMISSION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "login",
+      "password hash",
+      "mobile number",
+      "registered at",
+      "role id",
+      "permission ids"
+    ],
+    "ROLE": [
+      "role id",
+      "role name",
+      "description"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "permission name",
+      "description"
+    ],
+    "EQUIPMENT": [
+      "equipment id",
+      "equipment code",
+      "equipment name",
+      "equipment model",
+      "equipment status",
+      "calibration date",
+      "calibration validity",
+      "calibration result",
+      "location",
+      "department id",
+      "person in charge id",
+      "remark"
+    ],
+    "STATUS_LOG": [
+      "log id",
+      "equipment id",
+      "borrower id",
+      "borrowing time",
+      "borrow equipment photo",
+      "iou photo",
+      "recipient id",
+      "receive area",
+      "receive time",
+      "receive equipment photo",
+      "returner id",
+      "return time",
+      "return equipment photo",
+      "datum monitoring",
+      "remark"
+    ],
+    "ACCOUNT_ACTIVITY_LOG": [
+      "activity id",
+      "equipment id",
+      "borrowing account id",
+      "receive account id",
+      "return account id",
+      "activity timestamp",
+      "remark"
+    ],
+    "USER_PERMISSION": [
+      "user_permission_id",
+      "permission_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "USER_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "STATUS_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.6993,
+  "ilp_runtime": 0.148
+}

@@ -1,0 +1,202 @@
+{
+  "filename": "476.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "SALE_ORDER": 0.750691,
+    "SALE_ORDER_DETAIL": 0.710538,
+    "PRODUCT": 0.74227,
+    "RAW_MATERIAL": 0.794342,
+    "SUPPLIER": 0.817574,
+    "PURCHASE_ORDER": 0.74708,
+    "INVENTORY": 0.754489,
+    "FINANCIAL_RECORD": 0.739794,
+    "LOYALTY_PROGRAM": 0.708952,
+    "SUPPLIER_PERFORMANCE": 0.763163,
+    "ASSOC_SALE_ORDER_DETAIL_PRODUCT": 0.999151,
+    "ASSOC_PRODUCT_RAW_MATERIAL": 0.072467,
+    "ASSOC_PURCHASE_ORDER_RAW_MATERIAL": 0.001792
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.758421,
+      "contact_number": 0.751298,
+      "address": 0.755074,
+      "loyalty_program_id": 0.754885
+    },
+    "SALE_ORDER": {
+      "order_date": 0.751522,
+      "expect_delivery_date": 0.749933,
+      "order_status": 0.758674
+    },
+    "SALE_ORDER_DETAIL": {
+      "order_quantity": 0.772678,
+      "unit_price": 0.764135
+    },
+    "PRODUCT": {
+      "product_name": 0.741818,
+      "quantity": 0.758102,
+      "recipe": 0.753795
+    },
+    "RAW_MATERIAL": {
+      "raw_material_name": 0.742306,
+      "quantity": 0.753488
+    },
+    "SUPPLIER": {
+      "supplier_name": 0.763893,
+      "contact_number": 0.760459,
+      "performance_id": 0.765002
+    },
+    "PURCHASE_ORDER": {
+      "order_date": 0.75091,
+      "order_quantity": 0.764114,
+      "supply_quantity": 0.769171,
+      "order_status": 0.759338
+    },
+    "INVENTORY": {
+      "product_name": 0.763235,
+      "quantity": 0.771473,
+      "status": 0.773613
+    },
+    "FINANCIAL_RECORD": {
+      "transaction_type": 0.749912,
+      "date": 0.742175,
+      "amount": 0.745583,
+      "status": 0.751055,
+      "sale_order_id": 0.754827
+    },
+    "LOYALTY_PROGRAM": {
+      "program_name": 0.752947,
+      "program_details": 0.762075
+    },
+    "SUPPLIER_PERFORMANCE": {
+      "performance_rating": 0.757538,
+      "performance_details": 0.766937
+    },
+    "ASSOC_SALE_ORDER_DETAIL_PRODUCT": {
+      "assoc_sale_order_detail_product_id": 0.999151,
+      "sale_order_detail_id": 0.999151,
+      "product_id": 0.999151
+    },
+    "ASSOC_PRODUCT_RAW_MATERIAL": {
+      "assoc_product_raw_material_id": 0.072467,
+      "product_id": 0.072467,
+      "raw_material_id": 0.072467
+    },
+    "ASSOC_PURCHASE_ORDER_RAW_MATERIAL": {
+      "assoc_purchase_order_raw_material_id": 0.001792,
+      "purchase_order_id": 0.001792,
+      "raw_material_id": 0.001792
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple sale orders",
+      "probability": 0.904593
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "SALE_ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "A sale order can have multiple sale order details",
+      "probability": 0.999964
+    },
+    {
+      "entity_1": "SALE_ORDER_DETAIL",
+      "entity_2": "ASSOC_SALE_ORDER_DETAIL_PRODUCT",
+      "description": "One SALE_ORDER_DETAIL can be associated with many ASSOC_SALE_ORDER_DETAIL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999151
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SALE_ORDER_DETAIL_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SALE_ORDER_DETAIL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999151
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_RAW_MATERIAL",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.072467
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "ASSOC_PRODUCT_RAW_MATERIAL",
+      "description": "One RAW_MATERIAL can be associated with many ASSOC_PRODUCT_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.072467
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple purchase orders",
+      "probability": 0.896896
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "ASSOC_PURCHASE_ORDER_RAW_MATERIAL",
+      "description": "One PURCHASE_ORDER can be associated with many ASSOC_PURCHASE_ORDER_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001792
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "ASSOC_PURCHASE_ORDER_RAW_MATERIAL",
+      "description": "One RAW_MATERIAL can be associated with many ASSOC_PURCHASE_ORDER_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001792
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "An inventory can have multiple products",
+      "probability": 0.952186
+    },
+    {
+      "entity_1": "FINANCIAL_RECORD",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "description": "A financial record can have multiple sale orders",
+      "probability": 0.001684
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "LOYALTY_PROGRAM",
+      "cardinality": "1:1",
+      "description": "A customer is associated with one loyalty program",
+      "probability": 0.014521
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_PERFORMANCE",
+      "cardinality": "1:1",
+      "description": "A supplier has one performance record",
+      "probability": 0.876294
+    },
+    {
+      "entity_1": "FINANCIAL_RECORD",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "N:1",
+      "description": "A sale order can have multiple financial records",
+      "probability": 0.001684
+    }
+  ],
+  "processing_time": 1006.0,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added loyalty program and supplier performance entities, and relationships between customer and loyalty program, supplier and supplier performance, and financial record and sale order."
+  }
+}

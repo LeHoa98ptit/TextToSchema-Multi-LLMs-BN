@@ -1,0 +1,98 @@
+{
+  "filename": "301.txt",
+  "entity": {
+    "SEAT": 0.817574,
+    "SEAT_LAYOUT_TEMPLATE": 0.747722,
+    "USER": 0.817574,
+    "RESERVATION": 0.817574,
+    "VENUE": 0.73302
+  },
+  "attribute": {
+    "SEAT": {
+      "seat id": 0.76244,
+      "venue id": 0.767025,
+      "layout template id": 0.767958,
+      "x coordinate": 0.763483,
+      "y coordinate": 0.762373,
+      "row number": 0.76331,
+      "column number": 0.768849,
+      "seat type": 0.765144,
+      "price": 0.756789,
+      "created at": 0.76171,
+      "updated at": 0.764798,
+      "is active": 0.759079,
+      "is reserved": 0.762698
+    },
+    "SEAT_LAYOUT_TEMPLATE": {
+      "template id": 0.765186,
+      "venue id": 0.770162,
+      "description": 0.7783,
+      "created at": 0.769307,
+      "updated at": 0.766341
+    },
+    "USER": {
+      "user id": 0.741498,
+      "contact number": 0.746115,
+      "email address": 0.743073,
+      "created at": 0.736647,
+      "updated at": 0.743878
+    },
+    "RESERVATION": {
+      "reservation id": 0.769937,
+      "user id": 0.767213,
+      "seat id": 0.774501,
+      "reservation time": 0.764194,
+      "status": 0.769444,
+      "price paid": 0.756914
+    },
+    "VENUE": {
+      "venue id": 0.760981,
+      "name": 0.758375,
+      "address": 0.76023,
+      "type": 0.763678
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "VENUE",
+      "entity_2": "SEAT",
+      "description": "A venue contains many seats, each seat belongs to one venue",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.387996
+    },
+    {
+      "entity_1": "VENUE",
+      "entity_2": "SEAT_LAYOUT_TEMPLATE",
+      "description": "A venue can have multiple seat layout templates, each template is defined for one venue",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.074149
+    },
+    {
+      "entity_1": "SEAT_LAYOUT_TEMPLATE",
+      "entity_2": "SEAT",
+      "description": "A seat layout template is applied to many seats, each seat follows one template",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996029
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "description": "A user can make many reservations, each reservation is made by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.554132
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "RESERVATION",
+      "description": "A seat can be reserved many times over time, each reservation refers to one seat",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999586
+    }
+  ],
+  "processing_time": 27.84
+}

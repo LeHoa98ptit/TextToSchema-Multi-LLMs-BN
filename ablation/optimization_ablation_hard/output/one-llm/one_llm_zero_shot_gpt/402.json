@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "DOCTOR",
+    "PATIENT",
+    "DIAGNOSISTREATMENT",
+    "DRUG",
+    "DRUGLIST",
+    "ASSOC_DRUGLIST_DRUG"
+  ],
+  "attribute": {
+    "DOCTOR": [
+      "doctor_id",
+      "gender",
+      "title",
+      "birth_date",
+      "employment_date",
+      "work_permit"
+    ],
+    "PATIENT": [
+      "patient_id",
+      "gender",
+      "age",
+      "contact_info",
+      "diagnosis_description",
+      "consultation_date"
+    ],
+    "DIAGNOSISTREATMENT": [
+      "diagnosis_treatment_id",
+      "case_number",
+      "treatment_content"
+    ],
+    "DRUG": [
+      "drug_id",
+      "name",
+      "quantity",
+      "price",
+      "barcode"
+    ],
+    "DRUGLIST": [
+      "drug_list_id",
+      "drug_list_number",
+      "drug_information"
+    ],
+    "ASSOC_DRUGLIST_DRUG": [
+      "assoc_druglist_drug_id",
+      "druglist_id",
+      "drug_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSISTREATMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DIAGNOSISTREATMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DRUGLIST",
+      "entity_2": "ASSOC_DRUGLIST_DRUG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_DRUGLIST_DRUG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.7652,
+  "ilp_runtime": 0.046
+}

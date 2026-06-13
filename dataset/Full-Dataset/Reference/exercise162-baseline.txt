@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "Sensor",
+    "Base station",
+    "Monitoring data",
+    "Maintenance personnel",
+    "Alarm information",
+    "Alarm information processing"
+  ],
+  "attribut": {
+    "Sensor": [
+      "Type",
+      "Installation location",
+      "Collection frequency",
+      "ID",
+      "Base station ID"
+    ],
+    "Base station": [
+      "Geographic location",
+      "Operating status",
+      "ID"
+    ],
+    "Monitoring data": [
+      "ID",
+      "Collection time",
+      "Data value",
+      "Data type",
+      "Sensor ID"
+    ],
+    "Maintenance personnel": [
+      "Employee ID",
+      "Name",
+      "Contact information",
+      "Responsible area"
+    ],
+    "Alarm information": [
+      "ID",
+      "Alarm time",
+      "Alarm type",
+      "Alarm content",
+      "Processing status",
+      "Base station ID"
+    ],
+    "Alarm information processing": [
+      "Maintenance personnel ID",
+      "Alarm information ID",
+      "Processing time",
+      "Processing method",
+      "Processing result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Base station",
+      "entity_2": "Sensor",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Sensor",
+      "entity_2": "Monitoring data",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Base station",
+      "entity_2": "Alarm information",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Alarm information",
+      "entity_2": "Alarm information processing",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Maintenance personnel",
+      "entity_2": "Alarm information processing",
+      "cardinality": "1:N"
+    }
+  ]
+}

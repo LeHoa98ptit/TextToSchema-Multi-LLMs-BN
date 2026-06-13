@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "MALL",
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "EMERGENCY_CONTACT"
+  ],
+  "attribute": {
+    "MALL": [
+      "mall_id",
+      "name",
+      "address",
+      "phone",
+      "email"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "mall_id",
+      "name",
+      "location",
+      "distribution_area",
+      "phone",
+      "floor_number",
+      "manager_employee_id",
+      "manager_tenure_start",
+      "manager_tenure_end"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "department_id",
+      "first_name",
+      "last_name",
+      "position",
+      "phone",
+      "salary",
+      "hire_date",
+      "email",
+      "is_manager",
+      "manager_tenure_start",
+      "manager_tenure_end"
+    ],
+    "EMERGENCY_CONTACT": [
+      "contact_id",
+      "employee_id",
+      "contact_name",
+      "contact_phone",
+      "relationship",
+      "priority"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MALL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMERGENCY_CONTACT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.6521,
+  "ilp_runtime": 0.078
+}

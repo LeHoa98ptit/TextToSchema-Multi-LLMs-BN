@@ -1,0 +1,134 @@
+{
+  "filename": "405.txt",
+  "entity": {
+    "DOCTOR": 0.622459,
+    "PATIENT": 0.622459,
+    "PRESCRIPTION": 0.622459,
+    "DRUG": 0.622459,
+    "PAYMENT": 0.622459,
+    "OUTPATIENT": 0.597341,
+    "CONSULTATION": 0.479237,
+    "ASSOC_PRESCRIPTION_DRUG": 0.099567
+  },
+  "attribute": {
+    "DOCTOR": {
+      "name": 0.542852,
+      "address": 0.543947,
+      "phone_number": 0.543831,
+      "doctor_id": 0.542717
+    },
+    "PATIENT": {
+      "name": 0.542377,
+      "address": 0.547197,
+      "phone_number": 0.542153,
+      "patient_id": 0.546127
+    },
+    "PRESCRIPTION": {
+      "prescription_date": 0.542623,
+      "category": 0.558983,
+      "prescribing_doctor": 0.557682,
+      "remark": 0.540588
+    },
+    "DRUG": {
+      "drug_name": 0.540005,
+      "specification": 0.551695,
+      "usage": 0.542918,
+      "drug_id": 0.541962
+    },
+    "PAYMENT": {
+      "payment_date": 0.518963,
+      "amount": 0.522878,
+      "discount": 0.518137
+    },
+    "OUTPATIENT": {
+      "consultation_date": 0.543872,
+      "doctor": 0.545117,
+      "patient": 0.541869
+    },
+    "CONSULTATION": {
+      "consultation_date": 0.52683,
+      "doctor": 0.543756,
+      "patient": 0.538131,
+      "consultation_id": 0.534639,
+      "consultation_type": 0.542413,
+      "diagnosis": 0.535869
+    },
+    "ASSOC_PRESCRIPTION_DRUG": {
+      "assoc_prescription_drug_id": 0.099567,
+      "prescription_id": 0.099567,
+      "drug_id": 0.099567
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A doctor can prescribe many prescriptions",
+      "probability": 0.034247
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A patient can have many prescriptions",
+      "probability": 0.116795
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "ASSOC_PRESCRIPTION_DRUG",
+      "description": "One PRESCRIPTION can be associated with many ASSOC_PRESCRIPTION_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.099567
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_PRESCRIPTION_DRUG",
+      "description": "One DRUG can be associated with many ASSOC_PRESCRIPTION_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.099567
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "A prescription is related to one payment",
+      "probability": 0.148198
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "OUTPATIENT",
+      "cardinality": "1:N",
+      "description": "A doctor can have many outpatients",
+      "probability": 0.533944
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "OUTPATIENT",
+      "cardinality": "1:N",
+      "description": "A patient can have many outpatients",
+      "probability": 0.931069
+    },
+    {
+      "entity_1": "OUTPATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "description": "An outpatient can have many consultations",
+      "probability": 0.967164
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A consultation can result in many prescriptions",
+      "probability": 0.497514
+    }
+  ],
+  "processing_time": 24.8,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added consultation_type and diagnosis attributes to the CONSULTATION entity, and added a relationship between the CONSULTATION entity and the PRESCRIPTION entity to reflect that a consultation can result in many prescriptions."
+  }
+}

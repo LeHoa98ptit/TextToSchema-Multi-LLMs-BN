@@ -1,0 +1,76 @@
+{
+  "entity": [
+    "USER",
+    "RESOURCE",
+    "DEPARTMENT",
+    "TRANSACTION",
+    "APPROVAL_DOCUMENT",
+    "WORK_UNIT",
+    "ASSOC_USER_DEPARTMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email",
+      "role"
+    ],
+    "RESOURCE": [
+      "resource_code",
+      "resource_value",
+      "storage_location",
+      "budget_year",
+      "work_unit_id"
+    ],
+    "DEPARTMENT": [
+      "department_name",
+      "responsibility",
+      "unique_description"
+    ],
+    "TRANSACTION": [
+      "transaction_time",
+      "operator",
+      "transaction_type",
+      "approval_status",
+      "transaction_details"
+    ],
+    "APPROVAL_DOCUMENT": [
+      "document_name",
+      "document_content",
+      "approval_date",
+      "approved_by"
+    ],
+    "WORK_UNIT": [
+      "work_unit_name",
+      "work_unit_description",
+      "department_id"
+    ],
+    "ASSOC_USER_DEPARTMENT": [
+      "assoc_user_department_id",
+      "user_id",
+      "department_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_USER_DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.2695,
+  "ilp_runtime": 0.087
+}

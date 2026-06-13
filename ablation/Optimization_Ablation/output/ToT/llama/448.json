@@ -1,0 +1,115 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "CONSUMABLE",
+    "CHEMICAL",
+    "COURSE",
+    "USAGE_RECORD",
+    "PURCHASE_RECORD",
+    "ASSOC_USER_EQUIPMENT",
+    "ASSOC_USER_COURSE"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "associated_unit",
+      "role"
+    ],
+    "EQUIPMENT": [
+      "equipment_model",
+      "category",
+      "manufacturer",
+      "status",
+      "acquisition_time"
+    ],
+    "CONSUMABLE": [
+      "category",
+      "inventory_quantity",
+      "status",
+      "purchase_time"
+    ],
+    "CHEMICAL": [
+      "chemical_name",
+      "inventory_quantity",
+      "status",
+      "purchase_time"
+    ],
+    "COURSE": [
+      "course_name",
+      "class_time",
+      "class_location",
+      "course_description"
+    ],
+    "USAGE_RECORD": [
+      "usage_time",
+      "user_id",
+      "equipment_id",
+      "purpose"
+    ],
+    "PURCHASE_RECORD": [
+      "purchase_time",
+      "user_id",
+      "consumable_id",
+      "quantity"
+    ],
+    "ASSOC_USER_EQUIPMENT": [
+      "assoc_user_equipment_id",
+      "user_id",
+      "equipment_id"
+    ],
+    "ASSOC_USER_COURSE": [
+      "assoc_user_course_id",
+      "user_id",
+      "course_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_USER_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "PURCHASE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHEMICAL",
+      "entity_2": "CONSUMABLE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.1971,
+  "ilp_runtime": 0.056
+}

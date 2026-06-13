@@ -1,0 +1,124 @@
+{
+  "filename": "265.txt",
+  "entity": {
+    "CHESS_PIECE": 0.798396,
+    "CHESS_GAME": 0.787981,
+    "CHESSBOARD": 0.817574,
+    "PRODUCTION_LINE": 0.69132,
+    "BATCH": 0.679614,
+    "QUALITY_INSPECTION": 0.801517,
+    "DEFECT_TYPE": 0.692067,
+    "QUALITY_ALERT": 0.736819,
+    "QUALITY_INSPECTION_MODEL": 0.780623,
+    "PRODUCTION_PROCESS": 0.686176
+  },
+  "attribute": {
+    "CHESS_PIECE": {
+      "piece id": 0.768809,
+      "color": 0.771756,
+      "position": 0.772672
+    },
+    "CHESS_GAME": {
+      "game id": 0.774364
+    },
+    "CHESSBOARD": {
+      "chessboard id": 0.775179
+    },
+    "PRODUCTION_LINE": {
+      "production line id": 0.759899,
+      "line name": 0.756348
+    },
+    "BATCH": {
+      "batch id": 0.737626,
+      "production line id": 0.752894,
+      "batch number": 0.735655
+    },
+    "QUALITY_INSPECTION": {
+      "inspection id": 0.76623,
+      "piece id": 0.768531,
+      "inspection time": 0.76256,
+      "result": 0.770627,
+      "defect type id": 0.768307
+    },
+    "DEFECT_TYPE": {
+      "defect type id": 0.76088,
+      "defect description": 0.758643
+    },
+    "QUALITY_ALERT": {
+      "alert id": 0.751196,
+      "inspection id": 0.765012,
+      "defect type id": 0.762941,
+      "alert time": 0.74881
+    },
+    "QUALITY_INSPECTION_MODEL": {
+      "model id": 0.766572,
+      "model name": 0.768529,
+      "model version": 0.763711
+    },
+    "PRODUCTION_PROCESS": {
+      "process id": 0.761917,
+      "model id": 0.763275,
+      "running time seconds": 0.752445,
+      "result": 0.766943
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCTION_LINE",
+      "entity_2": "BATCH",
+      "description": "A production line can have many batches; each batch belongs to one production line.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006657
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "description": "A chessboard contains multiple chess pieces; each chess piece is placed on one chessboard.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.845515
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "QUALITY_INSPECTION",
+      "description": "Each chess piece can be inspected many times; each quality inspection refers to one chess piece.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.835903
+    },
+    {
+      "entity_1": "DEFECT_TYPE",
+      "entity_2": "QUALITY_INSPECTION",
+      "description": "A defect type can be recorded in many quality inspections; each inspection may reference one defect type.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.561826
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "description": "A quality inspection can generate multiple quality alerts; each alert is linked to one inspection.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999378
+    },
+    {
+      "entity_1": "DEFECT_TYPE",
+      "entity_2": "QUALITY_ALERT",
+      "description": "A defect type can be associated with many quality alerts; each alert references one defect type.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.552487
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION_MODEL",
+      "entity_2": "PRODUCTION_PROCESS",
+      "description": "A quality inspection model can be used in many production processes; each production process records one model.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001307
+    }
+  ],
+  "processing_time": 23.34
+}

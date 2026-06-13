@@ -1,0 +1,186 @@
+{
+  "entity": [
+    "USER",
+    "TASK",
+    "TASK_PARAMETER",
+    "ORGANISM",
+    "ALGORITHM",
+    "FILE",
+    "OPTION",
+    "ALGORITHM_OPTION",
+    "TASK_ALGORITHM",
+    "TASK_ALGORITHM_OPTION",
+    "TASK_INCLUDE_ORGANISM",
+    "TASK_EXCLUDE_ORGANISM"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "full_name",
+      "email",
+      "created_at",
+      "updated_at"
+    ],
+    "TASK": [
+      "task_id",
+      "task_title",
+      "creation_date",
+      "status",
+      "end_date",
+      "status_reason",
+      "query_statement",
+      "owner_id",
+      "file_id",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "TASK_PARAMETER": [
+      "parameter_id",
+      "task_id",
+      "parameter_name",
+      "parameter_value",
+      "data_type",
+      "created_at",
+      "updated_at"
+    ],
+    "ORGANISM": [
+      "organism_id",
+      "scientific_name",
+      "common_name",
+      "taxonomy_id",
+      "genome_version"
+    ],
+    "ALGORITHM": [
+      "algorithm_id",
+      "algorithm_name",
+      "version",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "FILE": [
+      "file_id",
+      "file_path",
+      "file_type",
+      "checksum",
+      "created_at",
+      "updated_at"
+    ],
+    "OPTION": [
+      "option_id",
+      "option_name",
+      "option_value",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "ALGORITHM_OPTION": [
+      "algorithm_option_id",
+      "algorithm_id",
+      "option_id",
+      "default_value",
+      "is_required",
+      "created_at",
+      "updated_at"
+    ],
+    "TASK_ALGORITHM": [
+      "task_algorithm_id",
+      "task_id",
+      "algorithm_id",
+      "execution_order",
+      "created_at",
+      "updated_at"
+    ],
+    "TASK_ALGORITHM_OPTION": [
+      "task_algorithm_option_id",
+      "task_algorithm_id",
+      "algorithm_option_id",
+      "option_value",
+      "created_at",
+      "updated_at"
+    ],
+    "TASK_INCLUDE_ORGANISM": [
+      "task_id",
+      "organism_id",
+      "created_at"
+    ],
+    "TASK_EXCLUDE_ORGANISM": [
+      "task_id",
+      "organism_id",
+      "created_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_PARAMETER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "FILE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_ALGORITHM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ALGORITHM",
+      "entity_2": "TASK_ALGORITHM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ALGORITHM",
+      "entity_2": "ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPTION",
+      "entity_2": "ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_ALGORITHM",
+      "entity_2": "TASK_ALGORITHM_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_INCLUDE_ORGANISM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXCLUDE_ORGANISM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_INCLUDE_ORGANISM",
+      "entity_2": "ORGANISM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_EXCLUDE_ORGANISM",
+      "entity_2": "ORGANISM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 107.0136,
+  "ilp_runtime": 0.082
+}

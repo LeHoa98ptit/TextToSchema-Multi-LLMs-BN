@@ -1,0 +1,132 @@
+{
+  "filename": "262.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "PRODUCT": 0.622459,
+    "SALESPERSON": 0.622459,
+    "ALLOCATION": 0.622459,
+    "INVENTORY": 0.622459,
+    "ASSOC_SALESPERSON_PRODUCT": 0.002542
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "address": 0.561594,
+      "telephone": 0.561976,
+      "manager": 0.577221
+    },
+    "DEPARTMENT": {
+      "manager": 0.548156,
+      "contact": 0.531534,
+      "telephone": 0.532854
+    },
+    "EMPLOYEE": {
+      "number": 0.541595,
+      "position": 0.551861,
+      "salary": 0.529448,
+      "contact": 0.547596,
+      "role": 0.543977
+    },
+    "PRODUCT": {
+      "number": 0.527845,
+      "model": 0.53836,
+      "unit_price": 0.525032,
+      "inventory_quantity": 0.549585
+    },
+    "SALESPERSON": {
+      "number": 0.541661,
+      "contact": 0.549459,
+      "telephone": 0.548415
+    },
+    "ALLOCATION": {
+      "time": 0.535562,
+      "quantity": 0.54778,
+      "product_number": 0.536973,
+      "salesperson_number": 0.555635
+    },
+    "INVENTORY": {
+      "product_number": 0.545089,
+      "quantity": 0.554095,
+      "reorder_level": 0.537359,
+      "reorder_quantity": 0.543976
+    },
+    "ASSOC_SALESPERSON_PRODUCT": {
+      "assoc_salesperson_product_id": 0.002542,
+      "salesperson_id": 0.002542,
+      "product_id": 0.002542
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A supermarket has multiple departments",
+      "probability": 0.99781
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department has multiple employees",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supermarket sells multiple products",
+      "probability": 0.083532
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "ASSOC_SALESPERSON_PRODUCT",
+      "description": "One SALESPERSON can be associated with many ASSOC_SALESPERSON_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002542
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SALESPERSON_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SALESPERSON_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002542
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A salesperson can have multiple allocations",
+      "probability": 0.007886
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A product can have multiple allocations",
+      "probability": 0.814796
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "A product has one inventory record",
+      "probability": 0.928679
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "An employee can manage multiple inventory records",
+      "probability": 0.001098
+    }
+  ],
+  "processing_time": 23.68,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added INVENTORY entity to manage product inventory, added role attribute to EMPLOYEE entity, and established relationships between PRODUCT, INVENTORY, and EMPLOYEE entities to improve inventory management and employee roles"
+  }
+}

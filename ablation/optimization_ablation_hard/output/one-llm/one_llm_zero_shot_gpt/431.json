@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "USER",
+    "ADMIN",
+    "DOCTOR",
+    "DEPARTMENT",
+    "SCHEDULE",
+    "APPOINTMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "contact_info",
+      "email",
+      "phone",
+      "address"
+    ],
+    "ADMIN": [
+      "admin_id",
+      "username",
+      "password",
+      "role"
+    ],
+    "DOCTOR": [
+      "doctor_id",
+      "name",
+      "specialty",
+      "contact_info",
+      "department_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "introduction",
+      "location"
+    ],
+    "SCHEDULE": [
+      "schedule_id",
+      "doctor_id",
+      "department_id",
+      "date",
+      "start_time",
+      "end_time",
+      "total_slots",
+      "remaining_slots"
+    ],
+    "APPOINTMENT": [
+      "appointment_id",
+      "user_id",
+      "doctor_id",
+      "schedule_id",
+      "appointment_time",
+      "status",
+      "created_at",
+      "cancelled_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.2574,
+  "ilp_runtime": 0.044
+}

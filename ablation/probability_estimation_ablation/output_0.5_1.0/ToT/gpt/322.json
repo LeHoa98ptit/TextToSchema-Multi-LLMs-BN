@@ -1,0 +1,114 @@
+{
+  "filename": "322.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "DEVICE": 0.817574,
+    "USER": 0.817574,
+    "SITE": 0.817574,
+    "EMPLOYEE_DEVICE": 0.760368
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.761369,
+      "name": 0.753962,
+      "website_address": 0.761627,
+      "created_at": 0.755137,
+      "is_deleted": 0.753491
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.773059,
+      "name": 0.77292,
+      "position": 0.769371,
+      "salary": 0.758059,
+      "company_id": 0.772275,
+      "created_at": 0.765837,
+      "updated_at": 0.761948,
+      "is_deleted": 0.763542
+    },
+    "DEVICE": {
+      "device_id": 0.753622,
+      "serial_number": 0.749959,
+      "device_type": 0.75114,
+      "created_at": 0.752851,
+      "updated_at": 0.745352,
+      "is_deleted": 0.749856
+    },
+    "USER": {
+      "user_id": 0.750399,
+      "username": 0.74231,
+      "email": 0.757749,
+      "password_hash": 0.747733,
+      "password_salt": 0.744048,
+      "last_login_time": 0.753769,
+      "employee_id": 0.771321,
+      "created_at": 0.748036,
+      "updated_at": 0.743082,
+      "is_deleted": 0.746526
+    },
+    "SITE": {
+      "site_id": 0.747721,
+      "hostname": 0.750695,
+      "created_at": 0.747202,
+      "is_deleted": 0.741904,
+      "company_id": 0.763043,
+      "created_by_user_id": 0.750299
+    },
+    "EMPLOYEE_DEVICE": {
+      "employee_id": 0.781007,
+      "device_id": 0.777128,
+      "assign_date": 0.771803,
+      "return_date": 0.767447,
+      "created_at": 0.773528
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A company employs many employees",
+      "probability": 0.829414
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "description": "Each employee has a single user account",
+      "probability": 0.038463
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_DEVICE",
+      "cardinality": "1:N",
+      "description": "An employee can be linked to multiple device assignments",
+      "probability": 0.995223
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "EMPLOYEE_DEVICE",
+      "cardinality": "1:N",
+      "description": "A device can be assigned to many employees over time",
+      "probability": 0.99976
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "description": "A user can create many sites",
+      "probability": 0.962021
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "description": "Each site belongs to one company",
+      "probability": 0.998379
+    }
+  ],
+  "processing_time": 29.12,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added explicit surrogate primary keys and audit timestamps (created_at, updated_at) to all core entities. Replaced plain password with password_hash and password_salt for security. Included foreign‑key attributes in entity definitions to clarify relationships. Added optional return_date to EMPLOYEE_DEVICE for device return tracking and a created_at timestamp for the assignment record. Standardized naming of creation timestamps and retained the associative entity for historical device‑employee assignments while keeping the model efficient and consistent."
+  }
+}

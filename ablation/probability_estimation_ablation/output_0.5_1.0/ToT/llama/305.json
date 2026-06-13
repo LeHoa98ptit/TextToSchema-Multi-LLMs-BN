@@ -1,0 +1,83 @@
+{
+  "filename": "305.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "NOTIFICATION": 0.817574,
+    "FOLLOW_RELATIONSHIP": 0.755451,
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": 0.857952
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.761472,
+      "password": 0.751674,
+      "account_status": 0.764148,
+      "verification_status": 0.763395
+    },
+    "POST": {
+      "content": 0.753858,
+      "publish_time": 0.754103,
+      "attachment_link": 0.737773,
+      "publisher_account_id": 0.760107
+    },
+    "NOTIFICATION": {
+      "notification_type": 0.748491,
+      "notification_time": 0.746974,
+      "related_post_id": 0.752083,
+      "recipient_account_id": 0.758091
+    },
+    "FOLLOW_RELATIONSHIP": {
+      "follower_account_id": 0.765795,
+      "followee_account_id": 0.766458
+    },
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": {
+      "assoc_user_follow_relationship_id": 0.857952,
+      "user_id": 0.857952,
+      "follow_relationship_id": 0.857952
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can publish multiple posts",
+      "probability": 0.862792
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can receive multiple notifications",
+      "probability": 0.997619
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "description": "One USER can be associated with many ASSOC_USER_FOLLOW_RELATIONSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.857952
+    },
+    {
+      "entity_1": "FOLLOW_RELATIONSHIP",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "description": "One FOLLOW_RELATIONSHIP can be associated with many ASSOC_USER_FOLLOW_RELATIONSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.857952
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A post can trigger multiple notifications",
+      "probability": 0.985495
+    }
+  ],
+  "processing_time": 15.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added publisher_account_id to POST, recipient_account_id to NOTIFICATION, and related_post_id to NOTIFICATION to improve completeness and accuracy. Retained strengths from the original model while addressing identified issues and integrating improvement suggestions."
+  }
+}

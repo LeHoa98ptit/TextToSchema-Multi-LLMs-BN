@@ -1,0 +1,92 @@
+{
+  "filename": "277.txt",
+  "entity": {
+    "HOUSEKEEPER": 0.817574,
+    "CUSTOMER": 0.817574,
+    "SERVICE": 0.817574,
+    "SERVICE_TEAM": 0.752595,
+    "SERVICE_DETAILS": 0.762023,
+    "ASSOC_HOUSEKEEPER_SERVICE_TEAM": 0.007182
+  },
+  "attribute": {
+    "HOUSEKEEPER": {
+      "name": 0.772614,
+      "contact_number": 0.773276,
+      "year_experience": 0.776878,
+      "professional_skill": 0.773638
+    },
+    "CUSTOMER": {
+      "name": 0.758357,
+      "phone": 0.75195,
+      "address": 0.755792,
+      "customer_type": 0.763744,
+      "loyalty_program": 0.755554
+    },
+    "SERVICE": {
+      "service_date": 0.75958,
+      "service_address": 0.762683,
+      "service_type": 0.765712,
+      "service_duration": 0.764089,
+      "service_completion": 0.764784
+    },
+    "SERVICE_TEAM": {
+      "team_name": 0.757509,
+      "team_leader": 0.759654
+    },
+    "SERVICE_DETAILS": {
+      "fee_amount": 0.760953,
+      "payment_method": 0.754048,
+      "customer_satisfaction": 0.778555,
+      "housekeeper_performance": 0.788454
+    },
+    "ASSOC_HOUSEKEEPER_SERVICE_TEAM": {
+      "assoc_housekeeper_service_team_id": 0.007182,
+      "housekeeper_id": 0.007182,
+      "service_team_id": 0.007182
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOUSEKEEPER",
+      "entity_2": "ASSOC_HOUSEKEEPER_SERVICE_TEAM",
+      "description": "One HOUSEKEEPER can be associated with many ASSOC_HOUSEKEEPER_SERVICE_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.007182
+    },
+    {
+      "entity_1": "SERVICE_TEAM",
+      "entity_2": "ASSOC_HOUSEKEEPER_SERVICE_TEAM",
+      "description": "One SERVICE_TEAM can be associated with many ASSOC_HOUSEKEEPER_SERVICE_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.007182
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "A customer can request multiple services",
+      "probability": 0.998239
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "SERVICE_DETAILS",
+      "cardinality": "1:1",
+      "description": "Each service has corresponding service details",
+      "probability": 0.999958
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "SERVICE_TEAM",
+      "cardinality": "1:N",
+      "description": "A service team can provide multiple services",
+      "probability": 0.999849
+    }
+  ],
+  "processing_time": 17.7,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Combined service fee and evaluation into a single entity SERVICE_DETAILS, added customer type and loyalty program to the customer entity, and simplified relationships"
+  }
+}

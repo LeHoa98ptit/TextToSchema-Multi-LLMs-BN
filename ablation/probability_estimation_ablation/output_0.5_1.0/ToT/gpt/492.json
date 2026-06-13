@@ -1,0 +1,143 @@
+{
+  "filename": "492.txt",
+  "entity": {
+    "DEPARTMENT": 0.817574,
+    "POSITION": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "EMPLOYEE_STATUS": 0.764264,
+    "SALARY_GRADE": 0.757808,
+    "EMPLOYEE_POSITION_HISTORY": 0.746816
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "dept_id": 0.754073,
+      "dept_code": 0.757315,
+      "dept_name": 0.759164,
+      "location": 0.755062,
+      "created_at": 0.747919,
+      "head_emp_id": 0.756701
+    },
+    "POSITION": {
+      "pos_id": 0.751759,
+      "pos_code": 0.745706,
+      "pos_title": 0.757764,
+      "base_salary": 0.77038,
+      "salary_grade_id": 0.769246,
+      "dept_id": 0.768095
+    },
+    "EMPLOYEE": {
+      "emp_id": 0.762476,
+      "emp_number": 0.76213,
+      "first_name": 0.767655,
+      "last_name": 0.770757,
+      "email": 0.760831,
+      "phone": 0.754385,
+      "hire_date": 0.763059,
+      "birth_date": 0.766184,
+      "salary": 0.77034,
+      "position_id": 0.770546,
+      "department_id": 0.773043,
+      "superior_emp_id": 0.766926,
+      "status_id": 0.768984,
+      "created_at": 0.752023,
+      "updated_at": 0.760344
+    },
+    "EMPLOYEE_STATUS": {
+      "status_id": 0.766626,
+      "status_name": 0.768585
+    },
+    "SALARY_GRADE": {
+      "grade_id": 0.76215,
+      "grade_name": 0.760439,
+      "min_salary": 0.75378,
+      "max_salary": 0.760955
+    },
+    "EMPLOYEE_POSITION_HISTORY": {
+      "history_id": 0.768434,
+      "emp_id": 0.767875,
+      "position_id": 0.768499,
+      "department_id": 0.773238,
+      "start_date": 0.764509,
+      "end_date": 0.767564,
+      "salary_at_start": 0.767968,
+      "notes": 0.773829
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "POSITION",
+      "cardinality": "1:N",
+      "description": "A department defines multiple positions",
+      "probability": 0.980642
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Employees are assigned to one department",
+      "probability": 0.999892
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "head_emp_id references the department head (optional one‑to‑one link)",
+      "probability": 0.999892
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A position can be held by many employees over time",
+      "probability": 0.978016
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "description": "Recursive relationship: each employee has one direct superior; a superior can have many subordinates",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "EMPLOYEE_STATUS",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Lookup table for employee status (active, terminated, on‑leave, etc.)",
+      "probability": 0.998697
+    },
+    {
+      "entity_1": "SALARY_GRADE",
+      "entity_2": "POSITION",
+      "cardinality": "1:N",
+      "description": "Positions are classified by a salary grade",
+      "probability": 0.667535
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_POSITION_HISTORY",
+      "cardinality": "1:N",
+      "description": "Tracks historical assignments of positions and departments for each employee",
+      "probability": 0.998509
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE_POSITION_HISTORY",
+      "cardinality": "1:N",
+      "description": "Historical records reference the position held at the time",
+      "probability": 0.92588
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE_POSITION_HISTORY",
+      "cardinality": "1:N",
+      "description": "Historical records reference the department at the time",
+      "probability": 0.104586
+    }
+  ],
+  "processing_time": 11.42,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added lookup tables for EMPLOYEE_STATUS and SALARY_GRADE to enforce enumeration consistency. Introduced EMPLOYEE_POSITION_HISTORY associative entity to capture temporal changes in position, department, and salary for audit and reporting. Retained EMPLOYEE.salary for cases where individual compensation deviates from the base salary, while keeping POSITION.base_salary for default values. Clarified one‑to‑one head_emp_id relationship and added created/updated timestamps. Removed the unnecessary REPORT entity, favoring views/stored procedures for reporting. All relationships were updated to reflect the new entities and to support hierarchy traversal, filtered queries, and salary calculations."
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "entity": [
+    "CASH_REGISTER",
+    "BILLING_METHOD",
+    "TRANSACTION",
+    "DISCOUNT",
+    "REBATE",
+    "TRANSACTION_DETAIL"
+  ],
+  "attribute": {
+    "CASH_REGISTER": [
+      "register id",
+      "supermarket id"
+    ],
+    "BILLING_METHOD": [
+      "billing method id",
+      "method name",
+      "calculation function",
+      "supports discount",
+      "supports rebate"
+    ],
+    "TRANSACTION": [
+      "transaction id",
+      "billing method id",
+      "actual payment",
+      "transaction time"
+    ],
+    "DISCOUNT": [
+      "discount id",
+      "transaction id",
+      "discount rate",
+      "discount amount"
+    ],
+    "REBATE": [
+      "rebate id",
+      "transaction id",
+      "rebate amount"
+    ],
+    "TRANSACTION_DETAIL": [
+      "transaction detail id",
+      "transaction id",
+      "detail"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REBATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 26.3353,
+  "ilp_runtime": 0.081
+}

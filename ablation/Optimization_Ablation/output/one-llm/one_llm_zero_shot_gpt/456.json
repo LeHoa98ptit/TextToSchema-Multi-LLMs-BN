@@ -1,0 +1,76 @@
+{
+  "entity": [
+    "SUPERMARKET",
+    "PRODUCT",
+    "DISTRIBUTION_DEPARTMENT",
+    "PURCHASE_ORDER",
+    "PAYMENT_ORDER",
+    "SUPPLY_REQUEST",
+    "DISTRIBUTION_NOTIFICATION"
+  ],
+  "attribute": {
+    "SUPERMARKET": [
+      "supermarket_id",
+      "name",
+      "address",
+      "manager",
+      "phone_number"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "inventory_quantity",
+      "storage_location"
+    ],
+    "DISTRIBUTION_DEPARTMENT": [
+      "department_id",
+      "name",
+      "address",
+      "manager",
+      "phone_number"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_id",
+      "product_id",
+      "purchase_date",
+      "supplier",
+      "purchase_quantity"
+    ],
+    "PAYMENT_ORDER": [
+      "payment_order_id",
+      "purchase_id",
+      "payment_date",
+      "payment_status"
+    ],
+    "SUPPLY_REQUEST": [
+      "request_id",
+      "supermarket_id",
+      "product_id",
+      "request_time",
+      "request_quantity"
+    ],
+    "DISTRIBUTION_NOTIFICATION": [
+      "distribution_notice_number",
+      "product_id",
+      "department_id",
+      "distribution_quantity",
+      "distribution_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PAYMENT_ORDER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISTRIBUTION_DEPARTMENT",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 26.2977,
+  "ilp_runtime": 0.101
+}

@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "DOCTOR",
+    "DEPARTMENT",
+    "PERSONNEL",
+    "PATIENT",
+    "MEDICINE",
+    "CONSULTATION",
+    "MEDICINE_RETRIEVAL"
+  ],
+  "attribute": {
+    "DOCTOR": [
+      "doctor_id",
+      "name",
+      "gender",
+      "title",
+      "year_of_service",
+      "phone_number",
+      "department_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "person_in_charge_id",
+      "total_number_personnel",
+      "location",
+      "phone_number"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "role",
+      "phone_number"
+    ],
+    "PATIENT": [
+      "patient_id",
+      "name",
+      "gender",
+      "age",
+      "contact_information",
+      "ward_id"
+    ],
+    "MEDICINE": [
+      "medicine_id",
+      "name",
+      "inventory_quantity",
+      "price",
+      "sale_price",
+      "remark"
+    ],
+    "CONSULTATION": [
+      "consultation_id",
+      "patient_id",
+      "doctor_id",
+      "consultation_time",
+      "diagnosis_description",
+      "treatment_result",
+      "remark"
+    ],
+    "MEDICINE_RETRIEVAL": [
+      "retrieval_id",
+      "patient_id",
+      "medicine_id",
+      "retrieval_time",
+      "quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICINE_RETRIEVAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 28.0235,
+  "ilp_runtime": 0.061
+}

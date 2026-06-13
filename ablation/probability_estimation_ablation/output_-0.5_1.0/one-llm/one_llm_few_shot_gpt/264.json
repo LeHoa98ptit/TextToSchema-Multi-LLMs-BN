@@ -1,0 +1,131 @@
+{
+  "filename": "264.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ROOM": 0.622459,
+    "CUSTOMER": 0.622459,
+    "RESERVATION": 0.622459,
+    "ARRANGEMENT": 0.5071,
+    "ASSOC_RESERVATION_ROOM": 0.980193,
+    "ASSOC_EMPLOYEE_RESERVATION": 0.010744
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department_id": 0.520855,
+      "department_name": 0.521459
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.541128,
+      "position": 0.545308,
+      "phone_number": 0.537735,
+      "salary": 0.520089,
+      "department_id": 0.536452
+    },
+    "ROOM": {
+      "room_number": 0.546784,
+      "room_type": 0.544902,
+      "charge_standard": 0.542527,
+      "check_status": 0.542784
+    },
+    "CUSTOMER": {
+      "customer_number": 0.536366,
+      "unit": 0.537201,
+      "contact_person": 0.527066,
+      "contact_number": 0.52688,
+      "contact_address": 0.516563
+    },
+    "RESERVATION": {
+      "reservation_id": 0.528996,
+      "customer_number": 0.542211,
+      "check_in_date": 0.524751,
+      "check_out_date": 0.526868,
+      "room_type_requested": 0.548764
+    },
+    "ARRANGEMENT": {
+      "arrangement_id": 0.544111,
+      "room_number": 0.557623,
+      "reservation_id": 0.54533,
+      "salesperson_number": 0.552785,
+      "customer_gender": 0.558431,
+      "telephone_number": 0.539329,
+      "check_time": 0.53742,
+      "day": 0.530663
+    },
+    "ASSOC_RESERVATION_ROOM": {
+      "assoc_reservation_room_id": 0.980193,
+      "reservation_id": 0.980193,
+      "room_id": 0.980193
+    },
+    "ASSOC_EMPLOYEE_RESERVATION": {
+      "assoc_employee_reservation_id": 0.010744,
+      "employee_id": 0.010744,
+      "reservation_id": 0.010744
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "probability": 0.999508
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "probability": 0.000519
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_ROOM",
+      "description": "One RESERVATION can be associated with many ASSOC_RESERVATION_ROOM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980193
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ASSOC_RESERVATION_ROOM",
+      "description": "One ROOM can be associated with many ASSOC_RESERVATION_ROOM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980193
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_RESERVATION",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010744
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_EMPLOYEE_RESERVATION",
+      "description": "One RESERVATION can be associated with many ASSOC_EMPLOYEE_RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010744
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "probability": 0.006465
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "probability": 0.399974
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "probability": 0.969617
+    }
+  ],
+  "processing_time": 27.78
+}

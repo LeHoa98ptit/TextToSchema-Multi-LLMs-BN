@@ -1,0 +1,132 @@
+{
+  "filename": "436.txt",
+  "entity": {
+    "NEWS_ARTICLE": 0.601567,
+    "ADMINISTRATOR": 0.622459,
+    "MEMBER": 0.622459,
+    "ADVERTISEMENT": 0.481034,
+    "MESSAGE": 0.500575,
+    "COMMENT": 0.481309,
+    "WEBSITE_INFO": 0.524605,
+    "ASSOC_MEMBER_NEWS_ARTICLE": 0.003209
+  },
+  "attribute": {
+    "NEWS_ARTICLE": {
+      "title": 0.546362,
+      "content": 0.556279,
+      "author": 0.542503,
+      "release_time": 0.534172,
+      "label": 0.545583,
+      "classify": 0.542366
+    },
+    "ADMINISTRATOR": {
+      "username": 0.535779,
+      "password": 0.528296,
+      "email": 0.533623
+    },
+    "MEMBER": {
+      "username": 0.521663,
+      "email": 0.524491,
+      "password": 0.519698,
+      "registration_date": 0.516265,
+      "last_login_date": 0.513343
+    },
+    "ADVERTISEMENT": {
+      "content": 0.543638,
+      "release_time": 0.526175,
+      "expire_time": 0.514802
+    },
+    "MESSAGE": {
+      "content": 0.551944,
+      "release_time": 0.522165,
+      "reply": 0.521741
+    },
+    "COMMENT": {
+      "content": 0.539097,
+      "release_time": 0.51821,
+      "news_article_id": 0.535247
+    },
+    "WEBSITE_INFO": {
+      "logo": 0.525583,
+      "copyright_info": 0.527746,
+      "basic_info": 0.537421
+    },
+    "ASSOC_MEMBER_NEWS_ARTICLE": {
+      "assoc_member_news_article_id": 0.003209,
+      "member_id": 0.003209,
+      "news_article_id": 0.003209
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "NEWS_ARTICLE",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple news articles",
+      "probability": 0.687409
+    },
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ASSOC_MEMBER_NEWS_ARTICLE",
+      "description": "One MEMBER can be associated with many ASSOC_MEMBER_NEWS_ARTICLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003209
+    },
+    {
+      "entity_1": "NEWS_ARTICLE",
+      "entity_2": "ASSOC_MEMBER_NEWS_ARTICLE",
+      "description": "One NEWS_ARTICLE can be associated with many ASSOC_MEMBER_NEWS_ARTICLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003209
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADVERTISEMENT",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple advertisements",
+      "probability": 0.000484
+    },
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A member can send multiple messages",
+      "probability": 0.999955
+    },
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A member can post multiple comments",
+      "probability": 0.984627
+    },
+    {
+      "entity_1": "NEWS_ARTICLE",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A news article can have multiple comments",
+      "probability": 0.007928
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "WEBSITE_INFO",
+      "cardinality": "1:1",
+      "description": "An administrator can manage the website info",
+      "probability": 0.010387
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MEMBER",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple members",
+      "probability": 0.056049
+    }
+  ],
+  "processing_time": 18.36,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added registration_date and last_login_date attributes to the MEMBER entity, and added a relationship between the ADMINISTRATOR and MEMBER entities to reflect the administrator's ability to manage member information."
+  }
+}

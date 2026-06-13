@@ -1,0 +1,124 @@
+{
+  "filename": "457.txt",
+  "entity": {
+    "SUPERMARKET": 0.481334,
+    "PRODUCT": 0.622459,
+    "SUPPLIER": 0.548844,
+    "SUPPLY_REQUEST": 0.585938,
+    "DELIVERY_NOTIFICATION": 0.540362,
+    "STOCK_NOTIFICATION": 0.522859,
+    "PROCUREMENT_LIST": 0.546515,
+    "PROCUREMENT_DEPARTMENT": 0.563431
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket id": 0.55129,
+      "address": 0.554902,
+      "contact information": 0.564408
+    },
+    "PRODUCT": {
+      "product id": 0.530883,
+      "inventory quantity": 0.567002,
+      "last update date": 0.528139
+    },
+    "SUPPLIER": {
+      "supplier id": 0.54671,
+      "address": 0.556072,
+      "contact information": 0.564816
+    },
+    "SUPPLY_REQUEST": {
+      "supply request id": 0.561146,
+      "supermarket id": 0.573875,
+      "product id": 0.561203,
+      "request quantity": 0.567261,
+      "request date": 0.555004
+    },
+    "DELIVERY_NOTIFICATION": {
+      "delivery notification id": 0.539258,
+      "supply request id": 0.560718,
+      "delivery date": 0.537202
+    },
+    "STOCK_NOTIFICATION": {
+      "stock notification id": 0.539117,
+      "supply request id": 0.561784,
+      "stock date": 0.53523
+    },
+    "PROCUREMENT_DEPARTMENT": {
+      "procurement department id": 0.545496
+    },
+    "PROCUREMENT_LIST": {
+      "procurement list id": 0.555564,
+      "product id": 0.555355,
+      "supplier id": 0.559447,
+      "purchase quantity": 0.568063,
+      "purchase date": 0.552185
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A supermarket can submit many supply requests, each request is submitted by exactly one supermarket.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01061
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A product can be requested in many supply requests, each supply request concerns exactly one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.764478
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "description": "When inventory is sufficient, a delivery notification is generated for the corresponding supply request.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.94532
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "STOCK_NOTIFICATION",
+      "description": "When inventory is insufficient, a stock notification is generated for the corresponding supply request.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.158505
+    },
+    {
+      "entity_1": "PROCUREMENT_DEPARTMENT",
+      "entity_2": "STOCK_NOTIFICATION",
+      "description": "The procurement department receives many stock notifications, each stock notification is received by exactly one procurement department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.076448
+    },
+    {
+      "entity_1": "PROCUREMENT_DEPARTMENT",
+      "entity_2": "PROCUREMENT_LIST",
+      "description": "The procurement department creates many procurement list records, each procurement list is created by exactly one procurement department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998763
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT_LIST",
+      "description": "A procurement list entry references one product, and a product can appear in many procurement list entries.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.333905
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT_LIST",
+      "description": "A procurement list entry references one supplier, and a supplier can appear in many procurement list entries.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.199721
+    }
+  ],
+  "processing_time": 5.1
+}

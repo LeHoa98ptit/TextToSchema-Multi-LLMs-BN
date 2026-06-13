@@ -1,0 +1,219 @@
+{
+  "filename": "447.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.494975,
+    "UNIT": 0.496525,
+    "FINANCIAL_DOCUMENT": 0.532753,
+    "DOCUMENT_CATEGORY": 0.502325,
+    "DOCUMENT_LEVEL": 0.520489,
+    "DOCUMENT_ATTACHMENT": 0.52241,
+    "DOCUMENT_OPERATION_LOG": 0.490951,
+    "NOTIFICATION": 0.622459,
+    "NOTIFICATION_STATUS": 0.56444,
+    "CONFIGURATION": 0.469961,
+    "CONFIG_TYPE": 0.469363,
+    "ADMIN_OPERATION_LOG": 0.486703,
+    "ASSOC_USER_ROLE": 0.997573,
+    "ASSOC_USER_UNIT": 0.995138
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.518394,
+      "username": 0.509462,
+      "password_hash": 0.508058,
+      "phone_number": 0.510518,
+      "email": 0.521775,
+      "created_at": 0.514481
+    },
+    "ROLE": {
+      "role_id": 0.525642,
+      "role_name": 0.531619,
+      "description": 0.538396
+    },
+    "UNIT": {
+      "unit_id": 0.50897,
+      "unit_name": 0.510671,
+      "parent_unit_id": 0.504121,
+      "address": 0.515708
+    },
+    "FINANCIAL_DOCUMENT": {
+      "doc_id": 0.539949,
+      "title": 0.540312,
+      "doc_number": 0.53586,
+      "issue_date": 0.535574,
+      "validity_status": 0.546086,
+      "remark": 0.539371,
+      "content_path": 0.539612
+    },
+    "DOCUMENT_CATEGORY": {
+      "category_id": 0.522059,
+      "category_name": 0.524272,
+      "description": 0.539022
+    },
+    "DOCUMENT_LEVEL": {
+      "level_id": 0.526027,
+      "level_name": 0.527755,
+      "security_classification": 0.542114
+    },
+    "DOCUMENT_ATTACHMENT": {
+      "attachment_id": 0.521604,
+      "doc_id": 0.524932,
+      "file_path": 0.520285,
+      "file_type": 0.525624,
+      "uploaded_at": 0.525103
+    },
+    "DOCUMENT_OPERATION_LOG": {
+      "log_id": 0.532232,
+      "doc_id": 0.534078,
+      "operator_user_id": 0.538863,
+      "operation_type": 0.537877,
+      "operation_time": 0.53412,
+      "description": 0.546671
+    },
+    "NOTIFICATION": {
+      "notif_id": 0.518477,
+      "content": 0.535638,
+      "issue_date": 0.52023,
+      "publisher_user_id": 0.528917
+    },
+    "NOTIFICATION_STATUS": {
+      "status_id": 0.521599,
+      "status_name": 0.525346
+    },
+    "CONFIGURATION": {
+      "config_id": 0.525671,
+      "key": 0.533464,
+      "value": 0.530099,
+      "type_id": 0.522472,
+      "directory_path": 0.521652,
+      "last_modified": 0.519065
+    },
+    "CONFIG_TYPE": {
+      "type_id": 0.515917,
+      "type_name": 0.517898,
+      "description": 0.537601
+    },
+    "ADMIN_OPERATION_LOG": {
+      "log_id": 0.529803,
+      "admin_user_id": 0.530165,
+      "operation": 0.539309,
+      "target_entity": 0.527679,
+      "target_id": 0.527091,
+      "timestamp": 0.53248,
+      "details": 0.544483
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.997573,
+      "user_id": 0.997573,
+      "role_id": 0.997573
+    },
+    "ASSOC_USER_UNIT": {
+      "assoc_user_unit_id": 0.995138,
+      "user_id": 0.995138,
+      "unit_id": 0.995138
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997573
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997573
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_UNIT",
+      "description": "One USER can be associated with many ASSOC_USER_UNIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995138
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "ASSOC_USER_UNIT",
+      "description": "One UNIT can be associated with many ASSOC_USER_UNIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995138
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "DOCUMENT_CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each document belongs to one category",
+      "probability": 0.669083
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "DOCUMENT_LEVEL",
+      "cardinality": "N:1",
+      "description": "Each document has a defined level",
+      "probability": 0.915412
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "DOCUMENT_ATTACHMENT",
+      "cardinality": "1:N",
+      "description": "A document can have multiple attachments",
+      "probability": 0.078976
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "DOCUMENT_OPERATION_LOG",
+      "cardinality": "1:N",
+      "description": "All operations on a document are logged",
+      "probability": 0.200145
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DOCUMENT_OPERATION_LOG",
+      "cardinality": "1:N",
+      "description": "A user may perform many document operations",
+      "probability": 0.993629
+    },
+    {
+      "entity_1": "NOTIFICATION",
+      "entity_2": "NOTIFICATION_STATUS",
+      "cardinality": "N:1",
+      "description": "Each notification has a status (e.g., active, archived)",
+      "probability": 0.998046
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can publish many notifications",
+      "probability": 0.99856
+    },
+    {
+      "entity_1": "CONFIGURATION",
+      "entity_2": "CONFIG_TYPE",
+      "cardinality": "N:1",
+      "description": "Configuration entries are typed",
+      "probability": 0.43707
+    },
+    {
+      "entity_1": "ADMIN_OPERATION_LOG",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Log records reference the admin user who performed the operation",
+      "probability": 0.993159
+    }
+  ],
+  "processing_time": 15.63,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

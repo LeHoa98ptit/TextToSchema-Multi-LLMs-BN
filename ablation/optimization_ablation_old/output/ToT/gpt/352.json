@@ -1,0 +1,148 @@
+{
+  "entity": [
+    "SUPPLIER",
+    "CUSTOMER",
+    "ADDRESS",
+    "SUPPLIER_ADDRESS",
+    "CUSTOMER_ADDRESS",
+    "PRODUCT",
+    "PRODUCT_CATEGORY",
+    "SUPPLIER_PRODUCT",
+    "INVOICE",
+    "INVOICE_LINE",
+    "TAX_RATE",
+    "INVOICE_STATUS"
+  ],
+  "attribute": {
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "phone",
+      "created_at",
+      "updated_at"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "phone",
+      "email",
+      "created_at",
+      "updated_at"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "zip",
+      "country"
+    ],
+    "SUPPLIER_ADDRESS": [
+      "supplier_id",
+      "address_id"
+    ],
+    "CUSTOMER_ADDRESS": [
+      "customer_id",
+      "address_id"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "description",
+      "purchase_price",
+      "sell_price",
+      "inventory_qty",
+      "min_inventory_qty",
+      "category_id",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCT_CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "SUPPLIER_PRODUCT": [
+      "supplier_id",
+      "product_id"
+    ],
+    "INVOICE": [
+      "invoice_id",
+      "invoice_date",
+      "tax_rate_id",
+      "total_amount",
+      "status_id",
+      "customer_id",
+      "created_at",
+      "updated_at"
+    ],
+    "INVOICE_LINE": [
+      "invoice_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "TAX_RATE": [
+      "tax_rate_id",
+      "rate",
+      "description"
+    ],
+    "INVOICE_STATUS": [
+      "status_id",
+      "name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "SUPPLIER_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "CUSTOMER_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLIER_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INVOICE_STATUS",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "INVOICE_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 76.9413,
+  "ilp_runtime": 0.045
+}

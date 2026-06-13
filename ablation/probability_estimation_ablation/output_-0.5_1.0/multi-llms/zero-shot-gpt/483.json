@@ -1,0 +1,89 @@
+{
+  "filename": "483.txt",
+  "entity": {
+    "PAYMENT_PLATFORM": 0.529665,
+    "USER": 0.622459,
+    "INTERMEDIARY": 0.622459,
+    "OPERATION": 0.622459,
+    "USER_PAYMENT_OPERATION": 0.580323,
+    "OPERATION_INTERMEDIARY": 0.534644
+  },
+  "attribute": {
+    "PAYMENT_PLATFORM": {
+      "platform id": 0.561915,
+      "platform name": 0.562323,
+      "platform address": 0.556664
+    },
+    "USER": {
+      "user id": 0.516722,
+      "contact information": 0.536424,
+      "registration method": 0.532507
+    },
+    "INTERMEDIARY": {
+      "intermediary id": 0.543634,
+      "intermediary name": 0.542337,
+      "intermediary status": 0.549677
+    },
+    "OPERATION": {
+      "operation id": 0.532795,
+      "operation type": 0.534859,
+      "operation time": 0.529749,
+      "platform id": 0.544401
+    },
+    "USER_PAYMENT_OPERATION": {
+      "user payment id": 0.558418,
+      "user id": 0.557804,
+      "operation id": 0.564504,
+      "payment status": 0.567396,
+      "payment time": 0.557816
+    },
+    "OPERATION_INTERMEDIARY": {
+      "operation id": 0.550853,
+      "intermediary id": 0.554544,
+      "primary key": 0.544924
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PAYMENT_PLATFORM",
+      "entity_2": "OPERATION",
+      "description": "A payment platform can have many operations; each operation belongs to one platform",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.221208
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "A user can participate in many payment operation records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999945
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "An operation can be linked to many user payment operation records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99013
+    },
+    {
+      "entity_1": "INTERMEDIARY",
+      "entity_2": "OPERATION_INTERMEDIARY",
+      "description": "An intermediary can be involved in many operation‑intermediary links",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999689
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "OPERATION_INTERMEDIARY",
+      "description": "An operation can involve many intermediaries via operation‑intermediary links",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998431
+    }
+  ],
+  "processing_time": 17.32
+}

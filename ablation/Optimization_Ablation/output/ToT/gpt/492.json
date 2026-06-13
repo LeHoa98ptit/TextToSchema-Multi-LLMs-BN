@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "POSITION",
+    "EMPLOYEE",
+    "EMPLOYEE_STATUS",
+    "SALARY_GRADE",
+    "EMPLOYEE_POSITION_HISTORY"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "dept_id",
+      "dept_code",
+      "dept_name",
+      "location",
+      "created_at",
+      "head_emp_id"
+    ],
+    "POSITION": [
+      "pos_id",
+      "pos_code",
+      "pos_title",
+      "base_salary",
+      "salary_grade_id",
+      "dept_id"
+    ],
+    "EMPLOYEE": [
+      "emp_id",
+      "emp_number",
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "hire_date",
+      "birth_date",
+      "salary",
+      "position_id",
+      "department_id",
+      "superior_emp_id",
+      "status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "EMPLOYEE_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "SALARY_GRADE": [
+      "grade_id",
+      "grade_name",
+      "min_salary",
+      "max_salary"
+    ],
+    "EMPLOYEE_POSITION_HISTORY": [
+      "history_id",
+      "emp_id",
+      "position_id",
+      "department_id",
+      "start_date",
+      "end_date",
+      "salary_at_start",
+      "notes"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "POSITION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE_STATUS",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALARY_GRADE",
+      "entity_2": "POSITION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_POSITION_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE_POSITION_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 67.2348,
+  "ilp_runtime": 0.07
+}

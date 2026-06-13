@@ -1,0 +1,175 @@
+{
+  "filename": "265.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "PRODUCTION_LINE": 0.69132,
+    "BATCH": 0.679614,
+    "CHESSBOARD": 0.817574,
+    "CHESS_PIECE": 0.798396,
+    "INSPECTION": 0.817574,
+    "DEFECT": 0.720632,
+    "QUALITY_ALERT": 0.736819,
+    "INSPECTION_MODEL": 0.765163,
+    "MODEL_RUN": 0.743683,
+    "INSPECTION_DEFECT": 0.773486
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.754507,
+      "name": 0.762222,
+      "address": 0.752681
+    },
+    "PRODUCTION_LINE": {
+      "line_id": 0.755055,
+      "name": 0.760931,
+      "capacity": 0.753466
+    },
+    "BATCH": {
+      "batch_id": 0.73473,
+      "production_date": 0.744282,
+      "shift": 0.73841
+    },
+    "CHESSBOARD": {
+      "board_id": 0.771905,
+      "board_model": 0.780709,
+      "material": 0.775518
+    },
+    "CHESS_PIECE": {
+      "piece_id": 0.766702,
+      "piece_type": 0.771974,
+      "color": 0.771756,
+      "position_x": 0.77292,
+      "position_y": 0.772274,
+      "material": 0.772731
+    },
+    "INSPECTION": {
+      "inspection_id": 0.758994,
+      "inspection_timestamp": 0.756433,
+      "inspector": 0.764126,
+      "result": 0.764912,
+      "notes": 0.764864
+    },
+    "DEFECT": {
+      "defect_id": 0.760548,
+      "defect_type": 0.759014,
+      "severity": 0.752412,
+      "description": 0.759684
+    },
+    "QUALITY_ALERT": {
+      "alert_id": 0.749686,
+      "alert_timestamp": 0.747359,
+      "severity_level": 0.753304,
+      "resolved_flag": 0.741869
+    },
+    "INSPECTION_MODEL": {
+      "model_id": 0.757819,
+      "model_name": 0.760849,
+      "version": 0.76248,
+      "algorithm": 0.766118
+    },
+    "MODEL_RUN": {
+      "run_id": 0.740233,
+      "run_timestamp": 0.742425,
+      "runtime_seconds": 0.740218,
+      "predicted_quality": 0.756694,
+      "actual_quality": 0.751684
+    },
+    "INSPECTION_DEFECT": {
+      "inspection_defect_id": 0.762902,
+      "inspection_id": 0.762784,
+      "defect_id": 0.764605,
+      "notes": 0.766421
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PRODUCTION_LINE",
+      "cardinality": "1:N",
+      "description": "A company owns multiple production lines",
+      "probability": 0.99314
+    },
+    {
+      "entity_1": "PRODUCTION_LINE",
+      "entity_2": "BATCH",
+      "cardinality": "1:N",
+      "description": "Each production line produces many batches",
+      "probability": 0.006465
+    },
+    {
+      "entity_1": "BATCH",
+      "entity_2": "CHESSBOARD",
+      "cardinality": "1:N",
+      "description": "A batch yields several chessboards",
+      "probability": 0.00554
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "description": "A chessboard is assembled from many pieces",
+      "probability": 0.748207
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "INSPECTION",
+      "cardinality": "1:N",
+      "description": "Each piece can undergo multiple inspections",
+      "probability": 0.626457
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "INSPECTION_DEFECT",
+      "cardinality": "1:N",
+      "description": "An inspection can record multiple defect occurrences",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "DEFECT",
+      "entity_2": "INSPECTION_DEFECT",
+      "cardinality": "1:N",
+      "description": "A defect type can be linked to many inspection records",
+      "probability": 0.999967
+    },
+    {
+      "entity_1": "DEFECT",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "description": "A defect can trigger multiple quality alerts",
+      "probability": 0.936097
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "description": "An inspection may generate one or more alerts",
+      "probability": 0.633084
+    },
+    {
+      "entity_1": "INSPECTION_MODEL",
+      "entity_2": "MODEL_RUN",
+      "cardinality": "1:N",
+      "description": "A model is executed many times",
+      "probability": 0.001617
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "BATCH",
+      "cardinality": "N:1",
+      "description": "Each model run evaluates a specific batch",
+      "probability": 0.271333
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "INSPECTION",
+      "cardinality": "N:1",
+      "description": "Model runs can be linked to inspection results for validation",
+      "probability": 0.000208
+    }
+  ],
+  "processing_time": 34.54,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented many‑to‑many inspection‑defect relationship via associative entity INSPECTION_DEFECT, added direct INSPECTION → QUALITY_ALERT relationship to capture alerts generated from inspections, retained all core entities and attributes, kept existing production hierarchy, and clarified cardinalities for better completeness and accuracy."
+  }
+}

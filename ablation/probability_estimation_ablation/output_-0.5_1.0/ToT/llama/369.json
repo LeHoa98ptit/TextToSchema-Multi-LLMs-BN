@@ -1,0 +1,105 @@
+{
+  "filename": "369.txt",
+  "entity": {
+    "CONTENT": 0.622459,
+    "USER": 0.622459,
+    "WORKFLOW": 0.622459,
+    "OPERATION": 0.622459,
+    "LOG": 0.481958,
+    "COMMENT": 0.481309,
+    "ASSOC_CONTENT_USER": 0.628729
+  },
+  "attribute": {
+    "CONTENT": {
+      "id": 0.526834,
+      "name": 0.536366,
+      "state": 0.548629,
+      "version": 0.545219,
+      "creation_date": 0.52488
+    },
+    "USER": {
+      "id": 0.508183,
+      "username": 0.497492,
+      "role": 0.536861,
+      "email": 0.513527
+    },
+    "WORKFLOW": {
+      "id": 0.525639,
+      "type": 0.553547,
+      "description": 0.549731,
+      "configuration": 0.55199
+    },
+    "OPERATION": {
+      "id": 0.518324,
+      "type": 0.527827,
+      "timestamp": 0.520962,
+      "user_id": 0.514126,
+      "action": 0.525247,
+      "metadata": 0.543392
+    },
+    "LOG": {
+      "id": 0.513147,
+      "content_id": 0.523213,
+      "operation_id": 0.517546,
+      "timestamp": 0.514307,
+      "changes": 0.529715,
+      "details": 0.534468
+    },
+    "COMMENT": {
+      "id": 0.503017,
+      "content_id": 0.512843,
+      "user_id": 0.503081,
+      "text": 0.515793,
+      "timestamp": 0.507351
+    },
+    "ASSOC_CONTENT_USER": {
+      "assoc_content_user_id": 0.628729,
+      "content_id": 0.628729,
+      "user_id": 0.628729
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "description": "One CONTENT can be associated with many ASSOC_CONTENT_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.628729
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "description": "One USER can be associated with many ASSOC_CONTENT_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.628729
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "WORKFLOW",
+      "cardinality": "1:N",
+      "description": "A content item can have multiple workflows",
+      "probability": 0.011575
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "cardinality": "1:1",
+      "description": "An operation is logged once",
+      "probability": 0.971998
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A content item can have multiple comments",
+      "probability": 6e-06
+    }
+  ],
+  "processing_time": 26.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'action' and 'metadata' attributes to the OPERATION entity, and 'changes' and 'details' attributes to the LOG entity to capture more detailed information about each operation and log entry."
+  }
+}

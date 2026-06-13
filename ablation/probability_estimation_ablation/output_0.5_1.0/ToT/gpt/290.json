@@ -1,0 +1,85 @@
+{
+  "filename": "290.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "FUND_FLOW": 0.802897,
+    "DEPARTMENT": 0.729976,
+    "FUND_TYPE": 0.746058,
+    "EMPLOYEE": 0.733919
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.765118,
+      "name": 0.76187,
+      "description": 0.767921,
+      "budget": 0.776666,
+      "start_date": 0.753639,
+      "end_date": 0.754955,
+      "department_id": 0.771973
+    },
+    "FUND_FLOW": {
+      "flow_id": 0.767262,
+      "project_id": 0.780087,
+      "fund_type_id": 0.772417,
+      "employee_id": 0.770947,
+      "amount": 0.767719,
+      "flow_date": 0.763295,
+      "remark": 0.766195
+    },
+    "DEPARTMENT": {
+      "department_id": 0.750064,
+      "name": 0.750767
+    },
+    "FUND_TYPE": {
+      "fund_type_id": 0.771403,
+      "type_name": 0.766885
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.749966,
+      "name": 0.748013,
+      "department_id": 0.753124
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "FUND_FLOW",
+      "cardinality": "1:N",
+      "description": "One project can have many fund flow records",
+      "probability": 0.634749
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each project is assigned to a single department",
+      "probability": 0.605487
+    },
+    {
+      "entity_1": "FUND_FLOW",
+      "entity_2": "FUND_TYPE",
+      "cardinality": "N:1",
+      "description": "Each fund flow entry references one fund type (income or expenditure)",
+      "probability": 0.859108
+    },
+    {
+      "entity_1": "FUND_FLOW",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "description": "Each fund flow record is entered by a single employee for auditability",
+      "probability": 0.000143
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee belongs to a single department",
+      "probability": 0.999786
+    }
+  ],
+  "processing_time": 18.79,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Unified naming conventions (e.g., department_id, project_id, fund_type_id). Added EMPLOYEE entity with a foreign key in FUND_FLOW to capture who entered each transaction, enhancing auditability. Introduced optional 'description' attribute for PROJECT. Ensured FUND_TYPE.type_name is intended to be unique. All foreign‑key fields now follow consistent snake_case naming."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "entity": [
+    "USER",
+    "WECHAT_AUTH",
+    "ATTRACTION",
+    "ATTRACTION_PICTURE",
+    "BOOKMARK",
+    "RESERVATION",
+    "TICKET",
+    "COMMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "account_number",
+      "password_hash",
+      "nickname",
+      "bio",
+      "created_at",
+      "updated_at"
+    ],
+    "WECHAT_AUTH": [
+      "auth_id",
+      "wechat_openid",
+      "unionid",
+      "access_token",
+      "expires_at",
+      "user_id"
+    ],
+    "ATTRACTION": [
+      "attraction_id",
+      "name",
+      "reference_price",
+      "description",
+      "location",
+      "open_hours"
+    ],
+    "ATTRACTION_PICTURE": [
+      "picture_id",
+      "attraction_id",
+      "url",
+      "caption",
+      "uploaded_at"
+    ],
+    "BOOKMARK": [
+      "user_id",
+      "attraction_id",
+      "created_at"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "user_id",
+      "attraction_id",
+      "reservation_time",
+      "ticket_purchase_time",
+      "total_price",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "TICKET": [
+      "ticket_id",
+      "reservation_id",
+      "attraction_id",
+      "ticket_type",
+      "price",
+      "quantity"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "user_id",
+      "attraction_id",
+      "comment_time",
+      "content",
+      "status",
+      "created_at",
+      "updated_at",
+      "moderated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "WECHAT_AUTH",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BOOKMARK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ATTRACTION_PICTURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.5367,
+  "ilp_runtime": 0.082
+}

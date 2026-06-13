@@ -1,0 +1,150 @@
+{
+  "filename": "406.txt",
+  "entity": {
+    "COMPANY": 0.755617,
+    "CUSTOMER": 0.817574,
+    "SUPPLIER": 0.817574,
+    "MATERIAL": 0.817574,
+    "WAREHOUSE": 0.726989,
+    "PROJECT": 0.7221,
+    "EMPLOYEE": 0.735595,
+    "ORDER": 0.817574,
+    "INVENTORY": 0.747439
+  },
+  "attribute": {
+    "COMPANY": {
+      "name": 0.750192,
+      "address": 0.744726,
+      "account_info": 0.752928
+    },
+    "CUSTOMER": {
+      "customer_id": 0.74459,
+      "contact_info": 0.745279,
+      "order_history": 0.745886
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.755646,
+      "contact_info": 0.754114,
+      "material_info": 0.757986
+    },
+    "MATERIAL": {
+      "material_id": 0.736203,
+      "description": 0.743893,
+      "type": 0.739488,
+      "quantity": 0.746342
+    },
+    "WAREHOUSE": {
+      "warehouse_id": 0.758675,
+      "address": 0.751636,
+      "capacity": 0.764107
+    },
+    "PROJECT": {
+      "project_id": 0.744823,
+      "start_date": 0.742697,
+      "end_date": 0.747235,
+      "execution_status": 0.74162
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.757137,
+      "position": 0.757167,
+      "salary": 0.750231,
+      "performance_score": 0.761114
+    },
+    "ORDER": {
+      "order_id": 0.741468,
+      "customer_id": 0.745685,
+      "order_date": 0.741392,
+      "total": 0.754936
+    },
+    "INVENTORY": {
+      "inventory_id": 0.749616,
+      "material_id": 0.746181,
+      "warehouse_id": 0.756835,
+      "quantity": 0.75669
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "description": "A company has multiple customers",
+      "probability": 0.135901
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SUPPLIER",
+      "cardinality": "1:N",
+      "description": "A company has multiple suppliers",
+      "probability": 0.016763
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer places multiple orders",
+      "probability": 0.954239
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "MATERIAL",
+      "cardinality": "1:N",
+      "description": "A supplier provides multiple materials",
+      "probability": 0.002222
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "WAREHOUSE",
+      "cardinality": "1:N",
+      "description": "A material is stored in multiple warehouses",
+      "probability": 0.344078
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A project is managed by multiple employees",
+      "probability": 0.628155
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "An order is fulfilled from multiple inventories",
+      "probability": 0.018637
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "MATERIAL",
+      "cardinality": "1:N",
+      "description": "An inventory contains multiple materials",
+      "probability": 0.783178
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "WAREHOUSE",
+      "cardinality": "1:N",
+      "description": "An inventory is stored in multiple warehouses",
+      "probability": 0.985166
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A project is associated with multiple orders",
+      "probability": 0.079949
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "An employee manages multiple inventories",
+      "probability": 0.000427
+    }
+  ],
+  "processing_time": 42.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added relationships between projects and orders, and between employees and inventories to improve the model's completeness and accuracy"
+  }
+}

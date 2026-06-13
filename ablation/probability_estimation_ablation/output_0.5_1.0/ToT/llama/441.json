@@ -1,0 +1,111 @@
+{
+  "filename": "441.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "USER": 0.817574,
+    "TRANSACTION": 0.817574,
+    "BUDGET_ADJUSTMENT": 0.762729,
+    "FUND_ALLOCATION": 0.760459,
+    "REPORT": 0.722441,
+    "WARNING": 0.779164
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.753364,
+      "project_name": 0.756216,
+      "budget": 0.771268,
+      "remaining_fund": 0.768169
+    },
+    "USER": {
+      "user_id": 0.739633,
+      "name": 0.734337,
+      "role": 0.756823,
+      "permission": 0.751904
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.732917,
+      "transaction_time": 0.733663,
+      "purpose": 0.752572,
+      "amount": 0.750301,
+      "operator": 0.748672
+    },
+    "BUDGET_ADJUSTMENT": {
+      "adjustment_id": 0.751985,
+      "adjustment_time": 0.751263,
+      "adjustment_amount": 0.753961
+    },
+    "FUND_ALLOCATION": {
+      "allocation_id": 0.762662,
+      "allocation_time": 0.761711,
+      "allocation_amount": 0.766175
+    },
+    "REPORT": {
+      "report_id": 0.749422,
+      "report_time": 0.749819,
+      "report_type": 0.754475,
+      "fund_usage": 0.77129
+    },
+    "WARNING": {
+      "warning_id": 0.730159,
+      "warning_time": 0.729799,
+      "warning_type": 0.733625,
+      "project_id": 0.745881
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A project can have multiple transactions",
+      "probability": 0.014619
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user can perform multiple transactions",
+      "probability": 0.992601
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BUDGET_ADJUSTMENT",
+      "cardinality": "1:N",
+      "description": "A project can have multiple budget adjustments",
+      "probability": 0.173616
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "FUND_ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A project can have multiple fund allocations",
+      "probability": 0.409474
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A project can have multiple reports",
+      "probability": 0.842098
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "WARNING",
+      "cardinality": "1:N",
+      "description": "A project can have multiple warnings",
+      "probability": 0.082741
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A transaction can be included in multiple reports",
+      "probability": 0.020716
+    }
+  ],
+  "processing_time": 23.29,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'REPORT' entity to support simple analytical functionality and multidimensional querying of fund usage. Added 'WARNING' mechanism to alert potential overspending and idle funds. Retained strengths of the original model and ensured the final model is optimal."
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "RealEstateAgent",
+    "Owner",
+    "Renter",
+    "Property",
+    "Rental",
+    "Payment"
+  ],
+
+  "attribut": {
+    "RealEstateAgent": [
+      "id_realEstate",
+      "name",
+      "phoneNumber",
+      "number_agreements_signed",
+      "email"
+    ],
+    "Owner": [
+      "id_owner",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Renter": [
+      "id_renter",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Property": [
+      "id_property",
+      "address",
+      "rentValue",
+      "id_owner",
+      "id_realEstate"
+    ],
+    "Rental": [
+      "id_rental",
+      "id_property",
+      "id_renter",
+      "rentInitialDate",
+      "rentFinalDate",
+      "activeContract",
+      "monthlyRent",
+      "depositAmount"
+    ],
+    "Payment": [
+      "payment_id",
+      "id_rental",
+      "payment_date",
+      "amount",
+      "month_paid_for",
+      "payer_account",
+      "receiver_agency_account",
+      "receiver_property_owner_account",
+      "payer_transfered",
+      "agency_percent"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Owner",
+      "entity_2": "Property",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "RealEstateAgent",
+      "entity_2": "Property",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Property",
+      "entity_2": "Rental",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Renter",
+      "entity_2": "Rental",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Rental",
+      "entity_2": "Payment",
+      "cardinality": "1:N"
+    }
+  ]
+}

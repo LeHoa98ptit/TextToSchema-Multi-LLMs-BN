@@ -1,0 +1,108 @@
+{
+  "filename": "499.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "CLASS": 0.622459,
+    "SPORTTEAM": 0.567707,
+    "DORMITORY": 0.622459,
+    "COACH": 0.496925,
+    "ADMINISTRATOR": 0.504575,
+    "ASSOC_STUDENT_SPORTTEAM": 0.003893
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.556567,
+      "gender": 0.559127,
+      "age": 0.547912,
+      "email": 0.54563,
+      "phone": 0.546348,
+      "class_id": 0.548646,
+      "dormitory_id": 0.569148,
+      "sport_team_ids": 0.561176
+    },
+    "CLASS": {
+      "classroom": 0.543425,
+      "major": 0.541935,
+      "classsize": 0.520523,
+      "class_id": 0.519607
+    },
+    "SPORTTEAM": {
+      "teamname": 0.535591,
+      "activitytime": 0.531787,
+      "coach_id": 0.529483
+    },
+    "DORMITORY": {
+      "dormitorynumber": 0.569147,
+      "buildingnumber": 0.555931,
+      "administrator_id": 0.566899
+    },
+    "COACH": {
+      "coachname": 0.521594,
+      "coachemail": 0.519258,
+      "coachphone": 0.52151,
+      "coach_id": 0.523449
+    },
+    "ADMINISTRATOR": {
+      "administratorname": 0.534884,
+      "administratoremail": 0.527384,
+      "administratorphone": 0.53971,
+      "administrator_id": 0.528454
+    },
+    "ASSOC_STUDENT_SPORTTEAM": {
+      "assoc_student_sportteam_id": 0.003893,
+      "student_id": 0.003893,
+      "sportteam_id": 0.003893
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CLASS",
+      "cardinality": "N:1",
+      "description": "A student is assigned to one class",
+      "probability": 0.999007
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_SPORTTEAM",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_SPORTTEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003893
+    },
+    {
+      "entity_1": "SPORTTEAM",
+      "entity_2": "ASSOC_STUDENT_SPORTTEAM",
+      "description": "One SPORTTEAM can be associated with many ASSOC_STUDENT_SPORTTEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003893
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DORMITORY",
+      "cardinality": "N:1",
+      "description": "A student is assigned to one dormitory",
+      "probability": 0.999926
+    },
+    {
+      "entity_1": "COACH",
+      "entity_2": "SPORTTEAM",
+      "cardinality": "1:N",
+      "description": "A coach can coach multiple sport teams",
+      "probability": 2e-06
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple dormitories",
+      "probability": 0.618421
+    }
+  ],
+  "processing_time": 8.79,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, added foreign key attributes to entities to improve relationship clarity, and retained comprehensive relationships to ensure data consistency."
+  }
+}

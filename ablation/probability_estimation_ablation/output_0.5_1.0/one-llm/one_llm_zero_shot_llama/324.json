@@ -1,0 +1,87 @@
+{
+  "filename": "324.txt",
+  "entity": {
+    "GEOGRAPHIC_LOCATION": 0.797332,
+    "IP_ADDRESS": 0.796441,
+    "COUNTRY": 0.817574,
+    "CONTINENT": 0.754007,
+    "PROVIDER": 0.725817,
+    "NETWORK": 0.756503,
+    "ASSOC_IP_ADDRESS_NETWORK": 0.972868
+  },
+  "attribute": {
+    "GEOGRAPHIC_LOCATION": {
+      "latitude": 0.773643,
+      "longitude": 0.773941,
+      "country_iso_code": 0.777053
+    },
+    "IP_ADDRESS": {
+      "ip": 0.766414,
+      "is_anonymous_proxy": 0.754572,
+      "is_satellite_provider": 0.763501
+    },
+    "COUNTRY": {
+      "name": 0.7513,
+      "iso_code": 0.765231,
+      "european_union": 0.756289
+    },
+    "CONTINENT": {
+      "name": 0.749139
+    },
+    "PROVIDER": {
+      "name": 0.753735
+    },
+    "NETWORK": {
+      "network_name": 0.740355,
+      "ip_range": 0.753074
+    },
+    "ASSOC_IP_ADDRESS_NETWORK": {
+      "assoc_ip_address_network_id": 0.972868,
+      "ip_address_id": 0.972868,
+      "network_id": 0.972868
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "cardinality": "1:1",
+      "probability": 0.974454
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "1:1",
+      "probability": 0.96505
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "1:N",
+      "probability": 0.688158
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "PROVIDER",
+      "cardinality": "1:N",
+      "probability": 0.94908
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "ASSOC_IP_ADDRESS_NETWORK",
+      "description": "One IP_ADDRESS can be associated with many ASSOC_IP_ADDRESS_NETWORK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972868
+    },
+    {
+      "entity_1": "NETWORK",
+      "entity_2": "ASSOC_IP_ADDRESS_NETWORK",
+      "description": "One NETWORK can be associated with many ASSOC_IP_ADDRESS_NETWORK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972868
+    }
+  ],
+  "processing_time": 16.68
+}

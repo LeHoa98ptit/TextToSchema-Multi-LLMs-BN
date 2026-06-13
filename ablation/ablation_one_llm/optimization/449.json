@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "EMPLOYEE",
+    "POSITION",
+    "TRAINING",
+    "DEPARTMENT",
+    "ASSOC_EMPLOYEE_POSITION",
+    "ASSOC_EMPLOYEE_TRAINING"
+  ],
+  "attribute": {
+    "EMPLOYEE": [
+      "employee_number",
+      "gender",
+      "date_of_birth",
+      "entry_date",
+      "resignation_date",
+      "contact_information",
+      "email_address",
+      "status"
+    ],
+    "POSITION": [
+      "position_number",
+      "position_responsibility",
+      "position_requirement"
+    ],
+    "TRAINING": [
+      "training_number",
+      "training_time",
+      "training_location",
+      "training_content",
+      "trainer"
+    ],
+    "DEPARTMENT": [
+      "department_number",
+      "department_function",
+      "department_planning_content"
+    ],
+    "ASSOC_EMPLOYEE_POSITION": [
+      "assoc_employee_position_id",
+      "employee_id",
+      "position_id"
+    ],
+    "ASSOC_EMPLOYEE_TRAINING": [
+      "assoc_employee_training_id",
+      "employee_id",
+      "training_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_POSITION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "ASSOC_EMPLOYEE_POSITION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRAINING",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.0898,
+  "ilp_runtime": 0.054
+}

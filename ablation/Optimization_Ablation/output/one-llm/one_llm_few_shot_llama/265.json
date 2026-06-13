@@ -1,0 +1,103 @@
+{
+  "entity": [
+    "COMPANY",
+    "CHESS_PIECE",
+    "CHESS_GAME",
+    "CHESSBOARD",
+    "BATCH",
+    "QUALITY_INSPECTION",
+    "QUALITY_ALERT",
+    "QUALITY_INSPECTION_MODEL",
+    "ASSOC_QUALITY_INSPECTION_CHESS_PIECE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "address"
+    ],
+    "CHESS_PIECE": [
+      "piece_id",
+      "type",
+      "color",
+      "position"
+    ],
+    "CHESS_GAME": [
+      "game_id",
+      "name",
+      "description"
+    ],
+    "CHESSBOARD": [
+      "board_id",
+      "size",
+      "material"
+    ],
+    "BATCH": [
+      "batch_id",
+      "production_date",
+      "quantity"
+    ],
+    "QUALITY_INSPECTION": [
+      "inspection_id",
+      "inspection_time",
+      "result",
+      "defect_type"
+    ],
+    "QUALITY_ALERT": [
+      "alert_id",
+      "alert_time",
+      "description"
+    ],
+    "QUALITY_INSPECTION_MODEL": [
+      "model_id",
+      "model_name",
+      "running_time",
+      "result"
+    ],
+    "ASSOC_QUALITY_INSPECTION_CHESS_PIECE": [
+      "assoc_quality_inspection_chess_piece_id",
+      "quality_inspection_id",
+      "chess_piece_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CHESS_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "ASSOC_QUALITY_INSPECTION_CHESS_PIECE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "ASSOC_QUALITY_INSPECTION_CHESS_PIECE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION_MODEL",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.2469,
+  "ilp_runtime": 0.063
+}

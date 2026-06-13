@@ -1,0 +1,80 @@
+{
+  "filename": "254.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SEISMOGRAPH": 0.777905,
+    "CALIBRATION": 0.817574,
+    "VIBRATION_TABLE_TEST": 0.687101,
+    "ASSOC_USER_SEISMOGRAPH": 0.010665
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.732428,
+      "password": 0.743678,
+      "role": 0.753593,
+      "email": 0.743372
+    },
+    "SEISMOGRAPH": {
+      "seismograph_id": 0.753372,
+      "location": 0.757177,
+      "mechanical_period": 0.757525,
+      "equivalent_pendulum_length": 0.756071,
+      "moment_inertia": 0.753759
+    },
+    "CALIBRATION": {
+      "calibration_id": 0.745648,
+      "calibration_date": 0.743592,
+      "amplitude": 0.748155,
+      "width": 0.740834,
+      "calibration_coil_sensitivity": 0.745849,
+      "vibration_table_test_result": 0.757362
+    },
+    "VIBRATION_TABLE_TEST": {
+      "test_id": 0.755495,
+      "test_date": 0.754668,
+      "result": 0.756583
+    },
+    "ASSOC_USER_SEISMOGRAPH": {
+      "assoc_user_seismograph_id": 0.010665,
+      "user_id": 0.010665,
+      "seismograph_id": 0.010665
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_SEISMOGRAPH",
+      "description": "One USER can be associated with many ASSOC_USER_SEISMOGRAPH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010665
+    },
+    {
+      "entity_1": "SEISMOGRAPH",
+      "entity_2": "ASSOC_USER_SEISMOGRAPH",
+      "description": "One SEISMOGRAPH can be associated with many ASSOC_USER_SEISMOGRAPH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010665
+    },
+    {
+      "entity_1": "SEISMOGRAPH",
+      "entity_2": "CALIBRATION",
+      "cardinality": "1:N",
+      "description": "A seismograph can have multiple calibrations",
+      "probability": 0.87163
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "VIBRATION_TABLE_TEST",
+      "cardinality": "1:1",
+      "description": "A calibration is associated with one vibration table test",
+      "probability": 0.122135
+    }
+  ],
+  "processing_time": 21.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged EQUIVALENT_PENDULUM_LENGTH, MOMENT_INERTIA, and CALIBRATION_COIL_SENSITIVITY into SEISMOGRAPH and CALIBRATION entities, removed redundant relationships, and reviewed cardinality of relationships for accuracy."
+  }
+}

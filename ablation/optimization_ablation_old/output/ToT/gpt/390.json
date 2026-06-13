@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "CONSUMER",
+    "ADDRESS",
+    "PHONE",
+    "COURIER_COMPANY",
+    "COURIER",
+    "RECIPIENT",
+    "ADMINISTRATOR",
+    "PARTNERSHIP",
+    "TRACKING_EVENT"
+  ],
+  "attribute": {
+    "CONSUMER": [
+      "consumer_id",
+      "first_name",
+      "last_name",
+      "email"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "postal_code",
+      "country",
+      "address_type"
+    ],
+    "PHONE": [
+      "phone_id",
+      "phone_number",
+      "type"
+    ],
+    "COURIER_COMPANY": [
+      "company_id",
+      "company_name",
+      "contact_email",
+      "arrival_time",
+      "charge_price",
+      "base_rate"
+    ],
+    "COURIER": [
+      "courier_id",
+      "tracking_number",
+      "weight",
+      "dimensions",
+      "status",
+      "price",
+      "sent_date",
+      "expected_delivery"
+    ],
+    "RECIPIENT": [
+      "recipient_id",
+      "name",
+      "email"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "login",
+      "password_hash",
+      "role"
+    ],
+    "PARTNERSHIP": [
+      "partnership_id",
+      "start_date",
+      "end_date",
+      "agreement_details"
+    ],
+    "TRACKING_EVENT": [
+      "event_id",
+      "courier_id",
+      "event_time",
+      "location",
+      "status_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RECIPIENT",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMER",
+      "entity_2": "COURIER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURIER",
+      "entity_2": "COURIER_COMPANY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTNERSHIP",
+      "entity_2": "COURIER_COMPANY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.5279,
+  "ilp_runtime": 0.077
+}

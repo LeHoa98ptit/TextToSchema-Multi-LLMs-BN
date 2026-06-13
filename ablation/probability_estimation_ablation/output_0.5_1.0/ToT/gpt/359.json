@@ -1,0 +1,144 @@
+{
+  "filename": "359.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EVENT": 0.817574,
+    "EVENT_TYPE": 0.75571,
+    "REGISTRATION": 0.799168,
+    "MESSAGE": 0.731511,
+    "LOCATION": 0.720169,
+    "PHOTO": 0.74808
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.74842,
+      "username": 0.747491,
+      "email": 0.755864,
+      "password_hash": 0.738389,
+      "contact_number": 0.752174,
+      "date_joined": 0.743292,
+      "avatar_photo_id": 0.753834
+    },
+    "EVENT": {
+      "eventid": 0.768622,
+      "title": 0.76417,
+      "description": 0.771894,
+      "start_time": 0.756292,
+      "end_time": 0.753207,
+      "max_participants": 0.756526,
+      "status": 0.765972,
+      "locationid": 0.767179,
+      "typeid": 0.76571,
+      "creator_userid": 0.764275
+    },
+    "EVENT_TYPE": {
+      "typeid": 0.762126,
+      "name": 0.766331,
+      "category": 0.76579
+    },
+    "REGISTRATION": {
+      "registrationid": 0.760662,
+      "registered_at": 0.755773,
+      "status": 0.756551,
+      "interest_level": 0.755027,
+      "userid": 0.758252,
+      "eventid": 0.77408
+    },
+    "MESSAGE": {
+      "messageid": 0.758635,
+      "content": 0.759721,
+      "sent_at": 0.753623,
+      "is_system": 0.74593,
+      "eventid": 0.768251,
+      "userid": 0.756355,
+      "parent_message_id": 0.743575
+    },
+    "LOCATION": {
+      "locationid": 0.747883,
+      "venue_name": 0.755743,
+      "address": 0.747423,
+      "city": 0.747773,
+      "state": 0.737186,
+      "postal_code": 0.736841,
+      "latitude": 0.738517,
+      "longitude": 0.732902
+    },
+    "PHOTO": {
+      "photoid": 0.750003,
+      "url": 0.750094,
+      "uploaded_at": 0.753294,
+      "is_profile": 0.749421,
+      "userid": 0.757827
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "A user creates many events; each event has one creator",
+      "probability": 0.971626
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_TYPE",
+      "cardinality": "N:1",
+      "description": "Each event is assigned one type; a type can be used by many events",
+      "probability": 0.999898
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Each event occurs at one location; a location can host many events over time",
+      "probability": 0.93924
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A user can have many registrations for different events",
+      "probability": 0.999829
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "An event can have many registrations from different users",
+      "probability": 0.118136
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PHOTO",
+      "cardinality": "1:N",
+      "description": "A user can upload multiple photos (profile and gallery)",
+      "probability": 0.141196
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "EVENT",
+      "cardinality": "N:1",
+      "description": "Messages are posted on a specific event page",
+      "probability": 0.03745
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can send many messages",
+      "probability": 0.999707
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A message can have many reply messages (threaded comments)",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 32.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged COMMENT into MESSAGE using a self‑referencing parent_message_id for threaded comments, reducing entity count. Replaced avatar_url in USER with avatar_photo_id FK to PHOTO to avoid duplication. Adjusted EVENT‑LOCATION cardinality to N:1 (location hosts many events). Added explicit foreign key attributes (creator_userid, locationid, typeid, userid/eventid in related tables). Retained all core entities and relationships, added USER.username and USER.email uniqueness considerations (not shown in JSON), and prepared for indexing foreign keys."
+  }
+}

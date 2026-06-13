@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "USER",
+    "ACCOUNT",
+    "PARTY_SERVICE_PROVIDER",
+    "SESSION",
+    "VERIFICATION_REQUEST"
+  ],
+  "attribute": {
+    "USER": [
+      "user_d",
+      "username",
+      "user_email",
+      "email_verification_time",
+      "user_avatar_url",
+      "user_creation_time",
+      "user_update_time"
+    ],
+    "ACCOUNT": [
+      "account_d",
+      "user_d",
+      "party_service_provider_d",
+      "refresh_token",
+      "access_token",
+      "access_token_expiration_time",
+      "account_creation_time",
+      "account_update_time"
+    ],
+    "PARTY_SERVICE_PROVIDER": [
+      "party_service_provider_d",
+      "party_service_provider_type"
+    ],
+    "SESSION": [
+      "session_d",
+      "user_d",
+      "session_expiration_time",
+      "session_token",
+      "access_token",
+      "session_creation_time",
+      "session_update_time"
+    ],
+    "VERIFICATION_REQUEST": [
+      "verification_request_d",
+      "user_d",
+      "verification_request_identifi",
+      "verification_token",
+      "verification_request_expiration_time",
+      "verification_request_creation_time",
+      "verification_request_update_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "VERIFICATION_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "PARTY_SERVICE_PROVIDER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SESSION",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.3084,
+  "ilp_runtime": 0.041
+}

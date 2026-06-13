@@ -1,0 +1,207 @@
+{
+  "filename": "423.txt",
+  "entity": {
+    "CATEGORY": 0.492326,
+    "COURSE": 0.622459,
+    "CHAPTER": 0.622459,
+    "INSTRUCTOR": 0.622459,
+    "STUDENT": 0.534719,
+    "ENROLLMENT": 0.461228,
+    "LEARN_PROGRESS": 0.4991,
+    "FEEDBACK": 0.469538,
+    "ASSOC_INSTRUCTOR_COURSE": 0.228131,
+    "ASSOC_STUDENT_COURSE": 0.002661,
+    "ASSOC_STUDENT_INSTRUCTOR": 0.004389
+  },
+  "attribute": {
+    "CATEGORY": {
+      "category_id": 0.515193,
+      "name": 0.527746,
+      "target_audience": 0.523469,
+      "description": 0.534478
+    },
+    "COURSE": {
+      "course_id": 0.558347,
+      "title": 0.556266,
+      "description": 0.565301,
+      "total_lessons": 0.569162,
+      "total_duration": 0.554772,
+      "difficulty_level": 0.551917,
+      "recommendation_status": 0.561234
+    },
+    "CHAPTER": {
+      "chapter_id": 0.520779,
+      "course_id": 0.560633,
+      "title": 0.528611,
+      "description": 0.537326,
+      "video_url": 0.530974,
+      "material_path": 0.514768,
+      "duration": 0.528014,
+      "sequence_number": 0.526449,
+      "previous_chapter_id": 0.517336,
+      "parent_chapter_id": 0.519338
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.561318,
+      "name": 0.558718,
+      "avatar": 0.545079,
+      "teaching_experience": 0.564595,
+      "professional_field": 0.559966,
+      "profile": 0.567097,
+      "average_rating": 0.553851
+    },
+    "STUDENT": {
+      "student_id": 0.546511,
+      "name": 0.548018,
+      "avatar": 0.536085,
+      "gender": 0.540787,
+      "age": 0.539259,
+      "contact_info": 0.550029,
+      "email": 0.53983,
+      "registration_time": 0.544809,
+      "account_status": 0.545966,
+      "membership_level": 0.555293,
+      "points": 0.544558
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.533819,
+      "student_id": 0.544985,
+      "course_id": 0.558171,
+      "enrollment_date": 0.527233,
+      "progress_percentage": 0.540523,
+      "completion_status": 0.533998,
+      "total_learning_duration": 0.5509,
+      "course_completion_rate": 0.555998
+    },
+    "LEARN_PROGRESS": {
+      "progress_id": 0.538108,
+      "enrollment_id": 0.553675,
+      "chapter_id": 0.546335,
+      "learn_time": 0.539266,
+      "view_duration": 0.539648,
+      "view_completion_status": 0.538597
+    },
+    "FEEDBACK": {
+      "feedback_id": 0.510716,
+      "student_id": 0.54577,
+      "instructor_id": 0.554222,
+      "rating": 0.514788,
+      "comments": 0.50775,
+      "feedback_time": 0.509238
+    },
+    "ASSOC_INSTRUCTOR_COURSE": {
+      "assoc_instructor_course_id": 0.228131,
+      "instructor_id": 0.228131,
+      "course_id": 0.228131
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.002661,
+      "student_id": 0.002661,
+      "course_id": 0.002661
+    },
+    "ASSOC_STUDENT_INSTRUCTOR": {
+      "assoc_student_instructor_id": 0.004389,
+      "student_id": 0.004389,
+      "instructor_id": 0.004389
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "probability": 0.027278
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CHAPTER",
+      "cardinality": "1:N",
+      "probability": 0.402747
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "ASSOC_INSTRUCTOR_COURSE",
+      "description": "One INSTRUCTOR can be associated with many ASSOC_INSTRUCTOR_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.228131
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_INSTRUCTOR_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_INSTRUCTOR_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.228131
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002661
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002661
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "probability": 0.999595
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "probability": 0.037836
+    },
+    {
+      "entity_1": "ENROLLMENT",
+      "entity_2": "LEARN_PROGRESS",
+      "cardinality": "1:N",
+      "probability": 0.079362
+    },
+    {
+      "entity_1": "CHAPTER",
+      "entity_2": "LEARN_PROGRESS",
+      "cardinality": "1:N",
+      "probability": 0.000768
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_INSTRUCTOR",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_INSTRUCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004389
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "ASSOC_STUDENT_INSTRUCTOR",
+      "description": "One INSTRUCTOR can be associated with many ASSOC_STUDENT_INSTRUCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004389
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "probability": 0.013034
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "probability": 0.014664
+    }
+  ],
+  "processing_time": 41.04
+}

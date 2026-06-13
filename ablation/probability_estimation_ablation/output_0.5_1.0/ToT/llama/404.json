@@ -1,0 +1,91 @@
+{
+  "filename": "404.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "PRODUCT": 0.817574,
+    "SUPPLIER": 0.817574,
+    "SALE": 0.817574,
+    "INVENTORY": 0.754489
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "username": 0.747845,
+      "password": 0.7552,
+      "position": 0.755569,
+      "email": 0.753937,
+      "phone_number": 0.748615,
+      "address": 0.756651
+    },
+    "PRODUCT": {
+      "name": 0.753222,
+      "id": 0.754856,
+      "purchase_price": 0.760767,
+      "sale_price": 0.767066,
+      "stock_quantity": 0.774633,
+      "description": 0.759745
+    },
+    "SUPPLIER": {
+      "name": 0.76245,
+      "id": 0.762732,
+      "phone_number": 0.759423,
+      "address": 0.765363
+    },
+    "SALE": {
+      "product_name": 0.770412,
+      "id": 0.757684,
+      "quantity": 0.776028,
+      "price": 0.756058,
+      "sale_date": 0.761506,
+      "discount": 0.755358
+    },
+    "INVENTORY": {
+      "product_id": 0.772775,
+      "stock_quantity": 0.774787,
+      "sale_price": 0.777008,
+      "reorder_level": 0.765227,
+      "reorder_quantity": 0.772233
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "An employee can make multiple sales",
+      "probability": 0.497716
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supplier can provide multiple products",
+      "probability": 0.035086
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple inventory records",
+      "probability": 0.425723
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "A product has one inventory record",
+      "probability": 0.931136
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A sale can affect multiple inventory records",
+      "probability": 0.998387
+    }
+  ],
+  "processing_time": 25.4,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged employee contact information into the employee entity and added a relationship between supplier and inventory to track supplier inventory levels."
+  }
+}

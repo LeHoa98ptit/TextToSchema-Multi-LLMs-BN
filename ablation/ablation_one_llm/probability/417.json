@@ -1,0 +1,98 @@
+{
+  "filename": "417.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "CATEGORY": 0.817574,
+    "NOTIFICATION": 0.817574,
+    "ASSOC_COMMENT_COMMENT": 1.0,
+    "ASSOC_POST_CATEGORY": 0.316994
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.743512,
+      "email": 0.755397,
+      "password": 0.747776,
+      "avatar_link": 0.742001,
+      "registration_date": 0.74343
+    },
+    "POST": {
+      "title": 0.752499,
+      "content": 0.755052,
+      "post_time": 0.74491,
+      "status": 0.76057,
+      "reply_count": 0.766241,
+      "like_count": 0.757624,
+      "favorite_count": 0.752023
+    },
+    "COMMENT": {
+      "comment_content": 0.757064,
+      "post_time": 0.755816,
+      "like_count": 0.765242,
+      "reply_count": 0.767697
+    },
+    "CATEGORY": {
+      "category": 0.765297
+    },
+    "NOTIFICATION": {
+      "notification_message": 0.758016,
+      "notification_content": 0.758687,
+      "read_status": 0.754729
+    },
+    "ASSOC_COMMENT_COMMENT": {
+      "assoc_comment_comment_id": 1.0,
+      "comment_id": 1.0
+    },
+    "ASSOC_POST_CATEGORY": {
+      "assoc_post_category_id": 0.316994,
+      "post_id": 0.316994,
+      "category_id": 0.316994
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create many posts, but each post is created by one user.",
+      "probability": 0.865847
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments, but each comment is associated with one post.",
+      "probability": 0.017743
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "ASSOC_COMMENT_COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_POST_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.316994
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_POST_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.316994
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can receive many notifications, but each notification is sent to one user.",
+      "probability": 0.998575
+    }
+  ],
+  "processing_time": 12.78
+}

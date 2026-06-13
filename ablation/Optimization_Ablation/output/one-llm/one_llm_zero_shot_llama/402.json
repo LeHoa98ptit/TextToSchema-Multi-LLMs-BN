@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "DOCTOR",
+    "DEPARTMENT",
+    "PATIENT",
+    "DIAGNOSIS_TREATMENT",
+    "WARD",
+    "REGISTRATION_CATEGORY",
+    "DRUG",
+    "DRUG_LIST",
+    "ASSOC_DRUG_DRUG_LIST",
+    "ASSOC_DOCTOR_DIAGNOSIS_TREATMENT"
+  ],
+  "attribute": {
+    "DOCTOR": [
+      "gender",
+      "title",
+      "date_of_birth",
+      "year_of_employment",
+      "work_permit"
+    ],
+    "DEPARTMENT": [
+      "department_number",
+      "department_phone_number",
+      "department_address"
+    ],
+    "PATIENT": [
+      "gender",
+      "age",
+      "contact_information",
+      "diagnosis_description",
+      "date_of_consultation"
+    ],
+    "DIAGNOSIS_TREATMENT": [
+      "case_number",
+      "diagnosis_treatment_content"
+    ],
+    "WARD": [
+      "ward_number",
+      "number_of_beds",
+      "ward_level"
+    ],
+    "REGISTRATION_CATEGORY": [
+      "category_number",
+      "category"
+    ],
+    "DRUG": [
+      "quantity",
+      "price",
+      "barcode"
+    ],
+    "DRUG_LIST": [
+      "drug_list_number",
+      "drug_information"
+    ],
+    "ASSOC_DRUG_DRUG_LIST": [
+      "assoc_drug_drug_list_id",
+      "drug_id",
+      "drug_list_id"
+    ],
+    "ASSOC_DOCTOR_DIAGNOSIS_TREATMENT": [
+      "assoc_doctor_diagnosis_treatment_id",
+      "doctor_id",
+      "diagnosis_treatment_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_DRUG_DRUG_LIST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DRUG_LIST",
+      "entity_2": "ASSOC_DRUG_DRUG_LIST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "ASSOC_DOCTOR_DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DIAGNOSIS_TREATMENT",
+      "entity_2": "ASSOC_DOCTOR_DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 55.4287,
+  "ilp_runtime": 0.123
+}

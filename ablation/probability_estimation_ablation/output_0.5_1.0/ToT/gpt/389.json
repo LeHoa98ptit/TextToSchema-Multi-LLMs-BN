@@ -1,0 +1,69 @@
+{
+  "filename": "389.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "COURSE": 0.817574,
+    "ENROLLMENT": 0.743835
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.772191,
+      "name": 0.772592,
+      "gender": 0.772527,
+      "age": 0.76475,
+      "phone": 0.764787
+    },
+    "TEACHER": {
+      "teacher_id": 0.768561,
+      "name": 0.765274,
+      "gender": 0.765971,
+      "title": 0.767141,
+      "phone": 0.761166
+    },
+    "COURSE": {
+      "course_id": 0.767118,
+      "name": 0.765584,
+      "credit": 0.754915,
+      "class_hour": 0.770732,
+      "location": 0.764376,
+      "max_students": 0.778195,
+      "teacher_id": 0.776367
+    },
+    "ENROLLMENT": {
+      "student_id": 0.768536,
+      "course_id": 0.771386,
+      "enrollment_date": 0.75657,
+      "status": 0.75925,
+      "grade": 0.765939
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999895
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can be enrolled by many students",
+      "probability": 0.089358
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "A teacher teaches multiple courses",
+      "probability": 0.992231
+    }
+  ],
+  "processing_time": 953.95,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added a 'status' attribute to ENROLLMENT to capture course‑selection status (e.g., pending, completed, withdrawn). Renamed 'selection_time' to 'enrollment_date' for clearer semantics. Replaced surrogate 'enrollment_id' with a composite primary key (student_id, course_id) to naturally enforce the many‑to‑many relationship and prevent duplicate enrollments. Retained all original entities, attributes, and relationships, preserving the clean structure and naming consistency."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "WORK_ORDER",
+    "EMAIL_CONFIGURATION",
+    "EMPLOYEE",
+    "ASSOC_DEPARTMENT_EMPLOYEE"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "description",
+      "email_address",
+      "sort_order",
+      "respond_email_pipeline",
+      "auto_reply_disabled",
+      "hide_user"
+    ],
+    "WORK_ORDER": [
+      "work_order_id",
+      "title",
+      "description",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "EMAIL_CONFIGURATION": [
+      "config_id",
+      "host_address",
+      "port_number",
+      "login_username",
+      "login_password",
+      "auto_handle_email"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "first_name",
+      "last_name",
+      "email"
+    ],
+    "ASSOC_DEPARTMENT_EMPLOYEE": [
+      "assoc_department_employee_id",
+      "department_id",
+      "employee_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMAIL_CONFIGURATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_DEPARTMENT_EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_DEPARTMENT_EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 60.7503,
+  "ilp_runtime": 0.096
+}

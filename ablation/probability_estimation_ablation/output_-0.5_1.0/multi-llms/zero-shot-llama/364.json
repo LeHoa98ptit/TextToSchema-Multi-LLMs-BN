@@ -1,0 +1,73 @@
+{
+  "filename": "364.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "USER": 0.622459,
+    "LOGIN_RESPONSE_TYPE": 0.568369,
+    "LOGIN_ATTEMPT": 0.553544,
+    "LOGIN_RESPONSE_RECORD": 0.570723
+  },
+  "attribute": {
+    "COMPANY": {
+      "company id": 0.536713,
+      "company name": 0.535785
+    },
+    "USER": {
+      "user id": 0.533108,
+      "username": 0.515891,
+      "phone number": 0.523322,
+      "job title": 0.551354,
+      "company id": 0.548605
+    },
+    "LOGIN_RESPONSE_TYPE": {
+      "response type id": 0.547595,
+      "response label": 0.551814
+    },
+    "LOGIN_ATTEMPT": {
+      "attempt id": 0.537497,
+      "user id": 0.539891,
+      "attempt time": 0.537867
+    },
+    "LOGIN_RESPONSE_RECORD": {
+      "record id": 0.545997,
+      "attempt id": 0.547544,
+      "response type id": 0.547787,
+      "login time": 0.548846
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "description": "A company has multiple users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.890032
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_ATTEMPT",
+      "description": "A user has multiple login attempts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994659
+    },
+    {
+      "entity_1": "LOGIN_ATTEMPT",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "description": "A login attempt generates a login response record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.995282
+    },
+    {
+      "entity_1": "LOGIN_RESPONSE_RECORD",
+      "entity_2": "LOGIN_RESPONSE_TYPE",
+      "description": "Multiple login response records can have the same login response type",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999956
+    }
+  ],
+  "processing_time": 11.23
+}

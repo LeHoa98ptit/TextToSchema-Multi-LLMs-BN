@@ -1,0 +1,169 @@
+{
+  "filename": "419.txt",
+  "entity": {
+    "DISH": 0.817574,
+    "INGREDIENT": 0.70763,
+    "DISH_CATEGORY": 0.765271,
+    "USER": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "DELIVERY_PERSON": 0.774884,
+    "SHOPPING_CART": 0.685119,
+    "CART_ITEM": 0.676712,
+    "DISH_INGREDIENT": 0.159781
+  },
+  "attribute": {
+    "DISH": {
+      "dish id": 0.767259,
+      "dish name": 0.767544,
+      "dish price": 0.766851,
+      "cuisine type": 0.769142,
+      "special feature": 0.772147,
+      "recommendation index": 0.772381,
+      "recommendation status": 0.779086,
+      "category id": 0.770145
+    },
+    "INGREDIENT": {
+      "ingredient id": 0.737485,
+      "ingredient name": 0.738038
+    },
+    "DISH_CATEGORY": {
+      "category id": 0.764935,
+      "cuisine type": 0.773739,
+      "special feature": 0.772607,
+      "recommendation status": 0.776197
+    },
+    "USER": {
+      "user id": 0.743758,
+      "username": 0.731286,
+      "password hash": 0.739846,
+      "phone number": 0.743791,
+      "address": 0.747494,
+      "registration time": 0.743978,
+      "account status": 0.751643
+    },
+    "ORDER": {
+      "order id": 0.755896,
+      "user id": 0.754237,
+      "order time": 0.752758,
+      "order status": 0.761714,
+      "delivery address": 0.756751,
+      "delivery time": 0.747686,
+      "delivery person id": 0.750772
+    },
+    "ORDER_ITEM": {
+      "order item id": 0.753779,
+      "order id": 0.754609,
+      "dish id": 0.775446,
+      "quantity": 0.765241,
+      "unit price": 0.757693,
+      "total price": 0.757634
+    },
+    "DELIVERY_PERSON": {
+      "delivery person id": 0.746483,
+      "full name": 0.748076,
+      "phone number": 0.745321
+    },
+    "SHOPPING_CART": {
+      "cart id": 0.75632,
+      "user id": 0.758392,
+      "cart status": 0.764237,
+      "created at": 0.75802,
+      "settlement status": 0.754683
+    },
+    "CART_ITEM": {
+      "cart item id": 0.751457,
+      "cart id": 0.753276,
+      "dish id": 0.773731,
+      "quantity": 0.765722
+    },
+    "DISH_INGREDIENT": {
+      "dish_ingredient_id": 0.159781,
+      "dish_id": 0.159781,
+      "ingredient_id": 0.159781
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DISH_CATEGORY",
+      "entity_2": "DISH",
+      "description": "Each dish belongs to one category, while a category can include many dishes.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999966
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_INGREDIENT",
+      "description": "One DISH can be associated with many DISH_INGREDIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.159781
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "DISH_INGREDIENT",
+      "description": "One INGREDIENT can be associated with many DISH_INGREDIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.159781
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "Each order is placed by one user, while a user can place many orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998749
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "An order consists of multiple order items, each item belongs to a single order.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_ITEM",
+      "description": "A dish can appear in many order items, each order item references one dish.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014759
+    },
+    {
+      "entity_1": "DELIVERY_PERSON",
+      "entity_2": "ORDER",
+      "description": "A delivery person can handle many orders, each order is assigned to one delivery person.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 2.5e-05
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "description": "A user can have multiple shopping carts, each cart belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996432
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "CART_ITEM",
+      "description": "A shopping cart contains multiple cart items, each cart item belongs to one cart.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999081
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "CART_ITEM",
+      "description": "A dish can appear in many cart items, each cart item references one dish.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003333
+    }
+  ],
+  "processing_time": 39.95
+}

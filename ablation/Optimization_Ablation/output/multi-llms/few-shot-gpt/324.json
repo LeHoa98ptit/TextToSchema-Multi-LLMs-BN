@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "USER",
+    "IP_ADDRESS",
+    "GEOGRAPHIC_LOCATION",
+    "COUNTRY",
+    "CONTINENT",
+    "PROVIDER",
+    "IP_NETWORK",
+    "GEOLOCATION_DATUM"
+  ],
+  "attribute": {
+    "USER": [
+      "user id"
+    ],
+    "IP_ADDRESS": [
+      "ip address",
+      "user id",
+      "ip network id",
+      "provider id",
+      "is anonymous proxy",
+      "is satellite provider"
+    ],
+    "GEOGRAPHIC_LOCATION": [
+      "location id",
+      "ip address",
+      "continent id",
+      "country id"
+    ],
+    "COUNTRY": [
+      "country id",
+      "country name",
+      "iso code",
+      "is eu member"
+    ],
+    "CONTINENT": [
+      "continent id",
+      "continent name"
+    ],
+    "PROVIDER": [
+      "provider id",
+      "provider name",
+      "provider type"
+    ],
+    "IP_NETWORK": [
+      "network id",
+      "network cidr"
+    ],
+    "GEOLOCATION_DATUM": [
+      "datum id",
+      "source",
+      "last updated",
+      "integrity status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "IP_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROVIDER",
+      "entity_2": "IP_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTINENT",
+      "entity_2": "COUNTRY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "IP_ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GEOLOCATION_DATUM",
+      "entity_2": "IP_NETWORK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.4466,
+  "ilp_runtime": 0.068
+}

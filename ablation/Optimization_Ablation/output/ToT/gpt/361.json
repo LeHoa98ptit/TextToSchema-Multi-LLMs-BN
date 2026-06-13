@@ -1,0 +1,135 @@
+{
+  "entity": [
+    "RESTAURANT",
+    "DISH",
+    "USER",
+    "REVIEW",
+    "TAG",
+    "CATEGORY",
+    "RESTAURANT_TAG",
+    "DISH_TAG",
+    "DISH_CATEGORY",
+    "REPLY",
+    "ASSOC_RESTAURANT_TAG"
+  ],
+  "attribute": {
+    "RESTAURANT": [
+      "restaurant_id",
+      "name",
+      "address",
+      "phone",
+      "business_hour",
+      "average_cost",
+      "latitude",
+      "longitude",
+      "average_rating",
+      "review_count",
+      "created_at",
+      "updated_at"
+    ],
+    "DISH": [
+      "dish_id",
+      "restaurant_id",
+      "name",
+      "price",
+      "description",
+      "image_url",
+      "satisfaction_rate",
+      "monthly_sales",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "registered_at",
+      "last_login"
+    ],
+    "REVIEW": [
+      "review_id",
+      "user_id",
+      "restaurant_id",
+      "rating",
+      "content",
+      "dining_time",
+      "photo_url",
+      "created_at"
+    ],
+    "TAG": [
+      "tag_id",
+      "name",
+      "type"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "type"
+    ],
+    "RESTAURANT_TAG": [
+      "restaurant_id",
+      "tag_id"
+    ],
+    "DISH_TAG": [
+      "dish_id",
+      "tag_id"
+    ],
+    "DISH_CATEGORY": [
+      "dish_id",
+      "category_id"
+    ],
+    "REPLY": [
+      "reply_id",
+      "review_id",
+      "restaurant_id",
+      "content",
+      "reply_time"
+    ],
+    "ASSOC_RESTAURANT_TAG": [
+      "assoc_restaurant_tag_id",
+      "restaurant_id",
+      "tag_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "ASSOC_RESTAURANT_TAG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_RESTAURANT_TAG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REVIEW",
+      "entity_2": "REPLY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.379,
+  "ilp_runtime": 0.102
+}

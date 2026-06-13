@@ -1,0 +1,68 @@
+{
+  "filename": "386.txt",
+  "entity": {
+    "USER": 0.622459,
+    "BLOCK": 0.622459,
+    "TRANSACTION": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.527464,
+      "username": 0.505934,
+      "public key": 0.526594,
+      "address": 0.523589,
+      "creation time": 0.524996
+    },
+    "BLOCK": {
+      "block id": 0.525144,
+      "block hash": 0.532085,
+      "creation time": 0.522621,
+      "block size": 0.526592,
+      "previous block id": 0.519847
+    },
+    "TRANSACTION": {
+      "transaction id": 0.545791,
+      "sender id": 0.543804,
+      "receiver id": 0.542106,
+      "transaction time": 0.547145,
+      "block id": 0.548059,
+      "operation type": 0.56088,
+      "operation content": 0.56163
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "description": "A user (sender) can send many transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992625
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "description": "A user (receiver) can receive many transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992625
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "TRANSACTION",
+      "description": "A block contains many transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999495
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "BLOCK",
+      "description": "Each block references exactly one previous block",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 13.72
+}

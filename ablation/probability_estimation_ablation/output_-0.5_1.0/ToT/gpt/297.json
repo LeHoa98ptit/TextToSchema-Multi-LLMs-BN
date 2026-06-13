@@ -1,0 +1,142 @@
+{
+  "filename": "297.txt",
+  "entity": {
+    "DOCUMENT": 0.622459,
+    "DOCUMENT_TYPE": 0.588605,
+    "VERSION": 0.622459,
+    "STATUS_CATEGORY": 0.607592,
+    "PROCESS_STEP": 0.474522,
+    "STATUS": 0.622459,
+    "STATUS_HISTORY": 0.543192,
+    "USER": 0.490151
+  },
+  "attribute": {
+    "DOCUMENT": {
+      "doc_id": 0.549789,
+      "title": 0.545761,
+      "abstract": 0.548481,
+      "doc_type_id": 0.556479,
+      "created_at": 0.521495,
+      "created_by": 0.525877,
+      "current_version_id": 0.552807
+    },
+    "DOCUMENT_TYPE": {
+      "doc_type_id": 0.556468,
+      "name": 0.564725,
+      "description": 0.564737,
+      "retention_policy": 0.553256
+    },
+    "VERSION": {
+      "version_id": 0.542901,
+      "doc_id": 0.55771,
+      "version_number": 0.544374,
+      "content_hash": 0.5275,
+      "file_path": 0.527151,
+      "created_at": 0.5114,
+      "created_by": 0.516355,
+      "is_active": 0.523655
+    },
+    "STATUS_CATEGORY": {
+      "category_id": 0.542197,
+      "name": 0.553532,
+      "description": 0.553641
+    },
+    "PROCESS_STEP": {
+      "step_id": 0.519196,
+      "name": 0.522934,
+      "description": 0.527667,
+      "order_number": 0.52572
+    },
+    "STATUS": {
+      "status_id": 0.542977,
+      "version_id": 0.553924,
+      "category_id": 0.543965,
+      "process_step_id": 0.535829,
+      "status_value": 0.538722,
+      "sequence_number": 0.553052,
+      "effective_date": 0.528026,
+      "notes": 0.545242,
+      "changed_by": 0.521528,
+      "changed_at": 0.519084
+    },
+    "STATUS_HISTORY": {
+      "history_id": 0.535195,
+      "status_id": 0.540709,
+      "from_status_id": 0.535766,
+      "to_status_id": 0.536826,
+      "changed_by": 0.523465,
+      "changed_at": 0.521342,
+      "comment": 0.523747
+    },
+    "USER": {
+      "user_id": 0.500369,
+      "username": 0.492036,
+      "full_name": 0.49388,
+      "email": 0.491762,
+      "role": 0.510982
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "DOCUMENT_TYPE",
+      "cardinality": "N:1",
+      "description": "Each document is classified by one document type.",
+      "probability": 0.988639
+    },
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "description": "A document can have many versions; each version belongs to one document.",
+      "probability": 0.734065
+    },
+    {
+      "entity_1": "VERSION",
+      "entity_2": "STATUS",
+      "cardinality": "1:N",
+      "description": "Each version can have multiple status records over its lifecycle.",
+      "probability": 0.360649
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "STATUS_CATEGORY",
+      "cardinality": "N:1",
+      "description": "A status belongs to a single category (e.g., lifecycle, approval).",
+      "probability": 0.992607
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "PROCESS_STEP",
+      "cardinality": "N:1",
+      "description": "A status is associated with one workflow step.",
+      "probability": 0.000107
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "The user who set or last updated the status.",
+      "probability": 0.957364
+    },
+    {
+      "entity_1": "STATUS_HISTORY",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "description": "History entries reference the status record they track.",
+      "probability": 0.971748
+    },
+    {
+      "entity_1": "STATUS_HISTORY",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each status change is performed by a user.",
+      "probability": 0.057439
+    }
+  ],
+  "processing_time": 29.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated evaluation suggestions: added UNIQUE constraint on (doc_id, version_number) conceptually for VERSION; introduced current_version_id in DOCUMENT for quick access; added process_step_id, changed_by, changed_at directly on STATUS for immediate audit while retaining STATUS_HISTORY for full change log; included USER relationship to STATUS; clarified cascade‑friendly relationships; kept STATUS_HISTORY for comprehensive auditability; added indexes and foreign‑key cascade notes (not shown in JSON) to improve performance and referential integrity."
+  }
+}

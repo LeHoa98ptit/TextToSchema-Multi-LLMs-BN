@@ -1,0 +1,165 @@
+{
+  "filename": "363.txt",
+  "entity": {
+    "BOOK": 0.817574,
+    "AUTHOR": 0.745622,
+    "PUBLISHER": 0.73912,
+    "BOOK_COPY": 0.735245,
+    "READER": 0.817574,
+    "LOAN": 0.774011,
+    "RESERVATION": 0.817574,
+    "SHELF": 0.72504,
+    "LOCATION": 0.709983,
+    "ASSOC_BOOK_AUTHOR": 0.994692
+  },
+  "attribute": {
+    "BOOK": {
+      "isbn": 0.779485,
+      "title": 0.76203,
+      "publication_date": 0.76556,
+      "price": 0.758672
+    },
+    "AUTHOR": {
+      "author_id": 0.73907,
+      "name": 0.746328,
+      "biography": 0.748791
+    },
+    "PUBLISHER": {
+      "publisher_id": 0.753665,
+      "name": 0.758143,
+      "address": 0.756476,
+      "contact": 0.75883
+    },
+    "BOOK_COPY": {
+      "copy_id": 0.758562,
+      "isbn": 0.776132,
+      "copy_number": 0.764746,
+      "acquisition_date": 0.770625,
+      "condition": 0.770641,
+      "status": 0.77416
+    },
+    "READER": {
+      "reader_id": 0.757182,
+      "name": 0.761316,
+      "gender": 0.760315,
+      "age": 0.756711,
+      "phone": 0.760521,
+      "email": 0.761668,
+      "address": 0.763648,
+      "reader_type": 0.76099,
+      "max_borrow_limit": 0.763776,
+      "loan_period": 0.770783
+    },
+    "LOAN": {
+      "loan_id": 0.745506,
+      "copy_id": 0.751363,
+      "reader_id": 0.764076,
+      "borrowing_time": 0.750376,
+      "actual_return_date": 0.744234,
+      "status": 0.755598
+    },
+    "RESERVATION": {
+      "reservation_id": 0.748481,
+      "copy_id": 0.754369,
+      "reader_id": 0.761054,
+      "reservation_time": 0.749621,
+      "expiration_time": 0.749435,
+      "status": 0.753277
+    },
+    "SHELF": {
+      "shelf_id": 0.753377,
+      "shelf_number": 0.756373,
+      "location_id": 0.751665
+    },
+    "LOCATION": {
+      "location_id": 0.732745,
+      "branch_name": 0.739981,
+      "floor": 0.736412,
+      "description": 0.745345
+    },
+    "ASSOC_BOOK_AUTHOR": {
+      "assoc_book_author_id": 0.994692,
+      "book_id": 0.994692,
+      "author_id": 0.994692
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "description": "One BOOK can be associated with many ASSOC_BOOK_AUTHOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994692
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "description": "One AUTHOR can be associated with many ASSOC_BOOK_AUTHOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994692
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "PUBLISHER",
+      "cardinality": "N:1",
+      "description": "Each book is published by one publisher; a publisher can publish many books",
+      "probability": 0.523651
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_COPY",
+      "cardinality": "1:N",
+      "description": "A book can have many physical copies",
+      "probability": 0.999969
+    },
+    {
+      "entity_1": "BOOK_COPY",
+      "entity_2": "SHELF",
+      "cardinality": "N:1",
+      "description": "Each copy is placed on a shelf; a shelf holds many copies",
+      "probability": 0.007411
+    },
+    {
+      "entity_1": "SHELF",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Each shelf belongs to a library location (branch/floor); a location contains many shelves",
+      "probability": 0.207688
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "LOAN",
+      "cardinality": "1:N",
+      "description": "A reader may have multiple loan records",
+      "probability": 0.999324
+    },
+    {
+      "entity_1": "BOOK_COPY",
+      "entity_2": "LOAN",
+      "cardinality": "1:N",
+      "description": "A specific copy can be loaned many times over its life",
+      "probability": 0.859783
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A reader can create many reservations",
+      "probability": 0.797967
+    },
+    {
+      "entity_1": "BOOK_COPY",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Reservations are made for particular copies",
+      "probability": 0.009927
+    }
+  ],
+  "processing_time": 39.73,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added LOCATION entity to capture higher‑level library branches/floors and linked it to SHELF. Introduced isbn foreign key and copy_number in BOOK_COPY, enabling a composite unique constraint (isbn, copy_number) for precise identification of each physical copy. Included location_id in SHELF to store library location. Kept separate AUTHOR and PUBLISHER entities for extensibility. Preserved all strong relationships from the best candidate while enhancing granularity and supporting future reporting needs."
+  }
+}

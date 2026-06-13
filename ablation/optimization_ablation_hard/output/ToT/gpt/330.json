@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "USER_ROLE",
+    "IDENTITY_KEY",
+    "AUTH_SCHEME",
+    "PERMISSION",
+    "ROLE_PERMISSION"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "username",
+      "password_hash",
+      "status",
+      "email",
+      "display_language",
+      "time_zone",
+      "datetime_format",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE": [
+      "roleid",
+      "rolename",
+      "description",
+      "created_at"
+    ],
+    "USER_ROLE": [
+      "user_id",
+      "role_id",
+      "assigned_at",
+      "assigned_by",
+      "role_order",
+      "revoked_at"
+    ],
+    "IDENTITY_KEY": [
+      "identity_key_id",
+      "user_id",
+      "auth_scheme_id",
+      "key_value",
+      "created_at"
+    ],
+    "AUTH_SCHEME": [
+      "auth_scheme_id",
+      "scheme_name",
+      "description",
+      "protocol",
+      "metadata_url"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_code",
+      "description"
+    ],
+    "ROLE_PERMISSION": [
+      "role_id",
+      "permission_id",
+      "granted_at",
+      "revoked_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "IDENTITY_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTH_SCHEME",
+      "entity_2": "IDENTITY_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 54.5725,
+  "ilp_runtime": 0.028
+}

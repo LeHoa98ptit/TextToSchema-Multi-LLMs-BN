@@ -1,0 +1,86 @@
+{
+  "filename": "394.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ADMINISTRATOR": 0.817574,
+    "MENU": 0.817574,
+    "ORDER": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.736808,
+      "password": 0.754316,
+      "phone_number": 0.751471,
+      "address": 0.754793,
+      "registration_time": 0.752244,
+      "login_time": 0.75005
+    },
+    "ADMINISTRATOR": {
+      "administrator_id": 0.758532,
+      "password": 0.759685,
+      "login_ip": 0.753433,
+      "login_time": 0.753864
+    },
+    "MENU": {
+      "menu_id": 0.749492,
+      "dish_price": 0.766517,
+      "image": 0.754009,
+      "description": 0.767601
+    },
+    "ORDER": {
+      "order_id": 0.75761,
+      "order_status": 0.756959,
+      "creation_time": 0.757124,
+      "order_remark": 0.753556,
+      "order_modification_time": 0.752037
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "Each order is placed by exactly one user, and each user can place many orders over time.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.998865
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ORDER",
+      "description": "Each order is for exactly one menu item, and each menu item can be part of many orders.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.177584
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "USER",
+      "description": "Each administrator can manage many users, and each user is managed by at least one administrator.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.147636
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MENU",
+      "description": "Each administrator can manage many menu items, and each menu item is managed by at least one administrator.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.256747
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ORDER",
+      "description": "Each administrator can manage many orders, and each order is managed by at least one administrator.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.002973
+    }
+  ],
+  "processing_time": 19.59
+}

@@ -1,0 +1,146 @@
+{
+  "filename": "374.txt",
+  "entity": {
+    "GOVERNMENT_DEPARTMENT": 0.787346,
+    "USER": 0.817574,
+    "ROLE": 0.735634,
+    "RESOURCE": 0.817574,
+    "TRANSACTION": 0.817574,
+    "SUPERVISORY_DEPARTMENT": 0.806636,
+    "WORK_UNIT": 0.703537,
+    "APPROVAL_DOCUMENT": 0.680637,
+    "TRANSACTION_APPROVAL": 0.575105
+  },
+  "attribute": {
+    "GOVERNMENT_DEPARTMENT": {
+      "department name": 0.774172,
+      "department id": 0.770193
+    },
+    "USER": {
+      "username": 0.732528,
+      "password": 0.749135,
+      "email": 0.746788,
+      "user id": 0.748243
+    },
+    "ROLE": {
+      "role name": 0.759751,
+      "role id": 0.759568
+    },
+    "RESOURCE": {
+      "resource code": 0.763643,
+      "resource id": 0.756362,
+      "acquisition value": 0.759846
+    },
+    "TRANSACTION": {
+      "transaction id": 0.744794,
+      "resource code": 0.764367,
+      "receiver user": 0.760212,
+      "storage location": 0.752244,
+      "budget year": 0.751984,
+      "transaction_id": 0.469607,
+      "work_unit_id": 0.469607,
+      "resource_id": 0.469607,
+      "resource_code": 0.469607,
+      "receiver_user": 0.469607,
+      "storage_location": 0.469607,
+      "budget_year": 0.469607
+    },
+    "SUPERVISORY_DEPARTMENT": {
+      "department name": 0.77996,
+      "department id": 0.776545,
+      "responsibility description": 0.783512
+    },
+    "WORK_UNIT": {
+      "unit name": 0.758818,
+      "unit id": 0.756633,
+      "responsibility description": 0.772687,
+      "supervisory department id": 0.774767
+    },
+    "APPROVAL_DOCUMENT": {
+      "document name": 0.748589,
+      "document id": 0.748785,
+      "content": 0.756759
+    },
+    "TRANSACTION_APPROVAL": {
+      "transaction_approval_id": 0.575105,
+      "transaction_id": 0.575105,
+      "approval_document_id": 0.575105,
+      "document_name": 0.575105
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "GOVERNMENT_DEPARTMENT",
+      "entity_2": "USER",
+      "description": "A government department has multiple users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.237181
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "description": "A user has one role",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.997622
+    },
+    {
+      "entity_1": "GOVERNMENT_DEPARTMENT",
+      "entity_2": "SUPERVISORY_DEPARTMENT",
+      "description": "A government department has multiple supervisory departments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.585295
+    },
+    {
+      "entity_1": "SUPERVISORY_DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "description": "A supervisory department has multiple work units",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99735
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "TRANSACTION",
+      "description": "One WORK_UNIT can be associated with many TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.469607
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "TRANSACTION",
+      "description": "One RESOURCE can be associated with many TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.469607
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "description": "A user can be involved in multiple transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990416
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_APPROVAL",
+      "description": "One TRANSACTION can be associated with many TRANSACTION_APPROVAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.575105
+    },
+    {
+      "entity_1": "APPROVAL_DOCUMENT",
+      "entity_2": "TRANSACTION_APPROVAL",
+      "description": "One APPROVAL_DOCUMENT can be associated with many TRANSACTION_APPROVAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.575105
+    }
+  ],
+  "processing_time": 30.59
+}

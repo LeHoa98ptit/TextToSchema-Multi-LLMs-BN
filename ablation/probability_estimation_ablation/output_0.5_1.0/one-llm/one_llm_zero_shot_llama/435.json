@@ -1,0 +1,129 @@
+{
+  "filename": "435.txt",
+  "entity": {
+    "PROBE": 0.817574,
+    "CELESTIAL_BODY": 0.800736,
+    "SCIENTIFIC_INSTRUMENT": 0.779542,
+    "MISSION": 0.817574,
+    "OBSERVATIONAL_DATUM": 0.75722,
+    "INSTRUMENT_CONFIGURATION": 0.754044,
+    "MISSION_STATUS": 0.767134,
+    "PROBE_STATUS": 0.76338,
+    "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT": 0.998857
+  },
+  "attribute": {
+    "PROBE": {
+      "probe_id": 0.759543,
+      "weight": 0.75826,
+      "launch_date": 0.761778,
+      "service_life": 0.76773
+    },
+    "CELESTIAL_BODY": {
+      "celestial_body_id": 0.756742,
+      "type": 0.752475,
+      "orbital_parameter": 0.757902,
+      "physical_characteristic": 0.758147
+    },
+    "SCIENTIFIC_INSTRUMENT": {
+      "instrument_id": 0.761094,
+      "weight": 0.753154,
+      "power_consumption": 0.752864,
+      "accuracy": 0.756695
+    },
+    "MISSION": {
+      "mission_id": 0.758976,
+      "probe_id": 0.770684,
+      "celestial_body_id": 0.765287,
+      "mission_execution_status": 0.761229,
+      "scientific_datum_acquisition_status": 0.781467
+    },
+    "OBSERVATIONAL_DATUM": {
+      "observation_id": 0.754463,
+      "observation_time": 0.752733,
+      "observation_datum": 0.754749,
+      "observation_result": 0.752981,
+      "observation_accuracy": 0.756925
+    },
+    "INSTRUMENT_CONFIGURATION": {
+      "configuration_id": 0.763834,
+      "instrument_id": 0.762906,
+      "probe_id": 0.768938
+    },
+    "MISSION_STATUS": {
+      "status_id": 0.760547,
+      "mission_id": 0.762591,
+      "status": 0.766399
+    },
+    "PROBE_STATUS": {
+      "status_id": 0.760185,
+      "probe_id": 0.763746,
+      "status": 0.770432
+    },
+    "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT": {
+      "assoc_probe_scientific_instrument_id": 0.998857,
+      "probe_id": 0.998857,
+      "scientific_instrument_id": 0.998857
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "MISSION",
+      "cardinality": "1:N",
+      "probability": 0.003666
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "CELESTIAL_BODY",
+      "cardinality": "1:1",
+      "probability": 0.97908
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT",
+      "description": "One PROBE can be associated with many ASSOC_PROBE_SCIENTIFIC_INSTRUMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998857
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "ASSOC_PROBE_SCIENTIFIC_INSTRUMENT",
+      "description": "One SCIENTIFIC_INSTRUMENT can be associated with many ASSOC_PROBE_SCIENTIFIC_INSTRUMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998857
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "OBSERVATIONAL_DATUM",
+      "cardinality": "1:N",
+      "probability": 0.031592
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "PROBE_STATUS",
+      "cardinality": "1:N",
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "MISSION_STATUS",
+      "cardinality": "1:N",
+      "probability": 0.997584
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "INSTRUMENT_CONFIGURATION",
+      "cardinality": "1:N",
+      "probability": 0.960859
+    },
+    {
+      "entity_1": "SCIENTIFIC_INSTRUMENT",
+      "entity_2": "INSTRUMENT_CONFIGURATION",
+      "cardinality": "1:N",
+      "probability": 0.999982
+    }
+  ],
+  "processing_time": 33.98
+}

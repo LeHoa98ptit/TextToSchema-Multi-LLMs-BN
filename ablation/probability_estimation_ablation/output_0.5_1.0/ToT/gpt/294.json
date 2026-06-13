@@ -1,0 +1,190 @@
+{
+  "filename": "294.txt",
+  "entity": {
+    "BRANCH": 0.817574,
+    "ADDRESS": 0.817574,
+    "CUSTOMER": 0.817574,
+    "ACCOUNT": 0.817574,
+    "ACCOUNT_TYPE": 0.736353,
+    "TRANSACTION": 0.817574,
+    "TRANSACTION_TYPE": 0.752334,
+    "CUSTOMER_BRANCH": 0.762294,
+    "ACCOUNT_HOLDER": 0.770564,
+    "ASSOC_CUSTOMER_BRANCH": 0.014114,
+    "ASSOC_ACCOUNT_CUSTOMER": 0.50606
+  },
+  "attribute": {
+    "BRANCH": {
+      "branch_id": 0.761006,
+      "name": 0.766715,
+      "address_id": 0.765144
+    },
+    "ADDRESS": {
+      "address_id": 0.743284,
+      "street": 0.750729,
+      "city": 0.749194,
+      "state": 0.750818,
+      "zip": 0.738217
+    },
+    "CUSTOMER": {
+      "customer_id": 0.751969,
+      "first_name": 0.757828,
+      "last_name": 0.757525,
+      "dob": 0.754449,
+      "phone": 0.753315,
+      "email": 0.757559
+    },
+    "ACCOUNT": {
+      "account_number": 0.769028,
+      "balance": 0.777234,
+      "open_date": 0.755565,
+      "account_type_id": 0.759962,
+      "branch_id": 0.773319
+    },
+    "ACCOUNT_TYPE": {
+      "type_id": 0.756795,
+      "type_name": 0.762047
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.750534,
+      "amount": 0.764503,
+      "timestamp": 0.749351,
+      "account_number": 0.773384,
+      "branch_id": 0.766926,
+      "transaction_type_id": 0.750452
+    },
+    "TRANSACTION_TYPE": {
+      "type_id": 0.75036,
+      "type_name": 0.755023
+    },
+    "CUSTOMER_BRANCH": {
+      "customer_id": 0.770427,
+      "branch_id": 0.77151,
+      "association_date": 0.7677
+    },
+    "ACCOUNT_HOLDER": {
+      "account_number": 0.769836,
+      "customer_id": 0.764504,
+      "ownership_date": 0.756766
+    },
+    "ASSOC_CUSTOMER_BRANCH": {
+      "assoc_customer_branch_id": 0.014114,
+      "customer_id": 0.014114,
+      "branch_id": 0.014114
+    },
+    "ASSOC_ACCOUNT_CUSTOMER": {
+      "assoc_account_customer_id": 0.50606,
+      "account_id": 0.50606,
+      "customer_id": 0.50606
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BRANCH",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each branch is assigned a single physical address (address_id foreign key in BRANCH).",
+      "probability": 0.821311
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_BRANCH",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_BRANCH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014114
+    },
+    {
+      "entity_1": "BRANCH",
+      "entity_2": "ASSOC_CUSTOMER_BRANCH",
+      "description": "One BRANCH can be associated with many ASSOC_CUSTOMER_BRANCH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014114
+    },
+    {
+      "entity_1": "CUSTOMER_BRANCH",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "Links a customer to a branch with association_date.",
+      "probability": 0.998819
+    },
+    {
+      "entity_1": "CUSTOMER_BRANCH",
+      "entity_2": "BRANCH",
+      "cardinality": "N:1",
+      "description": "Links a branch to a customer with association_date.",
+      "probability": 0.996028
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "BRANCH",
+      "cardinality": "N:1",
+      "description": "Accounts are opened at a specific branch (branch_id foreign key).",
+      "probability": 0.346699
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ACCOUNT_TYPE",
+      "cardinality": "N:1",
+      "description": "Each account has one type (savings, checking, etc.) referenced by account_type_id.",
+      "probability": 0.999983
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ASSOC_ACCOUNT_CUSTOMER",
+      "description": "One ACCOUNT can be associated with many ASSOC_ACCOUNT_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.50606
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_ACCOUNT_CUSTOMER",
+      "description": "One CUSTOMER can be associated with many ASSOC_ACCOUNT_CUSTOMER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.50606
+    },
+    {
+      "entity_1": "ACCOUNT_HOLDER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "description": "Links an account to a customer with ownership_date.",
+      "probability": 0.982924
+    },
+    {
+      "entity_1": "ACCOUNT_HOLDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "Links a customer to an account with ownership_date.",
+      "probability": 0.128959
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "description": "Each transaction is recorded for a single account (account_number foreign key).",
+      "probability": 0.997116
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_TYPE",
+      "cardinality": "N:1",
+      "description": "Each transaction has a type (deposit, withdrawal, etc.) referenced by transaction_type_id.",
+      "probability": 0.996889
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "BRANCH",
+      "cardinality": "N:1",
+      "description": "Transaction location is the branch where it occurred (branch_id foreign key).",
+      "probability": 0.998718
+    }
+  ],
+  "processing_time": 36.23,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged CONTACT_INFO into CUSTOMER to simplify the schema. Added explicit foreign key attributes (address_id, branch_id, account_type_id, account_number, transaction_type_id) to make relationships concrete. Introduced ACCOUNT_HOLDER junction table to support joint accounts and future extensibility. Refined CUSTOMER‑BRANCH many‑to‑many via CUSTOMER_BRANCH with explicit keys. Ensured each relationship is represented both logically and via foreign keys, improving data integrity and query performance. Added ownership_date in junction tables for auditability. Retained normalized design while reducing unnecessary tables and clarifying transaction location linkage."
+  }
+}

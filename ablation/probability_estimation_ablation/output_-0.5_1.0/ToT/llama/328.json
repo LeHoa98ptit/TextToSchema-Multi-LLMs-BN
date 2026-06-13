@@ -1,0 +1,123 @@
+{
+  "filename": "328.txt",
+  "entity": {
+    "ADMINISTRATOR": 0.514971,
+    "SURVEY": 0.622459,
+    "QUESTION": 0.622459,
+    "OPTION": 0.622459,
+    "ANSWER": 0.622459,
+    "RESPONDENT": 0.492001,
+    "LOG": 0.468442
+  },
+  "attribute": {
+    "ADMINISTRATOR": {
+      "phone_number": 0.530117,
+      "account": 0.533349,
+      "password": 0.527417,
+      "register_log": 0.523445
+    },
+    "SURVEY": {
+      "title": 0.572284,
+      "description": 0.579261,
+      "start_time": 0.550668,
+      "end_time": 0.555697,
+      "access_restriction": 0.55707,
+      "survey_status": 0.5757,
+      "logo_url": 0.548072,
+      "background_image_url": 0.539716,
+      "anonymity_setting": 0.547786
+    },
+    "QUESTION": {
+      "title": 0.531265,
+      "description": 0.542575,
+      "type": 0.542657,
+      "require_status": 0.52715,
+      "validation_type": 0.534867,
+      "display_order": 0.51934,
+      "display_style": 0.533366,
+      "evaluation_status": 0.539407,
+      "evaluation_score": 0.538083
+    },
+    "OPTION": {
+      "content": 0.54091,
+      "display_order": 0.508266,
+      "correct_answer_status": 0.534845
+    },
+    "ANSWER": {
+      "answer_content": 0.532755,
+      "submission_time": 0.529008,
+      "answer_type": 0.532617
+    },
+    "RESPONDENT": {
+      "respondent_info": 0.52712
+    },
+    "LOG": {
+      "log_info": 0.507247,
+      "log_timestamp": 0.496384,
+      "log_description": 0.513457
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "SURVEY",
+      "cardinality": "1:N",
+      "description": "An administrator can create multiple surveys",
+      "probability": 0.000484
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "An administrator can have multiple logs",
+      "probability": 0.003917
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "description": "A survey can have multiple questions",
+      "probability": 0.890536
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "A survey can have multiple logs",
+      "probability": 0.127682
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "OPTION",
+      "cardinality": "1:N",
+      "description": "A question can have multiple options",
+      "probability": 0.831179
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "description": "A question can have multiple answers",
+      "probability": 0.999764
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "A question can have multiple logs",
+      "probability": 0.00075
+    },
+    {
+      "entity_1": "ANSWER",
+      "entity_2": "RESPONDENT",
+      "cardinality": "1:1",
+      "description": "An answer is associated with one respondent",
+      "probability": 0.210193
+    }
+  ],
+  "processing_time": 31.25,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added relationships between SURVEY and LOG, and between QUESTION and LOG to capture additional interactions and events. Also added log_timestamp and log_description attributes to the LOG entity to provide more detailed logging information."
+  }
+}

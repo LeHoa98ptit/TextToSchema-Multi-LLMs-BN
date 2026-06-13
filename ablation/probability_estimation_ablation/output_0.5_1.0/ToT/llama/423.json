@@ -1,0 +1,130 @@
+{
+  "filename": "423.txt",
+  "entity": {
+    "COURSE": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "STUDENT": 0.757514,
+    "CHAPTER": 0.817574,
+    "COURSE_CATEGORY": 0.726572,
+    "TARGET_AUDIENCE": 0.665633,
+    "ASSOC_COURSE_INSTRUCTOR": 0.673438,
+    "ASSOC_STUDENT_COURSE": 0.012423
+  },
+  "attribute": {
+    "COURSE": {
+      "course_id": 0.774597,
+      "course_description": 0.781311,
+      "total_duration": 0.772059,
+      "difficulty_level": 0.770019,
+      "category_id": 0.775799,
+      "audience_id": 0.773605,
+      "recommendation_status": 0.776637
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.776696,
+      "avatar": 0.765093,
+      "teaching_experience": 0.778997,
+      "professional_field": 0.775742,
+      "personal_profile": 0.774687
+    },
+    "STUDENT": {
+      "student_id": 0.766129,
+      "avatar": 0.758522,
+      "gender": 0.76197,
+      "age": 0.760853,
+      "contact_information": 0.769612,
+      "account_information": 0.771949,
+      "registration_time": 0.764897,
+      "account_status": 0.765736,
+      "membership_level": 0.772429,
+      "point_track": 0.76518
+    },
+    "CHAPTER": {
+      "chapter_id": 0.747092,
+      "chapter_description": 0.757,
+      "video_url": 0.75474,
+      "duration": 0.752534,
+      "previous_chapter": 0.746777,
+      "chapter_hierarchy": 0.755665,
+      "course_id": 0.776213
+    },
+    "COURSE_CATEGORY": {
+      "category_id": 0.773036,
+      "category_name": 0.774411
+    },
+    "TARGET_AUDIENCE": {
+      "audience_id": 0.741652,
+      "audience_name": 0.743703
+    },
+    "ASSOC_COURSE_INSTRUCTOR": {
+      "assoc_course_instructor_id": 0.673438,
+      "course_id": 0.673438,
+      "instructor_id": 0.673438
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.012423,
+      "student_id": 0.012423,
+      "course_id": 0.012423
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_COURSE_INSTRUCTOR",
+      "description": "One COURSE can be associated with many ASSOC_COURSE_INSTRUCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.673438
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "ASSOC_COURSE_INSTRUCTOR",
+      "description": "One INSTRUCTOR can be associated with many ASSOC_COURSE_INSTRUCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.673438
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CHAPTER",
+      "cardinality": "1:N",
+      "description": "A course can have many chapters, but a chapter belongs to one course",
+      "probability": 0.614324
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012423
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012423
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_CATEGORY",
+      "cardinality": "1:N",
+      "description": "A course belongs to one course category, and a course category can have many courses",
+      "probability": 0.783937
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TARGET_AUDIENCE",
+      "cardinality": "1:N",
+      "description": "A course is targeted at one target audience, and a target audience can have many courses",
+      "probability": 0.002689
+    }
+  ],
+  "processing_time": 34.79,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant entity RECOMMENDATION, refined attribute names for better clarity and consistency, and added course_id to CHAPTER entity to establish relationship"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "entity": [
+    "COMPANY",
+    "CLIENT",
+    "VEHICLE",
+    "EMPLOYEE",
+    "DEPARTMENT",
+    "MAINTENANCE_ORDER",
+    "MAINTENANCE_ASSIGNMENT"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id"
+    ],
+    "CLIENT": [
+      "client_number",
+      "client_type",
+      "discount_rate",
+      "contact_person",
+      "contact_phone_number",
+      "company_id"
+    ],
+    "VEHICLE": [
+      "license_plate_number",
+      "model",
+      "color",
+      "vehicle_category",
+      "client_number"
+    ],
+    "EMPLOYEE": [
+      "employee_number",
+      "position",
+      "phone_number",
+      "home_address",
+      "department_number",
+      "company_id",
+      "supervisor_employee_number"
+    ],
+    "DEPARTMENT": [
+      "department_number",
+      "supervisor_phone_number",
+      "company_id"
+    ],
+    "MAINTENANCE_ORDER": [
+      "maintenance_order_number",
+      "license_plate_number",
+      "maintenance_content",
+      "man_hour_information"
+    ],
+    "MAINTENANCE_ASSIGNMENT": [
+      "assignment_id",
+      "maintenance_order_number",
+      "employee_number"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CLIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "MAINTENANCE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.617,
+  "ilp_runtime": 0.058
+}

@@ -1,0 +1,161 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "SALE_ORDER",
+    "ORDER_DETAIL",
+    "PRODUCT",
+    "RECIPE",
+    "RECIPE_DETAIL",
+    "RAW_MATERIAL",
+    "SUPPLIER",
+    "PURCHASE_ORDER",
+    "PURCHASE_ORDER_DETAIL",
+    "INVENTORY",
+    "PRODUCTION_PLAN",
+    "DELIVERY"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_number",
+      "address"
+    ],
+    "SALE_ORDER": [
+      "order_id",
+      "order_date",
+      "expected_delivery_date",
+      "order_status",
+      "customer_id"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "description",
+      "price"
+    ],
+    "RECIPE": [
+      "recipe_id",
+      "product_id"
+    ],
+    "RECIPE_DETAIL": [
+      "recipe_detail_id",
+      "recipe_id",
+      "raw_material_id",
+      "quantity_required"
+    ],
+    "RAW_MATERIAL": [
+      "raw_material_id",
+      "name",
+      "unit",
+      "unit_price"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_number",
+      "address"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_order_id",
+      "supplier_id",
+      "order_date",
+      "status"
+    ],
+    "PURCHASE_ORDER_DETAIL": [
+      "purchase_order_detail_id",
+      "purchase_order_id",
+      "raw_material_id",
+      "quantity",
+      "unit_price"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "item_type",
+      "item_id",
+      "quantity_on_hand",
+      "reorder_level"
+    ],
+    "PRODUCTION_PLAN": [
+      "plan_id",
+      "order_id",
+      "sequence_number",
+      "planned_quantity",
+      "start_date",
+      "end_date",
+      "status"
+    ],
+    "DELIVERY": [
+      "delivery_id",
+      "order_id",
+      "delivery_time",
+      "location",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RECIPE",
+      "entity_2": "RECIPE_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "RECIPE_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "PRODUCTION_PLAN",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 55.0994,
+  "ilp_runtime": 0.033
+}

@@ -1,0 +1,69 @@
+{
+  "filename": "385.txt",
+  "entity": {
+    "ACCOUNT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "CURRENCY": 0.523508,
+    "TRANSACTION_STATUS": 0.60322,
+    "ERROR_INFORMATION": 0.494925
+  },
+  "attribute": {
+    "ACCOUNT": {
+      "account_balance": 0.550532,
+      "frozen_amount": 0.538027,
+      "account_id": 0.533738
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.536521,
+      "initiate_account_id": 0.541429,
+      "receive_account_id": 0.542961
+    },
+    "CURRENCY": {
+      "currency_type": 0.530847,
+      "exchange_rate": 0.520395
+    },
+    "TRANSACTION_STATUS": {
+      "status": 0.552933,
+      "failure_reason": 0.544672
+    },
+    "ERROR_INFORMATION": {
+      "error_code": 0.514128,
+      "error_message": 0.515954
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "An account can have multiple transactions",
+      "probability": 0.997782
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "CURRENCY",
+      "cardinality": "1:1",
+      "description": "A transaction is associated with one currency",
+      "probability": 0.986964
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_STATUS",
+      "cardinality": "1:1",
+      "description": "A transaction has one transaction status",
+      "probability": 0.999982
+    },
+    {
+      "entity_1": "TRANSACTION_STATUS",
+      "entity_2": "ERROR_INFORMATION",
+      "cardinality": "1:N",
+      "description": "A transaction status can have multiple error information",
+      "probability": 0.903753
+    }
+  ],
+  "processing_time": 14.16,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'transaction_status' from TRANSACTION entity, renamed 'initiate_account' and 'receive_account' to 'initiate_account_id' and 'receive_account_id' for consistency, and ensured consistent naming conventions throughout the model."
+  }
+}

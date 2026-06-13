@@ -1,0 +1,113 @@
+{
+  "filename": "495.txt",
+  "entity": {
+    "DOCTOR": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "WARD": 0.817574,
+    "PATIENT": 0.817574,
+    "MEDICINE": 0.817574,
+    "CONSULTATION": 0.71441,
+    "DISPENSE": 0.687251,
+    "ASSOC_PATIENT_MEDICINE": 0.015277
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor_id": 0.764405,
+      "gender": 0.757212,
+      "title": 0.758662,
+      "years_of_service": 0.76376,
+      "phone_number": 0.764543,
+      "department_id": 0.768412
+    },
+    "DEPARTMENT": {
+      "department_id": 0.758383,
+      "total_personnel": 0.764585,
+      "charge_person": 0.753347,
+      "location": 0.753447,
+      "phone_number": 0.757841
+    },
+    "WARD": {
+      "ward_id": 0.761184,
+      "number_of_beds": 0.764427,
+      "level": 0.757471,
+      "location": 0.754761
+    },
+    "PATIENT": {
+      "patient_id": 0.771882,
+      "gender": 0.760599,
+      "age": 0.755848,
+      "contact_info": 0.765859
+    },
+    "MEDICINE": {
+      "medicine_id": 0.767384,
+      "inventory_quantity": 0.768487,
+      "price": 0.752637,
+      "sale_price": 0.753047,
+      "remark": 0.757025
+    },
+    "CONSULTATION": {
+      "consultation_id": 0.756384,
+      "consultation_time": 0.747372,
+      "diagnosis_description": 0.758834,
+      "treatment_result": 0.758795,
+      "remark": 0.749673,
+      "patient_id": 0.769427,
+      "doctor_id": 0.766111
+    },
+    "DISPENSE": {
+      "dispense_id": 0.74895,
+      "retrieval_time": 0.748944,
+      "quantity": 0.747911,
+      "patient_id": 0.768443,
+      "medicine_id": 0.765703
+    },
+    "ASSOC_PATIENT_MEDICINE": {
+      "assoc_patient_medicine_id": 0.015277,
+      "patient_id": 0.015277,
+      "medicine_id": 0.015277
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DOCTOR",
+      "cardinality": "1:N",
+      "probability": 0.001135
+    },
+    {
+      "entity_1": "WARD",
+      "entity_2": "PATIENT",
+      "cardinality": "1:N",
+      "probability": 1e-05
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "probability": 0.967139
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "probability": 0.085388
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "ASSOC_PATIENT_MEDICINE",
+      "description": "One PATIENT can be associated with many ASSOC_PATIENT_MEDICINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015277
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "ASSOC_PATIENT_MEDICINE",
+      "description": "One MEDICINE can be associated with many ASSOC_PATIENT_MEDICINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015277
+    }
+  ],
+  "processing_time": 17.46
+}

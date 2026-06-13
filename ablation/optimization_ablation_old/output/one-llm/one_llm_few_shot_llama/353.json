@@ -1,0 +1,84 @@
+{
+  "entity": [
+    "PAGE",
+    "ADMINISTRATOR",
+    "USER",
+    "PAGE_GROUP",
+    "PERMISSION",
+    "ASSOC_PAGE_USER",
+    "ASSOC_ADMINISTRATOR_PERMISSION"
+  ],
+  "attribute": {
+    "PAGE": [
+      "page_id",
+      "alias",
+      "title",
+      "display_order",
+      "style",
+      "redirection_target",
+      "click_event"
+    ],
+    "ADMINISTRATOR": [
+      "administrator_id",
+      "username",
+      "email_address"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email_address"
+    ],
+    "PAGE_GROUP": [
+      "page_group_id",
+      "group_name"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name"
+    ],
+    "ASSOC_PAGE_USER": [
+      "assoc_page_user_id",
+      "page_id",
+      "user_id"
+    ],
+    "ASSOC_ADMINISTRATOR_PERMISSION": [
+      "assoc_administrator_permission_id",
+      "administrator_id",
+      "permission_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PAGE",
+      "entity_2": "ASSOC_PAGE_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_PAGE_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PAGE_GROUP",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ASSOC_ADMINISTRATOR_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ADMINISTRATOR_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.6605,
+  "ilp_runtime": 0.033
+}

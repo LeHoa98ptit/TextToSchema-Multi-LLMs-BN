@@ -1,0 +1,124 @@
+{
+  "filename": "425.txt",
+  "entity": {
+    "USER": 0.486603,
+    "BUILDING": 0.481384,
+    "DORMITORY": 0.622459,
+    "STUDENT": 0.622459,
+    "APPLICATION": 0.622459,
+    "MAINTENANCE": 0.622459,
+    "ANNOUNCEMENT": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.502726,
+      "password": 0.523892,
+      "role": 0.530458
+    },
+    "BUILDING": {
+      "type": 0.524661,
+      "location": 0.51776,
+      "description": 0.53003,
+      "address": 0.516979,
+      "capacity": 0.526236
+    },
+    "DORMITORY": {
+      "type": 0.563128,
+      "number": 0.561035,
+      "bed": 0.55155,
+      "size": 0.552244,
+      "facilities": 0.568416
+    },
+    "STUDENT": {
+      "id": 0.54196,
+      "gender": 0.541057,
+      "class": 0.539066,
+      "major": 0.534714,
+      "gpa": 0.522473
+    },
+    "APPLICATION": {
+      "type": 0.519494,
+      "content": 0.522882,
+      "time": 0.51296,
+      "status": 0.528524,
+      "applicant": 0.52749,
+      "reviewer": 0.513376
+    },
+    "MAINTENANCE": {
+      "record": 0.533384,
+      "fault": 0.521509,
+      "time": 0.523454,
+      "staff": 0.54788,
+      "completion": 0.534403
+    },
+    "ANNOUNCEMENT": {
+      "title": 0.515204,
+      "content": 0.518385,
+      "time": 0.506562,
+      "publisher": 0.501903
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "BUILDING",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple buildings",
+      "probability": 0.717623
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "description": "A building can have multiple dormitories",
+      "probability": 0.400711
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A dormitory can have multiple students",
+      "probability": 0.99995
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A student can submit multiple applications",
+      "probability": 0.704727
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:1",
+      "description": "An application can have one maintenance record",
+      "probability": 0.173488
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A student can have multiple maintenance records",
+      "probability": 0.309901
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "description": "A user can publish multiple announcements",
+      "probability": 0.875179
+    },
+    {
+      "entity_1": "ANNOUNCEMENT",
+      "entity_2": "BUILDING",
+      "cardinality": "1:N",
+      "description": "An announcement can be related to multiple buildings",
+      "probability": 0.102952
+    }
+  ],
+  "processing_time": 25.11,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed unnecessary attributes, added relationship between students and maintenance records to capture complexity of the system"
+  }
+}

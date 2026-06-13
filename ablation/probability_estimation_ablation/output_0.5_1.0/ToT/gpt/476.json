@@ -1,0 +1,252 @@
+{
+  "filename": "476.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "SALE_ORDER": 0.750691,
+    "ORDER_DETAIL": 0.735187,
+    "PRODUCT": 0.74227,
+    "RAW_MATERIAL": 0.794342,
+    "SUPPLIER": 0.817574,
+    "PURCHASE_ORDER": 0.74708,
+    "PURCHASE_ORDER_LINE": 0.714288,
+    "INVENTORY": 0.754489,
+    "PRODUCT_BOM": 0.708993,
+    "PRODUCTION_PLAN": 0.766347,
+    "PRODUCTION_PLAN_LINE": 0.733998,
+    "DELIVERY": 0.817574,
+    "FINANCIAL_RECORD": 0.739794
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.753046,
+      "name": 0.758421,
+      "contact_number": 0.751298,
+      "email": 0.754943,
+      "address": 0.755074
+    },
+    "SALE_ORDER": {
+      "order_id": 0.754729,
+      "customer_id": 0.761094,
+      "order_date": 0.751522,
+      "expected_delivery_date": 0.750473,
+      "order_status": 0.758674,
+      "total_amount": 0.758423,
+      "notes": 0.764103
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.75899,
+      "order_id": 0.757322,
+      "product_id": 0.757385,
+      "quantity": 0.773851,
+      "unit_price": 0.76294,
+      "line_total": 0.763768
+    },
+    "PRODUCT": {
+      "product_id": 0.741594,
+      "product_name": 0.741818,
+      "product_type": 0.740704,
+      "selling_price": 0.744933,
+      "description": 0.755891
+    },
+    "RAW_MATERIAL": {
+      "material_id": 0.744589,
+      "material_name": 0.744344,
+      "unit_of_measure": 0.741343,
+      "current_stock": 0.74526,
+      "reorder_point": 0.741694,
+      "safety_stock": 0.751412
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.762813,
+      "supplier_name": 0.763893,
+      "contact_number": 0.760459,
+      "email": 0.761863,
+      "address": 0.762128,
+      "rating": 0.757513
+    },
+    "PURCHASE_ORDER": {
+      "po_id": 0.759996,
+      "supplier_id": 0.762902,
+      "order_date": 0.75091,
+      "expected_arrival_date": 0.751597,
+      "po_status": 0.762039,
+      "total_amount": 0.758833
+    },
+    "PURCHASE_ORDER_LINE": {
+      "po_line_id": 0.760477,
+      "po_id": 0.762133,
+      "material_id": 0.762554,
+      "quantity_ordered": 0.766285,
+      "unit_price": 0.757901,
+      "line_total": 0.762583,
+      "received_quantity": 0.764462,
+      "line_status": 0.761219
+    },
+    "INVENTORY": {
+      "inventory_id": 0.763216,
+      "item_type": 0.760252,
+      "item_id": 0.757522,
+      "quantity_on_hand": 0.764721,
+      "location": 0.766658
+    },
+    "PRODUCT_BOM": {
+      "bom_id": 0.747535,
+      "product_id": 0.746085,
+      "material_id": 0.747129,
+      "quantity_required": 0.760084,
+      "unit_of_measure": 0.737071
+    },
+    "PRODUCTION_PLAN": {
+      "plan_id": 0.765142,
+      "plan_date": 0.760712,
+      "status": 0.771366,
+      "total_quantity": 0.768732
+    },
+    "PRODUCTION_PLAN_LINE": {
+      "plan_line_id": 0.760895,
+      "plan_id": 0.764478,
+      "product_id": 0.762662,
+      "quantity_to_produce": 0.769338,
+      "material_id": 0.762325,
+      "material_quantity_used": 0.7678
+    },
+    "DELIVERY": {
+      "delivery_id": 0.752751,
+      "order_id": 0.754392,
+      "delivery_time": 0.752877,
+      "delivery_address": 0.751995,
+      "delivery_status": 0.756001,
+      "carrier_name": 0.753725,
+      "tracking_number": 0.75904
+    },
+    "FINANCIAL_RECORD": {
+      "record_id": 0.74443,
+      "transaction_type": 0.749912,
+      "related_order_id": 0.750372,
+      "related_po_id": 0.74951,
+      "amount": 0.745583,
+      "transaction_date": 0.745,
+      "status": 0.751055,
+      "description": 0.758023
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place many sale orders",
+      "probability": 0.902881
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each sale order consists of multiple order detail lines",
+      "probability": 0.90204
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each order line references a single product",
+      "probability": 0.999301
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_BOM",
+      "cardinality": "1:N",
+      "description": "A product has one or more Bill‑of‑Materials (recipe) entries",
+      "probability": 0.917227
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "PRODUCT_BOM",
+      "cardinality": "1:N",
+      "description": "A raw material can be used in many product recipes",
+      "probability": 0.03293
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "description": "A supplier can receive many purchase orders",
+      "probability": 0.89566
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_LINE",
+      "cardinality": "1:N",
+      "description": "Each purchase order contains multiple line items",
+      "probability": 0.999645
+    },
+    {
+      "entity_1": "PURCHASE_ORDER_LINE",
+      "entity_2": "RAW_MATERIAL",
+      "cardinality": "N:1",
+      "description": "Each PO line orders a specific raw material",
+      "probability": 0.004859
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "Inventory tracks quantity on hand for each raw material",
+      "probability": 0.011439
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "Inventory tracks finished‑product stock levels",
+      "probability": 0.780986
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_PLAN_LINE",
+      "cardinality": "1:N",
+      "description": "A production plan is broken down into line items per product",
+      "probability": 0.999406
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN_LINE",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each plan line produces a specific product",
+      "probability": 0.06186
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN_LINE",
+      "entity_2": "RAW_MATERIAL",
+      "cardinality": "N:1",
+      "description": "Each plan line consumes a specific raw material",
+      "probability": 0.020669
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "description": "Each sale order has one associated delivery record",
+      "probability": 0.755981
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "FINANCIAL_RECORD",
+      "cardinality": "1:1",
+      "description": "A financial record (sale transaction) is generated per sale order",
+      "probability": 0.001799
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "FINANCIAL_RECORD",
+      "cardinality": "1:N",
+      "description": "Financial records (expense transactions) are linked to purchase orders",
+      "probability": 0.029274
+    }
+  ],
+  "processing_time": 24.12,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing associative entities (PRODUCT_BOM, PURCHASE_ORDER_LINE, PRODUCTION_PLAN_LINE) to correctly model many‑to‑many relationships and capture quantities. Split inventory into a generic entity with item_type to handle both raw materials and finished products. Enriched attributes with identifiers, timestamps, status fields, contact details, and quantitative controls (reorder point, safety stock). Clarified cardinalities and relationship directions, introduced foreign‑key attributes, and expanded financial_record to cover both sales and purchases. Overall model now fully supports recipe management, procurement, production planning, stock control, delivery, and accounting requirements of a pizza shop."
+  }
+}

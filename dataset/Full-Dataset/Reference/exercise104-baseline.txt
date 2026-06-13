@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "User",
+    "Mailing list",
+    "Email campaign",
+    "Subscriber",
+    "Campaign mailing list association",
+    "Message"
+  ],
+  "attribut": {
+    "User": [
+      "User ID",
+      "Name",
+      "Email address",
+      "Account status"
+    ],
+    "Mailing list": [
+      "Mailing list ID",
+      "List name",
+      "Status",
+      "User ID"
+    ],
+    "Email campaign": [
+      "Campaign ID",
+      "Campaign subject",
+      "Content",
+      "Status",
+      "Scheduled sending time"
+    ],
+    "Subscriber": [
+      "Subscriber ID",
+      "Name",
+      "Email address",
+      "Subscription status",
+      "User ID"
+    ],
+    "Campaign mailing list association": [
+      "Mailing list ID",
+      "Campaign ID"
+    ],
+    "Message": [
+      "Subscriber ID",
+      "Campaign ID",
+      "Message status",
+      "Creation time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "User",
+      "entity_2": "Mailing list",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "Subscriber",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Mailing list",
+      "entity_2": "Campaign mailing list association",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Email campaign",
+      "entity_2": "Campaign mailing list association",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Subscriber",
+      "entity_2": "Message",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Email campaign",
+      "entity_2": "Message",
+      "cardinality": "1:N"
+    }
+  ]
+}

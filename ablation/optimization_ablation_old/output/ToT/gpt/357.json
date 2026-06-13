@@ -1,0 +1,175 @@
+{
+  "entity": [
+    "LOCATION",
+    "ADDRESS",
+    "BUSINESS_HOUR",
+    "VEHICLE",
+    "CATEGORY",
+    "RENTAL_PRICE",
+    "USER",
+    "ACCOUNT",
+    "CREDIT_CARD",
+    "RESERVATION",
+    "PAYMENT",
+    "NEWS",
+    "PROMOTION",
+    "ASSOC_NEWS_LOCATION"
+  ],
+  "attribute": {
+    "LOCATION": [
+      "location_id",
+      "name"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "location_id",
+      "street",
+      "city",
+      "postal_code",
+      "telephone"
+    ],
+    "BUSINESS_HOUR": [
+      "business_hour_id",
+      "location_id",
+      "day_of_week",
+      "open_time",
+      "close_time"
+    ],
+    "VEHICLE": [
+      "vehicle_id",
+      "license_plate",
+      "brand",
+      "model",
+      "photo",
+      "status",
+      "location_id"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "RENTAL_PRICE": [
+      "price_id",
+      "category_id",
+      "weekday_price",
+      "weekend_price"
+    ],
+    "USER": [
+      "user_id",
+      "email",
+      "telephone",
+      "password_hash"
+    ],
+    "ACCOUNT": [
+      "account_id",
+      "user_id",
+      "email",
+      "created_at"
+    ],
+    "CREDIT_CARD": [
+      "card_id",
+      "account_id",
+      "card_token",
+      "last_four",
+      "expiry_date",
+      "cardholder_name"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "user_id",
+      "vehicle_id",
+      "location_id",
+      "reservation_date",
+      "return_date",
+      "total_price",
+      "reservation_status"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "reservation_id",
+      "card_id",
+      "amount",
+      "payment_date",
+      "payment_status"
+    ],
+    "NEWS": [
+      "news_id",
+      "title",
+      "content",
+      "publish_date"
+    ],
+    "PROMOTION": [
+      "promo_id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "discount_percent",
+      "status"
+    ],
+    "ASSOC_NEWS_LOCATION": [
+      "assoc_news_location_id",
+      "news_id",
+      "location_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "ASSOC_NEWS_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ASSOC_NEWS_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 104.0767,
+  "ilp_runtime": 0.177
+}

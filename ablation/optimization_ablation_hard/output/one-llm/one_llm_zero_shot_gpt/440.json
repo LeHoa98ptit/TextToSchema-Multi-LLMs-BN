@@ -1,0 +1,137 @@
+{
+  "entity": [
+    "DEVICE",
+    "PRODUCT_MODEL",
+    "PERSON",
+    "DEPARTMENT",
+    "LOCATION",
+    "INVENTORY_RECORD",
+    "MAINTENANCE_REQUEST",
+    "MAINTENANCE_RECORD"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device_id",
+      "device_code",
+      "qr_code",
+      "device_image",
+      "ip_address",
+      "status",
+      "status_update_time",
+      "remark",
+      "product_model_id",
+      "group_id",
+      "department_id",
+      "location_id",
+      "current_user_id"
+    ],
+    "PRODUCT_MODEL": [
+      "model_id",
+      "model_name",
+      "product_name"
+    ],
+    "PERSON": [
+      "person_id",
+      "name",
+      "contact_info",
+      "account_status",
+      "department_id",
+      "role_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name"
+    ],
+    "LOCATION": [
+      "location_id",
+      "location_name"
+    ],
+    "INVENTORY_RECORD": [
+      "inventory_id",
+      "device_id",
+      "inventory_person_id",
+      "inventory_time",
+      "location_id"
+    ],
+    "MAINTENANCE_REQUEST": [
+      "request_id",
+      "device_id",
+      "requester_id",
+      "request_time",
+      "content",
+      "status",
+      "assigned_personnel_id",
+      "handle_time",
+      "remark"
+    ],
+    "MAINTENANCE_RECORD": [
+      "record_id",
+      "request_id",
+      "device_id",
+      "personnel_id",
+      "maintenance_time",
+      "content",
+      "result",
+      "satisfaction",
+      "remark"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT_MODEL",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PERSON",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "INVENTORY_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "INVENTORY_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "INVENTORY_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 50.76,
+  "ilp_runtime": 0.055
+}

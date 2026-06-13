@@ -1,0 +1,73 @@
+{
+  "filename": "462.txt",
+  "entity": {
+    "MEMBER": 0.817574,
+    "BOOK": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378
+  },
+  "attribute": {
+    "MEMBER": {
+      "member_id": 0.749148,
+      "username": 0.748445,
+      "password": 0.755838,
+      "address": 0.757084,
+      "postal_code": 0.753835,
+      "phone_number": 0.749846,
+      "consumption_point": 0.748482
+    },
+    "BOOK": {
+      "book_id": 0.77843,
+      "category": 0.777823,
+      "title": 0.762399,
+      "author": 0.765771,
+      "publisher": 0.777516,
+      "publication_date": 0.770875,
+      "isbn": 0.783566,
+      "price": 0.771909
+    },
+    "ORDER": {
+      "order_id": 0.745901,
+      "member_id": 0.754542,
+      "sale_order_date": 0.753963,
+      "shipping_date": 0.742889,
+      "order_date": 0.746528,
+      "late_shipping_date": 0.739993,
+      "total_amount": 0.750992
+    },
+    "ORDER_ITEM": {
+      "order_id": 0.74573,
+      "book_id": 0.778085,
+      "quantity": 0.757498,
+      "unit_price": 0.751127
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A member can place many orders; ORDER.member_id references MEMBER.member_id",
+      "probability": 0.997904
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "A book can appear in many order items",
+      "probability": 0.001261
+    }
+  ],
+  "processing_time": 6.64,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Replaced member_username with member_id foreign key in ORDER for clear referential integrity. Added derived attribute total_amount to ORDER for reporting convenience. Introduced unit_price in ORDER_ITEM to capture the book price at purchase time, preserving historical pricing. Kept the model minimal while enhancing data integrity and analytical usefulness."
+  }
+}

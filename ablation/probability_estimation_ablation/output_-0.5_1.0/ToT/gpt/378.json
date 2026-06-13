@@ -1,0 +1,91 @@
+{
+  "filename": "378.txt",
+  "entity": {
+    "USER": 0.622459,
+    "POST": 0.622459,
+    "COMMENT": 0.622459,
+    "ACTIVITY": 0.496425
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.525118,
+      "email": 0.532379,
+      "full_name": 0.525264,
+      "password_hash": 0.51466,
+      "registered_at": 0.522031
+    },
+    "POST": {
+      "post_id": 0.525998,
+      "title": 0.532753,
+      "summary": 0.539562,
+      "body": 0.53032,
+      "created_at": 0.533435,
+      "updated_at": 0.524241,
+      "author_id": 0.535242
+    },
+    "COMMENT": {
+      "comment_id": 0.548521,
+      "content": 0.564909,
+      "created_at": 0.545088,
+      "user_id": 0.553575,
+      "post_id": 0.550011
+    },
+    "ACTIVITY": {
+      "activity_id": 0.519453,
+      "user_id": 0.525423,
+      "post_id": 0.527418,
+      "comment_id": 0.546823,
+      "operation_type": 0.520906,
+      "activity_timestamp": 0.527458
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user (author) can create, edit, or delete many posts",
+      "probability": 0.831347
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can receive many comments",
+      "probability": 0.018077
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can write many comments",
+      "probability": 0.95928
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Each user can have multiple activity log entries",
+      "probability": 0.045936
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Each post can be the target of many activity records (create, edit, delete); post_id may be null for user‑level actions",
+      "probability": 0.656323
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "ACTIVITY",
+      "cardinality": "1:N",
+      "description": "A comment can have multiple activity records (create, edit, delete)",
+      "probability": 0.014085
+    }
+  ],
+  "processing_time": 11.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added optional comment_id to ACTIVITY to capture comment‑specific actions and changed COMMENT‑ACTIVITY cardinality to 1:N. Made post_id in ACTIVITY nullable for non‑post actions. Retained password_hash but noted it can be optional. Included unique constraint intent for USER.email and composite uniqueness for activity logs in documentation. Updated relationships and attributes to reflect these enhancements while preserving the strengths of the previous high‑scoring model."
+  }
+}

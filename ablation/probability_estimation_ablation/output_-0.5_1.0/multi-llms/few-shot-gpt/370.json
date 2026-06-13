@@ -1,0 +1,112 @@
+{
+  "filename": "370.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "MANUFACTURER": 0.510798,
+    "PAYMENT_METHOD": 0.4377,
+    "SHOPPING_CART": 0.595922,
+    "ORDER": 0.622459,
+    "CART_PRODUCT": 0.253355
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.519584,
+      "phone number": 0.534932,
+      "address": 0.527532
+    },
+    "MANUFACTURER": {
+      "manufacturer id": 0.527648,
+      "manufacturer name": 0.526706
+    },
+    "PRODUCT": {
+      "product id": 0.549013,
+      "manufacturer id": 0.536319,
+      "flavor": 0.539072,
+      "number of puffs": 0.550191,
+      "unit price": 0.532313,
+      "stock quantity": 0.558351
+    },
+    "PAYMENT_METHOD": {
+      "payment method id": 0.52161,
+      "method name": 0.520897
+    },
+    "SHOPPING_CART": {
+      "shopping cart id": 0.54078,
+      "user id": 0.543721,
+      "items": 0.557837
+    },
+    "ORDER": {
+      "order id": 0.53294,
+      "user id": 0.53137,
+      "payment method id": 0.529177,
+      "order creation time": 0.5272,
+      "order status": 0.534428
+    },
+    "CART_PRODUCT": {
+      "cart_product_id": 0.253355,
+      "shopping_cart_id": 0.253355,
+      "product_id": 0.253355,
+      "quantity": 0.253355
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "description": "Each user registers with a single payment method.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.99951
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "description": "A user can have multiple shopping carts; each cart belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997492
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place many orders; each order is placed by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999083
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "ORDER",
+      "description": "A payment method can be used for many orders; each order uses one payment method.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.047212
+    },
+    {
+      "entity_1": "MANUFACTURER",
+      "entity_2": "PRODUCT",
+      "description": "A manufacturer produces multiple products; each product is made by one manufacturer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995753
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "CART_PRODUCT",
+      "description": "One SHOPPING_CART can be associated with many CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.253355
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_PRODUCT",
+      "description": "One PRODUCT can be associated with many CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.253355
+    }
+  ],
+  "processing_time": 2.73
+}

@@ -1,0 +1,63 @@
+{
+  "filename": "258.txt",
+  "entity": {
+    "DONOR": 0.817574,
+    "FUNDRAISE_EVENT": 0.768008,
+    "DONATION": 0.817574,
+    "PERSONAL_PROFILE": 0.667789
+  },
+  "attribute": {
+    "DONOR": {
+      "name": 0.76183,
+      "contact_detail": 0.765531,
+      "address": 0.75868
+    },
+    "FUNDRAISE_EVENT": {
+      "name": 0.769104,
+      "type": 0.774635,
+      "timing": 0.761804,
+      "location": 0.763766,
+      "current_raise_status": 0.763527
+    },
+    "DONATION": {
+      "donation_time": 0.766906,
+      "method": 0.770467,
+      "message": 0.759867,
+      "amount": 0.763379,
+      "donation_status": 0.767324
+    },
+    "PERSONAL_PROFILE": {
+      "profile_picture": 0.729974,
+      "bio": 0.742363,
+      "interests": 0.743831
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DONOR",
+      "entity_2": "PERSONAL_PROFILE",
+      "cardinality": "1:1",
+      "description": "A donor has one personal profile",
+      "probability": 0.331432
+    },
+    {
+      "entity_1": "DONOR",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "A donor can make multiple donations",
+      "probability": 0.419517
+    },
+    {
+      "entity_1": "FUNDRAISE_EVENT",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "A fundraising event can receive multiple donations",
+      "probability": 0.663264
+    }
+  ],
+  "processing_time": 18.76,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the fundraising_activity entity as it was not essential, added donation_status attribute to the donation entity, and retained the strengths of the previous model to create an optimal final model"
+  }
+}

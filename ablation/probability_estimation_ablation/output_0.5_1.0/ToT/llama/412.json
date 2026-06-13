@@ -1,0 +1,132 @@
+{
+  "filename": "412.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "COURSE": 0.817574,
+    "GRADE": 0.817574,
+    "COLLEGE": 0.774448,
+    "MAJOR": 0.728712,
+    "ASSOC_STUDENT_COURSE": 0.044,
+    "ASSOC_TEACHER_COURSE": 0.992082
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.768335,
+      "contact": 0.76878,
+      "student_id": 0.770571,
+      "major_id": 0.76976
+    },
+    "TEACHER": {
+      "name": 0.759152,
+      "contact": 0.76186,
+      "teacher_id": 0.764434
+    },
+    "COURSE": {
+      "course_name": 0.767568,
+      "credit": 0.757538,
+      "course_id": 0.767381,
+      "teacher_id": 0.77312,
+      "college_id": 0.769444
+    },
+    "GRADE": {
+      "grade": 0.753596,
+      "student_id": 0.769922,
+      "course_id": 0.768786,
+      "enrollment_time": 0.770023
+    },
+    "COLLEGE": {
+      "college_name": 0.760981,
+      "college_id": 0.76111
+    },
+    "MAJOR": {
+      "major_name": 0.750209,
+      "major_id": 0.750456,
+      "college_id": 0.760768
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.044,
+      "student_id": 0.044,
+      "course_id": 0.044
+    },
+    "ASSOC_TEACHER_COURSE": {
+      "assoc_teacher_course_id": 0.992082,
+      "teacher_id": 0.992082,
+      "course_id": 0.992082
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.044
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.044
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "ASSOC_TEACHER_COURSE",
+      "description": "One TEACHER can be associated with many ASSOC_TEACHER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992082
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_TEACHER_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_TEACHER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992082
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A student can have multiple grades for different courses",
+      "probability": 0.70723
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A course can have multiple grades for different students",
+      "probability": 0.999262
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "MAJOR",
+      "cardinality": "N:1",
+      "description": "A student can have one major",
+      "probability": 0.183056
+    },
+    {
+      "entity_1": "MAJOR",
+      "entity_2": "COLLEGE",
+      "cardinality": "N:1",
+      "description": "A major can be part of one college",
+      "probability": 0.995435
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COLLEGE",
+      "cardinality": "N:1",
+      "description": "A course can be part of one college",
+      "probability": 0.001096
+    }
+  ],
+  "processing_time": 25.18,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute employee_id from TEACHER entity, added major_id to STUDENT entity, added college_id to COURSE and MAJOR entities, and added a relationship between COURSE and COLLEGE entities"
+  }
+}

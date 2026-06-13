@@ -1,0 +1,90 @@
+{
+  "filename": "271.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "CLIENT": 0.817574,
+    "SERVICE": 0.817574,
+    "SUBSCRIPTION": 0.817574,
+    "OPERATOR": 0.688089,
+    "ASSOC_CLIENT_SERVICE": 0.998833
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.74451,
+      "name": 0.753707,
+      "address": 0.748088
+    },
+    "CLIENT": {
+      "client_id": 0.744285,
+      "name": 0.753238,
+      "address": 0.749209,
+      "phone": 0.750385
+    },
+    "SERVICE": {
+      "service_id": 0.759277,
+      "transmission_type": 0.787871,
+      "transmission_rate": 0.790414,
+      "price": 0.763841
+    },
+    "SUBSCRIPTION": {
+      "subscription_id": 0.754494,
+      "subscription_time": 0.760693,
+      "end_time": 0.763958
+    },
+    "OPERATOR": {
+      "operator_id": 0.736978,
+      "name": 0.747824,
+      "license_number": 0.753447
+    },
+    "ASSOC_CLIENT_SERVICE": {
+      "assoc_client_service_id": 0.998833,
+      "client_id": 0.998833,
+      "service_id": 0.998833
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "A company offers multiple services, and each service is offered by one company.",
+      "probability": 0.987277
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A client can have multiple subscriptions, and each subscription belongs to one client.",
+      "probability": 0.99775
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A service can be subscribed to by multiple clients, and each subscription is for one service.",
+      "probability": 0.990606
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "An operator can record multiple subscriptions, and each subscription is recorded by one operator.",
+      "probability": 0.041371
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_CLIENT_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998833
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "ASSOC_CLIENT_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998833
+    }
+  ],
+  "processing_time": 6.99
+}

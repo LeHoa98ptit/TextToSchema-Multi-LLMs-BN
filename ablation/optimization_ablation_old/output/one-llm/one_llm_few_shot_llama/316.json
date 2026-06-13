@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "EBOOK",
+    "DOCUMENT",
+    "CATEGORY",
+    "USER",
+    "READING_STATISTIC",
+    "ASSOC_USER_EBOOK"
+  ],
+  "attribute": {
+    "EBOOK": [
+      "ebook_id",
+      "title",
+      "cover_image",
+      "description",
+      "category_id"
+    ],
+    "DOCUMENT": [
+      "document_id",
+      "content",
+      "ebook_id",
+      "directory_path"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description",
+      "parent_category_id"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password"
+    ],
+    "READING_STATISTIC": [
+      "statistic_id",
+      "ebook_id",
+      "user_id",
+      "read_date",
+      "like_status"
+    ],
+    "ASSOC_USER_EBOOK": [
+      "assoc_user_ebook_id",
+      "user_id",
+      "ebook_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "DOCUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EBOOK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "ASSOC_USER_EBOOK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.9065,
+  "ilp_runtime": 0.021
+}

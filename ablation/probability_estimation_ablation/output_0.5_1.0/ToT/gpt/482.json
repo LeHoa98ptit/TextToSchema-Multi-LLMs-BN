@@ -1,0 +1,129 @@
+{
+  "filename": "482.txt",
+  "entity": {
+    "CLIENT": 0.817574,
+    "VEHICLE": 0.817574,
+    "CATEGORY": 0.714043,
+    "EMPLOYEE": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "MAINTENANCE_ORDER": 0.76106,
+    "ASSIGNMENT": 0.714818,
+    "ROLE": 0.728099
+  },
+  "attribute": {
+    "CLIENT": {
+      "client_number": 0.751747,
+      "client_type": 0.74737,
+      "discount_rate": 0.746519,
+      "contact_person": 0.751899,
+      "contact_phone": 0.746659,
+      "address": 0.74946
+    },
+    "VEHICLE": {
+      "license_plate": 0.763407,
+      "model": 0.75857,
+      "color": 0.755956,
+      "category_id": 0.757537,
+      "client_number": 0.767886
+    },
+    "CATEGORY": {
+      "category_id": 0.738974,
+      "category_name": 0.741935,
+      "description": 0.762619
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.76507,
+      "position": 0.767043,
+      "phone_number": 0.762805,
+      "home_address": 0.756827,
+      "department_number": 0.76158
+    },
+    "DEPARTMENT": {
+      "department_number": 0.749143,
+      "supervisor_employee_number": 0.760199,
+      "phone_number": 0.750166
+    },
+    "MAINTENANCE_ORDER": {
+      "order_number": 0.766451,
+      "license_plate": 0.772749,
+      "maintenance_content": 0.77465,
+      "man_hour": 0.769805,
+      "order_date": 0.756471,
+      "status": 0.773658,
+      "priority": 0.771449
+    },
+    "ASSIGNMENT": {
+      "assignment_id": 0.748221,
+      "order_number": 0.748205,
+      "employee_number": 0.766558,
+      "role_id": 0.750075
+    },
+    "ROLE": {
+      "role_id": 0.744803,
+      "role_name": 0.747044
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A client can own multiple vehicles",
+      "probability": 0.266248
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "Each vehicle belongs to one category",
+      "probability": 0.974859
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE_ORDER",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many maintenance orders",
+      "probability": 0.884943
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Employees belong to a department",
+      "probability": 0.999889
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each department has one supervisor (an employee)",
+      "probability": 0.999889
+    },
+    {
+      "entity_1": "MAINTENANCE_ORDER",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A maintenance order can have multiple employee assignments",
+      "probability": 0.745903
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An employee can be assigned to many maintenance orders",
+      "probability": 0.830982
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "Each assignment references a role (e.g., maintenance_worker, supervisor)",
+      "probability": 0.002472
+    }
+  ],
+  "processing_time": 9.67,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Extracted Vehicle Category into a separate CATEGORY entity for reuse and future attributes. Added address field to CLIENT. Enriched MAINTENANCE_ORDER with status and priority attributes. Introduced ROLE lookup entity and linked it to ASSIGNMENT to enforce valid role values. Added surrogate assignment_id to ASSIGNMENT for clear primary key. Updated relationships to reflect new entities and clarified cardinalities. Retained the efficient many‑to‑many modeling via ASSIGNMENT and kept consistent naming conventions."
+  }
+}

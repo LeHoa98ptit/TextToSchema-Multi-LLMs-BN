@@ -1,0 +1,137 @@
+{
+  "filename": "442.txt",
+  "entity": {
+    "MEDICAL_INSTITUTION": 0.611614,
+    "DEPARTMENT": 0.622459,
+    "MEDICAL_WASTE": 0.612041,
+    "PERSONNEL": 0.517318,
+    "VEHICLE": 0.622459,
+    "INBOUND_PROCESS": 0.5066,
+    "OUTBOUND_PROCESS": 0.536286,
+    "TEMPORARY_STORAGE": 0.437282
+  },
+  "attribute": {
+    "MEDICAL_INSTITUTION": {
+      "name": 0.526831,
+      "address": 0.529139,
+      "contact": 0.528739,
+      "institution_id": 0.533313
+    },
+    "DEPARTMENT": {
+      "description": 0.538339,
+      "department_id": 0.524017,
+      "institution_id": 0.524565
+    },
+    "MEDICAL_WASTE": {
+      "type": 0.553001,
+      "weight": 0.546498,
+      "generation_time": 0.551664,
+      "collection_time": 0.558792,
+      "status": 0.557286,
+      "traceability_code": 0.556513,
+      "waste_category": 0.564479,
+      "disposal_method": 0.555287
+    },
+    "PERSONNEL": {
+      "role": 0.535417,
+      "contact": 0.538019,
+      "personnel_id": 0.541434,
+      "institution_id": 0.540423
+    },
+    "VEHICLE": {
+      "license_plate": 0.528263,
+      "model": 0.532255,
+      "capacity": 0.541832,
+      "vehicle_id": 0.528579,
+      "institution_id": 0.541319
+    },
+    "INBOUND_PROCESS": {
+      "batch_number": 0.530586,
+      "expect_quantity": 0.529541,
+      "actual_quantity": 0.536458,
+      "expect_weight": 0.528539,
+      "actual_weight": 0.533561,
+      "inbound_time": 0.520343,
+      "collector_id": 0.539538,
+      "confirmer_id": 0.524631
+    },
+    "OUTBOUND_PROCESS": {
+      "batch_number": 0.530121,
+      "outbound_quantity": 0.540509,
+      "outbound_weight": 0.537858,
+      "outbound_time": 0.523246,
+      "transporter_id": 0.537926,
+      "confirmer_id": 0.525638,
+      "start_time": 0.519205,
+      "end_time": 0.525355
+    },
+    "TEMPORARY_STORAGE": {
+      "storage_time": 0.515439,
+      "storage_location": 0.508873,
+      "storage_capacity": 0.526101
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A medical institution has multiple departments",
+      "probability": 0.626012
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "description": "A department generates multiple medical wastes",
+      "probability": 0.000302
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "description": "A personnel is responsible for multiple medical wastes",
+      "probability": 0.89903
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "description": "A vehicle transports multiple medical wastes",
+      "probability": 0.023711
+    },
+    {
+      "entity_1": "INBOUND_PROCESS",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "description": "An inbound process is associated with multiple medical wastes",
+      "probability": 0.005249
+    },
+    {
+      "entity_1": "OUTBOUND_PROCESS",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "description": "An outbound process is associated with multiple medical wastes",
+      "probability": 0.096832
+    },
+    {
+      "entity_1": "TEMPORARY_STORAGE",
+      "entity_2": "MEDICAL_WASTE",
+      "cardinality": "1:N",
+      "description": "A temporary storage is associated with multiple medical wastes",
+      "probability": 0.057319
+    },
+    {
+      "entity_1": "INBOUND_PROCESS",
+      "entity_2": "OUTBOUND_PROCESS",
+      "cardinality": "1:1",
+      "description": "An inbound process is followed by an outbound process",
+      "probability": 0.999425
+    }
+  ],
+  "processing_time": 28.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added waste category and disposal method attributes to MEDICAL_WASTE entity, added start and end time attributes to OUTBOUND_PROCESS entity, and added storage capacity attribute to TEMPORARY_STORAGE entity. Refined relationships between entities to better reflect the medical waste management process."
+  }
+}

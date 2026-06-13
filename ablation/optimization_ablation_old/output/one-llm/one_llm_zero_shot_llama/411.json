@@ -1,0 +1,122 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CONTACT_PERSON",
+    "ADDRESS",
+    "PRODUCT",
+    "PRODUCT_CATEGORY",
+    "BRAND",
+    "SUPPLIER",
+    "ORDER",
+    "ORDER_DETAIL",
+    "PAYMENT",
+    "ASSOC_PRODUCT_BRAND",
+    "ASSOC_ORDER_DETAIL_PRODUCT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "customer_type",
+      "credit_rating"
+    ],
+    "CONTACT_PERSON": [
+      "contact_person_id",
+      "name",
+      "email",
+      "phone"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "zip"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_specification",
+      "unit_price",
+      "inventory_quantity",
+      "production_date"
+    ],
+    "PRODUCT_CATEGORY": [
+      "product_category_id",
+      "category_name"
+    ],
+    "BRAND": [
+      "brand_id",
+      "brand_name"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "supplier_name"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_time",
+      "order_status"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "product_quantity",
+      "unit_price",
+      "total"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "payment_method",
+      "payment_status",
+      "payment_time"
+    ],
+    "ASSOC_PRODUCT_BRAND": [
+      "assoc_product_brand_id",
+      "product_id",
+      "brand_id"
+    ],
+    "ASSOC_ORDER_DETAIL_PRODUCT": [
+      "assoc_order_detail_product_id",
+      "order_detail_id",
+      "product_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 83.1782,
+  "ilp_runtime": 0.053
+}

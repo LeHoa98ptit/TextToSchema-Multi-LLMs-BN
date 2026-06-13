@@ -1,0 +1,122 @@
+{
+  "entity": [
+    "Region",
+    "Country",
+    "Product",
+    "Supplier",
+    "Supplier Supplies Product",
+    "Customer",
+    "Order",
+    "Order Composed of Products"
+  ],
+  "attribut": {
+    "Region": [
+      "Region ID",
+      "Region Name",
+      "Region Description",
+      "Country ID"
+    ],
+    "Country": [
+      "Country ID",
+      "Country Name",
+      "Country Description"
+    ],
+    "Product": [
+      "Product ID",
+      "Name",
+      "Manufacturer",
+      "Brand",
+      "Type",
+      "Size",
+      "Retail Price"
+    ],
+    "Supplier": [
+      "Supplier ID",
+      "Supplier Name",
+      "Address",
+      "Region ID",
+      "Phone Number",
+      "Account Balance"
+    ],
+    "Supplier Supplies Product": [
+      "Product ID",
+      "Supplier ID",
+      "Supply Quantity",
+      "Supply Cost"
+    ],
+    "Customer": [
+      "Customer ID",
+      "Name",
+      "Address",
+      "Region ID",
+      "Phone Number",
+      "Account Balance",
+      "Market Segment"
+    ],
+    "Order": [
+      "Order ID",
+      "Customer ID",
+      "Order Status",
+      "Total Price",
+      "Order Date",
+      "Priority",
+      "Handler"
+    ],
+    "Order Composed of Products": [
+      "Order ID",
+      "Product ID",
+      "Quantity",
+      "Extended Price",
+      "Discount",
+      "Tax",
+      "Shipment Date",
+      "Receipt Date",
+      "Shipping Instructions",
+      "Shipping Method",
+      "Return Indicator",
+      "Status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Country",
+      "entity_2": "Region",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Region",
+      "entity_2": "Supplier",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Product",
+      "entity_2": "Supplier Supplies Product",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Supplier",
+      "entity_2": "Supplier Supplies Product",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Region",
+      "entity_2": "Customer",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Customer",
+      "entity_2": "Order",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Product",
+      "entity_2": "Order Composed of Products",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Order",
+      "entity_2": "Order Composed of Products",
+      "cardinality": "1:N"
+    }
+  ]
+}

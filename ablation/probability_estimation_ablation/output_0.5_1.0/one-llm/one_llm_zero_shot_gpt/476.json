@@ -1,0 +1,172 @@
+{
+  "filename": "476.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "SALE_ORDER": 0.750691,
+    "ORDER_DETAIL": 0.735187,
+    "PRODUCT": 0.74227,
+    "RECIPE": 0.713062,
+    "RAW_MATERIAL": 0.794342,
+    "SUPPLIER": 0.817574,
+    "PURCHASE_ORDER": 0.74708,
+    "PURCHASE_ORDER_DETAIL": 0.708931,
+    "PRODUCTION_PLAN": 0.766347,
+    "DELIVERY": 0.817574,
+    "FINANCIAL_RECORD": 0.739794
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.753046,
+      "name": 0.758421,
+      "contact_number": 0.751298,
+      "address": 0.755074
+    },
+    "SALE_ORDER": {
+      "order_id": 0.754729,
+      "customer_id": 0.761094,
+      "order_date": 0.751522,
+      "expected_delivery_date": 0.750473,
+      "order_status": 0.758674,
+      "total_amount": 0.758423
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.75899,
+      "order_id": 0.757322,
+      "product_id": 0.757385,
+      "quantity": 0.773851,
+      "unit_price": 0.76294,
+      "line_total": 0.763768
+    },
+    "PRODUCT": {
+      "product_id": 0.741594,
+      "name": 0.745315,
+      "description": 0.755891,
+      "price": 0.739955
+    },
+    "RECIPE": {
+      "recipe_id": 0.749235,
+      "product_id": 0.75051,
+      "raw_material_id": 0.74871,
+      "quantity_needed": 0.763429,
+      "unit": 0.759801
+    },
+    "RAW_MATERIAL": {
+      "raw_material_id": 0.74358,
+      "name": 0.743771,
+      "unit": 0.752016,
+      "unit_price": 0.747763,
+      "stock_quantity": 0.760549
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.762813,
+      "name": 0.760959,
+      "contact_number": 0.760459,
+      "address": 0.762128
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_id": 0.754897,
+      "supplier_id": 0.762902,
+      "order_date": 0.75091,
+      "status": 0.765728
+    },
+    "PURCHASE_ORDER_DETAIL": {
+      "purchase_order_detail_id": 0.767654,
+      "purchase_order_id": 0.764828,
+      "raw_material_id": 0.769501,
+      "order_quantity": 0.771519,
+      "received_quantity": 0.771632,
+      "status": 0.773639
+    },
+    "PRODUCTION_PLAN": {
+      "plan_id": 0.765142,
+      "order_id": 0.767186,
+      "scheduled_date": 0.755993,
+      "sequence_number": 0.762922,
+      "status": 0.771366
+    },
+    "DELIVERY": {
+      "delivery_id": 0.752751,
+      "order_id": 0.754392,
+      "delivery_time": 0.752877,
+      "location": 0.75415,
+      "delivery_status": 0.756001
+    },
+    "FINANCIAL_RECORD": {
+      "transaction_id": 0.747419,
+      "transaction_type": 0.749912,
+      "transaction_date": 0.745,
+      "amount": 0.745583,
+      "related_order_id": 0.750372,
+      "status": 0.751055
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.772207
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.642682
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.998214
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "RECIPE",
+      "cardinality": "1:N",
+      "probability": 0.131097
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "RECIPE",
+      "cardinality": "1:N",
+      "probability": 0.076434
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.552422
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.99873
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "PURCHASE_ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.035819
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "PRODUCTION_PLAN",
+      "cardinality": "1:1",
+      "probability": 0.026336
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "probability": 0.398248
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "FINANCIAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.000218
+    }
+  ],
+  "processing_time": 980.55
+}

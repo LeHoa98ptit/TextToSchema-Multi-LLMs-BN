@@ -1,0 +1,95 @@
+{
+  "filename": "359.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SPORT_EVENT": 0.798605,
+    "MESSAGE": 0.731511,
+    "EVENT_REGISTRATION": 0.252351
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.743649,
+      "full name": 0.747923,
+      "contact information": 0.764555,
+      "avatar url": 0.751043,
+      "password hash": 0.74271,
+      "created at": 0.751125
+    },
+    "SPORT_EVENT": {
+      "event id": 0.781151,
+      "creator user id": 0.782529,
+      "event name": 0.778794,
+      "description": 0.781715,
+      "location": 0.776501,
+      "event datetime": 0.770554,
+      "event type": 0.781869
+    },
+    "MESSAGE": {
+      "message id": 0.750167,
+      "event id": 0.761952,
+      "sender user id": 0.752807,
+      "receiver user id": 0.756324,
+      "content": 0.759721,
+      "sent at": 0.749841
+    },
+    "EVENT_REGISTRATION": {
+      "event_registration_id": 0.252351,
+      "user_id": 0.252351,
+      "sport_event_id": 0.252351,
+      "ID_EVENT_REGISTRATION": 0.252351,
+      "USER_ID": 0.252351,
+      "SPORT_EVENT_ID": 0.252351
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SPORT_EVENT",
+      "description": "A user creates sport events; each event has exactly one creator user, while a user can create many events.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252351
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EVENT_REGISTRATION",
+      "description": "One USER can be associated with many EVENT_REGISTRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252351
+    },
+    {
+      "entity_1": "SPORT_EVENT",
+      "entity_2": "EVENT_REGISTRATION",
+      "description": "One SPORT_EVENT can be associated with many EVENT_REGISTRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252351
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "description": "A user sends messages; each message has one sender user, while a user can send many messages.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999708
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "description": "A user receives messages; each message has one receiver user, while a user can receive many messages.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999708
+    },
+    {
+      "entity_1": "SPORT_EVENT",
+      "entity_2": "MESSAGE",
+      "description": "Messages are posted within a sport event; each message belongs to one event, and an event can have many messages.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.78074
+    }
+  ],
+  "processing_time": 16.29
+}

@@ -1,0 +1,97 @@
+{
+  "filename": "339.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "API": 0.817574,
+    "USER": 0.719463,
+    "API_HISTORY": 0.74313,
+    "API_PERFORMANCE": 0.742461,
+    "ASSOC_USER_PROJECT": 0.653413
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.752807,
+      "project_name": 0.75356,
+      "description": 0.767709,
+      "avatar_url": 0.758597,
+      "avatar_uploaded_at": 0.754632
+    },
+    "API": {
+      "api_id": 0.762956,
+      "api_name": 0.764417,
+      "access_path": 0.754804,
+      "created_at": 0.752204,
+      "updated_at": 0.752642,
+      "project_id": 0.766003
+    },
+    "USER": {
+      "user_id": 0.740629,
+      "username": 0.739494,
+      "email": 0.738599
+    },
+    "API_HISTORY": {
+      "history_id": 0.764953,
+      "api_id": 0.767,
+      "change_type": 0.759005,
+      "changed_at": 0.759095,
+      "changed_by": 0.760088
+    },
+    "API_PERFORMANCE": {
+      "perf_id": 0.766848,
+      "api_id": 0.775166,
+      "record_timestamp": 0.769895,
+      "call_count": 0.772649,
+      "avg_response_ms": 0.76969,
+      "p90_response_ms": 0.764307
+    },
+    "ASSOC_USER_PROJECT": {
+      "assoc_user_project_id": 0.653413,
+      "user_id": 0.653413,
+      "project_id": 0.653413
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "API",
+      "cardinality": "1:N",
+      "description": "A project can have many APIs",
+      "probability": 0.086309
+    },
+    {
+      "entity_1": "API",
+      "entity_2": "API_HISTORY",
+      "cardinality": "1:N",
+      "description": "Each API can have multiple change‑history records",
+      "probability": 0.569319
+    },
+    {
+      "entity_1": "API",
+      "entity_2": "API_PERFORMANCE",
+      "cardinality": "1:N",
+      "description": "Performance metrics are collected repeatedly for each API",
+      "probability": 0.819882
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One USER can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.653413
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.653413
+    }
+  ],
+  "processing_time": 18.47,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged AVATAR into PROJECT as avatar_url and avatar_uploaded_at, removing the separate AVATAR entity. Eliminated the redundant USER‑API_HISTORY relationship; changed_by foreign key in API_HISTORY now captures the responsible user. Added a composite unique constraint on (api_id, record_timestamp) for API_PERFORMANCE (not shown in JSON). Documented change_type semantics and recommended indexes on foreign keys for performance."
+  }
+}

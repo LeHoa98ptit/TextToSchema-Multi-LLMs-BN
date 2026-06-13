@@ -1,0 +1,92 @@
+{
+  "filename": "283.txt",
+  "entity": {
+    "BOOK": 0.622459,
+    "AUTHOR": 0.622459,
+    "EDITOR": 0.622459,
+    "CATEGORY": 0.622459,
+    "BOOK_AUTHOR": 0.595753,
+    "BOOK_EDITOR": 0.558654
+  },
+  "attribute": {
+    "BOOK": {
+      "bookid": 0.565574,
+      "title": 0.543389,
+      "isbn": 0.562275,
+      "publicationdate": 0.550603,
+      "categoryid": 0.558233
+    },
+    "AUTHOR": {
+      "authorid": 0.540389,
+      "name": 0.533549,
+      "email": 0.537287,
+      "phone": 0.540512
+    },
+    "EDITOR": {
+      "editorid": 0.532359,
+      "name": 0.53224,
+      "email": 0.533237,
+      "phone": 0.530978
+    },
+    "CATEGORY": {
+      "categoryid": 0.516468,
+      "name": 0.515306,
+      "description": 0.525802
+    },
+    "BOOK_AUTHOR": {
+      "bookid": 0.568545,
+      "authorid": 0.561064,
+      "contribution_order": 0.543228,
+      "role": 0.558997
+    },
+    "BOOK_EDITOR": {
+      "bookid": 0.57748,
+      "editorid": 0.564739,
+      "edit_date": 0.548075,
+      "notes": 0.560583,
+      "is_primary": 0.557979
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each book belongs to one category; a category can contain many books",
+      "probability": 0.99673
+    },
+    {
+      "entity_1": "BOOK_AUTHOR",
+      "entity_2": "BOOK",
+      "cardinality": "N:1",
+      "description": "Associative entity linking books to authors",
+      "probability": 0.99876
+    },
+    {
+      "entity_1": "BOOK_AUTHOR",
+      "entity_2": "AUTHOR",
+      "cardinality": "N:1",
+      "description": "Associative entity linking authors to books",
+      "probability": 0.999973
+    },
+    {
+      "entity_1": "BOOK_EDITOR",
+      "entity_2": "BOOK",
+      "cardinality": "N:1",
+      "description": "Associative entity linking books to editors",
+      "probability": 0.96537
+    },
+    {
+      "entity_1": "BOOK_EDITOR",
+      "entity_2": "EDITOR",
+      "cardinality": "N:1",
+      "description": "Associative entity linking editors to books",
+      "probability": 0.999616
+    }
+  ],
+  "processing_time": 19.49,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added CATEGORY foreign key (categoryid) to BOOK; introduced optional name fields for AUTHOR and EDITOR; added is_primary flag in BOOK_EDITOR to identify the primary editor while still supporting multiple editors; clarified that email fields in AUTHOR and EDITOR and isbn in BOOK should be unique; retained many‑to‑many associative entities with extra descriptive attributes; kept original strengths of clear relationships and extensibility."
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "filename": "254.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SEISMOMETER": 0.817574,
+    "CALIBRATION": 0.817574,
+    "STATION": 0.817574,
+    "PERSONNEL": 0.744464,
+    "ASSOC_USER_STATION": 0.069861,
+    "ASSOC_USER_CALIBRATION": 0.282115
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.732428,
+      "password": 0.743678,
+      "role": 0.753593
+    },
+    "SEISMOMETER": {
+      "seismometer_id": 0.763107,
+      "mechanical_period": 0.76252,
+      "equivalent_pendulum_length": 0.760249,
+      "moment_inertia": 0.759484,
+      "calibration_coil_sensitivity": 0.75983
+    },
+    "CALIBRATION": {
+      "calibration_id": 0.745648,
+      "calibration_time": 0.743949,
+      "amplitude": 0.748155,
+      "width": 0.740834,
+      "vibration_table_test_result": 0.757362
+    },
+    "STATION": {
+      "station_id": 0.748787,
+      "station_name": 0.751505,
+      "location": 0.745535
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.756337,
+      "name": 0.756695,
+      "position": 0.756581
+    },
+    "ASSOC_USER_STATION": {
+      "assoc_user_station_id": 0.069861,
+      "user_id": 0.069861,
+      "station_id": 0.069861
+    },
+    "ASSOC_USER_CALIBRATION": {
+      "assoc_user_calibration_id": 0.282115,
+      "user_id": 0.282115,
+      "calibration_id": 0.282115
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_STATION",
+      "description": "One USER can be associated with many ASSOC_USER_STATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.069861
+    },
+    {
+      "entity_1": "STATION",
+      "entity_2": "ASSOC_USER_STATION",
+      "description": "One STATION can be associated with many ASSOC_USER_STATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.069861
+    },
+    {
+      "entity_1": "SEISMOMETER",
+      "entity_2": "CALIBRATION",
+      "cardinality": "1:N",
+      "description": "A seismometer can have multiple calibrations, but a calibration is associated with only one seismometer.",
+      "probability": 0.928748
+    },
+    {
+      "entity_1": "SEISMOMETER",
+      "entity_2": "STATION",
+      "cardinality": "1:N",
+      "description": "A station can have multiple seismometers, but a seismometer is associated with only one station.",
+      "probability": 0.26332
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CALIBRATION",
+      "description": "One USER can be associated with many ASSOC_USER_CALIBRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.282115
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "ASSOC_USER_CALIBRATION",
+      "description": "One CALIBRATION can be associated with many ASSOC_USER_CALIBRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.282115
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "STATION",
+      "cardinality": "1:N",
+      "description": "A personnel can be assigned to only one station, but a station can have multiple personnel.",
+      "probability": 0.938233
+    }
+  ],
+  "processing_time": 22.72
+}

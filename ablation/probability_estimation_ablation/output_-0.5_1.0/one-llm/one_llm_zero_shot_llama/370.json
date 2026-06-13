@@ -1,0 +1,104 @@
+{
+  "filename": "370.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "MANUFACTURER": 0.510798,
+    "SHOPPING_CART": 0.595922,
+    "ORDER": 0.622459,
+    "PAYMENT_METHOD": 0.4377,
+    "ADDRESS": 0.488177,
+    "ASSOC_PRODUCT_SHOPPING_CART": 0.122571
+  },
+  "attribute": {
+    "USER": {
+      "phone_number": 0.534176,
+      "address_id": 0.513338
+    },
+    "PRODUCT": {
+      "unique_id": 0.540927,
+      "manufacturer_id": 0.541826,
+      "flavor": 0.539072,
+      "number": 0.555257,
+      "puff": 0.548721,
+      "unit_price": 0.535675,
+      "stock_quantity": 0.551661
+    },
+    "MANUFACTURER": {
+      "name": 0.528948
+    },
+    "SHOPPING_CART": {
+      "user_id": 0.53941,
+      "product_id": 0.54856,
+      "quantity": 0.561361
+    },
+    "ORDER": {
+      "user_id": 0.525209,
+      "order_creation_time": 0.522246,
+      "order_status": 0.522254
+    },
+    "PAYMENT_METHOD": {
+      "type": 0.52881
+    },
+    "ADDRESS": {
+      "street": 0.514323,
+      "city": 0.51275,
+      "state": 0.510372,
+      "zip_code": 0.508059
+    },
+    "ASSOC_PRODUCT_SHOPPING_CART": {
+      "assoc_product_shopping_cart_id": 0.122571,
+      "product_id": 0.122571,
+      "shopping_cart_id": 0.122571
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "probability": 0.872029
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:1",
+      "probability": 0.998675
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.998411
+    },
+    {
+      "entity_1": "MANUFACTURER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "probability": 0.989404
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_SHOPPING_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122571
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_PRODUCT_SHOPPING_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122571
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:N",
+      "probability": 3.6e-05
+    }
+  ],
+  "processing_time": 16.32
+}

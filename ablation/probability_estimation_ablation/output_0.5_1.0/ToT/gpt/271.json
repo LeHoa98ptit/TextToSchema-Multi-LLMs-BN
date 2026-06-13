@@ -1,0 +1,95 @@
+{
+  "filename": "271.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "SERVICE": 0.817574,
+    "CLIENT": 0.817574,
+    "SUBSCRIPTION": 0.817574,
+    "OPERATOR": 0.688089
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.74451,
+      "name": 0.753707,
+      "address": 0.748088,
+      "contact_number": 0.747236,
+      "email": 0.746708
+    },
+    "SERVICE": {
+      "service_id": 0.759277,
+      "service_name": 0.763726,
+      "transmission_type": 0.787871,
+      "transmission_rate": 0.790414,
+      "price": 0.763841,
+      "description": 0.772807
+    },
+    "CLIENT": {
+      "client_id": 0.744285,
+      "full_name": 0.744631,
+      "address": 0.749209,
+      "phone": 0.750385,
+      "email": 0.74741,
+      "billing_address": 0.747583
+    },
+    "SUBSCRIPTION": {
+      "subscription_id": 0.754494,
+      "client_id": 0.757418,
+      "service_id": 0.765389,
+      "operator_id": 0.755238,
+      "start_timestamp": 0.753865,
+      "end_timestamp": 0.759026,
+      "status": 0.76297,
+      "price_paid": 0.761825
+    },
+    "OPERATOR": {
+      "operator_id": 0.736978,
+      "full_name": 0.736876,
+      "employee_number": 0.745481,
+      "role": 0.743173,
+      "hire_date": 0.736493,
+      "status": 0.744627
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "A company provides many satellite transmission services",
+      "probability": 0.987646
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "OPERATOR",
+      "cardinality": "1:N",
+      "description": "A company employs multiple operators",
+      "probability": 0.004329
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A client can have many subscription records",
+      "probability": 0.997197
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "Each service can be linked to many subscription instances",
+      "probability": 0.987742
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "Operators record many subscription events",
+      "probability": 0.024674
+    }
+  ],
+  "processing_time": 20.81,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added foreign key attributes client_id, service_id, and operator_id to SUBSCRIPTION to make the many‑to‑many CLIENT‑SERVICE link explicit and to capture which operator handled each subscription. Introduced an operator status attribute for active/inactive tracking. Standardized all attribute names to snake_case for consistency. Retained the robust entity set and relationship cardinalities while removing any redundant direct CLIENT‑SERVICE relationship."
+  }
+}

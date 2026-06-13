@@ -1,0 +1,177 @@
+{
+  "filename": "423.txt",
+  "entity": {
+    "COURSE": 0.817574,
+    "COURSE_CATEGORY": 0.726572,
+    "CHAPTER": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "STUDENT": 0.757514,
+    "LESSON": 0.747326,
+    "COURSE_MATERIAL": 0.727366,
+    "STUDENT_FEEDBACK": 0.711627,
+    "STUDENT_COURSE_ENROLLMENT": 0.01241
+  },
+  "attribute": {
+    "COURSE": {
+      "course id": 0.769921,
+      "course description": 0.781325,
+      "number of lessons": 0.784544,
+      "total duration minutes": 0.770832,
+      "difficulty level": 0.769007,
+      "target audience": 0.769697,
+      "recommendation status": 0.778945,
+      "category id": 0.777526
+    },
+    "COURSE_CATEGORY": {
+      "category id": 0.774366,
+      "category name": 0.776452
+    },
+    "CHAPTER": {
+      "chapter id": 0.749443,
+      "chapter description": 0.758345,
+      "video url": 0.752392,
+      "material duration minutes": 0.750367,
+      "previous chapter id": 0.745442,
+      "parent chapter id": 0.746559,
+      "course id": 0.776693
+    },
+    "INSTRUCTOR": {
+      "instructor id": 0.773185,
+      "avatar url": 0.76258,
+      "teaching experience years": 0.775353,
+      "professional field": 0.777531,
+      "personal profile": 0.77769
+    },
+    "LESSON": {
+      "lesson id": 0.763451,
+      "lesson number": 0.766008,
+      "lesson duration minutes": 0.764799,
+      "chapter id": 0.769915,
+      "course id": 0.775911
+    },
+    "COURSE_MATERIAL": {
+      "material id": 0.764444,
+      "material type": 0.766178,
+      "material url": 0.761993,
+      "duration minutes": 0.768543,
+      "chapter id": 0.773328
+    },
+    "STUDENT": {
+      "student id": 0.764965,
+      "avatar url": 0.75482,
+      "gender": 0.76197,
+      "age": 0.760853,
+      "contact information": 0.77063,
+      "registration time": 0.763176,
+      "account status": 0.76784,
+      "membership level": 0.773803,
+      "points": 0.764715
+    },
+    "STUDENT_FEEDBACK": {
+      "feedback id": 0.761187,
+      "student id": 0.76642,
+      "instructor id": 0.772191,
+      "course id": 0.774932,
+      "rating": 0.764312,
+      "comments": 0.758677,
+      "feedback date": 0.75928
+    },
+    "STUDENT_COURSE_ENROLLMENT": {
+      "student_course_enrollment_id": 0.01241,
+      "student_id": 0.01241,
+      "course_id": 0.01241,
+      "enrollment_id": 0.01241
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE_CATEGORY",
+      "entity_2": "COURSE",
+      "description": "A course belongs to one category, a category can have many courses",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.639298
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "description": "An instructor teaches multiple courses",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.674188
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CHAPTER",
+      "description": "A course consists of many chapters",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.558977
+    },
+    {
+      "entity_1": "CHAPTER",
+      "entity_2": "LESSON",
+      "description": "A chapter contains multiple lessons",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.916903
+    },
+    {
+      "entity_1": "CHAPTER",
+      "entity_2": "COURSE_MATERIAL",
+      "description": "A chapter can have many course materials",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.030273
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "LESSON",
+      "description": "A course includes multiple lessons",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.908357
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENT_COURSE_ENROLLMENT",
+      "description": "One STUDENT can be associated with many STUDENT_COURSE_ENROLLMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01241
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "STUDENT_COURSE_ENROLLMENT",
+      "description": "One COURSE can be associated with many STUDENT_COURSE_ENROLLMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01241
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENT_FEEDBACK",
+      "description": "A student can give multiple feedback entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976165
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "STUDENT_FEEDBACK",
+      "description": "A course can receive multiple feedback entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.282888
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "STUDENT_FEEDBACK",
+      "description": "An instructor can receive multiple feedback entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.846271
+    }
+  ],
+  "processing_time": 51.59
+}

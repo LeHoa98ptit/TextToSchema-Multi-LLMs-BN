@@ -1,0 +1,157 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.817574,
+    "LABORATORY_EQUIPMENT": 0.767545,
+    "CONSUMABLE": 0.817574,
+    "HAZARDOUS_CHEMICAL": 0.790095,
+    "EXPERIMENTAL_COURSE": 0.80345,
+    "UNIT": 0.729285,
+    "EQUIPMENT_USAGE_RECORD": 0.992684,
+    "CONSUMABLE_RECORD": 0.75984,
+    "HAZARDOUS_CHEMICAL_RECORD": 0.761714,
+    "COURSE_REGISTRATION": 0.993363
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.732466,
+      "password": 0.742258,
+      "phone number": 0.736993,
+      "associated unit": 0.756552,
+      "user role": 0.753517
+    },
+    "LABORATORY_EQUIPMENT": {
+      "equipment model": 0.773068,
+      "category": 0.777644,
+      "manufacturer": 0.76735,
+      "status": 0.774309,
+      "acquisition time": 0.766031
+    },
+    "CONSUMABLE": {
+      "consumable category": 0.761897,
+      "inventory quantity": 0.769615,
+      "status": 0.757565
+    },
+    "HAZARDOUS_CHEMICAL": {
+      "chemical inventory quantity": 0.771334,
+      "status": 0.756562
+    },
+    "EXPERIMENTAL_COURSE": {
+      "course class time": 0.759933,
+      "class location": 0.762448
+    },
+    "UNIT": {
+      "unit name": 0.75096
+    },
+    "EQUIPMENT_USAGE_RECORD": {
+      "usage time": 0.766553,
+      "user": 0.992684,
+      "purpose": 0.992684,
+      "course association": 0.785753,
+      "equipment_usage_record_id": 0.992684,
+      "laboratory_equipment_id": 0.992684,
+      "experimental_course_id": 0.992684,
+      "usage_time": 0.992684,
+      "course_association": 0.992684
+    },
+    "CONSUMABLE_RECORD": {
+      "purchase time": 0.752646,
+      "user": 0.758345
+    },
+    "HAZARDOUS_CHEMICAL_RECORD": {
+      "issuance time": 0.757172,
+      "status": 0.760154
+    },
+    "COURSE_REGISTRATION": {
+      "student": 0.993363,
+      "course": 0.993363,
+      "teacher": 0.993363,
+      "course_registration_id": 0.993363,
+      "user_id": 0.993363,
+      "experimental_course_id": 0.993363
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "UNIT",
+      "description": "A user is associated with one unit",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.993345
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "description": "A user can have multiple equipment usage records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996982
+    },
+    {
+      "entity_1": "LABORATORY_EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "description": "A laboratory equipment can have multiple equipment usage records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999857
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "description": "An experimental course can have multiple equipment usage records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995915
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_RECORD",
+      "description": "A user can have multiple consumable records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999284
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_RECORD",
+      "description": "A consumable can have multiple consumable records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999872
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HAZARDOUS_CHEMICAL_RECORD",
+      "description": "A user can have multiple hazardous chemical records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.442127
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "HAZARDOUS_CHEMICAL_RECORD",
+      "description": "A hazardous chemical can have multiple hazardous chemical records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99997
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COURSE_REGISTRATION",
+      "description": "One USER can be associated with many COURSE_REGISTRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993363
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "COURSE_REGISTRATION",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many COURSE_REGISTRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993363
+    }
+  ],
+  "processing_time": 335.47
+}

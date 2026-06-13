@@ -1,0 +1,90 @@
+{
+  "filename": "257.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "FLIGHT": 0.817574,
+    "BOOKING": 0.817574,
+    "ORDER": 0.817574,
+    "AIRLINE": 0.783402
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.76741,
+      "gender": 0.771194,
+      "contact": 0.760109,
+      "customer_type": 0.773306
+    },
+    "FLIGHT": {
+      "flight_date": 0.76348,
+      "airline_code": 0.766645,
+      "departure": 0.765001,
+      "destination": 0.763099,
+      "departure_time": 0.765143,
+      "arrival_time": 0.764367
+    },
+    "BOOKING": {
+      "booking_date": 0.770861,
+      "discount_rate": 0.772788,
+      "ticket_order_number": 0.76969
+    },
+    "ORDER": {
+      "order_date": 0.74423,
+      "customer_id": 0.759406,
+      "flight_number": 0.765847,
+      "ticket_order_number": 0.760295
+    },
+    "AIRLINE": {
+      "airline_name": 0.765395,
+      "airline_code": 0.767572
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple bookings",
+      "probability": 0.74062
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "description": "A flight can have multiple bookings",
+      "probability": 0.995338
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple orders",
+      "probability": 0.963477
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A flight can have multiple orders",
+      "probability": 0.019712
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airline can have multiple flights",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "BOOKING",
+      "entity_2": "ORDER",
+      "cardinality": "1:1",
+      "description": "A booking is associated with one order",
+      "probability": 0.552289
+    }
+  ],
+  "processing_time": 22.9,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant information by replacing 'airline' attribute in FLIGHT entity with 'airline_code', removed 'discount_rate' from ORDER entity as it is already present in BOOKING entity, and added a relationship between BOOKING and ORDER entities to establish a clear association"
+  }
+}

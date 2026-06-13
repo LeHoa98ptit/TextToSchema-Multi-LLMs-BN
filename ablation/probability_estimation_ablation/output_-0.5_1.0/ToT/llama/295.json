@@ -1,0 +1,115 @@
+{
+  "filename": "295.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "TRADER": 0.622459,
+    "CLIENT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "FUTURE": 0.622459,
+    "TRANSACTION_PERFORMANCE": 0.524206,
+    "RISK_LEVEL": 0.586933
+  },
+  "attribute": {
+    "COMPANY": {
+      "name": 0.536063,
+      "address": 0.535748,
+      "phone_number": 0.52959,
+      "email": 0.540674
+    },
+    "TRADER": {
+      "trader_id": 0.551052,
+      "hire_date": 0.547417,
+      "contact_number": 0.54984,
+      "trader_name": 0.553519,
+      "trader_email": 0.547665
+    },
+    "CLIENT": {
+      "client_id": 0.530659,
+      "contact_number": 0.534034,
+      "client_name": 0.532449,
+      "client_email": 0.529701,
+      "client_address": 0.526334
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.541832,
+      "future_code": 0.575615,
+      "transaction_type": 0.547148,
+      "transaction_quantity": 0.546779,
+      "transaction_price": 0.544474,
+      "transaction_time": 0.543479
+    },
+    "FUTURE": {
+      "future_code": 0.559561,
+      "future_name": 0.55562,
+      "future_description": 0.555389
+    },
+    "TRANSACTION_PERFORMANCE": {
+      "performance_id": 0.539973,
+      "trader_id": 0.561486,
+      "transaction_id": 0.542537,
+      "performance_metric": 0.543051
+    },
+    "RISK_LEVEL": {
+      "risk_id": 0.523481,
+      "client_id": 0.537181,
+      "risk_level": 0.516795,
+      "risk_description": 0.521374
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "TRADER",
+      "cardinality": "1:N",
+      "description": "A company employs multiple traders",
+      "probability": 0.369346
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A trader executes multiple transactions",
+      "probability": 0.597142
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A client makes multiple transactions",
+      "probability": 0.490301
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "FUTURE",
+      "cardinality": "N:1",
+      "description": "A transaction is related to one future",
+      "probability": 0.99549
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_PERFORMANCE",
+      "cardinality": "1:1",
+      "description": "A transaction has one performance record",
+      "probability": 0.95162
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "RISK_LEVEL",
+      "cardinality": "1:1",
+      "description": "A client has one risk level",
+      "probability": 0.000126
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A client is associated with multiple transactions through the transaction entity",
+      "probability": 0.490301
+    }
+  ],
+  "processing_time": 24.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'transaction_status' from TRANSACTION entity, and added a new relationship between CLIENT and TRANSACTION to explicitly represent the association between a client and their transactions."
+  }
+}

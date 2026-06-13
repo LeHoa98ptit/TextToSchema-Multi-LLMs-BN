@@ -1,0 +1,149 @@
+{
+  "filename": "267.txt",
+  "entity": {
+    "HOTEL": 0.622459,
+    "ROOM": 0.622459,
+    "ROOM_TYPE": 0.533102,
+    "CUSTOMER": 0.622459,
+    "RESERVATION": 0.622459,
+    "RESERVATION_DETAIL": 0.563825,
+    "PAYMENT": 0.491076,
+    "RESERVATION_STATUS": 0.573733,
+    "PAYMENT_METHOD": 0.433988,
+    "PAYMENT_STATUS": 0.448187
+  },
+  "attribute": {
+    "HOTEL": {
+      "hotel_id": 0.564004,
+      "name": 0.562833,
+      "address": 0.564058,
+      "phone": 0.558038
+    },
+    "ROOM": {
+      "room_id": 0.551683,
+      "room_number": 0.562471,
+      "hotel_id": 0.56622,
+      "room_type_id": 0.551519,
+      "base_price": 0.548741
+    },
+    "ROOM_TYPE": {
+      "room_type_id": 0.551822,
+      "type_name": 0.554008,
+      "description": 0.563784,
+      "extra_price": 0.548976
+    },
+    "CUSTOMER": {
+      "customer_id": 0.538792,
+      "first_name": 0.54614,
+      "last_name": 0.540454,
+      "phone": 0.540689,
+      "email": 0.52936
+    },
+    "RESERVATION": {
+      "reservation_id": 0.543499,
+      "customer_id": 0.552864,
+      "reservation_date": 0.542436,
+      "status_id": 0.541186,
+      "total_amount": 0.542983,
+      "cancellation_date": 0.537528
+    },
+    "RESERVATION_DETAIL": {
+      "reservation_detail_id": 0.553566,
+      "reservation_id": 0.550015,
+      "room_id": 0.567989,
+      "check_in_date": 0.548142,
+      "check_out_date": 0.553308,
+      "price_per_night": 0.550757
+    },
+    "PAYMENT": {
+      "payment_id": 0.515628,
+      "reservation_id": 0.539366,
+      "payment_date": 0.512075,
+      "amount": 0.518489,
+      "method_id": 0.511339,
+      "status_id": 0.521286
+    },
+    "RESERVATION_STATUS": {
+      "status_id": 0.538739,
+      "status_name": 0.542855
+    },
+    "PAYMENT_METHOD": {
+      "method_id": 0.508092,
+      "method_name": 0.511351
+    },
+    "PAYMENT_STATUS": {
+      "status_id": 0.520727,
+      "status_name": 0.52524
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ROOM",
+      "cardinality": "1:N",
+      "description": "A hotel owns many rooms",
+      "probability": 0.856538
+    },
+    {
+      "entity_1": "ROOM_TYPE",
+      "entity_2": "ROOM",
+      "cardinality": "1:N",
+      "description": "Each room is assigned one room type",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple reservations",
+      "probability": 0.006357
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_DETAIL",
+      "cardinality": "1:N",
+      "description": "A reservation may include several rooms (details)",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "RESERVATION_DETAIL",
+      "cardinality": "1:N",
+      "description": "A room can appear in many reservation details over time",
+      "probability": 0.987026
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each reservation has a single payment record",
+      "probability": 0.833259
+    },
+    {
+      "entity_1": "RESERVATION_STATUS",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Reservation status is defined by a lookup table",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "Payment method is defined by a lookup table",
+      "probability": 0.99971
+    },
+    {
+      "entity_1": "PAYMENT_STATUS",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "Payment status is defined by a lookup table",
+      "probability": 0.999977
+    }
+  ],
+  "processing_time": 26.24,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added cancellation_date to RESERVATION for tracking cancellations. Introduced lookup tables RESERVATION_STATUS, PAYMENT_METHOD, and PAYMENT_STATUS to enforce valid enum values. Added UNIQUE constraint concept for ROOM.room_number within each HOTEL (not shown as attribute). Retained multi‑room support via RESERVATION_DETAIL and kept PAYMENT entity for financial tracking. Updated relationships to reflect new lookup tables."
+  }
+}

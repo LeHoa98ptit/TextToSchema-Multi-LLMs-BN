@@ -1,0 +1,102 @@
+{
+  "filename": "308.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "PROJECT": 0.817574,
+    "USER": 0.817574,
+    "REPORT": 0.722441,
+    "STATUS": 0.817574,
+    "USER_STATUS": 0.750597
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.763121,
+      "name": 0.761044,
+      "address": 0.761535,
+      "contact_info": 0.764784,
+      "remark": 0.762706
+    },
+    "PROJECT": {
+      "project_id": 0.757365,
+      "name": 0.761277,
+      "start_date": 0.750131,
+      "scale": 0.76103,
+      "remark": 0.765066,
+      "customer_id": 0.774006,
+      "project_manager_id": 0.763988,
+      "status_id": 0.758306
+    },
+    "USER": {
+      "user_id": 0.750038,
+      "abbreviation": 0.755052,
+      "password": 0.751441,
+      "user_status_id": 0.752387
+    },
+    "REPORT": {
+      "report_id": 0.760019,
+      "report_datetime": 0.747739,
+      "description": 0.765701,
+      "creator_user_id": 0.755023,
+      "project_id": 0.763372
+    },
+    "STATUS": {
+      "status_id": 0.745805,
+      "status_name": 0.749385,
+      "description": 0.757816
+    },
+    "USER_STATUS": {
+      "user_status_id": 0.754025,
+      "status_name": 0.754627,
+      "description": 0.766189
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A customer can own multiple projects",
+      "probability": 0.601705
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "Each project has one project manager (a user); a user may manage many projects",
+      "probability": 0.749013
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "description": "Projects reference a project status entry",
+      "probability": 0.754079
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_STATUS",
+      "cardinality": "N:1",
+      "description": "Each user has a status (e.g., Active, Inactive) defined in a lookup table",
+      "probability": 0.99978
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A project can have multiple reports",
+      "probability": 0.841444
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "Each report is authored by a single user",
+      "probability": 0.24042
+    }
+  ],
+  "processing_time": 22.14,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Extracted user active status into a dedicated USER_STATUS lookup table for consistency and future extensibility. Updated USER entity to reference USER_STATUS via user_status_id. Retained STATUS lookup for project status. Ensured abbreviation uniqueness (to be enforced at DB level) and kept a compact, normalized design. Added explicit relationship between USER and USER_STATUS. No unnecessary many‑to‑many structures were introduced."
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "filename": "443.txt",
+  "entity": {
+    "USER": 0.751084,
+    "EQUIPMENT": 0.817574,
+    "EQUIPMENT_MODEL": 0.770582,
+    "EQUIPMENT_STATUS": 0.767009,
+    "CALIBRATION_RECORD": 0.774116,
+    "LOCATION": 0.714614,
+    "DEPARTMENT": 0.700966,
+    "BORROW_TRANSACTION": 0.690146,
+    "RETURN_TRANSACTION": 0.757845,
+    "ACCOUNT_ACTIVITY": 0.745698,
+    "STATUS_LOG": 0.679331
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.741737,
+      "username": 0.732904,
+      "password_hash": 0.736488,
+      "mobile_number": 0.743859,
+      "role": 0.759995,
+      "permission": 0.754056,
+      "email": 0.741348,
+      "created_at": 0.735411
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.780098,
+      "serial_number": 0.767885,
+      "asset_tag": 0.769535,
+      "purchase_date": 0.775397,
+      "warranty_expiry": 0.758606,
+      "current_status_id": 0.768518,
+      "model_id": 0.770194,
+      "location_id": 0.773666,
+      "department_id": 0.777972,
+      "person_in_charge": 0.776917,
+      "remark": 0.779455
+    },
+    "EQUIPMENT_MODEL": {
+      "model_id": 0.764966,
+      "manufacturer": 0.773598,
+      "model_name": 0.76702,
+      "specifications": 0.776932
+    },
+    "EQUIPMENT_STATUS": {
+      "status_id": 0.769862,
+      "status_name": 0.772803,
+      "description": 0.781036
+    },
+    "CALIBRATION_RECORD": {
+      "calibration_id": 0.751554,
+      "equipment_id": 0.774739,
+      "calibration_date": 0.748016,
+      "valid_until": 0.739414,
+      "result": 0.750618,
+      "calibrated_by": 0.750004,
+      "certificate_path": 0.738734
+    },
+    "LOCATION": {
+      "location_id": 0.73847,
+      "building": 0.743672,
+      "room_number": 0.7469,
+      "floor": 0.741807,
+      "area_description": 0.758451
+    },
+    "DEPARTMENT": {
+      "department_id": 0.751894,
+      "department_name": 0.752463,
+      "manager_user_id": 0.753744
+    },
+    "BORROW_TRANSACTION": {
+      "borrow_id": 0.739457,
+      "equipment_id": 0.770269,
+      "borrower_user_id": 0.74392,
+      "borrow_time": 0.736854,
+      "borrow_photo_path": 0.738725,
+      "iou_photo_path": 0.743713,
+      "receive_area": 0.74521,
+      "receive_time": 0.738557,
+      "receive_photo_path": 0.739967,
+      "remark": 0.74628
+    },
+    "RETURN_TRANSACTION": {
+      "return_id": 0.734136,
+      "borrow_id": 0.736778,
+      "returner_user_id": 0.739905,
+      "return_time": 0.734958,
+      "return_photo_path": 0.735882,
+      "condition_note": 0.738294
+    },
+    "ACCOUNT_ACTIVITY": {
+      "activity_id": 0.756992,
+      "user_id": 0.754961,
+      "equipment_id": 0.779809,
+      "transaction_type": 0.755502,
+      "timestamp": 0.753515,
+      "detail": 0.772838,
+      "ip_address": 0.749461
+    },
+    "STATUS_LOG": {
+      "log_id": 0.742648,
+      "equipment_id": 0.774587,
+      "status_id": 0.74218,
+      "changed_at": 0.738351,
+      "changed_by_user_id": 0.740279,
+      "comment": 0.742483
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_MODEL",
+      "cardinality": "N:1",
+      "description": "Each equipment is built from one model; a model can be used by many equipment items.",
+      "probability": 0.999994
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_STATUS",
+      "cardinality": "N:1",
+      "description": "Current status of equipment (available, in repair, etc.).",
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "CALIBRATION_RECORD",
+      "cardinality": "1:N",
+      "description": "Equipment may have multiple calibration records over its lifetime.",
+      "probability": 0.999225
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Equipment is placed at a single location at any time.",
+      "probability": 0.590204
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Equipment belongs to one owning department.",
+      "probability": 0.004463
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BORROW_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user can initiate many borrow transactions.",
+      "probability": 0.985829
+    },
+    {
+      "entity_1": "BORROW_TRANSACTION",
+      "entity_2": "RETURN_TRANSACTION",
+      "cardinality": "1:1",
+      "description": "Each borrow transaction has at most one corresponding return transaction.",
+      "probability": 0.990922
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "User actions are recorded in the activity log.",
+      "probability": 0.979929
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Equipment‑related actions are logged.",
+      "probability": 0.166457
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "STATUS_LOG",
+      "cardinality": "1:N",
+      "description": "Every status change of equipment is stored.",
+      "probability": 0.480796
+    }
+  ],
+  "processing_time": 21.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

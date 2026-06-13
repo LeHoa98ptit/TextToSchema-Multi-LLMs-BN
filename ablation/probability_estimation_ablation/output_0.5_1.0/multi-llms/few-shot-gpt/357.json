@@ -1,0 +1,124 @@
+{
+  "filename": "357.txt",
+  "entity": {
+    "LOCATION": 0.817574,
+    "VEHICLE": 0.817574,
+    "CATEGORY": 0.817574,
+    "USER": 0.817574,
+    "RESERVATION": 0.698571,
+    "NEWS": 0.722922,
+    "PROMOTION": 0.724621,
+    "PAYMENT": 0.706573
+  },
+  "attribute": {
+    "LOCATION": {
+      "location id": 0.746158,
+      "address": 0.747068,
+      "telephone": 0.749094,
+      "business hours": 0.753998
+    },
+    "VEHICLE": {
+      "license plate number": 0.760046,
+      "brand": 0.752968,
+      "model": 0.760936,
+      "photo url": 0.756608,
+      "category id": 0.765862,
+      "rental price weekday": 0.761231,
+      "rental price weekend": 0.761435,
+      "location id": 0.762258
+    },
+    "CATEGORY": {
+      "category id": 0.743799,
+      "category name": 0.74966,
+      "description": 0.762096
+    },
+    "USER": {
+      "user id": 0.738477,
+      "email": 0.744743,
+      "telephone": 0.745422,
+      "postal code": 0.756196,
+      "city": 0.747562,
+      "credit card": 0.754538
+    },
+    "RESERVATION": {
+      "reservation id": 0.748519,
+      "user id": 0.751607,
+      "vehicle license plate": 0.763492,
+      "reservation date": 0.744015,
+      "return date": 0.742895
+    },
+    "NEWS": {
+      "news id": 0.73523,
+      "title": 0.737237,
+      "content": 0.747555,
+      "posted date": 0.73548
+    },
+    "PROMOTION": {
+      "promotion id": 0.745743,
+      "title": 0.743852,
+      "description": 0.751903,
+      "start date": 0.741238,
+      "end date": 0.740231,
+      "discount rate": 0.737514
+    },
+    "PAYMENT": {
+      "payment id": 0.743182,
+      "reservation id": 0.7506,
+      "user id": 0.744754,
+      "amount": 0.738578,
+      "payment date": 0.738582,
+      "payment method": 0.74275
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "VEHICLE",
+      "description": "A location can have many vehicles; each vehicle is assigned to one location.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.457769
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "VEHICLE",
+      "description": "Each vehicle belongs to one category; a category can include multiple vehicles.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983179
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "description": "A user can make many reservations; each reservation is made by a single user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.54958
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "RESERVATION",
+      "description": "A vehicle can be reserved many times; each reservation concerns one vehicle.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.58692
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "description": "Each reservation results in a single payment; each payment is linked to one reservation.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.973985
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT",
+      "description": "A user can make multiple payments; each payment is made by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999812
+    }
+  ],
+  "processing_time": 39.23
+}

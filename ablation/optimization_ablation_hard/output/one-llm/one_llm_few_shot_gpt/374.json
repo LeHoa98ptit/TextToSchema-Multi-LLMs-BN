@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "ROLE",
+    "SUPERVISORY_DEPARTMENT",
+    "WORK_UNIT",
+    "USER",
+    "TRANSACTION",
+    "DOCUMENT",
+    "OPERATION_LOG"
+  ],
+  "attribute": {
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "SUPERVISORY_DEPARTMENT": [
+      "dept_id",
+      "dept_name",
+      "responsibility_description"
+    ],
+    "WORK_UNIT": [
+      "unit_id",
+      "unit_name",
+      "responsibility_description",
+      "dept_id"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "registration_date",
+      "role_id"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "resource_id",
+      "unit_id",
+      "receiver_user_id",
+      "storage_location",
+      "budget_year",
+      "acquisition_value",
+      "transaction_date"
+    ],
+    "DOCUMENT": [
+      "document_id",
+      "document_name",
+      "content",
+      "transaction_id"
+    ],
+    "OPERATION_LOG": [
+      "log_id",
+      "user_id",
+      "operation_time",
+      "operation_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPERVISORY_DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DOCUMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.0278,
+  "ilp_runtime": 0.146
+}

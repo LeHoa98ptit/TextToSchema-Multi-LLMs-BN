@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "ROOM",
+    "CUSTOMER",
+    "RESERVATION",
+    "ARRANGEMENT",
+    "ASSOC_RESERVATION_ROOM"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "department_id",
+      "department_name"
+    ],
+    "EMPLOYEE": [
+      "employee_number",
+      "position",
+      "phone_number",
+      "salary",
+      "department_id"
+    ],
+    "ROOM": [
+      "room_number",
+      "room_type",
+      "charge_standard",
+      "check_status"
+    ],
+    "CUSTOMER": [
+      "customer_number",
+      "unit",
+      "contact_person",
+      "contact_number",
+      "contact_address"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "customer_number",
+      "check_in_date",
+      "check_out_date",
+      "room_type_requested"
+    ],
+    "ARRANGEMENT": [
+      "arrangement_id",
+      "room_number",
+      "reservation_id",
+      "salesperson_number",
+      "customer_gender",
+      "telephone_number",
+      "check_time",
+      "day"
+    ],
+    "ASSOC_RESERVATION_ROOM": [
+      "assoc_reservation_room_id",
+      "reservation_id",
+      "room_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ASSOC_RESERVATION_ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.238,
+  "ilp_runtime": 0.096
+}

@@ -1,0 +1,138 @@
+{
+  "entity": [
+    "PART",
+    "SUPPLIER",
+    "SUPPLIER_CONTACT",
+    "CUSTOMER",
+    "CUSTOMER_CONTACT",
+    "ORDER",
+    "ORDER_ITEM",
+    "QUOTATION",
+    "REGION",
+    "CREDIT_RECORD"
+  ],
+  "attribute": {
+    "PART": [
+      "part_id",
+      "part_number",
+      "specification",
+      "unit",
+      "unit_price",
+      "inventory_level",
+      "min_stock",
+      "max_stock"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "supplier_name",
+      "credit_rating",
+      "address"
+    ],
+    "SUPPLIER_CONTACT": [
+      "contact_id",
+      "supplier_id",
+      "contact_name",
+      "phone",
+      "email"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "customer_name",
+      "address"
+    ],
+    "CUSTOMER_CONTACT": [
+      "contact_id",
+      "customer_id",
+      "contact_name",
+      "phone",
+      "email"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_date",
+      "delivery_date",
+      "order_status",
+      "customer_id",
+      "payment_method_id"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "part_id",
+      "supplier_id",
+      "quantity",
+      "unit_price",
+      "total_price"
+    ],
+    "QUOTATION": [
+      "quotation_id",
+      "supplier_id",
+      "part_id",
+      "quoted_price",
+      "valid_until"
+    ],
+    "REGION": [
+      "region_id",
+      "region_name",
+      "country_id"
+    ],
+    "CREDIT_RECORD": [
+      "credit_record_id",
+      "customer_id",
+      "credit_score",
+      "last_update"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_CONTACT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CONTACT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "QUOTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "REGION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REGION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 63.134,
+  "ilp_runtime": 0.045
+}

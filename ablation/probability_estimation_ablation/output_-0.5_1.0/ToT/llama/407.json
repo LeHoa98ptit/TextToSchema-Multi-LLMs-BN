@@ -1,0 +1,74 @@
+{
+  "filename": "407.txt",
+  "entity": {
+    "STORE": 0.622459,
+    "CUSTOMER": 0.622459,
+    "CONSUMPTION": 0.622459,
+    "ASSOC_CUSTOMER_STORE": 0.766705
+  },
+  "attribute": {
+    "STORE": {
+      "store_id": 0.539639,
+      "address": 0.547468,
+      "phone_number": 0.541858,
+      "email": 0.539391
+    },
+    "CUSTOMER": {
+      "customer_id": 0.533212,
+      "name": 0.531623,
+      "address": 0.539005,
+      "age": 0.529812,
+      "gender": 0.540202
+    },
+    "CONSUMPTION": {
+      "consumption_id": 0.533982,
+      "store_id": 0.548252,
+      "customer_id": 0.545641,
+      "consumption_date": 0.539469,
+      "amount": 0.534568,
+      "transaction_id": 0.524636
+    },
+    "ASSOC_CUSTOMER_STORE": {
+      "assoc_customer_store_id": 0.766705,
+      "customer_id": 0.766705,
+      "store_id": 0.766705
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STORE",
+      "entity_2": "CONSUMPTION",
+      "cardinality": "1:N",
+      "description": "A store can have many consumption records",
+      "probability": 0.558754
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONSUMPTION",
+      "cardinality": "1:N",
+      "description": "A customer can have many consumption records",
+      "probability": 0.099941
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_STORE",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_STORE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.766705
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "ASSOC_CUSTOMER_STORE",
+      "description": "One STORE can be associated with many ASSOC_CUSTOMER_STORE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.766705
+    }
+  ],
+  "processing_time": 10.46,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a unique identifier (transaction_id) for each consumption record, clarified the data type for the consumption amount attribute as numeric, and removed redundant relationships to improve data consistency and efficiency."
+  }
+}

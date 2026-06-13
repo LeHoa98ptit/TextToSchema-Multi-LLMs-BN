@@ -1,0 +1,117 @@
+{
+  "filename": "447.txt",
+  "entity": {
+    "USER": 0.817574,
+    "UNIT": 0.728317,
+    "ROLE": 0.727088,
+    "FINANCIAL_DOCUMENT": 0.75606,
+    "DOCUMENT_CATEGORY": 0.732883,
+    "NOTIFICATION": 0.817574,
+    "CONFIGURATION": 0.70676
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.748388,
+      "username": 0.738435,
+      "password": 0.746835,
+      "phone number": 0.738734,
+      "unit id": 0.749033,
+      "role id": 0.756684
+    },
+    "UNIT": {
+      "unit id": 0.742081,
+      "unit name": 0.740195
+    },
+    "ROLE": {
+      "role id": 0.753285,
+      "role name": 0.752649
+    },
+    "FINANCIAL_DOCUMENT": {
+      "document id": 0.763363,
+      "document title": 0.761614,
+      "document number": 0.76225,
+      "issue unit id": 0.760995,
+      "issue date": 0.757385,
+      "category id": 0.763241,
+      "document level": 0.767127,
+      "validity status": 0.764214,
+      "remark": 0.760935,
+      "document content": 0.767913,
+      "attachment path": 0.762363,
+      "operation time": 0.765919,
+      "operation type": 0.774791
+    },
+    "DOCUMENT_CATEGORY": {
+      "category id": 0.751588,
+      "category name": 0.752941
+    },
+    "NOTIFICATION": {
+      "notification id": 0.746148,
+      "publisher user id": 0.754458,
+      "content": 0.758192,
+      "issue date": 0.746125,
+      "status": 0.752177
+    },
+    "CONFIGURATION": {
+      "config id": 0.753885,
+      "admin user id": 0.761709,
+      "operation type": 0.765597,
+      "database content": 0.775519,
+      "configuration record": 0.769237,
+      "system database directory": 0.769008,
+      "datum type": 0.7576,
+      "file upload directory": 0.764398
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "description": "Each unit can have many users, each user belongs to one unit",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995168
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each role can be assigned to many users, each user has one role",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997547
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "description": "A unit issues many financial documents, each document is issued by one unit",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.878713
+    },
+    {
+      "entity_1": "DOCUMENT_CATEGORY",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "description": "Each document belongs to one category, a category can contain many documents",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.677389
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "description": "A user publishes many notifications, each notification is published by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998536
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONFIGURATION",
+      "description": "An administrator user performs many configuration operations, each configuration record is created by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.938409
+    }
+  ],
+  "processing_time": 1009.29
+}

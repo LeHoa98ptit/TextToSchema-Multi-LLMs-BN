@@ -1,0 +1,104 @@
+{
+  "filename": "292.txt",
+  "entity": {
+    "FACILITY": 0.622459,
+    "PERSONNEL": 0.622459,
+    "MAINTENANCE": 0.622459,
+    "EVENT": 0.464684,
+    "COMMUNITY": 0.48438,
+    "ASSOC_PERSONNEL_MAINTENANCE": 0.900746,
+    "ASSOC_FACILITY_COMMUNITY": 0.402786
+  },
+  "attribute": {
+    "FACILITY": {
+      "name": 0.549062,
+      "location": 0.546095,
+      "type": 0.547847,
+      "size": 0.541446
+    },
+    "PERSONNEL": {
+      "name": 0.540507,
+      "contact": 0.55294,
+      "role": 0.541059,
+      "experience": 0.535745
+    },
+    "MAINTENANCE": {
+      "time": 0.545251,
+      "cost": 0.539779,
+      "description": 0.563333,
+      "priority": 0.550986
+    },
+    "EVENT": {
+      "date": 0.516022,
+      "type": 0.521475,
+      "description": 0.537042
+    },
+    "COMMUNITY": {
+      "name": 0.517608,
+      "location": 0.526009
+    },
+    "ASSOC_PERSONNEL_MAINTENANCE": {
+      "assoc_personnel_maintenance_id": 0.900746,
+      "personnel_id": 0.900746,
+      "maintenance_id": 0.900746
+    },
+    "ASSOC_FACILITY_COMMUNITY": {
+      "assoc_facility_community_id": 0.402786,
+      "facility_id": 0.402786,
+      "community_id": 0.402786
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A facility can have multiple maintenance events",
+      "probability": 0.155692
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_MAINTENANCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.900746
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE",
+      "description": "One MAINTENANCE can be associated with many ASSOC_PERSONNEL_MAINTENANCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.900746
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "ASSOC_FACILITY_COMMUNITY",
+      "description": "One FACILITY can be associated with many ASSOC_FACILITY_COMMUNITY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.402786
+    },
+    {
+      "entity_1": "COMMUNITY",
+      "entity_2": "ASSOC_FACILITY_COMMUNITY",
+      "description": "One COMMUNITY can be associated with many ASSOC_FACILITY_COMMUNITY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.402786
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:1",
+      "description": "An event is related to a specific maintenance event",
+      "probability": 0.283935
+    }
+  ],
+  "processing_time": 10.68,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'facilities' from COMMUNITY entity to improve clarity and efficiency, retained strengths from the original model and integrated improvement suggestions from the evaluation."
+  }
+}

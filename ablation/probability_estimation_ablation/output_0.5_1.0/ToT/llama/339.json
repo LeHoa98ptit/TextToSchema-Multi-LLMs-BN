@@ -1,0 +1,103 @@
+{
+  "filename": "339.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "API": 0.817574,
+    "USER": 0.719463,
+    "AVATAR": 0.709117,
+    "PERFORMANCE_STATISTIC": 0.750354,
+    "DEVELOPMENT_HISTORY": 0.69876,
+    "ASSOC_USER_PROJECT": 0.738681
+  },
+  "attribute": {
+    "PROJECT": {
+      "name": 0.761848,
+      "description": 0.767709,
+      "creation_time": 0.760334,
+      "update_time": 0.75428
+    },
+    "API": {
+      "api_id": 0.762956,
+      "access_path": 0.754804,
+      "average_response_time": 0.768995,
+      "frequency": 0.778603,
+      "creation_time": 0.766878,
+      "update_time": 0.760476
+    },
+    "USER": {
+      "username": 0.739494,
+      "email": 0.738599,
+      "password": 0.737807
+    },
+    "AVATAR": {
+      "avatar_id": 0.752875,
+      "information": 0.759317
+    },
+    "PERFORMANCE_STATISTIC": {
+      "statistic_id": 0.760192,
+      "response_time_90": 0.764069,
+      "average_response_time": 0.76489
+    },
+    "DEVELOPMENT_HISTORY": {
+      "history_id": 0.762303,
+      "creation_time": 0.761842,
+      "update_time": 0.759249
+    },
+    "ASSOC_USER_PROJECT": {
+      "assoc_user_project_id": 0.738681,
+      "user_id": 0.738681,
+      "project_id": 0.738681
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "API",
+      "cardinality": "1:N",
+      "description": "A project can have multiple APIs",
+      "probability": 0.083728
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One USER can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.738681
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.738681
+    },
+    {
+      "entity_1": "AVATAR",
+      "entity_2": "PROJECT",
+      "cardinality": "1:1",
+      "description": "An avatar is associated with one project",
+      "probability": 0.458713
+    },
+    {
+      "entity_1": "API",
+      "entity_2": "PERFORMANCE_STATISTIC",
+      "cardinality": "1:1",
+      "description": "An API is associated with one performance statistic",
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "API",
+      "entity_2": "DEVELOPMENT_HISTORY",
+      "cardinality": "1:N",
+      "description": "An API can have multiple development histories",
+      "probability": 0.000787
+    }
+  ],
+  "processing_time": 18.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant project_id from AVATAR entity, removed redundant api_id from DEVELOPMENT_HISTORY entity, and integrated creation_time and update_time into API entity to improve efficiency while maintaining completeness and accuracy."
+  }
+}

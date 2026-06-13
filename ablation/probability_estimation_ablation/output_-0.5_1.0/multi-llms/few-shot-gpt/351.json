@@ -1,0 +1,125 @@
+{
+  "filename": "351.txt",
+  "entity": {
+    "USER": 0.519166,
+    "ROLE": 0.501975,
+    "OBJECT": 0.622459,
+    "PERMISSION": 0.622459,
+    "OWNER": 0.622459,
+    "PERMISSION_ENTRY": 0.565595,
+    "AUDIT_LOG": 0.446333,
+    "ACCESS_ATTEMPT": 0.526849
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.526373,
+      "role id": 0.546737
+    },
+    "ROLE": {
+      "role id": 0.542575,
+      "role name": 0.537108
+    },
+    "OBJECT": {
+      "object id": 0.523343,
+      "object type": 0.534078,
+      "parent object id": 0.531076
+    },
+    "PERMISSION": {
+      "permission id": 0.555017,
+      "permission type": 0.565077
+    },
+    "OWNER": {
+      "owner id": 0.538967,
+      "contact information": 0.541324
+    },
+    "PERMISSION_ENTRY": {
+      "permission entry id": 0.556353,
+      "object id": 0.562759,
+      "permission id": 0.557191,
+      "authorized": 0.568196,
+      "permission_entry_id": 0.068639,
+      "object_id": 0.068639,
+      "permission_id": 0.068639
+    },
+    "AUDIT_LOG": {
+      "audit log id": 0.539193,
+      "access attempt id": 0.55128,
+      "status": 0.540711,
+      "log timestamp": 0.527998
+    },
+    "ACCESS_ATTEMPT": {
+      "attempt id": 0.549722,
+      "user id": 0.549474,
+      "object id": 0.547287,
+      "attempt time": 0.543922,
+      "result": 0.550513
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each role can be assigned to many users, each user has exactly one role.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997627
+    },
+    {
+      "entity_1": "OWNER",
+      "entity_2": "OBJECT",
+      "description": "An owner can own multiple objects, each object has a single owner.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.03943
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT",
+      "description": "Objects can have a parent object, allowing inheritance of permissions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "PERMISSION_ENTRY",
+      "description": "One OBJECT can be associated with many PERMISSION_ENTRY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.068639
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_ENTRY",
+      "description": "One PERMISSION can be associated with many PERMISSION_ENTRY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.068639
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCESS_ATTEMPT",
+      "description": "A user can make many access attempts; each attempt is made by a single user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.316831
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "ACCESS_ATTEMPT",
+      "description": "An object can be the target of many access attempts; each attempt concerns a single object.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998908
+    },
+    {
+      "entity_1": "ACCESS_ATTEMPT",
+      "entity_2": "AUDIT_LOG",
+      "description": "Each access attempt generates exactly one audit log entry.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.653524
+    }
+  ],
+  "processing_time": 2.75
+}

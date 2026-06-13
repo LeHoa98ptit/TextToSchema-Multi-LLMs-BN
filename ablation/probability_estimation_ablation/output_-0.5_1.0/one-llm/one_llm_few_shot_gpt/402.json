@@ -1,0 +1,121 @@
+{
+  "filename": "402.txt",
+  "entity": {
+    "DOCTOR": 0.501325,
+    "DEPARTMENT": 0.622459,
+    "PATIENT": 0.495675,
+    "DIAGNOSIS_TREATMENT": 0.568467,
+    "WARD": 0.622459,
+    "REGISTRATION_CATEGORY": 0.533724,
+    "DRUG": 0.622459,
+    "DRUG_LIST": 0.524805,
+    "ASSOC_DRUG_LIST_DRUG": 0.995707
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor_id": 0.538718,
+      "name": 0.541917,
+      "gender": 0.537605,
+      "title": 0.539133,
+      "date_of_birth": 0.533487,
+      "employment_year": 0.53789,
+      "work_permit": 0.532456
+    },
+    "DEPARTMENT": {
+      "department_id": 0.533862,
+      "department_number": 0.537292,
+      "phone_number": 0.537981,
+      "address": 0.53689,
+      "personnel": 0.539914
+    },
+    "PATIENT": {
+      "patient_id": 0.542771,
+      "name": 0.541945,
+      "gender": 0.53858,
+      "age": 0.527524,
+      "contact_information": 0.553788,
+      "diagnosis_description": 0.547363,
+      "date_consultation": 0.537233
+    },
+    "DIAGNOSIS_TREATMENT": {
+      "case_number": 0.541177,
+      "diagnosis_treatment_content": 0.545522
+    },
+    "WARD": {
+      "ward_id": 0.535037,
+      "ward_number": 0.542206,
+      "number_of_beds": 0.54551,
+      "ward_level": 0.540999
+    },
+    "REGISTRATION_CATEGORY": {
+      "category_id": 0.520263,
+      "category_number": 0.530254
+    },
+    "DRUG": {
+      "drug_id": 0.541252,
+      "name": 0.534382,
+      "quantity": 0.541753,
+      "price": 0.524036,
+      "barcode": 0.54086
+    },
+    "DRUG_LIST": {
+      "drug_list_id": 0.555601,
+      "drug_list_number": 0.557849,
+      "drug_information": 0.562754
+    },
+    "ASSOC_DRUG_LIST_DRUG": {
+      "assoc_drug_list_drug_id": 0.995707,
+      "drug_list_id": 0.995707,
+      "drug_id": 0.995707
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DOCTOR",
+      "cardinality": "1:N",
+      "probability": 0.001134
+    },
+    {
+      "entity_1": "WARD",
+      "entity_2": "PATIENT",
+      "cardinality": "1:N",
+      "probability": 1e-05
+    },
+    {
+      "entity_1": "REGISTRATION_CATEGORY",
+      "entity_2": "PATIENT",
+      "cardinality": "1:N",
+      "probability": 0.004169
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "probability": 0.997727
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "probability": 0.882428
+    },
+    {
+      "entity_1": "DRUG_LIST",
+      "entity_2": "ASSOC_DRUG_LIST_DRUG",
+      "description": "One DRUG_LIST can be associated with many ASSOC_DRUG_LIST_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995707
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_DRUG_LIST_DRUG",
+      "description": "One DRUG can be associated with many ASSOC_DRUG_LIST_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995707
+    }
+  ],
+  "processing_time": 25.9
+}

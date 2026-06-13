@@ -1,0 +1,120 @@
+{
+  "filename": "452.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.476243,
+    "STUDENT": 0.622459,
+    "INSTITUTION": 0.49775,
+    "CERTIFICATE": 0.622459,
+    "BLOCKCHAIN_TX": 0.425044,
+    "ASSOC_USER_ROLE": 0.997447
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.518254,
+      "username": 0.509063,
+      "password_hash": 0.519833,
+      "email": 0.523181,
+      "created_at": 0.51,
+      "updated_at": 0.512914
+    },
+    "ROLE": {
+      "role_id": 0.519527,
+      "role_name": 0.520862,
+      "description": 0.525431
+    },
+    "STUDENT": {
+      "student_id": 0.563467,
+      "first_name": 0.555564,
+      "last_name": 0.557983,
+      "date_of_birth": 0.553238,
+      "major": 0.547132,
+      "enrollment_year": 0.548495,
+      "created_at": 0.545961,
+      "updated_at": 0.546631
+    },
+    "INSTITUTION": {
+      "institution_id": 0.541443,
+      "name": 0.543555,
+      "address": 0.537008,
+      "accreditation": 0.539285,
+      "created_at": 0.532244,
+      "updated_at": 0.536963
+    },
+    "CERTIFICATE": {
+      "certificate_id": 0.552874,
+      "student_id": 0.576978,
+      "institution_id": 0.563409,
+      "issue_date": 0.54502,
+      "description": 0.561597,
+      "hash_value": 0.547181,
+      "status": 0.559771,
+      "blockchain_tx_id": 0.540856,
+      "created_at": 0.543912,
+      "updated_at": 0.543865
+    },
+    "BLOCKCHAIN_TX": {
+      "tx_id": 0.524129,
+      "certificate_hash": 0.542808,
+      "block_number": 0.520807,
+      "timestamp": 0.522631,
+      "tx_status": 0.522241
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.997447,
+      "user_id": 0.997447,
+      "role_id": 0.997447
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997447
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997447
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "STUDENT",
+      "cardinality": "1:1",
+      "description": "Each STUDENT profile is associated with exactly one USER account",
+      "probability": 0.99884
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CERTIFICATE",
+      "cardinality": "1:N",
+      "description": "A STUDENT may hold many CERTIFICATE records",
+      "probability": 0.998159
+    },
+    {
+      "entity_1": "INSTITUTION",
+      "entity_2": "CERTIFICATE",
+      "cardinality": "1:N",
+      "description": "An INSTITUTION can issue multiple CERTIFICATEs",
+      "probability": 0.959893
+    },
+    {
+      "entity_1": "CERTIFICATE",
+      "entity_2": "BLOCKCHAIN_TX",
+      "cardinality": "1:1",
+      "description": "Each CERTIFICATE is anchored to a single BLOCKCHAIN_TX transaction",
+      "probability": 0.001232
+    }
+  ],
+  "processing_time": 8.95,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "filename": "387.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "CONTACT_INFO": 0.565865,
+    "CREDIT_CARD": 0.514496,
+    "AIRLINE": 0.622459,
+    "FLIGHT": 0.622459,
+    "RESERVATION": 0.622459,
+    "TICKET": 0.491801,
+    "PAYMENT": 0.622459,
+    "PAYMENT_METHOD": 0.537703
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.533186,
+      "first_name": 0.538216,
+      "last_name": 0.532955
+    },
+    "CONTACT_INFO": {
+      "contact_info_id": 0.520148,
+      "customer_id": 0.534565,
+      "email": 0.525439,
+      "phone": 0.525657,
+      "address": 0.522738
+    },
+    "CREDIT_CARD": {
+      "credit_card_id": 0.51803,
+      "customer_id": 0.529067,
+      "card_number": 0.525002,
+      "expiry_date": 0.510525,
+      "card_holder_name": 0.52567,
+      "billing_address": 0.525273
+    },
+    "AIRLINE": {
+      "airline_id": 0.548556,
+      "name": 0.549045,
+      "contact_phone": 0.547026,
+      "contact_email": 0.54247
+    },
+    "FLIGHT": {
+      "flight_id": 0.543926,
+      "flight_number": 0.551583,
+      "origin": 0.525999,
+      "destination": 0.541922,
+      "departure_time": 0.548209,
+      "arrival_time": 0.551084,
+      "airline_id": 0.547521
+    },
+    "RESERVATION": {
+      "reservation_id": 0.537793,
+      "reservation_date": 0.539385,
+      "reservation_time": 0.540886,
+      "customer_id": 0.548875,
+      "total_price": 0.536749,
+      "status": 0.541443
+    },
+    "TICKET": {
+      "ticket_id": 0.528497,
+      "reservation_id": 0.541549,
+      "flight_id": 0.538546,
+      "seat_number": 0.535167,
+      "class": 0.530788,
+      "price": 0.52108,
+      "status": 0.53592
+    },
+    "PAYMENT": {
+      "payment_id": 0.523738,
+      "reservation_id": 0.541378,
+      "payment_date": 0.52626,
+      "payment_method_id": 0.521037,
+      "amount": 0.530249
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.521374,
+      "method_name": 0.524325,
+      "method_details": 0.541766
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each customer has a single set of contact information",
+      "probability": 0.011411
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "description": "A customer may store multiple credit cards",
+      "probability": 0.622385
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can make multiple reservations",
+      "probability": 0.006349
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airline operates many flights",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "description": "Each flight can have many tickets issued",
+      "probability": 0.99563
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "description": "A reservation may include several tickets (e.g., for connecting flights)",
+      "probability": 0.994108
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each reservation is settled by a single payment record",
+      "probability": 0.971643
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "A payment method can be used for many payments",
+      "probability": 0.999921
+    }
+  ],
+  "processing_time": 20.83,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Implemented the evaluation suggestions by extracting contact details into a CONTACT_INFO entity, moving credit‑card data to a dedicated CREDIT_CARD entity (allowing multiple cards per customer), and creating a PAYMENT_METHOD entity for flexible payment types. Added status attributes to RESERVATION and TICKET to support lifecycle tracking. Retained the Ticket entity to correctly model the many‑to‑many relationship between reservations and flights. Introduced primary key attributes for all new entities and foreign keys for relationships. Noted a unique constraint on (airline_id, flight_number) to prevent duplicate flight numbers within an airline. The model now balances completeness, normalization, and simplicity."
+  }
+}

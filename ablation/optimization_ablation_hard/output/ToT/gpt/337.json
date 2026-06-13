@@ -1,0 +1,95 @@
+{
+  "entity": [
+    "EXAM",
+    "QUESTION",
+    "EXAM_QUESTION",
+    "STUDENT",
+    "ENROLLMENT",
+    "SUBMISSION",
+    "SUBMISSION_ANSWER"
+  ],
+  "attribute": {
+    "EXAM": [
+      "exam_id",
+      "title",
+      "exam_start_datetime",
+      "exam_end_datetime",
+      "total_time_minutes",
+      "duration_minutes",
+      "total_max_score"
+    ],
+    "QUESTION": [
+      "question_id",
+      "content",
+      "default_max_score",
+      "question_type"
+    ],
+    "EXAM_QUESTION": [
+      "exam_question_id",
+      "exam_id",
+      "question_id",
+      "position",
+      "custom_max_score"
+    ],
+    "STUDENT": [
+      "student_id",
+      "first_name",
+      "last_name",
+      "email",
+      "registration_date"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id",
+      "student_id",
+      "exam_id",
+      "enrolled_date",
+      "role"
+    ],
+    "SUBMISSION": [
+      "submission_id",
+      "exam_id",
+      "student_id",
+      "submission_datetime",
+      "attempt_number",
+      "overall_status",
+      "total_score_obtained"
+    ],
+    "SUBMISSION_ANSWER": [
+      "submission_answer_id",
+      "submission_id",
+      "exam_question_id",
+      "answer_content",
+      "score_awarded",
+      "is_correct",
+      "feedback"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EXAM",
+      "entity_2": "EXAM_QUESTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "EXAM_QUESTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "SUBMISSION_ANSWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.3984,
+  "ilp_runtime": 0.183
+}

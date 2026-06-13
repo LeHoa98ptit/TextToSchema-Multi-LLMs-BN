@@ -1,0 +1,159 @@
+{
+  "filename": "404.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "AUTH": 0.683651,
+    "PRODUCT": 0.817574,
+    "SUPPLIER": 0.817574,
+    "SALE": 0.817574,
+    "SALE_ITEM": 0.766902,
+    "INVENTORY": 0.754489,
+    "PRODUCT_SUPPLIER": 0.788515,
+    "INVENTORY_TRANSACTION": 0.701489
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.75138,
+      "first_name": 0.752163,
+      "last_name": 0.751408,
+      "position": 0.755569,
+      "email": 0.753937,
+      "phone": 0.751511,
+      "is_active": 0.743197
+    },
+    "AUTH": {
+      "auth_id": 0.727279,
+      "employee_id": 0.740578,
+      "username": 0.734607,
+      "password_hash": 0.730397
+    },
+    "PRODUCT": {
+      "product_id": 0.756387,
+      "name": 0.753222,
+      "description": 0.759745,
+      "category": 0.762265,
+      "purchase_price": 0.760767,
+      "sale_price": 0.767066,
+      "stock_quantity": 0.774633,
+      "reorder_level": 0.760202
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.766317,
+      "name": 0.76245,
+      "phone": 0.760161,
+      "email": 0.76386,
+      "address": 0.765363,
+      "contact_person": 0.764179,
+      "is_active": 0.755682
+    },
+    "SALE": {
+      "sale_id": 0.763616,
+      "sale_date": 0.761506,
+      "employee_id": 0.766318,
+      "total_amount": 0.76267,
+      "payment_method": 0.752329,
+      "status": 0.762337
+    },
+    "SALE_ITEM": {
+      "sale_item_id": 0.765804,
+      "sale_id": 0.766182,
+      "product_id": 0.766936,
+      "quantity": 0.779633,
+      "unit_price": 0.769086,
+      "line_total": 0.764817
+    },
+    "INVENTORY": {
+      "inventory_id": 0.769581,
+      "product_id": 0.772775,
+      "quantity_on_hand": 0.772125,
+      "location": 0.769445,
+      "last_updated": 0.756557
+    },
+    "PRODUCT_SUPPLIER": {
+      "product_id": 0.770122,
+      "supplier_id": 0.770914,
+      "supply_price": 0.769489,
+      "lead_time_days": 0.758421
+    },
+    "INVENTORY_TRANSACTION": {
+      "transaction_id": 0.763319,
+      "product_id": 0.772963,
+      "transaction_type": 0.766119,
+      "quantity": 0.779532,
+      "transaction_date": 0.761569,
+      "related_sale_id": 0.773447,
+      "related_purchase_id": 0.768413,
+      "notes": 0.772936
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "AUTH",
+      "cardinality": "1:1",
+      "description": "Each employee has one authentication record storing username and password hash",
+      "probability": 0.000539
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "One employee can create many sales records",
+      "probability": 0.41295
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "description": "A sale consists of one or more line items",
+      "probability": 0.999686
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can appear in many sale items",
+      "probability": 0.998707
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "Each product has a single inventory record; product_id is unique in INVENTORY",
+      "probability": 0.92854
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_SUPPLIER",
+      "cardinality": "1:N",
+      "description": "A product can be linked to many supplier contracts",
+      "probability": 0.970294
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT_SUPPLIER",
+      "cardinality": "1:N",
+      "description": "A supplier can supply many products",
+      "probability": 0.999973
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Inventory movements (purchase, sale, adjustment) are recorded per product",
+      "probability": 0.532524
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "INVENTORY_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Sale transactions generate inventory transaction records of type 'SALE'",
+      "probability": 0.990495
+    }
+  ],
+  "processing_time": 18.71,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested refinements: added AUTH entity to isolate login credentials; introduced is_active flags on EMPLOYEE and SUPPLIER for soft deletes; created INVENTORY_TRANSACTION to capture historical inventory movements; clarified the 1:1 relationship between PRODUCT and INVENTORY with a uniqueness note; kept all original strong entities and attributes; maintained clear naming and cardinalities while enhancing extensibility."
+  }
+}

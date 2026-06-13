@@ -1,0 +1,151 @@
+{
+  "entity": [
+    "PROJECT",
+    "ACTIVITY",
+    "FUND_SOURCE",
+    "DEPARTMENT",
+    "ORGANIZATION",
+    "ALLOCATION",
+    "CODE_MANAGEMENT",
+    "CHANGE_LOG",
+    "COMPLIANCE_RECORD",
+    "BUDGET_VERSION",
+    "APPROVAL"
+  ],
+  "attribute": {
+    "PROJECT": [
+      "project_id",
+      "project_code",
+      "project_name",
+      "objective",
+      "total_budget",
+      "start_date",
+      "end_date",
+      "status"
+    ],
+    "ACTIVITY": [
+      "activity_id",
+      "activity_code",
+      "activity_name",
+      "description",
+      "planned_start",
+      "planned_end",
+      "actual_start",
+      "actual_end",
+      "cost_estimate"
+    ],
+    "FUND_SOURCE": [
+      "source_id",
+      "source_name",
+      "source_type",
+      "contact_person",
+      "contact_email"
+    ],
+    "DEPARTMENT": [
+      "dept_id",
+      "dept_code",
+      "dept_name",
+      "manager_id"
+    ],
+    "ORGANIZATION": [
+      "org_id",
+      "org_code",
+      "org_name",
+      "org_type"
+    ],
+    "ALLOCATION": [
+      "allocation_id",
+      "project_id",
+      "activity_id",
+      "source_id",
+      "allocated_amount",
+      "allocation_ratio",
+      "allocation_date"
+    ],
+    "CODE_MANAGEMENT": [
+      "code_id",
+      "entity_type",
+      "code_value",
+      "description",
+      "effective_from",
+      "effective_to",
+      "parent_code_id"
+    ],
+    "CHANGE_LOG": [
+      "log_id",
+      "entity_type",
+      "entity_id",
+      "changed_by",
+      "change_timestamp",
+      "change_type",
+      "old_value",
+      "new_value"
+    ],
+    "COMPLIANCE_RECORD": [
+      "compliance_id",
+      "project_id",
+      "audit_date",
+      "auditor_name",
+      "compliance_status",
+      "remarks"
+    ],
+    "BUDGET_VERSION": [
+      "budget_version_id",
+      "project_id",
+      "version_number",
+      "effective_from",
+      "effective_to",
+      "total_budget",
+      "remarks"
+    ],
+    "APPROVAL": [
+      "approval_id",
+      "project_id",
+      "dept_id",
+      "approver_id",
+      "approval_date",
+      "status",
+      "comments"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ORGANIZATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ALLOCATION",
+      "entity_2": "ACTIVITY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ALLOCATION",
+      "entity_2": "FUND_SOURCE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CODE_MANAGEMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPLIANCE_RECORD",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.8508,
+  "ilp_runtime": 0.081
+}

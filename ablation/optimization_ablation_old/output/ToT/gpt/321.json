@@ -1,0 +1,248 @@
+{
+  "entity": [
+    "USER",
+    "PROFILE",
+    "FRIENDSHIP",
+    "INTEREST",
+    "USER_INTEREST",
+    "TEAM",
+    "TEAM_MEMBER",
+    "CLUB",
+    "ORGANIZER",
+    "SPONSOR",
+    "CONTACT_INFO",
+    "EVENT",
+    "EVENT_PARTICIPANT",
+    "EVENT_SPONSOR",
+    "MATCH",
+    "MATCH_PARTICIPANT",
+    "MEMBERSHIP",
+    "DISCOUNT",
+    "MARKETING_CAMPAIGN"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "created_at",
+      "last_login"
+    ],
+    "PROFILE": [
+      "profile_id",
+      "user_id",
+      "full_name",
+      "date_of_birth",
+      "gender",
+      "city",
+      "country",
+      "bio",
+      "profile_picture_url"
+    ],
+    "FRIENDSHIP": [
+      "friendship_id",
+      "user_id",
+      "friend_user_id",
+      "status",
+      "created_at"
+    ],
+    "INTEREST": [
+      "interest_id",
+      "interest_name"
+    ],
+    "USER_INTEREST": [
+      "user_id",
+      "interest_id",
+      "level"
+    ],
+    "TEAM": [
+      "team_id",
+      "team_name",
+      "founded_date",
+      "home_stadium",
+      "club_id",
+      "team_logo_url"
+    ],
+    "TEAM_MEMBER": [
+      "team_id",
+      "user_id",
+      "joined_at",
+      "role",
+      "is_captain"
+    ],
+    "CLUB": [
+      "club_id",
+      "club_name",
+      "headquarters_city",
+      "headquarters_country",
+      "established_year",
+      "club_logo_url"
+    ],
+    "ORGANIZER": [
+      "organizer_id",
+      "organizer_name",
+      "contact_info_id"
+    ],
+    "SPONSOR": [
+      "sponsor_id",
+      "sponsor_name",
+      "contact_info_id",
+      "sponsorship_level"
+    ],
+    "CONTACT_INFO": [
+      "contact_info_id",
+      "contact_email",
+      "contact_phone",
+      "address"
+    ],
+    "EVENT": [
+      "event_id",
+      "event_name",
+      "event_type",
+      "start_datetime",
+      "end_datetime",
+      "venue",
+      "organizer_id",
+      "description"
+    ],
+    "EVENT_PARTICIPANT": [
+      "event_id",
+      "team_id",
+      "participation_role",
+      "registered_at"
+    ],
+    "EVENT_SPONSOR": [
+      "event_id",
+      "sponsor_id",
+      "sponsorship_amount",
+      "contract_start",
+      "contract_end"
+    ],
+    "MATCH": [
+      "match_id",
+      "match_date",
+      "venue",
+      "match_status",
+      "home_team_id",
+      "away_team_id",
+      "home_score",
+      "away_score",
+      "timeline_json"
+    ],
+    "MATCH_PARTICIPANT": [
+      "match_id",
+      "team_id",
+      "goals_scored",
+      "yellow_cards",
+      "red_cards"
+    ],
+    "MEMBERSHIP": [
+      "membership_id",
+      "user_id",
+      "membership_type",
+      "start_date",
+      "end_date",
+      "is_active",
+      "discount_rate"
+    ],
+    "DISCOUNT": [
+      "discount_id",
+      "membership_type",
+      "percentage",
+      "valid_from",
+      "valid_to"
+    ],
+    "MARKETING_CAMPAIGN": [
+      "campaign_id",
+      "campaign_name",
+      "start_date",
+      "end_date",
+      "target_audience",
+      "budget",
+      "organizer_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FRIENDSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTEREST",
+      "entity_2": "USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "CLUB",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPONSOR",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_PARTICIPANT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_SPONSOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPONSOR",
+      "entity_2": "EVENT_SPONSOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "MATCH_PARTICIPANT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MEMBERSHIP",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 101.4769,
+  "ilp_runtime": 0.044
+}

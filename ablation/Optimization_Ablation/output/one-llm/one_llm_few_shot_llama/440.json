@@ -1,0 +1,125 @@
+{
+  "entity": [
+    "DEVICE",
+    "PERSON",
+    "LOCATION",
+    "USER",
+    "MAINTENANCE_REQUEST",
+    "MAINTENANCE_RECORD",
+    "DEVICE_INVENTORY",
+    "ASSOC_DEVICE_LOCATION"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device_id",
+      "device_model",
+      "ip_address",
+      "device_image",
+      "qr_code",
+      "device_code",
+      "creation_time",
+      "update_time",
+      "current_status"
+    ],
+    "PERSON": [
+      "person_id",
+      "name",
+      "role",
+      "contact_information"
+    ],
+    "LOCATION": [
+      "location_id",
+      "location_name"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "account_status"
+    ],
+    "MAINTENANCE_REQUEST": [
+      "request_id",
+      "device_id",
+      "requester_id",
+      "maintenance_time",
+      "maintenance_content",
+      "handle_status",
+      "handle_personnel",
+      "handle_time",
+      "remark"
+    ],
+    "MAINTENANCE_RECORD": [
+      "record_id",
+      "device_id",
+      "maintenance_personnel",
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_result",
+      "user_satisfaction",
+      "remark"
+    ],
+    "DEVICE_INVENTORY": [
+      "inventory_id",
+      "device_id",
+      "person_id",
+      "inventory_time",
+      "location_id"
+    ],
+    "ASSOC_DEVICE_LOCATION": [
+      "assoc_device_location_id",
+      "device_id",
+      "location_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_DEVICE_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ASSOC_DEVICE_LOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_REQUEST",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "DEVICE_INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.1674,
+  "ilp_runtime": 0.075
+}

@@ -1,0 +1,225 @@
+{
+  "entity": [
+    "USER",
+    "ADDRESS",
+    "PRODUCT",
+    "CATEGORY",
+    "PRODUCT_CATEGORY",
+    "ORDER",
+    "ORDER_ITEM",
+    "PAYMENT",
+    "SHIPMENT",
+    "ORDER_STATUS_HISTORY",
+    "DISCOUNT",
+    "ORDER_DISCOUNT",
+    "ADMIN",
+    "LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "phone_number",
+      "first_name",
+      "last_name",
+      "age",
+      "gender",
+      "created_at",
+      "updated_at",
+      "is_active"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "user_id",
+      "line1",
+      "line2",
+      "city",
+      "state",
+      "zip_code",
+      "country",
+      "is_default",
+      "is_active",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "description",
+      "price",
+      "inventory_quantity",
+      "sku",
+      "created_at",
+      "updated_at",
+      "is_active"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description",
+      "parent_category_id",
+      "is_active",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCT_CATEGORY": [
+      "product_id",
+      "category_id"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "order_date",
+      "total_amount",
+      "status",
+      "shipping_address_id",
+      "billing_address_id",
+      "created_at",
+      "updated_at",
+      "is_active"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "subtotal",
+      "created_at",
+      "updated_at"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "order_id",
+      "payment_method",
+      "payment_status",
+      "payment_date",
+      "amount",
+      "created_at",
+      "updated_at"
+    ],
+    "SHIPMENT": [
+      "shipment_id",
+      "order_id",
+      "carrier",
+      "tracking_number",
+      "shipped_date",
+      "delivery_estimate",
+      "delivery_date",
+      "shipment_status",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER_STATUS_HISTORY": [
+      "status_history_id",
+      "order_id",
+      "status",
+      "changed_at",
+      "changed_by_admin_id",
+      "changed_by_user_id",
+      "note"
+    ],
+    "DISCOUNT": [
+      "discount_id",
+      "code",
+      "description",
+      "discount_type",
+      "amount",
+      "start_date",
+      "end_date",
+      "is_active",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER_DISCOUNT": [
+      "order_id",
+      "discount_id",
+      "amount_applied"
+    ],
+    "ADMIN": [
+      "admin_id",
+      "username",
+      "password",
+      "email",
+      "role",
+      "created_at",
+      "updated_at",
+      "is_active"
+    ],
+    "LOG": [
+      "log_id",
+      "admin_id",
+      "user_id",
+      "action_type",
+      "action_detail",
+      "timestamp",
+      "ip_address"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT_CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DISCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "ORDER_DISCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 90.7915,
+  "ilp_runtime": 0.052
+}

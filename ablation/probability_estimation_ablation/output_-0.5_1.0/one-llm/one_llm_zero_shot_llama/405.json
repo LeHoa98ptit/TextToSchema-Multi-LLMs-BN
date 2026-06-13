@@ -1,0 +1,96 @@
+{
+  "filename": "405.txt",
+  "entity": {
+    "DOCTOR": 0.622459,
+    "PATIENT": 0.622459,
+    "DRUG": 0.622459,
+    "PRESCRIPTION": 0.622459,
+    "OUTPATIENT": 0.597341,
+    "PAYMENT": 0.622459,
+    "ASSOC_PRESCRIPTION_DRUG": 0.018766
+  },
+  "attribute": {
+    "DOCTOR": {
+      "name": 0.542852,
+      "address": 0.543947,
+      "phone_number": 0.543831
+    },
+    "PATIENT": {
+      "name": 0.542377,
+      "address": 0.547197,
+      "phone_number": 0.542153
+    },
+    "DRUG": {
+      "name": 0.533235,
+      "specification": 0.551695,
+      "usage": 0.542918
+    },
+    "PRESCRIPTION": {
+      "medical_order": 0.556876,
+      "date": 0.53182,
+      "category": 0.558983,
+      "remark": 0.540588
+    },
+    "OUTPATIENT": {
+      "consultation_info": 0.557519
+    },
+    "PAYMENT": {
+      "payment_info": 0.536057,
+      "discount": 0.518137
+    },
+    "ASSOC_PRESCRIPTION_DRUG": {
+      "assoc_prescription_drug_id": 0.018766,
+      "prescription_id": 0.018766,
+      "drug_id": 0.018766
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "probability": 0.004624
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "probability": 0.049062
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "OUTPATIENT",
+      "cardinality": "1:N",
+      "probability": 0.167099
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "OUTPATIENT",
+      "cardinality": "1:N",
+      "probability": 0.685262
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "ASSOC_PRESCRIPTION_DRUG",
+      "description": "One PRESCRIPTION can be associated with many ASSOC_PRESCRIPTION_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.018766
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_PRESCRIPTION_DRUG",
+      "description": "One DRUG can be associated with many ASSOC_PRESCRIPTION_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.018766
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "probability": 0.049396
+    }
+  ],
+  "processing_time": 17.8
+}

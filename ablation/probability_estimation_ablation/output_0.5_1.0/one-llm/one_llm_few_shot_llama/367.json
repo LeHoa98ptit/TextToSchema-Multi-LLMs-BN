@@ -1,0 +1,90 @@
+{
+  "filename": "367.txt",
+  "entity": {
+    "USER": 0.817574,
+    "APPOINTMENT": 0.817574,
+    "MEDICAL_INSTITUTION": 0.810629,
+    "OPERATOR": 0.817574,
+    "ASSOC_USER_MEDICAL_INSTITUTION": 0.908734
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.746788,
+      "phone_number": 0.75259,
+      "birth_date": 0.753811,
+      "gender": 0.751202,
+      "password": 0.749593,
+      "address": 0.750349,
+      "insurance_status": 0.756917
+    },
+    "APPOINTMENT": {
+      "examination_description": 0.784402,
+      "examination_document": 0.781621,
+      "appointment_date": 0.771455,
+      "status": 0.773399,
+      "payment": 0.767648,
+      "creation_date": 0.771832
+    },
+    "MEDICAL_INSTITUTION": {
+      "address": 0.769418,
+      "opening_time": 0.769598,
+      "closing_time": 0.761409
+    },
+    "OPERATOR": {
+      "username": 0.75314,
+      "password": 0.75741
+    },
+    "ASSOC_USER_MEDICAL_INSTITUTION": {
+      "assoc_user_medical_institution_id": 0.908734,
+      "user_id": 0.908734,
+      "medical_institution_id": 0.908734
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "Each user can have many appointments, but each appointment is associated with one user.",
+      "probability": 0.992352
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "cardinality": "1:N",
+      "description": "Each appointment is associated with one medical institution, but each medical institution can have many appointments.",
+      "probability": 0.652575
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "cardinality": "1:1",
+      "description": "Each operator is associated with one medical institution, and each medical institution has one operator.",
+      "probability": 0.995617
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "Each operator can manage many appointments, but each appointment is managed by one operator.",
+      "probability": 0.991949
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_MEDICAL_INSTITUTION",
+      "description": "One USER can be associated with many ASSOC_USER_MEDICAL_INSTITUTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.908734
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "ASSOC_USER_MEDICAL_INSTITUTION",
+      "description": "One MEDICAL_INSTITUTION can be associated with many ASSOC_USER_MEDICAL_INSTITUTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.908734
+    }
+  ],
+  "processing_time": 21.51
+}

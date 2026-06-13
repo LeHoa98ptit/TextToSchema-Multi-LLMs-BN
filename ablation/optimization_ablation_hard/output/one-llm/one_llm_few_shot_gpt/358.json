@@ -1,0 +1,140 @@
+{
+  "entity": [
+    "TENANT",
+    "PROCESS_DEFINITION",
+    "PROCESS_INSTANCE",
+    "TASK",
+    "TASK_TYPE",
+    "SCHEDULE",
+    "EXECUTION_INSTANCE",
+    "TASK_EXECUTION",
+    "LOCK_INFO",
+    "EXCEPTION_INFO"
+  ],
+  "attribute": {
+    "TENANT": [
+      "tenant_id",
+      "name",
+      "description"
+    ],
+    "PROCESS_DEFINITION": [
+      "process_definition_id",
+      "tenant_id",
+      "name",
+      "version",
+      "description"
+    ],
+    "PROCESS_INSTANCE": [
+      "process_instance_id",
+      "process_definition_id",
+      "tenant_id",
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "TASK": [
+      "task_id",
+      "process_definition_id",
+      "tenant_id",
+      "task_type_id",
+      "name",
+      "description"
+    ],
+    "TASK_TYPE": [
+      "task_type_id",
+      "name",
+      "description"
+    ],
+    "SCHEDULE": [
+      "schedule_id",
+      "task_id",
+      "expiration_time",
+      "repeat_interval",
+      "repeat_cron",
+      "processor_config"
+    ],
+    "EXECUTION_INSTANCE": [
+      "execution_instance_id",
+      "process_instance_id",
+      "tenant_id",
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "TASK_EXECUTION": [
+      "task_execution_id",
+      "execution_instance_id",
+      "task_id",
+      "start_time",
+      "end_time",
+      "result",
+      "lock_info_id",
+      "exception_info_id"
+    ],
+    "LOCK_INFO": [
+      "lock_info_id",
+      "lock_key",
+      "lock_acquired_time",
+      "lock_released_time"
+    ],
+    "EXCEPTION_INFO": [
+      "exception_info_id",
+      "error_code",
+      "error_message",
+      "stack_trace",
+      "occurred_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TENANT",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_TYPE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "LOCK_INFO",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "EXCEPTION_INFO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.7263,
+  "ilp_runtime": 0.081
+}

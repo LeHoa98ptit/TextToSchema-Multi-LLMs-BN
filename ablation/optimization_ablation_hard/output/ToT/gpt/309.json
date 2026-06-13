@@ -1,0 +1,146 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "REGION",
+    "VEHICLE",
+    "VEHICLE_SEGMENT",
+    "POLICY",
+    "INSURANCE_COVERAGE",
+    "PURCHASE",
+    "SERVICE_INTERACTION",
+    "MARITAL_STATUS",
+    "COVERAGE_TYPE",
+    "ASSOC_POLICY_INSURANCE_COVERAGE"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "email",
+      "phone_number",
+      "gender_id",
+      "date_of_birth",
+      "marital_status_id",
+      "address",
+      "region_id",
+      "income_group_id"
+    ],
+    "REGION": [
+      "region_id",
+      "region_name",
+      "description"
+    ],
+    "VEHICLE": [
+      "vehicle_id",
+      "vin",
+      "make",
+      "model",
+      "year",
+      "license_plate",
+      "customer_id",
+      "segment_id"
+    ],
+    "VEHICLE_SEGMENT": [
+      "segment_id",
+      "segment_name",
+      "description"
+    ],
+    "POLICY": [
+      "policy_id",
+      "policy_number",
+      "effective_date",
+      "expiry_date",
+      "total_premium",
+      "status",
+      "purchase_id"
+    ],
+    "INSURANCE_COVERAGE": [
+      "coverage_id",
+      "coverage_type_id",
+      "coverage_limit",
+      "deductible",
+      "description"
+    ],
+    "PURCHASE": [
+      "purchase_id",
+      "purchase_date",
+      "expiration_date",
+      "premium_amount",
+      "payment_method_id",
+      "customer_id"
+    ],
+    "SERVICE_INTERACTION": [
+      "interaction_id",
+      "customer_id",
+      "interaction_date",
+      "interaction_type",
+      "notes"
+    ],
+    "MARITAL_STATUS": [
+      "marital_status_id",
+      "status_name"
+    ],
+    "COVERAGE_TYPE": [
+      "coverage_type_id",
+      "type_name"
+    ],
+    "ASSOC_POLICY_INSURANCE_COVERAGE": [
+      "assoc_policy_insurance_coverage_id",
+      "policy_id",
+      "insurance_coverage_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REGION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_SEGMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "ASSOC_POLICY_INSURANCE_COVERAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSURANCE_COVERAGE",
+      "entity_2": "ASSOC_POLICY_INSURANCE_COVERAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SERVICE_INTERACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MARITAL_STATUS",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COVERAGE_TYPE",
+      "entity_2": "INSURANCE_COVERAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 72.4085,
+  "ilp_runtime": 0.072
+}

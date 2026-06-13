@@ -1,0 +1,80 @@
+{
+  "filename": "326.txt",
+  "entity": {
+    "USER": 0.817574,
+    "TASK": 0.817574,
+    "FILE": 0.817574,
+    "TASK_REMARK": 0.767688,
+    "ASSOC_TASK_FILE": 0.998681
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.736987,
+      "password": 0.744935,
+      "date_of_birth": 0.743139,
+      "email": 0.744582,
+      "avatar": 0.743286
+    },
+    "TASK": {
+      "task_status": 0.768054,
+      "task_priority": 0.768441,
+      "creation_date": 0.765471,
+      "completion_date": 0.76335,
+      "task_description": 0.774306,
+      "creator": 0.7708,
+      "assignee": 0.772765
+    },
+    "FILE": {
+      "file_name": 0.749734,
+      "file_type": 0.753225,
+      "file_size": 0.748337,
+      "upload_date": 0.752883
+    },
+    "TASK_REMARK": {
+      "remark_text": 0.765038,
+      "remark_date": 0.765747
+    },
+    "ASSOC_TASK_FILE": {
+      "assoc_task_file_id": 0.998681,
+      "task_id": 0.998681,
+      "file_id": 0.998681
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A user can create and be assigned to multiple tasks",
+      "probability": 0.027758
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TASK_FILE",
+      "description": "One TASK can be associated with many ASSOC_TASK_FILE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998681
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "ASSOC_TASK_FILE",
+      "description": "One FILE can be associated with many ASSOC_TASK_FILE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998681
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_REMARK",
+      "cardinality": "1:N",
+      "description": "A task can have multiple remarks",
+      "probability": 0.999792
+    }
+  ],
+  "processing_time": 17.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationships between USER and TASK, and integrated avatar as an attribute of the USER entity. Added creator and assignee attributes to the TASK entity to maintain the relationship with the USER entity."
+  }
+}

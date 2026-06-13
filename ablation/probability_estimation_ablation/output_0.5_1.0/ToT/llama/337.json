@@ -1,0 +1,84 @@
+{
+  "filename": "337.txt",
+  "entity": {
+    "EXAM": 0.817574,
+    "STUDENT": 0.817574,
+    "PRACTICE_QUESTION": 0.794864,
+    "SUBMISSION": 0.817574,
+    "SUBMISSION_ANSWER": 0.78076
+  },
+  "attribute": {
+    "EXAM": {
+      "exam_d": 0.782161,
+      "time": 0.77618,
+      "exam_name": 0.78673,
+      "exam_description": 0.788915
+    },
+    "STUDENT": {
+      "student_d": 0.764781,
+      "student_name": 0.765567,
+      "student_email": 0.758707
+    },
+    "PRACTICE_QUESTION": {
+      "question_d": 0.774812,
+      "content": 0.781383,
+      "score": 0.784561,
+      "question_type": 0.771524
+    },
+    "SUBMISSION": {
+      "submission_d": 0.760842,
+      "submission_status": 0.755745,
+      "submission_time": 0.750892,
+      "exam_d": 0.786235,
+      "student_d": 0.773751
+    },
+    "SUBMISSION_ANSWER": {
+      "answer_content": 0.755916,
+      "answer_score": 0.763319,
+      "question_d": 0.76399,
+      "submission_d": 0.760069
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXAM",
+      "entity_2": "PRACTICE_QUESTION",
+      "cardinality": "1:N",
+      "description": "An exam contains multiple practice questions",
+      "probability": 0.887738
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A student can have multiple submissions",
+      "probability": 0.027547
+    },
+    {
+      "entity_1": "EXAM",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "An exam can have multiple submissions",
+      "probability": 0.322992
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "SUBMISSION_ANSWER",
+      "cardinality": "1:N",
+      "description": "A submission can have multiple answers",
+      "probability": 0.99653
+    },
+    {
+      "entity_1": "PRACTICE_QUESTION",
+      "entity_2": "SUBMISSION_ANSWER",
+      "cardinality": "1:N",
+      "description": "A practice question can have multiple answers",
+      "probability": 0.001756
+    }
+  ],
+  "processing_time": 15.47,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added constraints to ensure data consistency by including foreign keys in the SUBMISSION and SUBMISSION_ANSWER entities, reviewed and retained necessary attributes to avoid redundancy, and integrated improvement suggestions from the evaluation."
+  }
+}

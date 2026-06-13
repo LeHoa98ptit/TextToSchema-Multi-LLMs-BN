@@ -1,0 +1,93 @@
+{
+  "entity": [
+    "STUDENT",
+    "TEACHER",
+    "COURSE",
+    "COURSE_SELECTION",
+    "TEACHING_ASSIGNMENT",
+    "STUDENT_TIMETABLE"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student id",
+      "name",
+      "gender",
+      "department",
+      "age",
+      "enrollment date",
+      "major",
+      "login password"
+    ],
+    "TEACHER": [
+      "employee id",
+      "name",
+      "gender",
+      "password",
+      "title",
+      "department",
+      "course id"
+    ],
+    "COURSE": [
+      "course id",
+      "course name",
+      "prerequisite course id",
+      "credits"
+    ],
+    "COURSE_SELECTION": [
+      "student id",
+      "course id",
+      "grades"
+    ],
+    "TEACHING_ASSIGNMENT": [
+      "course id",
+      "teaching location",
+      "class time"
+    ],
+    "STUDENT_TIMETABLE": [
+      "student id",
+      "selected course ids",
+      "class times",
+      "locations"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COURSE_SELECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_SELECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHING_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENT_TIMETABLE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.5721,
+  "ilp_runtime": 0.034
+}

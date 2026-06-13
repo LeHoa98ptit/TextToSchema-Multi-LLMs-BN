@@ -1,0 +1,85 @@
+{
+  "filename": "288.txt",
+  "entity": {
+    "MONITORING_SITE": 0.796506,
+    "PERSON": 0.723582,
+    "MONITORING_SESSION": 0.751905,
+    "MAINTENANCE_ACTIVITY": 0.773871
+  },
+  "attribute": {
+    "MONITORING_SITE": {
+      "site id": 0.760944,
+      "site name": 0.761481,
+      "location": 0.773394,
+      "responsible person id": 0.772982
+    },
+    "PERSON": {
+      "person id": 0.737985,
+      "full name": 0.733354,
+      "contact detail": 0.752514,
+      "scope": 0.753672,
+      "role": 0.744518
+    },
+    "MONITORING_SESSION": {
+      "session id": 0.75272,
+      "site id": 0.757062,
+      "monitor person id": 0.761861,
+      "air quality": 0.773603,
+      "water quality": 0.773422,
+      "noise level": 0.760873,
+      "timestamp": 0.752392,
+      "result": 0.754014
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "activity id": 0.76634,
+      "site id": 0.766688,
+      "maintenance person id": 0.771146,
+      "maintenance time": 0.770328,
+      "maintenance content": 0.776778,
+      "maintenance cost": 0.76593
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MONITORING_SITE",
+      "description": "A person (responsible person) can be assigned to manage multiple monitoring sites, each site has exactly one responsible person.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.495103
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MONITORING_SESSION",
+      "description": "A monitoring personnel (person) can conduct many monitoring sessions, each session is performed by one monitoring person.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.484091
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "description": "A maintenance personnel (person) can carry out many maintenance activities, each activity is performed by one maintenance person.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.97938
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_SESSION",
+      "description": "A monitoring site can have many monitoring sessions, each session is recorded for one site.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992036
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "description": "A monitoring site can have many maintenance activities, each activity is associated with one site.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.778758
+    }
+  ],
+  "processing_time": 17.75
+}

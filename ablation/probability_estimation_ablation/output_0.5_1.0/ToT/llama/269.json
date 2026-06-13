@@ -1,0 +1,121 @@
+{
+  "filename": "269.txt",
+  "entity": {
+    "RESTAURANT": 0.817574,
+    "TABLE": 0.817574,
+    "CUSTOMER": 0.817574,
+    "RESERVATION": 0.817574,
+    "DINER": 0.780863,
+    "PAYMENT": 0.723982,
+    "ORDER": 0.718898,
+    "ASSOC_RESERVATION_DINER": 0.827839
+  },
+  "attribute": {
+    "RESTAURANT": {
+      "name": 0.774165,
+      "location": 0.772783,
+      "phone_number": 0.780061,
+      "email": 0.77233
+    },
+    "TABLE": {
+      "table_number": 0.766358,
+      "seating_capacity": 0.783091,
+      "location": 0.77117
+    },
+    "CUSTOMER": {
+      "customer_info": 0.770907,
+      "contact_number": 0.76708,
+      "email": 0.754434
+    },
+    "RESERVATION": {
+      "reservation_time": 0.770111,
+      "reservation_status": 0.771212,
+      "number_of_diners": 0.788687,
+      "special_requests": 0.763008
+    },
+    "DINER": {
+      "diner_name": 0.774915,
+      "diner_contact": 0.776143
+    },
+    "PAYMENT": {
+      "payment_method": 0.744569,
+      "payment_date": 0.747005,
+      "amount": 0.751355
+    },
+    "ORDER": {
+      "order_date": 0.740345,
+      "order_total": 0.747031,
+      "order_status": 0.745636
+    },
+    "ASSOC_RESERVATION_DINER": {
+      "assoc_reservation_diner_id": 0.827839,
+      "reservation_id": 0.827839,
+      "diner_id": 0.827839
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "cardinality": "1:N",
+      "description": "A restaurant has multiple tables",
+      "probability": 0.803524
+    },
+    {
+      "entity_1": "TABLE",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A table can have multiple reservations",
+      "probability": 0.211375
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can make multiple reservations",
+      "probability": 0.006324
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_DINER",
+      "description": "One RESERVATION can be associated with many ASSOC_RESERVATION_DINER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.827839
+    },
+    {
+      "entity_1": "DINER",
+      "entity_2": "ASSOC_RESERVATION_DINER",
+      "description": "One DINER can be associated with many ASSOC_RESERVATION_DINER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.827839
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "DINER",
+      "cardinality": "1:N",
+      "description": "A customer can bring multiple diners",
+      "probability": 0.536763
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "A reservation has one payment",
+      "probability": 0.88606
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A reservation can have multiple orders",
+      "probability": 0.050042
+    }
+  ],
+  "processing_time": 17.31,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added payment and order entities to capture payment information and order details. Removed redundant attributes and relationships to improve efficiency."
+  }
+}

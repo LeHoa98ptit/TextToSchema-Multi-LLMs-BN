@@ -1,0 +1,107 @@
+{
+  "filename": "416.txt",
+  "entity": {
+    "USER": 0.622459,
+    "COMPANY": 0.622459,
+    "JOB": 0.622459,
+    "CONVERSATION": 0.622459,
+    "MESSAGE_BOARD": 0.591628,
+    "RESUME": 0.502125,
+    "ASSOC_USER_JOB": 0.719999
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.501081,
+      "password": 0.518062,
+      "email": 0.519656,
+      "avatar": 0.506286,
+      "nickname": 0.509419,
+      "registration_time": 0.522317,
+      "role": 0.530659
+    },
+    "COMPANY": {
+      "company_id": 0.530058,
+      "company_name": 0.529921,
+      "company_address": 0.529132,
+      "company_profile": 0.541317,
+      "contact_information": 0.545873
+    },
+    "JOB": {
+      "job_id": 0.545886,
+      "title": 0.547582,
+      "content": 0.56735,
+      "requirement": 0.565698,
+      "job_category": 0.557233,
+      "salary": 0.524652,
+      "education_level": 0.559212,
+      "work_location": 0.540836
+    },
+    "CONVERSATION": {
+      "conversation_id": 0.523627,
+      "message_content": 0.540287,
+      "send_time": 0.52987
+    },
+    "MESSAGE_BOARD": {
+      "message_id": 0.526387,
+      "message_content": 0.536799,
+      "message_time": 0.532463
+    },
+    "RESUME": {
+      "resume_id": 0.53737,
+      "user_id": 0.533648,
+      "job_id": 0.544109
+    },
+    "ASSOC_USER_JOB": {
+      "assoc_user_job_id": 0.719999,
+      "user_id": 0.719999,
+      "job_id": 0.719999
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CONVERSATION",
+      "cardinality": "1:N",
+      "description": "Each user can have many conversations, and each conversation is associated with one user.",
+      "probability": 0.985465
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "JOB",
+      "cardinality": "1:N",
+      "description": "Each company can post many jobs, and each job is associated with one company.",
+      "probability": 0.947458
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_JOB",
+      "description": "One USER can be associated with many ASSOC_USER_JOB.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.719999
+    },
+    {
+      "entity_1": "JOB",
+      "entity_2": "ASSOC_USER_JOB",
+      "description": "One JOB can be associated with many ASSOC_USER_JOB.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.719999
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE_BOARD",
+      "cardinality": "1:N",
+      "description": "Each user can post many messages on the message board, and each message is associated with one user.",
+      "probability": 0.987131
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CONVERSATION",
+      "cardinality": "1:N",
+      "description": "Each company can have many conversations with users, and each conversation is associated with one company.",
+      "probability": 0.966636
+    }
+  ],
+  "processing_time": 24.6
+}

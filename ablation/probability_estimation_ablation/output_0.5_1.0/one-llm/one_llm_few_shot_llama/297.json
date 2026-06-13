@@ -1,0 +1,102 @@
+{
+  "filename": "297.txt",
+  "entity": {
+    "DOCUMENT": 0.817574,
+    "DOCUMENT_TYPE": 0.795467,
+    "STATUS_CATEGORY": 0.808021,
+    "LIFECYCLE_STATUS": 0.742308,
+    "APPROVAL_STATUS": 0.801787,
+    "ASSOC_LIFECYCLE_STATUS_APPROVAL_STATUS": 0.004431,
+    "ASSOC_DOCUMENT_LIFECYCLE_STATUS": 0.279854
+  },
+  "attribute": {
+    "DOCUMENT": {
+      "document_id": 0.768366,
+      "version_number": 0.778308,
+      "document_type_id": 0.773198
+    },
+    "DOCUMENT_TYPE": {
+      "document_type_id": 0.773252,
+      "unique_identifier": 0.778966
+    },
+    "STATUS_CATEGORY": {
+      "status_category_id": 0.765278,
+      "status_category_name": 0.765435
+    },
+    "LIFECYCLE_STATUS": {
+      "lifecycle_status_id": 0.762168,
+      "lifecycle_status_name": 0.761741,
+      "status_sequence_number": 0.771329
+    },
+    "APPROVAL_STATUS": {
+      "approval_status_id": 0.766275,
+      "approval_status_name": 0.76657
+    },
+    "ASSOC_LIFECYCLE_STATUS_APPROVAL_STATUS": {
+      "assoc_lifecycle_status_approval_status_id": 0.004431,
+      "lifecycle_status_id": 0.004431,
+      "approval_status_id": 0.004431
+    },
+    "ASSOC_DOCUMENT_LIFECYCLE_STATUS": {
+      "assoc_document_lifecycle_status_id": 0.279854,
+      "document_id": 0.279854,
+      "lifecycle_status_id": 0.279854
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "DOCUMENT_TYPE",
+      "cardinality": "N:1",
+      "description": "Each document is associated with one document type, and each document type can have many documents.",
+      "probability": 0.988411
+    },
+    {
+      "entity_1": "DOCUMENT_TYPE",
+      "entity_2": "STATUS_CATEGORY",
+      "cardinality": "1:N",
+      "description": "Each document type can have multiple status categories, and each status category is associated with one document type.",
+      "probability": 0.617303
+    },
+    {
+      "entity_1": "STATUS_CATEGORY",
+      "entity_2": "LIFECYCLE_STATUS",
+      "cardinality": "1:N",
+      "description": "Each status category can have multiple lifecycle statuses, and each lifecycle status is associated with one status category.",
+      "probability": 0.083259
+    },
+    {
+      "entity_1": "LIFECYCLE_STATUS",
+      "entity_2": "ASSOC_LIFECYCLE_STATUS_APPROVAL_STATUS",
+      "description": "One LIFECYCLE_STATUS can be associated with many ASSOC_LIFECYCLE_STATUS_APPROVAL_STATUS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004431
+    },
+    {
+      "entity_1": "APPROVAL_STATUS",
+      "entity_2": "ASSOC_LIFECYCLE_STATUS_APPROVAL_STATUS",
+      "description": "One APPROVAL_STATUS can be associated with many ASSOC_LIFECYCLE_STATUS_APPROVAL_STATUS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004431
+    },
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "ASSOC_DOCUMENT_LIFECYCLE_STATUS",
+      "description": "One DOCUMENT can be associated with many ASSOC_DOCUMENT_LIFECYCLE_STATUS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.279854
+    },
+    {
+      "entity_1": "LIFECYCLE_STATUS",
+      "entity_2": "ASSOC_DOCUMENT_LIFECYCLE_STATUS",
+      "description": "One LIFECYCLE_STATUS can be associated with many ASSOC_DOCUMENT_LIFECYCLE_STATUS.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.279854
+    }
+  ],
+  "processing_time": 9.82
+}

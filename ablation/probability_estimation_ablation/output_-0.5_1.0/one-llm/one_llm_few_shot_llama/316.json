@@ -1,0 +1,114 @@
+{
+  "filename": "316.txt",
+  "entity": {
+    "EBOOK": 0.506975,
+    "DOCUMENT": 0.622459,
+    "CATEGORY": 0.622459,
+    "USER": 0.622459,
+    "READING_STATISTIC": 0.534868,
+    "ASSOC_USER_EBOOK": 0.972066
+  },
+  "attribute": {
+    "EBOOK": {
+      "ebook_id": 0.543191,
+      "title": 0.54498,
+      "cover_image": 0.529593,
+      "description": 0.555169,
+      "category_id": 0.545957
+    },
+    "DOCUMENT": {
+      "document_id": 0.530595,
+      "content": 0.558619,
+      "ebook_id": 0.547442,
+      "directory_path": 0.518726
+    },
+    "CATEGORY": {
+      "category_id": 0.516044,
+      "name": 0.533031,
+      "description": 0.53547,
+      "parent_category_id": 0.512712
+    },
+    "USER": {
+      "user_id": 0.514101,
+      "username": 0.505492,
+      "email": 0.517797,
+      "password": 0.520939
+    },
+    "READING_STATISTIC": {
+      "statistic_id": 0.509792,
+      "ebook_id": 0.547227,
+      "user_id": 0.519031,
+      "read_date": 0.514406,
+      "like_status": 0.517018
+    },
+    "ASSOC_USER_EBOOK": {
+      "assoc_user_ebook_id": 0.972066,
+      "user_id": 0.972066,
+      "ebook_id": 0.972066
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "DOCUMENT",
+      "description": "Each ebook can contain multiple documents, and each document belongs to one ebook.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.892143
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "CATEGORY",
+      "description": "Each ebook belongs to one category, and each category can have multiple ebooks.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.652118
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "description": "Each category can have a parent category, and each category can have multiple child categories.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "READING_STATISTIC",
+      "description": "Each user can have multiple reading statistics, and each reading statistic belongs to one user.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.03647
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "READING_STATISTIC",
+      "description": "Each ebook can have multiple reading statistics, and each reading statistic belongs to one ebook.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.007274
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EBOOK",
+      "description": "One USER can be associated with many ASSOC_USER_EBOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972066
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "ASSOC_USER_EBOOK",
+      "description": "One EBOOK can be associated with many ASSOC_USER_EBOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972066
+    }
+  ],
+  "processing_time": 18.27
+}

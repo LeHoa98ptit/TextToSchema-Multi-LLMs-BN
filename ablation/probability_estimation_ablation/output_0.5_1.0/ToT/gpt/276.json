@@ -1,0 +1,153 @@
+{
+  "filename": "276.txt",
+  "entity": {
+    "TECHNICIAN": 0.817574,
+    "TEAM": 0.817574,
+    "TEAM_MEMBER": 0.758963,
+    "CUSTOMER": 0.817574,
+    "MAINTENANCETASK": 0.785481,
+    "PRODUCT": 0.74227,
+    "ASSIGNMENT": 0.737923,
+    "FEEDBACK": 0.817574
+  },
+  "attribute": {
+    "TECHNICIAN": {
+      "technician_id": 0.76412,
+      "first_name": 0.760432,
+      "last_name": 0.763624,
+      "gender": 0.759954,
+      "phone": 0.756924,
+      "email": 0.758835,
+      "position": 0.76837,
+      "employment_date": 0.759765,
+      "skill_set": 0.771389
+    },
+    "TEAM": {
+      "team_id": 0.744692,
+      "team_name": 0.747792,
+      "responsibility": 0.751059,
+      "total_members": 0.753479,
+      "leader_id": 0.748502
+    },
+    "TEAM_MEMBER": {
+      "team_id": 0.746796,
+      "technician_id": 0.764376,
+      "join_date": 0.744386,
+      "end_date": 0.749242,
+      "role_in_team": 0.754581
+    },
+    "CUSTOMER": {
+      "customer_id": 0.751408,
+      "company_name": 0.756759,
+      "contact_name": 0.754156,
+      "phone": 0.749745,
+      "email": 0.750926,
+      "address": 0.751144
+    },
+    "MAINTENANCETASK": {
+      "task_id": 0.765123,
+      "product_id": 0.761014,
+      "customer_id": 0.771055,
+      "description": 0.778109,
+      "request_date": 0.758525,
+      "scheduled_start": 0.760032,
+      "scheduled_end": 0.763111,
+      "duration": 0.764051,
+      "cost": 0.75897,
+      "status": 0.773633,
+      "result": 0.770207
+    },
+    "PRODUCT": {
+      "product_id": 0.731579,
+      "product_name": 0.735116,
+      "model_number": 0.735819,
+      "warranty_expiration": 0.733099
+    },
+    "ASSIGNMENT": {
+      "task_id": 0.752177,
+      "technician_id": 0.767423,
+      "assigned_date": 0.743521,
+      "role": 0.759581
+    },
+    "FEEDBACK": {
+      "feedback_id": 0.743177,
+      "task_id": 0.75329,
+      "customer_id": 0.752958,
+      "satisfaction_score": 0.757781,
+      "comments": 0.744667,
+      "feedback_date": 0.742879,
+      "resolution_result": 0.743421,
+      "version": 0.745674
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "description": "A technician can belong to many team‑member records over time",
+      "probability": 0.003308
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "description": "A team has many members recorded in TEAM_MEMBER",
+      "probability": 0.999679
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "TECHNICIAN",
+      "cardinality": "N:1",
+      "description": "Each team has one leader (leader_id) referencing a technician",
+      "probability": 0.044656
+    },
+    {
+      "entity_1": "MAINTENANCETASK",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each maintenance task concerns one product; a product can be linked to many tasks",
+      "probability": 0.000344
+    },
+    {
+      "entity_1": "MAINTENANCETASK",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "Each task is requested by one customer",
+      "probability": 0.007454
+    },
+    {
+      "entity_1": "MAINTENANCETASK",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A task can have multiple assignments (multiple technicians)",
+      "probability": 0.237109
+    },
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A technician can be assigned to many tasks",
+      "probability": 0.157528
+    },
+    {
+      "entity_1": "MAINTENANCETASK",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "A task may have zero or many feedback entries (e.g., updates over time)",
+      "probability": 0.00244
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "A customer can provide feedback for many tasks",
+      "probability": 0.995969
+    }
+  ],
+  "processing_time": 52.7,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit leader_id FK in TEAM to reference the technician who leads the team; introduced end_date in TEAM_MEMBER for membership history; restructured ASSIGNMENT to use a composite primary key (task_id, technician_id) eliminating redundant surrogate key; added end_date attribute to capture when a technician leaves a team; changed MAINTENANCETASK‑FEEDBACK cardinality to 1:N and added a version attribute to FEEDBACK to support multiple feedback records per task; included customer_id FK directly in MAINTENANCETASK for clearer linkage; updated relationship descriptions accordingly."
+  }
+}

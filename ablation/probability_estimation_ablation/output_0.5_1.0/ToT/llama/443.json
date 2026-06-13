@@ -1,0 +1,143 @@
+{
+  "filename": "443.txt",
+  "entity": {
+    "USER": 0.751084,
+    "EQUIPMENT": 0.817574,
+    "EQUIPMENT_MODEL": 0.770582,
+    "STATUS_LOG": 0.679331,
+    "ACCOUNT_ACTIVITY": 0.745698,
+    "DEPARTMENT": 0.700966,
+    "PERSON": 0.73829,
+    "ASSOC_USER_EQUIPMENT": 0.893366
+  },
+  "attribute": {
+    "USER": {
+      "login": 0.745072,
+      "password": 0.745772,
+      "register": 0.752619,
+      "mobile_number": 0.743859,
+      "role": 0.759995,
+      "permission": 0.754056
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.780098,
+      "equipment_model_id": 0.775734,
+      "equipment_status": 0.782782,
+      "calibration_date": 0.76547,
+      "calibration_validity": 0.76542,
+      "equipment_location": 0.782019,
+      "own_department_id": 0.776174,
+      "person_charge_id": 0.776785,
+      "remark": 0.779455,
+      "maintenance_history": 0.775965
+    },
+    "EQUIPMENT_MODEL": {
+      "equipment_model_id": 0.772998,
+      "equipment_model_name": 0.775321
+    },
+    "STATUS_LOG": {
+      "status_log_id": 0.742443,
+      "equipment_id": 0.774587,
+      "borrower_id": 0.750928,
+      "borrowing_time": 0.74537,
+      "borrow_equipment_photo": 0.772979,
+      "iou_photo": 0.753024,
+      "recipient_id": 0.740959,
+      "receive_area": 0.74949,
+      "receive_time": 0.74231,
+      "receive_equipment_photo": 0.77172,
+      "returner_id": 0.743898,
+      "return_time": 0.738392,
+      "return_equipment_photo": 0.769454,
+      "datum": 0.754542,
+      "monitoring_remark": 0.750878
+    },
+    "ACCOUNT_ACTIVITY": {
+      "account_activity_id": 0.755859,
+      "equipment_id": 0.779809,
+      "borrowing_account": 0.755348,
+      "receive_account": 0.754784,
+      "return_account": 0.753058,
+      "remark": 0.762775,
+      "person_id": 0.757449
+    },
+    "DEPARTMENT": {
+      "department_id": 0.751894,
+      "department_name": 0.752463
+    },
+    "PERSON": {
+      "person_id": 0.742921,
+      "person_name": 0.744137
+    },
+    "ASSOC_USER_EQUIPMENT": {
+      "assoc_user_equipment_id": 0.893366,
+      "user_id": 0.893366,
+      "equipment_id": 0.893366
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One USER can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.893366
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One EQUIPMENT can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.893366
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_MODEL",
+      "cardinality": "N:1",
+      "description": "An equipment is associated with one equipment model",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "STATUS_LOG",
+      "cardinality": "1:N",
+      "description": "An equipment can have multiple status logs",
+      "probability": 0.564321
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "An equipment can have multiple account activities",
+      "probability": 0.625016
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "An equipment is owned by one department",
+      "probability": 0.004252
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "description": "An equipment is charged by one person",
+      "probability": 0.70879
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "cardinality": "N:1",
+      "description": "A person is associated with one account activity",
+      "probability": 0.134282
+    }
+  ],
+  "processing_time": 1019.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added maintenance history attribute to EQUIPMENT entity and person_id attribute to ACCOUNT_ACTIVITY entity. Also added a relationship between PERSON entity and ACCOUNT_ACTIVITY entity."
+  }
+}

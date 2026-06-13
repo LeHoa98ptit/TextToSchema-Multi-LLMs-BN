@@ -1,0 +1,138 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "ENTERPRISE": 0.7161,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "PICKING_LIST": 0.674015,
+    "DELIVERY_ORDER": 0.780057,
+    "INVOICE": 0.817574,
+    "ACCOUNT_RECEIVABLE_REPORT": 0.702473,
+    "ORDER_ITEM": 0.002071
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.754283,
+      "contact information": 0.760648
+    },
+    "ENTERPRISE": {
+      "enterprise id": 0.754804
+    },
+    "PRODUCT": {
+      "product id": 0.745646,
+      "product price": 0.744124,
+      "inventory quantity": 0.768413
+    },
+    "ORDER": {
+      "order id": 0.761335,
+      "customer id": 0.764442,
+      "order quantity": 0.772733,
+      "order status": 0.770574
+    },
+    "PICKING_LIST": {
+      "picking list id": 0.738856,
+      "order id": 0.754984,
+      "product id": 0.743936,
+      "pick quantity": 0.755339,
+      "pick status": 0.743618
+    },
+    "DELIVERY_ORDER": {
+      "delivery order id": 0.760678,
+      "order id": 0.761631,
+      "delivery time": 0.760953,
+      "delivery status": 0.76865
+    },
+    "INVOICE": {
+      "invoice id": 0.759959,
+      "order id": 0.768833,
+      "invoice date": 0.760205
+    },
+    "ACCOUNT_RECEIVABLE_REPORT": {
+      "report id": 0.755042,
+      "order id": 0.762599,
+      "report date": 0.754325
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.002071,
+      "order_id": 0.002071,
+      "product_id": 0.002071,
+      "ORDER_QUANTITY": 0.002071
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place multiple orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96272
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "One ORDER can be associated with many ORDER_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002071
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "description": "One PRODUCT can be associated with many ORDER_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002071
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "description": "An order generates a picking list",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 5e-06
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "description": "An order generates a delivery order",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999226
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "description": "An order generates an invoice",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.980699
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ACCOUNT_RECEIVABLE_REPORT",
+      "description": "An order can be included in multiple account receivable reports",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "ENTERPRISE",
+      "entity_2": "CUSTOMER",
+      "description": "An enterprise has multiple customers",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.951348
+    },
+    {
+      "entity_1": "ENTERPRISE",
+      "entity_2": "PRODUCT",
+      "description": "An enterprise offers multiple products",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.143205
+    }
+  ],
+  "processing_time": 26.16
+}

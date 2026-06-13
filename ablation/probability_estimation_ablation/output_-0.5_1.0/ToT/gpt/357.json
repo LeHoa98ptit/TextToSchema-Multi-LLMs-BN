@@ -1,0 +1,247 @@
+{
+  "filename": "357.txt",
+  "entity": {
+    "LOCATION": 0.622459,
+    "ADDRESS": 0.521038,
+    "BUSINESS_HOUR": 0.479437,
+    "VEHICLE": 0.622459,
+    "CATEGORY": 0.622459,
+    "RENTAL_PRICE": 0.556557,
+    "USER": 0.622459,
+    "ACCOUNT": 0.526076,
+    "CREDIT_CARD": 0.460483,
+    "RESERVATION": 0.460209,
+    "PAYMENT": 0.469737,
+    "NEWS": 0.489751,
+    "PROMOTION": 0.491876,
+    "ASSOC_NEWS_PROMOTION": 0.004812,
+    "ASSOC_NEWS_LOCATION": 0.994098
+  },
+  "attribute": {
+    "LOCATION": {
+      "location_id": 0.515158,
+      "name": 0.520139
+    },
+    "ADDRESS": {
+      "address_id": 0.518274,
+      "location_id": 0.51727,
+      "street": 0.528586,
+      "city": 0.525681,
+      "postal_code": 0.528505,
+      "telephone": 0.519441
+    },
+    "BUSINESS_HOUR": {
+      "business_hour_id": 0.517328,
+      "location_id": 0.524245,
+      "day_of_week": 0.512872,
+      "open_time": 0.512606,
+      "close_time": 0.512698
+    },
+    "VEHICLE": {
+      "vehicle_id": 0.541521,
+      "license_plate": 0.547653,
+      "brand": 0.528594,
+      "model": 0.539372,
+      "photo": 0.537317,
+      "status": 0.543568,
+      "location_id": 0.541193
+    },
+    "CATEGORY": {
+      "category_id": 0.510034,
+      "name": 0.526238,
+      "description": 0.540959
+    },
+    "RENTAL_PRICE": {
+      "price_id": 0.535177,
+      "category_id": 0.546429,
+      "weekday_price": 0.530727,
+      "weekend_price": 0.531183
+    },
+    "USER": {
+      "user_id": 0.508328,
+      "email": 0.517685,
+      "telephone": 0.518578,
+      "password_hash": 0.506669
+    },
+    "ACCOUNT": {
+      "account_id": 0.512958,
+      "user_id": 0.511404,
+      "email": 0.521197,
+      "created_at": 0.503204
+    },
+    "CREDIT_CARD": {
+      "card_id": 0.52178,
+      "account_id": 0.523472,
+      "card_token": 0.516516,
+      "last_four": 0.519685,
+      "expiry_date": 0.509471,
+      "cardholder_name": 0.527362
+    },
+    "RESERVATION": {
+      "reservation_id": 0.521496,
+      "user_id": 0.523236,
+      "vehicle_id": 0.542848,
+      "location_id": 0.524187,
+      "reservation_date": 0.520481,
+      "return_date": 0.5134,
+      "total_price": 0.517275,
+      "reservation_status": 0.520927
+    },
+    "PAYMENT": {
+      "payment_id": 0.511732,
+      "reservation_id": 0.522816,
+      "card_id": 0.515654,
+      "amount": 0.509646,
+      "payment_date": 0.511369,
+      "payment_status": 0.514532
+    },
+    "NEWS": {
+      "news_id": 0.506988,
+      "title": 0.507914,
+      "content": 0.521391,
+      "publish_date": 0.501475
+    },
+    "PROMOTION": {
+      "promo_id": 0.51383,
+      "title": 0.516515,
+      "description": 0.527171,
+      "start_date": 0.513657,
+      "end_date": 0.513129,
+      "discount_percent": 0.508182,
+      "status": 0.518129
+    },
+    "ASSOC_NEWS_PROMOTION": {
+      "assoc_news_promotion_id": 0.004812,
+      "news_id": 0.004812,
+      "promotion_id": 0.004812
+    },
+    "ASSOC_NEWS_LOCATION": {
+      "assoc_news_location_id": 0.994098,
+      "news_id": 0.994098,
+      "location_id": 0.994098
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each location has exactly one address record",
+      "probability": 0.999795
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "BUSINESS_HOUR",
+      "cardinality": "1:N",
+      "description": "A location defines business hours for each day of the week",
+      "probability": 0.157516
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "Vehicles are assigned to a specific location",
+      "probability": 0.366897
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each vehicle belongs to one category",
+      "probability": 0.97518
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "RENTAL_PRICE",
+      "cardinality": "1:1",
+      "description": "Rental pricing is defined per vehicle category",
+      "probability": 0.01997
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "description": "Every user has a single account for system login",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "description": "An account may store multiple credit cards for payment",
+      "probability": 0.999927
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A user can create many reservations",
+      "probability": 0.54971
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A vehicle can be reserved many times over its lifecycle",
+      "probability": 0.351314
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Reservations are linked to the location where the vehicle is picked up",
+      "probability": 0.996225
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each reservation has one associated payment record",
+      "probability": 0.975771
+    },
+    {
+      "entity_1": "PAYMENT",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "N:1",
+      "description": "A payment is made using a single stored credit card",
+      "probability": 0.999892
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "ASSOC_NEWS_PROMOTION",
+      "description": "One NEWS can be associated with many ASSOC_NEWS_PROMOTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004812
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "ASSOC_NEWS_PROMOTION",
+      "description": "One PROMOTION can be associated with many ASSOC_NEWS_PROMOTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004812
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "ASSOC_NEWS_LOCATION",
+      "description": "One NEWS can be associated with many ASSOC_NEWS_LOCATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994098
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ASSOC_NEWS_LOCATION",
+      "description": "One LOCATION can be associated with many ASSOC_NEWS_LOCATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994098
+    }
+  ],
+  "processing_time": 42.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a PAYMENT entity and linked it to RESERVATION and CREDIT_CARD to capture payment details. Replaced raw card_number with PCI‑compliant card_token and stored only last four digits. Introduced NEWS‑LOCATION many‑to‑many relationship for location‑specific news. Added status attribute to PROMOTION for lifecycle control. Kept ADDRESS and BUSINESS_HOUR as separate entities for normalization, but linked them via foreign keys. Updated attributes and relationships to reflect these changes while preserving the original model's strengths."
+  }
+}

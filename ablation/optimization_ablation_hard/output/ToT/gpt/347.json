@@ -1,0 +1,198 @@
+{
+  "entity": [
+    "MODEL",
+    "MODEL_METADATA",
+    "MODEL_RUN",
+    "RUN_METRIC",
+    "METRIC",
+    "DATASET",
+    "DATASET_METADATA",
+    "DATASET_VARIABLE_DETAILS",
+    "DATASET_TAG",
+    "TAG",
+    "MODEL_TYPE",
+    "HYPERPARAMETER",
+    "HYPERPARAMETER_DEF_VALUES",
+    "ID_MAP",
+    "LEADERBOARD",
+    "LEADERBOARD_METADATA"
+  ],
+  "attribute": {
+    "MODEL": [
+      "model_id",
+      "model_name",
+      "model_type_id",
+      "implementation",
+      "operational_status",
+      "created_at",
+      "updated_at"
+    ],
+    "MODEL_METADATA": [
+      "model_id",
+      "description",
+      "version",
+      "author",
+      "framework",
+      "framework_version"
+    ],
+    "MODEL_RUN": [
+      "run_id",
+      "model_id",
+      "dataset_id",
+      "start_time",
+      "end_time",
+      "runtime_seconds",
+      "run_path",
+      "max_models",
+      "run_status"
+    ],
+    "RUN_METRIC": [
+      "run_id",
+      "metric_id",
+      "metric_value"
+    ],
+    "METRIC": [
+      "metric_id",
+      "metric_name",
+      "description"
+    ],
+    "DATASET": [
+      "dataset_id",
+      "dataset_name",
+      "owner",
+      "license",
+      "visibility",
+      "url",
+      "created_at",
+      "updated_at"
+    ],
+    "DATASET_METADATA": [
+      "dataset_id",
+      "size_bytes",
+      "row_count",
+      "column_count",
+      "format",
+      "dataset_version"
+    ],
+    "DATASET_VARIABLE_DETAILS": [
+      "variable_id",
+      "dataset_id",
+      "variable_name",
+      "data_type",
+      "unique_value_count",
+      "null_value_count"
+    ],
+    "DATASET_TAG": [
+      "dataset_id",
+      "tag_id"
+    ],
+    "TAG": [
+      "tag_id",
+      "tag_name",
+      "description"
+    ],
+    "MODEL_TYPE": [
+      "model_type_id",
+      "type_name",
+      "description"
+    ],
+    "HYPERPARAMETER": [
+      "hyperparameter_id",
+      "name",
+      "description"
+    ],
+    "HYPERPARAMETER_DEF_VALUES": [
+      "model_type_id",
+      "hyperparameter_id",
+      "default_value"
+    ],
+    "ID_MAP": [
+      "entity_type",
+      "entity_id",
+      "external_id"
+    ],
+    "LEADERBOARD": [
+      "leaderboard_id",
+      "model_id",
+      "metric_id",
+      "metric_value",
+      "rank",
+      "created_at"
+    ],
+    "LEADERBOARD_METADATA": [
+      "leaderboard_id",
+      "description",
+      "evaluation_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_METADATA",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_RUN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RUN_METRIC",
+      "entity_2": "METRIC",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODEL_TYPE",
+      "entity_2": "MODEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HYPERPARAMETER",
+      "entity_2": "HYPERPARAMETER_DEF_VALUES",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_METADATA",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE_DETAILS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_TAG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "DATASET_TAG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LEADERBOARD",
+      "entity_2": "LEADERBOARD_METADATA",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ID_MAP",
+      "entity_2": "MODEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 91.9487,
+  "ilp_runtime": 0.091
+}

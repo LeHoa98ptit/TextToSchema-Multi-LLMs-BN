@@ -1,0 +1,74 @@
+{
+  "filename": "308.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "PROJECT": 0.622459,
+    "USER": 0.622459,
+    "REPORT": 0.489152
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.53952,
+      "address": 0.540192,
+      "contact": 0.538088,
+      "remark": 0.541795,
+      "customer_id": 0.542364
+    },
+    "PROJECT": {
+      "start_date": 0.524807,
+      "status": 0.54968,
+      "remark": 0.545042,
+      "scale": 0.539501,
+      "project_id": 0.534517,
+      "project_manager_id": 0.543556
+    },
+    "USER": {
+      "abbreviation": 0.531394,
+      "password": 0.526552,
+      "active_status": 0.528549,
+      "user_id": 0.524683
+    },
+    "REPORT": {
+      "date": 0.529025,
+      "time": 0.526344,
+      "description": 0.545919,
+      "report_id": 0.538122,
+      "creator_user_id": 0.531355
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple projects",
+      "probability": 0.591252
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A project can have multiple reports",
+      "probability": 0.841444
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple projects",
+      "probability": 0.745915
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A user can create multiple reports",
+      "probability": 0.33354
+    }
+  ],
+  "processing_time": 16.2,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged PROJECT_MANAGER into the PROJECT entity by adding a project_manager_id attribute, and added a creator_user_id attribute to the REPORT entity to track the user who created the report."
+  }
+}

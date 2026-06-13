@@ -1,0 +1,146 @@
+{
+  "entity": [
+    "User",
+    "Sensor",
+    "Meteorology",
+    "Crop",
+    "Growth Model",
+    "User Water and Fertilizer Supply",
+    "User Operation",
+    "System Performance Evaluation",
+    "Model Performance Evaluation"
+  ],
+  "attribut": {
+    "User": [
+      "User ID",
+      "Username",
+      "Password",
+      "Phone Number",
+      "Registration Time",
+      "Last Login Time",
+      "Role"
+    ],
+    "Sensor": [
+      "Sensor ID",
+      "Data Collection Time",
+      "Soil Moisture",
+      "Temperature",
+      "Rainfall",
+      "Light Intensity",
+      "Sensor Location",
+      "Sensor Burial Depth",
+      "Meteorological ID"
+    ],
+    "Meteorology": [
+      "Meteorological ID",
+      "Timestamp",
+      "Temperature",
+      "Humidity",
+      "Rainfall",
+      "Wind Speed",
+      "Light Intensity",
+      "Location"
+    ],
+    "Crop": [
+      "Crop ID",
+      "Crop Name",
+      "Crop Type",
+      "Model ID"
+    ],
+    "Growth Model": [
+      "Model ID",
+      "Schema Name",
+      "Model Parameters",
+      "Model Creation Time"
+    ],
+    "User Water and Fertilizer Supply": [
+      "Admin ID",
+      "Crop Type",
+      "Supply Time",
+      "Supply Location",
+      "Water Supply",
+      "Fertilizer Supply",
+      "Associated Sensor ID"
+    ],
+    "User Operation": [
+      "Admin ID",
+      "Crop ID",
+      "Operation Time",
+      "Operation Type",
+      "Operation Location",
+      "Operation Details"
+    ],
+    "System Performance Evaluation": [
+      "Admin ID",
+      "Crop ID",
+      "Evaluation Time",
+      "Evaluation Metric Name",
+      "Evaluation Metric Value",
+      "Evaluation Location"
+    ],
+    "Model Performance Evaluation": [
+      "Model ID",
+      "Crop ID",
+      "Evaluation Metric Name",
+      "Evaluation Metric Value",
+      "Evaluation Location"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Meteorology",
+      "entity_2": "Sensor",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Meteorology",
+      "entity_2": "Crop",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Growth Model",
+      "entity_2": "Crop",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Sensor",
+      "entity_2": "User Water and Fertilizer Supply",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "User Water and Fertilizer Supply",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Crop",
+      "entity_2": "User Operation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "User Operation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Crop",
+      "entity_2": "System Performance Evaluation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "System Performance Evaluation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Crop",
+      "entity_2": "Model Performance Evaluation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Growth Model",
+      "entity_2": "Model Performance Evaluation",
+      "cardinality": "1:N"
+    }
+  ]
+}

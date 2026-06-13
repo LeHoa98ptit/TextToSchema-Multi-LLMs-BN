@@ -1,0 +1,254 @@
+{
+  "filename": "375.txt",
+  "entity": {
+    "DEVICE": 0.622459,
+    "DEVICE_TYPE": 0.523982,
+    "DEVICE_STATUS": 0.512298,
+    "USER": 0.622459,
+    "STAFF": 0.507924,
+    "TRAFFIC": 0.622459,
+    "TRAFFIC_STATUS": 0.53335,
+    "FAILURE": 0.622459,
+    "FAILURE_TYPE": 0.522934,
+    "FAILURE_HANDLE_STATUS": 0.509099,
+    "MAINTENANCE": 0.622459,
+    "CONNECTION": 0.535067,
+    "CONNECTION_STATUS": 0.508749,
+    "FAILURE_ASSIGNMENT": 0.516744
+  },
+  "attribute": {
+    "DEVICE": {
+      "device_id": 0.526419,
+      "device_type_id": 0.524838,
+      "device_status_id": 0.534959,
+      "ip_address": 0.52067,
+      "installation_location": 0.524784,
+      "installation_time": 0.526606,
+      "firmware_version": 0.517455,
+      "created_at": 0.522631,
+      "updated_at": 0.523012
+    },
+    "DEVICE_TYPE": {
+      "type_id": 0.522254,
+      "type_name": 0.519688,
+      "description": 0.535334,
+      "created_at": 0.519759,
+      "updated_at": 0.520091
+    },
+    "DEVICE_STATUS": {
+      "status_id": 0.541337,
+      "status_name": 0.540328,
+      "description": 0.549342,
+      "created_at": 0.5348,
+      "updated_at": 0.53127
+    },
+    "USER": {
+      "user_id": 0.512653,
+      "username": 0.504511,
+      "password_hash": 0.506985,
+      "email": 0.509244,
+      "role": 0.516759,
+      "created_at": 0.502747,
+      "updated_at": 0.507035
+    },
+    "STAFF": {
+      "staff_id": 0.52019,
+      "name": 0.51408,
+      "email": 0.512778,
+      "phone": 0.518932,
+      "department": 0.520231,
+      "created_at": 0.51166,
+      "updated_at": 0.519158
+    },
+    "TRAFFIC": {
+      "traffic_id": 0.538002,
+      "device_id": 0.546496,
+      "recorded_at": 0.546039,
+      "upload_bytes": 0.522435,
+      "download_bytes": 0.523381,
+      "total_bytes": 0.529727,
+      "traffic_status_id": 0.541394,
+      "created_at": 0.525121,
+      "updated_at": 0.527375
+    },
+    "TRAFFIC_STATUS": {
+      "status_id": 0.542273,
+      "status_name": 0.543338,
+      "description": 0.555336,
+      "created_at": 0.534924,
+      "updated_at": 0.533796
+    },
+    "FAILURE": {
+      "failure_id": 0.518409,
+      "device_id": 0.530908,
+      "failure_type_id": 0.515873,
+      "occurrence_time": 0.524003,
+      "description": 0.523176,
+      "handle_status_id": 0.517489,
+      "resolution_time": 0.520092,
+      "remark": 0.516459,
+      "created_at": 0.501801,
+      "updated_at": 0.496956
+    },
+    "FAILURE_TYPE": {
+      "failure_type_id": 0.517424,
+      "name": 0.513866,
+      "severity_level": 0.523732,
+      "description": 0.525049,
+      "created_at": 0.502832,
+      "updated_at": 0.500663
+    },
+    "FAILURE_HANDLE_STATUS": {
+      "status_id": 0.521621,
+      "status_name": 0.519112,
+      "description": 0.53175,
+      "created_at": 0.514192,
+      "updated_at": 0.513008
+    },
+    "MAINTENANCE": {
+      "maintenance_id": 0.536885,
+      "device_id": 0.547515,
+      "staff_id": 0.539334,
+      "maintenance_start": 0.535398,
+      "maintenance_end": 0.538782,
+      "activity_detail": 0.552209,
+      "result": 0.53033,
+      "remark": 0.534078,
+      "created_at": 0.525004,
+      "updated_at": 0.523406
+    },
+    "CONNECTION": {
+      "connection_id": 0.513901,
+      "user_id": 0.516026,
+      "device_id": 0.530162,
+      "connect_time": 0.515612,
+      "disconnect_time": 0.508456,
+      "bandwidth_used": 0.531358,
+      "user_ip": 0.514497,
+      "connection_status_id": 0.523949,
+      "created_at": 0.508846,
+      "updated_at": 0.511693
+    },
+    "CONNECTION_STATUS": {
+      "status_id": 0.528872,
+      "status_name": 0.526433,
+      "description": 0.537917,
+      "created_at": 0.519034,
+      "updated_at": 0.520488
+    },
+    "FAILURE_ASSIGNMENT": {
+      "assignment_id": 0.518007,
+      "failure_id": 0.522558,
+      "staff_id": 0.524651,
+      "assigned_at": 0.518916,
+      "role": 0.527964,
+      "created_at": 0.510411,
+      "updated_at": 0.507163
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each device belongs to one device type",
+      "probability": 0.999972
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_STATUS",
+      "cardinality": "N:1",
+      "description": "Each device has one status from the device status lookup",
+      "probability": 0.999988
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "TRAFFIC",
+      "cardinality": "1:N",
+      "description": "A device generates many traffic records",
+      "probability": 0.018058
+    },
+    {
+      "entity_1": "TRAFFIC",
+      "entity_2": "TRAFFIC_STATUS",
+      "cardinality": "N:1",
+      "description": "Each traffic record has a status from the traffic status lookup",
+      "probability": 0.999884
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "FAILURE",
+      "cardinality": "1:N",
+      "description": "A device may experience multiple failures",
+      "probability": 0.537218
+    },
+    {
+      "entity_1": "FAILURE",
+      "entity_2": "FAILURE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each failure is classified by a failure type",
+      "probability": 0.999905
+    },
+    {
+      "entity_1": "FAILURE",
+      "entity_2": "FAILURE_HANDLE_STATUS",
+      "cardinality": "N:1",
+      "description": "Each failure has a handling status from the failure handle status lookup",
+      "probability": 0.999883
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A device can have many maintenance records",
+      "probability": 0.059596
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A staff member performs many maintenance actions",
+      "probability": 0.937133
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION",
+      "cardinality": "1:N",
+      "description": "A user may create many connection sessions",
+      "probability": 0.99832
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "CONNECTION",
+      "cardinality": "1:N",
+      "description": "A device can be linked to many connection sessions",
+      "probability": 0.996805
+    },
+    {
+      "entity_1": "CONNECTION",
+      "entity_2": "CONNECTION_STATUS",
+      "cardinality": "N:1",
+      "description": "Each connection has a status from the connection status lookup",
+      "probability": 0.999984
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "FAILURE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A staff member can be assigned to many failure handling assignments",
+      "probability": 0.959968
+    },
+    {
+      "entity_1": "FAILURE",
+      "entity_2": "FAILURE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A failure can have multiple staff assignments",
+      "probability": 0.84839
+    }
+  ],
+  "processing_time": 55.07,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit lookup tables for all status fields (DEVICE_STATUS, TRAFFIC_STATUS, CONNECTION_STATUS, FAILURE_HANDLE_STATUS) to enforce consistent enumerations. Introduced a many‑to‑many relationship between STAFF and FAILURE via the associative entity FAILURE_ASSIGNMENT, allowing multiple technicians per failure and capturing assignment details. Included created_at and updated_at timestamps on every entity for audit trails. Updated attribute names for consistency and replaced generic status attributes with foreign keys to the new status lookup tables. Ensured all core concepts remain and relationships are clearly defined."
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "filename": "480.txt",
+  "entity": {
+    "PROPERTY": 0.817574,
+    "APARTMENT": 0.739698,
+    "AGENT": 0.817574,
+    "USER": 0.817574,
+    "RESPONSIBILITY": 0.723402,
+    "SALE": 0.817574,
+    "LOG": 0.716629,
+    "EXPORT": 0.689632,
+    "ARCHIVE": 0.704871
+  },
+  "attribute": {
+    "PROPERTY": {
+      "property_id": 0.751827,
+      "certificate_number": 0.762175,
+      "address": 0.764767,
+      "construction_year": 0.768383,
+      "build_area": 0.756174,
+      "sale_price": 0.765192,
+      "sale_status": 0.77069,
+      "sale_market": 0.77298,
+      "photo": 0.759827
+    },
+    "APARTMENT": {
+      "apartment_id": 0.760159,
+      "property_id": 0.767963,
+      "apartment_type": 0.761938,
+      "floor": 0.758944,
+      "rooms": 0.761658
+    },
+    "AGENT": {
+      "agent_id": 0.75848,
+      "home_address": 0.763478,
+      "contact_number": 0.756774,
+      "license_number": 0.762816
+    },
+    "USER": {
+      "user_id": 0.738734,
+      "username": 0.731865,
+      "password": 0.742619,
+      "role": 0.750231,
+      "email": 0.736149
+    },
+    "RESPONSIBILITY": {
+      "responsibility_id": 0.740579,
+      "agent_id": 0.755904,
+      "property_id": 0.752888,
+      "start_date": 0.73831,
+      "end_date": 0.737167
+    },
+    "SALE": {
+      "sale_id": 0.757649,
+      "property_id": 0.76746,
+      "agent_id": 0.7681,
+      "buyer_user_id": 0.757324,
+      "sale_date": 0.755717,
+      "sale_price": 0.752785,
+      "approval_status": 0.752128
+    },
+    "LOG": {
+      "log_id": 0.735798,
+      "user_id": 0.738853,
+      "action": 0.745559,
+      "timestamp": 0.741363,
+      "details": 0.751195
+    },
+    "EXPORT": {
+      "export_id": 0.728862,
+      "export_date": 0.728567,
+      "exported_by_user_id": 0.734154,
+      "export_criteria": 0.736455,
+      "file_path": 0.722818
+    },
+    "ARCHIVE": {
+      "archive_id": 0.728588,
+      "property_id": 0.744345,
+      "removal_date": 0.732678,
+      "removed_by_user_id": 0.734213,
+      "reason": 0.739674
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "APARTMENT",
+      "cardinality": "0..1:1",
+      "description": "A property may be an apartment; apartment details extend the property record.",
+      "probability": 0.989882
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "RESPONSIBILITY",
+      "cardinality": "1:N",
+      "description": "A property can have many responsibility periods over time.",
+      "probability": 0.992889
+    },
+    {
+      "entity_1": "AGENT",
+      "entity_2": "RESPONSIBILITY",
+      "cardinality": "1:N",
+      "description": "An agent can be responsible for many properties during different periods.",
+      "probability": 0.009578
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "SALE",
+      "cardinality": "0..1:1",
+      "description": "Each property can have at most one sale record when it is sold.",
+      "probability": 0.502585
+    },
+    {
+      "entity_1": "AGENT",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "An agent may facilitate many sales.",
+      "probability": 0.637635
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A user (buyer) can be linked to many purchase transactions.",
+      "probability": 0.997525
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "Every system action performed by a user is recorded in the log.",
+      "probability": 0.998704
+    },
+    {
+      "entity_1": "EXPORT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "An export operation is performed by a single user; a user can initiate many exports.",
+      "probability": 0.966452
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "ARCHIVE",
+      "cardinality": "0..1:1",
+      "description": "A property may be archived after removal; each archived property has one archive record.",
+      "probability": 0.776777
+    },
+    {
+      "entity_1": "ARCHIVE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "An archive record records the user who performed the removal; a user can archive many properties.",
+      "probability": 0.895194
+    }
+  ],
+  "processing_time": 15.73,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added EXPORT entity to capture periodic property list exports and linked it to USER. Introduced ARCHIVE entity for tracking property removal after prolonged unsold periods. Clarified PROPERTY‑APARTMENT optional relationship (0..1:1). Included ROLE attribute in USER for role‑based constraints (ADMIN, AGENT, BUYER). Updated relationships to reflect new entities and maintain historical responsibility periods, sale approvals, and audit logging. Ensured all major domain concepts are represented and ready for implementation."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "entity": [
+    "PERSONNEL",
+    "UNIT",
+    "ADMINISTRATOR",
+    "HEALTH_RECORD",
+    "TRAVEL_RECORD",
+    "VISITOR",
+    "APPOINTMENT",
+    "ACCESS_RECORD",
+    "ACCESS_CONTROL_DEVICE"
+  ],
+  "attribute": {
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "personnel_type",
+      "contact_phone",
+      "email",
+      "unit_id"
+    ],
+    "UNIT": [
+      "unit_id",
+      "unit_name",
+      "unit_type",
+      "parent_unit_id"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "role",
+      "personnel_id"
+    ],
+    "HEALTH_RECORD": [
+      "health_record_id",
+      "personnel_id",
+      "temperature",
+      "symptom",
+      "health_code_color",
+      "record_date"
+    ],
+    "TRAVEL_RECORD": [
+      "travel_record_id",
+      "personnel_id",
+      "location",
+      "travel_timestamp"
+    ],
+    "VISITOR": [
+      "visitor_id",
+      "name",
+      "contact_phone",
+      "email"
+    ],
+    "APPOINTMENT": [
+      "appointment_id",
+      "visitor_id",
+      "personnel_id",
+      "entry_time",
+      "exit_time",
+      "status",
+      "creation_time"
+    ],
+    "ACCESS_RECORD": [
+      "access_record_id",
+      "personnel_id",
+      "device_id",
+      "entry_time",
+      "exit_time"
+    ],
+    "ACCESS_CONTROL_DEVICE": [
+      "device_id",
+      "location",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "TRAVEL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.1802,
+  "ilp_runtime": 0.121
+}

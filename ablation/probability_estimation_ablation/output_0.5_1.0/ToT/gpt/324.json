@@ -1,0 +1,153 @@
+{
+  "filename": "324.txt",
+  "entity": {
+    "IP_ADDRESS": 0.796441,
+    "IP_NETWORK": 0.769573,
+    "GEO_LOCATION": 0.782467,
+    "COUNTRY": 0.817574,
+    "CONTINENT": 0.754007,
+    "PROVIDER": 0.725817,
+    "DATUM": 0.817574,
+    "IMPORT_BATCH": 0.643961,
+    "USER_QUERY": 0.756023
+  },
+  "attribute": {
+    "IP_ADDRESS": {
+      "ip": 0.766414,
+      "version": 0.767963,
+      "is_anonymous_proxy": 0.754572,
+      "is_satellite": 0.764478,
+      "assigned_date": 0.761782,
+      "network_id": 0.752566
+    },
+    "IP_NETWORK": {
+      "network_cidr": 0.745132,
+      "start_ip": 0.750027,
+      "end_ip": 0.752912,
+      "allocation_date": 0.753047,
+      "provider_id": 0.750834
+    },
+    "GEO_LOCATION": {
+      "latitude": 0.775664,
+      "longitude": 0.773706,
+      "city": 0.773464,
+      "region": 0.777495,
+      "postal_code": 0.772065,
+      "timezone": 0.764495
+    },
+    "COUNTRY": {
+      "iso_code": 0.765231,
+      "name": 0.7513,
+      "iso_numeric": 0.761967,
+      "eu_member": 0.753498,
+      "continent_code": 0.763704
+    },
+    "CONTINENT": {
+      "code": 0.758978,
+      "name": 0.749139
+    },
+    "PROVIDER": {
+      "provider_id": 0.74692,
+      "name": 0.753735,
+      "provider_type": 0.748436,
+      "country_code": 0.769027
+    },
+    "DATUM": {
+      "datum_id": 0.739333,
+      "source": 0.739363,
+      "last_update": 0.737902,
+      "checksum": 0.741598,
+      "version": 0.741439
+    },
+    "IMPORT_BATCH": {
+      "batch_id": 0.729206,
+      "import_date": 0.72987,
+      "source_file": 0.724823,
+      "status": 0.736473,
+      "version": 0.734976
+    },
+    "USER_QUERY": {
+      "query_id": 0.745371,
+      "query_timestamp": 0.745269,
+      "ip_searched": 0.768302,
+      "result_location_id": 0.762752
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "IP_NETWORK",
+      "cardinality": "N:1",
+      "description": "Each IP address belongs to a single network block",
+      "probability": 0.999801
+    },
+    {
+      "entity_1": "IP_NETWORK",
+      "entity_2": "PROVIDER",
+      "cardinality": "N:1",
+      "description": "A network block is allocated by one provider",
+      "probability": 0.996131
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "GEO_LOCATION",
+      "cardinality": "1:1",
+      "description": "An IP address resolves to one geographic location",
+      "probability": 0.875061
+    },
+    {
+      "entity_1": "GEO_LOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "A location is situated within a single country",
+      "probability": 0.93501
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "N:1",
+      "description": "A country belongs to one continent",
+      "probability": 0.865845
+    },
+    {
+      "entity_1": "DATUM",
+      "entity_2": "IP_NETWORK",
+      "cardinality": "1:N",
+      "description": "A datum record defines many network blocks",
+      "probability": 0.203884
+    },
+    {
+      "entity_1": "IMPORT_BATCH",
+      "entity_2": "DATUM",
+      "cardinality": "1:N",
+      "description": "One import batch loads multiple datum records",
+      "probability": 0.166147
+    },
+    {
+      "entity_1": "USER_QUERY",
+      "entity_2": "IP_ADDRESS",
+      "cardinality": "N:1",
+      "description": "A user query references the searched IP address",
+      "probability": 0.948103
+    },
+    {
+      "entity_1": "USER_QUERY",
+      "entity_2": "GEO_LOCATION",
+      "cardinality": "N:1",
+      "description": "A query returns a single geographic location result",
+      "probability": 0.009466
+    },
+    {
+      "entity_1": "PROVIDER",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "Each provider is associated with a single country of operation",
+      "probability": 0.955326
+    }
+  ],
+  "processing_time": 37.48,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Simplified the Provider‑Country relationship from N:M to N:1 by adding a country_code FK in PROVIDER, reducing join complexity. Added version columns to DATUM and IMPORT_BATCH for optimistic concurrency control. Included network_id FK in IP_ADDRESS to make the N:1 relationship explicit. Clarified foreign‑key integrity for USER_QUERY.result_location_id via the GEO_LOCATION relationship. Updated attribute lists accordingly and retained all core entities and relationships for full coverage of datum management, import tracking, and query logging."
+  }
+}

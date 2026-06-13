@@ -1,0 +1,195 @@
+{
+  "filename": "428.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ADMINISTRATOR": 0.817574,
+    "TEACHER": 0.817574,
+    "STUDENT": 0.761351,
+    "DORMITORY": 0.817574,
+    "DORM_ROOM": 0.779456,
+    "COURSE": 0.718352,
+    "ENROLLMENT": 0.705723,
+    "GRADE": 0.817574,
+    "REPAIR_REQUEST": 0.793377,
+    "ASSOC_STUDENT_COURSE": 0.002709
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.75737,
+      "username": 0.742525,
+      "password": 0.758333,
+      "email": 0.75259
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.765539,
+      "user_id": 0.770266,
+      "office_number": 0.759654
+    },
+    "TEACHER": {
+      "teacher_id": 0.772478,
+      "user_id": 0.778694,
+      "department": 0.770352,
+      "title": 0.764174
+    },
+    "STUDENT": {
+      "student_id": 0.773573,
+      "user_id": 0.777071,
+      "first_name": 0.768571,
+      "last_name": 0.771665,
+      "birthdate": 0.759847,
+      "enrollment_year": 0.760549
+    },
+    "DORMITORY": {
+      "dorm_id": 0.77084,
+      "name": 0.767272,
+      "address": 0.769176,
+      "total_rooms": 0.762985
+    },
+    "DORM_ROOM": {
+      "room_id": 0.762093,
+      "room_number": 0.759704,
+      "capacity": 0.758629,
+      "dorm_id": 0.763009
+    },
+    "COURSE": {
+      "course_id": 0.761361,
+      "course_code": 0.760692,
+      "title": 0.756088,
+      "credits": 0.747947,
+      "teacher_id": 0.774143
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.757176,
+      "student_id": 0.767773,
+      "course_id": 0.76525,
+      "enroll_date": 0.751196
+    },
+    "GRADE": {
+      "grade_id": 0.76513,
+      "enrollment_id": 0.768594,
+      "grade_value": 0.757492,
+      "graded_on": 0.757798
+    },
+    "REPAIR_REQUEST": {
+      "request_id": 0.744247,
+      "student_id": 0.770182,
+      "room_id": 0.751835,
+      "description": 0.751873,
+      "status": 0.747981,
+      "submitted_at": 0.748118,
+      "resolved_at": 0.740622
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.002709,
+      "student_id": 0.002709,
+      "course_id": 0.002709
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ADMINISTRATOR",
+      "cardinality": "1:1",
+      "description": "A user can be an administrator (specialization)",
+      "probability": 0.371926
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TEACHER",
+      "cardinality": "1:1",
+      "description": "A user can be a teacher",
+      "probability": 0.995602
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "STUDENT",
+      "cardinality": "1:1",
+      "description": "A user can be a regular student",
+      "probability": 0.998123
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "description": "Administrator maintains multiple dormitories",
+      "probability": 0.590937
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "DORM_ROOM",
+      "cardinality": "1:N",
+      "description": "A dormitory contains many rooms",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DORM_ROOM",
+      "cardinality": "N:1",
+      "description": "A student resides in one room; a room can host many students over time",
+      "probability": 0.999773
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "Teacher teaches multiple courses",
+      "probability": 0.991667
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002709
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002709
+    },
+    {
+      "entity_1": "ENROLLMENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "description": "Each enrollment may have one grade record",
+      "probability": 0.123616
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "Teacher assigns grades to enrollments",
+      "probability": 0.046371
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "Student can view their grades",
+      "probability": 0.21692
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "description": "Student can submit many dormitory repair requests",
+      "probability": 0.784968
+    },
+    {
+      "entity_1": "REPAIR_REQUEST",
+      "entity_2": "DORM_ROOM",
+      "cardinality": "N:1",
+      "description": "Each repair request is linked to the specific room",
+      "probability": 0.014034
+    }
+  ],
+  "processing_time": 927.92,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit foreign‑key attributes (user_id) in ADMINISTRATOR, TEACHER, and STUDENT to clarify specialization. Introduced TEACHER‑GRADE and STUDENT‑GRADE relationships to make grade assignment and viewing explicit. Retained the DORM_ROOM entity for realistic dormitory management while keeping the model efficient. Clarified relationship cardinalities and descriptions, ensuring referential integrity constraints are evident."
+  }
+}

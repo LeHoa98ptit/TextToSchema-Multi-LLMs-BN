@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "ECOSYSTEM",
+    "ECOSYSTEM_TYPE",
+    "LOCATION",
+    "STATUS",
+    "MONITORING_RECORD",
+    "SENSOR_READING",
+    "PERSON",
+    "CONTACT_INFO",
+    "ASSIGNMENT"
+  ],
+  "attribute": {
+    "ECOSYSTEM": [
+      "ecosystem_id",
+      "name",
+      "description",
+      "type_id",
+      "location_id"
+    ],
+    "ECOSYSTEM_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "LOCATION": [
+      "location_id",
+      "latitude",
+      "longitude",
+      "region"
+    ],
+    "STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "MONITORING_RECORD": [
+      "record_id",
+      "monitor_date",
+      "ecosystem_id",
+      "person_id",
+      "status_id"
+    ],
+    "SENSOR_READING": [
+      "reading_id",
+      "record_id",
+      "temperature",
+      "humidity",
+      "soil_moisture",
+      "plant_growth"
+    ],
+    "PERSON": [
+      "person_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "position",
+      "contact_id",
+      "role"
+    ],
+    "CONTACT_INFO": [
+      "contact_id",
+      "phone",
+      "email",
+      "address"
+    ],
+    "ASSIGNMENT": [
+      "assignment_id",
+      "ecosystem_id",
+      "person_id",
+      "assignment_date",
+      "end_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ECOSYSTEM_TYPE",
+      "entity_2": "ECOSYSTEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ECOSYSTEM",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ECOSYSTEM",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ECOSYSTEM",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.7072,
+  "ilp_runtime": 0.06
+}

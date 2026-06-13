@@ -1,0 +1,73 @@
+{
+  "entity": [
+    "MEDICAL_INSTITUTION",
+    "PERSONNEL",
+    "VEHICLE",
+    "INBOUND",
+    "OUTBOUND",
+    "TEMPORARY_STORAGE"
+  ],
+  "attribute": {
+    "MEDICAL_INSTITUTION": [
+      "address",
+      "contact_information"
+    ],
+    "PERSONNEL": [
+      "role",
+      "contact_information",
+      "medical_institution_id"
+    ],
+    "VEHICLE": [
+      "license_plate_number",
+      "model",
+      "capacity",
+      "medical_institution_id"
+    ],
+    "INBOUND": [
+      "batch_number",
+      "expect_quantity",
+      "actual_quantity",
+      "expect_weight",
+      "actual_weight",
+      "inbound_time",
+      "collector_id",
+      "confirmer_id"
+    ],
+    "OUTBOUND": [
+      "batch_number",
+      "outbound_quantity",
+      "outbound_weight",
+      "outbound_time",
+      "transporter_id",
+      "confirmer_id"
+    ],
+    "TEMPORARY_STORAGE": [
+      "start_time",
+      "end_time",
+      "recipient",
+      "waste_feature"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "OUTBOUND",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INBOUND",
+      "entity_2": "TEMPORARY_STORAGE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 18.092,
+  "ilp_runtime": 0.079
+}

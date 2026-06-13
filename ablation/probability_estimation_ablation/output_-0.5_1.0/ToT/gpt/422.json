@@ -1,0 +1,139 @@
+{
+  "filename": "422.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PROJECT": 0.622459,
+    "PROJECT_VERSION": 0.508074,
+    "TASK": 0.622459,
+    "CODE_SUBMISSION": 0.53748,
+    "PROJECT_MEMBER": 0.466774
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.510959,
+      "username": 0.505164,
+      "password": 0.516267,
+      "email": 0.513465,
+      "phone": 0.501925,
+      "role": 0.523325,
+      "registration_time": 0.51762,
+      "last_login_time": 0.514545,
+      "created_at": 0.502015,
+      "updated_at": 0.506286
+    },
+    "PROJECT": {
+      "project_id": 0.537779,
+      "project_name": 0.541198,
+      "project_introduction": 0.547134,
+      "creation_time": 0.546357,
+      "status": 0.548584,
+      "created_at": 0.521443,
+      "updated_at": 0.520923
+    },
+    "PROJECT_VERSION": {
+      "version_id": 0.5342,
+      "project_id": 0.5407,
+      "version_number": 0.535181,
+      "release_date": 0.534735,
+      "description": 0.554046,
+      "is_stable": 0.522093,
+      "created_at": 0.525132,
+      "updated_at": 0.523421
+    },
+    "TASK": {
+      "task_id": 0.532469,
+      "project_id": 0.541781,
+      "assigned_user_id": 0.531204,
+      "title": 0.543187,
+      "description": 0.550872,
+      "status": 0.541319,
+      "start_time": 0.530517,
+      "end_time": 0.536623,
+      "progress_percent": 0.540748,
+      "created_at": 0.523015,
+      "updated_at": 0.523146
+    },
+    "CODE_SUBMISSION": {
+      "submission_id": 0.519609,
+      "user_id": 0.522878,
+      "project_id": 0.537642,
+      "submission_time": 0.529208,
+      "description": 0.541651,
+      "code_path": 0.521667,
+      "commit_hash": 0.524649,
+      "created_at": 0.510936,
+      "updated_at": 0.511848
+    },
+    "PROJECT_MEMBER": {
+      "project_id": 0.537608,
+      "user_id": 0.535437,
+      "role_in_project": 0.540243,
+      "join_date": 0.543449,
+      "created_at": 0.52335,
+      "updated_at": 0.525211
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A user (as project manager) can manage many projects; manager role is also recorded in PROJECT_MEMBER with role_in_project='Manager'",
+      "probability": 0.573549
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_VERSION",
+      "cardinality": "1:N",
+      "description": "A project can have multiple versions",
+      "probability": 0.983114
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A project contains many tasks",
+      "probability": 0.955053
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A developer can be assigned to many tasks; each task has one assignee",
+      "probability": 0.008574
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A user may submit many code submissions",
+      "probability": 0.734733
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A project can receive many code submissions",
+      "probability": 0.782035
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_MEMBER",
+      "cardinality": "1:N",
+      "description": "A project can have many members (including manager, developers, testers)",
+      "probability": 0.997339
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT_MEMBER",
+      "cardinality": "1:N",
+      "description": "A user can belong to many projects with different roles",
+      "probability": 0.992978
+    }
+  ],
+  "processing_time": 17.08,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant responsible_user_id from PROJECT and now represent the project manager via PROJECT_MEMBER with role_in_project='Manager'. Added audit timestamps (created_at, updated_at) to all tables. Included missing attributes such as phone, registration/login times, project introduction, version description, stable flag, task description and progress, code submission description, and commit_hash. Clarified relationship descriptions to reflect the manager role through PROJECT_MEMBER. Suggested unique constraints and referential actions are implied for implementation."
+  }
+}

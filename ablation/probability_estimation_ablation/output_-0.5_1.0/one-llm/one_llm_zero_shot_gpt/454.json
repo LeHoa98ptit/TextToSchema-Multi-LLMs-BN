@@ -1,0 +1,122 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "DISTRIBUTION_CENTER": 0.521886,
+    "PRODUCT": 0.622459,
+    "SUPPLY_REQUEST": 0.585938,
+    "DISTRIBUTION_ORDER": 0.533948,
+    "PURCHASE_ORDER": 0.526899,
+    "ASSOC_SUPPLY_REQUEST_PRODUCT": 0.110207,
+    "ASSOC_PURCHASE_ORDER_PRODUCT": 0.088701
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.544703,
+      "name": 0.544661,
+      "address": 0.544836,
+      "contact_info": 0.547792
+    },
+    "DISTRIBUTION_CENTER": {
+      "center_id": 0.527496,
+      "name": 0.538496,
+      "address": 0.54333
+    },
+    "PRODUCT": {
+      "product_id": 0.522066,
+      "name": 0.530751,
+      "price": 0.525553,
+      "inventory_quantity": 0.566494
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.547315,
+      "request_date": 0.545334,
+      "status": 0.565045
+    },
+    "DISTRIBUTION_ORDER": {
+      "order_id": 0.524569,
+      "distribution_date": 0.525887,
+      "status": 0.547437
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_id": 0.526165,
+      "purchase_date": 0.524439,
+      "status": 0.549912
+    },
+    "ASSOC_SUPPLY_REQUEST_PRODUCT": {
+      "assoc_supply_request_product_id": 0.110207,
+      "supply_request_id": 0.110207,
+      "product_id": 0.110207
+    },
+    "ASSOC_PURCHASE_ORDER_PRODUCT": {
+      "assoc_purchase_order_product_id": 0.088701,
+      "purchase_order_id": 0.088701,
+      "product_id": 0.088701
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.001533
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.023666
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "ASSOC_SUPPLY_REQUEST_PRODUCT",
+      "description": "One SUPPLY_REQUEST can be associated with many ASSOC_SUPPLY_REQUEST_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.110207
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SUPPLY_REQUEST_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SUPPLY_REQUEST_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.110207
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:1",
+      "probability": 0.012637
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.868947
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.890098
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "ASSOC_PURCHASE_ORDER_PRODUCT",
+      "description": "One PURCHASE_ORDER can be associated with many ASSOC_PURCHASE_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.088701
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PURCHASE_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_PURCHASE_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.088701
+    }
+  ],
+  "processing_time": 12.47
+}

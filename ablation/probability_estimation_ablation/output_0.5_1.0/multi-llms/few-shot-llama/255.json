@@ -1,0 +1,180 @@
+{
+  "filename": "255.txt",
+  "entity": {
+    "EQUIPMENT": 0.817574,
+    "USER": 0.707795,
+    "INSPECTION": 0.72224,
+    "REPAIR": 0.817574,
+    "FAILURE_REPORT": 0.759858,
+    "ANNOUNCEMENT": 0.744521,
+    "JOB_POSITION": 0.748231,
+    "APPLICATION": 0.704558,
+    "PRODUCTION_REPORT": 0.757055,
+    "QUALITY_REPORT": 0.761732
+  },
+  "attribute": {
+    "EQUIPMENT": {
+      "equipment id": 0.764361,
+      "name": 0.76116,
+      "model": 0.761993,
+      "main category": 0.770619,
+      "subcategory": 0.766272,
+      "location": 0.758725,
+      "operation status": 0.77711
+    },
+    "USER": {
+      "user id": 0.734853,
+      "username": 0.730579,
+      "role": 0.748886,
+      "permissions": 0.739328,
+      "status": 0.754744,
+      "operation history": 0.75582
+    },
+    "INSPECTION": {
+      "inspection id": 0.756436,
+      "inspection plan": 0.760912,
+      "inspection progress": 0.762937
+    },
+    "REPAIR": {
+      "repair id": 0.752003,
+      "repair details": 0.756447,
+      "repair progress": 0.756531,
+      "repair time": 0.751657
+    },
+    "FAILURE_REPORT": {
+      "failure report id": 0.763283,
+      "reporter id": 0.762186,
+      "failure type": 0.763247,
+      "failure time": 0.758417,
+      "processing status": 0.76775
+    },
+    "ANNOUNCEMENT": {
+      "announcement id": 0.741282,
+      "announcement content": 0.746913,
+      "release time": 0.739346,
+      "announcement status": 0.748582
+    },
+    "JOB_POSITION": {
+      "position id": 0.759449,
+      "position name": 0.759072,
+      "position description": 0.768979,
+      "position responsibilities": 0.766927,
+      "job requirements": 0.771082
+    },
+    "APPLICATION": {
+      "application id": 0.732292,
+      "position id": 0.739889,
+      "user id": 0.731611,
+      "position match rate": 0.743431
+    },
+    "PRODUCTION_REPORT": {
+      "production report id": 0.771642,
+      "report type": 0.772747,
+      "date": 0.761675,
+      "production data": 0.778395,
+      "production indicators": 0.773006,
+      "completion status": 0.775359,
+      "metal recovery rate": 0.769268,
+      "grade": 0.76578
+    },
+    "QUALITY_REPORT": {
+      "quality report id": 0.763967,
+      "metal recovery rate": 0.76802,
+      "incoming warehouse sample": 0.774369,
+      "metal grade": 0.76066,
+      "recovery rate daily report": 0.77387,
+      "grade daily report": 0.762561
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION",
+      "description": "One equipment can have many inspections.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.745241
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "REPAIR",
+      "description": "One equipment can have many repairs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.866984
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "FAILURE_REPORT",
+      "description": "One equipment can have many failure reports.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.404696
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAILURE_REPORT",
+      "description": "One user can report many equipment failures.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998795
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPAIR",
+      "description": "One user can handle many repairs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991666
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INSPECTION",
+      "description": "One user can perform many inspections.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.896479
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "description": "One user can create many announcements.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.97868
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "description": "One user can apply for many job positions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987423
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "APPLICATION",
+      "description": "One job position can have many applications.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981921
+    },
+    {
+      "entity_1": "PRODUCTION_REPORT",
+      "entity_2": "EQUIPMENT",
+      "description": "One equipment can have many production reports.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.016502
+    },
+    {
+      "entity_1": "QUALITY_REPORT",
+      "entity_2": "PRODUCTION_REPORT",
+      "description": "One production report can have many quality reports.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99281
+    }
+  ],
+  "processing_time": 55.73
+}

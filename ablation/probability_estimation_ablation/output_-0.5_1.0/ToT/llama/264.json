@@ -1,0 +1,93 @@
+{
+  "filename": "264.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ROOM": 0.622459,
+    "CUSTOMER": 0.622459,
+    "RESERVATION": 0.622459,
+    "ARRANGEMENT": 0.5071
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department_number": 0.523981,
+      "department_name": 0.521459,
+      "department_manager": 0.525492
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.541128,
+      "position": 0.545308,
+      "phone_number": 0.537735,
+      "salary": 0.520089
+    },
+    "ROOM": {
+      "room_number": 0.546784,
+      "room_type": 0.544902,
+      "charge": 0.538184,
+      "standard": 0.542536
+    },
+    "CUSTOMER": {
+      "customer_number": 0.536366,
+      "contact_person": 0.527066,
+      "contact_number": 0.52688,
+      "contact_address": 0.516563
+    },
+    "RESERVATION": {
+      "application_number": 0.534755,
+      "customer_number": 0.542211,
+      "check_time": 0.527826,
+      "number_day": 0.531484,
+      "room_type": 0.551932
+    },
+    "ARRANGEMENT": {
+      "arrangement_number": 0.546641,
+      "room_number": 0.557623,
+      "customer_gender": 0.558431,
+      "d_number": 0.541908,
+      "check_time": 0.53742,
+      "telephone_number": 0.539329
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "An employee belongs to one department",
+      "probability": 0.999838
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple reservations",
+      "probability": 0.001397
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:1",
+      "description": "A reservation corresponds to one arrangement",
+      "probability": 0.73225
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "An employee can arrange multiple rooms",
+      "probability": 0.012245
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "A room can be arranged multiple times",
+      "probability": 0.968411
+    }
+  ],
+  "processing_time": 28.0,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a unique identifier (arrangement_number) for the ARRANGEMENT entity to improve data integrity and clarified the relationship between ROOM and ARRANGEMENT to ensure accurate representation of the domain."
+  }
+}

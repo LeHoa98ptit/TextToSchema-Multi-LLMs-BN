@@ -1,0 +1,108 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "PRODUCT",
+    "ORDER",
+    "ORDER_ITEM",
+    "PICKING_LIST",
+    "DELIVERY_ORDER",
+    "INVOICE",
+    "ACCOUNT_RECEIVABLE_REPORT",
+    "ASSOC_ORDER_ITEM_PRODUCT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_information",
+      "address"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "price",
+      "inventory_quantity"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_date",
+      "order_status"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "order_quantity"
+    ],
+    "PICKING_LIST": [
+      "picking_list_id",
+      "order_id",
+      "product_id",
+      "pick_quantity",
+      "pick_status"
+    ],
+    "DELIVERY_ORDER": [
+      "delivery_order_id",
+      "order_id",
+      "delivery_time",
+      "delivery_status"
+    ],
+    "INVOICE": [
+      "invoice_id",
+      "order_id",
+      "invoice_date",
+      "invoice_total"
+    ],
+    "ACCOUNT_RECEIVABLE_REPORT": [
+      "report_id",
+      "order_id",
+      "report_date",
+      "receivable_amount"
+    ],
+    "ASSOC_ORDER_ITEM_PRODUCT": [
+      "assoc_order_item_product_id",
+      "order_item_id",
+      "product_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "ASSOC_ORDER_ITEM_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_ITEM_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.3174,
+  "ilp_runtime": 0.059
+}

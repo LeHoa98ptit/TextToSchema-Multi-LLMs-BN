@@ -1,0 +1,115 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "DISTRIBUTION_CENTER": 0.74793,
+    "PRODUCT": 0.817574,
+    "SUPPLY_REQUEST": 0.793671,
+    "DISTRIBUTION_ORDER": 0.756944,
+    "PURCHASE_ORDER": 0.7517,
+    "INVENTORY": 0.817574
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "address": 0.764916,
+      "contact_information": 0.769497,
+      "supermarket_name": 0.768618
+    },
+    "DISTRIBUTION_CENTER": {
+      "basic_information": 0.772724,
+      "center_name": 0.753477,
+      "center_address": 0.753509
+    },
+    "PRODUCT": {
+      "product_number": 0.755569,
+      "price": 0.750691,
+      "inventory_quantity": 0.780325,
+      "product_name": 0.752596,
+      "product_description": 0.758513
+    },
+    "SUPPLY_REQUEST": {
+      "request_number": 0.773849,
+      "quantity": 0.786714,
+      "request_date": 0.765278,
+      "request_status": 0.771686
+    },
+    "DISTRIBUTION_ORDER": {
+      "distribution_order_number": 0.754685,
+      "distribution_date": 0.750942,
+      "distribution_status": 0.760191,
+      "order_quantity": 0.765643
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_number": 0.757523,
+      "product_number": 0.765704,
+      "quantity": 0.779022,
+      "price": 0.757211,
+      "purchase_date": 0.749854,
+      "status": 0.768581
+    },
+    "INVENTORY": {
+      "inventory_id": 0.766765,
+      "product_number": 0.773683,
+      "quantity": 0.783165,
+      "inventory_date": 0.766903,
+      "inventory_location": 0.770674,
+      "storage_capacity": 0.770506
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A supermarket can have multiple supply requests",
+      "probability": 0.010714
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A distribution center can receive multiple supply requests",
+      "probability": 0.100503
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A distribution center can have multiple inventories",
+      "probability": 0.000437
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "description": "A product can be part of multiple distribution orders",
+      "probability": 0.351378
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "description": "A distribution order can generate multiple purchase orders",
+      "probability": 0.96119
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "An inventory can have multiple products",
+      "probability": 0.955179
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "DISTRIBUTION_CENTER",
+      "cardinality": "N:1",
+      "description": "An inventory is managed by a distribution center",
+      "probability": 0.000437
+    }
+  ],
+  "processing_time": 25.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added inventory location and storage capacity attributes to the inventory entity, and established relationships between the distribution center and the inventory entity to track inventory levels at each distribution center."
+  }
+}

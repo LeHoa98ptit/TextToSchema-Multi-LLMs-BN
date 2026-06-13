@@ -1,0 +1,71 @@
+{
+  "filename": "458.txt",
+  "entity": {
+    "MEMBER": 0.817574,
+    "BOOK": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.792523
+  },
+  "attribute": {
+    "MEMBER": {
+      "member id": 0.755931,
+      "username": 0.750482,
+      "password": 0.760746,
+      "address": 0.764444,
+      "postal code": 0.761637,
+      "telephone": 0.760802,
+      "expenditure": 0.763293,
+      "point": 0.757362
+    },
+    "BOOK": {
+      "book id": 0.76257,
+      "type": 0.762927,
+      "title": 0.753901,
+      "author": 0.754624,
+      "publisher": 0.764432,
+      "publication date": 0.752014,
+      "isbn": 0.767666,
+      "price": 0.756067
+    },
+    "ORDER": {
+      "order id": 0.758508,
+      "member username": 0.767522,
+      "sale": 0.76399,
+      "order date": 0.755424,
+      "shipping date": 0.745362
+    },
+    "ORDER_DETAIL": {
+      "order detail id": 0.764092,
+      "order id": 0.764496,
+      "book id": 0.776924,
+      "quantity": 0.772259
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "description": "Each order is placed by exactly one member, while a member can place many orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998082
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "description": "An order consists of multiple order detail records; each order detail belongs to one order.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ORDER_DETAIL",
+      "description": "Each order detail references one book, while a book can appear in many order detail records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.064353
+    }
+  ],
+  "processing_time": 16.94
+}

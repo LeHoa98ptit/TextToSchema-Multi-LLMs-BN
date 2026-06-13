@@ -1,0 +1,93 @@
+{
+  "filename": "477.txt",
+  "entity": {
+    "SUPERMARKET": 0.450884,
+    "CASH_REGISTER": 0.478513,
+    "BILLING_METHOD": 0.591169,
+    "TRANSACTION": 0.622459,
+    "DISCOUNT": 0.490851,
+    "REBATE": 0.595801,
+    "TRANSACTION_DETAIL": 0.542547
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket id": 0.541377
+    },
+    "CASH_REGISTER": {
+      "register id": 0.549229,
+      "supermarket id": 0.560047
+    },
+    "BILLING_METHOD": {
+      "billing method id": 0.549987,
+      "method name": 0.55035,
+      "calculation function": 0.568713,
+      "supports discount": 0.567657,
+      "supports rebate": 0.556517
+    },
+    "TRANSACTION": {
+      "transaction id": 0.530258,
+      "billing method id": 0.555101,
+      "actual payment": 0.558989,
+      "transaction time": 0.542024
+    },
+    "DISCOUNT": {
+      "discount id": 0.53513,
+      "transaction id": 0.547167,
+      "discount rate": 0.536674,
+      "discount amount": 0.539359
+    },
+    "REBATE": {
+      "rebate id": 0.524685,
+      "transaction id": 0.53296,
+      "rebate amount": 0.530347
+    },
+    "TRANSACTION_DETAIL": {
+      "transaction detail id": 0.532842,
+      "transaction id": 0.53201,
+      "detail": 0.549048
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "CASH_REGISTER",
+      "description": "A supermarket can have multiple cash registers; each cash register belongs to one supermarket.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.064246
+    },
+    {
+      "entity_1": "BILLING_METHOD",
+      "entity_2": "TRANSACTION",
+      "description": "Each transaction selects one billing method; a billing method can be used in many transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.223486
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DISCOUNT",
+      "description": "A transaction may have discount information; each discount record is linked to one transaction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.826324
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REBATE",
+      "description": "A transaction may have rebate information; each rebate record is linked to one transaction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.905553
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "description": "A transaction can have multiple detail records; each transaction detail belongs to one transaction.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999997
+    }
+  ],
+  "processing_time": 15.46
+}

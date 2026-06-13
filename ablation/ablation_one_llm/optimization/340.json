@@ -1,0 +1,86 @@
+{
+  "entity": [
+    "APPLICATION",
+    "LANGUAGE_REGION",
+    "COUNTRY",
+    "RESOURCE_FILE",
+    "RESOURCE_KEY",
+    "RESOURCE_VALUE",
+    "ASSOC_RESOURCE_KEY_RESOURCE_VALUE"
+  ],
+  "attribute": {
+    "APPLICATION": [
+      "application_id",
+      "application_name",
+      "application_description"
+    ],
+    "LANGUAGE_REGION": [
+      "language_region_id",
+      "iso_code",
+      "name"
+    ],
+    "COUNTRY": [
+      "country_id",
+      "country_name",
+      "iso_code"
+    ],
+    "RESOURCE_FILE": [
+      "resource_file_id",
+      "file_path",
+      "base_language",
+      "region",
+      "version"
+    ],
+    "RESOURCE_KEY": [
+      "resource_key_id",
+      "key",
+      "key_description",
+      "key_version"
+    ],
+    "RESOURCE_VALUE": [
+      "resource_value_id",
+      "value",
+      "value_content",
+      "value_version"
+    ],
+    "ASSOC_RESOURCE_KEY_RESOURCE_VALUE": [
+      "assoc_resource_key_resource_value_id",
+      "resource_key_id",
+      "resource_value_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "RESOURCE_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "LANGUAGE_REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "ASSOC_RESOURCE_KEY_RESOURCE_VALUE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE_VALUE",
+      "entity_2": "ASSOC_RESOURCE_KEY_RESOURCE_VALUE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE_FILE",
+      "entity_2": "RESOURCE_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.0893,
+  "ilp_runtime": 0.08
+}

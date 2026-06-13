@@ -1,0 +1,111 @@
+{
+  "filename": "437.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TASK": 0.622459,
+    "SIMULATION_MODULE": 0.526625,
+    "SIMULATION_RESULT": 0.579544,
+    "THESIS": 0.622459,
+    "ASSOC_STUDENT_TASK": 0.520024,
+    "ASSOC_TASK_SIMULATION_MODULE": 0.958711
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.551568,
+      "class": 0.552228,
+      "major": 0.540595
+    },
+    "TASK": {
+      "task_id": 0.530668,
+      "task_title": 0.537581,
+      "task_description": 0.543236,
+      "task_start_date": 0.531748,
+      "task_end_date": 0.536492,
+      "task_location": 0.527697
+    },
+    "SIMULATION_MODULE": {
+      "module_id": 0.530605,
+      "module_type": 0.532862,
+      "module_description": 0.541214,
+      "module_code": 0.538537
+    },
+    "SIMULATION_RESULT": {
+      "simulation_result_id": 0.538172,
+      "result_datum": 0.538264,
+      "result_analysis": 0.540602,
+      "simulation_date": 0.536514
+    },
+    "THESIS": {
+      "thesis_id": 0.536038,
+      "thesis_title": 0.532826,
+      "thesis_content": 0.536984,
+      "submission_date": 0.536987
+    },
+    "ASSOC_STUDENT_TASK": {
+      "assoc_student_task_id": 0.520024,
+      "student_id": 0.520024,
+      "task_id": 0.520024
+    },
+    "ASSOC_TASK_SIMULATION_MODULE": {
+      "assoc_task_simulation_module_id": 0.958711,
+      "task_id": 0.958711,
+      "simulation_module_id": 0.958711
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_TASK",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.520024
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_STUDENT_TASK",
+      "description": "One TASK can be associated with many ASSOC_STUDENT_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.520024
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SIMULATION_RESULT",
+      "cardinality": "1:N",
+      "description": "A student can have many simulation results, but each simulation result is associated with one student.",
+      "probability": 0.517821
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "THESIS",
+      "cardinality": "1:1",
+      "description": "A student can submit one thesis, and each thesis is associated with one student.",
+      "probability": 0.008386
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TASK_SIMULATION_MODULE",
+      "description": "One TASK can be associated with many ASSOC_TASK_SIMULATION_MODULE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.958711
+    },
+    {
+      "entity_1": "SIMULATION_MODULE",
+      "entity_2": "ASSOC_TASK_SIMULATION_MODULE",
+      "description": "One SIMULATION_MODULE can be associated with many ASSOC_TASK_SIMULATION_MODULE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.958711
+    },
+    {
+      "entity_1": "SIMULATION_MODULE",
+      "entity_2": "SIMULATION_RESULT",
+      "cardinality": "1:N",
+      "description": "A simulation module can produce many simulation results, but each simulation result is associated with one simulation module.",
+      "probability": 0.998479
+    }
+  ],
+  "processing_time": 16.88
+}

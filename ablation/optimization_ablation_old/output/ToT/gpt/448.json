@@ -1,0 +1,197 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "UNIT",
+    "EQUIPMENT",
+    "EQUIPMENT_USAGE",
+    "CONSUMABLE",
+    "CONSUMABLE_TRANSACTION",
+    "HAZARDCHEMICAL",
+    "CHEMICAL_TRANSACTION",
+    "EXPERIMENTAL_COURSE",
+    "COURSE_ENROLLMENT",
+    "COURSE_EQUIPMENT",
+    "ASSOC_EXPERIMENTAL_COURSE_USER",
+    "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "full_name",
+      "email",
+      "phone_number",
+      "associated_unit_id",
+      "role_id"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "UNIT": [
+      "unit_id",
+      "unit_name",
+      "description"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "name",
+      "model",
+      "category",
+      "manufacturer",
+      "status",
+      "acquisition_time"
+    ],
+    "EQUIPMENT_USAGE": [
+      "usage_id",
+      "equipment_id",
+      "user_id",
+      "course_id",
+      "usage_start",
+      "usage_end",
+      "purpose"
+    ],
+    "CONSUMABLE": [
+      "consumable_id",
+      "name",
+      "category",
+      "quantity_on_hand",
+      "status"
+    ],
+    "CONSUMABLE_TRANSACTION": [
+      "transaction_id",
+      "consumable_id",
+      "user_id",
+      "transaction_type",
+      "quantity",
+      "transaction_time",
+      "notes"
+    ],
+    "HAZARDCHEMICAL": [
+      "chemical_id",
+      "name",
+      "category",
+      "quantity_on_hand",
+      "status",
+      "safety_data_sheet"
+    ],
+    "CHEMICAL_TRANSACTION": [
+      "transaction_id",
+      "chemical_id",
+      "user_id",
+      "transaction_type",
+      "quantity",
+      "transaction_time",
+      "notes"
+    ],
+    "EXPERIMENTAL_COURSE": [
+      "course_id",
+      "course_name",
+      "class_time",
+      "location",
+      "teacher_id"
+    ],
+    "COURSE_ENROLLMENT": [
+      "enrollment_id",
+      "course_id",
+      "student_id",
+      "enrollment_date"
+    ],
+    "COURSE_EQUIPMENT": [
+      "ce_id",
+      "course_id",
+      "equipment_id",
+      "scheduled_time",
+      "notes"
+    ],
+    "ASSOC_EXPERIMENTAL_COURSE_USER": [
+      "assoc_experimental_course_user_id",
+      "experimental_course_id",
+      "user_id"
+    ],
+    "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT": [
+      "assoc_experimental_course_equipment_id",
+      "experimental_course_id",
+      "equipment_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 100.4326,
+  "ilp_runtime": 0.048
+}

@@ -1,0 +1,89 @@
+{
+  "filename": "366.txt",
+  "entity": {
+    "ENGINEER": 0.817574,
+    "MACHINE": 0.817574,
+    "MIGRATION": 0.817574,
+    "ENGINEER_MACHINE": 0.799488,
+    "ASSOC_ENGINEER_MACHINE": 0.766516
+  },
+  "attribute": {
+    "ENGINEER": {
+      "name": 0.758492,
+      "join_date": 0.75794,
+      "status": 0.770771,
+      "support_ability": 0.771569,
+      "contact_info": 0.765489,
+      "expertise": 0.762875
+    },
+    "MACHINE": {
+      "machine_id": 0.756342,
+      "receive_date": 0.745333,
+      "cost": 0.749266,
+      "machine_info": 0.766805,
+      "machine_type": 0.763461,
+      "maintenance_schedule": 0.759342
+    },
+    "MIGRATION": {
+      "migration_date": 0.7487,
+      "source_version": 0.751915,
+      "target_version": 0.753904,
+      "description": 0.769846,
+      "migration_type": 0.75456
+    },
+    "ENGINEER_MACHINE": {
+      "allocation_date": 0.76924,
+      "adjustment_date": 0.770395,
+      "responsibility_level": 0.776544
+    },
+    "ASSOC_ENGINEER_MACHINE": {
+      "assoc_engineer_machine_id": 0.766516,
+      "engineer_id": 0.766516,
+      "machine_id": 0.766516
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ASSOC_ENGINEER_MACHINE",
+      "description": "One ENGINEER can be associated with many ASSOC_ENGINEER_MACHINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.766516
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "ASSOC_ENGINEER_MACHINE",
+      "description": "One MACHINE can be associated with many ASSOC_ENGINEER_MACHINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.766516
+    },
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "description": "An engineer can have multiple engineer-machine associations",
+      "probability": 0.999992
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "description": "A machine can have multiple engineer-machine associations",
+      "probability": 0.89417
+    },
+    {
+      "entity_1": "MIGRATION",
+      "entity_2": "ENGINEER",
+      "cardinality": "1:N",
+      "description": "A migration can be performed by one engineer",
+      "probability": 0.995367
+    }
+  ],
+  "processing_time": 16.06,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added detailed attributes for ENGINEER and MACHINE entities, retained comprehensive representation of the domain, and ensured optimal model efficiency by avoiding redundant attributes."
+  }
+}

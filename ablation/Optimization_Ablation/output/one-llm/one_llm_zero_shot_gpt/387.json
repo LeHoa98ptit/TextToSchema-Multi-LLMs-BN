@@ -1,0 +1,71 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "AIRLINE",
+    "FLIGHT",
+    "RESERVATION",
+    "PAYMENT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "email",
+      "phone",
+      "address",
+      "credit_card_number"
+    ],
+    "AIRLINE": [
+      "airline_id",
+      "name",
+      "contact_phone",
+      "contact_email",
+      "contact_address"
+    ],
+    "FLIGHT": [
+      "flight_id",
+      "flight_number",
+      "destination",
+      "departure_time",
+      "arrival_time",
+      "airline_id"
+    ],
+    "RESERVATION": [
+      "reservation_number",
+      "reservation_date",
+      "reservation_time",
+      "tickets_reserved",
+      "customer_id",
+      "flight_id"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "payment_date",
+      "payment_method",
+      "amount",
+      "reservation_number"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.1012,
+  "ilp_runtime": 0.03
+}

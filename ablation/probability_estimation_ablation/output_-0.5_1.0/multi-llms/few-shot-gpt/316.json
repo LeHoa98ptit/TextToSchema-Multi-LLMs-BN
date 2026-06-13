@@ -1,0 +1,100 @@
+{
+  "filename": "316.txt",
+  "entity": {
+    "USER": 0.622459,
+    "EBOOK": 0.506975,
+    "DOCUMENT": 0.622459,
+    "CATEGORY": 0.622459,
+    "DIRECTORY": 0.463987,
+    "READ_LOG": 0.418192
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.514981,
+      "username": 0.505492,
+      "password hash": 0.515157,
+      "registration date": 0.510541
+    },
+    "EBOOK": {
+      "ebook id": 0.544953,
+      "title": 0.54498,
+      "cover image url": 0.524975,
+      "description": 0.555169,
+      "category id": 0.550614,
+      "directory id": 0.541664,
+      "total reads": 0.549641,
+      "created at": 0.540581,
+      "updated at": 0.539596
+    },
+    "CATEGORY": {
+      "category id": 0.521766,
+      "name": 0.533031,
+      "parent category id": 0.518208,
+      "display order": 0.524549
+    },
+    "DIRECTORY": {
+      "directory id": 0.511083,
+      "name": 0.514738,
+      "parent directory id": 0.509777,
+      "display order": 0.52433
+    },
+    "DOCUMENT": {
+      "document id": 0.538297,
+      "title": 0.538499,
+      "content": 0.558619,
+      "ebook id": 0.553444,
+      "document order": 0.543885,
+      "created at": 0.526805
+    },
+    "READ_LOG": {
+      "read log id": 0.506008,
+      "user id": 0.510452,
+      "ebook id": 0.537383,
+      "read date": 0.506507,
+      "read count": 0.521533
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "EBOOK",
+      "description": "Each ebook belongs to exactly one category, while a category can contain many ebooks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.651287
+    },
+    {
+      "entity_1": "DIRECTORY",
+      "entity_2": "EBOOK",
+      "description": "Each ebook is stored in one directory, and a directory can hold multiple ebooks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.905258
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "DOCUMENT",
+      "description": "An ebook consists of multiple documents, each document belongs to a single ebook.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.870437
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "READ_LOG",
+      "description": "A user can have many read‑log entries recording their reading activity.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.943896
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "READ_LOG",
+      "description": "An ebook can be referenced by many read‑log entries from different users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.0
+    }
+  ],
+  "processing_time": 4.01
+}

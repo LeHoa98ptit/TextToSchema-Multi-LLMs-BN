@@ -1,0 +1,73 @@
+{
+  "entity": [
+    "PLATFORM",
+    "USER",
+    "INTERMEDIARY",
+    "OPERATION",
+    "PAYMENT",
+    "ASSOC_USER_OPERATION"
+  ],
+  "attribute": {
+    "PLATFORM": [
+      "platform_id",
+      "platform_name",
+      "platform_address"
+    ],
+    "USER": [
+      "user_id",
+      "user_name",
+      "contact_information",
+      "registration_method"
+    ],
+    "INTERMEDIARY": [
+      "intermediary_id",
+      "intermediary_name",
+      "intermediary_status"
+    ],
+    "OPERATION": [
+      "operation_id",
+      "operation_type",
+      "operation_time"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "payment_status",
+      "payment_time",
+      "operation_id",
+      "user_id"
+    ],
+    "ASSOC_USER_OPERATION": [
+      "assoc_user_operation_id",
+      "user_id",
+      "operation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "ASSOC_USER_OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT",
+      "entity_2": "OPERATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.7203,
+  "ilp_runtime": 0.077
+}

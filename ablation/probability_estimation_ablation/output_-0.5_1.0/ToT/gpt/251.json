@@ -1,0 +1,153 @@
+{
+  "filename": "251.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "PET": 0.622459,
+    "BREED": 0.518991,
+    "GROOMER": 0.622459,
+    "SPECIALIZATION": 0.454873,
+    "GROOMER_SPECIALIZATION": 0.566504,
+    "SERVICE": 0.622459,
+    "GROOMING_SESSION": 0.52478,
+    "RATING": 0.622459
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.523982,
+      "full_name": 0.52711,
+      "phone": 0.520267,
+      "email": 0.518474,
+      "street_address": 0.517077,
+      "city": 0.52975,
+      "postal_code": 0.515793
+    },
+    "PET": {
+      "pet_id": 0.53658,
+      "pet_name": 0.535366,
+      "age_months": 0.526817,
+      "weight_kg": 0.529967,
+      "fur_type": 0.538721,
+      "color": 0.528222,
+      "breed_id": 0.540147,
+      "owner_customer_id": 0.547819
+    },
+    "BREED": {
+      "breed_id": 0.530644,
+      "breed_name": 0.531123,
+      "size_category": 0.53257,
+      "typical_grooming_needs": 0.561278
+    },
+    "GROOMER": {
+      "groomer_id": 0.548788,
+      "full_name": 0.544064,
+      "years_experience": 0.552116,
+      "overall_rating": 0.553605,
+      "certified": 0.547443
+    },
+    "SPECIALIZATION": {
+      "specialization_id": 0.518956,
+      "description": 0.525799
+    },
+    "GROOMER_SPECIALIZATION": {
+      "groomer_id": 0.552922,
+      "specialization_id": 0.546458,
+      "proficiency_level": 0.555816
+    },
+    "SERVICE": {
+      "service_id": 0.524284,
+      "service_name": 0.526312,
+      "standard_duration_min": 0.523951,
+      "base_price": 0.529863
+    },
+    "GROOMING_SESSION": {
+      "session_id": 0.523744,
+      "session_date": 0.522444,
+      "session_time": 0.523181,
+      "status": 0.545765,
+      "notes": 0.537224,
+      "actual_duration_min": 0.535591,
+      "final_price": 0.538827,
+      "service_id": 0.537958,
+      "groomer_id": 0.548465,
+      "pet_id": 0.553613
+    },
+    "RATING": {
+      "rating_id": 0.518762,
+      "session_id": 0.516632,
+      "customer_id": 0.531042,
+      "stars": 0.511451,
+      "comment": 0.511607,
+      "rating_date": 0.520487
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PET",
+      "cardinality": "1:N",
+      "description": "A customer may own multiple pets",
+      "probability": 0.970119
+    },
+    {
+      "entity_1": "PET",
+      "entity_2": "BREED",
+      "cardinality": "N:1",
+      "description": "Each pet is of a single breed; a breed can be linked to many pets",
+      "probability": 0.998316
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOMER_SPECIALIZATION",
+      "cardinality": "1:N",
+      "description": "A groomer can have multiple specialization records",
+      "probability": 0.999731
+    },
+    {
+      "entity_1": "SPECIALIZATION",
+      "entity_2": "GROOMER_SPECIALIZATION",
+      "cardinality": "1:N",
+      "description": "A specialization can be held by many groomers",
+      "probability": 0.997449
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "description": "A groomer performs many grooming sessions",
+      "probability": 0.982841
+    },
+    {
+      "entity_1": "PET",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "description": "A pet can receive many grooming sessions",
+      "probability": 0.916162
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "description": "Each session uses one service definition",
+      "probability": 0.900621
+    },
+    {
+      "entity_1": "GROOMING_SESSION",
+      "entity_2": "RATING",
+      "cardinality": "0:1",
+      "description": "A session may have zero or one rating from the customer",
+      "probability": 0.053235
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "description": "A customer can give many ratings",
+      "probability": 0.900201
+    }
+  ],
+  "processing_time": 34.61,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a 'status' attribute and explicit 'service_id' foreign key to GROOMING_SESSION to support appointment workflow and link to the performed service. Included foreign key attributes (owner_customer_id, breed_id, groomer_id, pet_id) directly in entities for clarity. Changed the GROOMING_SESSION‑RATING relationship to optional (0:1) to reflect that a rating is not mandatory. Retained the dedicated RATING entity for detailed feedback and analytics. Kept all previously strong entities and relationships, ensuring a comprehensive yet efficient model."
+  }
+}

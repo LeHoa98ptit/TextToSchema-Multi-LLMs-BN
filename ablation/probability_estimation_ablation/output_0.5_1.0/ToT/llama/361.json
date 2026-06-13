@@ -1,0 +1,121 @@
+{
+  "filename": "361.txt",
+  "entity": {
+    "RESTAURANT": 0.817574,
+    "REVIEW": 0.817574,
+    "DISH": 0.817574,
+    "CATEGORY": 0.709797,
+    "FEATURE": 0.710806,
+    "USER": 0.817574,
+    "ASSOC_DISH_CATEGORY": 0.006445,
+    "ASSOC_RESTAURANT_FEATURE": 0.00016
+  },
+  "attribute": {
+    "RESTAURANT": {
+      "address": 0.776712,
+      "phone_number": 0.772238,
+      "business_hour": 0.771215,
+      "average_cost": 0.767729,
+      "latitude": 0.770382,
+      "longitude": 0.773345
+    },
+    "REVIEW": {
+      "rating": 0.749924,
+      "content": 0.755228,
+      "dining_time": 0.771001,
+      "reply_time": 0.744991,
+      "reply_content": 0.744527
+    },
+    "DISH": {
+      "price": 0.757597,
+      "description": 0.766428,
+      "category": 0.772526,
+      "signature": 0.76167,
+      "new_arrival": 0.755275
+    },
+    "CATEGORY": {
+      "name": 0.751089,
+      "description": 0.756064
+    },
+    "FEATURE": {
+      "name": 0.747592,
+      "description": 0.755317
+    },
+    "USER": {
+      "username": 0.728198,
+      "email": 0.740465,
+      "user_rating": 0.753284,
+      "review_history": 0.748865
+    },
+    "ASSOC_DISH_CATEGORY": {
+      "assoc_dish_category_id": 0.006445,
+      "dish_id": 0.006445,
+      "category_id": 0.006445
+    },
+    "ASSOC_RESTAURANT_FEATURE": {
+      "assoc_restaurant_feature_id": 0.00016,
+      "restaurant_id": 0.00016,
+      "feature_id": 0.00016
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A restaurant can have multiple reviews",
+      "probability": 0.758592
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "description": "A restaurant can have multiple dishes",
+      "probability": 0.713635
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ASSOC_DISH_CATEGORY",
+      "description": "One DISH can be associated with many ASSOC_DISH_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006445
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_DISH_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_DISH_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006445
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "ASSOC_RESTAURANT_FEATURE",
+      "description": "One RESTAURANT can be associated with many ASSOC_RESTAURANT_FEATURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00016
+    },
+    {
+      "entity_1": "FEATURE",
+      "entity_2": "ASSOC_RESTAURANT_FEATURE",
+      "description": "One FEATURE can be associated with many ASSOC_RESTAURANT_FEATURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00016
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A user can have multiple reviews",
+      "probability": 0.998186
+    }
+  ],
+  "processing_time": 22.22,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added user_rating and review_history attributes to the USER entity to enhance the model's completeness and support more advanced features in the restaurant recommendation system."
+  }
+}

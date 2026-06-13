@@ -1,0 +1,216 @@
+{
+  "filename": "350.txt",
+  "entity": {
+    "PARTICIPANT": 0.622459,
+    "COMPANY": 0.48056,
+    "TICKET": 0.622459,
+    "DISCOUNT_CODE": 0.604033,
+    "TICKET_PURCHASE": 0.602047,
+    "WORKSHOP": 0.622459,
+    "WORKSHOP_REGISTRATION": 0.553445,
+    "MEETING": 0.510773,
+    "SPEAKER": 0.472976,
+    "SPEAKER_WORKSHOP": 0.531608,
+    "SPEAKER_MEETING": 0.488177,
+    "CONFERENCE_OFFER": 0.534396,
+    "SCHEDULE": 0.480135
+  },
+  "attribute": {
+    "PARTICIPANT": {
+      "participant_id": 0.53738,
+      "first_name": 0.533357,
+      "last_name": 0.529851,
+      "email": 0.545466,
+      "company_id": 0.540263
+    },
+    "COMPANY": {
+      "company_id": 0.511515,
+      "company_name": 0.513032,
+      "address": 0.514769
+    },
+    "TICKET": {
+      "ticket_id": 0.538287,
+      "description": 0.552677,
+      "base_price": 0.533354,
+      "offer_id": 0.539719
+    },
+    "DISCOUNT_CODE": {
+      "discount_code": 0.532883,
+      "code_type": 0.532653,
+      "percentage": 0.526749,
+      "valid_until": 0.517965
+    },
+    "TICKET_PURCHASE": {
+      "purchase_id": 0.533946,
+      "participant_id": 0.551969,
+      "ticket_id": 0.537365,
+      "discount_code": 0.547397,
+      "net_price": 0.535941,
+      "purchase_date": 0.538902
+    },
+    "WORKSHOP": {
+      "workshop_id": 0.553051,
+      "description": 0.560862,
+      "requirement": 0.56296,
+      "location": 0.543676,
+      "date": 0.546658,
+      "start_time": 0.544898,
+      "end_time": 0.546987,
+      "capacity": 0.55274,
+      "max_participants": 0.554316
+    },
+    "WORKSHOP_REGISTRATION": {
+      "registration_id": 0.545001,
+      "participant_id": 0.551477,
+      "workshop_id": 0.553299,
+      "registration_date": 0.544717,
+      "status": 0.54918
+    },
+    "MEETING": {
+      "meeting_id": 0.547898,
+      "description": 0.564387,
+      "date": 0.54485,
+      "start_time": 0.540288,
+      "end_time": 0.539012,
+      "room": 0.549812
+    },
+    "SPEAKER": {
+      "speaker_id": 0.524085,
+      "first_name": 0.521495,
+      "last_name": 0.518381,
+      "company_id": 0.527203,
+      "bio": 0.519149
+    },
+    "SPEAKER_WORKSHOP": {
+      "assignment_id": 0.551304,
+      "speaker_id": 0.542755,
+      "workshop_id": 0.55594,
+      "role": 0.553449
+    },
+    "SPEAKER_MEETING": {
+      "assignment_id": 0.55479,
+      "speaker_id": 0.540739,
+      "meeting_id": 0.551873,
+      "role": 0.549318
+    },
+    "CONFERENCE_OFFER": {
+      "offer_id": 0.544535,
+      "offer_name": 0.547233,
+      "start_date": 0.552481,
+      "end_date": 0.55001,
+      "description": 0.569519
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.525272,
+      "offer_id": 0.532467,
+      "entity_type": 0.522407,
+      "entity_id": 0.518425,
+      "sequence_number": 0.522386
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "description": "Participant works for a company",
+      "probability": 0.581422
+    },
+    {
+      "entity_1": "TICKET_PURCHASE",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "N:1",
+      "description": "Each purchase is made by one participant",
+      "probability": 0.975736
+    },
+    {
+      "entity_1": "TICKET_PURCHASE",
+      "entity_2": "TICKET",
+      "cardinality": "N:1",
+      "description": "Each purchase references one ticket type",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "TICKET_PURCHASE",
+      "entity_2": "DISCOUNT_CODE",
+      "cardinality": "N:1",
+      "description": "A purchase may apply one discount code",
+      "probability": 0.846636
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "CONFERENCE_OFFER",
+      "cardinality": "N:1",
+      "description": "Ticket is associated with a conference offer",
+      "probability": 0.996382
+    },
+    {
+      "entity_1": "WORKSHOP_REGISTRATION",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "N:1",
+      "description": "Registration belongs to a participant",
+      "probability": 0.999914
+    },
+    {
+      "entity_1": "WORKSHOP_REGISTRATION",
+      "entity_2": "WORKSHOP",
+      "cardinality": "N:1",
+      "description": "Registration belongs to a workshop",
+      "probability": 0.999803
+    },
+    {
+      "entity_1": "SPEAKER_WORKSHOP",
+      "entity_2": "SPEAKER",
+      "cardinality": "N:1",
+      "description": "Speaker assigned to a workshop",
+      "probability": 0.992113
+    },
+    {
+      "entity_1": "SPEAKER_WORKSHOP",
+      "entity_2": "WORKSHOP",
+      "cardinality": "N:1",
+      "description": "Workshop has assigned speakers",
+      "probability": 0.999459
+    },
+    {
+      "entity_1": "SPEAKER_MEETING",
+      "entity_2": "SPEAKER",
+      "cardinality": "N:1",
+      "description": "Speaker assigned to a meeting",
+      "probability": 0.998151
+    },
+    {
+      "entity_1": "SPEAKER_MEETING",
+      "entity_2": "MEETING",
+      "cardinality": "N:1",
+      "description": "Meeting has assigned speakers",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "CONFERENCE_OFFER",
+      "cardinality": "N:1",
+      "description": "Schedule entries belong to a conference offer",
+      "probability": 0.040682
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "WORKSHOP",
+      "cardinality": "N:1",
+      "description": "Schedule can reference a workshop",
+      "probability": 0.58014
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "MEETING",
+      "cardinality": "N:1",
+      "description": "Schedule can reference a meeting",
+      "probability": 0.27272
+    }
+  ],
+  "processing_time": 49.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Split SPEAKER_ASSIGNMENT into SPEAKER_WORKSHOP and SPEAKER_MEETING to eliminate nullable foreign keys and clarify role context. 2. Added offer_id foreign key in TICKET linking tickets to CONFERENCE_OFFER. 3. Introduced max_participants attribute in WORKSHOP for explicit registration limits and noted capacity checks. 4. Updated relationships to reflect new speaker assignment entities and ticket‑offer association. 5. Retained all strengths of the previous model (transactional entities, discount details, schedule handling) while improving normalization and clarity."
+  }
+}

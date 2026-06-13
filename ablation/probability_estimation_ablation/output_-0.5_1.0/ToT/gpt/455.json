@@ -1,0 +1,110 @@
+{
+  "filename": "455.txt",
+  "entity": {
+    "VEHICLE": 0.622459,
+    "PARKING_SPACE": 0.59491,
+    "ENTRY": 0.622459,
+    "EXIT": 0.478913,
+    "PARKING_SESSION": 0.554557
+  },
+  "attribute": {
+    "VEHICLE": {
+      "license_plate": 0.531832,
+      "vehicle_type": 0.541944,
+      "color": 0.525587
+    },
+    "PARKING_SPACE": {
+      "space_id": 0.557761,
+      "level": 0.558689,
+      "location": 0.563758,
+      "status": 0.573356
+    },
+    "ENTRY": {
+      "entry_id": 0.513847,
+      "timestamp": 0.516775,
+      "entry_point_id": 0.517729,
+      "vehicle_license_plate": 0.535421,
+      "space_id": 0.520041,
+      "status": 0.535007
+    },
+    "EXIT": {
+      "exit_id": 0.518473,
+      "timestamp": 0.516065,
+      "exit_point_id": 0.522491,
+      "vehicle_license_plate": 0.53763,
+      "space_id": 0.520442,
+      "status": 0.533809
+    },
+    "PARKING_SESSION": {
+      "session_id": 0.550326,
+      "vehicle_license_plate": 0.555006,
+      "space_id": 0.556898,
+      "entry_id": 0.556565,
+      "exit_id": 0.555889,
+      "session_status": 0.557968
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "PARKING_SESSION",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many parking sessions over time",
+      "probability": 0.998524
+    },
+    {
+      "entity_1": "PARKING_SPACE",
+      "entity_2": "PARKING_SESSION",
+      "cardinality": "1:N",
+      "description": "A parking space can be used in many sessions over time",
+      "probability": 0.999764
+    },
+    {
+      "entity_1": "PARKING_SESSION",
+      "entity_2": "ENTRY",
+      "cardinality": "1:1",
+      "description": "Each session is linked to exactly one entry record",
+      "probability": 0.031019
+    },
+    {
+      "entity_1": "PARKING_SESSION",
+      "entity_2": "EXIT",
+      "cardinality": "1:1",
+      "description": "Each session is linked to exactly one exit record (nullable until vehicle leaves)",
+      "probability": 0.002832
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "ENTRY",
+      "cardinality": "1:N",
+      "description": "A vehicle can generate many entry records",
+      "probability": 0.259722
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "EXIT",
+      "cardinality": "1:N",
+      "description": "A vehicle can generate many exit records",
+      "probability": 0.005503
+    },
+    {
+      "entity_1": "PARKING_SPACE",
+      "entity_2": "ENTRY",
+      "cardinality": "1:N",
+      "description": "A parking space can be referenced by many entry events over time",
+      "probability": 0.015579
+    },
+    {
+      "entity_1": "PARKING_SPACE",
+      "entity_2": "EXIT",
+      "cardinality": "1:N",
+      "description": "A parking space can be referenced by many exit events over time",
+      "probability": 0.012428
+    }
+  ],
+  "processing_time": 5.15,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Introduced a explicit PARKING_SESSION entity to clearly model the lifecycle of a vehicle occupying a spot, linking VEHICLE, PARKING_SPACE, ENTRY and EXIT. Added status attributes to ENTRY, EXIT, and PARKING_SESSION for traceability. Replaced the direct 1:1 ENTRY‑EXIT link with SESSION‑based associations, preserving original entry/exit logs while improving semantic clarity and future extensibility."
+  }
+}

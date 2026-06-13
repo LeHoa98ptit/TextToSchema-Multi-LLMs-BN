@@ -1,0 +1,140 @@
+{
+  "entity": [
+    "COMPANY",
+    "PROGRAM",
+    "PROGRAM_TYPE",
+    "STAFF",
+    "PRODUCTION_RECORD",
+    "REVIEW",
+    "REVIEWER",
+    "COMPANY_PROGRAM",
+    "ASSOC_COMPANY_PROGRAM"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "headquarters",
+      "established_date"
+    ],
+    "PROGRAM": [
+      "program_id",
+      "title",
+      "broadcast_date",
+      "start_time",
+      "end_time",
+      "duration_minutes",
+      "quality_score",
+      "status",
+      "type_id",
+      "last_review_id"
+    ],
+    "PROGRAM_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "STAFF": [
+      "staff_id",
+      "name",
+      "position",
+      "email",
+      "phone",
+      "company_id"
+    ],
+    "PRODUCTION_RECORD": [
+      "record_id",
+      "program_id",
+      "staff_id",
+      "activity_type",
+      "role_in_production",
+      "start_timestamp",
+      "end_timestamp",
+      "hours_spent"
+    ],
+    "REVIEW": [
+      "review_id",
+      "program_id",
+      "reviewer_id",
+      "review_date",
+      "compliance_flag",
+      "comments",
+      "rating",
+      "review_round"
+    ],
+    "REVIEWER": [
+      "reviewer_id",
+      "name",
+      "qualification",
+      "staff_id"
+    ],
+    "COMPANY_PROGRAM": [
+      "comp_prog_id",
+      "company_id",
+      "program_id",
+      "participation_role"
+    ],
+    "ASSOC_COMPANY_PROGRAM": [
+      "assoc_company_program_id",
+      "company_id",
+      "program_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ASSOC_COMPANY_PROGRAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "ASSOC_COMPANY_PROGRAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "PROGRAM_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "PRODUCTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "PRODUCTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REVIEWER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "COMPANY_PROGRAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "COMPANY_PROGRAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 88.4973,
+  "ilp_runtime": 0.039
+}

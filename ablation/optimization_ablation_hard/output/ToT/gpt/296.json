@@ -1,0 +1,123 @@
+{
+  "entity": [
+    "COMPANY",
+    "ADVISOR",
+    "CLIENT",
+    "PORTFOLIO",
+    "HOLDING",
+    "TRANSACTION",
+    "INVESTMENT_PLAN",
+    "PLAN_ITEM",
+    "PRODUCT",
+    "PRODUCT_TYPE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "company_name",
+      "address",
+      "contact_number"
+    ],
+    "ADVISOR": [
+      "advisor_id",
+      "company_id",
+      "name",
+      "hire_date",
+      "contact_number"
+    ],
+    "CLIENT": [
+      "client_id",
+      "advisor_id",
+      "name",
+      "contact_number",
+      "total_asset"
+    ],
+    "PORTFOLIO": [
+      "portfolio_id",
+      "client_id",
+      "portfolio_name",
+      "creation_date",
+      "total_value"
+    ],
+    "HOLDING": [
+      "holding_id",
+      "portfolio_id",
+      "product_code",
+      "quantity",
+      "average_price",
+      "last_update"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "holding_id",
+      "transaction_type",
+      "quantity",
+      "price",
+      "transaction_time",
+      "remarks"
+    ],
+    "INVESTMENT_PLAN": [
+      "plan_id",
+      "client_id",
+      "plan_name",
+      "creation_date"
+    ],
+    "PLAN_ITEM": [
+      "plan_id",
+      "product_code",
+      "target_quantity",
+      "target_allocation"
+    ],
+    "PRODUCT": [
+      "product_code",
+      "product_name",
+      "product_type_id",
+      "product_value"
+    ],
+    "PRODUCT_TYPE": [
+      "product_type_id",
+      "type_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ADVISOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PORTFOLIO",
+      "entity_2": "HOLDING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOLDING",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAN_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.4681,
+  "ilp_runtime": 0.084
+}

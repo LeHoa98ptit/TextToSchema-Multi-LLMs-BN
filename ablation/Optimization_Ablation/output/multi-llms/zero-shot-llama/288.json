@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "MONITORING_SITE",
+    "MONITORING_PERSONNEL",
+    "MAINTENANCE_PERSONNEL",
+    "MONITORING_SESSION",
+    "MAINTENANCE_ACTIVITY"
+  ],
+  "attribute": {
+    "MONITORING_SITE": [
+      "location",
+      "responsible person",
+      "site id"
+    ],
+    "MONITORING_PERSONNEL": [
+      "contact detail",
+      "personnel id"
+    ],
+    "MAINTENANCE_PERSONNEL": [
+      "contact detail",
+      "personnel id"
+    ],
+    "MONITORING_SESSION": [
+      "air quality",
+      "water quality",
+      "noise level",
+      "timestamp",
+      "monitoring personnel id",
+      "monitoring site id",
+      "session id"
+    ],
+    "MAINTENANCE_ACTIVITY": [
+      "maintenance time",
+      "maintenance content",
+      "maintenance cost",
+      "maintenance personnel id",
+      "monitoring site id",
+      "activity id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.2029,
+  "ilp_runtime": 0.036
+}

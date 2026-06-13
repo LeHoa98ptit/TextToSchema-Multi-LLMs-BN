@@ -1,0 +1,138 @@
+{
+  "filename": "495.txt",
+  "entity": {
+    "DOCTOR": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "WARD": 0.622459,
+    "PATIENT": 0.622459,
+    "MEDICINE": 0.622459,
+    "CONSULTATION": 0.479237,
+    "MEDICATION": 0.586909,
+    "ASSOC_DOCTOR_PATIENT": 0.027569
+  },
+  "attribute": {
+    "DOCTOR": {
+      "name": 0.541067,
+      "gender": 0.53431,
+      "title": 0.536276,
+      "year_of_service": 0.544891,
+      "phone_number": 0.54432,
+      "department_id": 0.549677
+    },
+    "DEPARTMENT": {
+      "name": 0.533332,
+      "person_in_charge": 0.528912,
+      "location": 0.529237,
+      "phone_number": 0.535161,
+      "total_personnel": 0.544379
+    },
+    "WARD": {
+      "number": 0.537709,
+      "level": 0.534661,
+      "location": 0.531002,
+      "total_beds": 0.5444
+    },
+    "PATIENT": {
+      "name": 0.545407,
+      "gender": 0.538913,
+      "age": 0.532467,
+      "contact_information": 0.546975,
+      "consultation_date": 0.535235,
+      "diagnosis": 0.537101
+    },
+    "MEDICINE": {
+      "name": 0.54132,
+      "quantity": 0.548559,
+      "price": 0.528151,
+      "sale_price": 0.5287,
+      "remark": 0.534057
+    },
+    "CONSULTATION": {
+      "time": 0.519554,
+      "diagnosis": 0.531128,
+      "treatment_result": 0.536456,
+      "remark": 0.524199,
+      "doctor_id": 0.546485,
+      "patient_id": 0.551091
+    },
+    "MEDICATION": {
+      "retrieval_time": 0.537802,
+      "quantity": 0.543315,
+      "remark": 0.528272,
+      "dosage": 0.531032,
+      "administration_instructions": 0.533773,
+      "medicine_id": 0.545141,
+      "consultation_id": 0.549101
+    },
+    "ASSOC_DOCTOR_PATIENT": {
+      "assoc_doctor_patient_id": 0.027569,
+      "doctor_id": 0.027569,
+      "patient_id": 0.027569
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "A doctor belongs to one department",
+      "probability": 0.003481
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "WARD",
+      "cardinality": "N:1",
+      "description": "A patient is assigned to one ward",
+      "probability": 4e-05
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "ASSOC_DOCTOR_PATIENT",
+      "description": "One DOCTOR can be associated with many ASSOC_DOCTOR_PATIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.027569
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "ASSOC_DOCTOR_PATIENT",
+      "description": "One PATIENT can be associated with many ASSOC_DOCTOR_PATIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.027569
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "description": "A patient can have many consultations",
+      "probability": 0.99382
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "MEDICATION",
+      "cardinality": "1:N",
+      "description": "A consultation can result in many medications",
+      "probability": 0.699858
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "description": "A doctor can have many consultations",
+      "probability": 0.341062
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION",
+      "cardinality": "1:N",
+      "description": "A medicine can be used in many medications",
+      "probability": 0.931216
+    }
+  ],
+  "processing_time": 18.8,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added dosage and administration instructions to the medication entity, and included doctor_id and patient_id in the consultation entity, and medicine_id and consultation_id in the medication entity to establish relationships between entities."
+  }
+}

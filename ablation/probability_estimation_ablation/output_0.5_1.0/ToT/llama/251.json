@@ -1,0 +1,136 @@
+{
+  "filename": "251.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "GROOMER": 0.817574,
+    "PET": 0.817574,
+    "SERVICE": 0.817574,
+    "REVIEW": 0.749021,
+    "SPECIALIZATION": 0.694024,
+    "GROOMING_SESSION": 0.75011,
+    "ASSOC_GROOMER_SPECIALIZATION": 0.000604
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.751137,
+      "contact": 0.752264,
+      "address": 0.750777
+    },
+    "GROOMER": {
+      "name": 0.764378,
+      "specialization": 0.769841,
+      "year_of_experience": 0.767348,
+      "rating": 0.768135
+    },
+    "PET": {
+      "breed": 0.752295,
+      "age": 0.7503,
+      "weight": 0.753539,
+      "fur_characteristic": 0.762207
+    },
+    "SERVICE": {
+      "type": 0.759758,
+      "duration": 0.746685,
+      "price": 0.75143
+    },
+    "REVIEW": {
+      "rating": 0.738213,
+      "comment": 0.735107
+    },
+    "SPECIALIZATION": {
+      "type": 0.747456,
+      "description": 0.750875
+    },
+    "GROOMING_SESSION": {
+      "session_date": 0.748351,
+      "session_time": 0.748907,
+      "total_cost": 0.765218,
+      "groomer_rating": 0.77331,
+      "customer_rating": 0.769471
+    },
+    "ASSOC_GROOMER_SPECIALIZATION": {
+      "assoc_groomer_specialization_id": 0.000604,
+      "groomer_id": 0.000604,
+      "specialization_id": 0.000604
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PET",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple pets",
+      "probability": 0.97077
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "ASSOC_GROOMER_SPECIALIZATION",
+      "description": "One GROOMER can be associated with many ASSOC_GROOMER_SPECIALIZATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000604
+    },
+    {
+      "entity_1": "SPECIALIZATION",
+      "entity_2": "ASSOC_GROOMER_SPECIALIZATION",
+      "description": "One SPECIALIZATION can be associated with many ASSOC_GROOMER_SPECIALIZATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000604
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "A groomer can provide multiple services",
+      "probability": 0.962096
+    },
+    {
+      "entity_1": "PET",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "description": "A pet can have multiple grooming sessions",
+      "probability": 0.915456
+    },
+    {
+      "entity_1": "GROOMING_SESSION",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "A grooming session can include multiple services",
+      "probability": 0.940651
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A customer can leave multiple reviews",
+      "probability": 0.996917
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A groomer can receive multiple reviews",
+      "probability": 0.535258
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "description": "A groomer can conduct multiple grooming sessions",
+      "probability": 0.982858
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "GROOMING_SESSION",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple grooming sessions for their pets",
+      "probability": 0.960071
+    }
+  ],
+  "processing_time": 22.7,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for 'Grooming Session' to track individual sessions and their associated services, and added attributes to track customer and groomer interactions."
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "USER",
+    "FINANCIAL_DOCUMENT",
+    "NOTIFICATION",
+    "CONFIGURATION",
+    "ASSOC_USER_FINANCIAL_DOCUMENT",
+    "ASSOC_USER_CONFIGURATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone_number",
+      "associate_unit",
+      "role"
+    ],
+    "FINANCIAL_DOCUMENT": [
+      "document_id",
+      "title",
+      "number",
+      "issue_unit",
+      "issue_date",
+      "category",
+      "level",
+      "validity_status",
+      "remark",
+      "content",
+      "attachment_path"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "content",
+      "issue_date",
+      "status"
+    ],
+    "CONFIGURATION": [
+      "config_id",
+      "datum_type",
+      "file_upload_directory",
+      "system_database_directory"
+    ],
+    "ASSOC_USER_FINANCIAL_DOCUMENT": [
+      "assoc_user_financial_document_id",
+      "user_id",
+      "financial_document_id"
+    ],
+    "ASSOC_USER_CONFIGURATION": [
+      "assoc_user_configuration_id",
+      "user_id",
+      "configuration_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FINANCIAL_DOCUMENT",
+      "entity_2": "ASSOC_USER_FINANCIAL_DOCUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CONFIGURATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFIGURATION",
+      "entity_2": "ASSOC_USER_CONFIGURATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.4386,
+  "ilp_runtime": 0.031
+}

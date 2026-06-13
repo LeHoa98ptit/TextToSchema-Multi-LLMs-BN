@@ -1,0 +1,174 @@
+{
+  "entity": [
+    "USER",
+    "USER_AUTH",
+    "USER_PROFILE",
+    "USER_SECURITY",
+    "CATEGORY",
+    "PRODUCT",
+    "PRODUCT_PHOTO",
+    "PRODUCT_STATUS",
+    "LOCATION",
+    "TRANSACTION",
+    "TRANSACTION_METHOD",
+    "EVALUATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "phone",
+      "email",
+      "registration_date",
+      "last_login"
+    ],
+    "USER_AUTH": [
+      "auth_id",
+      "user_id",
+      "id_card_number",
+      "id_card_photo",
+      "facial_data",
+      "auth_status",
+      "auth_timestamp"
+    ],
+    "USER_PROFILE": [
+      "profile_id",
+      "user_id",
+      "avatar_url",
+      "nickname",
+      "gender",
+      "birthdate",
+      "location_id",
+      "introduction"
+    ],
+    "USER_SECURITY": [
+      "security_id",
+      "user_id",
+      "phone_bound",
+      "email_bound",
+      "two_factor_enabled",
+      "password_last_changed"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "parent_category_id",
+      "description"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "seller_id",
+      "title",
+      "description",
+      "condition",
+      "original_price",
+      "sell_price",
+      "negotiation_min",
+      "negotiation_max",
+      "validity_start",
+      "validity_end",
+      "location_id",
+      "status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCT_PHOTO": [
+      "photo_id",
+      "product_id",
+      "photo_url",
+      "order_index"
+    ],
+    "PRODUCT_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "LOCATION": [
+      "location_id",
+      "city",
+      "district",
+      "address_detail"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "buyer_id",
+      "seller_id",
+      "product_id",
+      "transaction_time",
+      "method_id",
+      "status",
+      "total_amount",
+      "location_id"
+    ],
+    "TRANSACTION_METHOD": [
+      "method_id",
+      "method_name"
+    ],
+    "EVALUATION": [
+      "evaluation_id",
+      "transaction_id",
+      "reviewer_id",
+      "rating",
+      "comment",
+      "eval_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_AUTH",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PROFILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_SECURITY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_PHOTO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_STATUS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_METHOD",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVALUATION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 96.5373,
+  "ilp_runtime": 0.039
+}

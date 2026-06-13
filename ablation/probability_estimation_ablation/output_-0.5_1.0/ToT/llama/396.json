@@ -1,0 +1,174 @@
+{
+  "filename": "396.txt",
+  "entity": {
+    "USER": 0.622459,
+    "GUIDE": 0.622459,
+    "HOTEL": 0.622459,
+    "ATTRACTION": 0.459092,
+    "ROUTE": 0.491576,
+    "CATEGORY": 0.471531,
+    "TAG": 0.487977,
+    "ASSOC_GUIDE_TAG": 0.479366,
+    "ASSOC_HOTEL_ROUTE": 0.157993,
+    "ASSOC_ATTRACTION_ROUTE": 0.589015,
+    "ASSOC_HOTEL_ATTRACTION": 0.951319
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.497858,
+      "password": 0.5138,
+      "avatar": 0.505799,
+      "nickname": 0.508242,
+      "email": 0.515457,
+      "phone": 0.50891,
+      "profile_picture": 0.514965,
+      "favorite_guides": 0.525687
+    },
+    "GUIDE": {
+      "title": 0.532633,
+      "category": 0.542685,
+      "tag": 0.528494,
+      "content": 0.535597,
+      "createdate": 0.519697,
+      "updatedate": 0.515454
+    },
+    "HOTEL": {
+      "name": 0.55554,
+      "introduction": 0.559045,
+      "picture": 0.551202,
+      "location": 0.553612,
+      "rating": 0.547268,
+      "price": 0.538059
+    },
+    "ATTRACTION": {
+      "name": 0.521423,
+      "introduction": 0.51707,
+      "picture": 0.517682,
+      "address": 0.528507,
+      "openhour": 0.515871,
+      "tip": 0.513828,
+      "ticketprice": 0.514774
+    },
+    "ROUTE": {
+      "name": 0.520031,
+      "content": 0.525208,
+      "tag": 0.519412,
+      "introduction": 0.525371,
+      "distance": 0.50672,
+      "duration": 0.510476
+    },
+    "CATEGORY": {
+      "name": 0.528833,
+      "description": 0.538152
+    },
+    "TAG": {
+      "name": 0.515514,
+      "description": 0.531009
+    },
+    "ASSOC_GUIDE_TAG": {
+      "assoc_guide_tag_id": 0.479366,
+      "guide_id": 0.479366,
+      "tag_id": 0.479366
+    },
+    "ASSOC_HOTEL_ROUTE": {
+      "assoc_hotel_route_id": 0.157993,
+      "hotel_id": 0.157993,
+      "route_id": 0.157993
+    },
+    "ASSOC_ATTRACTION_ROUTE": {
+      "assoc_attraction_route_id": 0.589015,
+      "attraction_id": 0.589015,
+      "route_id": 0.589015
+    },
+    "ASSOC_HOTEL_ATTRACTION": {
+      "assoc_hotel_attraction_id": 0.951319,
+      "hotel_id": 0.951319,
+      "attraction_id": 0.951319
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "GUIDE",
+      "cardinality": "1:N",
+      "description": "A user can write multiple guides",
+      "probability": 0.250321
+    },
+    {
+      "entity_1": "GUIDE",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "A guide belongs to one category",
+      "probability": 0.000155
+    },
+    {
+      "entity_1": "GUIDE",
+      "entity_2": "ASSOC_GUIDE_TAG",
+      "description": "One GUIDE can be associated with many ASSOC_GUIDE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.479366
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_GUIDE_TAG",
+      "description": "One TAG can be associated with many ASSOC_GUIDE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.479366
+    },
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ASSOC_HOTEL_ROUTE",
+      "description": "One HOTEL can be associated with many ASSOC_HOTEL_ROUTE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.157993
+    },
+    {
+      "entity_1": "ROUTE",
+      "entity_2": "ASSOC_HOTEL_ROUTE",
+      "description": "One ROUTE can be associated with many ASSOC_HOTEL_ROUTE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.157993
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ASSOC_ATTRACTION_ROUTE",
+      "description": "One ATTRACTION can be associated with many ASSOC_ATTRACTION_ROUTE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.589015
+    },
+    {
+      "entity_1": "ROUTE",
+      "entity_2": "ASSOC_ATTRACTION_ROUTE",
+      "description": "One ROUTE can be associated with many ASSOC_ATTRACTION_ROUTE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.589015
+    },
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ASSOC_HOTEL_ATTRACTION",
+      "description": "One HOTEL can be associated with many ASSOC_HOTEL_ATTRACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.951319
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ASSOC_HOTEL_ATTRACTION",
+      "description": "One ATTRACTION can be associated with many ASSOC_HOTEL_ATTRACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.951319
+    }
+  ],
+  "processing_time": 25.56,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added profile picture and favorite guides to the USER entity, and added a relationship between HOTEL and ATTRACTION."
+  }
+}

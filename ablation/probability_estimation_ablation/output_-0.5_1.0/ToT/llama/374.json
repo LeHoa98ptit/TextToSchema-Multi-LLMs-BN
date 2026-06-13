@@ -1,0 +1,113 @@
+{
+  "filename": "374.txt",
+  "entity": {
+    "USER": 0.622459,
+    "RESOURCE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "APPROVAL_DOCUMENT": 0.439473,
+    "WORK_UNIT": 0.466102,
+    "ASSOC_USER_DEPARTMENT": 0.99203
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.501872,
+      "password": 0.523484,
+      "email": 0.520377,
+      "role": 0.552537
+    },
+    "RESOURCE": {
+      "resource_code": 0.533805,
+      "resource_value": 0.531236,
+      "storage_location": 0.525938,
+      "budget_year": 0.539966,
+      "work_unit_id": 0.534158
+    },
+    "DEPARTMENT": {
+      "department_name": 0.55641,
+      "responsibility": 0.555955,
+      "unique_description": 0.557404
+    },
+    "TRANSACTION": {
+      "transaction_time": 0.511993,
+      "operator": 0.534052,
+      "transaction_type": 0.517028,
+      "approval_status": 0.525322,
+      "transaction_details": 0.524475
+    },
+    "APPROVAL_DOCUMENT": {
+      "document_name": 0.516794,
+      "document_content": 0.520479,
+      "approval_date": 0.517083,
+      "approved_by": 0.526073
+    },
+    "WORK_UNIT": {
+      "work_unit_name": 0.534874,
+      "work_unit_description": 0.546383,
+      "department_id": 0.550621
+    },
+    "ASSOC_USER_DEPARTMENT": {
+      "assoc_user_department_id": 0.99203,
+      "user_id": 0.99203,
+      "department_id": 0.99203
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_DEPARTMENT",
+      "description": "One USER can be associated with many ASSOC_USER_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99203
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_USER_DEPARTMENT",
+      "description": "One DEPARTMENT can be associated with many ASSOC_USER_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99203
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A resource can have multiple transactions",
+      "probability": 0.00285
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:N",
+      "description": "A department can manage multiple resources",
+      "probability": 0.256332
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "APPROVAL_DOCUMENT",
+      "cardinality": "1:N",
+      "description": "A transaction can have multiple approval documents",
+      "probability": 0.577385
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "A work unit belongs to a department",
+      "probability": 0.987131
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:N",
+      "description": "A work unit can be associated with multiple resources",
+      "probability": 0.370996
+    }
+  ],
+  "processing_time": 25.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more detailed attributes for APPROVAL_DOCUMENT and TRANSACTION, refined the relationships between WORK_UNIT and RESOURCE, and integrated work_unit_id in RESOURCE to establish a direct link between resources and work units."
+  }
+}

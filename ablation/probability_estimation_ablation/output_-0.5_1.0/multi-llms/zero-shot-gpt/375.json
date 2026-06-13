@@ -1,0 +1,114 @@
+{
+  "filename": "375.txt",
+  "entity": {
+    "DEVICE": 0.622459,
+    "USER": 0.622459,
+    "STAFF": 0.507924,
+    "NETWORK_TRAFFIC": 0.545747,
+    "DEVICE_FAILURE": 0.514746,
+    "USER_DEVICE_CONNECTION": 0.5012,
+    "DEVICE_MAINTENANCE": 0.527073
+  },
+  "attribute": {
+    "DEVICE": {
+      "device id": 0.52438,
+      "device type": 0.529998,
+      "ip address": 0.523551,
+      "installation location": 0.524797,
+      "installation time": 0.522158,
+      "device status": 0.543139
+    },
+    "USER": {
+      "user id": 0.513175,
+      "user account": 0.514086,
+      "user password": 0.511403
+    },
+    "STAFF": {
+      "staff id": 0.519642,
+      "contact information": 0.526302
+    },
+    "NETWORK_TRAFFIC": {
+      "device id": 0.544936,
+      "timestamp": 0.540826,
+      "upload traffic": 0.539284,
+      "download traffic": 0.53877,
+      "total traffic": 0.544397,
+      "traffic status": 0.552334
+    },
+    "DEVICE_FAILURE": {
+      "device id": 0.528614,
+      "failure occurrence time": 0.533896,
+      "failure type": 0.523584,
+      "failure description": 0.528735,
+      "handle status": 0.534438,
+      "remark": 0.527828
+    },
+    "USER_DEVICE_CONNECTION": {
+      "user id": 0.529835,
+      "device id": 0.531044,
+      "connection time": 0.529109,
+      "disconnection time": 0.520828,
+      "bandwidth": 0.537756,
+      "user ip": 0.527376
+    },
+    "DEVICE_MAINTENANCE": {
+      "device id": 0.543333,
+      "staff id": 0.548129,
+      "maintenance time": 0.542886,
+      "maintenance content": 0.556714,
+      "maintenance result": 0.544934,
+      "remark": 0.547517
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "NETWORK_TRAFFIC",
+      "description": "A device generates many network traffic records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.041096
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "description": "A device can have multiple failure records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996595
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "description": "A device can have many maintenance records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999857
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "description": "A staff member can perform many device maintenance actions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963711
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "description": "A user can have multiple connection records with devices",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992854
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "description": "A device can be associated with multiple user connection records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999946
+    }
+  ],
+  "processing_time": 40.4
+}

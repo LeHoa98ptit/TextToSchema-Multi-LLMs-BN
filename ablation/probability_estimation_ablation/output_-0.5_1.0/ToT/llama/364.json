@@ -1,0 +1,62 @@
+{
+  "filename": "364.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "USER": 0.622459,
+    "LOGIN_RESPONSE": 0.60487,
+    "LOGIN_ATTEMPT": 0.553544
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.537286,
+      "company_name": 0.536664,
+      "company_description": 0.544826
+    },
+    "USER": {
+      "user_id": 0.529897,
+      "username": 0.515891,
+      "phone_number": 0.528215,
+      "job_title": 0.54399
+    },
+    "LOGIN_RESPONSE": {
+      "response_id": 0.547124,
+      "response_type": 0.54892,
+      "response_label": 0.54776,
+      "login_time": 0.546506,
+      "attempt_id": 0.544014
+    },
+    "LOGIN_ATTEMPT": {
+      "attempt_id": 0.535904,
+      "attempt_time": 0.538399,
+      "attempt_status": 0.538113
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A company can have multiple users",
+      "probability": 0.888363
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_ATTEMPT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple login attempts",
+      "probability": 0.994781
+    },
+    {
+      "entity_1": "LOGIN_ATTEMPT",
+      "entity_2": "LOGIN_RESPONSE",
+      "cardinality": "1:1",
+      "description": "A login attempt generates a single login response",
+      "probability": 0.999948
+    }
+  ],
+  "processing_time": 11.73,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed email attribute from the user entity and ensured the company name attribute has a unique constraint to prevent duplicate company names."
+  }
+}

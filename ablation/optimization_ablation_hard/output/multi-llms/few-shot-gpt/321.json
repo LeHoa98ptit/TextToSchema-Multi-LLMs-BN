@@ -1,0 +1,232 @@
+{
+  "entity": [
+    "USER",
+    "FOOTBALL_FAN",
+    "MEMBERSHIP",
+    "CLUB",
+    "TEAM",
+    "PLAYER",
+    "MATCH",
+    "EVENT",
+    "ORGANIZER",
+    "SPONSOR",
+    "INTEREST",
+    "DISCOUNT",
+    "MARKETING_ACTIVITY",
+    "USER_INTEREST",
+    "TEAM_MEMBER",
+    "FRIENDSHIP"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password hash",
+      "email",
+      "registration date",
+      "basic info",
+      "profile picture url",
+      "bio",
+      "location",
+      "friends",
+      "interests"
+    ],
+    "FOOTBALL_FAN": [
+      "fan id",
+      "user id",
+      "fan since",
+      "favorite clubs",
+      "favorite players"
+    ],
+    "MEMBERSHIP": [
+      "membership id",
+      "user id",
+      "membership type",
+      "start date",
+      "end date",
+      "discount id",
+      "status"
+    ],
+    "CLUB": [
+      "club id",
+      "name",
+      "location",
+      "founded date",
+      "sponsor id",
+      "description"
+    ],
+    "TEAM": [
+      "team id",
+      "club id",
+      "name",
+      "creation date",
+      "manager name",
+      "roster",
+      "team profile"
+    ],
+    "PLAYER": [
+      "player id",
+      "first name",
+      "last name",
+      "date of birth",
+      "nationality",
+      "position",
+      "team id",
+      "profile picture url"
+    ],
+    "MATCH": [
+      "match id",
+      "home team id",
+      "away team id",
+      "match date",
+      "start time",
+      "end time",
+      "venue",
+      "result",
+      "timeline"
+    ],
+    "EVENT": [
+      "event id",
+      "name",
+      "description",
+      "event datetime",
+      "organizer id",
+      "club id",
+      "venue",
+      "related match id"
+    ],
+    "ORGANIZER": [
+      "organizer id",
+      "name",
+      "contact email",
+      "phone"
+    ],
+    "SPONSOR": [
+      "sponsor id",
+      "name",
+      "contact email",
+      "phone",
+      "sponsorship level"
+    ],
+    "INTEREST": [
+      "interest id",
+      "name",
+      "description"
+    ],
+    "DISCOUNT": [
+      "discount id",
+      "code",
+      "description",
+      "percentage",
+      "valid from",
+      "valid to"
+    ],
+    "MARKETING_ACTIVITY": [
+      "activity id",
+      "name",
+      "description",
+      "start date",
+      "end date",
+      "target audience",
+      "sponsor id"
+    ],
+    "USER_INTEREST": [
+      "user_interest_id",
+      "user_id",
+      "interest_id"
+    ],
+    "TEAM_MEMBER": [
+      "team_member_id",
+      "user_id",
+      "team_id"
+    ],
+    "FRIENDSHIP": [
+      "friendship_id",
+      "user_id",
+      "user_id_1",
+      "user_id_2"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FOOTBALL_FAN",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MEMBERSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "MEMBERSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTEREST",
+      "entity_2": "USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "TEAM_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLUB",
+      "entity_2": "TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "PLAYER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANIZER",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPONSOR",
+      "entity_2": "MARKETING_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FRIENDSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 134.0106,
+  "ilp_runtime": 0.064
+}

@@ -1,0 +1,87 @@
+{
+  "filename": "324.txt",
+  "entity": {
+    "GEOLOCATION": 0.564243,
+    "IPADDRESS": 0.517118,
+    "NETWORK": 0.53335,
+    "COUNTRY": 0.622459,
+    "CONTINENT": 0.529989,
+    "PROVIDER": 0.493375
+  },
+  "attribute": {
+    "GEOLOCATION": {
+      "country_iso_code": 0.560813,
+      "european_union": 0.555781,
+      "latitude": 0.560152,
+      "longitude": 0.557649
+    },
+    "IPADDRESS": {
+      "ip": 0.541773,
+      "anonymous_proxy": 0.526432,
+      "satellite_provider": 0.541417,
+      "ip_range": 0.537962
+    },
+    "NETWORK": {
+      "provider_name": 0.524,
+      "network_type": 0.511794,
+      "network_speed": 0.505473
+    },
+    "COUNTRY": {
+      "country_name": 0.537684,
+      "country_code": 0.545171,
+      "country_population": 0.529104
+    },
+    "CONTINENT": {
+      "continent_name": 0.525551,
+      "continent_code": 0.533402,
+      "continent_population": 0.521234
+    },
+    "PROVIDER": {
+      "provider_name": 0.523975,
+      "provider_type": 0.522557,
+      "provider_contact": 0.51903
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "IPADDRESS",
+      "entity_2": "GEOLOCATION",
+      "cardinality": "1:1",
+      "description": "An IP address is associated with one geolocation",
+      "probability": 0.099331
+    },
+    {
+      "entity_1": "NETWORK",
+      "entity_2": "IPADDRESS",
+      "cardinality": "1:N",
+      "description": "A network can have multiple IP addresses",
+      "probability": 0.433294
+    },
+    {
+      "entity_1": "GEOLOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "A geolocation can be associated with one country",
+      "probability": 0.711272
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "N:1",
+      "description": "A country can be associated with one continent",
+      "probability": 0.865871
+    },
+    {
+      "entity_1": "NETWORK",
+      "entity_2": "PROVIDER",
+      "cardinality": "1:1",
+      "description": "A network is associated with one provider",
+      "probability": 0.995102
+    }
+  ],
+  "processing_time": 21.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added new attributes to entities, removed redundant relationships, and ensured proper documentation and maintenance of entities and relationships."
+  }
+}

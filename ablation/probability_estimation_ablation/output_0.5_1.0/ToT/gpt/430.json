@@ -1,0 +1,133 @@
+{
+  "filename": "430.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ATTRACTION": 0.817574,
+    "ORDER": 0.709839,
+    "COMMENT": 0.817574,
+    "MESSAGE": 0.731511,
+    "FAVORITE": 0.708209
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.752444,
+      "username": 0.748569,
+      "password": 0.763103,
+      "wechat_id": 0.761715,
+      "open_id": 0.753897,
+      "qq_number": 0.762185,
+      "email": 0.765865,
+      "remark": 0.765353,
+      "created_at": 0.755058,
+      "updated_at": 0.758624,
+      "is_active": 0.754757
+    },
+    "ATTRACTION": {
+      "attraction_id": 0.755975,
+      "name": 0.751965,
+      "detail": 0.752324,
+      "reference_price": 0.747513,
+      "image_url": 0.749804,
+      "era": 0.748169,
+      "type": 0.750471,
+      "region": 0.747408,
+      "created_at": 0.755383,
+      "updated_at": 0.759313,
+      "is_active": 0.751543
+    },
+    "ORDER": {
+      "order_id": 0.74023,
+      "user_id": 0.754914,
+      "attraction_id": 0.755679,
+      "book_date": 0.745264,
+      "ticket_quantity": 0.751528,
+      "remark": 0.750084,
+      "status": 0.752912,
+      "created_at": 0.750178,
+      "updated_at": 0.749024,
+      "is_active": 0.746184
+    },
+    "COMMENT": {
+      "comment_id": 0.75172,
+      "user_id": 0.759897,
+      "attraction_id": 0.763817,
+      "content": 0.763087,
+      "review_status": 0.754769,
+      "created_at": 0.755529,
+      "updated_at": 0.757742,
+      "is_active": 0.754234
+    },
+    "MESSAGE": {
+      "message_id": 0.75652,
+      "user_id": 0.761974,
+      "content": 0.770671,
+      "created_at": 0.758624,
+      "updated_at": 0.75786,
+      "is_active": 0.755873
+    },
+    "FAVORITE": {
+      "favorite_id": 0.751445,
+      "user_id": 0.761297,
+      "attraction_id": 0.754366,
+      "created_at": 0.754536,
+      "updated_at": 0.756041,
+      "is_active": 0.753307
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A USER can place many ORDERs (ORDER.user_id references USER.user_id)",
+      "probability": 0.99874
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "An ATTRACTION can be booked in many ORDERs (ORDER.attraction_id references ATTRACTION.attraction_id)",
+      "probability": 0.027399
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A USER can write many COMMENTs (COMMENT.user_id references USER.user_id)",
+      "probability": 0.947993
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "An ATTRACTION can receive many COMMENTs (COMMENT.attraction_id references ATTRACTION.attraction_id)",
+      "probability": 0.007791
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A USER can send many MESSAGEs (MESSAGE.user_id references USER.user_id)",
+      "probability": 0.99939
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAVORITE",
+      "cardinality": "1:N",
+      "description": "A USER can have many FAVORITE records linking to ATTRACTIONs (FAVORITE.user_id references USER.user_id)",
+      "probability": 0.964277
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "FAVORITE",
+      "cardinality": "1:N",
+      "description": "An ATTRACTION can be favorited by many USERS (FAVORITE.attraction_id references ATTRACTION.attraction_id)",
+      "probability": 0.796754
+    }
+  ],
+  "processing_time": 929.46,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit primary key attributes (user_id, attraction_id, order_id, comment_id, message_id, favorite_id). Introduced foreign key attributes in ORDER, COMMENT, MESSAGE, and FAVORITE to enforce referential integrity. Included an 'is_active' flag for soft‑delete handling on all entities. Clarified enumerated fields (status, review_status) as attributes ready for enum/lookup implementation. Updated relationship descriptions to reference the new key attributes. Retained the complete attribute set and many‑to‑many FAVORITE associative entity while improving schema robustness and readiness for implementation."
+  }
+}

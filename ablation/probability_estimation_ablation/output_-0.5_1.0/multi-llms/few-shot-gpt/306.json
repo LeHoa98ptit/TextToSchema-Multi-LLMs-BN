@@ -1,0 +1,153 @@
+{
+  "filename": "306.txt",
+  "entity": {
+    "TASK": 0.622459,
+    "SCHEDULER": 0.622459,
+    "TRIGGER": 0.622459,
+    "LOCK": 0.622459,
+    "TASK_INSTANCE": 0.518067,
+    "SCHEDULER_LOG": 0.534197,
+    "TASK_TRIGGER": 0.79811,
+    "SCHEDULER_TASK": 0.994283,
+    "SCHEDULER_LOCK": 0.562053
+  },
+  "attribute": {
+    "TASK": {
+      "task id": 0.53868,
+      "description": 0.543941,
+      "task class": 0.540459,
+      "persistence flag": 0.545075,
+      "concurrent execution flag": 0.548456,
+      "dependent task id": 0.542435
+    },
+    "SCHEDULER": {
+      "scheduler id": 0.540847,
+      "status": 0.542579,
+      "configuration": 0.542014,
+      "scheduler log id": 0.536001
+    },
+    "TRIGGER": {
+      "trigger id": 0.529291,
+      "trigger type": 0.543113,
+      "repeat count": 0.543397,
+      "repeat interval": 0.543275,
+      "trigger count": 0.54436,
+      "cron expression": 0.54078,
+      "timezone": 0.530981,
+      "attribute string": 0.521609,
+      "attribute integer": 0.525768,
+      "attribute long": 0.530403,
+      "attribute decimal": 0.526252,
+      "attribute boolean": 0.522931,
+      "attribute blob": 0.522617,
+      "binary data": 0.534747
+    },
+    "LOCK": {
+      "lock id": 0.512984,
+      "status": 0.524023,
+      "description": 0.525416
+    },
+    "TASK_INSTANCE": {
+      "task instance id": 0.529794,
+      "task id": 0.534479
+    },
+    "SCHEDULER_LOG": {
+      "scheduler log id": 0.532809,
+      "scheduler id": 0.536093,
+      "log message": 0.520737,
+      "log timestamp": 0.533646
+    },
+    "TASK_TRIGGER": {
+      "task_trigger_id": 0.79811,
+      "task_id": 0.79811,
+      "trigger_id": 0.79811,
+      "execution_time": 0.79811,
+      "priority": 0.79811,
+      "trigger_status": 0.79811,
+      "start_time": 0.79811,
+      "end_time": 0.79811,
+      "calendar": 0.79811,
+      "fault_instruction": 0.79811
+    },
+    "SCHEDULER_TASK": {
+      "scheduler_task_id": 0.994283,
+      "scheduler_id": 0.994283,
+      "task_id": 0.994283,
+      "trigger_id": 0.994283
+    },
+    "SCHEDULER_LOCK": {
+      "scheduler_lock_id": 0.562053,
+      "scheduler_id": 0.562053,
+      "lock_id": 0.562053,
+      "acquisition_time": 0.562053,
+      "release_time": 0.562053
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "description": "One TASK can be associated with many TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.79811
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "description": "One TRIGGER can be associated with many TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.79811
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_TASK",
+      "description": "One SCHEDULER can be associated with many SCHEDULER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994283
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULER_TASK",
+      "description": "One TASK can be associated with many SCHEDULER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994283
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_LOCK",
+      "description": "One SCHEDULER can be associated with many SCHEDULER_LOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.562053
+    },
+    {
+      "entity_1": "LOCK",
+      "entity_2": "SCHEDULER_LOCK",
+      "description": "One LOCK can be associated with many SCHEDULER_LOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.562053
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_INSTANCE",
+      "description": "A task can have many task instances; each task instance belongs to a single task.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998964
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_LOG",
+      "description": "A scheduler can generate many log entries; each log entry is associated with one scheduler.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.876056
+    }
+  ],
+  "processing_time": 6.15
+}

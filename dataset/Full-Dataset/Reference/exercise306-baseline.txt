@@ -1,0 +1,133 @@
+{
+  "entity": [
+    "Task",
+    "Trigger Summary",
+    "Scheduler Acquires Lock",
+    "Scheduler",
+    "Simple Trigger",
+    "Cron Trigger",
+    "Complex Trigger",
+    "Blob Trigger",
+    "Lock",
+    "Task Uses Trigger",
+    "Scheduler Schedules Task"
+  ],
+  "attribut": {
+    "Task": [
+      "Task ID",
+      "Task Name",
+      "Task Description",
+      "Class Name",
+      "Persistence Flag",
+      "Concurrent Execution Flag"
+    ],
+    "Trigger Summary": [
+      "Trigger ID",
+      "Trigger Name"
+    ],
+    "Scheduler Acquires Lock": [
+      "Scheduler ID",
+      "Lock ID",
+      "Acquisition Time",
+      "Release Time"
+    ],
+    "Scheduler": [
+      "Scheduler ID",
+      "Scheduler Name",
+      "Scheduler Status",
+      "Scheduler Configuration",
+      "Scheduler Log"
+    ],
+    "Simple Trigger": [
+      "Trigger ID",
+      "Trigger Name",
+      "Trigger Type",
+      "Repeat Count",
+      "Repeat Interval",
+      "Count Of Triggers"
+    ],
+    "Cron Trigger": [
+      "Trigger ID",
+      "Trigger Name",
+      "Trigger Type",
+      "Cron Expression",
+      "Timezone"
+    ],
+    "Complex Trigger": [
+      "Trigger ID",
+      "Trigger Name",
+      "Trigger Type",
+      "String Attributes",
+      "Integer Attributes",
+      "Long Integer Attributes",
+      "Decimal Attributes",
+      "Boolean Attributes"
+    ],
+    "Blob Trigger": [
+      "Trigger ID",
+      "Trigger Name",
+      "Trigger Type",
+      "Binary Attributes"
+    ],
+    "Lock": [
+      "Lock ID",
+      "Lock Name",
+      "Lock Status",
+      "Lock Description"
+    ],
+    "Task Uses Trigger": [
+      "Task ID",
+      "Trigger ID",
+      "Next Execution Time",
+      "Last Execution Time",
+      "Priority",
+      "Trigger Status",
+      "Start Time",
+      "End Time",
+      "Calendar Name",
+      "Fault Instruction"
+    ],
+    "Scheduler Schedules Task": [
+      "Scheduler ID",
+      "Task ID",
+      "Trigger ID"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Scheduler",
+      "entity_2": "Scheduler Acquires Lock",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Lock",
+      "entity_2": "Scheduler Acquires Lock",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Task",
+      "entity_2": "Task Uses Trigger",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Trigger Summary",
+      "entity_2": "Task Uses Trigger",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Task",
+      "entity_2": "Scheduler Schedules Task",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Trigger Summary",
+      "entity_2": "Scheduler Schedules Task",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Scheduler",
+      "entity_2": "Scheduler Schedules Task",
+      "cardinality": "1:N"
+    }
+  ]
+}

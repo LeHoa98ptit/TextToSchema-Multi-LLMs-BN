@@ -1,0 +1,141 @@
+{
+  "filename": "430.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ATTRACTION": 0.817574,
+    "ORDER": 0.709839,
+    "ORDER_ITEM": 0.668454,
+    "COMMENT": 0.817574,
+    "COMMENT_REPLY": 0.765738,
+    "MESSAGE": 0.731511,
+    "FAVORITE": 0.708209
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.748569,
+      "password": 0.763103,
+      "wechat": 0.766099,
+      "qq": 0.770474,
+      "email": 0.765865,
+      "remark": 0.765353,
+      "creation": 0.773293,
+      "update": 0.767083,
+      "last_login": 0.752602
+    },
+    "ATTRACTION": {
+      "detail": 0.752324,
+      "reference_price": 0.747513,
+      "image": 0.744908,
+      "era": 0.748169,
+      "type": 0.750471,
+      "region": 0.747408,
+      "creation": 0.755202,
+      "update": 0.754985,
+      "rating": 0.747754
+    },
+    "ORDER": {
+      "book_date": 0.745264,
+      "total_price": 0.736211,
+      "remark": 0.750084,
+      "order_status": 0.744672,
+      "creation": 0.757587,
+      "update": 0.754169
+    },
+    "ORDER_ITEM": {
+      "ticket_quantity": 0.750244,
+      "price": 0.736655,
+      "creation": 0.754061,
+      "update": 0.750355,
+      "attraction_id": 0.751699
+    },
+    "COMMENT": {
+      "comment_content": 0.751711,
+      "review_status": 0.754769,
+      "creation": 0.769424,
+      "update": 0.759623,
+      "like_count": 0.757349,
+      "attraction_id": 0.763817
+    },
+    "COMMENT_REPLY": {
+      "reply_content": 0.751786,
+      "creation": 0.763237,
+      "update": 0.756268,
+      "comment_id": 0.750826
+    },
+    "MESSAGE": {
+      "message_content": 0.760867,
+      "creation": 0.777295,
+      "update": 0.767644,
+      "read_status": 0.758411
+    },
+    "FAVORITE": {
+      "creation": 0.748138,
+      "update": 0.749054,
+      "user_id": 0.761297,
+      "attraction_id": 0.754366
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.998747
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.99994
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "ATTRACTION",
+      "cardinality": "N:1",
+      "description": "An order item is related to one attraction",
+      "probability": 0.000123
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple comments",
+      "probability": 0.94752
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT_REPLY",
+      "cardinality": "1:N",
+      "description": "A comment can have multiple replies",
+      "probability": 0.999948
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can have multiple messages",
+      "probability": 0.999393
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAVORITE",
+      "cardinality": "1:N",
+      "description": "A user can have multiple favorites",
+      "probability": 0.974084
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "FAVORITE",
+      "cardinality": "1:N",
+      "description": "An attraction can have multiple favorites",
+      "probability": 0.691531
+    }
+  ],
+  "processing_time": 339.23,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added attraction_id to ORDER_ITEM, COMMENT, and FAVORITE entities to simplify relationships and improve data integrity. Added user_id to FAVORITE entity to establish a clear relationship between users and their favorites. Added comment_id to COMMENT_REPLY entity to establish a clear relationship between comments and their replies."
+  }
+}

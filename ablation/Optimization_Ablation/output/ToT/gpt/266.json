@@ -1,0 +1,114 @@
+{
+  "entity": [
+    "COMPANY",
+    "PIPELINE",
+    "LOCATION",
+    "PERSONNEL",
+    "TASK_TYPE",
+    "MAINTENANCE_TASK",
+    "MAINTENANCE_DETAIL",
+    "PERFORMANCE_EVALUATION",
+    "MONITORING_EVENT"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "headquarters_address"
+    ],
+    "PIPELINE": [
+      "pipeline_id",
+      "name",
+      "length",
+      "diameter",
+      "start_location_id",
+      "end_location_id"
+    ],
+    "LOCATION": [
+      "location_id",
+      "latitude",
+      "longitude",
+      "description"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "first_name",
+      "last_name",
+      "hire_date",
+      "certification_level",
+      "contact_number"
+    ],
+    "TASK_TYPE": [
+      "task_type_id",
+      "code",
+      "description"
+    ],
+    "MAINTENANCE_TASK": [
+      "task_id",
+      "scheduled_start",
+      "scheduled_end",
+      "actual_start",
+      "actual_end",
+      "status",
+      "pipeline_id",
+      "task_type_id"
+    ],
+    "MAINTENANCE_DETAIL": [
+      "detail_id",
+      "task_id",
+      "personnel_id",
+      "work_hours",
+      "notes"
+    ],
+    "PERFORMANCE_EVALUATION": [
+      "eval_id",
+      "task_id",
+      "personnel_id",
+      "score",
+      "eval_date",
+      "comments"
+    ],
+    "MONITORING_EVENT": [
+      "event_id",
+      "task_id",
+      "event_timestamp",
+      "sensor_type",
+      "sensor_value",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PIPELINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "MAINTENANCE_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PERFORMANCE_EVALUATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_EVENT",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.048,
+  "ilp_runtime": 0.078
+}

@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "PARTICIPANT",
+    "TICKET",
+    "CONFERENCE",
+    "WORKSHOP",
+    "SPEAKER",
+    "DISCOUNT_CODE",
+    "MEETING",
+    "TICKET_RECORD"
+  ],
+  "attribute": {
+    "PARTICIPANT": [
+      "id",
+      "company",
+      "email",
+      "name"
+    ],
+    "TICKET": [
+      "id",
+      "description",
+      "price",
+      "type"
+    ],
+    "CONFERENCE": [
+      "id",
+      "description",
+      "date",
+      "start_time",
+      "end_time"
+    ],
+    "WORKSHOP": [
+      "id",
+      "description",
+      "location",
+      "date",
+      "start_time",
+      "end_time",
+      "capacity",
+      "requirement"
+    ],
+    "SPEAKER": [
+      "id",
+      "company",
+      "description",
+      "bio"
+    ],
+    "DISCOUNT_CODE": [
+      "id",
+      "code",
+      "type",
+      "discount"
+    ],
+    "MEETING": [
+      "id",
+      "description",
+      "date",
+      "start_time",
+      "end_time",
+      "room"
+    ],
+    "TICKET_RECORD": [
+      "id",
+      "participant_id",
+      "ticket_id",
+      "discount_code_id",
+      "net_price",
+      "purchase_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "CONFERENCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "DISCOUNT_CODE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "CONFERENCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET_RECORD",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.6254,
+  "ilp_runtime": 0.061
+}

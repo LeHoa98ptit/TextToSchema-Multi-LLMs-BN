@@ -1,0 +1,82 @@
+{
+  "filename": "300.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "BILL": 0.622459,
+    "MATERIAL": 0.622459,
+    "BILL_DETAIL": 0.53733,
+    "MATERIAL_SUPPLY": 0.58875
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_number": 0.529788,
+      "creation_date": 0.526149,
+      "closing_date": 0.520029,
+      "charge": 0.531389
+    },
+    "BILL": {
+      "bill_number": 0.528089,
+      "creation_time": 0.535437,
+      "modification_time": 0.526457,
+      "verification_error": 0.526528
+    },
+    "MATERIAL": {
+      "material_code": 0.517816,
+      "description": 0.529572,
+      "unit_cost": 0.531942
+    },
+    "BILL_DETAIL": {
+      "material_quantity": 0.554932,
+      "unit_cost": 0.550056,
+      "charge": 0.542815
+    },
+    "MATERIAL_SUPPLY": {
+      "quantity": 0.546611,
+      "unit": 0.548307,
+      "charge": 0.538548,
+      "material_code": 0.533345
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BILL",
+      "cardinality": "1:N",
+      "description": "A project can have multiple bills",
+      "probability": 0.002303
+    },
+    {
+      "entity_1": "BILL",
+      "entity_2": "BILL_DETAIL",
+      "cardinality": "1:N",
+      "description": "A bill can have multiple bill details",
+      "probability": 0.998912
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "MATERIAL_SUPPLY",
+      "cardinality": "1:N",
+      "description": "A project can have multiple material supplies",
+      "probability": 0.06277
+    },
+    {
+      "entity_1": "MATERIAL_SUPPLY",
+      "entity_2": "MATERIAL",
+      "cardinality": "N:1",
+      "description": "A material supply is related to one material",
+      "probability": 0.999912
+    },
+    {
+      "entity_1": "BILL_DETAIL",
+      "entity_2": "MATERIAL",
+      "cardinality": "N:1",
+      "description": "A bill detail is related to one material",
+      "probability": 0.042118
+    }
+  ],
+  "processing_time": 15.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added material_code attribute to MATERIAL_SUPPLY entity to improve data consistency, and added a relationship between BILL_DETAIL and MATERIAL to clarify the material used in each bill detail."
+  }
+}

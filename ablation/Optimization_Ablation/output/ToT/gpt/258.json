@@ -1,0 +1,132 @@
+{
+  "entity": [
+    "DONOR",
+    "CONTACT_INFO",
+    "ORGANIZATION",
+    "DONOR_ORGANIZATION",
+    "EVENT",
+    "EVENT_ACTIVITY",
+    "DONATION_METHOD",
+    "DONATION",
+    "MESSAGE"
+  ],
+  "attribute": {
+    "DONOR": [
+      "donor_id",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "preferred_contact_info_id"
+    ],
+    "CONTACT_INFO": [
+      "contact_info_id",
+      "donor_id",
+      "contact_type",
+      "value",
+      "street",
+      "city",
+      "state",
+      "postal_code",
+      "country",
+      "is_primary"
+    ],
+    "ORGANIZATION": [
+      "organization_id",
+      "org_name",
+      "tax_id",
+      "contact_email",
+      "contact_phone"
+    ],
+    "DONOR_ORGANIZATION": [
+      "donor_id",
+      "organization_id",
+      "registration_date"
+    ],
+    "EVENT": [
+      "event_id",
+      "organization_id",
+      "event_name",
+      "event_type",
+      "start_datetime",
+      "end_datetime",
+      "location",
+      "goal_amount",
+      "current_amount",
+      "status"
+    ],
+    "EVENT_ACTIVITY": [
+      "activity_id",
+      "event_id",
+      "activity_name",
+      "description",
+      "start_datetime",
+      "end_datetime",
+      "status"
+    ],
+    "DONATION_METHOD": [
+      "method_id",
+      "method_name",
+      "description"
+    ],
+    "DONATION": [
+      "donation_id",
+      "donor_id",
+      "event_id",
+      "donation_method_id",
+      "donation_datetime",
+      "amount",
+      "currency",
+      "note",
+      "donation_status"
+    ],
+    "MESSAGE": [
+      "message_id",
+      "donor_id",
+      "event_id",
+      "activity_id",
+      "sent_datetime",
+      "subject",
+      "body"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DONOR",
+      "entity_2": "DONOR_ORGANIZATION",
+      "cardinality": "0:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "DONOR_ORGANIZATION",
+      "cardinality": "0:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DONATION_METHOD",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 51.4442,
+  "ilp_runtime": 0.068
+}

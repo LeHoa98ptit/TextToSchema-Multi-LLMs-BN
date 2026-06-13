@@ -1,0 +1,186 @@
+{
+  "filename": "302.txt",
+  "entity": {
+    "DOCTOR": 0.755654,
+    "DEPARTMENT": 0.69937,
+    "LEVEL": 0.719019,
+    "PATIENT": 0.817574,
+    "ADDRESS": 0.721658,
+    "EMERGENCY_CONTACT": 0.694682,
+    "MEDICINE": 0.794326,
+    "INVENTORY": 0.687917,
+    "CONSULTATION": 0.817574,
+    "PRESCRIPTION": 0.761968,
+    "PRESCRIPTION_MEDICINE": 0.771817
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor_id": 0.766117,
+      "name": 0.761983,
+      "gender": 0.758842,
+      "phone": 0.766378,
+      "birth_date": 0.763455,
+      "age": 0.758592,
+      "department_id": 0.771062,
+      "level_id": 0.771358
+    },
+    "DEPARTMENT": {
+      "department_id": 0.758424,
+      "name": 0.755175
+    },
+    "LEVEL": {
+      "level_id": 0.748875,
+      "title": 0.744492,
+      "description": 0.754128
+    },
+    "PATIENT": {
+      "patient_id": 0.769628,
+      "name": 0.762424,
+      "gender": 0.761579,
+      "birth_date": 0.764548,
+      "age": 0.75737,
+      "phone": 0.763376,
+      "address_id": 0.768896,
+      "emergency_contact_id": 0.766165
+    },
+    "ADDRESS": {
+      "address_id": 0.73826,
+      "street": 0.740092,
+      "city": 0.740805,
+      "state": 0.741226,
+      "zip": 0.742671
+    },
+    "EMERGENCY_CONTACT": {
+      "contact_id": 0.753975,
+      "name": 0.753443,
+      "relation": 0.763538,
+      "phone": 0.756235
+    },
+    "MEDICINE": {
+      "medicine_id": 0.769692,
+      "name": 0.760861,
+      "unit": 0.767686,
+      "price": 0.759371,
+      "description": 0.762091
+    },
+    "INVENTORY": {
+      "inventory_id": 0.747218,
+      "medicine_id": 0.771076,
+      "quantity": 0.753186,
+      "last_stocked_date": 0.746249
+    },
+    "CONSULTATION": {
+      "consultation_id": 0.764757,
+      "patient_id": 0.774104,
+      "doctor_id": 0.77303,
+      "consultation_time": 0.760908,
+      "diagnosis": 0.762648,
+      "treatment_recommendation": 0.766815
+    },
+    "PRESCRIPTION": {
+      "prescription_id": 0.764949,
+      "patient_id": 0.773088,
+      "doctor_id": 0.771742,
+      "prescription_date": 0.760964,
+      "notes": 0.763061
+    },
+    "PRESCRIPTION_MEDICINE": {
+      "prescription_id": 0.769151,
+      "medicine_id": 0.769952,
+      "dosage": 0.762979,
+      "frequency": 0.76517,
+      "precaution": 0.753697
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Many doctors belong to one department",
+      "probability": 0.003508
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "LEVEL",
+      "cardinality": "N:1",
+      "description": "Many doctors hold a specific professional level",
+      "probability": 0.080867
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each patient has one address record",
+      "probability": 0.274905
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "EMERGENCY_CONTACT",
+      "cardinality": "1:1",
+      "description": "Each patient has one emergency contact",
+      "probability": 0.328462
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "Inventory tracks stock for each medicine",
+      "probability": 0.002853
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "DOCTOR",
+      "cardinality": "N:1",
+      "description": "Each consultation is performed by one doctor",
+      "probability": 0.268299
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "description": "Each consultation involves one patient",
+      "probability": 0.994078
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A consultation may result in multiple prescriptions",
+      "probability": 0.496352
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "description": "Prescriptions are issued to a patient",
+      "probability": 0.092279
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "DOCTOR",
+      "cardinality": "N:1",
+      "description": "Prescriptions are written by a doctor",
+      "probability": 0.022689
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PRESCRIPTION_MEDICINE",
+      "cardinality": "1:N",
+      "description": "A prescription can contain many medicine lines",
+      "probability": 0.185124
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "PRESCRIPTION_MEDICINE",
+      "cardinality": "1:N",
+      "description": "A medicine can appear in many prescription lines",
+      "probability": 0.78597
+    }
+  ],
+  "processing_time": 44.32,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

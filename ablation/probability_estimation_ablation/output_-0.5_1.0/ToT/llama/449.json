@@ -1,0 +1,126 @@
+{
+  "filename": "449.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "POSITION": 0.622459,
+    "TRAINING": 0.622459,
+    "EMPLOYEE_POSITION_CHANGE": 0.560576,
+    "EMPLOYEE_DEPARTMENT": 0.568909,
+    "ASSOC_EMPLOYEE_DEPARTMENT": 0.999911,
+    "ASSOC_EMPLOYEE_TRAINING": 0.743704
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_number": 0.566869,
+      "gender": 0.55855,
+      "date_of_birth": 0.554121,
+      "entry_date": 0.555517,
+      "resignation_date": 0.544315,
+      "contact_information": 0.565811,
+      "email_address": 0.547884,
+      "status": 0.564059
+    },
+    "DEPARTMENT": {
+      "department_number": 0.539727,
+      "function": 0.546409,
+      "planning_content": 0.548258
+    },
+    "POSITION": {
+      "position_number": 0.538963,
+      "responsibility": 0.540176,
+      "requirement": 0.556516
+    },
+    "TRAINING": {
+      "training_number": 0.551574,
+      "training_time": 0.542423,
+      "location": 0.545599,
+      "content": 0.545295,
+      "trainer": 0.537537,
+      "trainer_contact_information": 0.54656
+    },
+    "EMPLOYEE_POSITION_CHANGE": {
+      "change_date": 0.565315,
+      "reason": 0.56733,
+      "new_position_number": 0.566558,
+      "old_position_number": 0.566187
+    },
+    "EMPLOYEE_DEPARTMENT": {
+      "employee_department_id": 0.563342,
+      "employee_number": 0.568622,
+      "department_number": 0.561895,
+      "assignment_date": 0.566366,
+      "end_date": 0.560661
+    },
+    "ASSOC_EMPLOYEE_DEPARTMENT": {
+      "assoc_employee_department_id": 0.999911,
+      "employee_id": 0.999911,
+      "department_id": 0.999911
+    },
+    "ASSOC_EMPLOYEE_TRAINING": {
+      "assoc_employee_training_id": 0.743704,
+      "employee_id": 0.743704,
+      "training_id": 0.743704
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_DEPARTMENT",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_EMPLOYEE_DEPARTMENT",
+      "description": "One DEPARTMENT can be associated with many ASSOC_EMPLOYEE_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999911
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "An employee holds one position",
+      "probability": 0.982975
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_TRAINING.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.743704
+    },
+    {
+      "entity_1": "TRAINING",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING",
+      "description": "One TRAINING can be associated with many ASSOC_EMPLOYEE_TRAINING.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.743704
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_POSITION_CHANGE",
+      "cardinality": "1:N",
+      "description": "An employee can have many position changes",
+      "probability": 0.999342
+    },
+    {
+      "entity_1": "EMPLOYEE_POSITION_CHANGE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "A position change is related to one position",
+      "probability": 0.998626
+    }
+  ],
+  "processing_time": 15.0,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a many-to-many relationship between employee and department, and added attributes for trainer contact information in the training entity"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "ORGANIZATION",
+    "PROCESS",
+    "PROCESS_TYPE",
+    "EVENT",
+    "EVENT_TYPE",
+    "RESOURCE"
+  ],
+  "attribute": {
+    "ORGANIZATION": [
+      "organization_id",
+      "name"
+    ],
+    "PROCESS": [
+      "process_id",
+      "parent_process_id",
+      "organization_id",
+      "process_type_id",
+      "resource_id",
+      "status",
+      "start_time",
+      "end_time",
+      "log_details"
+    ],
+    "PROCESS_TYPE": [
+      "process_type_id",
+      "name",
+      "description"
+    ],
+    "EVENT": [
+      "event_id",
+      "process_id",
+      "event_type_id",
+      "status",
+      "timestamp",
+      "log_details"
+    ],
+    "EVENT_TYPE": [
+      "event_type_id",
+      "name",
+      "description"
+    ],
+    "RESOURCE": [
+      "resource_id",
+      "name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_TYPE",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.006,
+  "ilp_runtime": 0.041
+}

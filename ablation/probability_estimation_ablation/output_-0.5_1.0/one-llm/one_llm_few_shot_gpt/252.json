@@ -1,0 +1,115 @@
+{
+  "filename": "252.txt",
+  "entity": {
+    "PLAYER": 0.622459,
+    "GAME": 0.622459,
+    "SINGLE_PLAYER_RECORD": 0.517518,
+    "COMMUNICATION": 0.622459,
+    "BATTLE": 0.622459,
+    "ASSOC_PLAYER_COMMUNICATION": 0.024953,
+    "ASSOC_PLAYER_BATTLE": 0.008188
+  },
+  "attribute": {
+    "PLAYER": {
+      "player_id": 0.544041,
+      "username": 0.531427,
+      "password": 0.538537,
+      "phone_number": 0.529105,
+      "registration_time": 0.535743
+    },
+    "GAME": {
+      "game_id": 0.544126,
+      "rule": 0.535372,
+      "content": 0.54119,
+      "max_players_allowed": 0.550391
+    },
+    "SINGLE_PLAYER_RECORD": {
+      "record_id": 0.556091,
+      "player_id": 0.555655,
+      "game_id": 0.564249,
+      "start_time": 0.548739,
+      "end_time": 0.552448,
+      "status": 0.560266
+    },
+    "COMMUNICATION": {
+      "communication_id": 0.521364,
+      "player_id": 0.545553,
+      "second_player_id": 0.5465,
+      "start_time": 0.520617,
+      "end_time": 0.524583,
+      "content": 0.529057
+    },
+    "BATTLE": {
+      "battle_id": 0.535426,
+      "player_id": 0.543473,
+      "second_player_id": 0.547988,
+      "game_id": 0.543854,
+      "start_time": 0.531257,
+      "end_time": 0.529935,
+      "result": 0.52347
+    },
+    "ASSOC_PLAYER_COMMUNICATION": {
+      "assoc_player_communication_id": 0.024953,
+      "player_id": 0.024953,
+      "communication_id": 0.024953
+    },
+    "ASSOC_PLAYER_BATTLE": {
+      "assoc_player_battle_id": 0.008188,
+      "player_id": 0.008188,
+      "battle_id": 0.008188
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.992515
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "SINGLE_PLAYER_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.868083
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_COMMUNICATION",
+      "description": "One PLAYER can be associated with many ASSOC_PLAYER_COMMUNICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.024953
+    },
+    {
+      "entity_1": "COMMUNICATION",
+      "entity_2": "ASSOC_PLAYER_COMMUNICATION",
+      "description": "One COMMUNICATION can be associated with many ASSOC_PLAYER_COMMUNICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.024953
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_BATTLE",
+      "description": "One PLAYER can be associated with many ASSOC_PLAYER_BATTLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.008188
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "ASSOC_PLAYER_BATTLE",
+      "description": "One BATTLE can be associated with many ASSOC_PLAYER_BATTLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.008188
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "BATTLE",
+      "cardinality": "1:N",
+      "probability": 0.082746
+    }
+  ],
+  "processing_time": 26.63
+}

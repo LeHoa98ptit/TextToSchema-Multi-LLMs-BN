@@ -1,0 +1,75 @@
+{
+  "filename": "463.txt",
+  "entity": {
+    "MALL": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "MANAGER": 0.622459,
+    "EMERGENCY_CONTACT": 0.603268
+  },
+  "attribute": {
+    "MALL": {
+      "mall_id": 0.543228,
+      "address": 0.542643,
+      "contact_number": 0.549536
+    },
+    "DEPARTMENT": {
+      "department_id": 0.545191,
+      "location": 0.547841,
+      "distribution": 0.545147,
+      "contact_number": 0.549491
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.546768,
+      "position": 0.551297,
+      "phone_number": 0.551217,
+      "salary": 0.522142,
+      "department_id": 0.557398
+    },
+    "MANAGER": {
+      "manager_id": 0.541981,
+      "tenure": 0.531717,
+      "department_id": 0.554524
+    },
+    "EMERGENCY_CONTACT": {
+      "contact_id": 0.535607,
+      "phone_number": 0.533166,
+      "employee_id": 0.551986
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MALL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A mall contains multiple departments",
+      "probability": 0.989754
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department hires multiple employees",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "MANAGER",
+      "cardinality": "1:1",
+      "description": "A department has one manager",
+      "probability": 0.975183
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMERGENCY_CONTACT",
+      "cardinality": "1:N",
+      "description": "An employee has multiple emergency contacts",
+      "probability": 0.821746
+    }
+  ],
+  "processing_time": 9.79,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added distribution attribute to the department entity for better completeness, and added foreign keys to the employee, manager, and emergency contact entities to establish relationships with their respective parent entities."
+  }
+}

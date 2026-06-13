@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "USER",
+    "AUTHORIZATION",
+    "ATTRACTION",
+    "RESERVATION",
+    "COMMENT",
+    "ASSOC_USER_ATTRACTION"
+  ],
+  "attribute": {
+    "USER": [
+      "account_number",
+      "password",
+      "nickname",
+      "bio"
+    ],
+    "AUTHORIZATION": [
+      "wechat_id",
+      "auth_token"
+    ],
+    "ATTRACTION": [
+      "attraction_id",
+      "name",
+      "picture",
+      "reference_price",
+      "description"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "reservation_time",
+      "ticket_purchase_time",
+      "ticket_number",
+      "ticket_quantity"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "comment_time",
+      "content",
+      "status"
+    ],
+    "ASSOC_USER_ATTRACTION": [
+      "assoc_user_attraction_id",
+      "user_id",
+      "attraction_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ATTRACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ASSOC_USER_ATTRACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.4887,
+  "ilp_runtime": 0.036
+}

@@ -1,0 +1,71 @@
+{
+  "entity": [
+    "TASK",
+    "SCHEDULER",
+    "TRIGGER",
+    "ASSOC_TASK_TRIGGER",
+    "ASSOC_SCHEDULER_TASK"
+  ],
+  "attribute": {
+    "TASK": [
+      "task_d",
+      "task_description",
+      "class_name",
+      "persistence_flag",
+      "concurrent_execution_flag",
+      "depend_task_d"
+    ],
+    "SCHEDULER": [
+      "scheduler_d",
+      "scheduler_status",
+      "scheduler_configuration",
+      "scheduler_log"
+    ],
+    "TRIGGER": [
+      "trigger_d",
+      "trigger_type",
+      "repeat_count",
+      "repeat_interval",
+      "trigger_count",
+      "cron_expression",
+      "timezone",
+      "attr_string",
+      "attr_integer",
+      "attr_long",
+      "attr_decimal",
+      "attr_boolean",
+      "attr_blob",
+      "binary_attribute"
+    ],
+    "ASSOC_TASK_TRIGGER": [
+      "assoc_task_trigger_id"
+    ],
+    "ASSOC_SCHEDULER_TASK": [
+      "assoc_scheduler_task_id",
+      "scheduler_id",
+      "task_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "ASSOC_TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "ASSOC_SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 20.4524,
+  "ilp_runtime": 0.061
+}

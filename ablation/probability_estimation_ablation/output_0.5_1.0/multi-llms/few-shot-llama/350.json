@@ -1,0 +1,110 @@
+{
+  "filename": "350.txt",
+  "entity": {
+    "PARTICIPANT": 0.817574,
+    "TICKET": 0.817574,
+    "DISCOUNT_CODE": 0.805699,
+    "PARTICIPANT_TICKET_RECORD": 0.747061,
+    "MEETING": 0.739448,
+    "WORKSHOP": 0.817574,
+    "SPEAKER": 0.709261
+  },
+  "attribute": {
+    "PARTICIPANT": {
+      "participant id": 0.763833,
+      "name": 0.763445,
+      "company": 0.768747,
+      "email": 0.765373
+    },
+    "TICKET": {
+      "ticket id": 0.759929,
+      "name": 0.76216,
+      "description": 0.770563,
+      "price": 0.755649,
+      "includes workshops": 0.782803
+    },
+    "DISCOUNT_CODE": {
+      "discount code id": 0.756208,
+      "code": 0.760924,
+      "name": 0.758866,
+      "type": 0.761698,
+      "amount": 0.754444
+    },
+    "PARTICIPANT_TICKET_RECORD": {
+      "participant ticket record id": 0.773295,
+      "participant id": 0.773102,
+      "ticket id": 0.773184,
+      "discount code id": 0.774687,
+      "net price": 0.771765
+    },
+    "MEETING": {
+      "meeting id": 0.770672,
+      "name": 0.764736,
+      "description": 0.778852,
+      "date": 0.764927,
+      "start time": 0.766571,
+      "end time": 0.762271,
+      "room": 0.768509
+    },
+    "WORKSHOP": {
+      "workshop id": 0.773194,
+      "name": 0.766167,
+      "description": 0.776375,
+      "requirements": 0.776705,
+      "location": 0.764075,
+      "date": 0.766236,
+      "start time": 0.769599,
+      "end time": 0.768671,
+      "capacity": 0.770608
+    },
+    "SPEAKER": {
+      "speaker id": 0.747636,
+      "name": 0.74942,
+      "company": 0.753168,
+      "description": 0.758264
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "PARTICIPANT_TICKET_RECORD",
+      "description": "Each participant can have many participant ticket records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999481
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "PARTICIPANT_TICKET_RECORD",
+      "description": "Each ticket can be associated with many participant ticket records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "DISCOUNT_CODE",
+      "entity_2": "PARTICIPANT_TICKET_RECORD",
+      "description": "Each discount code can be used in many participant ticket records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.058534
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "SPEAKER",
+      "description": "Each meeting can have many speakers.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.985814
+    },
+    {
+      "entity_1": "WORKSHOP",
+      "entity_2": "SPEAKER",
+      "description": "Each workshop can have many speakers.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015755
+    }
+  ],
+  "processing_time": 32.32
+}

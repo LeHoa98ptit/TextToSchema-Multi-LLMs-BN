@@ -1,0 +1,121 @@
+{
+  "filename": "424.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SYSTEM": 0.817574,
+    "LOGIN": 0.817574,
+    "SESSION": 0.736334,
+    "AUTHORIZATION": 0.817574,
+    "SYSTEM_CONFIGURATION": 0.727366
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.753088,
+      "username": 0.740214,
+      "password hash": 0.756915,
+      "phone number": 0.746534,
+      "email": 0.758844,
+      "account status": 0.775286,
+      "last login time": 0.772748,
+      "last login ip": 0.769365
+    },
+    "SYSTEM": {
+      "system id": 0.761552,
+      "system name": 0.761894,
+      "system domain": 0.767627,
+      "access time": 0.764553,
+      "is enabled": 0.761615,
+      "approval required": 0.77173,
+      "login required": 0.775566
+    },
+    "SYSTEM_CONFIGURATION": {
+      "system config id": 0.762175,
+      "system id": 0.764655,
+      "callback url": 0.748856,
+      "secret key": 0.76303,
+      "token validity period": 0.769213
+    },
+    "LOGIN": {
+      "login id": 0.762532,
+      "user id": 0.762614,
+      "system id": 0.771768,
+      "login time": 0.767642,
+      "login ip": 0.76751
+    },
+    "SESSION": {
+      "session id": 0.75396,
+      "user id": 0.759762,
+      "system id": 0.765722,
+      "token": 0.762722,
+      "token expiration time": 0.755181
+    },
+    "AUTHORIZATION": {
+      "authorization id": 0.760096,
+      "user id": 0.763841,
+      "system id": 0.773316,
+      "authorization time": 0.765457,
+      "effective time": 0.767703,
+      "expiration time": 0.76017,
+      "status": 0.773796
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "SYSTEM_CONFIGURATION",
+      "description": "Each system has exactly one configuration record; each configuration belongs to one system.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.995132
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN",
+      "description": "A user can have many login records; each login record is associated with one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999954
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "LOGIN",
+      "description": "A system can have many login records; each login record is associated with one system.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01049
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SESSION",
+      "description": "A user can have many sessions; each session belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.089726
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "SESSION",
+      "description": "A system can have many sessions; each session belongs to one system.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.59483
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "description": "A user can have many authorizations; each authorization record is linked to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999883
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "AUTHORIZATION",
+      "description": "A system can have many authorizations; each authorization record is linked to one system.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.836696
+    }
+  ],
+  "processing_time": 34.25
+}

@@ -1,0 +1,72 @@
+{
+  "filename": "378.txt",
+  "entity": {
+    "USER": 0.817574,
+    "BLOGPOST": 0.743969,
+    "COMMENT": 0.817574,
+    "ACTIVITY": 0.728238
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.755783,
+      "id": 0.750904,
+      "name": 0.746149
+    },
+    "BLOGPOST": {
+      "title": 0.771449,
+      "body": 0.773822,
+      "creation_time": 0.777182,
+      "summary": 0.778258,
+      "author": 0.776422
+    },
+    "COMMENT": {
+      "content": 0.779217,
+      "creation_time": 0.776725,
+      "id": 0.763383,
+      "user_id": 0.771204
+    },
+    "ACTIVITY": {
+      "type": 0.750467,
+      "operation": 0.752541,
+      "timestamp": 0.755112,
+      "user_id": 0.750593,
+      "blogpost_id": 0.769813,
+      "description": 0.760698
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "BLOGPOST",
+      "cardinality": "1:N",
+      "description": "A user can create many blog posts",
+      "probability": 0.83638
+    },
+    {
+      "entity_1": "BLOGPOST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A blog post can have many comments",
+      "probability": 0.000269
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can post many comments",
+      "probability": 0.959368
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACTIVITY",
+      "cardinality": "1:N",
+      "description": "A user can have many activities",
+      "probability": 0.078765
+    }
+  ],
+  "processing_time": 18.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationships between BLOGPOST and ACTIVITY, added user_id to COMMENT and blogpost_id to ACTIVITY to improve data integrity, and added description attribute to ACTIVITY for more detailed tracking"
+  }
+}

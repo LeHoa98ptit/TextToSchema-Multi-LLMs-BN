@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "MENU",
+    "USER_ROLE",
+    "ROLE_MENU",
+    "AUDIT_LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "username",
+      "password_hash",
+      "email",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "ROLE": [
+      "roleid",
+      "rolename",
+      "description",
+      "is_active",
+      "created_at",
+      "updated_at"
+    ],
+    "MENU": [
+      "menuid",
+      "label",
+      "url",
+      "parent_menu_id",
+      "order_index",
+      "icon",
+      "is_visible",
+      "created_at",
+      "updated_at"
+    ],
+    "USER_ROLE": [
+      "userid",
+      "roleid",
+      "assigned_at",
+      "assigned_by"
+    ],
+    "ROLE_MENU": [
+      "roleid",
+      "menuid",
+      "granted_at",
+      "granted_by"
+    ],
+    "AUDIT_LOG": [
+      "logid",
+      "entity_name",
+      "entity_id",
+      "action_type",
+      "performed_by",
+      "performed_at",
+      "details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_MENU",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ROLE_MENU",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 53.5404,
+  "ilp_runtime": 0.039
+}

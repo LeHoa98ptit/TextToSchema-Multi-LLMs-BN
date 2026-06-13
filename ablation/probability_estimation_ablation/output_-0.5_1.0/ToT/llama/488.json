@@ -1,0 +1,83 @@
+{
+  "filename": "488.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "WORK_ORDER": 0.51587,
+    "EMPLOYEE": 0.622459,
+    "EMAIL_CONFIGURATION": 0.520813,
+    "EMAIL_SERVER": 0.586787,
+    "CUSTOMER": 0.5058
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department_description": 0.560422,
+      "email_address": 0.568392,
+      "sort_order": 0.55917,
+      "auto_reply_disabled": 0.558945,
+      "hide_user": 0.550679
+    },
+    "WORK_ORDER": {
+      "work_order_id": 0.545265,
+      "customer_id": 0.548701,
+      "department_id": 0.569193,
+      "work_order_status": 0.55001,
+      "respond_email": 0.565378
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.545492,
+      "email": 0.568254,
+      "employee_name": 0.548614
+    },
+    "EMAIL_CONFIGURATION": {
+      "host_address": 0.537754,
+      "port_number": 0.537538,
+      "username": 0.548907,
+      "password": 0.545221
+    },
+    "EMAIL_SERVER": {
+      "server_id": 0.538473,
+      "server_name": 0.536538,
+      "server_status": 0.545821
+    },
+    "CUSTOMER": {
+      "customer_id": 0.521423,
+      "customer_name": 0.523804,
+      "customer_email": 0.538798
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORK_ORDER",
+      "cardinality": "1:N",
+      "description": "A department can have multiple work orders",
+      "probability": 0.10094
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMAIL_CONFIGURATION",
+      "cardinality": "1:1",
+      "description": "An employee is associated with one email configuration",
+      "probability": 0.86069
+    },
+    {
+      "entity_1": "EMAIL_CONFIGURATION",
+      "entity_2": "EMAIL_SERVER",
+      "cardinality": "1:1",
+      "description": "An email configuration is associated with one email server",
+      "probability": 0.995451
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "WORK_ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple work orders",
+      "probability": 0.099658
+    }
+  ],
+  "processing_time": 9.71,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed employee role and email protocol as they were not essential to the system, retained strengths from the original model and ensured relationships accurately reflect the domain description."
+  }
+}

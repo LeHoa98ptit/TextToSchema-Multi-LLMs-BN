@@ -1,0 +1,133 @@
+{
+  "entity": [
+    "APPLICATION",
+    "LANGUAGE_REGION",
+    "COUNTRY",
+    "RESOURCE_FILE",
+    "RESOURCE_KEY",
+    "RESOURCE_VALUE",
+    "ASSOC_APPLICATION_LANGUAGE_REGION",
+    "ASSOC_RESOURCE_FILE_RESOURCE_KEY",
+    "ASSOC_COUNTRY_LANGUAGE_REGION"
+  ],
+  "attribute": {
+    "APPLICATION": [
+      "app_id",
+      "app_name",
+      "description",
+      "owner",
+      "created_at",
+      "updated_at"
+    ],
+    "LANGUAGE_REGION": [
+      "lang_region_id",
+      "iso_code",
+      "language_name",
+      "region_name",
+      "is_default",
+      "created_at"
+    ],
+    "COUNTRY": [
+      "country_id",
+      "country_name",
+      "iso_code",
+      "continent",
+      "created_at"
+    ],
+    "RESOURCE_FILE": [
+      "file_id",
+      "app_id",
+      "lang_region_id",
+      "file_path",
+      "file_format",
+      "base_language",
+      "file_version",
+      "checksum",
+      "created_at",
+      "updated_at"
+    ],
+    "RESOURCE_KEY": [
+      "key_id",
+      "key_name",
+      "key_description",
+      "key_version",
+      "created_at"
+    ],
+    "RESOURCE_VALUE": [
+      "value_id",
+      "key_id",
+      "file_id",
+      "value_content",
+      "value_version",
+      "status",
+      "last_modified"
+    ],
+    "ASSOC_APPLICATION_LANGUAGE_REGION": [
+      "assoc_application_language_region_id",
+      "application_id",
+      "language_region_id"
+    ],
+    "ASSOC_RESOURCE_FILE_RESOURCE_KEY": [
+      "assoc_resource_file_resource_key_id",
+      "resource_file_id",
+      "resource_key_id"
+    ],
+    "ASSOC_COUNTRY_LANGUAGE_REGION": [
+      "assoc_country_language_region_id",
+      "country_id",
+      "language_region_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "RESOURCE_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "RESOURCE_VALUE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_APPLICATION_LANGUAGE_REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "ASSOC_APPLICATION_LANGUAGE_REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE_FILE",
+      "entity_2": "ASSOC_RESOURCE_FILE_RESOURCE_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "ASSOC_RESOURCE_FILE_RESOURCE_KEY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "ASSOC_COUNTRY_LANGUAGE_REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "ASSOC_COUNTRY_LANGUAGE_REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 117.9787,
+  "ilp_runtime": 0.06
+}

@@ -1,0 +1,74 @@
+{
+  "filename": "293.txt",
+  "entity": {
+    "MINE": 0.817574,
+    "EQUIPMENT": 0.817574,
+    "PERSONNEL": 0.817574,
+    "MAINTENANCE_EVENT": 0.757735,
+    "LOCATION": 0.708973
+  },
+  "attribute": {
+    "MINE": {
+      "mine id": 0.739129,
+      "location id": 0.749875
+    },
+    "EQUIPMENT": {
+      "equipment id": 0.771672,
+      "equipment type": 0.768232,
+      "model": 0.76721,
+      "purchase date": 0.762437,
+      "mine id": 0.773847
+    },
+    "PERSONNEL": {
+      "personnel id": 0.761115,
+      "contact number": 0.759112
+    },
+    "MAINTENANCE_EVENT": {
+      "maintenance event id": 0.755292,
+      "equipment id": 0.771799,
+      "maintenance date": 0.756227,
+      "maintenance content": 0.763138,
+      "maintenance cost": 0.753363,
+      "personnel ids": 0.7705
+    },
+    "LOCATION": {
+      "location id": 0.74105,
+      "location name": 0.739968
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "MINE",
+      "description": "A location can have multiple mines; each mine is situated at one location.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.931884
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "EQUIPMENT",
+      "description": "A mine can have many equipment; each equipment is assigned to one mine.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.781961
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "MAINTENANCE_EVENT",
+      "description": "Equipment can have multiple maintenance events; each maintenance event concerns one equipment.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976365
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MAINTENANCE_EVENT",
+      "description": "Personnel can be involved in multiple maintenance events; each maintenance event can involve one or more personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96378
+    }
+  ],
+  "processing_time": 15.3
+}

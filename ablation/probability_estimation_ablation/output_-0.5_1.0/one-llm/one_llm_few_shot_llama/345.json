@@ -1,0 +1,102 @@
+{
+  "filename": "345.txt",
+  "entity": {
+    "COURSE": 0.622459,
+    "PROFESSOR": 0.622459,
+    "STUDENT": 0.622459,
+    "SUBJECT": 0.622459,
+    "ENROLLMENT": 0.504375,
+    "ASSOC_COURSE_PROFESSOR": 0.765217,
+    "ASSOC_SUBJECT_SUBJECT": 0.999999
+  },
+  "attribute": {
+    "COURSE": {
+      "course_code": 0.564919,
+      "course_name": 0.563831,
+      "total_credit": 0.558408
+    },
+    "PROFESSOR": {
+      "professor_id": 0.54877,
+      "email": 0.5479,
+      "name": 0.540543
+    },
+    "STUDENT": {
+      "student_id": 0.555764,
+      "email": 0.559804,
+      "date_of_birth": 0.551926
+    },
+    "SUBJECT": {
+      "subject_code": 0.5366,
+      "subject_name": 0.540804,
+      "credit": 0.548798
+    },
+    "ENROLLMENT": {
+      "enrollment_date": 0.535628,
+      "grade": 0.54122
+    },
+    "ASSOC_COURSE_PROFESSOR": {
+      "assoc_course_professor_id": 0.765217,
+      "course_id": 0.765217,
+      "professor_id": 0.765217
+    },
+    "ASSOC_SUBJECT_SUBJECT": {
+      "assoc_subject_subject_id": 0.999999,
+      "subject_id": 0.999999
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_COURSE_PROFESSOR",
+      "description": "One COURSE can be associated with many ASSOC_COURSE_PROFESSOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.765217
+    },
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "ASSOC_COURSE_PROFESSOR",
+      "description": "One PROFESSOR can be associated with many ASSOC_COURSE_PROFESSOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.765217
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "SUBJECT",
+      "cardinality": "1:N",
+      "description": "A course can have multiple subjects, but a subject is only part of one course.",
+      "probability": 0.990753
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have multiple enrollments, but an enrollment is only for one student.",
+      "probability": 0.999919
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can have multiple enrollments, but an enrollment is only for one course.",
+      "probability": 0.253608
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_SUBJECT_SUBJECT",
+      "description": "One SUBJECT can be associated with many ASSOC_SUBJECT_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT",
+      "cardinality": "1:N",
+      "description": "A subject can have multiple prerequisite subjects, but a subject can only be a prerequisite for multiple subjects.",
+      "probability": 0.999999
+    }
+  ],
+  "processing_time": 12.9
+}

@@ -1,0 +1,109 @@
+{
+  "entity": [
+    "PRODUCTION_STATISTIC",
+    "EQUIPMENT",
+    "INSPECTION_PLAN",
+    "USER",
+    "EQUIPMENT_FAILURE",
+    "REPAIR_WORK_ORDER",
+    "QUALITY_REPORT",
+    "ANNOUNCEMENT",
+    "JOB_POSITION"
+  ],
+  "attribute": {
+    "PRODUCTION_STATISTIC": [
+      "statistic_id",
+      "report_type",
+      "report_date",
+      "production_datum",
+      "production_indicator",
+      "completion_status",
+      "metal_recovery_rate",
+      "grade"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "model",
+      "main_category",
+      "sub_category",
+      "location",
+      "operation_status",
+      "real_time_monitoring",
+      "alarm_notification",
+      "anomaly_case"
+    ],
+    "INSPECTION_PLAN": [
+      "plan_id",
+      "inspection_date",
+      "progress",
+      "status"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "role",
+      "permission",
+      "status",
+      "operation_history"
+    ],
+    "EQUIPMENT_FAILURE": [
+      "failure_id",
+      "failure_type",
+      "failure_time",
+      "processing_status"
+    ],
+    "REPAIR_WORK_ORDER": [
+      "work_order_id",
+      "repair_detail",
+      "progress",
+      "repair_time"
+    ],
+    "QUALITY_REPORT": [
+      "report_id",
+      "metal_recovery_rate",
+      "incoming_warehouse_sample_grade",
+      "daily_report_grade"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "content",
+      "release_time",
+      "status"
+    ],
+    "JOB_POSITION": [
+      "position_id",
+      "position_name",
+      "description",
+      "responsibility",
+      "requirement"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT_FAILURE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.0748,
+  "ilp_runtime": 0.123
+}

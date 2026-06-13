@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "AIRLINE",
+    "FLIGHT",
+    "RESERVATION",
+    "PAYMENT",
+    "ASSOC_AIRLINE_RESERVATION"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "contact_information",
+      "credit_card_number"
+    ],
+    "AIRLINE": [
+      "contact_information"
+    ],
+    "FLIGHT": [
+      "flight_number",
+      "destination",
+      "departure_time",
+      "arrival_time"
+    ],
+    "RESERVATION": [
+      "reservation_number",
+      "reservation_date",
+      "reservation_time",
+      "number_of_tickets"
+    ],
+    "PAYMENT": [
+      "payment_record",
+      "payment_date",
+      "payment_method"
+    ],
+    "ASSOC_AIRLINE_RESERVATION": [
+      "assoc_airline_reservation_id",
+      "airline_id",
+      "reservation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "ASSOC_AIRLINE_RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_AIRLINE_RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.3206,
+  "ilp_runtime": 0.04
+}

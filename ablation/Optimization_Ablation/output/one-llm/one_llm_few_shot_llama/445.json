@@ -1,0 +1,100 @@
+{
+  "entity": [
+    "PERSONNEL",
+    "UNIT",
+    "ADMINISTRATOR",
+    "HEALTH_INFORMATION",
+    "VISITOR",
+    "APPOINTMENT",
+    "ACCESS_RECORD",
+    "ACCESS_CONTROL_DEVICE",
+    "ASSOC_PERSONNEL_UNIT"
+  ],
+  "attribute": {
+    "PERSONNEL": [
+      "d",
+      "personnel_type",
+      "contact_phone_number",
+      "email"
+    ],
+    "UNIT": [
+      "unit_d",
+      "unit_type"
+    ],
+    "ADMINISTRATOR": [
+      "administrator_d",
+      "management_role"
+    ],
+    "HEALTH_INFORMATION": [
+      "temperature",
+      "symptom",
+      "health_code_color"
+    ],
+    "VISITOR": [
+      "visitor_d",
+      "contact_phone_number",
+      "email"
+    ],
+    "APPOINTMENT": [
+      "appointment_d",
+      "schedule_entry_time",
+      "schedule_exit_time",
+      "appointment_status"
+    ],
+    "ACCESS_RECORD": [
+      "access_record_d",
+      "entry_time",
+      "exit_time"
+    ],
+    "ACCESS_CONTROL_DEVICE": [
+      "device_d",
+      "device_location",
+      "device_status"
+    ],
+    "ASSOC_PERSONNEL_UNIT": [
+      "assoc_personnel_unit_id",
+      "personnel_id",
+      "unit_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCESS_CONTROL_DEVICE",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.6907,
+  "ilp_runtime": 0.066
+}

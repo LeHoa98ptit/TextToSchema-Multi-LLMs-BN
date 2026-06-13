@@ -1,0 +1,92 @@
+{
+  "filename": "364.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "USER": 0.817574,
+    "USER_PROFILE": 0.749679,
+    "LOGIN_ATTEMPT": 0.771182,
+    "LOGIN_RESPONSE_TYPE": 0.781632,
+    "LOGIN_RESPONSE": 0.806246
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.759405,
+      "company_name": 0.758948,
+      "created_at": 0.75389
+    },
+    "USER": {
+      "user_id": 0.753939,
+      "company_id": 0.76526,
+      "username": 0.743375,
+      "phone_number": 0.752684,
+      "job_title": 0.764303
+    },
+    "USER_PROFILE": {
+      "user_id": 0.752276,
+      "email": 0.746612,
+      "status": 0.758993
+    },
+    "LOGIN_ATTEMPT": {
+      "attempt_id": 0.758388,
+      "user_id": 0.75906,
+      "attempt_time": 0.760223,
+      "ip_address": 0.751262,
+      "device_info": 0.757729,
+      "success_flag": 0.759146
+    },
+    "LOGIN_RESPONSE_TYPE": {
+      "type_id": 0.765062,
+      "response_label": 0.767861
+    },
+    "LOGIN_RESPONSE": {
+      "response_id": 0.766572,
+      "attempt_id": 0.76432,
+      "type_id": 0.765946,
+      "login_time": 0.766126,
+      "response_message": 0.766246,
+      "response_label": 0.767032
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A company employs many users",
+      "probability": 0.883247
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PROFILE",
+      "cardinality": "1:1",
+      "description": "Each user has an optional profile containing email and status",
+      "probability": 0.999846
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_ATTEMPT",
+      "cardinality": "1:N",
+      "description": "A user can make multiple login attempts",
+      "probability": 0.994846
+    },
+    {
+      "entity_1": "LOGIN_ATTEMPT",
+      "entity_2": "LOGIN_RESPONSE",
+      "cardinality": "1:1",
+      "description": "Each login attempt generates exactly one login response record",
+      "probability": 0.999916
+    },
+    {
+      "entity_1": "LOGIN_RESPONSE_TYPE",
+      "entity_2": "LOGIN_RESPONSE",
+      "cardinality": "1:N",
+      "description": "A response type can be used in many login responses",
+      "probability": 0.99995
+    }
+  ],
+  "processing_time": 19.96,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a derived attribute 'response_label' to LOGIN_RESPONSE for reporting convenience. Normalized optional user fields (email, status) into a separate USER_PROFILE entity with a 1:1 relationship to USER. Extended LOGIN_ATTEMPT with optional audit fields 'device_info' and 'success_flag' while keeping them optional. Clarified primary key/foreign key roles in relationships and retained the lean, efficient attribute set."
+  }
+}

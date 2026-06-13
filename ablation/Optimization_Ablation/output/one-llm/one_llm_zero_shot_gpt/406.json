@@ -1,0 +1,190 @@
+{
+  "entity": [
+    "ACCOUNT",
+    "GENERAL_LEDGER",
+    "ACCOUNT_RECEIVABLE",
+    "ACCOUNT_PAYABLE",
+    "CUSTOMER",
+    "SUPPLIER",
+    "COST_CENTER",
+    "COST_ACCOUNTING",
+    "EMPLOYEE",
+    "PERFORMANCE_EVAL",
+    "PRODUCTION_PLAN",
+    "MATERIAL_REQUIREMENT_PLAN",
+    "PRODUCTION_SCHEDULING",
+    "SALE_ORDER",
+    "PURCHASE_ORDER",
+    "MATERIAL",
+    "WAREHOUSE",
+    "INVENTORY",
+    "PROJECT_PLAN",
+    "SUPPLIER_MATERIAL"
+  ],
+  "attribute": {
+    "ACCOUNT": [
+      "account_id",
+      "account_name",
+      "account_type"
+    ],
+    "GENERAL_LEDGER": [
+      "gl_id",
+      "account_id",
+      "entry_date",
+      "entry_time",
+      "amount",
+      "description"
+    ],
+    "ACCOUNT_RECEIVABLE": [
+      "ar_id",
+      "customer_id",
+      "amount",
+      "due_date",
+      "receipt_date"
+    ],
+    "ACCOUNT_PAYABLE": [
+      "ap_id",
+      "supplier_id",
+      "amount",
+      "due_date",
+      "payment_date"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_info",
+      "address"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_info",
+      "address"
+    ],
+    "COST_CENTER": [
+      "cost_center_id",
+      "name",
+      "description"
+    ],
+    "COST_ACCOUNTING": [
+      "ca_id",
+      "cost_center_id",
+      "expense_amount",
+      "expense_date",
+      "description"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "name",
+      "position",
+      "hire_date",
+      "salary"
+    ],
+    "PERFORMANCE_EVAL": [
+      "eval_id",
+      "employee_id",
+      "evaluation_date",
+      "score",
+      "comments"
+    ],
+    "PRODUCTION_PLAN": [
+      "plan_id",
+      "product_id",
+      "quantity",
+      "start_date",
+      "end_date"
+    ],
+    "MATERIAL_REQUIREMENT_PLAN": [
+      "mrp_id",
+      "plan_id",
+      "material_id",
+      "required_quantity",
+      "mrp_date"
+    ],
+    "PRODUCTION_SCHEDULING": [
+      "schedule_id",
+      "plan_id",
+      "production_date",
+      "status"
+    ],
+    "SALE_ORDER": [
+      "order_id",
+      "customer_id",
+      "order_date",
+      "total_amount",
+      "status"
+    ],
+    "PURCHASE_ORDER": [
+      "po_id",
+      "supplier_id",
+      "order_date",
+      "total_amount",
+      "status"
+    ],
+    "MATERIAL": [
+      "material_id",
+      "description",
+      "type"
+    ],
+    "WAREHOUSE": [
+      "warehouse_id",
+      "address",
+      "capacity"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "material_id",
+      "warehouse_id",
+      "quantity",
+      "last_updated"
+    ],
+    "PROJECT_PLAN": [
+      "project_id",
+      "name",
+      "start_date",
+      "end_date",
+      "execution_status",
+      "progress"
+    ],
+    "SUPPLIER_MATERIAL": [
+      "sm_id",
+      "supplier_id",
+      "material_id",
+      "supply_lead_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COST_CENTER",
+      "entity_2": "COST_ACCOUNTING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "MATERIAL_REQUIREMENT_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_SCHEDULING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.4332,
+  "ilp_runtime": 0.11
+}

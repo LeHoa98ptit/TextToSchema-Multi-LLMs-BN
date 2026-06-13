@@ -1,0 +1,74 @@
+{
+  "filename": "486.txt",
+  "entity": {
+    "MINE": 0.817574,
+    "MINERAL_RESOURCE": 0.804176,
+    "PERSON": 0.695741,
+    "EXTRACTION_RECORD": 0.743492,
+    "INFORMATION_SYSTEM": 0.693535
+  },
+  "attribute": {
+    "MINE": {
+      "location": 0.750559,
+      "discovery_date": 0.764282
+    },
+    "MINERAL_RESOURCE": {
+      "reserve": 0.772941,
+      "attribute": 0.777237
+    },
+    "PERSON": {
+      "name": 0.738756,
+      "contact_info": 0.740935
+    },
+    "EXTRACTION_RECORD": {
+      "extraction_date": 0.753937,
+      "extraction_volume": 0.757644,
+      "extraction_cost": 0.767154
+    },
+    "INFORMATION_SYSTEM": {
+      "statistical_analysis": 0.764742
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MINE",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "1:N",
+      "description": "A mine can have multiple mineral resources",
+      "probability": 0.807419
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "description": "A person can be in charge of multiple mines",
+      "probability": 0.993921
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A mineral resource can have multiple extraction records",
+      "probability": 0.400338
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A mine can have multiple extraction records",
+      "probability": 0.134005
+    },
+    {
+      "entity_1": "INFORMATION_SYSTEM",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "description": "An information system can store multiple extraction records",
+      "probability": 0.998287
+    }
+  ],
+  "processing_time": 6.96,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, added a relationship between MINE and EXTRACTION_RECORD, and simplified relationships to improve efficiency and clarity."
+  }
+}

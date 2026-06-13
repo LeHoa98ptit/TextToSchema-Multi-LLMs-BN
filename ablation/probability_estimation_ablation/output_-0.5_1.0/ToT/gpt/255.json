@@ -1,0 +1,280 @@
+{
+  "filename": "255.txt",
+  "entity": {
+    "PRODUCTION_REPORT": 0.534097,
+    "EQUIPMENT": 0.622459,
+    "ALARM_NOTIFICATION": 0.425166,
+    "INSPECTION_PLAN": 0.448953,
+    "INSPECTION_RECORD": 0.49675,
+    "FAILURE_REPORT": 0.537902,
+    "REPAIR_WORK_ORDER": 0.521836,
+    "REPAIR_DETAIL": 0.556335,
+    "QUALITY_RECORD": 0.530811,
+    "DAILY_QUALITY_REPORT": 0.511298,
+    "USER": 0.471207,
+    "ROLE": 0.508699,
+    "ANNOUNCEMENT": 0.517393,
+    "JOB_POSITION": 0.522285,
+    "JOB_APPLICATION": 0.438513,
+    "USER_OPERATION_HISTORY": 0.435216,
+    "ASSOC_USER_JOB_POSITION": 0.066466
+  },
+  "attribute": {
+    "PRODUCTION_REPORT": {
+      "report_id": 0.551672,
+      "report_type": 0.549798,
+      "report_date": 0.545018,
+      "production_datum": 0.553583,
+      "production_indicator": 0.555333,
+      "completion_status": 0.558345,
+      "metal_recovery_rate": 0.549962,
+      "grade": 0.546028,
+      "equipment_id": 0.565678
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.545043,
+      "model": 0.540818,
+      "main_category": 0.553493,
+      "sub_category": 0.548341,
+      "location": 0.536361,
+      "operation_status": 0.564568,
+      "last_maintenance_date": 0.551719
+    },
+    "ALARM_NOTIFICATION": {
+      "alarm_id": 0.507811,
+      "equipment_id": 0.524721,
+      "alarm_type": 0.509633,
+      "alarm_timestamp": 0.506555,
+      "resolved_status": 0.511463
+    },
+    "INSPECTION_PLAN": {
+      "plan_id": 0.53785,
+      "equipment_id": 0.551733,
+      "scheduled_date": 0.533076,
+      "inspector_id": 0.539169,
+      "description": 0.549132
+    },
+    "INSPECTION_RECORD": {
+      "record_id": 0.532857,
+      "plan_id": 0.541484,
+      "performed_date": 0.539938,
+      "findings": 0.548151,
+      "status": 0.553435
+    },
+    "FAILURE_REPORT": {
+      "failure_id": 0.53506,
+      "equipment_id": 0.554425,
+      "reporter_id": 0.538165,
+      "failure_type": 0.538945,
+      "failure_time": 0.53615,
+      "processing_status": 0.544993,
+      "description": 0.549066
+    },
+    "REPAIR_WORK_ORDER": {
+      "work_order_id": 0.533428,
+      "failure_id": 0.53697,
+      "repair_personnel_id": 0.551062,
+      "start_time": 0.531813,
+      "end_time": 0.532365,
+      "status": 0.547562,
+      "details": 0.546801
+    },
+    "REPAIR_DETAIL": {
+      "detail_id": 0.531904,
+      "work_order_id": 0.540452,
+      "step_description": 0.537989,
+      "timestamp": 0.523935
+    },
+    "QUALITY_RECORD": {
+      "quality_record_id": 0.528879,
+      "equipment_id": 0.551959,
+      "metal_recovery_rate": 0.547777,
+      "grade": 0.535119,
+      "report_date": 0.537421,
+      "source": 0.530966
+    },
+    "DAILY_QUALITY_REPORT": {
+      "daily_report_id": 0.546922,
+      "report_date": 0.538753,
+      "grade": 0.538851,
+      "recovery_rate": 0.553488
+    },
+    "USER": {
+      "user_id": 0.503783,
+      "username": 0.49939,
+      "role_id": 0.515943,
+      "permission": 0.509617,
+      "status": 0.530979,
+      "email": 0.499973,
+      "created_at": 0.496056
+    },
+    "ROLE": {
+      "role_id": 0.522859,
+      "role_name": 0.524014
+    },
+    "ANNOUNCEMENT": {
+      "announcement_id": 0.515331,
+      "content": 0.522501,
+      "release_time": 0.514741,
+      "status": 0.523882,
+      "created_by": 0.511639,
+      "publish_time": 0.513549,
+      "delete_time": 0.512997
+    },
+    "JOB_POSITION": {
+      "position_id": 0.536885,
+      "title": 0.54445,
+      "description": 0.552182,
+      "responsibility": 0.541282,
+      "requirement": 0.551351
+    },
+    "JOB_APPLICATION": {
+      "application_id": 0.524125,
+      "user_id": 0.524955,
+      "position_id": 0.532375,
+      "application_date": 0.524009,
+      "match_rate": 0.539229,
+      "status": 0.548438
+    },
+    "USER_OPERATION_HISTORY": {
+      "history_id": 0.524383,
+      "user_id": 0.523113,
+      "operation_type": 0.530321,
+      "operation_timestamp": 0.525797,
+      "details": 0.535929
+    },
+    "ASSOC_USER_JOB_POSITION": {
+      "assoc_user_job_position_id": 0.066466,
+      "user_id": 0.066466,
+      "job_position_id": 0.066466
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "PRODUCTION_REPORT",
+      "cardinality": "1:N",
+      "description": "One equipment can generate many production reports",
+      "probability": 0.016291
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "QUALITY_RECORD",
+      "cardinality": "1:N",
+      "description": "Quality records are linked to the equipment that produced the metal",
+      "probability": 0.99583
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ALARM_NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "Equipment can trigger multiple alarm notifications",
+      "probability": 0.686587
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION_PLAN",
+      "cardinality": "1:N",
+      "description": "One equipment can have many inspection plans",
+      "probability": 0.829947
+    },
+    {
+      "entity_1": "INSPECTION_PLAN",
+      "entity_2": "INSPECTION_RECORD",
+      "cardinality": "1:N",
+      "description": "Each inspection plan can produce multiple inspection records",
+      "probability": 0.999989
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "FAILURE_REPORT",
+      "cardinality": "1:N",
+      "description": "Equipment may have multiple failure reports",
+      "probability": 0.402716
+    },
+    {
+      "entity_1": "FAILURE_REPORT",
+      "entity_2": "REPAIR_WORK_ORDER",
+      "cardinality": "1:1",
+      "description": "Each failure report is addressed by a single repair work order",
+      "probability": 0.390514
+    },
+    {
+      "entity_1": "REPAIR_WORK_ORDER",
+      "entity_2": "REPAIR_DETAIL",
+      "cardinality": "1:N",
+      "description": "A repair work order can contain many detailed repair steps",
+      "probability": 0.148161
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAILURE_REPORT",
+      "cardinality": "1:N",
+      "description": "A user (reporter) can submit multiple failure reports",
+      "probability": 0.997505
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPAIR_WORK_ORDER",
+      "cardinality": "1:N",
+      "description": "A user (repair personnel) can handle multiple repair work orders",
+      "probability": 0.472874
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_OPERATION_HISTORY",
+      "cardinality": "1:N",
+      "description": "Each user has many operation history records",
+      "probability": 0.999605
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "description": "A user creates zero or many announcements",
+      "probability": 0.978275
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "One role can be assigned to many users",
+      "probability": 0.996885
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "JOB_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A user can submit multiple job applications",
+      "probability": 0.018679
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "JOB_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A job position can receive many applications",
+      "probability": 0.999813
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_JOB_POSITION",
+      "description": "One USER can be associated with many ASSOC_USER_JOB_POSITION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.066466
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "ASSOC_USER_JOB_POSITION",
+      "description": "One JOB_POSITION can be associated with many ASSOC_USER_JOB_POSITION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.066466
+    }
+  ],
+  "processing_time": 91.98,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Expanded the model to cover all functional areas from the domain description. Added entities for equipment monitoring (ALARM_NOTIFICATION), inspection planning and results (INSPECTION_PLAN, INSPECTION_RECORD), failure reporting (FAILURE_REPORT) and detailed repair workflow (REPAIR_WORK_ORDER, REPAIR_DETAIL). Introduced QUALITY_RECORD and DAILY_QUALITY_REPORT to capture metal recovery rates and grades at both granular and daily levels. Added ROLE for clearer user role management and USER_OPERATION_HISTORY to log user actions. Created JOB_APPLICATION to model the many‑to‑many relationship between USER and JOB_POSITION and to store match rate and application status. Enriched existing entities with foreign keys and additional attributes (e.g., equipment_id in reports, created_by in announcements). Refined relationships with precise cardinalities and descriptive texts, while preserving the original core entities and their strengths."
+  }
+}

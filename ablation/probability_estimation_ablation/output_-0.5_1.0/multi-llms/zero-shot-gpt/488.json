@@ -1,0 +1,105 @@
+{
+  "filename": "488.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "WORK_ORDER": 0.51587,
+    "CUSTOMER": 0.5058,
+    "EMAIL_CONFIGURATION": 0.520813,
+    "EMAIL_SERVER": 0.586787,
+    "EMPLOYEE": 0.622459,
+    "EMPLOYEE_EMAIL_SERVER": 0.997618
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "department id": 0.552828,
+      "department name": 0.556908,
+      "description": 0.556243,
+      "email address": 0.568793,
+      "hide user": 0.554953
+    },
+    "WORK_ORDER": {
+      "work order id": 0.552134,
+      "customer id": 0.551387,
+      "department id": 0.571637,
+      "respond email pipeline": 0.564597,
+      "auto reply disabled": 0.550789
+    },
+    "CUSTOMER": {
+      "customer id": 0.521784
+    },
+    "EMAIL_CONFIGURATION": {
+      "email configuration id": 0.548484,
+      "department id": 0.571639,
+      "host address": 0.543082,
+      "port number": 0.540076,
+      "login username": 0.540652,
+      "login password": 0.539231,
+      "auto handle email": 0.554588
+    },
+    "EMAIL_SERVER": {
+      "email server id": 0.543269
+    },
+    "EMPLOYEE": {
+      "employee id": 0.54676
+    },
+    "EMPLOYEE_EMAIL_SERVER": {
+      "employee_email_server_id": 0.997618,
+      "employee_id": 0.997618,
+      "email_server_id": 0.997618,
+      "id_EMPLOYEE_EMAIL_SERVER": 0.997618,
+      "id_EMPLOYEE": 0.997618,
+      "id_EMAIL_SERVER": 0.997618
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORK_ORDER",
+      "description": "A department receives many work orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.101215
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "WORK_ORDER",
+      "description": "A customer can submit multiple work orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.099704
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMAIL_CONFIGURATION",
+      "description": "Each department has a single email configuration",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.907137
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_EMAIL_SERVER",
+      "description": "One EMPLOYEE can be associated with many EMPLOYEE_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997618
+    },
+    {
+      "entity_1": "EMAIL_SERVER",
+      "entity_2": "EMPLOYEE_EMAIL_SERVER",
+      "description": "One EMAIL_SERVER can be associated with many EMPLOYEE_EMAIL_SERVER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997618
+    },
+    {
+      "entity_1": "EMAIL_CONFIGURATION",
+      "entity_2": "EMAIL_SERVER",
+      "description": "An email configuration specifies one email server",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.996866
+    }
+  ],
+  "processing_time": 15.12
+}

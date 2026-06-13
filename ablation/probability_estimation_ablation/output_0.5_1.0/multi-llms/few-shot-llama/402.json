@@ -1,0 +1,153 @@
+{
+  "filename": "402.txt",
+  "entity": {
+    "DOCTOR": 0.732099,
+    "DEPARTMENT": 0.817574,
+    "PATIENT": 0.727644,
+    "DIAGNOSIS_AND_TREATMENT": 0.780126,
+    "WARD": 0.817574,
+    "REGISTRATION_CATEGORY": 0.756779,
+    "DRUG": 0.817574,
+    "DRUG_LIST": 0.845292,
+    "REGISTRATION": 0.69758
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor id": 0.758658,
+      "name": 0.762794,
+      "gender": 0.75964,
+      "title": 0.760761,
+      "date of birth": 0.751035,
+      "years of employment": 0.754596,
+      "work permit": 0.753003
+    },
+    "DEPARTMENT": {
+      "department id": 0.75572,
+      "department name": 0.757577,
+      "personnel": 0.761332,
+      "department number": 0.756952,
+      "department phone number": 0.756435,
+      "department address": 0.757298
+    },
+    "PATIENT": {
+      "patient id": 0.761051,
+      "name": 0.762815,
+      "gender": 0.760355,
+      "age": 0.752168,
+      "contact information": 0.771504,
+      "diagnosis description": 0.763,
+      "date of consultation": 0.754477
+    },
+    "DIAGNOSIS_AND_TREATMENT": {
+      "diagnosis and treatment id": 0.758053,
+      "case number": 0.757654,
+      "diagnosis and treatment content": 0.757516
+    },
+    "WARD": {
+      "ward id": 0.7541,
+      "ward number": 0.758657,
+      "number of beds": 0.765143,
+      "ward level": 0.757274
+    },
+    "REGISTRATION_CATEGORY": {
+      "registration category id": 0.74989,
+      "category number": 0.754784,
+      "category name": 0.750161
+    },
+    "DRUG": {
+      "drug id": 0.763744,
+      "name": 0.757265,
+      "quantity": 0.762675,
+      "price": 0.749551,
+      "barcode": 0.762024
+    },
+    "DRUG_LIST": {
+      "drug list id": 0.774728,
+      "drug list number": 0.772654,
+      "drug information": 0.779243,
+      "drug_list_id": 0.845292,
+      "diagnosis_and_treatment_id": 0.845292,
+      "drug_id": 0.845292,
+      "drug_list_number": 0.845292,
+      "drug_information": 0.845292
+    },
+    "REGISTRATION": {
+      "registration id": 0.743453
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "DEPARTMENT",
+      "description": "A doctor belongs to one department, and a department can have many doctors.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005421
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WARD",
+      "description": "A department can have many wards, and a ward belongs to one department.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.868606
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS_AND_TREATMENT",
+      "description": "A patient can have many diagnosis and treatment records, and a diagnosis and treatment record belongs to one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995602
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "REGISTRATION",
+      "description": "A patient can have many registrations, and a registration belongs to one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.822125
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "REGISTRATION_CATEGORY",
+      "description": "A registration category can have many registrations, and a registration belongs to one registration category.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999782
+    },
+    {
+      "entity_1": "DIAGNOSIS_AND_TREATMENT",
+      "entity_2": "DRUG_LIST",
+      "description": "One DIAGNOSIS_AND_TREATMENT can be associated with many DRUG_LIST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.845292
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "DRUG_LIST",
+      "description": "One DRUG can be associated with many DRUG_LIST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.845292
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PATIENT",
+      "description": "A doctor can have many patients, and a patient is treated by one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.027732
+    },
+    {
+      "entity_1": "WARD",
+      "entity_2": "PATIENT",
+      "description": "A ward can have many patients, and a patient is admitted to one ward.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 6.7e-05
+    }
+  ],
+  "processing_time": 44.49
+}

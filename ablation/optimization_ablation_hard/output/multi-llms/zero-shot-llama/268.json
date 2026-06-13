@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "HOTEL",
+    "RESTAURANT",
+    "LOCATION",
+    "DISH",
+    "RESERVATION",
+    "RESERVATION_RECORD"
+  ],
+  "attribute": {
+    "HOTEL": [
+      "id",
+      "location"
+    ],
+    "RESTAURANT": [
+      "id",
+      "hotel id",
+      "operating hour"
+    ],
+    "LOCATION": [
+      "id",
+      "address"
+    ],
+    "DISH": [
+      "id",
+      "name",
+      "price",
+      "category"
+    ],
+    "RESERVATION": [
+      "id",
+      "customer id",
+      "table id",
+      "reservation time",
+      "number of diners"
+    ],
+    "RESERVATION_RECORD": [
+      "id",
+      "reservation id",
+      "restaurant id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "RESTAURANT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_RECORD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.1144,
+  "ilp_runtime": 0.041
+}

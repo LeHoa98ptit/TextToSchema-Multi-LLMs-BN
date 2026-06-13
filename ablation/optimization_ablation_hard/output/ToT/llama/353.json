@@ -1,0 +1,95 @@
+{
+  "entity": [
+    "PAGE",
+    "ADMINISTRATOR",
+    "USER",
+    "PAGE_GROUP",
+    "PERMISSION",
+    "ASSOC_USER_PAGE",
+    "ASSOC_PAGE_PAGE_GROUP",
+    "ASSOC_ADMINISTRATOR_PERMISSION"
+  ],
+  "attribute": {
+    "PAGE": [
+      "title",
+      "alias",
+      "display_order",
+      "style",
+      "redirection_target",
+      "visibility"
+    ],
+    "ADMINISTRATOR": [
+      "username",
+      "email",
+      "detail"
+    ],
+    "USER": [
+      "username",
+      "email",
+      "detail"
+    ],
+    "PAGE_GROUP": [
+      "group_name",
+      "description"
+    ],
+    "PERMISSION": [
+      "permission_name",
+      "description"
+    ],
+    "ASSOC_USER_PAGE": [
+      "assoc_user_page_id",
+      "user_id",
+      "page_id"
+    ],
+    "ASSOC_PAGE_PAGE_GROUP": [
+      "assoc_page_page_group_id",
+      "page_id",
+      "page_group_id"
+    ],
+    "ASSOC_ADMINISTRATOR_PERMISSION": [
+      "assoc_administrator_permission_id",
+      "administrator_id",
+      "permission_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "ASSOC_USER_PAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "ASSOC_PAGE_PAGE_GROUP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAGE_GROUP",
+      "entity_2": "ASSOC_PAGE_PAGE_GROUP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ASSOC_ADMINISTRATOR_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ADMINISTRATOR_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 78.3874,
+  "ilp_runtime": 0.059
+}

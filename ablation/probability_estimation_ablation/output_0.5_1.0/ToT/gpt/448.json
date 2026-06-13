@@ -1,0 +1,224 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ROLE": 0.728099,
+    "UNIT": 0.729285,
+    "EQUIPMENT": 0.817574,
+    "EQUIPMENT_USAGE": 0.772521,
+    "CONSUMABLE": 0.817574,
+    "CONSUMABLE_TRANSACTION": 0.763579,
+    "HAZARDCHEMICAL": 0.741235,
+    "CHEMICAL_TRANSACTION": 0.740506,
+    "EXPERIMENTAL_COURSE": 0.80345,
+    "COURSE_ENROLLMENT": 0.726334,
+    "COURSE_EQUIPMENT": 0.782484,
+    "ASSOC_EXPERIMENTAL_COURSE_USER": 0.988818,
+    "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT": 0.780765
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.73951,
+      "username": 0.732466,
+      "password": 0.742258,
+      "full_name": 0.73991,
+      "email": 0.734094,
+      "phone_number": 0.738089,
+      "associated_unit_id": 0.749239,
+      "role_id": 0.745087
+    },
+    "ROLE": {
+      "role_id": 0.748057,
+      "role_name": 0.749887,
+      "description": 0.758725
+    },
+    "UNIT": {
+      "unit_id": 0.746222,
+      "unit_name": 0.749465,
+      "description": 0.760348
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.766344,
+      "name": 0.763117,
+      "model": 0.768755,
+      "category": 0.773969,
+      "manufacturer": 0.760797,
+      "status": 0.770308,
+      "acquisition_time": 0.765302
+    },
+    "EQUIPMENT_USAGE": {
+      "usage_id": 0.766472,
+      "equipment_id": 0.770086,
+      "user_id": 0.764999,
+      "course_id": 0.785348,
+      "usage_start": 0.765322,
+      "usage_end": 0.768519,
+      "purpose": 0.768133
+    },
+    "CONSUMABLE": {
+      "consumable_id": 0.744655,
+      "name": 0.751135,
+      "category": 0.763592,
+      "quantity_on_hand": 0.754435,
+      "status": 0.757565
+    },
+    "CONSUMABLE_TRANSACTION": {
+      "transaction_id": 0.742769,
+      "consumable_id": 0.74384,
+      "user_id": 0.745273,
+      "transaction_type": 0.749991,
+      "quantity": 0.762144,
+      "transaction_time": 0.745448,
+      "notes": 0.752117
+    },
+    "HAZARDCHEMICAL": {
+      "chemical_id": 0.750364,
+      "name": 0.739998,
+      "category": 0.752776,
+      "quantity_on_hand": 0.751761,
+      "status": 0.745776,
+      "safety_data_sheet": 0.754732
+    },
+    "CHEMICAL_TRANSACTION": {
+      "transaction_id": 0.746312,
+      "chemical_id": 0.751639,
+      "user_id": 0.751248,
+      "transaction_type": 0.752433,
+      "quantity": 0.759294,
+      "transaction_time": 0.746123,
+      "notes": 0.752032
+    },
+    "EXPERIMENTAL_COURSE": {
+      "course_id": 0.767268,
+      "course_name": 0.764609,
+      "class_time": 0.76021,
+      "location": 0.760408,
+      "teacher_id": 0.765111
+    },
+    "COURSE_ENROLLMENT": {
+      "enrollment_id": 0.761572,
+      "course_id": 0.767817,
+      "student_id": 0.765728,
+      "enrollment_date": 0.754342
+    },
+    "COURSE_EQUIPMENT": {
+      "ce_id": 0.780096,
+      "course_id": 0.779936,
+      "equipment_id": 0.779699,
+      "scheduled_time": 0.773472,
+      "notes": 0.776538
+    },
+    "ASSOC_EXPERIMENTAL_COURSE_USER": {
+      "assoc_experimental_course_user_id": 0.988818,
+      "experimental_course_id": 0.988818,
+      "user_id": 0.988818
+    },
+    "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT": {
+      "assoc_experimental_course_equipment_id": 0.780765,
+      "experimental_course_id": 0.780765,
+      "equipment_id": 0.780765
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "Each user is assigned one role; a role can be held by many users",
+      "probability": 0.997533
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "description": "Each user belongs to a single organizational unit",
+      "probability": 0.993434
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "description": "A user may have many equipment usage records",
+      "probability": 0.980125
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE",
+      "cardinality": "1:N",
+      "description": "An equipment item can be referenced in many usage records",
+      "probability": 0.999989
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each course is taught by one teacher (user); a teacher can teach many courses",
+      "probability": 0.988818
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_USER",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many ASSOC_EXPERIMENTAL_COURSE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988818
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_USER",
+      "description": "One USER can be associated with many ASSOC_EXPERIMENTAL_COURSE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988818
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.780765
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT",
+      "description": "One EQUIPMENT can be associated with many ASSOC_EXPERIMENTAL_COURSE_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.780765
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user initiates many consumable transactions (purchase, issue, return, etc.)",
+      "probability": 0.999179
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each consumable can have many transaction records",
+      "probability": 0.969871
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user initiates many hazardous chemical transactions (purchase, issue, return, etc.)",
+      "probability": 0.977398
+    },
+    {
+      "entity_1": "HAZARDCHEMICAL",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each hazardous chemical can have many transaction records",
+      "probability": 0.055593
+    }
+  ],
+  "processing_time": 19.74,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing organizational Unit entity, detailed associative entities for equipment usage, consumable and hazardous chemical transactions, and course enrollment/equipment scheduling. Expanded attributes to capture timestamps, quantities, purposes, safety data, and foreign keys. Refined relationships to reflect real-world cardinalities (e.g., teacher-to-course 1:N, student enrollment N:M, equipment scheduling N:M). Preserved core entities and role‑based user management while providing richer traceability for inventory, safety, and scheduling requirements."
+  }
+}

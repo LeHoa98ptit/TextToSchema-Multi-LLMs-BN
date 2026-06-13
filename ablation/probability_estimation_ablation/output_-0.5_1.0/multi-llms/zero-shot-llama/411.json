@@ -1,0 +1,118 @@
+{
+  "filename": "411.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "CONTACT_PERSON": 0.474547,
+    "PRODUCT": 0.622459,
+    "SUPPLIER": 0.501625,
+    "ORDER": 0.622459,
+    "PAYMENT": 0.622459,
+    "ORDER_DETAIL": 0.002139
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.545978,
+      "customer type": 0.561911,
+      "credit rating": 0.551721,
+      "address": 0.543059,
+      "phone": 0.546603,
+      "email": 0.544464
+    },
+    "CONTACT_PERSON": {
+      "contact person id": 0.514396,
+      "customer id": 0.536696,
+      "name": 0.515253,
+      "phone": 0.516949,
+      "email": 0.515205
+    },
+    "PRODUCT": {
+      "product id": 0.514462,
+      "product specification": 0.536994,
+      "unit price": 0.520857,
+      "inventory quantity": 0.539389,
+      "production date": 0.519953,
+      "product category": 0.527643,
+      "brand": 0.517724,
+      "supplier id": 0.524369
+    },
+    "SUPPLIER": {
+      "supplier id": 0.522445,
+      "name": 0.524115,
+      "address": 0.525414,
+      "phone": 0.531344,
+      "email": 0.528803
+    },
+    "ORDER": {
+      "order id": 0.517897,
+      "customer id": 0.539499,
+      "order time": 0.517766,
+      "order status": 0.527302
+    },
+    "PAYMENT": {
+      "payment id": 0.526676,
+      "order id": 0.527481,
+      "payment method": 0.536268,
+      "payment status": 0.533942,
+      "payment time": 0.526166
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.002139,
+      "order_id": 0.002139,
+      "product_id": 0.002139,
+      "product_quantity": 0.002139,
+      "unit_price": 0.002139,
+      "total": 0.002139
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "description": "A customer can have multiple contact persons",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.751096
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place multiple orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963865
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "description": "An order is associated with one payment",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.874395
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "description": "One ORDER can be associated with many ORDER_DETAIL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002139
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "description": "One PRODUCT can be associated with many ORDER_DETAIL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002139
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLIER",
+      "description": "A product is supplied by one supplier",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.03228
+    }
+  ],
+  "processing_time": 22.82
+}

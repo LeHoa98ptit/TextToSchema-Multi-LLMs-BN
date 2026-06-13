@@ -1,0 +1,91 @@
+{
+  "filename": "373.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "ORGANIZATION": 0.760933,
+    "FUNDING_SOURCE": 0.755044,
+    "BUDGET_ALLOCATION": 0.767545,
+    "DEPARTMENT": 0.729976,
+    "ASSOC_PROJECT_FUNDING_SOURCE": 0.88851
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_code": 0.754817,
+      "project_name": 0.756483,
+      "objective_name": 0.753028,
+      "start_date": 0.744801,
+      "end_date": 0.747144
+    },
+    "ORGANIZATION": {
+      "organization_id": 0.753454,
+      "organization_name": 0.758195,
+      "organization_type": 0.763863
+    },
+    "FUNDING_SOURCE": {
+      "funding_source_id": 0.759379,
+      "funding_source_name": 0.760229,
+      "funding_amount": 0.765202
+    },
+    "BUDGET_ALLOCATION": {
+      "budget_allocation_id": 0.768841,
+      "allocation_ratio": 0.765872,
+      "allocation_amount": 0.769276
+    },
+    "DEPARTMENT": {
+      "department_id": 0.749082,
+      "department_name": 0.755634
+    },
+    "ASSOC_PROJECT_FUNDING_SOURCE": {
+      "assoc_project_funding_source_id": 0.88851,
+      "project_id": 0.88851,
+      "funding_source_id": 0.88851
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ORGANIZATION",
+      "description": "Each project is associated with one organization, and each organization can have multiple projects.",
+      "cardinality": "1:N",
+      "probability": 0.944727
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_PROJECT_FUNDING_SOURCE",
+      "description": "One PROJECT can be associated with many ASSOC_PROJECT_FUNDING_SOURCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.88851
+    },
+    {
+      "entity_1": "FUNDING_SOURCE",
+      "entity_2": "ASSOC_PROJECT_FUNDING_SOURCE",
+      "description": "One FUNDING_SOURCE can be associated with many ASSOC_PROJECT_FUNDING_SOURCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.88851
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BUDGET_ALLOCATION",
+      "description": "Each project has one budget allocation, and each budget allocation is associated with one project.",
+      "cardinality": "1:1",
+      "probability": 0.752236
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "description": "Each project is associated with one department, and each department can have multiple projects.",
+      "cardinality": "1:N",
+      "probability": 0.835721
+    },
+    {
+      "entity_1": "FUNDING_SOURCE",
+      "entity_2": "BUDGET_ALLOCATION",
+      "description": "Each funding source can have multiple budget allocations, and each budget allocation is associated with one funding source.",
+      "cardinality": "1:N",
+      "probability": 0.423179
+    }
+  ],
+  "processing_time": 17.09
+}

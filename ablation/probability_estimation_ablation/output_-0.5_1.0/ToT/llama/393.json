@@ -1,0 +1,140 @@
+{
+  "filename": "393.txt",
+  "entity": {
+    "PATIENT": 0.622459,
+    "DIAGNOSIS": 0.581321,
+    "TREATMENT": 0.622459,
+    "WARD": 0.622459,
+    "REGISTRATION": 0.622459,
+    "DRUG": 0.622459,
+    "DRUG_LIST": 0.524805,
+    "ASSOC_DIAGNOSIS_DRUG": 0.550771
+  },
+  "attribute": {
+    "PATIENT": {
+      "name": 0.544698,
+      "gender": 0.540735,
+      "age": 0.527437,
+      "contact": 0.537514,
+      "address": 0.543327,
+      "phone": 0.537233,
+      "email": 0.532491,
+      "medical_history": 0.54443,
+      "allergies": 0.525251
+    },
+    "DIAGNOSIS": {
+      "diagnosis_date": 0.520694,
+      "treatment": 0.53039,
+      "diagnosis_type": 0.537037,
+      "diagnosis_description": 0.539586
+    },
+    "TREATMENT": {
+      "treatment_type": 0.53495,
+      "treatment_description": 0.536089,
+      "treatment_start_date": 0.521539,
+      "treatment_end_date": 0.516946,
+      "drug_prescribed": 0.535219
+    },
+    "WARD": {
+      "ward_name": 0.530193,
+      "capacity": 0.530291,
+      "ward_type": 0.536357,
+      "ward_description": 0.541039
+    },
+    "REGISTRATION": {
+      "registration_type": 0.520611,
+      "fee": 0.493532,
+      "registration_date": 0.501654,
+      "registration_status": 0.519933
+    },
+    "DRUG": {
+      "drug_name": 0.534536,
+      "dosage": 0.528355,
+      "drug_type": 0.537405,
+      "drug_description": 0.54322
+    },
+    "DRUG_LIST": {
+      "drug_list_date": 0.53508,
+      "drug_list_status": 0.547455,
+      "patient_id": 0.552331,
+      "drug_id": 0.543526
+    },
+    "ASSOC_DIAGNOSIS_DRUG": {
+      "assoc_diagnosis_drug_id": 0.550771,
+      "diagnosis_id": 0.550771,
+      "drug_id": 0.550771
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple diagnoses",
+      "probability": 0.959971
+    },
+    {
+      "entity_1": "DIAGNOSIS",
+      "entity_2": "TREATMENT",
+      "cardinality": "1:1",
+      "description": "A diagnosis is associated with one treatment",
+      "probability": 0.982638
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "WARD",
+      "cardinality": "1:1",
+      "description": "A patient is assigned to one ward",
+      "probability": 4.2e-05
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:1",
+      "description": "A patient has one registration type",
+      "probability": 0.782834
+    },
+    {
+      "entity_1": "DIAGNOSIS",
+      "entity_2": "ASSOC_DIAGNOSIS_DRUG",
+      "description": "One DIAGNOSIS can be associated with many ASSOC_DIAGNOSIS_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.550771
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_DIAGNOSIS_DRUG",
+      "description": "One DRUG can be associated with many ASSOC_DIAGNOSIS_DRUG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.550771
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DRUG_LIST",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple drug lists",
+      "probability": 0.151241
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "DRUG_LIST",
+      "cardinality": "1:N",
+      "description": "A drug can be part of multiple drug lists",
+      "probability": 0.999144
+    },
+    {
+      "entity_1": "TREATMENT",
+      "entity_2": "DRUG",
+      "cardinality": "1:N",
+      "description": "A treatment can involve multiple drugs",
+      "probability": 0.997662
+    }
+  ],
+  "processing_time": 22.76,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added medical history and allergies attributes to the patient entity, and added a relationship between the treatment and drug entities to improve the model's comprehensiveness and efficiency."
+  }
+}

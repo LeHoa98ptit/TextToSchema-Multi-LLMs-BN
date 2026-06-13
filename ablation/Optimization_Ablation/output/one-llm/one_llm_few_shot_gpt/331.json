@@ -1,0 +1,84 @@
+{
+  "entity": [
+    "PLAYER",
+    "MATCH",
+    "BATTLE",
+    "PLAYER_MATCH",
+    "PLAYER_BATTLE"
+  ],
+  "attribute": {
+    "PLAYER": [
+      "player_id",
+      "username",
+      "email",
+      "phone",
+      "account_status",
+      "registration_date"
+    ],
+    "MATCH": [
+      "match_id",
+      "match_type",
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "BATTLE": [
+      "battle_id",
+      "match_id",
+      "battle_number",
+      "start_time",
+      "end_time",
+      "win_loss_status"
+    ],
+    "PLAYER_MATCH": [
+      "player_match_id",
+      "player_id",
+      "match_id",
+      "score",
+      "win_loss_status",
+      "ranking_position"
+    ],
+    "PLAYER_BATTLE": [
+      "player_battle_id",
+      "player_id",
+      "battle_id",
+      "side",
+      "score",
+      "win_loss_status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_MATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "PLAYER_MATCH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BATTLE",
+      "entity_2": "PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.6664,
+  "ilp_runtime": 0.059
+}

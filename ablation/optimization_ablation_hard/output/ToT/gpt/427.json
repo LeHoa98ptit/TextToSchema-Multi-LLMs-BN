@@ -1,0 +1,106 @@
+{
+  "entity": [
+    "STUDENT",
+    "TEACHER",
+    "COURSE",
+    "STUDENTCOURSE",
+    "COURSEPREREQUISITE",
+    "TEACHING",
+    "TIMETABLE"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "name",
+      "gender",
+      "department",
+      "age",
+      "enrollment_date",
+      "major",
+      "login",
+      "password"
+    ],
+    "TEACHER": [
+      "teacher_id",
+      "name",
+      "gender",
+      "login",
+      "password",
+      "title",
+      "department"
+    ],
+    "COURSE": [
+      "course_id",
+      "name",
+      "credit",
+      "description"
+    ],
+    "STUDENTCOURSE": [
+      "student_id",
+      "teaching_id",
+      "selection_date",
+      "grade",
+      "status"
+    ],
+    "COURSEPREREQUISITE": [
+      "course_id",
+      "required_course_id"
+    ],
+    "TEACHING": [
+      "teaching_id",
+      "course_id",
+      "teacher_id",
+      "semester",
+      "location",
+      "class_time",
+      "capacity"
+    ],
+    "TIMETABLE": [
+      "timetable_id",
+      "student_id",
+      "teaching_id",
+      "class_time",
+      "location"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENTCOURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSEPREREQUISITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSEPREREQUISITE",
+      "entity_2": "COURSE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHING",
+      "entity_2": "TIMETABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.0216,
+  "ilp_runtime": 0.059
+}

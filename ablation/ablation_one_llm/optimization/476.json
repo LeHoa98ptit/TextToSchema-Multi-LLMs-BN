@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "SALE_ORDER",
+    "ORDER_DETAIL",
+    "SUPPLIER",
+    "PURCHASE_ORDER",
+    "DELIVERY_RECORD",
+    "FINANCIAL_RECORD"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "contact_number",
+      "address"
+    ],
+    "SALE_ORDER": [
+      "order_id",
+      "customer_id",
+      "expect_delivery_date",
+      "order_status"
+    ],
+    "ORDER_DETAIL": [
+      "order_id",
+      "product_id",
+      "quantity"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_number",
+      "address"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_order_id",
+      "supplier_id",
+      "raw_material_id",
+      "order_quantity",
+      "supply_quantity",
+      "order_status"
+    ],
+    "DELIVERY_RECORD": [
+      "delivery_id",
+      "order_id",
+      "delivery_time",
+      "location",
+      "status"
+    ],
+    "FINANCIAL_RECORD": [
+      "financial_id",
+      "transaction_type",
+      "date",
+      "income",
+      "expense",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DELIVERY_RECORD",
+      "entity_2": "FINANCIAL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 16.2668,
+  "ilp_runtime": 0.054
+}

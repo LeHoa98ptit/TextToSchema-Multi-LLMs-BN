@@ -1,0 +1,119 @@
+{
+  "filename": "359.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EVENT": 0.817574,
+    "REGISTRATION": 0.799168,
+    "MESSAGE": 0.731511,
+    "EVENT_TYPE": 0.75571,
+    "ASSOC_USER_EVENT": 0.962369,
+    "ASSOC_EVENT_EVENT_TYPE": 0.999942
+  },
+  "attribute": {
+    "USER": {
+      "name": 0.75117,
+      "contact": 0.762048,
+      "password": 0.749696,
+      "photo": 0.756448,
+      "avatar": 0.751506,
+      "profile_description": 0.746406
+    },
+    "EVENT": {
+      "name": 0.769718,
+      "description": 0.771894,
+      "location": 0.76945,
+      "time": 0.762674,
+      "type": 0.771228
+    },
+    "REGISTRATION": {
+      "status": 0.756551,
+      "interest": 0.760357
+    },
+    "MESSAGE": {
+      "content": 0.759721,
+      "sender": 0.760469,
+      "receiver": 0.763978
+    },
+    "EVENT_TYPE": {
+      "type": 0.766743,
+      "description": 0.769635
+    },
+    "ASSOC_USER_EVENT": {
+      "assoc_user_event_id": 0.962369,
+      "user_id": 0.962369,
+      "event_id": 0.962369
+    },
+    "ASSOC_EVENT_EVENT_TYPE": {
+      "assoc_event_event_type_id": 0.999942,
+      "event_id": 0.999942,
+      "event_type_id": 0.999942
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EVENT",
+      "description": "One USER can be associated with many ASSOC_USER_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962369
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "ASSOC_USER_EVENT",
+      "description": "One EVENT can be associated with many ASSOC_USER_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962369
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple registrations.",
+      "probability": 0.999815
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "An event can have multiple registrations.",
+      "probability": 0.116981
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can send multiple messages.",
+      "probability": 0.999707
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "An event can have multiple messages.",
+      "probability": 0.106187
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "ASSOC_EVENT_EVENT_TYPE",
+      "description": "One EVENT can be associated with many ASSOC_EVENT_EVENT_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999942
+    },
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "ASSOC_EVENT_EVENT_TYPE",
+      "description": "One EVENT_TYPE can be associated with many ASSOC_EVENT_EVENT_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999942
+    }
+  ],
+  "processing_time": 15.32,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added profile description attribute to the USER entity and changed the relationship between EVENT and EVENT_TYPE to many-to-many to allow for multiple event types per event."
+  }
+}

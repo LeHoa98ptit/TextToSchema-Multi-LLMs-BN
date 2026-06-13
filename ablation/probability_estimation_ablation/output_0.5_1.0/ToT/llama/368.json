@@ -1,0 +1,171 @@
+{
+  "filename": "368.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "SUBJECT": 0.817574,
+    "EXAM": 0.817574,
+    "GRADE": 0.817574,
+    "ASSOC_STUDENT_SUBJECT": 0.151127,
+    "ASSOC_TEACHER_SUBJECT": 0.33102,
+    "ASSOC_STUDENT_TEACHER": 0.003226,
+    "ASSOC_STUDENT_EXAM": 0.968449,
+    "ASSOC_GRADE_SUBJECT": 0.186309
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.778442,
+      "age": 0.765902,
+      "address": 0.769019,
+      "phone_number": 0.769682,
+      "test_score": 0.775568
+    },
+    "TEACHER": {
+      "teacher_id": 0.774929,
+      "address": 0.765201,
+      "phone_number": 0.767758,
+      "guidance": 0.763749
+    },
+    "SUBJECT": {
+      "subject_id": 0.761306,
+      "class_hour": 0.763816,
+      "subject_score": 0.770593
+    },
+    "EXAM": {
+      "exam_id": 0.761454,
+      "date": 0.757002,
+      "exam_score": 0.766457
+    },
+    "GRADE": {
+      "grade_id": 0.770013,
+      "grade": 0.757351,
+      "average_grade": 0.762842
+    },
+    "ASSOC_STUDENT_SUBJECT": {
+      "assoc_student_subject_id": 0.151127,
+      "student_id": 0.151127,
+      "subject_id": 0.151127
+    },
+    "ASSOC_TEACHER_SUBJECT": {
+      "assoc_teacher_subject_id": 0.33102,
+      "teacher_id": 0.33102,
+      "subject_id": 0.33102
+    },
+    "ASSOC_STUDENT_TEACHER": {
+      "assoc_student_teacher_id": 0.003226,
+      "student_id": 0.003226,
+      "teacher_id": 0.003226
+    },
+    "ASSOC_STUDENT_EXAM": {
+      "assoc_student_exam_id": 0.968449,
+      "student_id": 0.968449,
+      "exam_id": 0.968449
+    },
+    "ASSOC_GRADE_SUBJECT": {
+      "assoc_grade_subject_id": 0.186309,
+      "grade_id": 0.186309,
+      "subject_id": 0.186309
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_SUBJECT",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.151127
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_STUDENT_SUBJECT",
+      "description": "One SUBJECT can be associated with many ASSOC_STUDENT_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.151127
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "ASSOC_TEACHER_SUBJECT",
+      "description": "One TEACHER can be associated with many ASSOC_TEACHER_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.33102
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_TEACHER_SUBJECT",
+      "description": "One SUBJECT can be associated with many ASSOC_TEACHER_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.33102
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_TEACHER",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_TEACHER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003226
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "ASSOC_STUDENT_TEACHER",
+      "description": "One TEACHER can be associated with many ASSOC_STUDENT_TEACHER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003226
+    },
+    {
+      "entity_1": "EXAM",
+      "entity_2": "SUBJECT",
+      "cardinality": "1:N",
+      "description": "An exam is associated with one subject",
+      "probability": 0.768129
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_EXAM",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_EXAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968449
+    },
+    {
+      "entity_1": "EXAM",
+      "entity_2": "ASSOC_STUDENT_EXAM",
+      "description": "One EXAM can be associated with many ASSOC_STUDENT_EXAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968449
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A student can have multiple grades",
+      "probability": 0.698081
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "ASSOC_GRADE_SUBJECT",
+      "description": "One GRADE can be associated with many ASSOC_GRADE_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.186309
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_GRADE_SUBJECT",
+      "description": "One SUBJECT can be associated with many ASSOC_GRADE_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.186309
+    }
+  ],
+  "processing_time": 21.52,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique identifiers (student_id, teacher_id, subject_id, exam_id, grade_id) to each entity to improve data integrity and uniqueness. Added a relationship between grades and subjects to provide more detailed grade information."
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "PERSONNEL",
+    "UNIT",
+    "ADMINISTRATOR",
+    "VISITOR",
+    "APPOINTMENT",
+    "ACCESS_CONTROL_DEVICE",
+    "HEALTH_INFORMATION",
+    "TRAVEL_TRAJECTORY",
+    "ASSOC_PERSONNEL_UNIT"
+  ],
+  "attribute": {
+    "PERSONNEL": [
+      "d",
+      "type",
+      "phone_number",
+      "email"
+    ],
+    "UNIT": [
+      "d",
+      "type",
+      "description"
+    ],
+    "ADMINISTRATOR": [
+      "d",
+      "role",
+      "management_role"
+    ],
+    "VISITOR": [
+      "d",
+      "phone_number",
+      "email",
+      "visit_purpose"
+    ],
+    "APPOINTMENT": [
+      "d",
+      "schedule_entry_time",
+      "schedule_exit_time",
+      "status",
+      "review_status"
+    ],
+    "ACCESS_CONTROL_DEVICE": [
+      "d",
+      "location",
+      "status",
+      "device_type"
+    ],
+    "HEALTH_INFORMATION": [
+      "temperature",
+      "symptom",
+      "health_code_color",
+      "track_time",
+      "vaccination_status",
+      "medical_history"
+    ],
+    "TRAVEL_TRAJECTORY": [
+      "travel_time",
+      "location",
+      "personnel_d",
+      "mode_of_transportation",
+      "destination"
+    ],
+    "ASSOC_PERSONNEL_UNIT": [
+      "assoc_personnel_unit_id",
+      "personnel_id",
+      "unit_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "TRAVEL_TRAJECTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 55.783,
+  "ilp_runtime": 0.041
+}

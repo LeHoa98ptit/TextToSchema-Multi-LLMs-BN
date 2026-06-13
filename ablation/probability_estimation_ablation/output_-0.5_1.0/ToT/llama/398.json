@@ -1,0 +1,119 @@
+{
+  "filename": "398.txt",
+  "entity": {
+    "MENU": 0.479586,
+    "TABLE": 0.622459,
+    "CUSTOMER": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ORDER": 0.622459,
+    "SERVICE": 0.622459,
+    "DISH": 0.622459,
+    "ASSOC_ORDER_DISH": 0.662641
+  },
+  "attribute": {
+    "MENU": {
+      "menu_id": 0.530372,
+      "category": 0.54156
+    },
+    "TABLE": {
+      "table_id": 0.521924,
+      "seat_number": 0.533145
+    },
+    "CUSTOMER": {
+      "customer_id": 0.531129,
+      "name": 0.535651,
+      "gender": 0.546122,
+      "phone_number": 0.52713,
+      "email": 0.52252
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.538316,
+      "name": 0.543839,
+      "age": 0.532508,
+      "gender": 0.543238,
+      "salary": 0.525752,
+      "role": 0.545573
+    },
+    "ORDER": {
+      "order_id": 0.522653,
+      "table_id": 0.531073,
+      "dining_time": 0.559176,
+      "customer_id": 0.534796
+    },
+    "SERVICE": {
+      "service_id": 0.524761,
+      "employee_id": 0.544975,
+      "order_id": 0.534207,
+      "service_type": 0.527089
+    },
+    "DISH": {
+      "dish_id": 0.542102,
+      "dish_name": 0.544912,
+      "description": 0.550694,
+      "price": 0.540093
+    },
+    "ASSOC_ORDER_DISH": {
+      "assoc_order_dish_id": 0.662641,
+      "order_id": 0.662641,
+      "dish_id": 0.662641
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TABLE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A table can have multiple orders",
+      "probability": 0.659458
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.964498
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "An employee can provide multiple services",
+      "probability": 0.998195
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "An order can have multiple services",
+      "probability": 0.639675
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "description": "A menu can have multiple dishes",
+      "probability": 0.301141
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_DISH",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_DISH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.662641
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ASSOC_ORDER_DISH",
+      "description": "One DISH can be associated with many ASSOC_ORDER_DISH.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.662641
+    }
+  ],
+  "processing_time": 23.84,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes 'table_status' and 'order_status', and added 'customer_id' to the 'ORDER' entity to improve data consistency and efficiency."
+  }
+}

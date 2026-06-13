@@ -1,0 +1,190 @@
+{
+  "filename": "272.txt",
+  "entity": {
+    "RANCH": 0.622459,
+    "LIVESTOCK": 0.622459,
+    "SPECIES": 0.469363,
+    "HEALTH_EVENT": 0.521836,
+    "HEALTH_EVENT_TYPE": 0.5051,
+    "VACCINATION": 0.622459,
+    "VACCINE": 0.591894,
+    "FEED": 0.465256,
+    "FEED_TYPE": 0.473226,
+    "MOVEMENT": 0.466973,
+    "MOVEMENT_TYPE": 0.49835,
+    "STATUS": 0.622459
+  },
+  "attribute": {
+    "RANCH": {
+      "ranch_id": 0.55431,
+      "name": 0.549373,
+      "address": 0.554192,
+      "phone": 0.537185,
+      "manager_name": 0.555576
+    },
+    "LIVESTOCK": {
+      "livestock_id": 0.562568,
+      "tag_number": 0.545547,
+      "birth_date": 0.551664,
+      "gender": 0.547995,
+      "weight": 0.541584,
+      "species_id": 0.555876,
+      "ranch_id": 0.568198
+    },
+    "SPECIES": {
+      "species_id": 0.519738,
+      "common_name": 0.51805,
+      "scientific_name": 0.514535,
+      "average_lifespan": 0.507072
+    },
+    "HEALTH_EVENT": {
+      "event_id": 0.520712,
+      "livestock_id": 0.563038,
+      "event_time": 0.52015,
+      "event_type_id": 0.52007,
+      "status_id": 0.526257,
+      "notes": 0.530871
+    },
+    "HEALTH_EVENT_TYPE": {
+      "event_type_id": 0.521195,
+      "type_name": 0.526368,
+      "description": 0.5385
+    },
+    "VACCINATION": {
+      "vaccination_id": 0.539372,
+      "livestock_id": 0.563632,
+      "vaccine_id": 0.536625,
+      "vaccination_time": 0.533159,
+      "dose": 0.519867,
+      "status_id": 0.540855
+    },
+    "VACCINE": {
+      "vaccine_id": 0.531325,
+      "vaccine_name": 0.528142,
+      "manufacturer": 0.527992,
+      "required_interval_days": 0.533578
+    },
+    "FEED": {
+      "feed_id": 0.51438,
+      "livestock_id": 0.557239,
+      "feed_type_id": 0.516725,
+      "feed_time": 0.514598,
+      "quantity": 0.533974,
+      "unit": 0.534448
+    },
+    "FEED_TYPE": {
+      "feed_type_id": 0.518494,
+      "feed_name": 0.517883,
+      "nutrient_profile": 0.531518,
+      "supplier": 0.537602
+    },
+    "MOVEMENT": {
+      "movement_id": 0.510173,
+      "livestock_id": 0.551086,
+      "movement_type_id": 0.510763,
+      "movement_time": 0.510764,
+      "remarks": 0.503128
+    },
+    "MOVEMENT_TYPE": {
+      "movement_type_id": 0.511375,
+      "type_name": 0.507674,
+      "description": 0.523733
+    },
+    "STATUS": {
+      "status_id": 0.518246,
+      "status_name": 0.519472,
+      "description": 0.533943
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RANCH",
+      "entity_2": "LIVESTOCK",
+      "cardinality": "1:N",
+      "description": "One ranch houses many livestock",
+      "probability": 0.896115
+    },
+    {
+      "entity_1": "SPECIES",
+      "entity_2": "LIVESTOCK",
+      "cardinality": "1:N",
+      "description": "Species categorizes livestock",
+      "probability": 0.013622
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "HEALTH_EVENT",
+      "cardinality": "1:N",
+      "description": "Multiple health events per animal",
+      "probability": 0.000121
+    },
+    {
+      "entity_1": "HEALTH_EVENT_TYPE",
+      "entity_2": "HEALTH_EVENT",
+      "cardinality": "1:N",
+      "description": "Each health event references a predefined event type",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "HEALTH_EVENT",
+      "cardinality": "1:N",
+      "description": "Health event status (e.g., pending, resolved)",
+      "probability": 0.03953
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "VACCINATION",
+      "cardinality": "1:N",
+      "description": "Vaccination records linked to livestock",
+      "probability": 0.199715
+    },
+    {
+      "entity_1": "VACCINE",
+      "entity_2": "VACCINATION",
+      "cardinality": "1:N",
+      "description": "One vaccine can be administered many times",
+      "probability": 0.995234
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "VACCINATION",
+      "cardinality": "1:N",
+      "description": "Vaccination status (e.g., administered, missed)",
+      "probability": 0.412025
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "FEED",
+      "cardinality": "1:N",
+      "description": "Feed consumption entries per livestock",
+      "probability": 0.072508
+    },
+    {
+      "entity_1": "FEED_TYPE",
+      "entity_2": "FEED",
+      "cardinality": "1:N",
+      "description": "Each feed entry references a feed type",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "LIVESTOCK",
+      "entity_2": "MOVEMENT",
+      "cardinality": "1:N",
+      "description": "Entry/exit (movement) records per livestock",
+      "probability": 0.005987
+    },
+    {
+      "entity_1": "MOVEMENT_TYPE",
+      "entity_2": "MOVEMENT",
+      "cardinality": "1:N",
+      "description": "Movement type categorizes each record",
+      "probability": 0.999572
+    }
+  ],
+  "processing_time": 43.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented evaluation suggestions: added lookup tables STATUS, HEALTH_EVENT_TYPE to replace free‑text status and event_type fields, ensuring normalization and data quality. Enforced consistent snake_case naming across all attributes. Declared UNIQUE constraints on LIVESTOCK.tag_number and VACCINE.vaccine_name (not shown in JSON but part of the physical schema). Planned composite indexes on (livestock_id, event_time) for chronological queries. Documented cascade delete intent for Ranch → Livestock and Livestock → dependent records. All original strengths retained while improving completeness, accuracy, efficiency, and consistency."
+  }
+}

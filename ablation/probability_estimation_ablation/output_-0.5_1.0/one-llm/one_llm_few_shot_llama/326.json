@@ -1,0 +1,90 @@
+{
+  "filename": "326.txt",
+  "entity": {
+    "USER": 0.622459,
+    "TASK": 0.622459,
+    "TASK_FILE": 0.599888,
+    "AVATAR_FILE": 0.606542,
+    "ASSOC_TASK_TASK_FILE": 0.99993
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.507591,
+      "password": 0.517937,
+      "date_of_birth": 0.515582,
+      "avatar_file_id": 0.524018
+    },
+    "TASK": {
+      "task_id": 0.546062,
+      "task_status": 0.549179,
+      "task_priority": 0.549717,
+      "creation_date": 0.5456,
+      "assignee_user_id": 0.545722,
+      "completion_date": 0.542679,
+      "task_remark": 0.553103
+    },
+    "TASK_FILE": {
+      "file_id": 0.551984,
+      "file_name": 0.549012,
+      "file_type": 0.555096,
+      "file_size": 0.547305
+    },
+    "AVATAR_FILE": {
+      "avatar_file_id": 0.522755,
+      "avatar_file_name": 0.522211,
+      "avatar_file_type": 0.524133,
+      "avatar_file_size": 0.519359
+    },
+    "ASSOC_TASK_TASK_FILE": {
+      "assoc_task_task_file_id": 0.99993,
+      "task_id": 0.99993,
+      "task_file_id": 0.99993
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TASK",
+      "description": "Each task is created by exactly one user, and each user can create many tasks.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.041815
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TASK",
+      "description": "Each task is assigned to exactly one user, and each user can be assigned many tasks.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.041815
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TASK_TASK_FILE",
+      "description": "One TASK can be associated with many ASSOC_TASK_TASK_FILE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99993
+    },
+    {
+      "entity_1": "TASK_FILE",
+      "entity_2": "ASSOC_TASK_TASK_FILE",
+      "description": "One TASK_FILE can be associated with many ASSOC_TASK_TASK_FILE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99993
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AVATAR_FILE",
+      "description": "Each user has exactly one avatar file, and each avatar file is associated with exactly one user.",
+      "cardinality": "1:1",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.998974
+    }
+  ],
+  "processing_time": 16.09
+}

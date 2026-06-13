@@ -1,0 +1,188 @@
+{
+  "filename": "350.txt",
+  "entity": {
+    "PARTICIPANT": 0.622459,
+    "CONFERENCE": 0.622459,
+    "TICKET": 0.622459,
+    "DISCOUNT_CODE": 0.604033,
+    "PURCHASE": 0.622459,
+    "WORKSHOP": 0.622459,
+    "MEETING": 0.510773,
+    "SPEAKER": 0.472976,
+    "ASSOC_WORKSHOP_SPEAKER": 0.002568,
+    "ASSOC_MEETING_SPEAKER": 0.907183,
+    "ASSOC_PARTICIPANT_WORKSHOP": 0.995817,
+    "ASSOC_PARTICIPANT_MEETING": 0.879927
+  },
+  "attribute": {
+    "PARTICIPANT": {
+      "participant_id": 0.53738,
+      "company": 0.550144,
+      "email": 0.545466
+    },
+    "CONFERENCE": {
+      "conference_id": 0.554805,
+      "name": 0.555428
+    },
+    "TICKET": {
+      "ticket_id": 0.538287,
+      "description": 0.552677,
+      "price": 0.532198
+    },
+    "DISCOUNT_CODE": {
+      "code": 0.539357,
+      "type": 0.540414
+    },
+    "PURCHASE": {
+      "purchase_id": 0.519389,
+      "net_price": 0.517407
+    },
+    "WORKSHOP": {
+      "workshop_id": 0.553051,
+      "description": 0.560862,
+      "requirement": 0.56296,
+      "location": 0.543676,
+      "date": 0.546658,
+      "start_time": 0.544898,
+      "end_time": 0.546987,
+      "capacity": 0.55274
+    },
+    "MEETING": {
+      "meeting_id": 0.547898,
+      "description": 0.564387,
+      "date": 0.54485,
+      "start_time": 0.540288,
+      "end_time": 0.539012,
+      "room": 0.549812
+    },
+    "SPEAKER": {
+      "speaker_id": 0.524085,
+      "name": 0.523862,
+      "company": 0.528863,
+      "description": 0.535736
+    },
+    "ASSOC_WORKSHOP_SPEAKER": {
+      "assoc_workshop_speaker_id": 0.002568,
+      "workshop_id": 0.002568,
+      "speaker_id": 0.002568
+    },
+    "ASSOC_MEETING_SPEAKER": {
+      "assoc_meeting_speaker_id": 0.907183,
+      "meeting_id": 0.907183,
+      "speaker_id": 0.907183
+    },
+    "ASSOC_PARTICIPANT_WORKSHOP": {
+      "assoc_participant_workshop_id": 0.995817,
+      "participant_id": 0.995817,
+      "workshop_id": 0.995817
+    },
+    "ASSOC_PARTICIPANT_MEETING": {
+      "assoc_participant_meeting_id": 0.879927,
+      "participant_id": 0.879927,
+      "meeting_id": 0.879927
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "probability": 0.448895
+    },
+    {
+      "entity_1": "PURCHASE",
+      "entity_2": "TICKET",
+      "cardinality": "1:1",
+      "probability": 0.942338
+    },
+    {
+      "entity_1": "DISCOUNT_CODE",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "probability": 0.022902
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "probability": 0.800028
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "WORKSHOP",
+      "cardinality": "1:N",
+      "probability": 0.220724
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "MEETING",
+      "cardinality": "1:N",
+      "probability": 0.995727
+    },
+    {
+      "entity_1": "WORKSHOP",
+      "entity_2": "ASSOC_WORKSHOP_SPEAKER",
+      "description": "One WORKSHOP can be associated with many ASSOC_WORKSHOP_SPEAKER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002568
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "ASSOC_WORKSHOP_SPEAKER",
+      "description": "One SPEAKER can be associated with many ASSOC_WORKSHOP_SPEAKER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002568
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "ASSOC_MEETING_SPEAKER",
+      "description": "One MEETING can be associated with many ASSOC_MEETING_SPEAKER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.907183
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "ASSOC_MEETING_SPEAKER",
+      "description": "One SPEAKER can be associated with many ASSOC_MEETING_SPEAKER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.907183
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "ASSOC_PARTICIPANT_WORKSHOP",
+      "description": "One PARTICIPANT can be associated with many ASSOC_PARTICIPANT_WORKSHOP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995817
+    },
+    {
+      "entity_1": "WORKSHOP",
+      "entity_2": "ASSOC_PARTICIPANT_WORKSHOP",
+      "description": "One WORKSHOP can be associated with many ASSOC_PARTICIPANT_WORKSHOP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995817
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "ASSOC_PARTICIPANT_MEETING",
+      "description": "One PARTICIPANT can be associated with many ASSOC_PARTICIPANT_MEETING.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.879927
+    },
+    {
+      "entity_1": "MEETING",
+      "entity_2": "ASSOC_PARTICIPANT_MEETING",
+      "description": "One MEETING can be associated with many ASSOC_PARTICIPANT_MEETING.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.879927
+    }
+  ],
+  "processing_time": 31.89
+}

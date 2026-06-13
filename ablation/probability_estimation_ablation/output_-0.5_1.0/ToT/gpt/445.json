@@ -1,0 +1,168 @@
+{
+  "filename": "445.txt",
+  "entity": {
+    "PERSONNEL": 0.622459,
+    "UNIT": 0.622459,
+    "VISITOR": 0.622459,
+    "APPOINTMENT": 0.622459,
+    "APPOINTMENT_STATUS": 0.556409,
+    "ACCESS_RECORD": 0.52251,
+    "ACCESS_DEVICE": 0.519465,
+    "ADMINISTRATOR": 0.514971,
+    "ROLE": 0.511773,
+    "HEALTH_RECORD": 0.510573,
+    "TRAVEL_LOG": 0.456312
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel_id": 0.550759,
+      "name": 0.550667,
+      "phone": 0.551044,
+      "email": 0.537869,
+      "personnel_type": 0.556334,
+      "unit_id": 0.555387,
+      "health_code_color": 0.548371
+    },
+    "UNIT": {
+      "unit_id": 0.528769,
+      "unit_name": 0.5302,
+      "unit_type": 0.532374,
+      "parent_unit_id": 0.521008
+    },
+    "VISITOR": {
+      "visitor_id": 0.529081,
+      "name": 0.528108,
+      "phone": 0.533234,
+      "email": 0.52467,
+      "organization": 0.541784
+    },
+    "APPOINTMENT": {
+      "appointment_id": 0.529202,
+      "visitor_id": 0.536846,
+      "personnel_id": 0.548743,
+      "entry_time": 0.528437,
+      "exit_time": 0.52271,
+      "status_id": 0.532552,
+      "created_at": 0.521313,
+      "reviewed_by_admin_id": 0.530982
+    },
+    "APPOINTMENT_STATUS": {
+      "status_id": 0.531205,
+      "status_name": 0.532697,
+      "description": 0.541976
+    },
+    "ACCESS_RECORD": {
+      "access_record_id": 0.518515,
+      "personnel_id": 0.549901,
+      "device_id": 0.520566,
+      "entry_time": 0.519081,
+      "exit_time": 0.515029,
+      "access_method": 0.518725,
+      "verification_result": 0.522527
+    },
+    "ACCESS_DEVICE": {
+      "device_id": 0.520518,
+      "location": 0.525369,
+      "device_type": 0.52718,
+      "status": 0.541874,
+      "encryption_enabled": 0.525301
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.529598,
+      "name": 0.534027,
+      "role_id": 0.52991,
+      "email": 0.525274,
+      "phone": 0.542303
+    },
+    "ROLE": {
+      "role_id": 0.522172,
+      "role_name": 0.522291,
+      "description": 0.532607
+    },
+    "HEALTH_RECORD": {
+      "health_record_id": 0.531002,
+      "personnel_id": 0.55684,
+      "record_date": 0.525152,
+      "temperature": 0.524526,
+      "symptoms": 0.526094,
+      "health_code_color": 0.532436
+    },
+    "TRAVEL_LOG": {
+      "travel_log_id": 0.512246,
+      "personnel_id": 0.539272,
+      "timestamp": 0.502409,
+      "location": 0.512305,
+      "purpose": 0.517967
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "description": "Many personnel belong to one unit",
+      "probability": 0.99497
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A visitor can create multiple appointments",
+      "probability": 0.875706
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A personnel can be linked to many visitor appointments",
+      "probability": 0.996861
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "APPOINTMENT_STATUS",
+      "cardinality": "N:1",
+      "description": "Each appointment has one status (pending, approved, rejected)",
+      "probability": 0.999226
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "description": "Each personnel may have many access records",
+      "probability": 0.971224
+    },
+    {
+      "entity_1": "ACCESS_DEVICE",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "description": "One device logs many access events",
+      "probability": 0.746414
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ROLE",
+      "cardinality": "1:1",
+      "description": "Each administrator holds a single role",
+      "probability": 0.959923
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_RECORD",
+      "cardinality": "1:N",
+      "description": "Health monitoring system records many health entries per personnel",
+      "probability": 0.973459
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "TRAVEL_LOG",
+      "cardinality": "1:N",
+      "description": "Travel trajectory information is logged per personnel",
+      "probability": 0.983624
+    }
+  ],
+  "processing_time": 18.83,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing health monitoring (HEALTH_RECORD) and travel trajectory (TRAVEL_LOG) entities, introduced APPOINTMENT_STATUS lookup for clearer appointment workflow, created ROLE entity to replace undefined role relationship, enriched attributes (e.g., health_code_color, device_type, encryption_enabled, organization), added parent_unit_id for hierarchical units, and clarified relationships to reflect the expanded domain while preserving the original core structure."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "filename": "480.txt",
+  "entity": {
+    "PROPERTY": 0.817574,
+    "AGENT": 0.817574,
+    "USER": 0.817574,
+    "PROPERTY_SALE": 0.754563,
+    "AGENT_PROPERTY": 0.762982,
+    "ASSOC_USER_PROPERTY": 0.936858
+  },
+  "attribute": {
+    "PROPERTY": {
+      "property_id": 0.751827,
+      "property_certificate": 0.763706,
+      "address": 0.764767,
+      "construction_year": 0.768383,
+      "build_area": 0.756174,
+      "sale_price": 0.765192,
+      "property_photo": 0.753423,
+      "sale_status": 0.77069
+    },
+    "AGENT": {
+      "agent_id": 0.75848,
+      "home_address": 0.763478,
+      "contact_number": 0.756774
+    },
+    "USER": {
+      "user_id": 0.738734,
+      "username": 0.731865,
+      "password": 0.742619,
+      "role": 0.750231
+    },
+    "PROPERTY_SALE": {
+      "sale_id": 0.768716,
+      "property_id": 0.768195,
+      "sale_date": 0.767594,
+      "sale_price": 0.764202
+    },
+    "AGENT_PROPERTY": {
+      "agent_id": 0.765959,
+      "property_id": 0.761602,
+      "start_time": 0.760886,
+      "end_time": 0.761049
+    },
+    "ASSOC_USER_PROPERTY": {
+      "assoc_user_property_id": 0.936858,
+      "user_id": 0.936858,
+      "property_id": 0.936858
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "PROPERTY_SALE",
+      "cardinality": "1:N",
+      "description": "Each property can have many sales, and each sale is associated with one property.",
+      "probability": 0.99667
+    },
+    {
+      "entity_1": "AGENT",
+      "entity_2": "AGENT_PROPERTY",
+      "cardinality": "1:N",
+      "description": "Each agent can manage many properties, and each agent-property relationship has a start and end time.",
+      "probability": 0.940871
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "AGENT_PROPERTY",
+      "cardinality": "1:N",
+      "description": "Each property can be managed by many agents, and each agent-property relationship has a start and end time.",
+      "probability": 0.999037
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AGENT",
+      "cardinality": "1:1",
+      "description": "Each agent is associated with one user, and each user can be an agent.",
+      "probability": 0.925405
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROPERTY",
+      "description": "One USER can be associated with many ASSOC_USER_PROPERTY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.936858
+    },
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "ASSOC_USER_PROPERTY",
+      "description": "One PROPERTY can be associated with many ASSOC_USER_PROPERTY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.936858
+    }
+  ],
+  "processing_time": 20.94
+}

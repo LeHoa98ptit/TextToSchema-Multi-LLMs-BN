@@ -1,0 +1,93 @@
+{
+  "filename": "302.txt",
+  "entity": {
+    "DOCTOR": 0.755654,
+    "PATIENT": 0.817574,
+    "MEDICINE": 0.794326,
+    "MEDICATION_RECORD": 0.740871,
+    "CONSULTATION_RECORD": 0.777057,
+    "ASSOC_MEDICATION_RECORD_CONSULTATION_RECORD": 0.436849
+  },
+  "attribute": {
+    "DOCTOR": {
+      "gender": 0.758842,
+      "telephone_number": 0.773166,
+      "date_of_birth": 0.764305,
+      "age": 0.758592,
+      "department": 0.765356,
+      "affiliation": 0.757295,
+      "level": 0.766462
+    },
+    "PATIENT": {
+      "gender": 0.761579,
+      "date_of_birth": 0.763887,
+      "age": 0.75737,
+      "phone": 0.763376,
+      "address": 0.769228,
+      "emergency_contact_number": 0.768633
+    },
+    "MEDICINE": {
+      "unit_price": 0.765147,
+      "inventory": 0.777869
+    },
+    "MEDICATION_RECORD": {
+      "dosage": 0.775236,
+      "frequency": 0.774894,
+      "medication_precaution": 0.771368,
+      "prescription_time": 0.773283
+    },
+    "CONSULTATION_RECORD": {
+      "consultation_time": 0.768108,
+      "diagnosis_result": 0.771191,
+      "treatment_recommendation": 0.776986
+    },
+    "ASSOC_MEDICATION_RECORD_CONSULTATION_RECORD": {
+      "assoc_medication_record_consultation_record_id": 0.436849,
+      "medication_record_id": 0.436849,
+      "consultation_record_id": 0.436849
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.824246
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.989689
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.989647
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.63553
+    },
+    {
+      "entity_1": "MEDICATION_RECORD",
+      "entity_2": "ASSOC_MEDICATION_RECORD_CONSULTATION_RECORD",
+      "description": "One MEDICATION_RECORD can be associated with many ASSOC_MEDICATION_RECORD_CONSULTATION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.436849
+    },
+    {
+      "entity_1": "CONSULTATION_RECORD",
+      "entity_2": "ASSOC_MEDICATION_RECORD_CONSULTATION_RECORD",
+      "description": "One CONSULTATION_RECORD can be associated with many ASSOC_MEDICATION_RECORD_CONSULTATION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.436849
+    }
+  ],
+  "processing_time": 17.85
+}

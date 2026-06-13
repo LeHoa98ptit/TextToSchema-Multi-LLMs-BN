@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "DOCTOR",
+    "WARD",
+    "PATIENT",
+    "MEDICINE",
+    "CONSULTATION",
+    "MEDICATION_RETRIEVAL"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "department_id",
+      "person_in_charge",
+      "department_name",
+      "total_personnel",
+      "location",
+      "phone_number"
+    ],
+    "DOCTOR": [
+      "doctor_id",
+      "gender",
+      "title",
+      "year_of_service",
+      "phone_number",
+      "department_id"
+    ],
+    "WARD": [
+      "ward_id",
+      "level",
+      "number_of_beds",
+      "location"
+    ],
+    "PATIENT": [
+      "patient_id",
+      "gender",
+      "age",
+      "contact_information",
+      "consultation_date",
+      "diagnosis_description",
+      "ward_id"
+    ],
+    "MEDICINE": [
+      "medicine_id",
+      "inventory_quantity",
+      "price",
+      "sale_price",
+      "remark"
+    ],
+    "CONSULTATION": [
+      "consultation_id",
+      "consultation_time",
+      "diagnosis_description",
+      "treatment_result",
+      "remark",
+      "patient_id",
+      "doctor_id"
+    ],
+    "MEDICATION_RETRIEVAL": [
+      "retrieval_id",
+      "retrieval_time",
+      "retrieval_quantity",
+      "patient_id",
+      "medicine_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 28.3391,
+  "ilp_runtime": 0.069
+}

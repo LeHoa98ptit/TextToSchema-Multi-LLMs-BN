@@ -1,0 +1,164 @@
+{
+  "filename": "436.txt",
+  "entity": {
+    "ADMINISTRATOR": 0.817574,
+    "USER": 0.817574,
+    "MEMBER": 0.817574,
+    "NEWS_ARTICLE": 0.804081,
+    "LABEL": 0.700588,
+    "ADVERTISEMENT": 0.715877,
+    "MESSAGE": 0.731511,
+    "COMMENT": 0.7161,
+    "NEWS_ARTICLE_LABEL": 0.028129
+  },
+  "attribute": {
+    "ADMINISTRATOR": {
+      "admin id": 0.754216,
+      "username": 0.758296,
+      "password hash": 0.746805
+    },
+    "USER": {
+      "user id": 0.739805,
+      "username": 0.735858,
+      "password hash": 0.738932,
+      "email": 0.747123,
+      "registration date": 0.737337
+    },
+    "MEMBER": {
+      "member id": 0.74459,
+      "full name": 0.754779,
+      "email": 0.749893,
+      "join date": 0.748159,
+      "status": 0.758252
+    },
+    "NEWS_ARTICLE": {
+      "article id": 0.756465,
+      "title": 0.766021,
+      "content": 0.773131,
+      "author name": 0.763857,
+      "release time": 0.755426,
+      "is published": 0.762352,
+      "label ids": 0.760283,
+      "created at": 0.759984,
+      "updated at": 0.756404
+    },
+    "LABEL": {
+      "label id": 0.733227,
+      "label name": 0.736071
+    },
+    "ADVERTISEMENT": {
+      "ad id": 0.744187,
+      "title": 0.755447,
+      "content": 0.764047,
+      "start date": 0.745534,
+      "end date": 0.744369,
+      "is active": 0.751367
+    },
+    "MESSAGE": {
+      "message id": 0.745255,
+      "sender user id": 0.744666,
+      "receiver admin id": 0.755167,
+      "subject": 0.754491,
+      "body": 0.751242,
+      "sent time": 0.742741,
+      "reply text": 0.752723,
+      "is read": 0.752559
+    },
+    "COMMENT": {
+      "comment id": 0.738394,
+      "article id": 0.746359,
+      "user id": 0.745289,
+      "comment text": 0.746777,
+      "comment time": 0.744103
+    },
+    "NEWS_ARTICLE_LABEL": {
+      "news_article_label_id": 0.028129,
+      "news_article_id": 0.028129,
+      "label_id": 0.028129,
+      "id_NEWS_ARTICLE_LABEL": 0.028129
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "NEWS_ARTICLE",
+      "description": "Administrator creates, edits, deletes and publishes news articles",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.496346
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADVERTISEMENT",
+      "description": "Administrator publishes, edits and deletes advertisements",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000224
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MESSAGE",
+      "description": "Administrator receives messages sent by users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005476
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "description": "User sends messages to administrators",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999709
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "LABEL",
+      "description": "Administrator creates and manages labels for categorizing news articles",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000379
+    },
+    {
+      "entity_1": "NEWS_ARTICLE",
+      "entity_2": "NEWS_ARTICLE_LABEL",
+      "description": "One NEWS_ARTICLE can be associated with many NEWS_ARTICLE_LABEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.028129
+    },
+    {
+      "entity_1": "LABEL",
+      "entity_2": "NEWS_ARTICLE_LABEL",
+      "description": "One LABEL can be associated with many NEWS_ARTICLE_LABEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.028129
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "description": "User writes comments on news articles",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961541
+    },
+    {
+      "entity_1": "NEWS_ARTICLE",
+      "entity_2": "COMMENT",
+      "description": "News article can have many comments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.007956
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MEMBER",
+      "description": "Administrator manages website members",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.055125
+    }
+  ],
+  "processing_time": 338.37
+}

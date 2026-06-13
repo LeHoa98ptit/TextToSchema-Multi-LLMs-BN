@@ -1,0 +1,97 @@
+{
+  "filename": "438.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "SHOPPING_CART": 0.595922,
+    "ORDER_ITEM": 0.523807,
+    "ASSOC_SHOPPING_CART_PRODUCT": 0.246286
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.505828,
+      "password": 0.533399,
+      "contact_information": 0.524715,
+      "registration_time": 0.520674,
+      "shipping_address": 0.522763
+    },
+    "PRODUCT": {
+      "product_name": 0.528694,
+      "price": 0.522942,
+      "stock_quantity": 0.537525,
+      "product_description": 0.530094
+    },
+    "ORDER": {
+      "order_id": 0.520659,
+      "total_price": 0.532155,
+      "order_time": 0.52496,
+      "order_status": 0.523938,
+      "payment_method": 0.533648
+    },
+    "SHOPPING_CART": {
+      "cart_id": 0.542422,
+      "cart_status": 0.54417
+    },
+    "ORDER_ITEM": {
+      "item_id": 0.525161,
+      "quantity": 0.549527
+    },
+    "ASSOC_SHOPPING_CART_PRODUCT": {
+      "assoc_shopping_cart_product_id": 0.246286,
+      "shopping_cart_id": 0.246286,
+      "product_id": 0.246286
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "description": "A user has one shopping cart",
+      "probability": 0.997452
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.999069
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.999937
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "An order item is associated with one product",
+      "probability": 0.95861
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.246286
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.246286
+    }
+  ],
+  "processing_time": 10.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'shipping_address' attribute to the USER entity and 'payment_method' attribute to the ORDER entity to enhance the model's completeness."
+  }
+}

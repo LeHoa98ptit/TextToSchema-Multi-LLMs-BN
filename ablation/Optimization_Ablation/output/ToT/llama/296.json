@@ -1,0 +1,91 @@
+{
+  "entity": [
+    "CLIENT",
+    "FINANCIAL_ADVISOR",
+    "INVESTMENT_PORTFOLIO",
+    "FINANCIAL_PRODUCT",
+    "TRANSACTION",
+    "FINANCIAL_NEED",
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT"
+  ],
+  "attribute": {
+    "CLIENT": [
+      "client_d",
+      "contact_number",
+      "risk_preference",
+      "total_asset"
+    ],
+    "FINANCIAL_ADVISOR": [
+      "advisor_id",
+      "hire_date",
+      "contact_number",
+      "advisor_name"
+    ],
+    "INVESTMENT_PORTFOLIO": [
+      "portfolio_d",
+      "client_d",
+      "product_code",
+      "quantity_hold"
+    ],
+    "FINANCIAL_PRODUCT": [
+      "product_code",
+      "product_type",
+      "product_value",
+      "product_description"
+    ],
+    "TRANSACTION": [
+      "transaction_d",
+      "portfolio_d",
+      "product_code",
+      "transaction_type",
+      "transaction_quantity",
+      "transaction_price",
+      "transaction_time"
+    ],
+    "FINANCIAL_NEED": [
+      "need_id",
+      "client_d",
+      "need_type",
+      "need_description"
+    ],
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT": [
+      "assoc_investment_portfolio_financial_product_id",
+      "investment_portfolio_id",
+      "financial_product_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "FINANCIAL_ADVISOR",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PORTFOLIO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "FINANCIAL_NEED",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.6445,
+  "ilp_runtime": 0.037
+}

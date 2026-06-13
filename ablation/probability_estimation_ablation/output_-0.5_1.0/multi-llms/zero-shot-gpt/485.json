@@ -1,0 +1,123 @@
+{
+  "filename": "485.txt",
+  "entity": {
+    "WETLAND_PROTECTION_ORGANIZATION": 0.472004,
+    "WETLAND_PROTECTION_AREA": 0.529889,
+    "PERSONNEL": 0.463291,
+    "SPECIES": 0.534221,
+    "OBSERVATION": 0.469139,
+    "ENVIRONMENTAL_CHANGE": 0.513197,
+    "SENSOR": 0.47031
+  },
+  "attribute": {
+    "WETLAND_PROTECTION_ORGANIZATION": {
+      "organization id": 0.577141,
+      "organization name": 0.573913
+    },
+    "WETLAND_PROTECTION_AREA": {
+      "area id": 0.570561,
+      "area name": 0.566394,
+      "location": 0.569084,
+      "organization id": 0.579366,
+      "person in charge id": 0.567896
+    },
+    "PERSONNEL": {
+      "personnel id": 0.528011,
+      "first name": 0.522456,
+      "last name": 0.522212,
+      "role": 0.529278
+    },
+    "SPECIES": {
+      "species id": 0.525419,
+      "scientific name": 0.520089,
+      "common name": 0.516728
+    },
+    "OBSERVATION": {
+      "observation id": 0.522491,
+      "area id": 0.537254,
+      "species id": 0.5363,
+      "personnel id": 0.538071,
+      "observation time": 0.516491,
+      "quantity": 0.51997,
+      "growth status": 0.525524,
+      "flora fauna": 0.543714,
+      "observation_id": 0.005553,
+      "species_id": 0.005553,
+      "wetland_protection_area_id": 0.005553
+    },
+    "ENVIRONMENTAL_CHANGE": {
+      "change id": 0.537019,
+      "area id": 0.547716,
+      "sensor id": 0.547881,
+      "recorded at": 0.558965,
+      "temperature": 0.528866,
+      "humidity": 0.535177,
+      "rainfall": 0.532032
+    },
+    "SENSOR": {
+      "sensor id": 0.526674,
+      "sensor type": 0.530281,
+      "location": 0.531261,
+      "installation date": 0.524319
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "WETLAND_PROTECTION_ORGANIZATION",
+      "entity_2": "WETLAND_PROTECTION_AREA",
+      "description": "An organization manages multiple protection areas",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99993
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "WETLAND_PROTECTION_AREA",
+      "description": "A personnel can be in charge of multiple protection areas",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122742
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "OBSERVATION",
+      "description": "A protection area can have many observations recorded",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.101146
+    },
+    {
+      "entity_1": "SPECIES",
+      "entity_2": "OBSERVATION",
+      "description": "A species can appear in many observations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.081626
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "OBSERVATION",
+      "description": "A personnel can record many observations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00064
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "ENVIRONMENTAL_CHANGE",
+      "description": "Environmental change records are linked to a protection area",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.079333
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "ENVIRONMENTAL_CHANGE",
+      "description": "A sensor records many environmental change entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.241102
+    }
+  ],
+  "processing_time": 23.15
+}

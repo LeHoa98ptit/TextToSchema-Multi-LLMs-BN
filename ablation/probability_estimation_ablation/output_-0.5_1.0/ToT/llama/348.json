@@ -1,0 +1,70 @@
+{
+  "filename": "348.txt",
+  "entity": {
+    "PLUGIN": 0.622459,
+    "EXECUTION": 0.622459,
+    "AUDIT": 0.610473,
+    "SQL_STATEMENT": 0.436987
+  },
+  "attribute": {
+    "PLUGIN": {
+      "version": 0.547922,
+      "type": 0.557039,
+      "description": 0.558739
+    },
+    "EXECUTION": {
+      "start_time": 0.531365,
+      "end_time": 0.533371,
+      "status": 0.544175,
+      "plugin_id": 0.545052,
+      "execution_description": 0.544811
+    },
+    "AUDIT": {
+      "audit_id": 0.538175,
+      "execution_id": 0.546739,
+      "audit_time": 0.545155,
+      "audit_result": 0.538327
+    },
+    "SQL_STATEMENT": {
+      "statement_id": 0.522926,
+      "execution_id": 0.533728,
+      "statement": 0.52626,
+      "statement_result": 0.519105
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "EXECUTION",
+      "cardinality": "1:N",
+      "description": "A plugin can have multiple executions",
+      "probability": 0.241551
+    },
+    {
+      "entity_1": "EXECUTION",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "An execution can have multiple audits",
+      "probability": 0.915531
+    },
+    {
+      "entity_1": "EXECUTION",
+      "entity_2": "SQL_STATEMENT",
+      "cardinality": "1:N",
+      "description": "An execution can have multiple sql statements",
+      "probability": 0.067183
+    },
+    {
+      "entity_1": "AUDIT",
+      "entity_2": "SQL_STATEMENT",
+      "cardinality": "1:N",
+      "description": "An audit can be associated with multiple sql statements",
+      "probability": 0.038187
+    }
+  ],
+  "processing_time": 14.5,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'description' attribute to PLUGIN entity, 'execution_description' attribute to EXECUTION entity, 'audit_result' attribute to AUDIT entity, 'statement_result' attribute to SQL_STATEMENT entity, and an additional relationship between AUDIT and SQL_STATEMENT entities to improve completeness and efficiency."
+  }
+}

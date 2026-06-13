@@ -1,0 +1,165 @@
+{
+  "filename": "266.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "PIPELINE": 0.622459,
+    "LOCATION": 0.486728,
+    "PERSONNEL": 0.622459,
+    "TASK_TYPE": 0.522061,
+    "MAINTENANCE_TASK": 0.592546,
+    "MAINTENANCE_DETAIL": 0.554088,
+    "PERFORMANCE_EVALUATION": 0.446357,
+    "MONITORING_EVENT": 0.434553
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.525876,
+      "name": 0.534163,
+      "headquarters_address": 0.518864
+    },
+    "PIPELINE": {
+      "pipeline_id": 0.552916,
+      "name": 0.560927,
+      "length": 0.567264,
+      "diameter": 0.560208,
+      "start_location_id": 0.544279,
+      "end_location_id": 0.545878
+    },
+    "LOCATION": {
+      "location_id": 0.500118,
+      "latitude": 0.501817,
+      "longitude": 0.507238,
+      "description": 0.524014
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.541759,
+      "first_name": 0.535385,
+      "last_name": 0.543326,
+      "hire_date": 0.537233,
+      "certification_level": 0.544536,
+      "contact_number": 0.532204
+    },
+    "TASK_TYPE": {
+      "task_type_id": 0.526786,
+      "code": 0.528984,
+      "description": 0.54393
+    },
+    "MAINTENANCE_TASK": {
+      "task_id": 0.550805,
+      "scheduled_start": 0.543991,
+      "scheduled_end": 0.551553,
+      "actual_start": 0.551767,
+      "actual_end": 0.559719,
+      "status": 0.564114,
+      "pipeline_id": 0.572384,
+      "task_type_id": 0.548405
+    },
+    "MAINTENANCE_DETAIL": {
+      "detail_id": 0.550476,
+      "task_id": 0.557124,
+      "personnel_id": 0.56628,
+      "work_hours": 0.563897,
+      "notes": 0.556913
+    },
+    "PERFORMANCE_EVALUATION": {
+      "eval_id": 0.523017,
+      "task_id": 0.543734,
+      "personnel_id": 0.551153,
+      "score": 0.538226,
+      "eval_date": 0.528807,
+      "comments": 0.531011
+    },
+    "MONITORING_EVENT": {
+      "event_id": 0.515148,
+      "task_id": 0.532152,
+      "event_timestamp": 0.516765,
+      "sensor_type": 0.523272,
+      "sensor_value": 0.522621,
+      "description": 0.534721
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PIPELINE",
+      "cardinality": "1:N",
+      "description": "A company owns many pipelines",
+      "probability": 0.9952
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A company employs many maintenance personnel",
+      "probability": 0.256155
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "Each pipeline can have multiple maintenance tasks",
+      "probability": 0.994625
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "TASK_TYPE",
+      "cardinality": "N:1",
+      "description": "Each maintenance task is of a specific task type",
+      "probability": 0.057018
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "MAINTENANCE_DETAIL",
+      "cardinality": "1:N",
+      "description": "A task can have multiple detail records (one per personnel involved)",
+      "probability": 0.991622
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MAINTENANCE_DETAIL",
+      "cardinality": "1:N",
+      "description": "A personnel can appear in many maintenance detail records",
+      "probability": 0.379528
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "PERFORMANCE_EVALUATION",
+      "cardinality": "1:N",
+      "description": "Each task may have several performance evaluations (e.g., per personnel)",
+      "probability": 0.048308
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PERFORMANCE_EVALUATION",
+      "cardinality": "1:N",
+      "description": "A personnel can receive many evaluations over time",
+      "probability": 0.154449
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Pipeline start_location_id references a location",
+      "probability": 0.054026
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Pipeline end_location_id references a location",
+      "probability": 0.054026
+    },
+    {
+      "entity_1": "MONITORING_EVENT",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "N:1",
+      "description": "Real‑time monitoring events are recorded for a maintenance task",
+      "probability": 0.483322
+    }
+  ],
+  "processing_time": 30.12,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added MONITORING_EVENT entity to capture real‑time sensor readings and status updates per task, supporting finer‑grained monitoring. Retained the many‑to‑many link between Personnel and MaintenanceTask via MAINTENANCE_DETAIL. Preserved all strong entities and attributes from the best candidate. Documented a composite unique constraint on (pipeline_id, start_location_id, end_location_id) to prevent duplicate geometry (not shown in JSON). Clarified that TASK_TYPE can be treated as an enumeration if static. Suggested indexing of foreign keys for performance and added business‑rule notes (e.g., actual_end >= actual_start, work_hours derived from timestamps)."
+  }
+}

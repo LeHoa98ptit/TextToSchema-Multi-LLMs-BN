@@ -1,0 +1,116 @@
+{
+  "filename": "429.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.494975,
+    "DISH": 0.622459,
+    "CATEGORY": 0.473625,
+    "SHELF": 0.492451,
+    "ORDER": 0.622459,
+    "ORDER_DETAIL": 0.51979,
+    "SALE_STATISTIC": 0.509074
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.516088,
+      "username": 0.500913,
+      "password": 0.523796,
+      "role id": 0.524499
+    },
+    "ROLE": {
+      "role id": 0.526914,
+      "role name": 0.525715
+    },
+    "DISH": {
+      "dish id": 0.543832,
+      "price": 0.537419,
+      "category id": 0.549282,
+      "availability status": 0.551874,
+      "shelf id": 0.54063
+    },
+    "CATEGORY": {
+      "category id": 0.520561,
+      "category name": 0.525797
+    },
+    "SHELF": {
+      "shelf id": 0.51839
+    },
+    "ORDER": {
+      "order id": 0.524914,
+      "user id": 0.522385,
+      "order time": 0.523589,
+      "total amount": 0.5331,
+      "order status": 0.539715
+    },
+    "ORDER_DETAIL": {
+      "order id": 0.530596,
+      "dish id": 0.555543,
+      "quantity": 0.546888
+    },
+    "SALE_STATISTIC": {
+      "statistic id": 0.538636,
+      "dish id": 0.561301,
+      "total sale quantity": 0.544085,
+      "total sale date": 0.533044
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each role can be assigned to many users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995292
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "DISH",
+      "description": "Each category groups multiple dishes",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001661
+    },
+    {
+      "entity_1": "SHELF",
+      "entity_2": "DISH",
+      "description": "Each shelf holds multiple dishes",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000427
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place many orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999082
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "description": "An order can have multiple order detail lines",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "description": "A dish can appear in multiple order detail lines",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.395749
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "SALE_STATISTIC",
+      "description": "A dish can have multiple sale statistic records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000241
+    }
+  ],
+  "processing_time": 31.23
+}

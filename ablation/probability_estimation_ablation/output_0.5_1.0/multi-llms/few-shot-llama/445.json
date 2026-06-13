@@ -1,0 +1,117 @@
+{
+  "filename": "445.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "UNIT": 0.817574,
+    "ADMINISTRATOR": 0.742671,
+    "HEALTH_RECORD": 0.739294,
+    "VISITOR_APPOINTMENT": 0.77067,
+    "ACCESS_RECORD": 0.748401,
+    "ACCESS_CONTROL_DEVICE": 0.75211
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel id": 0.770453,
+      "name": 0.769123,
+      "personnel type": 0.773237,
+      "contact phone number": 0.76439,
+      "email": 0.759834
+    },
+    "UNIT": {
+      "unit id": 0.756314,
+      "unit name": 0.756315,
+      "unit type": 0.760122
+    },
+    "ADMINISTRATOR": {
+      "administrator id": 0.75698,
+      "name": 0.757003,
+      "management role": 0.764603
+    },
+    "HEALTH_RECORD": {
+      "health record id": 0.757189,
+      "temperature": 0.749919,
+      "symptoms": 0.751097,
+      "health code color": 0.756293
+    },
+    "VISITOR_APPOINTMENT": {
+      "appointment id": 0.757812,
+      "visitor id": 0.75831,
+      "visited personnel id": 0.766027,
+      "scheduled entry time": 0.753319,
+      "scheduled exit time": 0.748151,
+      "appointment status": 0.758025
+    },
+    "ACCESS_RECORD": {
+      "access record id": 0.751071,
+      "personnel id": 0.769906,
+      "entry time": 0.752837,
+      "exit time": 0.748932,
+      "access control device id": 0.756856
+    },
+    "ACCESS_CONTROL_DEVICE": {
+      "device id": 0.75715,
+      "device name": 0.757644,
+      "device location": 0.75622,
+      "device status": 0.762995
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_RECORD",
+      "description": "Each personnel can have many health records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980129
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "description": "Each personnel can have many access records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.971698
+    },
+    {
+      "entity_1": "ACCESS_CONTROL_DEVICE",
+      "entity_2": "ACCESS_RECORD",
+      "description": "Each access control device can have many access records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.91176
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VISITOR_APPOINTMENT",
+      "description": "Each personnel can have many visitor appointments as a visited personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825685
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "VISITOR_APPOINTMENT",
+      "description": "Each personnel can have many visitor appointments as a visitor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825685
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "PERSONNEL",
+      "description": "Each unit can have many personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996388
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PERSONNEL",
+      "description": "Each administrator is a personnel.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.127825
+    }
+  ],
+  "processing_time": 30.85
+}

@@ -1,0 +1,166 @@
+{
+  "filename": "351.txt",
+  "entity": {
+    "USER": 0.745869,
+    "ROLE": 0.732609,
+    "OBJECT": 0.817574,
+    "PERMISSION": 0.817574,
+    "PERMISSION_ENTRY": 0.779697,
+    "AUDIT_LOG": 0.686649,
+    "ASSOC_USER_ROLE": 0.99769,
+    "ASSOC_ROLE_PERMISSION": 0.573987
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.750212,
+      "username": 0.735451,
+      "email": 0.743991,
+      "status": 0.755248
+    },
+    "ROLE": {
+      "role_id": 0.762157,
+      "role_name": 0.761945,
+      "description": 0.76596
+    },
+    "OBJECT": {
+      "object_id": 0.74733,
+      "object_name": 0.747623,
+      "object_type": 0.75409,
+      "parent_object_id": 0.755112,
+      "owner_name": 0.766364,
+      "owner_contact_email": 0.759011,
+      "owner_contact_phone": 0.765012
+    },
+    "PERMISSION": {
+      "permission_id": 0.770594,
+      "permission_name": 0.772361,
+      "description": 0.778023
+    },
+    "PERMISSION_ENTRY": {
+      "entry_id": 0.770533,
+      "user_id": 0.771802,
+      "object_id": 0.776082,
+      "permission_id": 0.773071,
+      "granted_by_role_id": 0.775439,
+      "effective_date": 0.76202,
+      "expiry_date": 0.760147,
+      "is_active": 0.765739
+    },
+    "AUDIT_LOG": {
+      "audit_id": 0.760888,
+      "timestamp": 0.753276,
+      "user_id": 0.762831,
+      "object_id": 0.76528,
+      "permission_id": 0.775245,
+      "action_type": 0.762162,
+      "outcome": 0.759544,
+      "source_ip": 0.751638,
+      "detail": 0.765535
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.99769,
+      "user_id": 0.99769,
+      "role_id": 0.99769
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.573987,
+      "role_id": 0.573987,
+      "permission_id": 0.573987
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99769
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99769
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "description": "Roles may inherit permissions from a parent role",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.573987
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.573987
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT",
+      "cardinality": "1:N",
+      "description": "Objects can be arranged in a hierarchy; a child inherits permissions from its parent",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "PERMISSION_ENTRY",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "An entry records which user received a permission",
+      "probability": 0.16554
+    },
+    {
+      "entity_1": "PERMISSION_ENTRY",
+      "entity_2": "OBJECT",
+      "cardinality": "N:1",
+      "description": "An entry ties the permission to a specific object",
+      "probability": 0.021089
+    },
+    {
+      "entity_1": "PERMISSION_ENTRY",
+      "entity_2": "PERMISSION",
+      "cardinality": "N:1",
+      "description": "Specifies the exact permission granted",
+      "probability": 0.971084
+    },
+    {
+      "entity_1": "AUDIT_LOG",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Log records the user who performed the access attempt",
+      "probability": 0.995607
+    },
+    {
+      "entity_1": "AUDIT_LOG",
+      "entity_2": "OBJECT",
+      "cardinality": "N:1",
+      "description": "Log records the object targeted by the attempt",
+      "probability": 2.7e-05
+    },
+    {
+      "entity_1": "AUDIT_LOG",
+      "entity_2": "PERMISSION",
+      "cardinality": "N:1",
+      "description": "Log records the permission that was evaluated",
+      "probability": 0.003341
+    }
+  ],
+  "processing_time": 28.16,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged OWNER into OBJECT to eliminate a redundant entity and added owner contact fields directly to OBJECT. Standardized timestamp naming to 'timestamp' and renamed audit primary key to 'audit_id'. Added 'action_type' attribute to AUDIT_LOG for operation context. Removed the PERMISSION_ENTRY‑ROLE relationship, using the foreign key attribute 'granted_by_role_id' instead. Updated descriptions and kept role and object hierarchies for inheritance. The model remains lightweight while fully satisfying domain requirements."
+  }
+}

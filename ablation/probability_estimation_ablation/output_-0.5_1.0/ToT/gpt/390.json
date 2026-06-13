@@ -1,0 +1,170 @@
+{
+  "filename": "390.txt",
+  "entity": {
+    "CONSUMER": 0.622459,
+    "ADDRESS": 0.5012,
+    "PHONE": 0.622459,
+    "COURIER_COMPANY": 0.584895,
+    "COURIER": 0.622459,
+    "RECIPIENT": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "PARTNERSHIP": 0.622459,
+    "TRACKING_EVENT": 0.419896,
+    "ASSOC_ADMINISTRATOR_PARTNERSHIP": 0.088148
+  },
+  "attribute": {
+    "CONSUMER": {
+      "consumer_id": 0.524432,
+      "first_name": 0.524789,
+      "last_name": 0.530984,
+      "email": 0.534766
+    },
+    "ADDRESS": {
+      "address_id": 0.508022,
+      "street": 0.517905,
+      "city": 0.525027,
+      "state": 0.51886,
+      "postal_code": 0.529658,
+      "country": 0.520615,
+      "address_type": 0.51152
+    },
+    "PHONE": {
+      "phone_id": 0.507991,
+      "phone_number": 0.506705,
+      "type": 0.515004
+    },
+    "COURIER_COMPANY": {
+      "company_id": 0.567404,
+      "company_name": 0.568569,
+      "contact_email": 0.569328,
+      "arrival_time": 0.5659,
+      "charge_price": 0.563941,
+      "base_rate": 0.563345
+    },
+    "COURIER": {
+      "courier_id": 0.571112,
+      "tracking_number": 0.576703,
+      "weight": 0.557788,
+      "dimensions": 0.560181,
+      "status": 0.574778,
+      "price": 0.56184,
+      "sent_date": 0.55467,
+      "expected_delivery": 0.564039
+    },
+    "RECIPIENT": {
+      "recipient_id": 0.518362,
+      "name": 0.526761,
+      "email": 0.529214
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.516157,
+      "login": 0.526531,
+      "password_hash": 0.504731,
+      "role": 0.534316
+    },
+    "PARTNERSHIP": {
+      "partnership_id": 0.506281,
+      "start_date": 0.503773,
+      "end_date": 0.505081,
+      "agreement_details": 0.514598
+    },
+    "TRACKING_EVENT": {
+      "event_id": 0.511857,
+      "courier_id": 0.562207,
+      "event_time": 0.51698,
+      "location": 0.530284,
+      "status_description": 0.519757
+    },
+    "ASSOC_ADMINISTRATOR_PARTNERSHIP": {
+      "assoc_administrator_partnership_id": 0.088148,
+      "administrator_id": 0.088148,
+      "partnership_id": 0.088148
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CONSUMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A consumer can have multiple addresses (e.g., billing, shipping)",
+      "probability": 0.112839
+    },
+    {
+      "entity_1": "CONSUMER",
+      "entity_2": "PHONE",
+      "cardinality": "1:N",
+      "description": "A consumer may own multiple phone numbers",
+      "probability": 0.533523
+    },
+    {
+      "entity_1": "RECIPIENT",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A recipient can have multiple addresses",
+      "probability": 0.998581
+    },
+    {
+      "entity_1": "RECIPIENT",
+      "entity_2": "PHONE",
+      "cardinality": "1:N",
+      "description": "A recipient can have multiple phone numbers",
+      "probability": 0.065654
+    },
+    {
+      "entity_1": "CONSUMER",
+      "entity_2": "COURIER",
+      "cardinality": "1:N",
+      "description": "A consumer can send many courier shipments",
+      "probability": 0.999242
+    },
+    {
+      "entity_1": "COURIER",
+      "entity_2": "COURIER_COMPANY",
+      "cardinality": "N:1",
+      "description": "Each courier shipment is handled by one courier company",
+      "probability": 0.999978
+    },
+    {
+      "entity_1": "COURIER",
+      "entity_2": "RECIPIENT",
+      "cardinality": "1:1",
+      "description": "A courier shipment is delivered to a single recipient",
+      "probability": 0.046631
+    },
+    {
+      "entity_1": "COURIER",
+      "entity_2": "TRACKING_EVENT",
+      "cardinality": "1:N",
+      "description": "A courier shipment generates many tracking events over its lifecycle",
+      "probability": 0.004939
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ASSOC_ADMINISTRATOR_PARTNERSHIP",
+      "description": "One ADMINISTRATOR can be associated with many ASSOC_ADMINISTRATOR_PARTNERSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.088148
+    },
+    {
+      "entity_1": "PARTNERSHIP",
+      "entity_2": "ASSOC_ADMINISTRATOR_PARTNERSHIP",
+      "description": "One PARTNERSHIP can be associated with many ASSOC_ADMINISTRATOR_PARTNERSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.088148
+    },
+    {
+      "entity_1": "PARTNERSHIP",
+      "entity_2": "COURIER_COMPANY",
+      "cardinality": "N:1",
+      "description": "Each partnership links to a single courier company",
+      "probability": 0.851369
+    }
+  ],
+  "processing_time": 19.56,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Converted Consumer‑Address to 1:N to support multiple addresses, added Recipient‑Address and Recipient‑Phone 1:N relationships, linked TRACKING_EVENT to its courier via courier_id, retained granular Address and Phone entities for data integrity, kept many‑to‑many Admin‑Partnership relationship, and clarified relationship descriptions. All suggested normalization and history‑tracking enhancements have been incorporated."
+  }
+}

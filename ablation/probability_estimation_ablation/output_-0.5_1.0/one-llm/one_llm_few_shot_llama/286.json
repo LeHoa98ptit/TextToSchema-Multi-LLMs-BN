@@ -1,0 +1,73 @@
+{
+  "filename": "286.txt",
+  "entity": {
+    "THEATER": 0.622459,
+    "VENUE": 0.622459,
+    "ACTOR": 0.622459,
+    "PERFORMANCE": 0.622459,
+    "ASSOC_PERFORMANCE_ACTOR": 0.814689
+  },
+  "attribute": {
+    "THEATER": {
+      "theater_id": 0.56406,
+      "name": 0.559603,
+      "address": 0.561564,
+      "seating_capacity": 0.571972
+    },
+    "VENUE": {
+      "venue_id": 0.559346,
+      "name": 0.559351,
+      "address": 0.556912,
+      "seating_capacity": 0.56796
+    },
+    "ACTOR": {
+      "actor_id": 0.546589,
+      "email": 0.550137,
+      "phone_number": 0.546954,
+      "name": 0.540723
+    },
+    "PERFORMANCE": {
+      "performance_id": 0.535897,
+      "start_time": 0.538432,
+      "end_time": 0.536666
+    },
+    "ASSOC_PERFORMANCE_ACTOR": {
+      "assoc_performance_actor_id": 0.814689,
+      "performance_id": 0.814689,
+      "actor_id": 0.814689
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "THEATER",
+      "entity_2": "VENUE",
+      "cardinality": "1:N",
+      "description": "A theater can have multiple venues, and each venue is part of one theater.",
+      "probability": 0.997096
+    },
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "VENUE",
+      "cardinality": "1:N",
+      "description": "A venue can have multiple performances, and each performance takes place in one venue.",
+      "probability": 0.021729
+    },
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "ASSOC_PERFORMANCE_ACTOR",
+      "description": "One PERFORMANCE can be associated with many ASSOC_PERFORMANCE_ACTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.814689
+    },
+    {
+      "entity_1": "ACTOR",
+      "entity_2": "ASSOC_PERFORMANCE_ACTOR",
+      "description": "One ACTOR can be associated with many ASSOC_PERFORMANCE_ACTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.814689
+    }
+  ],
+  "processing_time": 9.98
+}

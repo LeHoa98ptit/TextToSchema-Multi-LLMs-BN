@@ -1,0 +1,90 @@
+{
+  "entity": [
+    "OPERATOR",
+    "LOG",
+    "USER",
+    "ROLE",
+    "OPERATION",
+    "ACCOUNT",
+    "ASSOC_USER_ROLE"
+  ],
+  "attribute": {
+    "OPERATOR": [
+      "operator id",
+      "account",
+      "password",
+      "contact information"
+    ],
+    "LOG": [
+      "log id",
+      "log level",
+      "content",
+      "category",
+      "lifecycle",
+      "timestamp",
+      "operator id"
+    ],
+    "USER": [
+      "user id",
+      "account",
+      "password",
+      "contact information"
+    ],
+    "ROLE": [
+      "role id",
+      "description"
+    ],
+    "OPERATION": [
+      "operation id",
+      "operation time",
+      "operation type",
+      "execution content",
+      "log id"
+    ],
+    "ACCOUNT": [
+      "account id",
+      "password",
+      "contact information",
+      "user id"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "LOG",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.8161,
+  "ilp_runtime": 0.059
+}

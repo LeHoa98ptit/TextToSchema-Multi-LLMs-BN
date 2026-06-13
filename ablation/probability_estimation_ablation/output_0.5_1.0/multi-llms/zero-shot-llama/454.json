@@ -1,0 +1,120 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "DISTRIBUTION_CENTER": 0.74793,
+    "PRODUCT": 0.817574,
+    "SUPPLY_REQUEST": 0.793671,
+    "DISTRIBUTION_ORDER": 0.756944,
+    "PURCHASE_ORDER": 0.7517,
+    "DISTRIBUTION_ORDER_PRODUCT": 0.447385
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket address": 0.765603,
+      "supermarket contact information": 0.772611,
+      "supermarket id": 0.76509
+    },
+    "DISTRIBUTION_CENTER": {
+      "distribution center id": 0.7605
+    },
+    "PRODUCT": {
+      "product id": 0.75373,
+      "product price": 0.753056,
+      "inventory quantity": 0.783634
+    },
+    "SUPPLY_REQUEST": {
+      "supply request id": 0.775723,
+      "supermarket id": 0.782324,
+      "product id": 0.776406,
+      "quantity": 0.786714
+    },
+    "DISTRIBUTION_ORDER": {
+      "distribution order id": 0.754188,
+      "supply request id": 0.773236,
+      "distribution date": 0.754942,
+      "distribution status": 0.765987
+    },
+    "PURCHASE_ORDER": {
+      "purchase order id": 0.754569,
+      "product id": 0.761023,
+      "quantity": 0.779022,
+      "price": 0.757211,
+      "purchase date": 0.752824,
+      "status": 0.768581
+    },
+    "DISTRIBUTION_ORDER_PRODUCT": {
+      "distribution_order_product_id": 0.447385,
+      "distribution_order_id": 0.447385,
+      "product_id": 0.447385,
+      "quantity": 0.447385
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A supermarket can have multiple supply requests",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010714
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A distribution center can receive multiple supply requests",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.100503
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A product can be included in multiple supply requests",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.396515
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "description": "A supply request generates one distribution order",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.066906
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "DISTRIBUTION_ORDER_PRODUCT",
+      "description": "One DISTRIBUTION_ORDER can be associated with many DISTRIBUTION_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.447385
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DISTRIBUTION_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many DISTRIBUTION_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.447385
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER",
+      "description": "A product can have multiple purchase orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.265023
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "PURCHASE_ORDER",
+      "description": "A distribution center can generate multiple purchase orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.03065
+    }
+  ],
+  "processing_time": 21.14
+}

@@ -1,0 +1,194 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.622459,
+    "EQUIPMENT": 0.622459,
+    "USAGE_RECORD": 0.501075,
+    "COURSE": 0.622459,
+    "CONSUMABLE": 0.622459,
+    "HAZARDOUS_CHEMICAL": 0.580664,
+    "PURCHASE_RECORD": 0.5059,
+    "ISSUANCE_RECORD": 0.497875,
+    "COURSE_REGISTRATION": 0.829736,
+    "EQUIPMENT_ASSIGNMENT": 0.146788
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.509285,
+      "username": 0.501793,
+      "password": 0.51443,
+      "phone number": 0.507599,
+      "associated unit": 0.533417,
+      "user role": 0.529331
+    },
+    "EQUIPMENT": {
+      "equipment id": 0.544351,
+      "equipment name": 0.544641,
+      "model": 0.550155,
+      "category": 0.557461,
+      "manufacturer": 0.539182,
+      "status": 0.552321,
+      "acquisition time": 0.538768
+    },
+    "USAGE_RECORD": {
+      "usage record id": 0.528304,
+      "usage time": 0.531827,
+      "user id": 0.525055,
+      "purpose of use": 0.53383,
+      "equipment id": 0.542584
+    },
+    "COURSE": {
+      "course id": 0.538245,
+      "course name": 0.543202,
+      "class time": 0.538439,
+      "class location": 0.543239,
+      "teacher id": 0.534881
+    },
+    "CONSUMABLE": {
+      "consumable id": 0.520161,
+      "consumable name": 0.529325,
+      "category": 0.543012,
+      "inventory quantity": 0.551353,
+      "status": 0.534788
+    },
+    "HAZARDOUS_CHEMICAL": {
+      "hazardous chemical id": 0.530276,
+      "chemical name": 0.523134,
+      "inventory quantity": 0.555568,
+      "issuance time": 0.530508,
+      "status": 0.533431
+    },
+    "PURCHASE_RECORD": {
+      "purchase record id": 0.513909,
+      "purchase time": 0.518165,
+      "consumable id": 0.524894,
+      "hazardous chemical id": 0.538251
+    },
+    "ISSUANCE_RECORD": {
+      "issuance record id": 0.519574,
+      "issuance time": 0.522339,
+      "consumable id": 0.526815,
+      "hazardous chemical id": 0.533775,
+      "user id": 0.517357
+    },
+    "COURSE_REGISTRATION": {
+      "course_registration_id": 0.829736,
+      "course_id": 0.829736,
+      "user_id": 0.829736,
+      "registration_date": 0.829736
+    },
+    "EQUIPMENT_ASSIGNMENT": {
+      "equipment_assignment_id": 0.146788,
+      "equipment_id": 0.146788,
+      "course_id": 0.146788,
+      "assignment_date": 0.146788
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USAGE_RECORD",
+      "description": "One user can have many usage records, but each usage record belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99791
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "USAGE_RECORD",
+      "description": "One equipment can have many usage records, but each usage record belongs to one equipment.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999627
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PURCHASE_RECORD",
+      "description": "One user can have many purchase records, but each purchase record belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993004
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "PURCHASE_RECORD",
+      "description": "One consumable can have many purchase records, but each purchase record belongs to one consumable.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.958108
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "PURCHASE_RECORD",
+      "description": "One hazardous chemical can have many purchase records, but each purchase record belongs to one hazardous chemical.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.576471
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ISSUANCE_RECORD",
+      "description": "One user can have many issuance records, but each issuance record belongs to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.966229
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "ISSUANCE_RECORD",
+      "description": "One consumable can have many issuance records, but each issuance record belongs to one consumable.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993675
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "ISSUANCE_RECORD",
+      "description": "One hazardous chemical can have many issuance records, but each issuance record belongs to one hazardous chemical.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.423641
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_REGISTRATION",
+      "description": "One COURSE can be associated with many COURSE_REGISTRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.829736
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COURSE_REGISTRATION",
+      "description": "One USER can be associated with many COURSE_REGISTRATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.829736
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_ASSIGNMENT",
+      "description": "One EQUIPMENT can be associated with many EQUIPMENT_ASSIGNMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.146788
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "EQUIPMENT_ASSIGNMENT",
+      "description": "One COURSE can be associated with many EQUIPMENT_ASSIGNMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.146788
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "USER",
+      "description": "One course is taught by exactly one teacher, and each teacher can teach many courses.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.829736
+    }
+  ],
+  "processing_time": 44.68
+}

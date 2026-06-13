@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "EQUIPMENT_MODEL",
+    "STATUS_LOG",
+    "ACCOUNT_ACTIVITY",
+    "DEPARTMENT",
+    "PERSON",
+    "ASSOC_USER_EQUIPMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "login",
+      "password",
+      "register",
+      "mobile_number",
+      "role",
+      "permission"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "equipment_model_id",
+      "equipment_status",
+      "calibration_date",
+      "calibration_validity",
+      "equipment_location",
+      "own_department_id",
+      "person_charge_id",
+      "remark",
+      "maintenance_history"
+    ],
+    "EQUIPMENT_MODEL": [
+      "equipment_model_id",
+      "equipment_model_name"
+    ],
+    "STATUS_LOG": [
+      "status_log_id",
+      "equipment_id",
+      "borrower_id",
+      "borrowing_time",
+      "borrow_equipment_photo",
+      "iou_photo",
+      "recipient_id",
+      "receive_area",
+      "receive_time",
+      "receive_equipment_photo",
+      "returner_id",
+      "return_time",
+      "return_equipment_photo",
+      "datum",
+      "monitoring_remark"
+    ],
+    "ACCOUNT_ACTIVITY": [
+      "account_activity_id",
+      "equipment_id",
+      "borrowing_account",
+      "receive_account",
+      "return_account",
+      "remark",
+      "person_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name"
+    ],
+    "PERSON": [
+      "person_id",
+      "person_name"
+    ],
+    "ASSOC_USER_EQUIPMENT": [
+      "assoc_user_equipment_id",
+      "user_id",
+      "equipment_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_MODEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.1149,
+  "ilp_runtime": 0.049
+}

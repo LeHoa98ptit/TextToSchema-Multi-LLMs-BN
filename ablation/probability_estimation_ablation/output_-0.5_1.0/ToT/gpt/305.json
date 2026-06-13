@@ -1,0 +1,100 @@
+{
+  "filename": "305.txt",
+  "entity": {
+    "USER": 0.622459,
+    "POST": 0.622459,
+    "FOLLOW": 0.622459,
+    "NOTIFICATION": 0.622459,
+    "ATTACHMENT": 0.459241
+  },
+  "attribute": {
+    "USER": {
+      "account_id": 0.53222,
+      "email": 0.540105,
+      "password_hash": 0.51233,
+      "verification_status": 0.542741,
+      "account_status": 0.543777,
+      "username": 0.524157,
+      "bio": 0.530678,
+      "profile_picture_url": 0.528979,
+      "created_at": 0.524329,
+      "last_login": 0.527281
+    },
+    "POST": {
+      "post_id": 0.514704,
+      "publisher_id": 0.535396,
+      "content": 0.529788,
+      "publish_time": 0.530117,
+      "link": 0.528386
+    },
+    "FOLLOW": {
+      "follower_id": 0.545448,
+      "followee_id": 0.546735,
+      "followed_at": 0.536842
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.525038,
+      "recipient_id": 0.532416,
+      "type": 0.536624,
+      "post_id": 0.527437,
+      "message": 0.529184,
+      "created_at": 0.529013,
+      "is_read": 0.524386
+    },
+    "ATTACHMENT": {
+      "attachment_id": 0.505842,
+      "post_id": 0.508214,
+      "url": 0.514194,
+      "media_type": 0.504293
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user (publisher_id) can create many posts",
+      "probability": 0.865314
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ATTACHMENT",
+      "cardinality": "1:N",
+      "description": "A post can have zero or many attachments",
+      "probability": 6.7e-05
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW",
+      "cardinality": "1:N",
+      "description": "A user can be the follower in many follow records",
+      "probability": 0.772846
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW",
+      "cardinality": "1:N",
+      "description": "A user can be the followee in many follow records",
+      "probability": 0.772846
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user receives many notifications",
+      "probability": 0.997608
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A post can trigger multiple notifications (e.g., likes, comments)",
+      "probability": 0.986002
+    }
+  ],
+  "processing_time": 24.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Replaced surrogate follow_id with a composite primary key (follower_id, followee_id) to enforce uniqueness of a follow relationship. Retained followed_at timestamp for audit. Kept ATTACHMENT as a separate entity to support multiple media per post. Confirmed all required USER attributes (verification_status, account_status) and POST attributes (publisher_id, link) are present. Clarified NOTIFICATION attributes to include recipient_id, post_id, type, and read flag. Added brief relationship descriptions reflecting the updated schema."
+  }
+}

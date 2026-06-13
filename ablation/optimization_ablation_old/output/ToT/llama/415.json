@@ -1,0 +1,64 @@
+{
+  "entity": [
+    "USER",
+    "SERVER",
+    "CHAT_RECORD",
+    "SERVER_CONFIGURATION"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email",
+      "ip_address",
+      "port_number",
+      "login_time",
+      "login_status"
+    ],
+    "SERVER": [
+      "server_ip_address",
+      "server_port_number",
+      "max_client_connection",
+      "receive_buffer_size"
+    ],
+    "CHAT_RECORD": [
+      "message_content",
+      "send_time",
+      "sender",
+      "receiver",
+      "message_id"
+    ],
+    "SERVER_CONFIGURATION": [
+      "protocol",
+      "dynamic_adjustment"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "SERVER_CONFIGURATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHAT_RECORD",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 18.3643,
+  "ilp_runtime": 0.12
+}

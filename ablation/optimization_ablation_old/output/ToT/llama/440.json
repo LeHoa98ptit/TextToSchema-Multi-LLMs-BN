@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "DEVICE",
+    "PERSON",
+    "DEPARTMENT",
+    "USER",
+    "MAINTENANCE_REQUEST",
+    "MAINTENANCE_RECORD"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device_model",
+      "ip_address",
+      "unique_qr_code",
+      "current_status",
+      "update_time"
+    ],
+    "PERSON": [
+      "person_name",
+      "contact_information",
+      "role"
+    ],
+    "DEPARTMENT": [
+      "department_name",
+      "location"
+    ],
+    "USER": [
+      "user_name",
+      "role",
+      "account_status",
+      "contact_information"
+    ],
+    "MAINTENANCE_REQUEST": [
+      "request_time",
+      "maintenance_content",
+      "handle_status",
+      "remark"
+    ],
+    "MAINTENANCE_RECORD": [
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_result",
+      "user_satisfaction",
+      "remark"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_REQUEST",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 29.7355,
+  "ilp_runtime": 0.036
+}

@@ -1,0 +1,112 @@
+{
+  "filename": "348.txt",
+  "entity": {
+    "PLUGIN": 0.817574,
+    "PLUGIN_TYPE": 0.790692,
+    "PLUGIN_EXECUTION": 0.73577,
+    "SQL_STATEMENT": 0.678437,
+    "AUDIT_LOG": 0.768044,
+    "USER": 0.711134,
+    "STATUS_LOOKUP": 0.671174
+  },
+  "attribute": {
+    "PLUGIN": {
+      "plugin_id": 0.760574,
+      "name": 0.76463,
+      "version": 0.767148,
+      "type_id": 0.759887,
+      "created_at": 0.748092,
+      "updated_at": 0.746598
+    },
+    "PLUGIN_TYPE": {
+      "type_id": 0.758954,
+      "type_name": 0.760292,
+      "category": 0.764265,
+      "description": 0.775667
+    },
+    "PLUGIN_EXECUTION": {
+      "execution_id": 0.767878,
+      "plugin_id": 0.767316,
+      "start_time": 0.768074,
+      "end_time": 0.769851,
+      "status_id": 0.769156,
+      "host": 0.767226,
+      "runtime_ms": 0.768852
+    },
+    "SQL_STATEMENT": {
+      "statement_id": 0.748715,
+      "execution_id": 0.756782,
+      "sql_text": 0.744596,
+      "duration_ms": 0.750101,
+      "rows_affected": 0.742416
+    },
+    "AUDIT_LOG": {
+      "audit_id": 0.758988,
+      "execution_id": 0.764923,
+      "user_id": 0.757372,
+      "action": 0.764695,
+      "audit_timestamp": 0.759495,
+      "details": 0.772397
+    },
+    "USER": {
+      "user_id": 0.737467,
+      "username": 0.726296,
+      "full_name": 0.732127,
+      "email": 0.735663
+    },
+    "STATUS_LOOKUP": {
+      "status_id": 0.743528,
+      "status_name": 0.743886,
+      "description": 0.754548
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN_TYPE",
+      "entity_2": "PLUGIN",
+      "cardinality": "1:N",
+      "description": "One plugin type classifies many plugins",
+      "probability": 0.999458
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_EXECUTION",
+      "cardinality": "1:N",
+      "description": "A plugin may have multiple execution records",
+      "probability": 0.997495
+    },
+    {
+      "entity_1": "PLUGIN_EXECUTION",
+      "entity_2": "SQL_STATEMENT",
+      "cardinality": "1:N",
+      "description": "Each execution can generate several SQL statements",
+      "probability": 0.004574
+    },
+    {
+      "entity_1": "PLUGIN_EXECUTION",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "An execution can have multiple audit log entries (e.g., start, stop, error)",
+      "probability": 0.007362
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "A user may create many audit log entries; user_id is optional for system‑generated entries",
+      "probability": 0.965055
+    },
+    {
+      "entity_1": "STATUS_LOOKUP",
+      "entity_2": "PLUGIN_EXECUTION",
+      "cardinality": "1:N",
+      "description": "Lookup table normalizes execution status values",
+      "probability": 0.683002
+    }
+  ],
+  "processing_time": 28.93,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested 1:N relationship between PLUGIN_EXECUTION and AUDIT_LOG, added a STATUS_LOOKUP entity to normalize execution status, made user_id in AUDIT_LOG optional (nullable) to support system‑generated audit entries, and prepared the model for indexing (e.g., start_time, end_time, type_id) to enable fast time‑range and type‑based queries. All original strengths retained and referential integrity can be enforced via foreign keys."
+  }
+}

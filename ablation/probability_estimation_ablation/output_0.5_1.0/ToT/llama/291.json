@@ -1,0 +1,127 @@
+{
+  "filename": "291.txt",
+  "entity": {
+    "REAGENT": 0.817574,
+    "LABORATORY": 0.817574,
+    "PERSON": 0.693875,
+    "USAGE_RECORD": 0.720451,
+    "INVENTORY": 0.817574,
+    "ALERT": 0.700336,
+    "REPORT": 0.716202,
+    "ASSOC_REAGENT_LABORATORY": 0.993769
+  },
+  "attribute": {
+    "REAGENT": {
+      "name": 0.771054,
+      "specification": 0.781855,
+      "expiration_date": 0.772094,
+      "quantity": 0.775634
+    },
+    "LABORATORY": {
+      "lab_id": 0.773624,
+      "location": 0.767377,
+      "person_in_charge": 0.767542
+    },
+    "PERSON": {
+      "person_id": 0.740183,
+      "name": 0.733464,
+      "role": 0.740422
+    },
+    "USAGE_RECORD": {
+      "usage_id": 0.751108,
+      "reagent_id": 0.767692,
+      "lab_id": 0.768107,
+      "usage_date": 0.755431,
+      "quantity_used": 0.762253
+    },
+    "INVENTORY": {
+      "inventory_id": 0.757065,
+      "reagent_id": 0.773212,
+      "lab_id": 0.771698,
+      "quantity_available": 0.763202
+    },
+    "ALERT": {
+      "alert_id": 0.737798,
+      "reagent_id": 0.761051,
+      "expiration_date": 0.748945,
+      "alert_date": 0.739984
+    },
+    "REPORT": {
+      "report_id": 0.754216,
+      "reagent_id": 0.771805,
+      "lab_id": 0.770579,
+      "usage_date": 0.759085,
+      "quantity_used": 0.771689
+    },
+    "ASSOC_REAGENT_LABORATORY": {
+      "assoc_reagent_laboratory_id": 0.993769,
+      "reagent_id": 0.993769,
+      "laboratory_id": 0.993769
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "ASSOC_REAGENT_LABORATORY",
+      "description": "One REAGENT can be associated with many ASSOC_REAGENT_LABORATORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993769
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "ASSOC_REAGENT_LABORATORY",
+      "description": "One LABORATORY can be associated with many ASSOC_REAGENT_LABORATORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993769
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "PERSON",
+      "cardinality": "1:N",
+      "description": "A laboratory is managed by one person and a person can manage multiple laboratories",
+      "probability": 0.826407
+    },
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "description": "A reagent can have multiple usage records",
+      "probability": 0.369303
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "description": "A laboratory can have multiple usage records",
+      "probability": 0.877978
+    },
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A reagent can have multiple inventory records",
+      "probability": 2.9e-05
+    },
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "ALERT",
+      "cardinality": "1:N",
+      "description": "A reagent can have multiple alerts for impending expiration",
+      "probability": 0.008537
+    },
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "description": "A reagent can have multiple reports for usage statistics",
+      "probability": 0.277678
+    }
+  ],
+  "processing_time": 26.68,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated alerts for impending reagent expiration and statistical reports for reagent usage. Added data validation and error handling to ensure data accuracy and consistency."
+  }
+}

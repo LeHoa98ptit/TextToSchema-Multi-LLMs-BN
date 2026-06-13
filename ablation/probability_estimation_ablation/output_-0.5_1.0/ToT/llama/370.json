@@ -1,0 +1,128 @@
+{
+  "filename": "370.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "SHOPPING_CART": 0.595922,
+    "MANUFACTURER": 0.510798,
+    "PAYMENT_METHOD": 0.4377,
+    "ORDER_ITEM": 0.523807,
+    "ASSOC_SHOPPING_CART_PRODUCT": 0.25244
+  },
+  "attribute": {
+    "USER": {
+      "phone_number": 0.534176,
+      "address": 0.527532,
+      "payment_method_id": 0.521839
+    },
+    "PRODUCT": {
+      "manufacturer_id": 0.541826,
+      "flavor": 0.539072,
+      "number": 0.555257,
+      "puff": 0.548721,
+      "unit_price": 0.535675,
+      "stock_quantity": 0.551661
+    },
+    "ORDER": {
+      "order_creation_time": 0.522246,
+      "order_status": 0.522254,
+      "user_id": 0.525209,
+      "total_cost": 0.530298
+    },
+    "SHOPPING_CART": {
+      "record_quantity": 0.554934,
+      "user_id": 0.53941
+    },
+    "MANUFACTURER": {
+      "name": 0.528948,
+      "description": 0.534704
+    },
+    "PAYMENT_METHOD": {
+      "type": 0.52881,
+      "description": 0.534595
+    },
+    "ORDER_ITEM": {
+      "order_id": 0.528478,
+      "product_id": 0.542873,
+      "quantity": 0.558746
+    },
+    "ASSOC_SHOPPING_CART_PRODUCT": {
+      "assoc_shopping_cart_product_id": 0.25244,
+      "shopping_cart_id": 0.25244,
+      "product_id": 0.25244
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "description": "A user has one shopping cart",
+      "probability": 0.997494
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.25244
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.25244
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.999086
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "description": "An order is created from one shopping cart",
+      "probability": 0.000106
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "MANUFACTURER",
+      "cardinality": "N:1",
+      "description": "A product is made by one manufacturer and a manufacturer can make multiple products",
+      "probability": 0.995752
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "N:1",
+      "description": "A user can have one payment method and a payment method can be used by multiple users",
+      "probability": 0.999592
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "An order item is for one product",
+      "probability": 0.960067
+    }
+  ],
+  "processing_time": 19.96,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for order items to capture the quantity of each product in an order. Added a relationship between order and shopping cart to capture the shopping cart used to create the order."
+  }
+}

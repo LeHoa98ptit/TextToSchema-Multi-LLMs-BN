@@ -1,0 +1,185 @@
+{
+  "filename": "499.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "CLASS": 0.817574,
+    "MAJOR": 0.728712,
+    "CLASSROOM": 0.762457,
+    "SPORT_TEAM": 0.799248,
+    "COACH": 0.728633,
+    "DORMITORY": 0.817574,
+    "BUILDING": 0.751756,
+    "ADMINISTRATOR": 0.734641,
+    "SCHEDULE": 0.70335,
+    "ASSOC_STUDENT_SPORT_TEAM": 0.006261
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.771646,
+      "name": 0.773335,
+      "gender": 0.77515,
+      "date_of_birth": 0.764663,
+      "email": 0.765492,
+      "phone_number": 0.765315,
+      "enrollment_date": 0.764552
+    },
+    "CLASS": {
+      "class_id": 0.746204,
+      "class_name": 0.750599,
+      "grade_level": 0.759164,
+      "year": 0.759208,
+      "classroom_id": 0.762178,
+      "major_id": 0.75088
+    },
+    "MAJOR": {
+      "major_id": 0.746909,
+      "major_name": 0.748121,
+      "department": 0.754855
+    },
+    "CLASSROOM": {
+      "classroom_id": 0.763262,
+      "room_number": 0.768485,
+      "capacity": 0.765255,
+      "building_id": 0.759507
+    },
+    "SPORT_TEAM": {
+      "team_id": 0.754397,
+      "team_name": 0.757323,
+      "sport_type": 0.759408,
+      "activity_time": 0.75977,
+      "coach_id": 0.752858
+    },
+    "COACH": {
+      "coach_id": 0.749108,
+      "name": 0.747568,
+      "email": 0.749157,
+      "phone_number": 0.748408,
+      "hire_date": 0.748076
+    },
+    "DORMITORY": {
+      "dorm_id": 0.775662,
+      "dorm_number": 0.778754,
+      "room_number": 0.774534,
+      "capacity": 0.776244,
+      "building_id": 0.767995,
+      "administrator_id": 0.780608
+    },
+    "BUILDING": {
+      "building_id": 0.73693,
+      "building_name": 0.737832,
+      "address": 0.736622,
+      "floors": 0.740796
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.751998,
+      "name": 0.758913,
+      "email": 0.750962,
+      "phone_number": 0.75338,
+      "office_number": 0.749658
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.740786,
+      "day_of_week": 0.738935,
+      "start_time": 0.739253,
+      "end_time": 0.740124
+    },
+    "ASSOC_STUDENT_SPORT_TEAM": {
+      "assoc_student_sport_team_id": 0.006261,
+      "student_id": 0.006261,
+      "sport_team_id": 0.006261
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CLASS",
+      "cardinality": "N:1",
+      "description": "A student belongs to one class; a class has many students",
+      "probability": 0.99925
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "MAJOR",
+      "cardinality": "N:1",
+      "description": "Each class is associated with one major; a major can have many classes",
+      "probability": 0.017769
+    },
+    {
+      "entity_1": "CLASSROOM",
+      "entity_2": "CLASS",
+      "cardinality": "1:N",
+      "description": "A classroom can host many classes over different schedule slots; each class is assigned one classroom",
+      "probability": 0.843721
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_SPORT_TEAM",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_SPORT_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006261
+    },
+    {
+      "entity_1": "SPORT_TEAM",
+      "entity_2": "ASSOC_STUDENT_SPORT_TEAM",
+      "description": "One SPORT_TEAM can be associated with many ASSOC_STUDENT_SPORT_TEAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006261
+    },
+    {
+      "entity_1": "SPORT_TEAM",
+      "entity_2": "COACH",
+      "cardinality": "N:1",
+      "description": "Each sport team is coached by one coach; a coach can lead multiple teams",
+      "probability": 0.0032
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "DORMITORY",
+      "cardinality": "N:1",
+      "description": "A student resides in one dormitory; a dormitory houses many students",
+      "probability": 0.99995
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "BUILDING",
+      "cardinality": "N:1",
+      "description": "Each dormitory is located in a building; a building can contain multiple dormitories",
+      "probability": 0.755153
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "ADMINISTRATOR",
+      "cardinality": "N:1",
+      "description": "An administrator manages a dormitory; an administrator may oversee several dormitories",
+      "probability": 0.634751
+    },
+    {
+      "entity_1": "CLASSROOM",
+      "entity_2": "BUILDING",
+      "cardinality": "N:1",
+      "description": "A classroom belongs to a building; a building contains many classrooms",
+      "probability": 0.320333
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "A class can have multiple schedule entries (different time slots); each schedule entry belongs to one class",
+      "probability": 0.034945
+    },
+    {
+      "entity_1": "SPORT_TEAM",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "A sport team can have multiple schedule entries (practice sessions); each schedule entry belongs to one sport team",
+      "probability": 0.003215
+    }
+  ],
+  "processing_time": 10.22,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Adjusted CLASS‑CLASSROOM cardinality to 1:N to reflect that a classroom can host many classes over time. Added an explicit 'activity_time' attribute to SPORT_TEAM and renamed existing practice_time to activity_time for clarity. Introduced a SCHEDULE entity to capture time slots for both classes and sport teams, enabling flexible scheduling. Added 'room_number' attribute to DORMITORY for precise resident location. Updated relationships to include CLASS‑SCHEDULE and SPORT_TEAM‑SCHEDULE. Retained all previously strong entities and relationships while improving completeness, accuracy, and future extensibility."
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "filename": "478.txt",
+  "entity": {
+    "USER": 0.817574,
+    "BICYCLE": 0.817574,
+    "TRIP": 0.710086,
+    "FAULT_RECORD": 0.763344,
+    "BILLING_RULE": 0.712755,
+    "COMPANY": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "d": 0.739248,
+      "phone_number": 0.749103,
+      "credit_status": 0.758369,
+      "user_number": 0.746907
+    },
+    "BICYCLE": {
+      "location": 0.763894,
+      "status": 0.772384,
+      "unlock_code": 0.76541,
+      "bicycle_number": 0.772582
+    },
+    "TRIP": {
+      "start_time": 0.754348,
+      "end_time": 0.750527,
+      "cost": 0.741073,
+      "payment_status": 0.757279,
+      "trip_id": 0.750641,
+      "billing_rule_id": 0.757172
+    },
+    "FAULT_RECORD": {
+      "fault_description": 0.75527,
+      "report_time": 0.753902,
+      "fault_id": 0.744049
+    },
+    "BILLING_RULE": {
+      "billing_method": 0.755169,
+      "unit_price": 0.755555,
+      "minimum_fee": 0.763614,
+      "rule_id": 0.756912
+    },
+    "COMPANY": {
+      "company_name": 0.755407,
+      "company_address": 0.748552,
+      "company_phone": 0.756134,
+      "company_email": 0.750319
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A company manages multiple users",
+      "probability": 0.87389
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "BICYCLE",
+      "cardinality": "1:N",
+      "description": "A company manages multiple bicycles",
+      "probability": 0.205913
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "description": "A user can have multiple trips",
+      "probability": 0.991084
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "description": "A bicycle can be used for multiple trips",
+      "probability": 0.599234
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAULT_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can report multiple faults",
+      "probability": 0.990843
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "FAULT_RECORD",
+      "cardinality": "1:N",
+      "description": "A bicycle can have multiple fault records",
+      "probability": 0.893215
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "BILLING_RULE",
+      "cardinality": "1:N",
+      "description": "A company can have multiple billing rules",
+      "probability": 0.501229
+    },
+    {
+      "entity_1": "TRIP",
+      "entity_2": "BILLING_RULE",
+      "cardinality": "1:1",
+      "description": "A trip is associated with one billing rule",
+      "probability": 0.634442
+    }
+  ],
+  "processing_time": 999.09,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added company contact information, added a relationship between trip and billing rule entities, and retained the strengths of the original model while addressing identified issues."
+  }
+}

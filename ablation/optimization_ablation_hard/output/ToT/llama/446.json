@@ -1,0 +1,100 @@
+{
+  "entity": [
+    "USER",
+    "SENSOR",
+    "CROP",
+    "GROWTH_MODEL",
+    "METEOROLOGY",
+    "SUPPLY_RECORD",
+    "ACTION_RECORD",
+    "EVALUATION_RECORD"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "registration_time",
+      "login_time",
+      "role"
+    ],
+    "SENSOR": [
+      "location",
+      "burial_depth",
+      "sensor_type"
+    ],
+    "CROP": [
+      "type",
+      "growth_model",
+      "planting_time",
+      "fertilizing_time"
+    ],
+    "GROWTH_MODEL": [
+      "model_parameter",
+      "creation_time",
+      "model_name"
+    ],
+    "METEOROLOGY": [
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind_speed",
+      "light_intensity",
+      "record_time"
+    ],
+    "SUPPLY_RECORD": [
+      "supply_time",
+      "location",
+      "water_amount",
+      "fertilizer_amount",
+      "crop_id"
+    ],
+    "ACTION_RECORD": [
+      "action_time",
+      "location",
+      "action_type",
+      "action_detail",
+      "crop_id"
+    ],
+    "EVALUATION_RECORD": [
+      "evaluation_time",
+      "location",
+      "evaluation_metric",
+      "evaluation_value"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "GROWTH_MODEL",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SUPPLY_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EVALUATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.8151,
+  "ilp_runtime": 0.053
+}

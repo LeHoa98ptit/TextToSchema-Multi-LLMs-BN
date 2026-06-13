@@ -1,0 +1,122 @@
+{
+  "filename": "445.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "UNIT": 0.817574,
+    "ADMINISTRATOR": 0.742671,
+    "HEALTH_INFORMATION": 0.751401,
+    "VISITOR": 0.817574,
+    "APPOINTMENT": 0.817574,
+    "ACCESS_RECORD": 0.748401,
+    "ACCESS_CONTROL_DEVICE": 0.75211,
+    "ASSOC_PERSONNEL_UNIT": 0.980633
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "d": 0.76769,
+      "type": 0.7691,
+      "phone_number": 0.763286,
+      "email": 0.759834
+    },
+    "UNIT": {
+      "d": 0.757818,
+      "unit_type": 0.755779
+    },
+    "ADMINISTRATOR": {
+      "d": 0.762856,
+      "management_role": 0.761808
+    },
+    "HEALTH_INFORMATION": {
+      "temperature": 0.757023,
+      "symptom": 0.758825,
+      "health_code_color": 0.75911
+    },
+    "VISITOR": {
+      "d": 0.759218,
+      "phone_number": 0.75249,
+      "email": 0.750028
+    },
+    "APPOINTMENT": {
+      "d": 0.759867,
+      "schedule_entry_time": 0.749383,
+      "schedule_exit_time": 0.744378,
+      "appointment_status": 0.755027
+    },
+    "ACCESS_RECORD": {
+      "d": 0.764631,
+      "entry_time": 0.745805,
+      "exit_time": 0.742716
+    },
+    "ACCESS_CONTROL_DEVICE": {
+      "d": 0.770969,
+      "device_location": 0.753006,
+      "device_status": 0.759596
+    },
+    "ASSOC_PERSONNEL_UNIT": {
+      "assoc_personnel_unit_id": 0.980633,
+      "personnel_id": 0.980633,
+      "unit_id": 0.980633
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_UNIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980633
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "description": "One UNIT can be associated with many ASSOC_PERSONNEL_UNIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980633
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_INFORMATION",
+      "cardinality": "1:N",
+      "probability": 0.000491
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:1",
+      "probability": 0.013582
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "probability": 0.398921
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "probability": 0.985809
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.846332
+    },
+    {
+      "entity_1": "ACCESS_CONTROL_DEVICE",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.464253
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.2102
+    }
+  ],
+  "processing_time": 28.19
+}

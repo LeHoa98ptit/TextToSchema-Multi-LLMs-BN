@@ -1,0 +1,213 @@
+{
+  "filename": "440.txt",
+  "entity": {
+    "DEVICE": 0.622459,
+    "USER": 0.622459,
+    "DEPARTMENT": 0.498625,
+    "GROUP": 0.488227,
+    "LOCATION": 0.486328,
+    "DEVICE_TYPE": 0.523982,
+    "USAGE": 0.503275,
+    "INVENTORY": 0.471182,
+    "MAINTENANCE_REQUEST": 0.544928,
+    "MAINTENANCE_RECORD": 0.530537,
+    "DEVICE_STATUS_HISTORY": 0.497775
+  },
+  "attribute": {
+    "DEVICE": {
+      "device_id": 0.528507,
+      "product_name": 0.538089,
+      "model_name": 0.530131,
+      "serial_number": 0.527631,
+      "ip_address": 0.518093,
+      "qr_code": 0.543484,
+      "image_path": 0.508479,
+      "current_status": 0.540332,
+      "created_at": 0.525191,
+      "updated_at": 0.524919,
+      "responsible_user_id": 0.533478,
+      "device_type_id": 0.52678,
+      "usage_id": 0.538622,
+      "location_id": 0.525799,
+      "department_id": 0.54487,
+      "group_id": 0.532343
+    },
+    "USER": {
+      "user_id": 0.510692,
+      "name": 0.505938,
+      "role": 0.531598,
+      "contact_info": 0.524767,
+      "account_status": 0.525058,
+      "department_id": 0.528525,
+      "group_id": 0.512688,
+      "created_at": 0.503781
+    },
+    "DEPARTMENT": {
+      "department_id": 0.529842,
+      "department_name": 0.532828,
+      "description": 0.550194
+    },
+    "GROUP": {
+      "group_id": 0.508563,
+      "group_name": 0.508764,
+      "description": 0.536174
+    },
+    "LOCATION": {
+      "location_id": 0.506772,
+      "location_name": 0.509042,
+      "address": 0.512568,
+      "description": 0.526897
+    },
+    "DEVICE_TYPE": {
+      "device_type_id": 0.527246,
+      "type_name": 0.526678,
+      "description": 0.545557
+    },
+    "USAGE": {
+      "usage_id": 0.521843,
+      "usage_name": 0.521137,
+      "description": 0.542743
+    },
+    "INVENTORY": {
+      "inventory_id": 0.530863,
+      "device_id": 0.544139,
+      "inventory_person_id": 0.536147,
+      "inventory_time": 0.52916,
+      "location_id": 0.527257,
+      "remarks": 0.544837
+    },
+    "MAINTENANCE_REQUEST": {
+      "request_id": 0.527595,
+      "device_id": 0.546426,
+      "requester_id": 0.531547,
+      "request_time": 0.525964,
+      "content": 0.545311,
+      "status": 0.541043,
+      "assigned_person_id": 0.537411,
+      "handle_time": 0.528747,
+      "remarks": 0.547165
+    },
+    "MAINTENANCE_RECORD": {
+      "record_id": 0.534738,
+      "device_id": 0.551948,
+      "maintenance_person_id": 0.546378,
+      "maintenance_time": 0.542287,
+      "content": 0.553846,
+      "result": 0.546887,
+      "user_satisfaction": 0.558327,
+      "remarks": 0.554496
+    },
+    "DEVICE_STATUS_HISTORY": {
+      "history_id": 0.53929,
+      "device_id": 0.540809,
+      "status": 0.546908,
+      "update_time": 0.532282,
+      "remarks": 0.549679
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each device has one responsible user; a user may be responsible for many devices.",
+      "probability": 0.924573
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each device belongs to one department; a department can own many devices.",
+      "probability": 0.559758
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "GROUP",
+      "cardinality": "N:1",
+      "description": "Each device is assigned to one group (e.g., asset group); a group can contain many devices.",
+      "probability": 0.389077
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "Each device is located at one physical location; a location can host many devices.",
+      "probability": 0.990018
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_TYPE",
+      "cardinality": "N:1",
+      "description": "Each device has one type; a type can be shared by many devices.",
+      "probability": 0.999959
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USAGE",
+      "cardinality": "N:1",
+      "description": "Each device is associated with one usage category; a usage can apply to many devices.",
+      "probability": 0.999364
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each user belongs to one department; a department can have many users.",
+      "probability": 0.992949
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GROUP",
+      "cardinality": "N:1",
+      "description": "Each user belongs to one group; a group can have many users.",
+      "probability": 0.09204
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A device can have multiple inventory records over time (e.g., periodic audits).",
+      "probability": 0.946019
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "description": "A device can generate many maintenance requests.",
+      "probability": 0.961735
+    },
+    {
+      "entity_1": "MAINTENANCE_REQUEST",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each maintenance request is handled by one maintenance personnel (a user).",
+      "probability": 0.998664
+    },
+    {
+      "entity_1": "MAINTENANCE_RECORD",
+      "entity_2": "DEVICE",
+      "cardinality": "N:1",
+      "description": "Multiple maintenance records can be linked to a single device.",
+      "probability": 0.990994
+    },
+    {
+      "entity_1": "MAINTENANCE_RECORD",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each maintenance record is created by one maintenance personnel (a user).",
+      "probability": 0.999791
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_STATUS_HISTORY",
+      "cardinality": "1:N",
+      "description": "Each device can have many status history entries tracking changes over time.",
+      "probability": 0.999943
+    }
+  ],
+  "processing_time": 21.78,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing organizational entities (DEPARTMENT, GROUP, LOCATION) and classification entities (DEVICE_TYPE, USAGE) to reflect group, type, usage, location, and department concepts from the domain description. Introduced DEVICE_STATUS_HISTORY to capture status changes over time. Adjusted INVENTORY relationship to 1:N to allow multiple audit records. Expanded attributes for richer device, user, and audit information (e.g., responsible_user_id, qr_code, image_path, remarks). Clarified and documented all relationships, preserving original strengths while enhancing completeness and normalization."
+  }
+}

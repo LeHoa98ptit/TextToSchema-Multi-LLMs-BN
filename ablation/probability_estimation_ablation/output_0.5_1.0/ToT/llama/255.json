@@ -1,0 +1,146 @@
+{
+  "filename": "255.txt",
+  "entity": {
+    "PRODUCTION": 0.817574,
+    "EQUIPMENT": 0.817574,
+    "USER": 0.707795,
+    "ANNOUNCEMENT": 0.744521,
+    "JOB_POSITION": 0.748231,
+    "INSPECTION": 0.72224,
+    "REPAIR": 0.817574,
+    "QUALITY_REPORT": 0.761732,
+    "ASSOC_USER_EQUIPMENT": 0.946142,
+    "ASSOC_USER_JOB_POSITION": 0.067915
+  },
+  "attribute": {
+    "PRODUCTION": {
+      "report_type": 0.768628,
+      "date": 0.748555,
+      "production_datum": 0.765183,
+      "completion_status": 0.768945,
+      "metal_recovery_rate": 0.764691,
+      "grade": 0.756542
+    },
+    "EQUIPMENT": {
+      "model": 0.761993,
+      "location": 0.758725,
+      "operation_status": 0.778978,
+      "main_category": 0.771146,
+      "subcategory": 0.766272
+    },
+    "USER": {
+      "username": 0.730579,
+      "role": 0.748886,
+      "permission_status": 0.749858,
+      "operation_history": 0.750611
+    },
+    "ANNOUNCEMENT": {
+      "content": 0.748394,
+      "release_time": 0.742496,
+      "announcement_status": 0.751049
+    },
+    "JOB_POSITION": {
+      "position_name": 0.760008,
+      "position_description": 0.77,
+      "job_requirement": 0.774259,
+      "position_match_rate": 0.760329
+    },
+    "INSPECTION": {
+      "inspection_plan": 0.760519,
+      "progress": 0.7646,
+      "inspector": 0.75737,
+      "equipment_id": 0.767841
+    },
+    "REPAIR": {
+      "failure_type": 0.754873,
+      "failure_time": 0.753965,
+      "processing_status": 0.757168,
+      "repair_detail": 0.759905,
+      "equipment_id": 0.765148
+    },
+    "QUALITY_REPORT": {
+      "recovery_rate": 0.770392,
+      "grade": 0.758957,
+      "metal_grade": 0.759091,
+      "daily_report": 0.767157,
+      "production_id": 0.771561
+    },
+    "ASSOC_USER_EQUIPMENT": {
+      "assoc_user_equipment_id": 0.946142,
+      "user_id": 0.946142,
+      "equipment_id": 0.946142
+    },
+    "ASSOC_USER_JOB_POSITION": {
+      "assoc_user_job_position_id": 0.067915,
+      "user_id": 0.067915,
+      "job_position_id": 0.067915
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One USER can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.946142
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_USER_EQUIPMENT",
+      "description": "One EQUIPMENT can be associated with many ASSOC_USER_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.946142
+    },
+    {
+      "entity_1": "PRODUCTION",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "description": "One production can have multiple equipment",
+      "probability": 0.162009
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_JOB_POSITION",
+      "description": "One USER can be associated with many ASSOC_USER_JOB_POSITION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.067915
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "ASSOC_USER_JOB_POSITION",
+      "description": "One JOB_POSITION can be associated with many ASSOC_USER_JOB_POSITION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.067915
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION",
+      "cardinality": "1:N",
+      "description": "One equipment can have multiple inspections",
+      "probability": 0.745859
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "REPAIR",
+      "cardinality": "1:N",
+      "description": "One equipment can have multiple repairs",
+      "probability": 0.867975
+    },
+    {
+      "entity_1": "PRODUCTION",
+      "entity_2": "QUALITY_REPORT",
+      "cardinality": "1:N",
+      "description": "One production can have multiple quality reports",
+      "probability": 0.17408
+    }
+  ],
+  "processing_time": 40.29,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'alarm_notification' from EQUIPMENT, added 'equipment_id' to INSPECTION and REPAIR, and added 'production_id' to QUALITY_REPORT to improve data consistency and clarity."
+  }
+}

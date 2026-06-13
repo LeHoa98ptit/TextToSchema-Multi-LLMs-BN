@@ -1,0 +1,91 @@
+{
+  "filename": "329.txt",
+  "entity": {
+    "USER": 0.622459,
+    "LOG": 0.481958,
+    "STOCK": 0.622459,
+    "COMPANY": 0.522585,
+    "PORTFOLIO": 0.516594,
+    "HALL_OF_FAME": 0.474098
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.516542,
+      "username": 0.51163,
+      "password hash": 0.517931,
+      "virtual currency balance": 0.535997
+    },
+    "LOG": {
+      "log id": 0.517334,
+      "user id": 0.518927,
+      "log date": 0.517527,
+      "record value": 0.534545
+    },
+    "STOCK": {
+      "stock code": 0.541713,
+      "stock price": 0.530378,
+      "issue date": 0.530607,
+      "company id": 0.535463
+    },
+    "COMPANY": {
+      "company id": 0.523683,
+      "company name": 0.526455
+    },
+    "PORTFOLIO": {
+      "portfolio id": 0.52633,
+      "user id": 0.537216,
+      "stock code": 0.544074,
+      "quantity": 0.542927,
+      "earning": 0.539413
+    },
+    "HALL_OF_FAME": {
+      "hall of fame id": 0.510494,
+      "user id": 0.520849,
+      "total earning": 0.521274,
+      "rank": 0.515587
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "description": "Each log entry records activity for exactly one user, while a user can have many log entries.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99894
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "STOCK",
+      "description": "Each stock is issued by one company, and a company can issue multiple stocks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.9766
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PORTFOLIO",
+      "description": "A user can hold many portfolio entries, each portfolio entry belongs to a single user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96788
+    },
+    {
+      "entity_1": "STOCK",
+      "entity_2": "PORTFOLIO",
+      "description": "A stock can appear in many portfolio entries, each portfolio entry references one stock.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.706403
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HALL_OF_FAME",
+      "description": "Each hall of fame record is associated with exactly one user, and a user can have at most one hall of fame record.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.025613
+    }
+  ],
+  "processing_time": 4.19
+}

@@ -1,0 +1,116 @@
+{
+  "filename": "263.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "LECTURER": 0.817574,
+    "TEACHING_STAFF": 0.744673,
+    "HOMEWORK": 0.817574,
+    "SUBMISSION": 0.796231,
+    "GRADE": 0.817574,
+    "RANDOM_INSPECTION": 0.802675,
+    "ASSOC_TEACHING_STAFF_GRADE": 0.000468
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.765039,
+      "name": 0.769679,
+      "email": 0.769651
+    },
+    "LECTURER": {
+      "lecturer_id": 0.761387,
+      "name": 0.759196,
+      "email": 0.761337
+    },
+    "TEACHING_STAFF": {
+      "staff_id": 0.762179,
+      "name": 0.76332,
+      "email": 0.767325
+    },
+    "HOMEWORK": {
+      "homework_id": 0.776108,
+      "title": 0.77243,
+      "description": 0.775327,
+      "assignment_date": 0.770836,
+      "due_date": 0.764037
+    },
+    "SUBMISSION": {
+      "submission_id": 0.744303,
+      "submit_timestamp": 0.744319,
+      "file_path": 0.739832,
+      "status": 0.755582
+    },
+    "GRADE": {
+      "grade_id": 0.770954,
+      "score": 0.769399,
+      "evaluation_text": 0.775554,
+      "overall_evaluation": 0.769325,
+      "graded_timestamp": 0.766509
+    },
+    "RANDOM_INSPECTION": {
+      "inspection_id": 0.750218,
+      "inspection_date": 0.74971,
+      "opinion": 0.750423,
+      "report_text": 0.762708
+    },
+    "ASSOC_TEACHING_STAFF_GRADE": {
+      "assoc_teaching_staff_grade_id": 0.000468,
+      "teaching_staff_id": 0.000468,
+      "grade_id": 0.000468
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "probability": 0.020709
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "probability": 0.531123
+    },
+    {
+      "entity_1": "LECTURER",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "probability": 0.070505
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "probability": 0.026057
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "probability": 0.215203
+    },
+    {
+      "entity_1": "TEACHING_STAFF",
+      "entity_2": "ASSOC_TEACHING_STAFF_GRADE",
+      "description": "One TEACHING_STAFF can be associated with many ASSOC_TEACHING_STAFF_GRADE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000468
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "ASSOC_TEACHING_STAFF_GRADE",
+      "description": "One GRADE can be associated with many ASSOC_TEACHING_STAFF_GRADE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000468
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "RANDOM_INSPECTION",
+      "cardinality": "1:1",
+      "probability": 0.141449
+    }
+  ],
+  "processing_time": 31.2
+}

@@ -1,0 +1,103 @@
+{
+  "filename": "454.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "DISTRIBUTION_CENTER": 0.74793,
+    "PRODUCT": 0.817574,
+    "SUPPLY_REQUEST": 0.793671,
+    "SUPPLY_REQUEST_LINE": 0.75984,
+    "DISTRIBUTION_ORDER": 0.756944,
+    "PURCHASE_ORDER": 0.7517
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.76482,
+      "name": 0.76479,
+      "address": 0.764916,
+      "phone": 0.76165,
+      "email": 0.765069
+    },
+    "DISTRIBUTION_CENTER": {
+      "center_id": 0.752147,
+      "name": 0.760294,
+      "address": 0.763823,
+      "phone": 0.760666,
+      "email": 0.762459
+    },
+    "PRODUCT": {
+      "product_id": 0.748065,
+      "name": 0.754574,
+      "price": 0.750691,
+      "inventory_quantity": 0.780325
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.76671,
+      "request_date": 0.765278,
+      "status": 0.779312
+    },
+    "SUPPLY_REQUEST_LINE": {
+      "line_id": 0.760167,
+      "request_id": 0.764862,
+      "product_id": 0.772203,
+      "quantity": 0.784152
+    },
+    "DISTRIBUTION_ORDER": {
+      "order_id": 0.749952,
+      "distribution_date": 0.750942,
+      "status": 0.766798
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_id": 0.75115,
+      "product_id": 0.759059,
+      "quantity": 0.779022,
+      "price": 0.757211,
+      "purchase_date": 0.749854,
+      "status": 0.768581
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.001533
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "SUPPLY_REQUEST_LINE",
+      "cardinality": "1:N",
+      "probability": 0.198464
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST_LINE",
+      "cardinality": "1:N",
+      "probability": 0.023388
+    },
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.868947
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:1",
+      "probability": 0.012637
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.890098
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.088701
+    }
+  ],
+  "processing_time": 24.2
+}

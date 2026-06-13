@@ -1,0 +1,69 @@
+{
+  "entity": [
+    "USER",
+    "PAYMENT_PLATFORM",
+    "INTERMEDIARY",
+    "OPERATION",
+    "USER_PAYMENT_OPERATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "name",
+      "contact information",
+      "registration method"
+    ],
+    "PAYMENT_PLATFORM": [
+      "platform id",
+      "platform name",
+      "platform address"
+    ],
+    "INTERMEDIARY": [
+      "intermediary id",
+      "intermediary name",
+      "intermediary status",
+      "operation id"
+    ],
+    "OPERATION": [
+      "operation id",
+      "operation type",
+      "operation amount",
+      "operation time",
+      "platform id"
+    ],
+    "USER_PAYMENT_OPERATION": [
+      "operation id",
+      "user id",
+      "payment status",
+      "payment time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PAYMENT_PLATFORM",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "INTERMEDIARY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.3774,
+  "ilp_runtime": 0.141
+}

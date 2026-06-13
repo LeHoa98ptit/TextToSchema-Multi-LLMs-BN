@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "DEVICE",
+    "USER",
+    "STAFF",
+    "NETWORK_TRAFFIC",
+    "DEVICE_FAILURE",
+    "USER_DEVICE_CONNECTION",
+    "DEVICE_MAINTENANCE"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device id",
+      "device type",
+      "ip address",
+      "installation location",
+      "installation time",
+      "device status"
+    ],
+    "USER": [
+      "user id",
+      "user account",
+      "user password"
+    ],
+    "STAFF": [
+      "staff id",
+      "contact information"
+    ],
+    "NETWORK_TRAFFIC": [
+      "device id",
+      "timestamp",
+      "upload traffic",
+      "download traffic",
+      "total traffic",
+      "traffic status"
+    ],
+    "DEVICE_FAILURE": [
+      "device id",
+      "failure occurrence time",
+      "failure type",
+      "failure description",
+      "handle status",
+      "remark"
+    ],
+    "USER_DEVICE_CONNECTION": [
+      "user id",
+      "device id",
+      "connection time",
+      "disconnection time",
+      "bandwidth",
+      "user ip"
+    ],
+    "DEVICE_MAINTENANCE": [
+      "device id",
+      "staff id",
+      "maintenance time",
+      "maintenance content",
+      "maintenance result",
+      "remark"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_DEVICE_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.4522,
+  "ilp_runtime": 0.037
+}

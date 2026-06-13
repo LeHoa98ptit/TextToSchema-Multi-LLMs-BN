@@ -1,0 +1,246 @@
+{
+  "filename": "477.txt",
+  "entity": {
+    "BILLING_METHOD": 0.591169,
+    "STORE": 0.474572,
+    "CASHIER": 0.474921,
+    "CUSTOMER": 0.491076,
+    "PRODUCT": 0.485954,
+    "CATEGORY": 0.473625,
+    "TRANSACTION": 0.622459,
+    "TRANSACTION_LINE": 0.52974,
+    "PAYMENT": 0.622459,
+    "PROMOTION": 0.473724,
+    "DISCOUNT": 0.490851,
+    "REBATE": 0.595801,
+    "TRANSACTION_PROMOTION": 0.534819,
+    "ASSOC_TRANSACTION_PROMOTION": 0.011912
+  },
+  "attribute": {
+    "BILLING_METHOD": {
+      "method_id": 0.546688,
+      "name": 0.555206,
+      "calculation_rule": 0.566222,
+      "created_at": 0.543145,
+      "updated_at": 0.544243,
+      "created_by": 0.545203
+    },
+    "STORE": {
+      "store_id": 0.51478,
+      "name": 0.523949,
+      "location": 0.51945,
+      "created_at": 0.512341,
+      "updated_at": 0.514652,
+      "created_by": 0.514281
+    },
+    "CASHIER": {
+      "cashier_id": 0.534264,
+      "name": 0.533277,
+      "employee_number": 0.538195,
+      "shift_id": 0.53028,
+      "created_at": 0.533333,
+      "updated_at": 0.540152,
+      "created_by": 0.534585
+    },
+    "CUSTOMER": {
+      "customer_id": 0.519646,
+      "name": 0.524684,
+      "phone": 0.524476,
+      "email": 0.522483,
+      "loyalty_points": 0.53249,
+      "created_at": 0.518814,
+      "updated_at": 0.521367,
+      "created_by": 0.518754
+    },
+    "PRODUCT": {
+      "product_id": 0.500767,
+      "sku": 0.50754,
+      "name": 0.511334,
+      "unit_price": 0.516797,
+      "category_id": 0.500056,
+      "created_at": 0.503047,
+      "updated_at": 0.511156,
+      "created_by": 0.503312
+    },
+    "CATEGORY": {
+      "category_id": 0.505281,
+      "name": 0.516935,
+      "description": 0.518202,
+      "created_at": 0.505486,
+      "updated_at": 0.509931,
+      "created_by": 0.509895
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.528177,
+      "transaction_time": 0.542546,
+      "subtotal": 0.555293,
+      "discount_total": 0.555808,
+      "rebate_total": 0.54515,
+      "total_before_payment": 0.551125,
+      "actual_payment": 0.556078,
+      "billing_method_id": 0.552962,
+      "cashier_id": 0.543538,
+      "store_id": 0.528679,
+      "customer_id": 0.531603,
+      "created_at": 0.52241,
+      "updated_at": 0.527937,
+      "created_by": 0.525368
+    },
+    "TRANSACTION_LINE": {
+      "line_id": 0.529744,
+      "transaction_id": 0.531141,
+      "product_id": 0.523732,
+      "quantity": 0.556136,
+      "unit_price": 0.541618,
+      "line_total": 0.547356,
+      "created_at": 0.527112,
+      "updated_at": 0.531847,
+      "created_by": 0.530522
+    },
+    "PAYMENT": {
+      "payment_id": 0.541556,
+      "transaction_id": 0.542714,
+      "payment_type": 0.552044,
+      "amount": 0.55084,
+      "payment_time": 0.552301,
+      "reference_number": 0.548955,
+      "created_at": 0.535744,
+      "updated_at": 0.538395,
+      "created_by": 0.536663
+    },
+    "PROMOTION": {
+      "promotion_id": 0.513043,
+      "name": 0.513003,
+      "promotion_type": 0.519562,
+      "value": 0.516782,
+      "eligibility_criteria": 0.525001,
+      "created_at": 0.511181,
+      "updated_at": 0.516396,
+      "created_by": 0.511742
+    },
+    "DISCOUNT": {
+      "promotion_id": 0.52988
+    },
+    "REBATE": {
+      "promotion_id": 0.527309
+    },
+    "TRANSACTION_PROMOTION": {
+      "transaction_id": 0.531366,
+      "promotion_id": 0.530599,
+      "amount_applied": 0.548215,
+      "applied_at": 0.543832
+    },
+    "ASSOC_TRANSACTION_PROMOTION": {
+      "assoc_transaction_promotion_id": 0.011912,
+      "transaction_id": 0.011912,
+      "promotion_id": 0.011912
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BILLING_METHOD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A billing method can be used for many transactions",
+      "probability": 0.163373
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A store processes many transactions",
+      "probability": 0.39577
+    },
+    {
+      "entity_1": "CASHIER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A cashier handles many transactions",
+      "probability": 0.01674
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A customer may have many transactions",
+      "probability": 0.991863
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each transaction has a single payment record",
+      "probability": 0.969837
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_LINE",
+      "cardinality": "1:N",
+      "description": "A transaction consists of multiple line items",
+      "probability": 0.99813
+    },
+    {
+      "entity_1": "TRANSACTION_LINE",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each line references one product",
+      "probability": 0.015676
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each product belongs to a category",
+      "probability": 4.1e-05
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:1",
+      "description": "A promotion that is a discount",
+      "probability": 0.947161
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "REBATE",
+      "cardinality": "1:1",
+      "description": "A promotion that is a rebate",
+      "probability": 0.013715
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_PROMOTION",
+      "description": "One TRANSACTION can be associated with many ASSOC_TRANSACTION_PROMOTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011912
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "ASSOC_TRANSACTION_PROMOTION",
+      "description": "One PROMOTION can be associated with many ASSOC_TRANSACTION_PROMOTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011912
+    },
+    {
+      "entity_1": "TRANSACTION_PROMOTION",
+      "entity_2": "TRANSACTION",
+      "cardinality": "N:1",
+      "description": "Associative table linking a promotion to a transaction",
+      "probability": 0.190828
+    },
+    {
+      "entity_1": "TRANSACTION_PROMOTION",
+      "entity_2": "PROMOTION",
+      "cardinality": "N:1",
+      "description": "Associative table linking a transaction to a promotion",
+      "probability": 0.378313
+    }
+  ],
+  "processing_time": 16.69,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Introduced a generic PROMOTION super‑entity with DISCOUNT and REBATE sub‑types to eliminate duplicated attributes. Added the associative table TRANSACTION_PROMOTION to capture many‑to‑many links between transactions and promotions, allowing storage of per‑promotion amount and timestamp. Included audit fields (created_at, updated_at, created_by) on all core tables for traceability. Added CATEGORY entity for product classification. Clarified inheritance relationships and refined cardinalities. Optional operational entities (CASHIER, STORE) retained for audit and reporting purposes."
+  }
+}

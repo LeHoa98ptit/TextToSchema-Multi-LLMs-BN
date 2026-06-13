@@ -1,0 +1,153 @@
+{
+  "filename": "262.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "PRODUCT": 0.817574,
+    "SALESPERSON": 0.817574,
+    "ALLOCATION": 0.817574,
+    "ASSOC_PRODUCT_SALESPERSON": 0.001968
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.776874,
+      "name": 0.775728,
+      "address": 0.77689,
+      "telephone": 0.777159
+    },
+    "DEPARTMENT": {
+      "department_id": 0.745884,
+      "name": 0.756382,
+      "telephone": 0.756135,
+      "supermarket_id": 0.779097
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.753984,
+      "first_name": 0.755757,
+      "last_name": 0.755761,
+      "contact_number": 0.758835,
+      "email": 0.755741,
+      "position": 0.769979,
+      "salary": 0.753604,
+      "hire_date": 0.749509,
+      "supermarket_id": 0.781919,
+      "department_id": 0.755105
+    },
+    "PRODUCT": {
+      "product_id": 0.74161,
+      "product_number": 0.750102,
+      "model": 0.760194,
+      "unit_price": 0.7503,
+      "inventory_quantity": 0.768346,
+      "category": 0.75686,
+      "supplier": 0.758374,
+      "reorder_level": 0.752942,
+      "supermarket_id": 0.774664
+    },
+    "SALESPERSON": {
+      "salesperson_id": 0.758426,
+      "employee_id": 0.763283,
+      "region": 0.765692
+    },
+    "ALLOCATION": {
+      "allocation_id": 0.75508,
+      "product_id": 0.754394,
+      "salesperson_id": 0.769145,
+      "allocation_time": 0.758283,
+      "allocation_quantity": 0.765494,
+      "remarks": 0.75197
+    },
+    "ASSOC_PRODUCT_SALESPERSON": {
+      "assoc_product_salesperson_id": 0.001968,
+      "product_id": 0.001968,
+      "salesperson_id": 0.001968
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A supermarket owns many departments",
+      "probability": 0.997806
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Each department has multiple employees",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Employees work for a specific supermarket",
+      "probability": 0.012191
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each supermarket has one manager (an employee)",
+      "probability": 0.012191
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each department has one manager (an employee)",
+      "probability": 0.99991
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supermarket stocks many products",
+      "probability": 0.083721
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A product can be allocated many times",
+      "probability": 0.476046
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A salesperson may receive multiple allocations",
+      "probability": 0.00794
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALESPERSON",
+      "cardinality": "1:1",
+      "description": "A salesperson is a specialized employee",
+      "probability": 0.999383
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_SALESPERSON",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_SALESPERSON.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001968
+    },
+    {
+      "entity_1": "SALESPERSON",
+      "entity_2": "ASSOC_PRODUCT_SALESPERSON",
+      "description": "One SALESPERSON can be associated with many ASSOC_PRODUCT_SALESPERSON.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001968
+    }
+  ],
+  "processing_time": 30.01,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant manager_employee_id attributes from SUPERMARKET and DEPARTMENT and introduced explicit 1:1 manager relationships to EMPLOYEE. Consolidated SALESPERSON attributes to only those not already present in EMPLOYEE (region) while keeping a foreign key to EMPLOYEE. Ensured PRODUCT.product_number is intended to be unique (business rule). Clarified optionality of SALESPERSON.region. Preserved all original strengths and added clear manager role relationships."
+  }
+}

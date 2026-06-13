@@ -1,0 +1,94 @@
+{
+  "entity": [
+    "DISH",
+    "DISH_CLASSIFICATION",
+    "USER",
+    "ORDER",
+    "ORDER_DETAIL",
+    "DELIVERY",
+    "CART_ITEM"
+  ],
+  "attribute": {
+    "DISH": [
+      "dish_id",
+      "name",
+      "price",
+      "ingredient",
+      "taste",
+      "recommendation_index",
+      "classification_id"
+    ],
+    "DISH_CLASSIFICATION": [
+      "classification_id",
+      "cuisine_type",
+      "special_feature",
+      "recommendation_status"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone",
+      "address",
+      "registration_time",
+      "account_status"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "order_time",
+      "order_status"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "order_id",
+      "dish_id",
+      "quantity",
+      "unit_price",
+      "total_price"
+    ],
+    "DELIVERY": [
+      "delivery_id",
+      "order_id",
+      "delivery_address",
+      "delivery_time",
+      "delivery_person"
+    ],
+    "CART_ITEM": [
+      "cart_item_id",
+      "user_id",
+      "dish_id",
+      "quantity",
+      "add_time",
+      "settlement_status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DISH_CLASSIFICATION",
+      "entity_2": "DISH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.7367,
+  "ilp_runtime": 0.053
+}

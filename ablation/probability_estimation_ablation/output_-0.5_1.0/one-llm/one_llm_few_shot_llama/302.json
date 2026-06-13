@@ -1,0 +1,105 @@
+{
+  "filename": "302.txt",
+  "entity": {
+    "DOCTOR": 0.532205,
+    "PATIENT": 0.622459,
+    "MEDICINE": 0.586909,
+    "MEDICATION_RECORD": 0.512622,
+    "CONSULTATION_RECORD": 0.561832,
+    "ASSOC_PATIENT_MEDICINE": 0.015401
+  },
+  "attribute": {
+    "DOCTOR": {
+      "gender": 0.536521,
+      "telephone_number": 0.556328,
+      "date_of_birth": 0.543993,
+      "age": 0.536181,
+      "department": 0.545442,
+      "affiliation": 0.534421,
+      "level": 0.546972
+    },
+    "PATIENT": {
+      "gender": 0.540251,
+      "date_of_birth": 0.543417,
+      "age": 0.534523,
+      "phone": 0.542715,
+      "address": 0.550813,
+      "emergency_contact_number": 0.549984
+    },
+    "MEDICINE": {
+      "unit_price": 0.545154,
+      "inventory": 0.562986
+    },
+    "MEDICATION_RECORD": {
+      "dosage": 0.559249,
+      "frequency": 0.558766,
+      "medication_precaution": 0.553804,
+      "prescription_time": 0.556493
+    },
+    "CONSULTATION_RECORD": {
+      "consultation_time": 0.549255,
+      "diagnosis_result": 0.553556,
+      "treatment_recommendation": 0.561731
+    },
+    "ASSOC_PATIENT_MEDICINE": {
+      "assoc_patient_medicine_id": 0.015401,
+      "patient_id": 0.015401,
+      "medicine_id": 0.015401
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.824246
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.989689
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.989647
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.63553
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "ASSOC_PATIENT_MEDICINE",
+      "description": "One PATIENT can be associated with many ASSOC_PATIENT_MEDICINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015401
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "ASSOC_PATIENT_MEDICINE",
+      "description": "One MEDICINE can be associated with many ASSOC_PATIENT_MEDICINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015401
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PATIENT",
+      "cardinality": "1:N",
+      "probability": 0.004914
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.971949
+    }
+  ],
+  "processing_time": 23.08
+}

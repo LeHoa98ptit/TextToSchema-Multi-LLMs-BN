@@ -1,0 +1,241 @@
+{
+  "entity": [
+    "EMPLOYEE",
+    "DEPARTMENT",
+    "POSITION",
+    "ATTENDANCE",
+    "SALARY",
+    "APPLICANT",
+    "APPLICATION",
+    "INTERVIEW",
+    "EXPERIENCE",
+    "DOCUMENT",
+    "USER",
+    "EMPLOYEE_STATUS",
+    "APPLICATION_STATUS",
+    "INTERVIEW_RESULT",
+    "ATTENDANCE_STATUS"
+  ],
+  "attribute": {
+    "EMPLOYEE": [
+      "employee_id",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "hire_date",
+      "email",
+      "phone",
+      "address",
+      "department_id",
+      "position_id",
+      "status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name",
+      "location",
+      "manager_employee_id",
+      "created_at",
+      "updated_at"
+    ],
+    "POSITION": [
+      "position_id",
+      "title",
+      "grade",
+      "salary_range_min",
+      "salary_range_max",
+      "department_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ATTENDANCE": [
+      "attendance_id",
+      "employee_id",
+      "check_in_time",
+      "check_out_time",
+      "attendance_date",
+      "status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "SALARY": [
+      "salary_id",
+      "employee_id",
+      "position_id",
+      "base_salary",
+      "bonus",
+      "deductions",
+      "pay_period_start",
+      "pay_period_end",
+      "pay_date",
+      "created_at",
+      "updated_at"
+    ],
+    "APPLICANT": [
+      "applicant_id",
+      "first_name",
+      "last_name",
+      "email",
+      "phone",
+      "resume_link",
+      "created_at",
+      "updated_at"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "applicant_id",
+      "position_id",
+      "application_date",
+      "status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "INTERVIEW": [
+      "interview_id",
+      "application_id",
+      "applicant_id",
+      "interviewer_employee_id",
+      "interview_date",
+      "interview_type",
+      "result_id",
+      "created_at",
+      "updated_at"
+    ],
+    "EXPERIENCE": [
+      "experience_id",
+      "applicant_id",
+      "company_name",
+      "role",
+      "start_date",
+      "end_date",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "DOCUMENT": [
+      "document_id",
+      "applicant_id",
+      "doc_type",
+      "file_path",
+      "upload_date",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "user_id",
+      "employee_id",
+      "username",
+      "password_hash",
+      "role",
+      "last_login",
+      "created_at",
+      "updated_at"
+    ],
+    "EMPLOYEE_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "APPLICATION_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "INTERVIEW_RESULT": [
+      "result_id",
+      "result_name"
+    ],
+    "ATTENDANCE_STATUS": [
+      "status_id",
+      "status_name"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "SALARY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICANT",
+      "entity_2": "DOCUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICANT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTERVIEW",
+      "entity_2": "APPLICANT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTERVIEW",
+      "entity_2": "INTERVIEW_RESULT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ATTENDANCE",
+      "entity_2": "ATTENDANCE_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 114.8719,
+  "ilp_runtime": 0.078
+}

@@ -1,0 +1,120 @@
+{
+  "filename": "299.txt",
+  "entity": {
+    "CITY": 0.622459,
+    "COUNTRY": 0.508899,
+    "TIMEZONE": 0.488552,
+    "FORECAST": 0.622459,
+    "WEATHER_DETAIL": 0.53452,
+    "WEATHER_TYPE": 0.53989,
+    "WEATHER_DETAIL_TYPE": 0.518716,
+    "ASSOC_WEATHER_DETAIL_WEATHER_TYPE": 0.1716
+  },
+  "attribute": {
+    "CITY": {
+      "city_id": 0.523525,
+      "name": 0.52675,
+      "latitude": 0.532745,
+      "longitude": 0.529761,
+      "country_id": 0.523246,
+      "population": 0.525379,
+      "timezone_id": 0.529639
+    },
+    "COUNTRY": {
+      "country_id": 0.509197,
+      "name": 0.511954,
+      "iso_code": 0.51178
+    },
+    "TIMEZONE": {
+      "timezone_id": 0.511812,
+      "name": 0.532785,
+      "utc_offset": 0.510464
+    },
+    "FORECAST": {
+      "forecast_id": 0.53217,
+      "city_id": 0.547671,
+      "date": 0.531702,
+      "sunrise": 0.540431,
+      "sunset": 0.537877
+    },
+    "WEATHER_DETAIL": {
+      "detail_id": 0.553317,
+      "forecast_id": 0.558915,
+      "time_of_day": 0.556833,
+      "temperature": 0.548828,
+      "feels_like": 0.546093,
+      "pressure": 0.545535,
+      "humidity": 0.553191,
+      "wind_speed": 0.556338,
+      "wind_direction": 0.554005,
+      "cloud_cover": 0.552068,
+      "precipitation_probability": 0.55384
+    },
+    "WEATHER_TYPE": {
+      "weather_type_id": 0.557858,
+      "main": 0.55504,
+      "description": 0.56573,
+      "icon": 0.555659
+    },
+    "WEATHER_DETAIL_TYPE": {
+      "detail_id": 0.554208,
+      "weather_type_id": 0.561441
+    },
+    "ASSOC_WEATHER_DETAIL_WEATHER_TYPE": {
+      "assoc_weather_detail_weather_type_id": 0.1716,
+      "weather_detail_id": 0.1716,
+      "weather_type_id": 0.1716
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CITY",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "Each city belongs to one country",
+      "probability": 0.998301
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "TIMEZONE",
+      "cardinality": "N:1",
+      "description": "Each city is associated with one timezone",
+      "probability": 0.8863
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "FORECAST",
+      "cardinality": "1:N",
+      "description": "A city can have many daily forecasts",
+      "probability": 0.043588
+    },
+    {
+      "entity_1": "FORECAST",
+      "entity_2": "WEATHER_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each daily forecast contains multiple time‑of‑day weather details",
+      "probability": 0.890754
+    },
+    {
+      "entity_1": "WEATHER_DETAIL",
+      "entity_2": "ASSOC_WEATHER_DETAIL_WEATHER_TYPE",
+      "description": "One WEATHER_DETAIL can be associated with many ASSOC_WEATHER_DETAIL_WEATHER_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.1716
+    },
+    {
+      "entity_1": "WEATHER_TYPE",
+      "entity_2": "ASSOC_WEATHER_DETAIL_WEATHER_TYPE",
+      "description": "One WEATHER_TYPE can be associated with many ASSOC_WEATHER_DETAIL_WEATHER_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.1716
+    }
+  ],
+  "processing_time": 22.09,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Extracted COUNTRY and TIMEZONE into separate lookup tables to avoid repetition and enable richer queries. Added associative entity WEATHER_DETAIL_TYPE to support a many‑to‑many relationship between WEATHER_DETAIL and WEATHER_TYPE, future‑proofing for multiple weather conditions per time slot. Defined foreign‑key attributes (country_id, timezone_id) in CITY. Noted a unique constraint on (city_id, date) in FORECAST to prevent duplicate daily records. Updated relationships to reflect new entities and cardinalities while preserving the original normalized structure."
+  }
+}

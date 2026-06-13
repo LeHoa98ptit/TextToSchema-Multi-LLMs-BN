@@ -1,0 +1,206 @@
+{
+  "entity": [
+    "GENERAL_LEDGER",
+    "ACCOUNT_RECEIVABLE",
+    "CUSTOMER",
+    "ACCOUNT_PAYABLE",
+    "SUPPLIER",
+    "COST_CENTER",
+    "COST_ACCOUNTING",
+    "EMPLOYEE",
+    "POSITION",
+    "PERFORMANCE_EVALUATION",
+    "PRODUCTION_PLAN",
+    "MATERIAL_REQUIREMENT_PLAN",
+    "PRODUCTION_SCHEDULING",
+    "MATERIAL",
+    "WAREHOUSE",
+    "INVENTORY",
+    "PROJECT",
+    "PROJECT_PLAN",
+    "SALE_ORDER",
+    "PURCHASE_ORDER",
+    "SUPPLIER_MATERIAL_SUPPLY"
+  ],
+  "attribute": {
+    "GENERAL_LEDGER": [
+      "general ledger id",
+      "account id",
+      "transaction datetime"
+    ],
+    "ACCOUNT_RECEIVABLE": [
+      "account receivable id",
+      "customer id",
+      "receivable date"
+    ],
+    "CUSTOMER": [
+      "customer id",
+      "name",
+      "contact information",
+      "address"
+    ],
+    "ACCOUNT_PAYABLE": [
+      "account payable id",
+      "supplier id",
+      "payable date",
+      "amount"
+    ],
+    "SUPPLIER": [
+      "supplier id",
+      "name",
+      "contact information",
+      "address"
+    ],
+    "COST_CENTER": [
+      "cost center id",
+      "cost center date",
+      "name"
+    ],
+    "COST_ACCOUNTING": [
+      "cost accounting id",
+      "cost center id",
+      "expense amount",
+      "expense date"
+    ],
+    "EMPLOYEE": [
+      "employee id",
+      "position id",
+      "hire date",
+      "salary",
+      "name"
+    ],
+    "POSITION": [
+      "position id",
+      "title"
+    ],
+    "PERFORMANCE_EVALUATION": [
+      "performance evaluation id",
+      "employee id",
+      "evaluation date",
+      "performance score"
+    ],
+    "PRODUCTION_PLAN": [
+      "production plan id",
+      "product name",
+      "production quantity",
+      "start date",
+      "end date"
+    ],
+    "MATERIAL_REQUIREMENT_PLAN": [
+      "mrp id",
+      "material id",
+      "production plan id",
+      "required quantity",
+      "required date"
+    ],
+    "PRODUCTION_SCHEDULING": [
+      "production scheduling id",
+      "production plan id",
+      "production date",
+      "scheduling status"
+    ],
+    "MATERIAL": [
+      "material id",
+      "description",
+      "type"
+    ],
+    "WAREHOUSE": [
+      "warehouse id",
+      "address"
+    ],
+    "INVENTORY": [
+      "inventory id",
+      "material id",
+      "warehouse id",
+      "quantity on hand"
+    ],
+    "PROJECT": [
+      "project id",
+      "name",
+      "description"
+    ],
+    "PROJECT_PLAN": [
+      "project plan id",
+      "project id",
+      "plan start date",
+      "plan end date",
+      "execution status",
+      "progress"
+    ],
+    "SALE_ORDER": [
+      "sale order id",
+      "customer id",
+      "order date",
+      "total amount"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase order id",
+      "supplier id",
+      "order date",
+      "total amount"
+    ],
+    "SUPPLIER_MATERIAL_SUPPLY": [
+      "supplier id",
+      "material id",
+      "supply quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COST_CENTER",
+      "entity_2": "COST_ACCOUNTING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PERFORMANCE_EVALUATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "PRODUCTION_SCHEDULING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WAREHOUSE",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_PLAN",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 53.3857,
+  "ilp_runtime": 0.052
+}

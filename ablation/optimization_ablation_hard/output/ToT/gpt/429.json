@@ -1,0 +1,112 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "DISH",
+    "DISH_STATUS",
+    "ORDER",
+    "ORDER_STATUS",
+    "ORDER_DETAIL",
+    "STATISTICS",
+    "DATE_DIM"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "role_id"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "DISH": [
+      "dish_id",
+      "name",
+      "price",
+      "category_id",
+      "status_id",
+      "shelf_id"
+    ],
+    "DISH_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "order_time",
+      "total_amount",
+      "status_id"
+    ],
+    "ORDER_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "ORDER_DETAIL": [
+      "order_id",
+      "dish_id",
+      "quantity",
+      "unit_price",
+      "promotion_id"
+    ],
+    "STATISTICS": [
+      "stat_id",
+      "stat_date",
+      "dish_id",
+      "total_quantity",
+      "total_sales"
+    ],
+    "DATE_DIM": [
+      "date",
+      "year",
+      "month",
+      "day",
+      "weekday"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ORDER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATISTICS",
+      "entity_2": "DATE_DIM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.3665,
+  "ilp_runtime": 0.052
+}

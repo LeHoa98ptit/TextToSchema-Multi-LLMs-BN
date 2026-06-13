@@ -1,0 +1,64 @@
+{
+  "entity": [
+    "PROPERTY_MANAGEMENT_COMPANY",
+    "FACILITY",
+    "MAINTENANCE_EVENT",
+    "PERSONNEL",
+    "MAINTENANCE_EVENT_PERSONNEL"
+  ],
+  "attribute": {
+    "PROPERTY_MANAGEMENT_COMPANY": [
+      "company id"
+    ],
+    "FACILITY": [
+      "facility id",
+      "property management company id",
+      "location"
+    ],
+    "MAINTENANCE_EVENT": [
+      "maintenance event id",
+      "facility id",
+      "event time",
+      "content",
+      "cost",
+      "personnel ids"
+    ],
+    "PERSONNEL": [
+      "personnel id",
+      "contact information"
+    ],
+    "MAINTENANCE_EVENT_PERSONNEL": [
+      "maintenance_event_personnel_id",
+      "maintenance_event_id",
+      "personnel_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY_MANAGEMENT_COMPANY",
+      "entity_2": "FACILITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "MAINTENANCE_EVENT_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MAINTENANCE_EVENT_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 31.0038,
+  "ilp_runtime": 0.075
+}

@@ -1,0 +1,152 @@
+{
+  "filename": "444.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "COURSE": 0.817574,
+    "ENROLLMENT": 0.750166,
+    "ATTENDANCE": 0.817574,
+    "LEAVE": 0.817574,
+    "ATTENDANCE_STATUS": 0.791963,
+    "LEAVE_STATUS": 0.750129
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id PK": 0.769349,
+      "name": 0.771167,
+      "gender": 0.767627,
+      "age": 0.764166,
+      "phone_number": 0.768171,
+      "game_preference": 0.761945,
+      "created_at": 0.765025,
+      "updated_at": 0.767757
+    },
+    "INSTRUCTOR": {
+      "instructor_id PK": 0.773595,
+      "name": 0.771125,
+      "gender": 0.77081,
+      "title": 0.772998,
+      "work_duration": 0.774679,
+      "created_at": 0.768768,
+      "updated_at": 0.770023
+    },
+    "COURSE": {
+      "course_id PK": 0.767014,
+      "name": 0.763198,
+      "location": 0.763732,
+      "credit": 0.759872,
+      "instructor_id FK": 0.777199,
+      "created_at": 0.759553,
+      "updated_at": 0.760137
+    },
+    "ENROLLMENT": {
+      "enrollment_id PK": 0.755639,
+      "student_id FK": 0.766261,
+      "course_id FK": 0.769185,
+      "enrollment_date": 0.758718,
+      "created_at": 0.758241,
+      "updated_at": 0.759235
+    },
+    "ATTENDANCE": {
+      "attendance_id PK": 0.772393,
+      "student_id FK": 0.778526,
+      "course_id FK": 0.781085,
+      "check_time": 0.777311,
+      "class_time": 0.780297,
+      "status_id FK": 0.773329,
+      "remark": 0.771819,
+      "created_at": 0.767908,
+      "updated_at": 0.772551
+    },
+    "LEAVE": {
+      "leave_id PK": 0.740873,
+      "student_id FK": 0.764257,
+      "course_id FK": 0.762743,
+      "leave_time": 0.749341,
+      "class_time": 0.765831,
+      "reason": 0.737879,
+      "status_id FK": 0.747663,
+      "approval_time": 0.744513,
+      "created_at": 0.737897,
+      "updated_at": 0.738986
+    },
+    "ATTENDANCE_STATUS": {
+      "status_id PK": 0.770716,
+      "status_name": 0.776546
+    },
+    "LEAVE_STATUS": {
+      "status_id PK": 0.746404,
+      "status_name": 0.752162
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can have many enrollment records",
+      "probability": 0.217136
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "Each attendance record belongs to one student",
+      "probability": 0.999549
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "Each attendance record belongs to one course",
+      "probability": 0.01896
+    },
+    {
+      "entity_1": "ATTENDANCE_STATUS",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "Attendance status codes are referenced by attendance records",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "LEAVE",
+      "cardinality": "1:N",
+      "description": "A student may submit multiple leave requests",
+      "probability": 0.096923
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "LEAVE",
+      "cardinality": "1:N",
+      "description": "A leave request is tied to a specific course",
+      "probability": 0.107508
+    },
+    {
+      "entity_1": "LEAVE_STATUS",
+      "entity_2": "LEAVE",
+      "cardinality": "1:N",
+      "description": "Leave status codes are referenced by leave records",
+      "probability": 0.965008
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "One instructor teaches many courses",
+      "probability": 0.51928
+    }
+  ],
+  "processing_time": 16.22,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit primary key (PK) and foreign key (FK) designations, introduced audit fields (created_at, updated_at) for all tables, created lookup tables ATTENDANCE_STATUS and LEAVE_STATUS to enforce valid status values, renamed LEAVE_REQUEST to LEAVE for consistency, kept ENROLLMENT as a separate junction entity with its own PK (and FK constraints) to properly model the many‑to‑many student‑course relationship, and documented all relationships including those to the new status tables."
+  }
+}

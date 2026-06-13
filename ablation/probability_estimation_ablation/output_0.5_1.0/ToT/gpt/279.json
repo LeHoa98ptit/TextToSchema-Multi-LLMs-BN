@@ -1,0 +1,85 @@
+{
+  "filename": "279.txt",
+  "entity": {
+    "PROPERTY": 0.817574,
+    "SALE": 0.817574,
+    "REPORT": 0.817574,
+    "CUSTOMER": 0.719645,
+    "AGENT": 0.706677
+  },
+  "attribute": {
+    "PROPERTY": {
+      "property_id": 0.745847,
+      "address": 0.759212,
+      "area": 0.764758
+    },
+    "SALE": {
+      "sale_id": 0.757599,
+      "sale_price": 0.755238,
+      "sale_date": 0.75812,
+      "property_id": 0.761042,
+      "buyer_id": 0.756718,
+      "seller_id": 0.753212,
+      "agent_id": 0.753696
+    },
+    "REPORT": {
+      "report_id": 0.753555,
+      "report_date": 0.75616,
+      "report_type": 0.758251,
+      "analysis_result": 0.762746,
+      "sale_id": 0.763266
+    },
+    "CUSTOMER": {
+      "customer_id": 0.742205,
+      "name": 0.744168,
+      "contact_info": 0.751102
+    },
+    "AGENT": {
+      "agent_id": 0.735218,
+      "name": 0.739109,
+      "contact_info": 0.744412
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROPERTY",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A property can be sold multiple times; each sale references one property",
+      "probability": 0.584664
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "REPORT",
+      "cardinality": "1:1",
+      "description": "Each sale has a single analysis report",
+      "probability": 0.009851
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A customer can be the buyer in many sales (buyer_id foreign key in SALE)",
+      "probability": 0.724929
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A customer can be the seller in many sales (seller_id foreign key in SALE)",
+      "probability": 0.724929
+    },
+    {
+      "entity_1": "AGENT",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "An agent can handle many sales (agent_id foreign key in SALE)",
+      "probability": 0.268887
+    }
+  ],
+  "processing_time": 17.8,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added optional CUSTOMER and AGENT entities with buyer, seller, and agent roles in SALE to support future expansion while keeping core attributes and relationships unchanged. Introduced nullable foreign keys (buyer_id, seller_id, agent_id) to maintain current simplicity and efficiency. Documented role‑specific relationships to preserve accuracy and consistency."
+  }
+}

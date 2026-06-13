@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "Device",
+    "User",
+    "Network Traffic",
+    "Device Failure Record",
+    "Staff",
+    "User Connection Device",
+    "Device Maintenance Record"
+  ],
+  "attribut": {
+    "Device": [
+      "ID",
+      "Name",
+      "Type",
+      "IP Address",
+      "Installation Location",
+      "Installation Time",
+      "Device Status"
+    ],
+    "User": [
+      "ID",
+      "User Account",
+      "User Password"
+    ],
+    "Network Traffic": [
+      "Device ID",
+      "Timestamp",
+      "Upload Traffic",
+      "Download Traffic",
+      "Total Traffic",
+      "Traffic Status"
+    ],
+    "Device Failure Record": [
+      "Device ID",
+      "Failure Occurrence Time",
+      "Failure Type",
+      "Failure Description",
+      "Handling Status",
+      "Remarks"
+    ],
+    "Staff": [
+      "ID",
+      "Name",
+      "Contact Information"
+    ],
+    "User Connection Device": [
+      "User ID",
+      "Device ID",
+      "User IP",
+      "Connection Time",
+      "Disconnection Time",
+      "Used Bandwidth"
+    ],
+    "Device Maintenance Record": [
+      "Device ID",
+      "Staff ID",
+      "Maintenance Time",
+      "Maintenance Content",
+      "Maintenance Result",
+      "Remarks"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Device",
+      "entity_2": "Network Traffic",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Device",
+      "entity_2": "Device Failure Record",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "User Connection Device",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Device",
+      "entity_2": "User Connection Device",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Staff",
+      "entity_2": "Device Maintenance Record",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Device",
+      "entity_2": "Device Maintenance Record",
+      "cardinality": "1:N"
+    }
+  ]
+}

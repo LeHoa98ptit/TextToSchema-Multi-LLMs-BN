@@ -1,0 +1,112 @@
+{
+  "entity": [
+    "User",
+    "Authenticated User",
+    "Service",
+    "Worker Node",
+    "Authenticated Consumer",
+    "User Migration",
+    "Session",
+    "Encrypted Data Test"
+  ],
+  "attribut": {
+    "User": [
+      "User ID",
+      "Username",
+      "Full Name",
+      "Email",
+      "Password Hash",
+      "Registration Date",
+      "Last Login Date"
+    ],
+    "Authenticated User": [
+      "User ID",
+      "Authentication Level",
+      "Signature",
+      "Issuer",
+      "Authentication Time"
+    ],
+    "Service": [
+      "Service ID",
+      "Service Name",
+      "Service Type",
+      "Service URL",
+      "Configuration Data",
+      "Last Heartbeat Time",
+      "Monitoring Status",
+      "Signature",
+      "Issuer"
+    ],
+    "Worker Node": [
+      "Node ID",
+      "Node Name",
+      "Status",
+      "Service ID",
+      "Operating System",
+      "Architecture",
+      "Last Heartbeat Time",
+      "Signature",
+      "Issuer"
+    ],
+    "Authenticated Consumer": [
+      "Consumer ID",
+      "User ID",
+      "Name",
+      "Description",
+      "Type",
+      "Configuration Data",
+      "Permissions",
+      "Signature",
+      "Issuer"
+    ],
+    "User Migration": [
+      "Migration ID",
+      "Old User ID",
+      "New User ID",
+      "Migration Time"
+    ],
+    "Session": [
+      "Session ID",
+      "Consumer ID",
+      "Expiration Time",
+      "MFA Status",
+      "Signature",
+      "Issuer"
+    ],
+    "Encrypted Data Test": [
+      "Data ID",
+      "Regular Data",
+      "Sensitive Data 1",
+      "Sensitive Data 2",
+      "Signature",
+      "Issuer"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "User",
+      "entity_2": "Authenticated User",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Service",
+      "entity_2": "Worker Node",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "Authenticated Consumer",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "User",
+      "entity_2": "User Migration",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Authenticated Consumer",
+      "entity_2": "Session",
+      "cardinality": "1:N"
+    }
+  ]
+}

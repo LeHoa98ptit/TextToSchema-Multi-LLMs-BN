@@ -1,0 +1,123 @@
+{
+  "filename": "293.txt",
+  "entity": {
+    "EQUIPMENT": 0.622459,
+    "MINE": 0.622459,
+    "PERSONNEL": 0.622459,
+    "MAINTENANCE_EVENT": 0.535018,
+    "STATISTICAL_ANALYSIS": 0.524007,
+    "ASSOC_EQUIPMENT_MINE": 0.782226,
+    "ASSOC_PERSONNEL_EQUIPMENT": 0.032775,
+    "ASSOC_PERSONNEL_MAINTENANCE_EVENT": 0.963404
+  },
+  "attribute": {
+    "EQUIPMENT": {
+      "model": 0.548008,
+      "purchase_date": 0.547176,
+      "maintenance_cost": 0.551718
+    },
+    "MINE": {
+      "location": 0.520677,
+      "mine_type": 0.520606
+    },
+    "PERSONNEL": {
+      "contact_number": 0.538696,
+      "name": 0.535709,
+      "role": 0.533696
+    },
+    "MAINTENANCE_EVENT": {
+      "maintenance_date": 0.530261,
+      "maintenance_content": 0.536671,
+      "maintenance_cost": 0.537082
+    },
+    "STATISTICAL_ANALYSIS": {
+      "analysis_date": 0.523719,
+      "equipment_usage": 0.56184,
+      "maintenance_frequency": 0.541411
+    },
+    "ASSOC_EQUIPMENT_MINE": {
+      "assoc_equipment_mine_id": 0.782226,
+      "equipment_id": 0.782226,
+      "mine_id": 0.782226
+    },
+    "ASSOC_PERSONNEL_EQUIPMENT": {
+      "assoc_personnel_equipment_id": 0.032775,
+      "personnel_id": 0.032775,
+      "equipment_id": 0.032775
+    },
+    "ASSOC_PERSONNEL_MAINTENANCE_EVENT": {
+      "assoc_personnel_maintenance_event_id": 0.963404,
+      "personnel_id": 0.963404,
+      "maintenance_event_id": 0.963404
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EQUIPMENT_MINE",
+      "description": "One EQUIPMENT can be associated with many ASSOC_EQUIPMENT_MINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.782226
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "ASSOC_EQUIPMENT_MINE",
+      "description": "One MINE can be associated with many ASSOC_EQUIPMENT_MINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.782226
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_EQUIPMENT",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032775
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_PERSONNEL_EQUIPMENT",
+      "description": "One EQUIPMENT can be associated with many ASSOC_PERSONNEL_EQUIPMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032775
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "description": "An equipment can have multiple maintenance events",
+      "probability": 0.975636
+    },
+    {
+      "entity_1": "STATISTICAL_ANALYSIS",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "description": "An equipment can have multiple statistical analyses",
+      "probability": 0.068808
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE_EVENT",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_MAINTENANCE_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963404
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE_EVENT",
+      "description": "One MAINTENANCE_EVENT can be associated with many ASSOC_PERSONNEL_MAINTENANCE_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963404
+    }
+  ],
+  "processing_time": 13.57,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'mine_type' attribute to MINE entity and 'role' attribute to PERSONNEL entity, and included a relationship between PERSONNEL and MAINTENANCE_EVENT to capture maintenance personnel information"
+  }
+}

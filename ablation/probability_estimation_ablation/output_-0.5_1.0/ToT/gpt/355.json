@@ -1,0 +1,180 @@
+{
+  "filename": "355.txt",
+  "entity": {
+    "RACE": 0.622459,
+    "TRACK": 0.5029,
+    "HORSE": 0.622459,
+    "JOCKEY": 0.557889,
+    "RACE_HORSE": 0.542547,
+    "RESULT": 0.622459,
+    "BETTOR": 0.622459,
+    "BET": 0.622459,
+    "BET_DETAIL": 0.512248,
+    "PAYMENT": 0.469737,
+    "STATISTICS": 0.453138
+  },
+  "attribute": {
+    "RACE": {
+      "race_id": 0.543771,
+      "race_name": 0.543436,
+      "start_time": 0.540337,
+      "end_time": 0.534256,
+      "race_date": 0.54019,
+      "track_id": 0.550349
+    },
+    "TRACK": {
+      "track_id": 0.530998,
+      "track_name": 0.534634,
+      "location": 0.52139,
+      "surface_type": 0.525874
+    },
+    "HORSE": {
+      "horse_id": 0.540863,
+      "horse_name": 0.541512,
+      "birth_date": 0.532796,
+      "gender": 0.531051,
+      "trainer": 0.536798,
+      "owner": 0.532874
+    },
+    "JOCKEY": {
+      "jockey_id": 0.54434,
+      "jockey_name": 0.543551,
+      "license_number": 0.539591,
+      "experience_years": 0.542934
+    },
+    "RACE_HORSE": {
+      "race_horse_id": 0.55973,
+      "race_id": 0.558743,
+      "horse_id": 0.555991,
+      "jockey_id": 0.554359,
+      "post_position": 0.553971
+    },
+    "RESULT": {
+      "result_id": 0.525151,
+      "race_id": 0.550775,
+      "horse_id": 0.549881,
+      "final_rank": 0.521851,
+      "finish_time": 0.526269,
+      "prize_money": 0.53726
+    },
+    "BETTOR": {
+      "bettor_id": 0.54171,
+      "full_name": 0.535984,
+      "phone": 0.524981,
+      "email": 0.536723,
+      "address": 0.529947
+    },
+    "BET": {
+      "bet_id": 0.539966,
+      "bettor_id": 0.545018,
+      "race_id": 0.551624,
+      "bet_time": 0.538136,
+      "total_amount": 0.537116
+    },
+    "BET_DETAIL": {
+      "bet_detail_id": 0.557676,
+      "bet_id": 0.556192,
+      "race_horse_id": 0.571334,
+      "selected_rank": 0.545183,
+      "stake_amount": 0.547337
+    },
+    "PAYMENT": {
+      "payment_id": 0.505837,
+      "bet_id": 0.53731,
+      "payment_date": 0.4984,
+      "amount": 0.498792,
+      "payment_method": 0.50354
+    },
+    "STATISTICS": {
+      "stat_id": 0.526498,
+      "race_id": 0.549678,
+      "horse_id": 0.553795,
+      "win_rate": 0.537821,
+      "average_finish_position": 0.529468
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RACE",
+      "entity_2": "TRACK",
+      "cardinality": "N:1",
+      "description": "Many races are held at one track.",
+      "probability": 0.000393
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "RACE_HORSE",
+      "cardinality": "1:N",
+      "description": "A race has multiple horse entries.",
+      "probability": 0.98505
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "RACE_HORSE",
+      "cardinality": "1:N",
+      "description": "A horse can participate in many races.",
+      "probability": 0.755034
+    },
+    {
+      "entity_1": "JOCKEY",
+      "entity_2": "RACE_HORSE",
+      "cardinality": "0:1",
+      "description": "A race‑horse entry may have zero or one jockey (optional).",
+      "probability": 0.000372
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "description": "Each race produces a result record for each finishing horse.",
+      "probability": 0.672887
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "description": "A horse can have many result records across races.",
+      "probability": 0.374588
+    },
+    {
+      "entity_1": "BETTOR",
+      "entity_2": "BET",
+      "cardinality": "1:N",
+      "description": "A bettor can place many bets.",
+      "probability": 0.185956
+    },
+    {
+      "entity_1": "BET",
+      "entity_2": "BET_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each bet can contain multiple selections.",
+      "probability": 0.901953
+    },
+    {
+      "entity_1": "BET_DETAIL",
+      "entity_2": "RACE_HORSE",
+      "cardinality": "N:1",
+      "description": "A bet detail references one race‑horse entry.",
+      "probability": 0.000495
+    },
+    {
+      "entity_1": "BET",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each bet has an associated payment record (optional if payment is handled elsewhere).",
+      "probability": 0.516014
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "STATISTICS",
+      "cardinality": "1:N",
+      "description": "Statistical aggregates are stored per race‑horse.",
+      "probability": 0.604354
+    }
+  ],
+  "processing_time": 30.0,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a dedicated RESULT entity to store official race outcomes (final rank, finish time, prize) and removed final_rank from RACE_HORSE, enabling clear separation of participation data and results. Made the JOCKEY relationship to RACE_HORSE optional (0:1) to reflect that jockey data may not be required for core betting. Included foreign keys that allow BET_DETAIL to be compared against RESULT for win/lose settlement. Retained the comprehensive STATISTICS entity for analytical reporting. Kept PAYMENT as a separate optional entity for flexibility, while preserving all strong points of the previous high‑scoring design."
+  }
+}

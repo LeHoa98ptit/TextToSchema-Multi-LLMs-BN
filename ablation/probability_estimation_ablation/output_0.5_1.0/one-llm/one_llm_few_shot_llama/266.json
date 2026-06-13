@@ -1,0 +1,96 @@
+{
+  "filename": "266.txt",
+  "entity": {
+    "PIPELINE": 0.817574,
+    "COMPANY": 0.817574,
+    "MAINTENANCE_PERSONNEL": 0.806823,
+    "MAINTENANCE_TASK": 0.798106,
+    "MAINTENANCE_DETAIL": 0.77157,
+    "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL": 0.968776
+  },
+  "attribute": {
+    "PIPELINE": {
+      "pipeline_id": 0.770734,
+      "starting_point": 0.772207,
+      "end_point": 0.772685,
+      "length": 0.780862,
+      "diameter": 0.775913
+    },
+    "COMPANY": {
+      "company_id": 0.750933,
+      "company_name": 0.752823
+    },
+    "MAINTENANCE_PERSONNEL": {
+      "personnel_id": 0.776742,
+      "personnel_name": 0.777865
+    },
+    "MAINTENANCE_TASK": {
+      "task_id": 0.769222,
+      "task_description": 0.775993
+    },
+    "MAINTENANCE_DETAIL": {
+      "detail_id": 0.768986,
+      "maintenance_time": 0.776235,
+      "performance_evaluation": 0.779137
+    },
+    "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL": {
+      "assoc_pipeline_maintenance_personnel_id": 0.968776,
+      "pipeline_id": 0.968776,
+      "maintenance_personnel_id": 0.968776
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PIPELINE",
+      "cardinality": "1:N",
+      "description": "A company manages multiple pipelines, and each pipeline is managed by one company.",
+      "probability": 0.995531
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A company employs multiple maintenance personnel, and each personnel is employed by one company.",
+      "probability": 0.001783
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A pipeline can have multiple maintenance tasks, and each task is associated with one pipeline.",
+      "probability": 0.994607
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "description": "A maintenance personnel can perform multiple maintenance tasks, and each task is performed by one personnel.",
+      "probability": 0.994342
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "MAINTENANCE_DETAIL",
+      "cardinality": "1:1",
+      "description": "Each maintenance task has one maintenance detail, and each detail is associated with one task.",
+      "probability": 0.993792
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL",
+      "description": "One PIPELINE can be associated with many ASSOC_PIPELINE_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968776
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL",
+      "description": "One MAINTENANCE_PERSONNEL can be associated with many ASSOC_PIPELINE_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968776
+    }
+  ],
+  "processing_time": 18.66
+}

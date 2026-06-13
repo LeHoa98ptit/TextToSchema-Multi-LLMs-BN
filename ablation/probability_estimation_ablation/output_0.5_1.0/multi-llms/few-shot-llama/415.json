@@ -1,0 +1,75 @@
+{
+  "filename": "415.txt",
+  "entity": {
+    "USER": 0.817574,
+    "CHAT_RECORD": 0.743302,
+    "SERVER": 0.817574,
+    "ASSOC_USER_CHAT_RECORD": 0.884736
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.743246,
+      "username": 0.739436,
+      "password": 0.745749,
+      "email": 0.748626,
+      "user ip address": 0.75779,
+      "user port number": 0.757959,
+      "last login time": 0.741838
+    },
+    "CHAT_RECORD": {
+      "message id": 0.769973,
+      "sender id": 0.768648,
+      "receiver id": 0.767515,
+      "message content": 0.777405,
+      "sending time": 0.768302
+    },
+    "SERVER": {
+      "server id": 0.75208,
+      "server ip address": 0.755866,
+      "server port number": 0.753151,
+      "max client connections": 0.763142,
+      "receive buffer size": 0.764901,
+      "protocol used": 0.77424
+    },
+    "ASSOC_USER_CHAT_RECORD": {
+      "assoc_user_chat_record_id": 0.884736,
+      "user_id": 0.884736,
+      "chat_record_id": 0.884736
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CHAT_RECORD",
+      "description": "Each user can have many chat records, but each chat record belongs to one sender and one receiver.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.884736
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "USER",
+      "description": "Each server can handle many users, but each user connects to one server.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.956686
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CHAT_RECORD",
+      "description": "One USER can be associated with many ASSOC_USER_CHAT_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.884736
+    },
+    {
+      "entity_1": "CHAT_RECORD",
+      "entity_2": "ASSOC_USER_CHAT_RECORD",
+      "description": "One CHAT_RECORD can be associated with many ASSOC_USER_CHAT_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.884736
+    }
+  ],
+  "processing_time": 19.37
+}

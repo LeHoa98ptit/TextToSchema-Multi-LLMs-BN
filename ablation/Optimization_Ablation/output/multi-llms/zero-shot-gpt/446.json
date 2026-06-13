@@ -1,0 +1,112 @@
+{
+  "entity": [
+    "USER",
+    "SENSOR",
+    "METEOROLOGICAL_DATA",
+    "CROP",
+    "GROWTH_MODEL",
+    "WATER_SUPPLY",
+    "FERTILIZER_SUPPLY",
+    "CROP_ACTION",
+    "MODEL_EVALUATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password hash",
+      "phone number",
+      "registration time",
+      "last login time",
+      "role"
+    ],
+    "SENSOR": [
+      "sensor id",
+      "sensor type",
+      "measurement types",
+      "deployment time",
+      "burial depth",
+      "location"
+    ],
+    "METEOROLOGICAL_DATA": [
+      "meteorological id",
+      "recorded at",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind speed",
+      "light intensity",
+      "location"
+    ],
+    "CROP": [
+      "crop id",
+      "crop type",
+      "growth model id"
+    ],
+    "GROWTH_MODEL": [
+      "model id",
+      "model parameters",
+      "creation time",
+      "crop id"
+    ],
+    "WATER_SUPPLY": [
+      "water supply id",
+      "user id",
+      "crop id",
+      "supply time",
+      "location"
+    ],
+    "FERTILIZER_SUPPLY": [
+      "fertilizer supply id",
+      "user id",
+      "crop id",
+      "supply time",
+      "location"
+    ],
+    "CROP_ACTION": [
+      "action id",
+      "user id",
+      "crop id",
+      "action type",
+      "action time",
+      "details",
+      "location"
+    ],
+    "MODEL_EVALUATION": [
+      "evaluation id",
+      "growth model id",
+      "evaluation time",
+      "metric name",
+      "metric value",
+      "location"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "WATER_SUPPLY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "CROP_ACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGICAL_DATA",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "GROWTH_MODEL",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.0757,
+  "ilp_runtime": 0.041
+}

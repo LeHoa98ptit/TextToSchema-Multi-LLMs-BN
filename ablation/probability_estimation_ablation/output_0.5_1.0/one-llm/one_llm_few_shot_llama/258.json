@@ -1,0 +1,67 @@
+{
+  "filename": "258.txt",
+  "entity": {
+    "DONOR": 0.817574,
+    "FUNDRAISE_EVENT": 0.768008,
+    "DONATION": 0.817574,
+    "ASSOC_DONOR_FUNDRAISE_EVENT": 0.06748
+  },
+  "attribute": {
+    "DONOR": {
+      "name": 0.76183,
+      "contact_detail": 0.765531,
+      "address": 0.75868
+    },
+    "FUNDRAISE_EVENT": {
+      "name": 0.769104,
+      "type": 0.774635,
+      "timing": 0.761804,
+      "location": 0.763766,
+      "current_raise_status": 0.763527
+    },
+    "DONATION": {
+      "donation_time": 0.766906,
+      "method": 0.770467,
+      "message": 0.759867,
+      "donation_amount": 0.766182
+    },
+    "ASSOC_DONOR_FUNDRAISE_EVENT": {
+      "assoc_donor_fundraise_event_id": 0.06748,
+      "donor_id": 0.06748,
+      "fundraise_event_id": 0.06748
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DONOR",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "Each donor can make many donations, and each donation is made by one donor.",
+      "probability": 0.419492
+    },
+    {
+      "entity_1": "FUNDRAISE_EVENT",
+      "entity_2": "DONATION",
+      "cardinality": "1:N",
+      "description": "Each fundraising event can receive many donations, and each donation is made to one fundraising event.",
+      "probability": 0.66293
+    },
+    {
+      "entity_1": "DONOR",
+      "entity_2": "ASSOC_DONOR_FUNDRAISE_EVENT",
+      "description": "One DONOR can be associated with many ASSOC_DONOR_FUNDRAISE_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.06748
+    },
+    {
+      "entity_1": "FUNDRAISE_EVENT",
+      "entity_2": "ASSOC_DONOR_FUNDRAISE_EVENT",
+      "description": "One FUNDRAISE_EVENT can be associated with many ASSOC_DONOR_FUNDRAISE_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.06748
+    }
+  ],
+  "processing_time": 12.99
+}

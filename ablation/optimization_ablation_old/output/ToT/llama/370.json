@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "USER",
+    "PRODUCT",
+    "ORDER",
+    "SHOPPING_CART",
+    "MANUFACTURER",
+    "PAYMENT_METHOD",
+    "ORDER_ITEM"
+  ],
+  "attribute": {
+    "USER": [
+      "phone_number",
+      "address",
+      "payment_method_id"
+    ],
+    "PRODUCT": [
+      "manufacturer_id",
+      "flavor",
+      "number",
+      "puff",
+      "unit_price",
+      "stock_quantity"
+    ],
+    "ORDER": [
+      "order_creation_time",
+      "order_status",
+      "user_id",
+      "total_cost"
+    ],
+    "SHOPPING_CART": [
+      "record_quantity",
+      "user_id"
+    ],
+    "MANUFACTURER": [
+      "name",
+      "description"
+    ],
+    "PAYMENT_METHOD": [
+      "type",
+      "description"
+    ],
+    "ORDER_ITEM": [
+      "order_id",
+      "product_id",
+      "quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "MANUFACTURER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.542,
+  "ilp_runtime": 0.033
+}

@@ -1,0 +1,159 @@
+{
+  "filename": "392.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "CATEGORY": 0.74137,
+    "ADMINISTRATOR": 0.742671,
+    "LOG": 0.705099,
+    "ADDRESS": 0.719665,
+    "ORDER_ITEM": 0.749378
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.744312,
+      "username": 0.731712,
+      "password": 0.749784,
+      "age": 0.744283,
+      "gender": 0.748221,
+      "phone number": 0.743138,
+      "email": 0.751313,
+      "address id": 0.743664
+    },
+    "PRODUCT": {
+      "product id": 0.752278,
+      "name": 0.746988,
+      "description": 0.753408,
+      "price": 0.744579,
+      "inventory quantity": 0.765362,
+      "category id": 0.750787,
+      "created at": 0.746674,
+      "updated at": 0.748429
+    },
+    "ORDER": {
+      "order id": 0.74951,
+      "user id": 0.751649,
+      "order date": 0.748779,
+      "status": 0.757161,
+      "shipping address id": 0.744611,
+      "total amount": 0.749635
+    },
+    "ORDER_ITEM": {
+      "order item id": 0.751766,
+      "order id": 0.752023,
+      "product id": 0.756824,
+      "quantity": 0.761701,
+      "unit price": 0.753314,
+      "total price": 0.751759
+    },
+    "CATEGORY": {
+      "category id": 0.737804,
+      "name": 0.741285,
+      "description": 0.748344
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.75134,
+      "username": 0.749455,
+      "password": 0.752944,
+      "email": 0.753983
+    },
+    "LOG": {
+      "log id": 0.743733,
+      "user id": 0.746865,
+      "action": 0.751477,
+      "timestamp": 0.743155
+    },
+    "ADDRESS": {
+      "address id": 0.73615,
+      "street": 0.732852,
+      "city": 0.733061,
+      "state": 0.738011,
+      "zip code": 0.728617,
+      "country": 0.734744
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "description": "A user generates many log entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998888
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place multiple orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999101
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "An order consists of multiple order items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "description": "A product can appear in many order items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.956363
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "description": "A category groups multiple products",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000258
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "ORDER",
+      "description": "An address can be used for many orders as shipping address",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.873835
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "description": "A user has a single profile address",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.960066
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "USER",
+      "description": "An administrator manages many users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.315212
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PRODUCT",
+      "description": "An administrator manages many products",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000139
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ORDER",
+      "description": "An administrator oversees many orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005053
+    }
+  ],
+  "processing_time": 38.87
+}

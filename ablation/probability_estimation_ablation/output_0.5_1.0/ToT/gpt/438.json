@@ -1,0 +1,185 @@
+{
+  "filename": "438.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PHONE": 0.730685,
+    "PRODUCT": 0.817574,
+    "CATEGORY": 0.709797,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "CART": 0.817574,
+    "CART_ITEM": 0.765666,
+    "PAYMENT": 0.730449,
+    "ADDRESS": 0.719665
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.74893,
+      "username": 0.735617,
+      "password": 0.756539,
+      "email": 0.747612,
+      "registration_time": 0.747012,
+      "last_login": 0.751749
+    },
+    "PHONE": {
+      "phone_id": 0.735791,
+      "user_id": 0.743667,
+      "phone_number": 0.737644,
+      "type": 0.736721
+    },
+    "PRODUCT": {
+      "productid": 0.756731,
+      "name": 0.749673,
+      "description": 0.753528,
+      "price": 0.748727,
+      "stock_quantity": 0.759581,
+      "brand": 0.744797,
+      "weight": 0.742305,
+      "dimensions": 0.742922,
+      "category_id": 0.745137
+    },
+    "CATEGORY": {
+      "category_id": 0.730628,
+      "name": 0.739098,
+      "parent_category_id": 0.727879
+    },
+    "ORDER": {
+      "orderid": 0.754421,
+      "user_id": 0.754458,
+      "order_time": 0.750246,
+      "total_price": 0.755617,
+      "status": 0.756832,
+      "payment_id": 0.74974,
+      "shipping_address_id": 0.743395
+    },
+    "ORDER_ITEM": {
+      "order_id": 0.749926,
+      "product_id": 0.757667,
+      "quantity": 0.768304,
+      "unit_price": 0.753729,
+      "line_total": 0.757272
+    },
+    "CART": {
+      "cart_id": 0.761517,
+      "user_id": 0.764489,
+      "created_at": 0.756421,
+      "updated_at": 0.75081,
+      "status": 0.768679
+    },
+    "CART_ITEM": {
+      "cart_id": 0.758827,
+      "product_id": 0.760099,
+      "quantity": 0.774381,
+      "added_at": 0.75562
+    },
+    "PAYMENT": {
+      "payment_id": 0.743735,
+      "method": 0.757065,
+      "amount": 0.74731,
+      "payment_time": 0.746646,
+      "status": 0.747938
+    },
+    "ADDRESS": {
+      "address_id": 0.735321,
+      "user_id": 0.743802,
+      "line1": 0.745391,
+      "line2": 0.743645,
+      "city": 0.734014,
+      "state": 0.736944,
+      "zip": 0.733656,
+      "country": 0.733713,
+      "type": 0.741453
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PHONE",
+      "cardinality": "1:N",
+      "description": "A user can have multiple phone numbers",
+      "probability": 0.871281
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can create many orders",
+      "probability": 0.999076
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "description": "Each user has a single active cart",
+      "probability": 0.992209
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A user may have multiple saved addresses",
+      "probability": 0.849466
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A category groups many products",
+      "probability": 5.7e-05
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "Self‑referencing hierarchy for sub‑categories",
+      "probability": 0.999962
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999937
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can appear in many order items",
+      "probability": 0.957915
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "description": "A cart holds multiple cart items",
+      "probability": 0.999339
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can be present in many cart items",
+      "probability": 0.839268
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each order has one payment record",
+      "probability": 0.439515
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each order is linked to a shipping address",
+      "probability": 0.668321
+    }
+  ],
+  "processing_time": 12.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added PHONE entity to support multiple phone numbers per user, removed phone attribute from USER. Introduced CART.status to track cart lifecycle (active, abandoned, etc.). Created CATEGORY entity with self‑referencing hierarchy, replacing the simple category string in PRODUCT and adding category_id foreign key. Updated relationships to reflect new entities and hierarchy. Retained all strong aspects of the previous design (order/item tables, payment, address, cart/item structure) while enhancing completeness and scalability."
+  }
+}

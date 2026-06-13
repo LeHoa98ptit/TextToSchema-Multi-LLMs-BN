@@ -1,0 +1,220 @@
+{
+  "filename": "420.txt",
+  "entity": {
+    "USER": 0.622459,
+    "NEWS": 0.489751,
+    "NEWS_CATEGORY": 0.529366,
+    "VIDEO": 0.622459,
+    "VIDEO_CATEGORY": 0.511173,
+    "INSTRUCTOR": 0.472129,
+    "VIDEO_INSTRUCTOR": 0.517143,
+    "ORDER": 0.622459,
+    "PAYMENT": 0.622459,
+    "LEARN_RECORD": 0.532405,
+    "COLLECTION": 0.485854
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.506054,
+      "username": 0.505262,
+      "password": 0.511966,
+      "phone_number": 0.501418,
+      "wechat_openid": 0.498199,
+      "qq_number": 0.515987,
+      "email": 0.509302,
+      "registration_time": 0.512234,
+      "account_status": 0.517747
+    },
+    "NEWS": {
+      "news_id": 0.506455,
+      "title": 0.512902,
+      "content": 0.519414,
+      "publication_time": 0.513996,
+      "read_count": 0.520379,
+      "status": 0.509189,
+      "author_user_id": 0.50527,
+      "category_id": 0.515873
+    },
+    "NEWS_CATEGORY": {
+      "category_id": 0.515966,
+      "category_name": 0.520992,
+      "sort_order": 0.521259
+    },
+    "VIDEO": {
+      "video_id": 0.532282,
+      "title": 0.537378,
+      "description": 0.541405,
+      "cover_image": 0.529633,
+      "duration": 0.533631,
+      "price": 0.532511,
+      "status": 0.545205,
+      "directory_path": 0.528844,
+      "course_count": 0.567224,
+      "total_duration": 0.537278,
+      "category_id": 0.544485
+    },
+    "VIDEO_CATEGORY": {
+      "category_id": 0.544138,
+      "category_name": 0.546235,
+      "parent_category_id": 0.537994
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.543586,
+      "avatar": 0.529488,
+      "title": 0.545657,
+      "introduction": 0.542956,
+      "teaching_experience_years": 0.546734,
+      "professional_field": 0.54332,
+      "teaching_achievement": 0.541852
+    },
+    "VIDEO_INSTRUCTOR": {
+      "video_id": 0.555534,
+      "instructor_id": 0.558404
+    },
+    "ORDER": {
+      "order_id": 0.503139,
+      "user_id": 0.511244,
+      "video_id": 0.536459,
+      "order_time": 0.506604,
+      "status": 0.523474,
+      "total_amount": 0.520767
+    },
+    "PAYMENT": {
+      "payment_id": 0.507033,
+      "order_id": 0.505321,
+      "method": 0.516833,
+      "status": 0.519528,
+      "payment_time": 0.512463
+    },
+    "LEARN_RECORD": {
+      "learn_id": 0.535697,
+      "user_id": 0.532283,
+      "video_id": 0.547342,
+      "purchase_time": 0.542903,
+      "expiration_time": 0.533988,
+      "view_duration": 0.538452,
+      "completion_status": 0.540886,
+      "progress_percent": 0.539201,
+      "last_viewed_at": 0.54026
+    },
+    "COLLECTION": {
+      "collection_id": 0.510072,
+      "user_id": 0.518558,
+      "video_id": 0.541691,
+      "collection_time": 0.520879,
+      "is_active": 0.51876
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "NEWS",
+      "cardinality": "1:N",
+      "description": "A user (author) can create many news items",
+      "probability": 0.047938
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "NEWS_CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each news item belongs to one news category",
+      "probability": 0.996725
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLECTION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple video collections",
+      "probability": 0.982057
+    },
+    {
+      "entity_1": "COLLECTION",
+      "entity_2": "VIDEO",
+      "cardinality": "N:1",
+      "description": "Each collection entry references one video",
+      "probability": 0.07887
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can place many orders",
+      "probability": 0.999111
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "VIDEO",
+      "cardinality": "N:1",
+      "description": "Each order is for a single video",
+      "probability": 0.114506
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each order has exactly one payment record",
+      "probability": 0.87022
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEARN_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can have many learning records",
+      "probability": 0.99271
+    },
+    {
+      "entity_1": "LEARN_RECORD",
+      "entity_2": "VIDEO",
+      "cardinality": "N:1",
+      "description": "Each learning record refers to one video",
+      "probability": 0.988316
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "VIDEO_INSTRUCTOR",
+      "cardinality": "1:N",
+      "description": "An instructor can be linked to many video‑instructor association rows",
+      "probability": 0.999069
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "VIDEO_INSTRUCTOR",
+      "cardinality": "1:N",
+      "description": "A video can be linked to many video‑instructor association rows",
+      "probability": 0.652134
+    },
+    {
+      "entity_1": "VIDEO_INSTRUCTOR",
+      "entity_2": "INSTRUCTOR",
+      "cardinality": "N:1",
+      "description": "Each association row references one instructor",
+      "probability": 0.999069
+    },
+    {
+      "entity_1": "VIDEO_INSTRUCTOR",
+      "entity_2": "VIDEO",
+      "cardinality": "N:1",
+      "description": "Each association row references one video",
+      "probability": 0.652134
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "VIDEO_CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each video belongs to one video category",
+      "probability": 0.995551
+    },
+    {
+      "entity_1": "VIDEO_CATEGORY",
+      "entity_2": "VIDEO_CATEGORY",
+      "cardinality": "1:N",
+      "description": "A video category can have many sub‑categories (self‑referencing hierarchy)",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 25.19,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing foreign‑key attributes (author_user_id, category_id, etc.) and enriched entity attributes with realistic fields (directory_path, course_count, total_duration, progress_percent, last_viewed_at, is_active, total_amount). Introduced a junction entity VIDEO_INSTRUCTOR to properly model the N:M relationship between instructors and videos. Added self‑referencing hierarchy for video categories. Clarified relationship cardinalities and descriptions, and ensured each core business rule from the domain description is captured."
+  }
+}

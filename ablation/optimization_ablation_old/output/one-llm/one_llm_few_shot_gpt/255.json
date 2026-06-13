@@ -1,0 +1,139 @@
+{
+  "entity": [
+    "PRODUCTION_REPORT",
+    "EQUIPMENT",
+    "EQUIPMENT_INSPECTION",
+    "EQUIPMENT_FAILURE",
+    "EQUIPMENT_REPAIR",
+    "QUALITY_RECORD",
+    "USER",
+    "ANNOUNCEMENT",
+    "JOB_POSITION",
+    "APPLICATION"
+  ],
+  "attribute": {
+    "PRODUCTION_REPORT": [
+      "report_id",
+      "report_type",
+      "report_date",
+      "production_datum",
+      "production_indicator",
+      "completion_status",
+      "metal_recovery_rate",
+      "grade"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "model",
+      "main_category",
+      "sub_category",
+      "location",
+      "operation_status",
+      "real_time_monitoring",
+      "alarm_notification",
+      "anomaly_case"
+    ],
+    "EQUIPMENT_INSPECTION": [
+      "inspection_id",
+      "equipment_id",
+      "inspection_plan",
+      "progress",
+      "inspector",
+      "inspection_date"
+    ],
+    "EQUIPMENT_FAILURE": [
+      "failure_id",
+      "equipment_id",
+      "reporter",
+      "failure_type",
+      "failure_time",
+      "processing_status"
+    ],
+    "EQUIPMENT_REPAIR": [
+      "repair_id",
+      "equipment_id",
+      "repair_personnel",
+      "repair_detail",
+      "progress",
+      "work_order_number",
+      "repair_time"
+    ],
+    "QUALITY_RECORD": [
+      "quality_id",
+      "metal_recovery_rate",
+      "incoming_warehouse_sample",
+      "metal_grade",
+      "daily_report_grade",
+      "report_date"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "role",
+      "permission",
+      "status",
+      "operation_history"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "content",
+      "release_time",
+      "status",
+      "creator_user_id"
+    ],
+    "JOB_POSITION": [
+      "position_id",
+      "position_name",
+      "description",
+      "responsibility",
+      "requirement"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "user_id",
+      "position_id",
+      "match_rate",
+      "application_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_INSPECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_REPAIR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 65.2158,
+  "ilp_runtime": 0.048
+}

@@ -1,0 +1,119 @@
+{
+  "filename": "440.txt",
+  "entity": {
+    "DEVICE": 0.817574,
+    "PERSON": 0.73964,
+    "DEPARTMENT": 0.729976,
+    "USER": 0.817574,
+    "MAINTENANCE_REQUEST": 0.764984,
+    "MAINTENANCE_RECORD": 0.754415,
+    "ASSOC_DEVICE_PERSON": 0.185998
+  },
+  "attribute": {
+    "DEVICE": {
+      "device_model": 0.759736,
+      "ip_address": 0.745054,
+      "unique_qr_code": 0.760563,
+      "current_status": 0.761638,
+      "update_time": 0.745183
+    },
+    "PERSON": {
+      "person_name": 0.74723,
+      "contact_information": 0.752797,
+      "role": 0.745305
+    },
+    "DEPARTMENT": {
+      "department_name": 0.756116,
+      "location": 0.754602
+    },
+    "USER": {
+      "user_name": 0.739613,
+      "role": 0.755203,
+      "account_status": 0.750319,
+      "contact_information": 0.754075
+    },
+    "MAINTENANCE_REQUEST": {
+      "request_time": 0.750999,
+      "maintenance_content": 0.760883,
+      "handle_status": 0.755993,
+      "remark": 0.764096
+    },
+    "MAINTENANCE_RECORD": {
+      "maintenance_time": 0.763065,
+      "maintenance_content": 0.767375,
+      "maintenance_result": 0.762464,
+      "user_satisfaction": 0.774584,
+      "remark": 0.769256
+    },
+    "ASSOC_DEVICE_PERSON": {
+      "assoc_device_person_id": 0.185998,
+      "device_id": 0.185998,
+      "person_id": 0.185998
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_DEVICE_PERSON",
+      "description": "One DEVICE can be associated with many ASSOC_DEVICE_PERSON.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.185998
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSOC_DEVICE_PERSON",
+      "description": "One PERSON can be associated with many ASSOC_DEVICE_PERSON.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.185998
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A department can have multiple devices",
+      "probability": 0.555075
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple devices",
+      "probability": 0.924625
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "description": "A device can have multiple maintenance requests",
+      "probability": 0.959787
+    },
+    {
+      "entity_1": "MAINTENANCE_REQUEST",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:1",
+      "description": "A maintenance request can have one maintenance record",
+      "probability": 0.866321
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "cardinality": "1:N",
+      "description": "A person can submit multiple maintenance requests",
+      "probability": 0.949142
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "description": "A person can handle multiple maintenance records",
+      "probability": 0.999944
+    }
+  ],
+  "processing_time": 28.3,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, added relationships between PERSON and MAINTENANCE_REQUEST, and between PERSON and MAINTENANCE_RECORD to improve the model's efficiency and accuracy."
+  }
+}

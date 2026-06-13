@@ -1,0 +1,107 @@
+{
+  "filename": "346.txt",
+  "entity": {
+    "EXPENSE_RECORD": 0.546069,
+    "EXPENSE_APPLICATION_CENTER": 0.515345,
+    "ACCOUNTING_ACCOUNT": 0.545722,
+    "COMPANY_ACCOUNT": 0.520788,
+    "EXTERNAL_SUPPLIER": 0.546986,
+    "SYSTEM_USER": 0.493075,
+    "ASSOC_EXPENSE_RECORD_EXTERNAL_SUPPLIER": 0.002378
+  },
+  "attribute": {
+    "EXPENSE_RECORD": {
+      "id": 0.559108,
+      "description": 0.573381,
+      "month": 0.564425,
+      "date": 0.562018,
+      "payment date": 0.555907,
+      "expense status": 0.567257,
+      "supplier id": 0.563837
+    },
+    "EXPENSE_APPLICATION_CENTER": {
+      "id": 0.555758,
+      "name": 0.55263
+    },
+    "ACCOUNTING_ACCOUNT": {
+      "id": 0.552186,
+      "account number": 0.548736
+    },
+    "COMPANY_ACCOUNT": {
+      "id": 0.538237,
+      "company name": 0.54078
+    },
+    "EXTERNAL_SUPPLIER": {
+      "id": 0.535293,
+      "supplier name": 0.534298
+    },
+    "SYSTEM_USER": {
+      "id": 0.5149,
+      "username": 0.511509
+    },
+    "ASSOC_EXPENSE_RECORD_EXTERNAL_SUPPLIER": {
+      "assoc_expense_record_external_supplier_id": 0.002378,
+      "expense_record_id": 0.002378,
+      "external_supplier_id": 0.002378
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPENSE_RECORD",
+      "entity_2": "ASSOC_EXPENSE_RECORD_EXTERNAL_SUPPLIER",
+      "description": "One EXPENSE_RECORD can be associated with many ASSOC_EXPENSE_RECORD_EXTERNAL_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002378
+    },
+    {
+      "entity_1": "EXTERNAL_SUPPLIER",
+      "entity_2": "ASSOC_EXPENSE_RECORD_EXTERNAL_SUPPLIER",
+      "description": "One EXTERNAL_SUPPLIER can be associated with many ASSOC_EXPENSE_RECORD_EXTERNAL_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002378
+    },
+    {
+      "entity_1": "EXPENSE_RECORD",
+      "entity_2": "SYSTEM_USER",
+      "description": "Multiple expense records can be managed by one system user",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.927455
+    },
+    {
+      "entity_1": "EXPENSE_APPLICATION_CENTER",
+      "entity_2": "ACCOUNTING_ACCOUNT",
+      "description": "One expense application center can have multiple accounting accounts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994498
+    },
+    {
+      "entity_1": "COMPANY_ACCOUNT",
+      "entity_2": "ACCOUNTING_ACCOUNT",
+      "description": "One company account corresponds to one accounting account",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999712
+    },
+    {
+      "entity_1": "EXPENSE_RECORD",
+      "entity_2": "COMPANY_ACCOUNT",
+      "description": "Multiple expense records can be associated with one company account",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.999234
+    },
+    {
+      "entity_1": "SYSTEM_USER",
+      "entity_2": "EXPENSE_RECORD",
+      "description": "One system user can manage multiple expense records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.927455
+    }
+  ],
+  "processing_time": 16.93
+}

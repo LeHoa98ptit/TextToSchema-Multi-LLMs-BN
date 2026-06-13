@@ -1,0 +1,76 @@
+{
+  "filename": "391.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "POST": 0.622459,
+    "COMMENT": 0.622459,
+    "ASSOC_STUDENT_COMMENT": 0.514954
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.560052,
+      "gender": 0.5547,
+      "major": 0.549001,
+      "password": 0.561129,
+      "enrollment_time": 0.553649
+    },
+    "POST": {
+      "post_id": 0.513081,
+      "topic": 0.536791,
+      "content": 0.535564,
+      "author": 0.523252,
+      "publication_date": 0.520541
+    },
+    "COMMENT": {
+      "comment_id": 0.522727,
+      "comment_content": 0.533,
+      "comment_time": 0.533026,
+      "commenter": 0.533696
+    },
+    "ASSOC_STUDENT_COMMENT": {
+      "assoc_student_comment_id": 0.514954,
+      "student_id": 0.514954,
+      "comment_id": 0.514954
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "Each student can create many posts, and each post is created by exactly one student.",
+      "probability": 0.004746
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Each student can create many comments, and each comment is created by exactly one student.",
+      "probability": 0.514954
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Each post can have many comments, and each comment is associated with exactly one post.",
+      "probability": 0.01769
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COMMENT",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COMMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.514954
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "ASSOC_STUDENT_COMMENT",
+      "description": "One COMMENT can be associated with many ASSOC_STUDENT_COMMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.514954
+    }
+  ],
+  "processing_time": 14.14
+}

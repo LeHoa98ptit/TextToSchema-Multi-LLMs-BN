@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "USER",
+    "BUILDING",
+    "DORMITORY",
+    "STUDENT",
+    "APPLICATION",
+    "MAINTENANCE_RECORD",
+    "ANNOUNCEMENT",
+    "ASSOC_APPLICATION_USER"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "role"
+    ],
+    "BUILDING": [
+      "type",
+      "location",
+      "description"
+    ],
+    "DORMITORY": [
+      "type",
+      "number",
+      "bed",
+      "belong_building"
+    ],
+    "STUDENT": [
+      "id",
+      "gender",
+      "belong_dormitory",
+      "class"
+    ],
+    "APPLICATION": [
+      "type",
+      "applicant",
+      "content",
+      "time",
+      "status",
+      "opinion"
+    ],
+    "MAINTENANCE_RECORD": [
+      "id",
+      "dormitory",
+      "fault_description",
+      "repair_time",
+      "maintenance_staff",
+      "maintenance_situation",
+      "completion_time"
+    ],
+    "ANNOUNCEMENT": [
+      "id",
+      "title",
+      "content",
+      "release_time"
+    ],
+    "ASSOC_APPLICATION_USER": [
+      "assoc_application_user_id",
+      "application_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_APPLICATION_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_APPLICATION_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.8657,
+  "ilp_runtime": 0.039
+}

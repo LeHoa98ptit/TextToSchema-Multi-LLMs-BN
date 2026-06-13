@@ -1,0 +1,95 @@
+{
+  "filename": "481.txt",
+  "entity": {
+    "CROP": 0.817574,
+    "SENSOR": 0.817574,
+    "MONITORING_RULE": 0.797671,
+    "SENSOR_DATUM": 0.760095,
+    "ANALYSIS_RESULT": 0.74549,
+    "PREDICTION_RESULT": 0.717339,
+    "ASSOC_CROP_SENSOR_DATUM": 0.096026
+  },
+  "attribute": {
+    "CROP": {
+      "crop_id": 0.76784,
+      "crop_type": 0.770533
+    },
+    "SENSOR": {
+      "sensor_id": 0.755397,
+      "sensor_location": 0.75565,
+      "sensor_type": 0.762423
+    },
+    "MONITORING_RULE": {
+      "rule_id": 0.762372,
+      "rule_description": 0.769663
+    },
+    "SENSOR_DATUM": {
+      "datum_id": 0.767969,
+      "collection_time": 0.772184,
+      "datum_value": 0.769283,
+      "data_type": 0.772276
+    },
+    "ANALYSIS_RESULT": {
+      "result_id": 0.738444,
+      "analysis_time": 0.746879,
+      "result_value": 0.739284
+    },
+    "PREDICTION_RESULT": {
+      "prediction_id": 0.735817,
+      "prediction_time": 0.736891,
+      "prediction_value": 0.735561
+    },
+    "ASSOC_CROP_SENSOR_DATUM": {
+      "assoc_crop_sensor_datum_id": 0.096026,
+      "crop_id": 0.096026,
+      "sensor_datum_id": 0.096026
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CROP",
+      "entity_2": "MONITORING_RULE",
+      "cardinality": "1:N",
+      "description": "Each crop can have multiple monitoring rules, and each monitoring rule is associated with one crop.",
+      "probability": 0.021384
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "SENSOR_DATUM",
+      "cardinality": "1:N",
+      "description": "Each sensor can collect multiple sensor data, and each sensor datum is collected by one sensor.",
+      "probability": 0.833666
+    },
+    {
+      "entity_1": "SENSOR_DATUM",
+      "entity_2": "ANALYSIS_RESULT",
+      "cardinality": "1:N",
+      "description": "Each sensor datum can be analyzed to produce multiple analysis results, and each analysis result is based on one sensor datum.",
+      "probability": 0.069276
+    },
+    {
+      "entity_1": "ANALYSIS_RESULT",
+      "entity_2": "PREDICTION_RESULT",
+      "cardinality": "1:N",
+      "description": "Each analysis result can be used to make multiple predictions, and each prediction result is based on one analysis result.",
+      "probability": 0.986956
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "ASSOC_CROP_SENSOR_DATUM",
+      "description": "One CROP can be associated with many ASSOC_CROP_SENSOR_DATUM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.096026
+    },
+    {
+      "entity_1": "SENSOR_DATUM",
+      "entity_2": "ASSOC_CROP_SENSOR_DATUM",
+      "description": "One SENSOR_DATUM can be associated with many ASSOC_CROP_SENSOR_DATUM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.096026
+    }
+  ],
+  "processing_time": 14.64
+}

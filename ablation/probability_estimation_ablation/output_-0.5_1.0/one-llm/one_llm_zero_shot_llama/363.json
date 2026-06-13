@@ -1,0 +1,95 @@
+{
+  "filename": "363.txt",
+  "entity": {
+    "READER": 0.622459,
+    "BOOK": 0.622459,
+    "BORROW": 0.589549,
+    "RESERVATION": 0.622459,
+    "ASSOC_READER_BOOK": 0.996542
+  },
+  "attribute": {
+    "READER": {
+      "reader_d": 0.542016,
+      "library_card_number": 0.548105,
+      "gender": 0.538526,
+      "age": 0.533632,
+      "phone": 0.538806,
+      "email": 0.540374,
+      "address": 0.543089,
+      "reader_type": 0.539446,
+      "maximum_borrowing_limit": 0.541159,
+      "loan_period": 0.552984
+    },
+    "BOOK": {
+      "isbn": 0.565292,
+      "title": 0.540869,
+      "author": 0.540052,
+      "publisher": 0.555725,
+      "publication_date": 0.545724,
+      "price": 0.53629,
+      "number_copy_available": 0.556775,
+      "number_copy_circulation": 0.558422,
+      "library_location": 0.55404,
+      "shelf_number": 0.556097
+    },
+    "BORROW": {
+      "borrowing_time": 0.522925,
+      "date": 0.523064,
+      "actual_return_date": 0.512512,
+      "borrowing_status": 0.530003
+    },
+    "RESERVATION": {
+      "reservation_time": 0.524129,
+      "reservation_expiration_time": 0.525616,
+      "reservation_status": 0.526763
+    },
+    "ASSOC_READER_BOOK": {
+      "assoc_reader_book_id": 0.996542,
+      "reader_id": 0.996542,
+      "book_id": 0.996542
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "READER",
+      "entity_2": "BORROW",
+      "cardinality": "1:N",
+      "probability": 0.999757
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROW",
+      "cardinality": "1:N",
+      "probability": 0.999644
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "probability": 0.355704
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "probability": 0.032823
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "ASSOC_READER_BOOK",
+      "description": "One READER can be associated with many ASSOC_READER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996542
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_READER_BOOK",
+      "description": "One BOOK can be associated with many ASSOC_READER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996542
+    }
+  ],
+  "processing_time": 21.7
+}

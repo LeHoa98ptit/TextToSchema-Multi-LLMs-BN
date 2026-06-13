@@ -1,0 +1,119 @@
+{
+  "filename": "346.txt",
+  "entity": {
+    "EXPENSE": 0.817574,
+    "SUPPLIER": 0.817574,
+    "COMPANY": 0.755617,
+    "ACCOUNT": 0.817574,
+    "USER": 0.751084,
+    "FINANCIAL_REPORT": 0.761587,
+    "ASSOC_EXPENSE_SUPPLIER": 0.011478
+  },
+  "attribute": {
+    "EXPENSE": {
+      "description": 0.773025,
+      "month": 0.765167,
+      "date": 0.768033,
+      "payment_date": 0.764516,
+      "status": 0.772478,
+      "amount": 0.76753,
+      "currency": 0.762375
+    },
+    "SUPPLIER": {
+      "name": 0.75387,
+      "contact": 0.756566,
+      "address": 0.757895,
+      "phone": 0.74628,
+      "email": 0.757038
+    },
+    "COMPANY": {
+      "name": 0.751053,
+      "address": 0.753125,
+      "tax_id": 0.754535,
+      "industry": 0.755661
+    },
+    "ACCOUNT": {
+      "account_number": 0.754066,
+      "account_type": 0.755975,
+      "balance": 0.764548,
+      "account_name": 0.752102
+    },
+    "USER": {
+      "username": 0.729273,
+      "password": 0.74411,
+      "role": 0.752175,
+      "department": 0.754425
+    },
+    "FINANCIAL_REPORT": {
+      "report_date": 0.765504,
+      "report_type": 0.770785,
+      "amount": 0.770229,
+      "currency": 0.761163,
+      "report_format": 0.770172,
+      "report_status": 0.766896
+    },
+    "ASSOC_EXPENSE_SUPPLIER": {
+      "assoc_expense_supplier_id": 0.011478,
+      "expense_id": 0.011478,
+      "supplier_id": 0.011478
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "ASSOC_EXPENSE_SUPPLIER",
+      "description": "One EXPENSE can be associated with many ASSOC_EXPENSE_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011478
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_EXPENSE_SUPPLIER",
+      "description": "One SUPPLIER can be associated with many ASSOC_EXPENSE_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011478
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "An account can have multiple expenses",
+      "probability": 0.995047
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EXPENSE",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple expenses",
+      "probability": 0.997238
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "FINANCIAL_REPORT",
+      "cardinality": "1:N",
+      "description": "An expense can generate multiple financial reports",
+      "probability": 0.007974
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A company can have multiple accounts",
+      "probability": 0.236849
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A company can have multiple employees",
+      "probability": 0.67207
+    }
+  ],
+  "processing_time": 25.21,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added report_format and report_status attributes to the FINANCIAL_REPORT entity, and added a relationship between the COMPANY and USER entities to reflect the company's employees."
+  }
+}

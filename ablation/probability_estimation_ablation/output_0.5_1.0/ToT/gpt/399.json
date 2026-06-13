@@ -1,0 +1,173 @@
+{
+  "filename": "399.txt",
+  "entity": {
+    "USER": 0.817574,
+    "CODE": 0.817574,
+    "PROBLEM": 0.817574,
+    "PROJECT": 0.817574,
+    "SIGN": 0.817574,
+    "SUBMISSION": 0.718675,
+    "USER_PROJECT": 0.740198,
+    "CODE_PROJECT": 0.739313
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.747494,
+      "username": 0.742472,
+      "password_hash": 0.744772,
+      "email": 0.751233,
+      "registration_time": 0.753605,
+      "first_name": 0.751583,
+      "last_name": 0.748422,
+      "bio": 0.749639
+    },
+    "CODE": {
+      "code_id": 0.746434,
+      "title": 0.752663,
+      "content": 0.758684,
+      "content_hash": 0.737873,
+      "upload_time": 0.745042,
+      "language": 0.758695,
+      "version": 0.753244,
+      "author_user_id": 0.750561,
+      "problem_id": 0.75546
+    },
+    "PROBLEM": {
+      "problem_id": 0.755476,
+      "title": 0.756695,
+      "description": 0.765713,
+      "difficulty_level": 0.76215,
+      "creation_time": 0.75714,
+      "author_user_id": 0.750375,
+      "tags": 0.762224
+    },
+    "PROJECT": {
+      "project_id": 0.755808,
+      "name": 0.763601,
+      "description": 0.776221,
+      "creation_time": 0.763106,
+      "owner_user_id": 0.759674,
+      "status": 0.76551
+    },
+    "SIGN": {
+      "sign_id": 0.746912,
+      "user_id": 0.749257,
+      "sign_date": 0.745396,
+      "sign_time": 0.748641,
+      "status": 0.751051
+    },
+    "SUBMISSION": {
+      "submission_id": 0.740052,
+      "user_id": 0.746389,
+      "problem_id": 0.750482,
+      "code_id": 0.744767,
+      "submit_time": 0.743145,
+      "result": 0.743286,
+      "score": 0.739909
+    },
+    "USER_PROJECT": {
+      "up_id": 0.757484,
+      "user_id": 0.763323,
+      "project_id": 0.762935,
+      "role": 0.772504,
+      "join_date": 0.76336
+    },
+    "CODE_PROJECT": {
+      "cp_id": 0.752367,
+      "code_id": 0.757414,
+      "project_id": 0.758601,
+      "added_time": 0.755145
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE",
+      "cardinality": "1:N",
+      "description": "A user (author_user_id) can create many code snippets",
+      "probability": 0.976805
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROBLEM",
+      "cardinality": "1:N",
+      "description": "A user (author_user_id) can create many problems",
+      "probability": 0.997962
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A user (owner_user_id) can own many projects",
+      "probability": 0.737684
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SIGN",
+      "cardinality": "1:N",
+      "description": "A user can have multiple daily sign records",
+      "probability": 0.919247
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A user can make many problem submissions",
+      "probability": 0.956476
+    },
+    {
+      "entity_1": "PROBLEM",
+      "entity_2": "CODE",
+      "cardinality": "1:N",
+      "description": "A problem may be linked to many example code snippets",
+      "probability": 0.995048
+    },
+    {
+      "entity_1": "PROBLEM",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Each problem can receive many submissions",
+      "probability": 0.415596
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A code snippet can be used in many submissions",
+      "probability": 0.822543
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PROJECT",
+      "cardinality": "1:N",
+      "description": "A user can participate in many projects via the USER_PROJECT junction table",
+      "probability": 0.999946
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "USER_PROJECT",
+      "cardinality": "1:N",
+      "description": "A project can have many participating users via the USER_PROJECT junction table",
+      "probability": 0.998666
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "CODE_PROJECT",
+      "cardinality": "1:N",
+      "description": "A code snippet can belong to many projects via the CODE_PROJECT junction table",
+      "probability": 0.999823
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CODE_PROJECT",
+      "cardinality": "1:N",
+      "description": "A project can contain many code snippets via the CODE_PROJECT junction table",
+      "probability": 0.999102
+    }
+  ],
+  "processing_time": 1013.2,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Added missing SUBMISSION entity and its relationships. 2. Kept many‑to‑many junction tables USER_PROJECT and CODE_PROJECT to support collaborative projects and code reuse across projects. 3. Introduced content_hash in CODE for duplicate detection and author_user_id foreign key for clearer ownership. 4. Normalized attribute naming to snake_case and added explicit foreign‑key attributes (author_user_id, owner_user_id). 5. Defined enum‑style attributes (difficulty_level, status, role, result) for better data integrity. 6. Documented unique constraints (username, email) and suggested ON DELETE CASCADE for related FK relationships. 7. Clarified relationship cardinalities and descriptions. 8. Retained all strengths of the previous comprehensive model while streamlining and making it implementation‑ready."
+  }
+}

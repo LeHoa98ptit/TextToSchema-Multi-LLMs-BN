@@ -1,0 +1,121 @@
+{
+  "filename": "367.txt",
+  "entity": {
+    "USER": 0.817574,
+    "MEDICAL_INSTITUTION": 0.810629,
+    "APPOINTMENT": 0.817574,
+    "OPERATOR": 0.817574,
+    "EXAMINATION": 0.730133,
+    "PAYMENT": 0.702765,
+    "INSURANCE": 0.719947
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.746788,
+      "phone_number": 0.75259,
+      "birth_date": 0.753811,
+      "gender": 0.751202,
+      "password": 0.749593,
+      "address": 0.750349,
+      "insurance_status": 0.756917,
+      "insurance_provider": 0.760716,
+      "insurance_policy": 0.754505
+    },
+    "MEDICAL_INSTITUTION": {
+      "address": 0.769418,
+      "opening_time": 0.769598,
+      "closing_time": 0.761409,
+      "institution_name": 0.766974,
+      "institution_type": 0.768098
+    },
+    "APPOINTMENT": {
+      "examination_description": 0.784402,
+      "examination_document": 0.781621,
+      "payment_method": 0.763652,
+      "creation_date": 0.771832,
+      "appointment_date": 0.771455,
+      "status": 0.773399,
+      "appointment_type": 0.777389
+    },
+    "OPERATOR": {
+      "username": 0.75314,
+      "password": 0.75741,
+      "operator_name": 0.74636,
+      "operator_role": 0.751178,
+      "institution_name": 0.760934
+    },
+    "EXAMINATION": {
+      "examination_type": 0.764855,
+      "examination_result": 0.75812,
+      "examination_date": 0.764142,
+      "examination_description": 0.768615
+    },
+    "PAYMENT": {
+      "payment_method": 0.733937,
+      "payment_date": 0.736685,
+      "payment_amount": 0.736764,
+      "payment_status": 0.739108
+    },
+    "INSURANCE": {
+      "insurance_provider": 0.755318,
+      "insurance_policy": 0.749992,
+      "insurance_coverage": 0.751866
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A user can schedule multiple appointments",
+      "probability": 0.992299
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A medical institution can have multiple appointments scheduled",
+      "probability": 0.652725
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "cardinality": "1:1",
+      "description": "An operator is assigned to a specific medical institution",
+      "probability": 0.994313
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "EXAMINATION",
+      "cardinality": "1:1",
+      "description": "An appointment is associated with a single examination",
+      "probability": 0.928274
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An appointment requires a single payment",
+      "probability": 0.692265
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INSURANCE",
+      "cardinality": "1:1",
+      "description": "A user has a single insurance coverage",
+      "probability": 0.373733
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "An operator can manage multiple appointments",
+      "probability": 0.991911
+    }
+  ],
+  "processing_time": 32.67,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more specific descriptions for relationships and attributes, removed redundant relationships, and integrated improvement suggestions from the evaluation"
+  }
+}

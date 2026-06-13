@@ -1,0 +1,110 @@
+{
+  "entity": [
+    "Material",
+    "Warehouse",
+    "Vehicle",
+    "Driver",
+    "Material Storage",
+    "Material Dispatch",
+    "Material Transportation"
+  ],
+  "attribut": {
+    "Material": [
+      "Material ID",
+      "Name",
+      "Type",
+      "Specification",
+      "Weight",
+      "Volume",
+      "Source Location"
+    ],
+    "Warehouse": [
+      "Warehouse ID",
+      "Name",
+      "Address",
+      "Type",
+      "Maximum Capacity",
+      "Current Inventory Level",
+      "Remaining Capacity"
+    ],
+    "Vehicle": [
+      "Vehicle ID",
+      "Vehicle Type",
+      "License Plate Number",
+      "Maximum Load",
+      "Current Load",
+      "Assigned Driver ID"
+    ],
+    "Driver": [
+      "Driver ID",
+      "Name",
+      "Gender",
+      "Phone Number",
+      "Driving License Number",
+      "Age"
+    ],
+    "Material Storage": [
+      "Material ID",
+      "Warehouse ID",
+      "Storage Time",
+      "Storage Quantity",
+      "Notes"
+    ],
+    "Material Dispatch": [
+      "Material ID",
+      "Warehouse ID",
+      "Dispatch Time",
+      "Dispatch Quantity",
+      "Notes"
+    ],
+    "Material Transportation": [
+      "Vehicle ID",
+      "Material ID",
+      "Transportation Start Time",
+      "Destination",
+      "Driver ID"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Driver",
+      "entity_2": "Vehicle",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Warehouse",
+      "entity_2": "Material Storage",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Material",
+      "entity_2": "Material Storage",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Warehouse",
+      "entity_2": "Material Dispatch",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Material",
+      "entity_2": "Material Dispatch",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Driver",
+      "entity_2": "Material Transportation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Material",
+      "entity_2": "Material Transportation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Vehicle",
+      "entity_2": "Material Transportation",
+      "cardinality": "1:N"
+    }
+  ]
+}

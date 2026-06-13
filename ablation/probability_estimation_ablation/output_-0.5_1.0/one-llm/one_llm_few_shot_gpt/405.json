@@ -1,0 +1,105 @@
+{
+  "filename": "405.txt",
+  "entity": {
+    "DRUG": 0.622459,
+    "DOCTOR": 0.622459,
+    "PATIENT": 0.622459,
+    "PRESCRIPTION": 0.622459,
+    "CONSULTATION": 0.479237,
+    "PAYMENT": 0.622459,
+    "ASSOC_DRUG_PRESCRIPTION": 0.018766
+  },
+  "attribute": {
+    "DRUG": {
+      "drug_id": 0.541962,
+      "name": 0.533235,
+      "specification": 0.551695,
+      "usage": 0.542918
+    },
+    "DOCTOR": {
+      "doctor_id": 0.542717,
+      "name": 0.542852,
+      "address": 0.543947,
+      "phone_number": 0.543831
+    },
+    "PATIENT": {
+      "patient_id": 0.546127,
+      "name": 0.542377,
+      "address": 0.547197,
+      "phone_number": 0.542153
+    },
+    "PRESCRIPTION": {
+      "prescription_id": 0.547676,
+      "order_date": 0.541089,
+      "category": 0.558983,
+      "remark": 0.540588
+    },
+    "CONSULTATION": {
+      "consultation_id": 0.534639,
+      "consultation_date": 0.52683,
+      "doctor_id": 0.548924,
+      "patient_id": 0.5489
+    },
+    "PAYMENT": {
+      "payment_id": 0.520872,
+      "payment_date": 0.518963,
+      "amount": 0.522878,
+      "discount": 0.518137,
+      "prescription_id": 0.547795
+    },
+    "ASSOC_DRUG_PRESCRIPTION": {
+      "assoc_drug_prescription_id": 0.018766,
+      "drug_id": 0.018766,
+      "prescription_id": 0.018766
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_DRUG_PRESCRIPTION",
+      "description": "One DRUG can be associated with many ASSOC_DRUG_PRESCRIPTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.018766
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "ASSOC_DRUG_PRESCRIPTION",
+      "description": "One PRESCRIPTION can be associated with many ASSOC_DRUG_PRESCRIPTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.018766
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "probability": 0.004624
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "probability": 0.049062
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "probability": 0.049396
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "probability": 0.084995
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "probability": 0.966526
+    }
+  ],
+  "processing_time": 18.32
+}

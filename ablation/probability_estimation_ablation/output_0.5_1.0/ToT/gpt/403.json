@@ -1,0 +1,112 @@
+{
+  "filename": "403.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "ADMINISTRATOR": 0.817574,
+    "BOOK": 0.817574,
+    "BORROW_RECORD": 0.674739,
+    "RETURN_RECORD": 0.74621,
+    "AUDIT": 0.701573
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.766572,
+      "student_number": 0.766167,
+      "name": 0.762712,
+      "grade": 0.754717,
+      "major": 0.756054,
+      "contact_number": 0.762969,
+      "email": 0.761895
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.744535,
+      "name": 0.753741,
+      "job_number": 0.750754,
+      "contact_number": 0.752028,
+      "email": 0.750252,
+      "position": 0.755647
+    },
+    "BOOK": {
+      "book_id": 0.765806,
+      "title": 0.756672,
+      "author": 0.754621,
+      "publisher": 0.763369,
+      "publication_date": 0.765552,
+      "category": 0.770975,
+      "stock_quantity": 0.765483,
+      "borrow_quantity": 0.772525
+    },
+    "BORROW_RECORD": {
+      "borrow_id": 0.75903,
+      "student_id": 0.775527,
+      "book_id": 0.774615,
+      "borrow_date": 0.762295,
+      "status": 0.770193,
+      "review_status": 0.769155
+    },
+    "RETURN_RECORD": {
+      "return_id": 0.734913,
+      "borrow_id": 0.752387,
+      "return_date": 0.741987,
+      "status": 0.749524,
+      "review_status": 0.749273
+    },
+    "AUDIT": {
+      "audit_id": 0.744007,
+      "admin_id": 0.747892,
+      "borrow_id": 0.760507,
+      "book_id": 0.771056,
+      "audit_date": 0.746266,
+      "result": 0.754107
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "BORROW_RECORD",
+      "cardinality": "1:N",
+      "description": "A student can have many borrow records",
+      "probability": 0.99927
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROW_RECORD",
+      "cardinality": "1:N",
+      "description": "A book can appear in many borrow records",
+      "probability": 0.999718
+    },
+    {
+      "entity_1": "BORROW_RECORD",
+      "entity_2": "RETURN_RECORD",
+      "cardinality": "1:1",
+      "description": "Each borrow record may have one corresponding return record",
+      "probability": 0.035844
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "An administrator can perform many audit actions",
+      "probability": 0.019778
+    },
+    {
+      "entity_1": "BORROW_RECORD",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "A borrow transaction can be audited multiple times",
+      "probability": 0.917278
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "description": "A book can be involved in many audit actions (via borrow records)",
+      "probability": 0.852641
+    }
+  ],
+  "processing_time": 18.68,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing attributes (student_number, publication_date, stock_quantity, borrow_quantity, job_number, review_status, expected_return_date handling via RETURN_RECORD). Introduced explicit foreign key attributes to capture relationships. Merged borrowing and returning semantics by linking RETURN_RECORD to BORROW_RECORD (1:1). Added AUDIT entity with references to ADMINISTRATOR, BORROW_RECORD, and BOOK to reflect audit of borrowing/return actions. Clarified cardinalities and relationship descriptions, ensuring full coverage of the domain requirements while preserving the original strengths of a clear, simple structure."
+  }
+}

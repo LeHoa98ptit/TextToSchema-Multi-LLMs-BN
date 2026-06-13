@@ -1,0 +1,89 @@
+{
+  "filename": "486.txt",
+  "entity": {
+    "COMPANY": 0.765881,
+    "MINE": 0.817574,
+    "MINERAL_RESOURCE": 0.804176,
+    "PERSON": 0.695741,
+    "EXTRACTION_RECORD": 0.743492,
+    "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD": 0.047723
+  },
+  "attribute": {
+    "COMPANY": {
+      "name": 0.75736,
+      "location": 0.753431
+    },
+    "MINE": {
+      "mine_attribute": 0.760927,
+      "location": 0.750559
+    },
+    "MINERAL_RESOURCE": {
+      "resource_attribute": 0.774722,
+      "reserve": 0.772941,
+      "discovery_date": 0.777407
+    },
+    "PERSON": {
+      "name": 0.738756,
+      "charge": 0.741911
+    },
+    "EXTRACTION_RECORD": {
+      "extraction_date": 0.753937,
+      "extraction_volume": 0.757644,
+      "extraction_cost": 0.767154
+    },
+    "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD": {
+      "assoc_mineral_resource_extraction_record_id": 0.047723,
+      "mineral_resource_id": 0.047723,
+      "extraction_record_id": 0.047723
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "probability": 0.920169
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "1:N",
+      "probability": 0.649812
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.047723
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.99982
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "PERSON",
+      "cardinality": "1:N",
+      "probability": 0.988995
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD",
+      "description": "One MINERAL_RESOURCE can be associated with many ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.047723
+    },
+    {
+      "entity_1": "EXTRACTION_RECORD",
+      "entity_2": "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD",
+      "description": "One EXTRACTION_RECORD can be associated with many ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.047723
+    }
+  ],
+  "processing_time": 9.17
+}

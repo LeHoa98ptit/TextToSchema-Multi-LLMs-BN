@@ -1,0 +1,103 @@
+{
+  "entity": [
+    "COMPANY",
+    "MINE",
+    "LOCATION",
+    "MINERAL_RESOURCE",
+    "RESERVE",
+    "DISCOVERY",
+    "PERSON",
+    "EXTRACTION"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "headquarters"
+    ],
+    "MINE": [
+      "mine_id",
+      "name",
+      "operating_status"
+    ],
+    "LOCATION": [
+      "location_id",
+      "country",
+      "region",
+      "coordinates"
+    ],
+    "MINERAL_RESOURCE": [
+      "resource_id",
+      "name",
+      "category"
+    ],
+    "RESERVE": [
+      "reserve_id",
+      "estimated_volume",
+      "unit_id"
+    ],
+    "DISCOVERY": [
+      "discovery_id",
+      "discovery_date"
+    ],
+    "PERSON": [
+      "person_id",
+      "name",
+      "position",
+      "contact"
+    ],
+    "EXTRACTION": [
+      "extraction_id",
+      "date",
+      "volume",
+      "cost",
+      "unit_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVE",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOVERY",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISCOVERY",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXTRACTION",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 29.4585,
+  "ilp_runtime": 0.056
+}

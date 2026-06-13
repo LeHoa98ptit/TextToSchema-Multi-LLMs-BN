@@ -1,0 +1,190 @@
+{
+  "filename": "382.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PROFILE": 0.510498,
+    "POST": 0.622459,
+    "IMAGE": 0.573049,
+    "COMMENT": 0.622459,
+    "TAG": 0.480884,
+    "INTEREST": 0.466077,
+    "LIKE": 0.460632,
+    "ASSOC_POST_TAG": 0.01701,
+    "ASSOC_USER_INTEREST": 0.874285,
+    "ASSOC_USER_POST": 0.863061
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.528687,
+      "username": 0.528802,
+      "password": 0.543747,
+      "email": 0.545548,
+      "registration_date": 0.530577
+    },
+    "PROFILE": {
+      "gender": 0.542798,
+      "age": 0.536247,
+      "occupation": 0.540174,
+      "avatar_url": 0.544826,
+      "bio": 0.528383
+    },
+    "POST": {
+      "post_id": 0.517992,
+      "title": 0.531944,
+      "description": 0.541463,
+      "created_at": 0.52071,
+      "view_count": 0.515349
+    },
+    "IMAGE": {
+      "image_id": 0.523277,
+      "url": 0.529897,
+      "width": 0.52439,
+      "height": 0.521082
+    },
+    "COMMENT": {
+      "comment_id": 0.529343,
+      "content": 0.541543,
+      "comment_time": 0.533253,
+      "edited_flag": 0.514673,
+      "status": 0.542422,
+      "parent_comment_id": 0.523911
+    },
+    "TAG": {
+      "tag_id": 0.502977,
+      "name": 0.519751
+    },
+    "INTEREST": {
+      "interest_id": 0.505939,
+      "name": 0.518211
+    },
+    "LIKE": {
+      "liked_at": 0.513094
+    },
+    "ASSOC_POST_TAG": {
+      "assoc_post_tag_id": 0.01701,
+      "post_id": 0.01701,
+      "tag_id": 0.01701
+    },
+    "ASSOC_USER_INTEREST": {
+      "assoc_user_interest_id": 0.874285,
+      "user_id": 0.874285,
+      "interest_id": 0.874285
+    },
+    "ASSOC_USER_POST": {
+      "assoc_user_post_id": 0.863061,
+      "user_id": 0.863061,
+      "post_id": 0.863061
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "description": "Each user has exactly one profile storing personal details",
+      "probability": 0.999233
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create many posts",
+      "probability": 0.863061
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "IMAGE",
+      "cardinality": "1:N",
+      "description": "A post may contain multiple images",
+      "probability": 0.999263
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_POST_TAG",
+      "description": "One POST can be associated with many ASSOC_POST_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01701
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_POST_TAG",
+      "description": "One TAG can be associated with many ASSOC_POST_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01701
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "description": "One USER can be associated with many ASSOC_USER_INTEREST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.874285
+    },
+    {
+      "entity_1": "INTEREST",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "description": "One INTEREST can be associated with many ASSOC_USER_INTEREST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.874285
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments",
+      "probability": 0.017713
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can write many comments",
+      "probability": 0.961175
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A comment can have many reply comments (self‑referencing via parent_comment_id)",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_POST",
+      "description": "One USER can be associated with many ASSOC_USER_POST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.863061
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_USER_POST",
+      "description": "One POST can be associated with many ASSOC_USER_POST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.863061
+    },
+    {
+      "entity_1": "LIKE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each like record references the user who liked",
+      "probability": 0.894274
+    },
+    {
+      "entity_1": "LIKE",
+      "entity_2": "POST",
+      "cardinality": "N:1",
+      "description": "Each like record references the liked post",
+      "probability": 0.190911
+    }
+  ],
+  "processing_time": 16.94,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented evaluation suggestions: added view_count to POST; added status and parent_comment_id to COMMENT for threading and moderation; removed unnecessary surrogate LIKE_ID and defined LIKE with composite primary key (user_id, post_id) and only liked_at attribute; clarified self‑referencing comment relationship via parent_comment_id; retained full PROFILE, IMAGE, TAG, INTEREST entities; kept N:M relationships for tags, interests, and likes while documenting composite key usage; ensured one‑to‑one USER‑PROFILE and one‑to‑many USER‑POST, POST‑IMAGE, POST‑COMMENT, USER‑COMMENT relationships remain intact."
+  }
+}

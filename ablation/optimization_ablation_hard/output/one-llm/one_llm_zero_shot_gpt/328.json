@@ -1,0 +1,103 @@
+{
+  "entity": [
+    "SURVEY",
+    "QUESTION",
+    "OPTION",
+    "RESPONDENT",
+    "ANSWER",
+    "ASSOC_SURVEY_RESPONDENT"
+  ],
+  "attribute": {
+    "SURVEY": [
+      "survey_id",
+      "title",
+      "description",
+      "access_restriction",
+      "access_rule",
+      "start_time",
+      "end_time",
+      "status",
+      "logo_url",
+      "background_image_url",
+      "anonymity_setting",
+      "created_by",
+      "created_at",
+      "updated_at"
+    ],
+    "QUESTION": [
+      "question_id",
+      "survey_id",
+      "title",
+      "description",
+      "required",
+      "status",
+      "validation_type",
+      "display_order",
+      "display_style",
+      "evaluation_status",
+      "evaluation_score",
+      "type"
+    ],
+    "OPTION": [
+      "option_id",
+      "question_id",
+      "content",
+      "display_order",
+      "is_correct",
+      "status"
+    ],
+    "RESPONDENT": [
+      "respondent_id",
+      "name",
+      "email",
+      "phone_number"
+    ],
+    "ANSWER": [
+      "answer_id",
+      "respondent_id",
+      "question_id",
+      "option_id",
+      "answer_text",
+      "submission_time"
+    ],
+    "ASSOC_SURVEY_RESPONDENT": [
+      "assoc_survey_respondent_id",
+      "survey_id",
+      "respondent_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "ASSOC_SURVEY_RESPONDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESPONDENT",
+      "entity_2": "ASSOC_SURVEY_RESPONDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.1383,
+  "ilp_runtime": 0.034
+}

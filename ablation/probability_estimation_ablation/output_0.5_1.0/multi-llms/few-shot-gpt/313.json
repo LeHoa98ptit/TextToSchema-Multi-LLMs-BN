@@ -1,0 +1,101 @@
+{
+  "filename": "313.txt",
+  "entity": {
+    "INGREDIENT": 0.817574,
+    "INGREDIENT_TYPE": 0.769608,
+    "MEXICAN_TORTILLA": 0.806574,
+    "USER": 0.817574,
+    "PERMISSION": 0.817574,
+    "PRODUCTION": 0.817574,
+    "SALE": 0.784992,
+    "USER_PERMISSION": 0.994711
+  },
+  "attribute": {
+    "INGREDIENT": {
+      "ingredient id": 0.74763,
+      "ingredient name": 0.747638,
+      "ingredient type id": 0.753474
+    },
+    "INGREDIENT_TYPE": {
+      "ingredient type id": 0.758242,
+      "type name": 0.755087
+    },
+    "MEXICAN_TORTILLA": {
+      "tortilla id": 0.760167,
+      "tortilla name": 0.757695,
+      "creation time": 0.755126
+    },
+    "USER": {
+      "user id": 0.753621,
+      "username": 0.73987,
+      "password hash": 0.748681,
+      "is active": 0.746869
+    },
+    "PERMISSION": {
+      "permission id": 0.759297,
+      "permission name": 0.759004,
+      "description": 0.77004
+    },
+    "PRODUCTION": {
+      "production id": 0.761173,
+      "tortilla id": 0.768617,
+      "production date": 0.74682,
+      "quantity produced": 0.762706
+    },
+    "SALE": {
+      "sale id": 0.750557,
+      "tortilla id": 0.762415,
+      "sale date": 0.73947,
+      "quantity sold": 0.753815,
+      "total amount": 0.747951
+    },
+    "USER_PERMISSION": {
+      "user_permission_id": 0.994711,
+      "user_id": 0.994711,
+      "permission_id": 0.994711
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INGREDIENT_TYPE",
+      "entity_2": "INGREDIENT",
+      "description": "Each ingredient belongs to one ingredient type, while each ingredient type can be assigned to many ingredients.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999667
+    },
+    {
+      "entity_1": "MEXICAN_TORTILLA",
+      "entity_2": "PRODUCTION",
+      "description": "Each production record is for exactly one Mexican tortilla, and a Mexican tortilla can have many production records over time.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.405652
+    },
+    {
+      "entity_1": "MEXICAN_TORTILLA",
+      "entity_2": "SALE",
+      "description": "Each sale record concerns exactly one Mexican tortilla, while a Mexican tortilla can appear in many sale records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.944853
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PERMISSION",
+      "description": "One USER can be associated with many USER_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994711
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "USER_PERMISSION",
+      "description": "One PERMISSION can be associated with many USER_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994711
+    }
+  ],
+  "processing_time": 20.6
+}

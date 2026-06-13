@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "ADDRESS",
+    "ORDER",
+    "ORDER_LINE",
+    "RESOURCE",
+    "RESOURCE_TYPE",
+    "CURRENCY"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "phone_number",
+      "email",
+      "date_of_birth",
+      "created_at",
+      "updated_at"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "customer_id",
+      "country",
+      "city",
+      "postal_code",
+      "district",
+      "street_address",
+      "is_primary",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "address_id",
+      "order_date",
+      "currency_code",
+      "start_time",
+      "status",
+      "total_amount",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER_LINE": [
+      "order_id",
+      "resource_id",
+      "quantity",
+      "unit_price",
+      "line_total",
+      "created_at",
+      "updated_at"
+    ],
+    "RESOURCE": [
+      "resource_id",
+      "resource_name",
+      "resource_type_id",
+      "description",
+      "price",
+      "created_at",
+      "updated_at"
+    ],
+    "RESOURCE_TYPE": [
+      "type_id",
+      "type_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "CURRENCY": [
+      "currency_code",
+      "currency_name",
+      "symbol"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.8641,
+  "ilp_runtime": 0.038
+}

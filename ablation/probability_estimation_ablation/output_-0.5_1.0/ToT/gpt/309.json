@@ -1,0 +1,247 @@
+{
+  "filename": "309.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "REGION": 0.622459,
+    "INCOME_GROUP": 0.598832,
+    "VEHICLE": 0.622459,
+    "VEHICLE_SEGMENT": 0.597293,
+    "POLICY": 0.622459,
+    "INSURANCE_COVERAGE": 0.575933,
+    "PURCHASE": 0.517618,
+    "POLICY_VEHICLE": 0.527273,
+    "SERVICE_INTERACTION": 0.45795,
+    "GENDER": 0.48483,
+    "MARITAL_STATUS": 0.436716,
+    "COVERAGE_TYPE": 0.4547,
+    "PAYMENT_METHOD": 0.446333,
+    "ASSOC_POLICY_INSURANCE_COVERAGE": 0.961597,
+    "ASSOC_POLICY_VEHICLE": 0.601929
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.531561,
+      "first_name": 0.533928,
+      "last_name": 0.530706,
+      "email": 0.532427,
+      "phone_number": 0.523644,
+      "gender_id": 0.536433,
+      "date_of_birth": 0.531933,
+      "marital_status_id": 0.534476,
+      "address": 0.526805,
+      "region_id": 0.535781,
+      "income_group_id": 0.535252
+    },
+    "REGION": {
+      "region_id": 0.519378,
+      "region_name": 0.519031,
+      "description": 0.527744
+    },
+    "INCOME_GROUP": {
+      "income_group_id": 0.529404,
+      "income_category": 0.534401,
+      "min_income": 0.522354,
+      "max_income": 0.520989
+    },
+    "VEHICLE": {
+      "vehicle_id": 0.540317,
+      "vin": 0.523993,
+      "make": 0.532141,
+      "model": 0.540484,
+      "year": 0.538888,
+      "license_plate": 0.538472,
+      "customer_id": 0.55278,
+      "segment_id": 0.546397
+    },
+    "VEHICLE_SEGMENT": {
+      "segment_id": 0.544755,
+      "segment_name": 0.54422,
+      "description": 0.549857
+    },
+    "POLICY": {
+      "policy_id": 0.535251,
+      "policy_number": 0.536847,
+      "effective_date": 0.525378,
+      "expiry_date": 0.524526,
+      "total_premium": 0.544924,
+      "status": 0.537968,
+      "purchase_id": 0.539679
+    },
+    "INSURANCE_COVERAGE": {
+      "coverage_id": 0.552181,
+      "coverage_type_id": 0.551756,
+      "coverage_limit": 0.544126,
+      "deductible": 0.534713,
+      "description": 0.56032
+    },
+    "PURCHASE": {
+      "purchase_id": 0.523414,
+      "purchase_date": 0.524191,
+      "expiration_date": 0.522134,
+      "premium_amount": 0.539163,
+      "payment_method_id": 0.51522,
+      "customer_id": 0.530386
+    },
+    "POLICY_VEHICLE": {
+      "policy_vehicle_id": 0.554333,
+      "policy_id": 0.554508,
+      "vehicle_id": 0.555629
+    },
+    "SERVICE_INTERACTION": {
+      "interaction_id": 0.517606,
+      "customer_id": 0.533695,
+      "interaction_date": 0.51858,
+      "interaction_type": 0.519558,
+      "notes": 0.527831
+    },
+    "GENDER": {
+      "gender_id": 0.526,
+      "gender_name": 0.521892
+    },
+    "MARITAL_STATUS": {
+      "marital_status_id": 0.526504,
+      "status_name": 0.52395
+    },
+    "COVERAGE_TYPE": {
+      "coverage_type_id": 0.529369,
+      "type_name": 0.527875
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.509377,
+      "method_name": 0.510595
+    },
+    "ASSOC_POLICY_INSURANCE_COVERAGE": {
+      "assoc_policy_insurance_coverage_id": 0.961597,
+      "policy_id": 0.961597,
+      "insurance_coverage_id": 0.961597
+    },
+    "ASSOC_POLICY_VEHICLE": {
+      "assoc_policy_vehicle_id": 0.601929,
+      "policy_id": 0.601929,
+      "vehicle_id": 0.601929
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REGION",
+      "cardinality": "N:1",
+      "description": "Each customer resides in a single region",
+      "probability": 0.997531
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "INCOME_GROUP",
+      "cardinality": "N:1",
+      "description": "Each customer belongs to one income group",
+      "probability": 0.019193
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A customer may own multiple vehicles",
+      "probability": 0.03631
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_SEGMENT",
+      "cardinality": "N:1",
+      "description": "Each vehicle is classified into one segment",
+      "probability": 0.994724
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "description": "A customer can make many purchases",
+      "probability": 0.931329
+    },
+    {
+      "entity_1": "PURCHASE",
+      "entity_2": "POLICY",
+      "cardinality": "1:N",
+      "description": "One purchase can generate one or more policy records (e.g., endorsements)",
+      "probability": 0.493683
+    },
+    {
+      "entity_1": "PURCHASE",
+      "entity_2": "VEHICLE",
+      "cardinality": "N:1",
+      "description": "A purchase is tied to a specific vehicle",
+      "probability": 0.030288
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "ASSOC_POLICY_INSURANCE_COVERAGE",
+      "description": "One POLICY can be associated with many ASSOC_POLICY_INSURANCE_COVERAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961597
+    },
+    {
+      "entity_1": "INSURANCE_COVERAGE",
+      "entity_2": "ASSOC_POLICY_INSURANCE_COVERAGE",
+      "description": "One INSURANCE_COVERAGE can be associated with many ASSOC_POLICY_INSURANCE_COVERAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961597
+    },
+    {
+      "entity_1": "POLICY",
+      "entity_2": "ASSOC_POLICY_VEHICLE",
+      "description": "One POLICY can be associated with many ASSOC_POLICY_VEHICLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.601929
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "ASSOC_POLICY_VEHICLE",
+      "description": "One VEHICLE can be associated with many ASSOC_POLICY_VEHICLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.601929
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SERVICE_INTERACTION",
+      "cardinality": "1:N",
+      "description": "Customer service events linked to a customer",
+      "probability": 0.999736
+    },
+    {
+      "entity_1": "GENDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "description": "Lookup for gender values",
+      "probability": 0.137709
+    },
+    {
+      "entity_1": "MARITAL_STATUS",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "description": "Lookup for marital status values",
+      "probability": 0.922507
+    },
+    {
+      "entity_1": "COVERAGE_TYPE",
+      "entity_2": "INSURANCE_COVERAGE",
+      "cardinality": "1:N",
+      "description": "Lookup for coverage type values",
+      "probability": 0.995017
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "description": "Lookup for payment method values",
+      "probability": 0.411908
+    }
+  ],
+  "processing_time": 42.58,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested enhancements: changed PURCHASE‑POLICY relationship to 1:N for endorsement flexibility, added POLICY_VEHICLE junction to support many‑to‑many coverage of vehicles by policies, introduced SERVICE_INTERACTION entity for customer service tracking, and created lookup tables (GENDER, MARITAL_STATUS, COVERAGE_TYPE, PAYMENT_METHOD) to enforce data integrity for static enumerations. Updated foreign‑key attributes accordingly while preserving the original comprehensive structure."
+  }
+}

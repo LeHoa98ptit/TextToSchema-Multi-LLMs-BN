@@ -1,0 +1,118 @@
+{
+  "entity": [
+    "MINE",
+    "LOCATION",
+    "EQUIPMENT",
+    "EQUIPMENT_MODEL",
+    "PERSONNEL",
+    "MAINTENANCE_EVENT",
+    "MAINTENANCE_COST",
+    "EQUIPMENT_USAGE_LOG"
+  ],
+  "attribute": {
+    "MINE": [
+      "mine_id",
+      "name",
+      "location_id"
+    ],
+    "LOCATION": [
+      "location_id",
+      "address",
+      "city",
+      "province",
+      "country",
+      "latitude",
+      "longitude"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "serial_number",
+      "model_id",
+      "mine_id",
+      "status",
+      "purchase_date",
+      "purchase_price",
+      "vendor"
+    ],
+    "EQUIPMENT_MODEL": [
+      "model_id",
+      "manufacturer",
+      "model_name",
+      "equipment_type",
+      "specifications"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "position",
+      "contact_id"
+    ],
+    "MAINTENANCE_EVENT": [
+      "event_id",
+      "equipment_id",
+      "maintenance_date",
+      "content",
+      "personnel_id",
+      "cost_id"
+    ],
+    "MAINTENANCE_COST": [
+      "cost_id",
+      "labor_cost",
+      "parts_cost",
+      "total_cost"
+    ],
+    "EQUIPMENT_USAGE_LOG": [
+      "usage_log_id",
+      "equipment_id",
+      "usage_date",
+      "hours_operated",
+      "operator_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MINE",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_MODEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "MAINTENANCE_COST",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT_USAGE_LOG",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 56.0969,
+  "ilp_runtime": 0.065
+}

@@ -1,0 +1,95 @@
+{
+  "filename": "278.txt",
+  "entity": {
+    "PROJECT": 0.817574,
+    "MANAGER": 0.786121,
+    "INSPECTION": 0.817574,
+    "INSPECTOR": 0.748608,
+    "TRACK": 0.817574
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.753308,
+      "name": 0.760557,
+      "start_date": 0.75902,
+      "expected_completion_date": 0.765241,
+      "actual_completion_date": 0.760002,
+      "budget": 0.756551,
+      "location": 0.760972,
+      "status": 0.769307,
+      "manager_id": 0.759317
+    },
+    "MANAGER": {
+      "manager_id": 0.75093,
+      "name": 0.755467,
+      "email": 0.750484,
+      "phone": 0.747146
+    },
+    "INSPECTION": {
+      "inspection_id": 0.76726,
+      "project_id": 0.773556,
+      "inspector_id": 0.766799,
+      "date": 0.769622,
+      "content": 0.775048,
+      "result": 0.767937,
+      "notes": 0.773464
+    },
+    "INSPECTOR": {
+      "inspector_id": 0.757149,
+      "name": 0.757704,
+      "certification": 0.767994,
+      "phone": 0.753603
+    },
+    "TRACK": {
+      "track_id": 0.750349,
+      "project_id": 0.760249,
+      "inspection_id": 0.771654,
+      "date": 0.757962,
+      "content": 0.758735,
+      "result": 0.759843,
+      "action": 0.754197
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "MANAGER",
+      "cardinality": "1:1",
+      "description": "Each project is overseen by one manager",
+      "probability": 0.131645
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "INSPECTION",
+      "cardinality": "1:N",
+      "description": "A project can have multiple safety inspections",
+      "probability": 0.940331
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "INSPECTOR",
+      "cardinality": "N:1",
+      "description": "Each inspection is performed by a single inspector",
+      "probability": 0.999672
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TRACK",
+      "cardinality": "1:N",
+      "description": "Projects may have multiple tracking entries for follow‑up actions",
+      "probability": 0.910271
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "TRACK",
+      "cardinality": "1:N",
+      "description": "An inspection can generate multiple tracking entries; a tracking entry may optionally reference the inspection that triggered it",
+      "probability": 0.001364
+    }
+  ],
+  "processing_time": 26.43,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added explicit foreign‑key attributes (manager_id in PROJECT, inspector_id in INSPECTION, inspection_id in TRACK). Included contact phone fields for MANAGER and INSPECTOR. Introduced optional relationship between INSPECTION and TRACK to capture follow‑up actions linked to a specific inspection. Updated attribute lists and relationship descriptions accordingly while preserving the clean, core design."
+  }
+}

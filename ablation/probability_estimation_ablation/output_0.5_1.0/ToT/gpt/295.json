@@ -1,0 +1,98 @@
+{
+  "filename": "295.txt",
+  "entity": {
+    "TRADER": 0.817574,
+    "CLIENT": 0.817574,
+    "FUTURE": 0.817574,
+    "TRANSACTION": 0.817574,
+    "PERFORMANCE": 0.699937,
+    "RISK": 0.78983
+  },
+  "attribute": {
+    "TRADER": {
+      "trader_id": 0.7694,
+      "name": 0.771136,
+      "hire_date": 0.766784,
+      "contact_number": 0.768529
+    },
+    "CLIENT": {
+      "client_id": 0.754506,
+      "name": 0.761596,
+      "contact_number": 0.757008,
+      "address": 0.755381
+    },
+    "FUTURE": {
+      "future_code": 0.775456,
+      "description": 0.771129,
+      "expiry_date": 0.759741,
+      "margin": 0.759942,
+      "contract_size": 0.766612
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.762733,
+      "trader_id": 0.774527,
+      "client_id": 0.767869,
+      "future_code": 0.786641,
+      "transaction_type": 0.76659,
+      "quantity": 0.772422,
+      "price": 0.764074,
+      "transaction_time": 0.763931
+    },
+    "PERFORMANCE": {
+      "performance_id": 0.744524,
+      "trader_id": 0.774456,
+      "period_start": 0.739176,
+      "period_end": 0.741857,
+      "total_volume": 0.733735,
+      "profit_loss": 0.752155
+    },
+    "RISK": {
+      "risk_id": 0.750451,
+      "client_id": 0.759327,
+      "risk_level": 0.745368,
+      "assessment_date": 0.748994
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TRADER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each trader can execute many transactions",
+      "probability": 0.596855
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each client can initiate many transactions",
+      "probability": 0.488736
+    },
+    {
+      "entity_1": "FUTURE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A future contract can be referenced by many transactions",
+      "probability": 0.994616
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "PERFORMANCE",
+      "cardinality": "1:N",
+      "description": "A trader can have multiple performance records over time",
+      "probability": 0.082835
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "RISK",
+      "cardinality": "1:1",
+      "description": "Each client has a single current risk assessment",
+      "probability": 0.007555
+    }
+  ],
+  "processing_time": 24.61,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated evaluation suggestions: removed any unnecessary N:M relationships, kept FUTURE as a distinct entity with added attributes (margin, contract_size), embedded foreign keys (trader_id, client_id, future_code) directly in TRANSACTION for clarity, expanded PERFORMANCE with period_start and period_end for precise time tracking, ensured consistent snake_case naming, clarified primary keys in attribute lists, and added explicit relationship cardinalities and descriptions. All entities now have proper foreign‑key constraints and richer attribute sets while preserving the model's strengths."
+  }
+}

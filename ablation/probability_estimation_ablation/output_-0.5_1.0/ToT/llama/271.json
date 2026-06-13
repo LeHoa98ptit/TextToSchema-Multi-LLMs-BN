@@ -1,0 +1,82 @@
+{
+  "filename": "271.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "CLIENT": 0.622459,
+    "SERVICE": 0.622459,
+    "SUBSCRIPTION": 0.622459,
+    "OPERATOR": 0.447989
+  },
+  "attribute": {
+    "COMPANY": {
+      "name": 0.529586,
+      "address": 0.522095,
+      "contact_info": 0.521962
+    },
+    "CLIENT": {
+      "client_id": 0.517084,
+      "contact_info": 0.519445,
+      "billing_info": 0.531088
+    },
+    "SERVICE": {
+      "service_id": 0.537111,
+      "transmission_type": 0.577407,
+      "transmission_rate": 0.581132,
+      "price": 0.543354
+    },
+    "SUBSCRIPTION": {
+      "subscription_id": 0.530643,
+      "subscription_time": 0.53904,
+      "end_time": 0.543515,
+      "service_id": 0.545488
+    },
+    "OPERATOR": {
+      "operator_id": 0.50758,
+      "name": 0.521746,
+      "contact_info": 0.514782,
+      "company_id": 0.521118
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SERVICE",
+      "cardinality": "1:N",
+      "description": "A company offers multiple services",
+      "probability": 0.987284
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A client can have multiple subscriptions",
+      "probability": 0.997747
+    },
+    {
+      "entity_1": "SUBSCRIPTION",
+      "entity_2": "SERVICE",
+      "cardinality": "1:1",
+      "description": "A subscription is associated with one service",
+      "probability": 0.990538
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "An operator can record multiple subscriptions",
+      "probability": 0.04114
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "OPERATOR",
+      "cardinality": "1:N",
+      "description": "A company has multiple operators",
+      "probability": 0.004655
+    }
+  ],
+  "processing_time": 13.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added transmission rate attribute to the service entity, linked operator entity to the company entity, and added company_id attribute to the operator entity and service_id attribute to the subscription entity"
+  }
+}

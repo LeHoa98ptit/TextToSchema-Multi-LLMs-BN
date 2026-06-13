@@ -1,0 +1,97 @@
+{
+  "filename": "413.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "TRAINING_COURSE": 0.797412,
+    "TRAINING_RECORD": 0.751943,
+    "INSTRUCTOR": 0.763669
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "name": 0.770408,
+      "gender": 0.772505,
+      "position": 0.780721,
+      "contact_number": 0.765238,
+      "hire_date": 0.768068,
+      "employee_id": 0.770833
+    },
+    "DEPARTMENT": {
+      "name": 0.764502,
+      "department_manager": 0.769533,
+      "department_phone": 0.757763,
+      "department_id": 0.758692
+    },
+    "TRAINING_COURSE": {
+      "course_name": 0.777742,
+      "course_duration": 0.772267,
+      "instructor_id": 0.773792,
+      "course_description": 0.779986,
+      "course_id": 0.776744,
+      "department_id": 0.781946
+    },
+    "TRAINING_RECORD": {
+      "training_date": 0.773435,
+      "training_score": 0.770127,
+      "pass_status": 0.765514,
+      "employee_id": 0.783882,
+      "course_id": 0.775639
+    },
+    "INSTRUCTOR": {
+      "instructor_name": 0.763241,
+      "instructor_contact": 0.761816,
+      "instructor_id": 0.76266,
+      "instructor_qualifications": 0.76627,
+      "instructor_experience": 0.763657
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "An employee belongs to one department",
+      "probability": 0.999896
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "TRAINING_RECORD",
+      "cardinality": "1:N",
+      "description": "An employee can have multiple training records",
+      "probability": 0.997518
+    },
+    {
+      "entity_1": "TRAINING_COURSE",
+      "entity_2": "TRAINING_RECORD",
+      "cardinality": "1:N",
+      "description": "A training course can have multiple training records",
+      "probability": 0.999926
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "TRAINING_COURSE",
+      "cardinality": "1:N",
+      "description": "An instructor can teach multiple training courses",
+      "probability": 0.998455
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department can have multiple employees",
+      "probability": 0.999896
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "TRAINING_COURSE",
+      "cardinality": "1:N",
+      "description": "A department can have multiple training courses",
+      "probability": 0.004544
+    }
+  ],
+  "processing_time": 24.57,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added instructor qualifications and experience to the INSTRUCTOR entity, and added a relationship between TRAINING_COURSE and DEPARTMENT to capture department-specific training courses."
+  }
+}

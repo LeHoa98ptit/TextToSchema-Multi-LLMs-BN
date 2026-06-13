@@ -1,0 +1,85 @@
+{
+  "filename": "362.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "USER_RELATIONSHIP": 0.740583
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.762688,
+      "personal_bio": 0.761384,
+      "relationship_status": 0.756926,
+      "phone_number": 0.756598,
+      "creation_time": 0.758457,
+      "edit_time": 0.756353,
+      "user_id": 0.756597
+    },
+    "POST": {
+      "post_content": 0.743566,
+      "post_title": 0.739753,
+      "creation_time": 0.748167,
+      "edit_time": 0.75029,
+      "post_id": 0.746318,
+      "user_id": 0.758044
+    },
+    "COMMENT": {
+      "comment_content": 0.753701,
+      "creation_time": 0.758339,
+      "edit_time": 0.757865,
+      "comment_id": 0.757661,
+      "post_id": 0.757897,
+      "user_id": 0.766646
+    },
+    "USER_RELATIONSHIP": {
+      "relationship_id": 0.756467,
+      "user_id": 0.760384,
+      "friend_user_id": 0.7583,
+      "relationship_status": 0.75471,
+      "creation_time": 0.761191
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create multiple posts",
+      "probability": 0.862621
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have multiple comments",
+      "probability": 0.017717
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can create multiple comments",
+      "probability": 0.961213
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_RELATIONSHIP",
+      "cardinality": "1:N",
+      "description": "A user can have multiple relationships",
+      "probability": 0.999967
+    },
+    {
+      "entity_1": "USER_RELATIONSHIP",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A relationship is between two users",
+      "probability": 0.999967
+    }
+  ],
+  "processing_time": 21.81,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a separate entity for user relationships to improve the model's completeness and accuracy, while retaining the strengths of the original model."
+  }
+}

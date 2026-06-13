@@ -1,0 +1,81 @@
+{
+  "filename": "429.txt",
+  "entity": {
+    "USER": 0.817574,
+    "DISH": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.746343,
+    "SALE_STATISTIC": 0.738135
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.731776,
+      "password": 0.74937,
+      "role": 0.757857
+    },
+    "DISH": {
+      "price": 0.759503,
+      "category": 0.772646,
+      "availability": 0.768655,
+      "status": 0.773044
+    },
+    "ORDER": {
+      "order_time": 0.744483,
+      "total": 0.756817,
+      "status": 0.761549
+    },
+    "ORDER_DETAIL": {
+      "dish_id": 0.766487,
+      "order_id": 0.750074,
+      "quantity": 0.766402
+    },
+    "SALE_STATISTIC": {
+      "order_id": 0.757107,
+      "total_sale": 0.757912,
+      "sale_date": 0.754322,
+      "dish_id": 0.773054
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can place multiple orders",
+      "probability": 0.999087
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order details",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "A dish can be part of multiple order details",
+      "probability": 0.403482
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SALE_STATISTIC",
+      "cardinality": "1:1",
+      "description": "An order generates one sale statistic",
+      "probability": 0.000163
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "SALE_STATISTIC",
+      "cardinality": "1:N",
+      "description": "A dish can be part of multiple sale statistics",
+      "probability": 0.000182
+    }
+  ],
+  "processing_time": 19.64,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed unnecessary attributes, re-evaluated the relationship between ORDER and SALE_STATISTIC to ensure data integrity and consistency, and added dish_id and order_id to ORDER_DETAIL and SALE_STATISTIC to establish clear relationships."
+  }
+}

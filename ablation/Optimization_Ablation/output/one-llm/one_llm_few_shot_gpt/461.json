@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "PRODUCT",
+    "CATEGORY",
+    "STORAGE_LOCATION",
+    "PERSONNEL",
+    "CUSTOMER",
+    "ORDER",
+    "ORDER_ITEM"
+  ],
+  "attribute": {
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "unit_price",
+      "stock_quantity",
+      "unit_measurement",
+      "description",
+      "category_id",
+      "storage_location_id"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "STORAGE_LOCATION": [
+      "location_id",
+      "description",
+      "address"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "phone",
+      "gender",
+      "position"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "gender",
+      "age",
+      "phone",
+      "address"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "order_creation_time",
+      "delivery_address",
+      "order_status",
+      "estimate_delivery_time",
+      "total_order_price",
+      "personnel_id"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "total_price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 28.8093,
+  "ilp_runtime": 0.072
+}

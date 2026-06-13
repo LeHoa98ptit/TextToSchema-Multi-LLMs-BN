@@ -1,0 +1,121 @@
+{
+  "filename": "360.txt",
+  "entity": {
+    "LOG": 0.817574,
+    "OPERATOR": 0.817574,
+    "ACCOUNT": 0.716852,
+    "ROLE": 0.727307,
+    "PERMISSION": 0.695678,
+    "LOG_CATEGORY": 0.750373,
+    "OPERATOR_ROLE": 0.144802,
+    "ROLE_PERMISSION": 0.574563
+  },
+  "attribute": {
+    "LOG": {
+      "log id": 0.761186,
+      "log level": 0.770337,
+      "log content": 0.773576,
+      "log category id": 0.762867,
+      "created at": 0.759661,
+      "modified at": 0.752589,
+      "deleted at": 0.756118,
+      "operation time": 0.76586,
+      "operation type": 0.774946,
+      "operator id": 0.760552
+    },
+    "OPERATOR": {
+      "operator id": 0.742605,
+      "account id": 0.753215,
+      "contact info": 0.753952
+    },
+    "ACCOUNT": {
+      "account id": 0.747027,
+      "username": 0.739001,
+      "password hash": 0.74584
+    },
+    "ROLE": {
+      "role id": 0.750571,
+      "role name": 0.748523,
+      "description": 0.76398
+    },
+    "PERMISSION": {
+      "permission id": 0.745195,
+      "permission name": 0.746435,
+      "description": 0.762996
+    },
+    "LOG_CATEGORY": {
+      "category id": 0.757303,
+      "category name": 0.75997,
+      "description": 0.777575
+    },
+    "OPERATOR_ROLE": {
+      "operator_role_id": 0.144802,
+      "operator_id": 0.144802,
+      "role_id": 0.144802
+    },
+    "ROLE_PERMISSION": {
+      "role_permission_id": 0.574563,
+      "role_id": 0.574563,
+      "permission_id": 0.574563
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "LOG",
+      "description": "Each log entry is created by exactly one operator, while an operator can generate many log entries.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.534588
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ACCOUNT",
+      "description": "Each operator possesses a single account, and each account belongs to one operator.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.773007
+    },
+    {
+      "entity_1": "LOG_CATEGORY",
+      "entity_2": "LOG",
+      "description": "Each log is assigned to one category, while a category can contain many logs.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99995
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "OPERATOR_ROLE",
+      "description": "One OPERATOR can be associated with many OPERATOR_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.144802
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "OPERATOR_ROLE",
+      "description": "One ROLE can be associated with many OPERATOR_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.144802
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.574563
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.574563
+    }
+  ],
+  "processing_time": 20.45
+}

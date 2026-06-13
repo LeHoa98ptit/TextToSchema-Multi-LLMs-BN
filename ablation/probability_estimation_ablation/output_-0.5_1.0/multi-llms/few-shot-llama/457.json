@@ -1,0 +1,115 @@
+{
+  "filename": "457.txt",
+  "entity": {
+    "SUPERMARKET": 0.481334,
+    "PRODUCT": 0.622459,
+    "SUPPLIER": 0.548844,
+    "SUPPLY_REQUEST": 0.585938,
+    "DELIVERY_NOTIFICATION": 0.540362,
+    "STOCK_OUT_NOTIFICATION": 0.517917,
+    "PROCUREMENT": 0.622459
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket id": 0.55129,
+      "name": 0.547877,
+      "address": 0.554902,
+      "contact information": 0.564408
+    },
+    "PRODUCT": {
+      "product id": 0.530883,
+      "name": 0.531282,
+      "inventory quantity": 0.567002,
+      "last update date": 0.528139
+    },
+    "SUPPLIER": {
+      "supplier id": 0.54671,
+      "name": 0.548929,
+      "address": 0.556072,
+      "contact information": 0.564816
+    },
+    "SUPPLY_REQUEST": {
+      "request id": 0.555757,
+      "chain supermarket id": 0.573497,
+      "product id": 0.561203,
+      "requested quantity": 0.56601,
+      "request date": 0.555004
+    },
+    "DELIVERY_NOTIFICATION": {
+      "notification id": 0.537236,
+      "request id": 0.542514,
+      "delivery date": 0.537202
+    },
+    "STOCK_OUT_NOTIFICATION": {
+      "notification id": 0.535141,
+      "request id": 0.541013,
+      "stock out date": 0.531668
+    },
+    "PROCUREMENT": {
+      "procurement id": 0.544537,
+      "product id": 0.549052,
+      "supplier id": 0.550469,
+      "purchase quantity": 0.557221,
+      "purchase date": 0.539496
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A supermarket can submit many supply requests.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010795
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A product can be included in many supply requests.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.391924
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "description": "A supply request can generate many delivery notifications.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961551
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "STOCK_OUT_NOTIFICATION",
+      "description": "A supply request can generate many stock out notifications.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.831938
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT",
+      "description": "A product can have many procurement records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.205169
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT",
+      "description": "A supplier can have many procurement records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.175756
+    },
+    {
+      "entity_1": "STOCK_OUT_NOTIFICATION",
+      "entity_2": "PROCUREMENT",
+      "description": "A stock out notification can trigger many procurement records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052767
+    }
+  ],
+  "processing_time": 26.34
+}

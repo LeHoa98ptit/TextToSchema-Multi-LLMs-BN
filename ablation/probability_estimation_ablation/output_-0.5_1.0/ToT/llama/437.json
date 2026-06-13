@@ -1,0 +1,131 @@
+{
+  "filename": "437.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TASK": 0.622459,
+    "SIMULATION_MODULE": 0.526625,
+    "SIMULATION_RESULT": 0.579544,
+    "THESIS": 0.622459,
+    "COURSE_DESIGN": 0.486653,
+    "ASSOC_STUDENT_TASK": 0.518283
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_d": 0.550313,
+      "class": 0.552228,
+      "major": 0.540595,
+      "student_name": 0.551306,
+      "student_email": 0.541258
+    },
+    "TASK": {
+      "task_d": 0.540171,
+      "task_title": 0.537581,
+      "task_description": 0.543236,
+      "task_start_date": 0.531748,
+      "task_end_date": 0.536492,
+      "task_location": 0.527697
+    },
+    "SIMULATION_MODULE": {
+      "module_d": 0.534591,
+      "module": 0.540929,
+      "module_type": 0.532862,
+      "module_description": 0.541214,
+      "module_code": 0.538537
+    },
+    "SIMULATION_RESULT": {
+      "simulation_result_datum": 0.543584,
+      "result_analysis": 0.540602,
+      "simulation_date": 0.536514
+    },
+    "THESIS": {
+      "thesis_d": 0.540041,
+      "thesis_title": 0.532826,
+      "thesis_content": 0.536984,
+      "submission_date": 0.536987
+    },
+    "COURSE_DESIGN": {
+      "course_design_id": 0.561055,
+      "course_name": 0.561206,
+      "course_description": 0.568775,
+      "course_start_date": 0.556762,
+      "course_end_date": 0.560177
+    },
+    "ASSOC_STUDENT_TASK": {
+      "assoc_student_task_id": 0.518283,
+      "student_id": 0.518283,
+      "task_id": 0.518283
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_TASK",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.518283
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_STUDENT_TASK",
+      "description": "One TASK can be associated with many ASSOC_STUDENT_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.518283
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SIMULATION_RESULT",
+      "cardinality": "1:N",
+      "description": "A student can have multiple simulation results",
+      "probability": 0.517871
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "THESIS",
+      "cardinality": "1:1",
+      "description": "A student can submit one thesis",
+      "probability": 0.00821
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SIMULATION_MODULE",
+      "cardinality": "1:N",
+      "description": "A task can have multiple simulation modules",
+      "probability": 0.95775
+    },
+    {
+      "entity_1": "SIMULATION_MODULE",
+      "entity_2": "SIMULATION_RESULT",
+      "cardinality": "1:N",
+      "description": "A simulation module can have multiple simulation results",
+      "probability": 0.998452
+    },
+    {
+      "entity_1": "COURSE_DESIGN",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A course design can have multiple tasks",
+      "probability": 0.185237
+    },
+    {
+      "entity_1": "COURSE_DESIGN",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A course design can have multiple students",
+      "probability": 0.331808
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COURSE_DESIGN",
+      "cardinality": "N:1",
+      "description": "A student is enrolled in one course design",
+      "probability": 0.331808
+    }
+  ],
+  "processing_time": 16.26,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes such as task_status, result_status, and thesis_status. Added a new relationship between STUDENT and COURSE_DESIGN to improve the model's completeness and efficiency."
+  }
+}

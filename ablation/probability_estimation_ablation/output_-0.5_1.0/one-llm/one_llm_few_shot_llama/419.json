@@ -1,0 +1,120 @@
+{
+  "filename": "419.txt",
+  "entity": {
+    "DISH": 0.622459,
+    "USER": 0.622459,
+    "ORDER": 0.622459,
+    "SHOP_CART": 0.437356,
+    "DELIVERY": 0.622459,
+    "ASSOC_DISH_ORDER": 0.426145,
+    "ASSOC_DISH_SHOP_CART": 0.00918
+  },
+  "attribute": {
+    "DISH": {
+      "dish_id": 0.547149,
+      "dish_name": 0.551542,
+      "dish_price": 0.553557,
+      "ingredient": 0.541271,
+      "taste": 0.538059,
+      "recommendation_index": 0.547903,
+      "cuisine_type": 0.552827,
+      "special_feature": 0.546574,
+      "recommendation_status": 0.559087
+    },
+    "USER": {
+      "user_id": 0.511612,
+      "username": 0.50029,
+      "password": 0.517127,
+      "phone": 0.519017,
+      "address": 0.52131,
+      "registration_time": 0.514472,
+      "account_status": 0.515242
+    },
+    "ORDER": {
+      "order_id": 0.525855,
+      "order_time": 0.522109,
+      "order_status": 0.53004
+    },
+    "SHOP_CART": {
+      "shop_cart_id": 0.53195,
+      "user_id": 0.535862,
+      "dish_id": 0.55925,
+      "quantity": 0.547338,
+      "add_time": 0.524588,
+      "settlement_status": 0.532734
+    },
+    "DELIVERY": {
+      "delivery_id": 0.523988,
+      "order_id": 0.528048,
+      "delivery_address": 0.522779,
+      "delivery_time": 0.52007,
+      "delivery_person": 0.524247
+    },
+    "ASSOC_DISH_ORDER": {
+      "assoc_dish_order_id": 0.426145,
+      "dish_id": 0.426145,
+      "order_id": 0.426145
+    },
+    "ASSOC_DISH_SHOP_CART": {
+      "assoc_dish_shop_cart_id": 0.00918,
+      "dish_id": 0.00918,
+      "shop_cart_id": 0.00918
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DISH",
+      "entity_2": "ASSOC_DISH_ORDER",
+      "description": "One DISH can be associated with many ASSOC_DISH_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.426145
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_DISH_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_DISH_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.426145
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each user can have many orders, but each order is associated with only one user.",
+      "probability": 0.998746
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOP_CART",
+      "cardinality": "1:1",
+      "description": "Each user has one shop cart, and each shop cart is associated with only one user.",
+      "probability": 0.976564
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ASSOC_DISH_SHOP_CART",
+      "description": "One DISH can be associated with many ASSOC_DISH_SHOP_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00918
+    },
+    {
+      "entity_1": "SHOP_CART",
+      "entity_2": "ASSOC_DISH_SHOP_CART",
+      "description": "One SHOP_CART can be associated with many ASSOC_DISH_SHOP_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00918
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "description": "Each order has one delivery, and each delivery is associated with only one order.",
+      "probability": 0.011197
+    }
+  ],
+  "processing_time": 24.84
+}

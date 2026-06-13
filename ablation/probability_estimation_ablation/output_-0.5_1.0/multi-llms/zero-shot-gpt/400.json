@@ -1,0 +1,185 @@
+{
+  "filename": "400.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "PERMISSION": 0.4975,
+    "STUDENT": 0.480934,
+    "TEACHER": 0.485979,
+    "COLLEGE": 0.464634,
+    "BOOK": 0.622459,
+    "NOTIFICATION": 0.622459,
+    "PUBLISHER": 0.622459,
+    "BORROW": 0.455245,
+    "ROLE_PERMISSION": 0.494364
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.520029,
+      "username": 0.508251,
+      "password": 0.525024,
+      "college id": 0.532058,
+      "email": 0.529822,
+      "registration time": 0.524638,
+      "role id": 0.538219
+    },
+    "ROLE": {
+      "role id": 0.537432,
+      "role name": 0.539777
+    },
+    "PERMISSION": {
+      "permission id": 0.52496,
+      "permission name": 0.531509,
+      "description": 0.551304
+    },
+    "STUDENT": {
+      "student id": 0.531099,
+      "user id": 0.536563,
+      "college id": 0.52728
+    },
+    "TEACHER": {
+      "teacher id": 0.522221,
+      "user id": 0.533831,
+      "college id": 0.525403
+    },
+    "COLLEGE": {
+      "college id": 0.519883,
+      "college name": 0.518859
+    },
+    "BOOK": {
+      "book id": 0.533516,
+      "title": 0.534635,
+      "author": 0.533385,
+      "publisher id": 0.543897,
+      "publication date": 0.528667,
+      "category": 0.547497
+    },
+    "PUBLISHER": {
+      "publisher id": 0.533803,
+      "publisher name": 0.534511
+    },
+    "NOTIFICATION": {
+      "notification id": 0.52471,
+      "title": 0.533822,
+      "content": 0.5427,
+      "publisher id": 0.538885,
+      "release date": 0.526644
+    },
+    "BORROW": {
+      "borrow id": 0.503053,
+      "user id": 0.513219,
+      "book id": 0.526479,
+      "borrow date": 0.496584,
+      "return date": 0.490959,
+      "borrow_id": 0.313084,
+      "user_id": 0.313084,
+      "book_id": 0.313084,
+      "borrow_date": 0.313084,
+      "return_date": 0.313084
+    },
+    "ROLE_PERMISSION": {
+      "role_permission_id": 0.494364,
+      "role_id": 0.494364,
+      "permission_id": 0.494364
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "A role can be assigned to many users; each user has one role",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997661
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.494364
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.494364
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "STUDENT",
+      "description": "Each student record corresponds to exactly one user",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.998769
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TEACHER",
+      "description": "Each teacher record corresponds to exactly one user",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.990981
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "STUDENT",
+      "description": "A college can have many students",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.121532
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "TEACHER",
+      "description": "A college can have many teachers",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995903
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "USER",
+      "description": "A college can be associated with many users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.13766
+    },
+    {
+      "entity_1": "PUBLISHER",
+      "entity_2": "BOOK",
+      "description": "A publisher can publish many books",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.513379
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BORROW",
+      "description": "One USER can be associated with many BORROW.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.313084
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROW",
+      "description": "One BOOK can be associated with many BORROW.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.313084
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "description": "A user (publisher) can create many notifications",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998627
+    }
+  ],
+  "processing_time": 31.84
+}

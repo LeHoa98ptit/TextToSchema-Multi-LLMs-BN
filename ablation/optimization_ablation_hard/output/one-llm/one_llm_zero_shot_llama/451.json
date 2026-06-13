@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "INTRUSION_DETECTION_RECORD",
+    "RESPONSE_PLAN",
+    "KNOWLEDGE_BASE",
+    "ALARM",
+    "INTRUSION_BEHAVIOR",
+    "INTELLIGENT_CONTROL_SYSTEM",
+    "NETWORK_TRAFFIC",
+    "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR"
+  ],
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": [
+      "record_id",
+      "detection_time",
+      "source_ip_address",
+      "destination_ip_address",
+      "source_port_number",
+      "destination_port_number",
+      "attack_type",
+      "threat_level"
+    ],
+    "RESPONSE_PLAN": [
+      "plan_id",
+      "plan_generation_time",
+      "plan_type",
+      "detailed_plan_content",
+      "execution_status"
+    ],
+    "KNOWLEDGE_BASE": [
+      "knowledge_id",
+      "record_category",
+      "knowledge_description",
+      "knowledge_source",
+      "knowledge_reliability"
+    ],
+    "ALARM": [
+      "alarm_id",
+      "alarm_time",
+      "alarm_level",
+      "alarm_content",
+      "processing_status"
+    ],
+    "INTRUSION_BEHAVIOR": [
+      "behavior_id",
+      "behavior_type",
+      "behavior_description"
+    ],
+    "INTELLIGENT_CONTROL_SYSTEM": [
+      "system_id",
+      "system_type",
+      "system_description"
+    ],
+    "NETWORK_TRAFFIC": [
+      "traffic_id",
+      "traffic_type",
+      "traffic_description"
+    ],
+    "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR": [
+      "assoc_knowledge_base_intrusion_behavior_id",
+      "knowledge_base_id",
+      "intrusion_behavior_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "INTELLIGENT_CONTROL_SYSTEM",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE",
+      "entity_2": "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTRUSION_BEHAVIOR",
+      "entity_2": "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "NETWORK_TRAFFIC",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.9759,
+  "ilp_runtime": 0.039
+}

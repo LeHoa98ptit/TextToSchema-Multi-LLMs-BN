@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "PROJECT",
+    "USER",
+    "REPORT",
+    "STATUS",
+    "USER_STATUS"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "address",
+      "contact_info",
+      "remark"
+    ],
+    "PROJECT": [
+      "project_id",
+      "name",
+      "start_date",
+      "scale",
+      "remark",
+      "customer_id",
+      "project_manager_id",
+      "status_id"
+    ],
+    "USER": [
+      "user_id",
+      "abbreviation",
+      "password",
+      "user_status_id"
+    ],
+    "REPORT": [
+      "report_id",
+      "report_datetime",
+      "description",
+      "creator_user_id",
+      "project_id"
+    ],
+    "STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "USER_STATUS": [
+      "user_status_id",
+      "status_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 25.6865,
+  "ilp_runtime": 0.11
+}

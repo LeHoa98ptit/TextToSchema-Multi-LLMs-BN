@@ -1,0 +1,110 @@
+{
+  "filename": "371.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ACCOUNT": 0.817574,
+    "SESSION": 0.817574,
+    "VERIFICATION_REQUEST": 0.788499,
+    "PARTY_SERVICE_PROVIDER": 0.668631,
+    "ASSOC_ACCOUNT_PARTY_SERVICE_PROVIDER": 0.877157
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.745437,
+      "email": 0.764563,
+      "email_verification_time": 0.765082,
+      "user_avatar_url": 0.749324,
+      "user_creation_time": 0.762492,
+      "user_update_time": 0.754929
+    },
+    "ACCOUNT": {
+      "account_id": 0.760722,
+      "access_token": 0.759048,
+      "refresh_token": 0.752958,
+      "access_token_expiration_time": 0.760162,
+      "account_creation_time": 0.761197,
+      "account_update_time": 0.756344
+    },
+    "SESSION": {
+      "session_id": 0.753752,
+      "session_token": 0.754103,
+      "session_expiration_time": 0.754447,
+      "session_creation_time": 0.754163,
+      "session_update_time": 0.750254
+    },
+    "VERIFICATION_REQUEST": {
+      "verification_request_id": 0.759836,
+      "verification_token": 0.760823,
+      "verification_request_expiration_time": 0.75906,
+      "verification_request_creation_time": 0.760666,
+      "verification_request_update_time": 0.757483
+    },
+    "PARTY_SERVICE_PROVIDER": {
+      "party_service_provider_id": 0.746377,
+      "party_service_provider_type": 0.745291
+    },
+    "ASSOC_ACCOUNT_PARTY_SERVICE_PROVIDER": {
+      "assoc_account_party_service_provider_id": 0.877157,
+      "account_id": 0.877157,
+      "party_service_provider_id": 0.877157
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple accounts",
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SESSION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple sessions",
+      "probability": 0.045105
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "VERIFICATION_REQUEST",
+      "cardinality": "1:N",
+      "description": "A user can have multiple verification requests",
+      "probability": 0.998275
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ASSOC_ACCOUNT_PARTY_SERVICE_PROVIDER",
+      "description": "One ACCOUNT can be associated with many ASSOC_ACCOUNT_PARTY_SERVICE_PROVIDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.877157
+    },
+    {
+      "entity_1": "PARTY_SERVICE_PROVIDER",
+      "entity_2": "ASSOC_ACCOUNT_PARTY_SERVICE_PROVIDER",
+      "description": "One PARTY_SERVICE_PROVIDER can be associated with many ASSOC_ACCOUNT_PARTY_SERVICE_PROVIDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.877157
+    },
+    {
+      "entity_1": "SESSION",
+      "entity_2": "VERIFICATION_REQUEST",
+      "cardinality": "1:N",
+      "description": "A session can be associated with multiple verification requests",
+      "probability": 0.007303
+    },
+    {
+      "entity_1": "VERIFICATION_REQUEST",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A verification request can be associated with multiple accounts",
+      "probability": 0.998589
+    }
+  ],
+  "processing_time": 27.4,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added relationships between SESSION and VERIFICATION_REQUEST, and between VERIFICATION_REQUEST and ACCOUNT to enhance model completeness and accuracy"
+  }
+}

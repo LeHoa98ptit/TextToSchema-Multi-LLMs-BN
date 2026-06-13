@@ -1,0 +1,134 @@
+{
+  "filename": "484.txt",
+  "entity": {
+    "SUPPLIER": 0.817574,
+    "CUSTOMER": 0.817574,
+    "PRODUCT": 0.817574,
+    "ADDRESS": 0.817574,
+    "CONTACT": 0.817574,
+    "SUPPLY": 0.817574,
+    "PURCHASE": 0.817574
+  },
+  "attribute": {
+    "SUPPLIER": {
+      "supplier_id": 0.771928,
+      "name": 0.771667,
+      "tax_id": 0.759714
+    },
+    "CUSTOMER": {
+      "customer_id": 0.752359,
+      "name": 0.759228,
+      "tax_id": 0.745648
+    },
+    "PRODUCT": {
+      "product_id": 0.750171,
+      "name": 0.754476,
+      "description": 0.757044,
+      "unit_price": 0.755452
+    },
+    "ADDRESS": {
+      "address_id": 0.735605,
+      "street": 0.74082,
+      "city": 0.739451,
+      "state": 0.741282,
+      "zip": 0.735569,
+      "country": 0.736146
+    },
+    "CONTACT": {
+      "contact_id": 0.741697,
+      "contact_name": 0.742111,
+      "phone": 0.747008,
+      "email": 0.750687
+    },
+    "SUPPLY": {
+      "supply_id": 0.770919,
+      "supply_date": 0.767773,
+      "quantity": 0.777201,
+      "unit_price": 0.762544
+    },
+    "PURCHASE": {
+      "purchase_id": 0.755409,
+      "purchase_date": 0.754623,
+      "quantity": 0.772411,
+      "unit_price": 0.761355,
+      "supplier_id": 0.7699
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple registered addresses",
+      "probability": 0.105724
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple registered addresses",
+      "probability": 0.368581
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple contact persons",
+      "probability": 0.031719
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple contact persons",
+      "probability": 0.702233
+    },
+    {
+      "entity_1": "CONTACT",
+      "entity_2": "ADDRESS",
+      "cardinality": "0:N",
+      "description": "A contact may have zero or more addresses (e.g., personal or work locations)",
+      "probability": 0.989827
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLY",
+      "cardinality": "1:N",
+      "description": "Suppliers generate many supply records",
+      "probability": 0.997992
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY",
+      "cardinality": "1:N",
+      "description": "Each product can appear in many supply records",
+      "probability": 0.931197
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "description": "Each purchase is fulfilled by a single supplier",
+      "probability": 0.841854
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "description": "Customers place many purchase orders",
+      "probability": 0.891897
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE",
+      "cardinality": "1:N",
+      "description": "A product can be purchased many times",
+      "probability": 0.864254
+    }
+  ],
+  "processing_time": 7.43,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added supplier_id to PURCHASE to capture the supplying supplier, changed SUPPLIER‑ADDRESS and CUSTOMER‑ADDRESS relationships to 1:N to allow multiple locations, removed the derived total_price attribute from PURCHASE (unit_price retained for price locking), introduced an optional CONTACT‑ADDRESS relationship for greater flexibility, and kept all previously strong aspects such as separate ADDRESS and CONTACT entities and associative SUPPLY and PURCHASE records."
+  }
+}

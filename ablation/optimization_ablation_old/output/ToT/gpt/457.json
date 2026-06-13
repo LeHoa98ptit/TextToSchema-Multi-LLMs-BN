@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "SUPERMARKET",
+    "PRODUCT",
+    "SUPPLIER",
+    "SUPPLY_REQUEST",
+    "REQUEST_LINE",
+    "DELIVERY_NOTIFICATION",
+    "STOCK_NOTIFICATION",
+    "PROCUREMENT_LIST",
+    "PROCUREMENT_ITEM"
+  ],
+  "attribute": {
+    "SUPERMARKET": [
+      "supermarket_id",
+      "name",
+      "street",
+      "city",
+      "state",
+      "zip_code",
+      "phone",
+      "email"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "sku",
+      "name",
+      "category",
+      "unit_price",
+      "inventory_quantity",
+      "last_update_date"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "street",
+      "city",
+      "state",
+      "zip_code",
+      "contact_name",
+      "contact_phone",
+      "contact_email"
+    ],
+    "SUPPLY_REQUEST": [
+      "request_id",
+      "supermarket_id",
+      "request_date",
+      "status",
+      "total_quantity"
+    ],
+    "REQUEST_LINE": [
+      "line_id",
+      "request_id",
+      "product_id",
+      "supplier_id",
+      "requested_quantity",
+      "requested_price"
+    ],
+    "DELIVERY_NOTIFICATION": [
+      "notification_id",
+      "request_line_id",
+      "request_id",
+      "delivery_date",
+      "delivered_quantity"
+    ],
+    "STOCK_NOTIFICATION": [
+      "notification_id",
+      "request_line_id",
+      "request_id",
+      "stock_date",
+      "shortage_quantity"
+    ],
+    "PROCUREMENT_LIST": [
+      "list_id",
+      "creation_date",
+      "approved_by"
+    ],
+    "PROCUREMENT_ITEM": [
+      "item_id",
+      "list_id",
+      "product_id",
+      "supplier_id",
+      "purchase_quantity",
+      "purchase_price",
+      "expected_delivery_date",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DELIVERY_NOTIFICATION",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCUREMENT_LIST",
+      "entity_2": "PROCUREMENT_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.5671,
+  "ilp_runtime": 0.027
+}

@@ -1,0 +1,120 @@
+{
+  "entity": [
+    "BRANCH",
+    "ADDRESS",
+    "CUSTOMER",
+    "ACCOUNT",
+    "ACCOUNT_TYPE",
+    "TRANSACTION",
+    "TRANSACTION_TYPE",
+    "CUSTOMER_BRANCH",
+    "ACCOUNT_HOLDER"
+  ],
+  "attribute": {
+    "BRANCH": [
+      "branch_id",
+      "name",
+      "address_id"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "street",
+      "city",
+      "state",
+      "zip"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "dob",
+      "phone",
+      "email"
+    ],
+    "ACCOUNT": [
+      "account_number",
+      "balance",
+      "open_date",
+      "account_type_id",
+      "branch_id"
+    ],
+    "ACCOUNT_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "amount",
+      "timestamp",
+      "account_number",
+      "branch_id",
+      "transaction_type_id"
+    ],
+    "TRANSACTION_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "CUSTOMER_BRANCH": [
+      "customer_id",
+      "branch_id",
+      "association_date"
+    ],
+    "ACCOUNT_HOLDER": [
+      "account_number",
+      "customer_id",
+      "ownership_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BRANCH",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER_BRANCH",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER_BRANCH",
+      "entity_2": "BRANCH",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ACCOUNT_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT_HOLDER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "BRANCH",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 64.7739,
+  "ilp_runtime": 0.091
+}

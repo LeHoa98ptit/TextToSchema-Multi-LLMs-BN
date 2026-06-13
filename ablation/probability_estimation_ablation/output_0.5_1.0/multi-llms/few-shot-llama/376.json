@@ -1,0 +1,121 @@
+{
+  "filename": "376.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "TECHNICIAN": 0.817574,
+    "CAR_MODEL": 0.756116,
+    "REPAIR_TASK": 0.800065,
+    "ORDER": 0.817574,
+    "SUPPLIER": 0.817574,
+    "PART": 0.817574,
+    "ORDER_PART": 0.01084
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.756031,
+      "name": 0.757486,
+      "phone number": 0.747524
+    },
+    "TECHNICIAN": {
+      "technician id": 0.765124,
+      "name": 0.764624,
+      "contact address": 0.761019
+    },
+    "CAR_MODEL": {
+      "model id": 0.751718,
+      "name": 0.752168
+    },
+    "REPAIR_TASK": {
+      "task id": 0.755439,
+      "car model id": 0.767382,
+      "task status": 0.759387,
+      "customer id": 0.765782,
+      "technician id": 0.772356,
+      "task creation date": 0.753097,
+      "completion date": 0.755523
+    },
+    "ORDER": {
+      "order id": 0.750822,
+      "task id": 0.762313,
+      "order creation date": 0.743609,
+      "delivery status": 0.758802
+    },
+    "SUPPLIER": {
+      "supplier id": 0.758105,
+      "name": 0.755314
+    },
+    "PART": {
+      "part id": 0.750749,
+      "serial number": 0.756707,
+      "description": 0.75892,
+      "price": 0.744654,
+      "supplier id": 0.759443,
+      "inventory quantity": 0.7683
+    },
+    "ORDER_PART": {
+      "order_part_id": 0.01084,
+      "part_id": 0.01084,
+      "order_id": 0.01084,
+      "quantity": 0.01084
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REPAIR_TASK",
+      "description": "Each customer can have many repair tasks, but each repair task is associated with one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.37752
+    },
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "REPAIR_TASK",
+      "description": "Each technician can handle many repair tasks, but each repair task is handled by one technician.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993873
+    },
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "REPAIR_TASK",
+      "description": "Each car model can be associated with many repair tasks, but each repair task is associated with one car model.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.728879
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "ORDER",
+      "description": "Each repair task corresponds to one order, and each order is associated with one repair task.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.03478
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PART",
+      "description": "Each supplier can provide many parts, but each part is provided by one supplier.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.056412
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ORDER_PART",
+      "description": "One PART can be associated with many ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01084
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PART",
+      "description": "One ORDER can be associated with many ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01084
+    }
+  ],
+  "processing_time": 30.57
+}

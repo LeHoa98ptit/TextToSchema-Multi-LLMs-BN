@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "TRANSACTION",
+    "PAYMENT",
+    "DISCOUNT",
+    "REBATE",
+    "TRANSACTION_DETAIL",
+    "PRODUCT",
+    "CUSTOMER"
+  ],
+  "attribute": {
+    "TRANSACTION": [
+      "transaction_id",
+      "transaction_time",
+      "total_amount"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "amount",
+      "payment_method"
+    ],
+    "DISCOUNT": [
+      "discount_id",
+      "discount_percentage",
+      "discount_amount"
+    ],
+    "REBATE": [
+      "rebate_id",
+      "rebate_percentage",
+      "rebate_amount"
+    ],
+    "TRANSACTION_DETAIL": [
+      "detail_id",
+      "transaction_id",
+      "product_id",
+      "quantity"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "price"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "customer_name",
+      "contact_info"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REBATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION_DETAIL",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.8943,
+  "ilp_runtime": 0.064
+}

@@ -1,0 +1,123 @@
+{
+  "entity": [
+    "USER",
+    "INTEREST",
+    "TEAM",
+    "CLUB",
+    "EVENT",
+    "ASSOC_USER_USER",
+    "ASSOC_USER_INTEREST",
+    "ASSOC_USER_CLUB",
+    "ASSOC_USER_EVENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "gender",
+      "registration_date",
+      "social_info",
+      "profile_picture"
+    ],
+    "INTEREST": [
+      "interest_id",
+      "name",
+      "description"
+    ],
+    "TEAM": [
+      "team_id",
+      "name",
+      "creation_date",
+      "description",
+      "club_id"
+    ],
+    "CLUB": [
+      "club_id",
+      "name",
+      "location",
+      "founded_date",
+      "stadium_name"
+    ],
+    "EVENT": [
+      "event_id",
+      "name",
+      "description",
+      "start_date",
+      "end_date",
+      "location",
+      "organizer_id",
+      "sponsor_id",
+      "club_id"
+    ],
+    "ASSOC_USER_USER": [
+      "assoc_user_user_id",
+      "user_id"
+    ],
+    "ASSOC_USER_INTEREST": [
+      "assoc_user_interest_id",
+      "user_id",
+      "interest_id"
+    ],
+    "ASSOC_USER_CLUB": [
+      "assoc_user_club_id",
+      "user_id",
+      "club_id"
+    ],
+    "ASSOC_USER_EVENT": [
+      "assoc_user_event_id",
+      "user_id",
+      "event_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTEREST",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLUB",
+      "entity_2": "ASSOC_USER_CLUB",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "ASSOC_USER_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "CLUB",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 80.4316,
+  "ilp_runtime": 0.085
+}

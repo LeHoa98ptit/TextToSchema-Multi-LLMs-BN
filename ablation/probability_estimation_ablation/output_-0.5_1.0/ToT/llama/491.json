@@ -1,0 +1,135 @@
+{
+  "filename": "491.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "PERMISSION": 0.622459,
+    "SYSTEM_ADMINISTRATOR": 0.47764,
+    "FUNCTIONAL_MODULE": 0.524904,
+    "ASSOC_USER_ROLE": 0.997783,
+    "ASSOC_ROLE_PERMISSION": 0.57387,
+    "ASSOC_USER_FUNCTIONAL_MODULE": 0.980109
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.511046,
+      "email": 0.527787,
+      "personalinfo": 0.536584,
+      "userstatus": 0.543777,
+      "lastlogin": 0.52488,
+      "createdat": 0.534762
+    },
+    "ROLE": {
+      "rolename": 0.54079,
+      "roledescription": 0.551519,
+      "rolelevel": 0.553389
+    },
+    "PERMISSION": {
+      "permissionname": 0.549019,
+      "permissiontype": 0.555578,
+      "permissionlevel": 0.555287,
+      "permissiondescription": 0.556458
+    },
+    "SYSTEM_ADMINISTRATOR": {
+      "adminname": 0.553344,
+      "adminemail": 0.546785,
+      "adminrole": 0.564837
+    },
+    "FUNCTIONAL_MODULE": {
+      "modulename": 0.511884,
+      "moduledescription": 0.521353,
+      "moduletype": 0.517484
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.997783,
+      "user_id": 0.997783,
+      "role_id": 0.997783
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.57387,
+      "role_id": 0.57387,
+      "permission_id": 0.57387
+    },
+    "ASSOC_USER_FUNCTIONAL_MODULE": {
+      "assoc_user_functional_module_id": 0.980109,
+      "user_id": 0.980109,
+      "functional_module_id": 0.980109
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997783
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997783
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.57387
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.57387
+    },
+    {
+      "entity_1": "SYSTEM_ADMINISTRATOR",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A system administrator can manage multiple users",
+      "probability": 0.358349
+    },
+    {
+      "entity_1": "FUNCTIONAL_MODULE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "A functional module can have multiple permissions",
+      "probability": 0.51138
+    },
+    {
+      "entity_1": "SYSTEM_ADMINISTRATOR",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "description": "A system administrator can manage multiple roles",
+      "probability": 0.480106
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FUNCTIONAL_MODULE",
+      "description": "One USER can be associated with many ASSOC_USER_FUNCTIONAL_MODULE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980109
+    },
+    {
+      "entity_1": "FUNCTIONAL_MODULE",
+      "entity_2": "ASSOC_USER_FUNCTIONAL_MODULE",
+      "description": "One FUNCTIONAL_MODULE can be associated with many ASSOC_USER_FUNCTIONAL_MODULE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980109
+    }
+  ],
+  "processing_time": 11.19,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added user status, last login, and created at attributes to the USER entity. Added role level attribute to the ROLE entity. Added permission description attribute to the PERMISSION entity. Added admin role attribute to the SYSTEM_ADMINISTRATOR entity. Added module type attribute to the FUNCTIONAL_MODULE entity. Refined relationships between entities for better clarity and consistency."
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "filename": "311.txt",
+  "entity": {
+    "ORGANIZATION": 0.817574,
+    "PROCESS": 0.817574,
+    "EVENT": 0.817574,
+    "PROCESS_TYPE": 0.732961,
+    "EVENT_TYPE": 0.75571,
+    "RESOURCE": 0.728475,
+    "STATUS": 0.817574,
+    "RESOURCE_ALLOCATION": 0.680267,
+    "PROCESS_LOG": 0.755322,
+    "EVENT_LOG": 0.754563
+  },
+  "attribute": {
+    "ORGANIZATION": {
+      "org_id": 0.74718,
+      "org_name": 0.74923,
+      "address": 0.7495,
+      "created_at": 0.748296,
+      "created_by": 0.750251,
+      "updated_at": 0.749879,
+      "updated_by": 0.752643
+    },
+    "PROCESS": {
+      "process_id": 0.762419,
+      "process_name": 0.764023,
+      "org_id": 0.757706,
+      "parent_process_id": 0.762017,
+      "process_type_id": 0.75982,
+      "status_id": 0.760998,
+      "start_time": 0.763335,
+      "end_time": 0.765082,
+      "description": 0.775632,
+      "created_at": 0.750592,
+      "created_by": 0.754845,
+      "updated_at": 0.745508,
+      "updated_by": 0.749084
+    },
+    "EVENT": {
+      "event_id": 0.747818,
+      "process_id": 0.764783,
+      "event_type_id": 0.746578,
+      "status_id": 0.753221,
+      "timestamp": 0.759541,
+      "details": 0.763605,
+      "created_at": 0.744208,
+      "created_by": 0.748623,
+      "updated_at": 0.742918,
+      "updated_by": 0.746456
+    },
+    "PROCESS_TYPE": {
+      "process_type_id": 0.759004,
+      "type_name": 0.754656,
+      "description": 0.772549
+    },
+    "EVENT_TYPE": {
+      "event_type_id": 0.746878,
+      "type_name": 0.747821,
+      "description": 0.763469
+    },
+    "RESOURCE": {
+      "resource_id": 0.736195,
+      "resource_name": 0.737485,
+      "resource_type": 0.738491,
+      "capacity": 0.744676,
+      "created_at": 0.7355,
+      "created_by": 0.739028,
+      "updated_at": 0.733788,
+      "updated_by": 0.737306
+    },
+    "STATUS": {
+      "status_id": 0.747761,
+      "status_name": 0.750115,
+      "description": 0.757903
+    },
+    "RESOURCE_ALLOCATION": {
+      "allocation_id": 0.742053,
+      "process_id": 0.760352,
+      "resource_id": 0.74236,
+      "quantity": 0.748593,
+      "start_date": 0.750596,
+      "end_date": 0.750285,
+      "created_at": 0.739876,
+      "created_by": 0.744884,
+      "updated_at": 0.73666,
+      "updated_by": 0.741285
+    },
+    "PROCESS_LOG": {
+      "log_id": 0.760912,
+      "process_id": 0.767657,
+      "log_timestamp": 0.765157,
+      "message": 0.765172,
+      "created_at": 0.75711,
+      "created_by": 0.761252,
+      "updated_at": 0.75572,
+      "updated_by": 0.758738
+    },
+    "EVENT_LOG": {
+      "log_id": 0.756667,
+      "event_id": 0.756545,
+      "log_timestamp": 0.760222,
+      "message": 0.758297,
+      "created_at": 0.751414,
+      "created_by": 0.755398,
+      "updated_at": 0.75157,
+      "updated_by": 0.754244
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "description": "An organization owns many processes",
+      "probability": 0.895619
+    },
+    {
+      "entity_1": "PROCESS_TYPE",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "description": "Each process is classified by a process type",
+      "probability": 0.997644
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "description": "Process status is selected from a status lookup",
+      "probability": 0.004282
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "A process can generate many events",
+      "probability": 0.085698
+    },
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "Each event has a defined event type",
+      "probability": 0.999944
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "Event status is chosen from the same status lookup",
+      "probability": 0.724655
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "RESOURCE_ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A process can have multiple resource allocations",
+      "probability": 0.101359
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_ALLOCATION",
+      "cardinality": "1:N",
+      "description": "A resource can be allocated to many processes",
+      "probability": 0.989287
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "PROCESS_LOG",
+      "cardinality": "1:N",
+      "description": "Operational logs related to a process",
+      "probability": 0.662008
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_LOG",
+      "cardinality": "1:N",
+      "description": "Operational logs related to an event",
+      "probability": 0.839548
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "description": "Self‑referencing parent‑child hierarchy of processes",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 49.97,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested composite unique constraint on (process_id, parent_process_id) to guard against circular hierarchies (documented in schema notes). Split generic LOG into PROCESS_LOG and EVENT_LOG to allow tailored log fields while preserving the entity_type concept. Added a RESOURCE_ALLOCATION junction entity with quantity, start_date, and end_date to capture temporal resource usage. Enriched core entities with audit fields (created_by, updated_by, updated_at) for full traceability. Updated relationships to reflect the new allocation and log tables and clarified cascade intentions in documentation."
+  }
+}

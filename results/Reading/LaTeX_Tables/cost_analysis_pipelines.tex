@@ -1,0 +1,42 @@
+% Requires: \usepackage{booktabs}, \usepackage{colortbl}, \usepackage{xcolor}
+% Time unit: seconds (mean per exercise, hung files excluded). Tokens: avg per exercise.
+% Cost: estimated USD per exercise (GPT $0.80/1M blended; LLaMA $0.83/1M blended).
+% (*) Token counts estimated from same-model zero-shot runs (similar prompt size).
+\begin{table*}[t]
+\centering
+\caption{\textcolor{blue}{Efficiency comparison: time, tokens, and estimated cost per exercise.
+Time is mean per exercise (Llama3 pipelines exclude API-hung files $>$300s).
+Token counts for noBN/single pipelines estimated from same-model zero-shot runs.}}
+\label{tab:cost_analysis_pipelines}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Pipeline}
+& \textbf{Architecture}
+& \textbf{Gen Time (s)} $\mu$
+& \textbf{BN Time (s)} $\mu$
+& \textbf{Total Time (s)} $\mu$
+& \textbf{Avg Tokens}
+& \textbf{Est. Cost (USD)} \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{7}{@{}l}{\textit{Our Approach}} \\
+Multi-LLM-BN-Llama3 & 1 LLM call + BN-local + ILP & 20.98 & 2.41 & 23.39 & 6232 & \$0.0052 \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{7}{@{}l}{\textit{Baselines}} \\
+Single-LLM-GPT & 1 LLM call & 5.49 & --- & 5.49 & 3162 & \$0.0025 \\
+Single-LLM-Llama3 & 1 LLM call & 2.73 & --- & 2.73 & 1322 & \$0.0011 \\
+DSL-ToT-DM & Multi-step (ToT) & 194.63 & --- & 194.63 & 23628 & \$0.0189 \\
+SchemaAgent-GPT & Multi-agent & 322.61 & --- & 322.61 & 28904 & \$0.0235 \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{7}{@{}l}{\textit{Variants}} \\
+Multi-LLM-noBN-GPT & 1 LLM call & 17.75 & --- & 17.75 & 11130 & \$0.0089 \\
+Multi-LLM-noBN-Llama3 & 1 LLM call & 20.98 & --- & 20.98 & 6232 & \$0.0052 \\
+One-LLM-BN-Llama3 & 1 LLM call + BN-local + ILP & 2.73 & 0.63 & 3.36 & 1322 & \$0.0011 \\
+One-LLM-BN-GPT & 1 LLM call + BN-local + ILP & 5.49 & 1.36 & 6.85 & 3162 & \$0.0025 \\
+\bottomrule
+\end{tabular}
+\end{table*}

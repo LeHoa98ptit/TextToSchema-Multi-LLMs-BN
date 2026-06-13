@@ -1,0 +1,204 @@
+{
+  "filename": "473.txt",
+  "entity": {
+    "PUBLICATION": 0.817574,
+    "AUTHOR": 0.740813,
+    "PUBLICATION_TYPE": 0.750784,
+    "PUBLICATION_AUTHOR": 0.758175,
+    "CUSTOMER": 0.817574,
+    "ADDRESS": 0.736741,
+    "PAYMENT_METHOD": 0.67577,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "PROMOTION": 0.72236,
+    "ADMINISTRATOR": 0.817574,
+    "ASSOC_PUBLICATION_AUTHOR": 0.983518
+  },
+  "attribute": {
+    "PUBLICATION": {
+      "publication_id": 0.768458,
+      "title": 0.770163,
+      "price": 0.767023,
+      "type_id": 0.764,
+      "created_at": 0.766133,
+      "updated_at": 0.764262
+    },
+    "AUTHOR": {
+      "author_id": 0.747885,
+      "name": 0.752232,
+      "email": 0.757094
+    },
+    "PUBLICATION_TYPE": {
+      "type_id": 0.761515,
+      "type_name": 0.762939
+    },
+    "PUBLICATION_AUTHOR": {
+      "publication_id": 0.765079,
+      "author_id": 0.760091,
+      "contribution_role": 0.757633,
+      "author_order": 0.765009
+    },
+    "CUSTOMER": {
+      "customer_id": 0.74816,
+      "name": 0.751219,
+      "phone": 0.751696,
+      "email": 0.752397,
+      "password": 0.75317,
+      "registration_status": 0.754665,
+      "created_at": 0.750144,
+      "updated_at": 0.74613
+    },
+    "ADDRESS": {
+      "address_id": 0.746409,
+      "customer_id": 0.750207,
+      "street": 0.750699,
+      "city": 0.749626,
+      "state": 0.747554,
+      "zip": 0.751193,
+      "country": 0.7407
+    },
+    "PAYMENT_METHOD": {
+      "payment_id": 0.739296,
+      "method_name": 0.739115,
+      "details": 0.755199
+    },
+    "ORDER": {
+      "order_id": 0.746105,
+      "customer_id": 0.752505,
+      "order_time": 0.743755,
+      "status": 0.760326,
+      "shipping_address_id": 0.749194,
+      "payment_id": 0.746727,
+      "created_at": 0.750219,
+      "updated_at": 0.748158
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.744828,
+      "order_id": 0.746381,
+      "publication_id": 0.768115,
+      "quantity": 0.749954,
+      "unit_price": 0.745752,
+      "promotion_id": 0.751784
+    },
+    "PROMOTION": {
+      "promotion_id": 0.746552,
+      "code": 0.750143,
+      "description": 0.753381,
+      "discount_percent": 0.737605,
+      "start_date": 0.744044,
+      "end_date": 0.742498
+    },
+    "ADMINISTRATOR": {
+      "admin_id": 0.74108,
+      "name": 0.749069,
+      "phone": 0.750565,
+      "email": 0.747927,
+      "password": 0.745691
+    },
+    "ASSOC_PUBLICATION_AUTHOR": {
+      "assoc_publication_author_id": 0.983518,
+      "publication_id": 0.983518,
+      "author_id": 0.983518
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PUBLICATION",
+      "entity_2": "ASSOC_PUBLICATION_AUTHOR",
+      "description": "One PUBLICATION can be associated with many ASSOC_PUBLICATION_AUTHOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983518
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "ASSOC_PUBLICATION_AUTHOR",
+      "description": "One AUTHOR can be associated with many ASSOC_PUBLICATION_AUTHOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983518
+    },
+    {
+      "entity_1": "PUBLICATION_AUTHOR",
+      "entity_2": "PUBLICATION",
+      "cardinality": "N:1",
+      "description": "Each row in PUBLICATION_AUTHOR references one publication",
+      "probability": 0.999405
+    },
+    {
+      "entity_1": "PUBLICATION_AUTHOR",
+      "entity_2": "AUTHOR",
+      "cardinality": "N:1",
+      "description": "Each row in PUBLICATION_AUTHOR references one author",
+      "probability": 0.999853
+    },
+    {
+      "entity_1": "PUBLICATION",
+      "entity_2": "PUBLICATION_TYPE",
+      "cardinality": "N:1",
+      "description": "Each publication belongs to one type",
+      "probability": 0.999611
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A customer may have several shipping addresses",
+      "probability": 0.367861
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place many orders",
+      "probability": 0.964848
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "Each order uses one shipping address",
+      "probability": 0.874679
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "N:1",
+      "description": "Each order is paid with a single payment method",
+      "probability": 0.035482
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of one or more order items",
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PUBLICATION",
+      "cardinality": "N:1",
+      "description": "Each order item references one publication",
+      "probability": 0.050371
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PROMOTION",
+      "cardinality": "N:0..1",
+      "description": "An order item may be associated with a promotion for discount",
+      "probability": 0.000422
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PUBLICATION",
+      "cardinality": "1:N",
+      "description": "Administrators maintain the publication catalog",
+      "probability": 0.014469
+    }
+  ],
+  "processing_time": 13.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit junction entity PUBLICATION_AUTHOR with contribution_role and author_order to capture author order/role. Introduced PROMOTION entity and linked it to ORDER_ITEM for discount handling. Added created_at and updated_at timestamps to PUBLICATION, CUSTOMER, and ORDER for audit trails. Clarified foreign‑key relationships through additional relationship entries. Ensured all primary keys are explicit and foreign‑key constraints are implied. The model now fully reflects the evaluation suggestions while preserving the original strengths."
+  }
+}

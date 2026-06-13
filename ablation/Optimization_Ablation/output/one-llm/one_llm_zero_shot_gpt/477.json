@@ -1,0 +1,59 @@
+{
+  "entity": [
+    "BILLING_METHOD",
+    "PROMOTION",
+    "PRODUCT",
+    "TRANSACTION",
+    "TRANSACTION_DETAIL"
+  ],
+  "attribute": {
+    "BILLING_METHOD": [
+      "method_id",
+      "name",
+      "description"
+    ],
+    "PROMOTION": [
+      "promotion_id",
+      "type",
+      "value",
+      "billing_method_id"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "unit_price",
+      "category"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "transaction_time",
+      "total_amount",
+      "actual_payment",
+      "billing_method_id"
+    ],
+    "TRANSACTION_DETAIL": [
+      "detail_id",
+      "transaction_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.1166,
+  "ilp_runtime": 0.068
+}

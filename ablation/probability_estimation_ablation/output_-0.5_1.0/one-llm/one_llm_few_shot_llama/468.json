@@ -1,0 +1,75 @@
+{
+  "filename": "468.txt",
+  "entity": {
+    "CREDIT_CARD_APPLICATION": 0.549141,
+    "CUSTOMER": 0.622459,
+    "CREDIT_CARD": 0.595849,
+    "TRANSACTION": 0.622459
+  },
+  "attribute": {
+    "CREDIT_CARD_APPLICATION": {
+      "application_number": 0.562445,
+      "customer_number": 0.564387,
+      "applicant_d_number": 0.561043,
+      "application_submission_time": 0.560368,
+      "application_result": 0.566658
+    },
+    "CUSTOMER": {
+      "customer_number": 0.5368,
+      "customer_type": 0.53811
+    },
+    "CREDIT_CARD": {
+      "credit_card_number": 0.552906,
+      "credit_card_type": 0.555788,
+      "validity_period": 0.546275,
+      "credit_limit": 0.54948,
+      "creation_time": 0.558773,
+      "update_time": 0.548889
+    },
+    "TRANSACTION": {
+      "transaction_number": 0.545084,
+      "customer_number": 0.554438,
+      "transaction_time": 0.540041,
+      "transaction_type": 0.543217,
+      "transaction_description": 0.553008
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CREDIT_CARD_APPLICATION",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:1",
+      "description": "Each credit card application is associated with one customer, and each customer can have one credit card application.",
+      "probability": 0.942355
+    },
+    {
+      "entity_1": "CREDIT_CARD_APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:1",
+      "description": "Each credit card application is associated with one credit card, and each credit card is associated with one credit card application.",
+      "probability": 0.999976
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "description": "Each customer can have multiple credit cards, and each credit card is associated with one customer.",
+      "probability": 0.60187
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each customer can have multiple transactions, and each transaction is associated with one customer.",
+      "probability": 0.996914
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each credit card can have multiple transactions, and each transaction is associated with one credit card.",
+      "probability": 0.999152
+    }
+  ],
+  "processing_time": 13.24
+}

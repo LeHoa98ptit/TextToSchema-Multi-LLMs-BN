@@ -1,0 +1,91 @@
+{
+  "filename": "261.txt",
+  "entity": {
+    "VOTER": 0.622459,
+    "ADDRESS": 0.622459,
+    "TOWN": 0.525852,
+    "CITY": 0.516844,
+    "DISTRICT": 0.622459
+  },
+  "attribute": {
+    "VOTER": {
+      "voter_id": 0.562439,
+      "first_name": 0.556826,
+      "last_name": 0.556698,
+      "date_of_birth": 0.544685,
+      "gender": 0.548263,
+      "national_id": 0.558088,
+      "registration_date": 0.549488,
+      "registration_status": 0.563074,
+      "eligibility": 0.559838,
+      "address_id": 0.568271,
+      "district_id": 0.575144
+    },
+    "ADDRESS": {
+      "address_id": 0.539191,
+      "street": 0.54033,
+      "house_number": 0.536215,
+      "address_type": 0.540941,
+      "postal_code": 0.540086,
+      "town_id": 0.55507
+    },
+    "TOWN": {
+      "town_id": 0.5455,
+      "town_name": 0.540458,
+      "city_id": 0.548852,
+      "district_id": 0.564985
+    },
+    "CITY": {
+      "city_id": 0.544159,
+      "city_name": 0.539362
+    },
+    "DISTRICT": {
+      "district_id": 0.561036,
+      "district_name": 0.556723,
+      "district_type": 0.560961,
+      "district_code": 0.55695
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "VOTER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "Multiple voters can share the same residential address",
+      "probability": 7.1e-05
+    },
+    {
+      "entity_1": "VOTER",
+      "entity_2": "DISTRICT",
+      "cardinality": "N:1",
+      "description": "Each voter is assigned to a voting district",
+      "probability": 0.028056
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "TOWN",
+      "cardinality": "N:1",
+      "description": "An address belongs to a specific town",
+      "probability": 0.141778
+    },
+    {
+      "entity_1": "TOWN",
+      "entity_2": "CITY",
+      "cardinality": "N:1",
+      "description": "A town is part of a city",
+      "probability": 0.99974
+    },
+    {
+      "entity_1": "TOWN",
+      "entity_2": "DISTRICT",
+      "cardinality": "N:1",
+      "description": "A town belongs to a voting district (district contains multiple towns)",
+      "probability": 0.928369
+    }
+  ],
+  "processing_time": 19.93,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged VOTER_REGISTRATION into VOTER to eliminate redundancy and simplify the model. Corrected the District‑Town relationship direction (Town N:1 District) and represented it with a foreign key in Town. Added foreign keys to capture hierarchy: ADDRESS → TOWN, TOWN → CITY, TOWN → DISTRICT, VOTER → ADDRESS, VOTER → DISTRICT. Retained clear naming and attribute completeness while removing unnecessary entities, improving efficiency and consistency."
+  }
+}

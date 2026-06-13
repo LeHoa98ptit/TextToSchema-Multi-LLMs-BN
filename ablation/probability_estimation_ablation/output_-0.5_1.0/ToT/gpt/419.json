@@ -1,0 +1,166 @@
+{
+  "filename": "419.txt",
+  "entity": {
+    "DISH": 0.622459,
+    "DISH_CATEGORY": 0.545325,
+    "INGREDIENT": 0.471008,
+    "DISH_INGREDIENT": 0.559862,
+    "USER": 0.622459,
+    "CART": 0.477341,
+    "CART_ITEM": 0.435044,
+    "ORDER": 0.622459,
+    "ORDER_DETAIL": 0.505275,
+    "DELIVERY": 0.622459
+  },
+  "attribute": {
+    "DISH": {
+      "dish_id": 0.547149,
+      "name": 0.549463,
+      "price": 0.548094,
+      "description": 0.555585,
+      "taste": 0.538059,
+      "recommendation_index": 0.547903,
+      "recommendation_status": 0.559087,
+      "category_id": 0.543994
+    },
+    "DISH_CATEGORY": {
+      "category_id": 0.540035,
+      "category_name": 0.543106,
+      "cuisine_type": 0.55599,
+      "special_feature": 0.544755
+    },
+    "INGREDIENT": {
+      "ingredient_id": 0.514858,
+      "ingredient_name": 0.514915,
+      "ingredient_description": 0.51303
+    },
+    "DISH_INGREDIENT": {
+      "dish_id": 0.542609,
+      "ingredient_id": 0.536679,
+      "quantity": 0.549832,
+      "unit": 0.55294
+    },
+    "USER": {
+      "user_id": 0.511612,
+      "username": 0.50029,
+      "password": 0.517127,
+      "phone": 0.519017,
+      "address": 0.52131,
+      "registration_time": 0.514472,
+      "account_status": 0.515242
+    },
+    "CART": {
+      "cart_id": 0.528305,
+      "user_id": 0.530811,
+      "status": 0.545219,
+      "created_time": 0.516754
+    },
+    "CART_ITEM": {
+      "cart_item_id": 0.523646,
+      "cart_id": 0.525993,
+      "dish_id": 0.549895,
+      "quantity": 0.545947,
+      "add_time": 0.517842
+    },
+    "ORDER": {
+      "order_id": 0.525855,
+      "user_id": 0.525783,
+      "order_time": 0.522109,
+      "order_status": 0.53004,
+      "total_amount": 0.529253,
+      "delivery_address": 0.528937
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.530818,
+      "order_id": 0.530729,
+      "dish_id": 0.55444,
+      "quantity": 0.548156,
+      "unit_price": 0.539965,
+      "total_price": 0.53929
+    },
+    "DELIVERY": {
+      "delivery_id": 0.523988,
+      "order_id": 0.528048,
+      "delivery_address": 0.522779,
+      "delivery_time": 0.52007,
+      "delivery_person": 0.524247
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can place many orders",
+      "probability": 0.998748
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "Each order consists of multiple order details",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "description": "Each order has one delivery record",
+      "probability": 0.007303
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "description": "Each user owns a single shopping cart",
+      "probability": 0.986506
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "description": "A cart can contain many cart items",
+      "probability": 0.999354
+    },
+    {
+      "entity_1": "CART_ITEM",
+      "entity_2": "DISH",
+      "cardinality": "N:1",
+      "description": "Each cart item references one dish",
+      "probability": 0.003157
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "A dish can appear in many order details",
+      "probability": 0.157766
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each dish belongs to one category",
+      "probability": 0.999954
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_INGREDIENT",
+      "cardinality": "1:N",
+      "description": "A dish can have multiple ingredient entries",
+      "probability": 0.999687
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "DISH_INGREDIENT",
+      "cardinality": "1:N",
+      "description": "An ingredient can be used in many dishes",
+      "probability": 0.998346
+    }
+  ],
+  "processing_time": 18.43,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added detailed dish classification (DISH_CATEGORY) and ingredient modeling (INGREDIENT, DISH_INGREDIENT) to capture cuisine type, special features, taste, and ingredient composition. Refactored shopping cart to a many‑to‑many structure using CART_ITEM, allowing multiple dishes with quantities per cart. Included richer dish attributes (taste, recommendation_index, recommendation_status). Made order total amount explicit and moved delivery address to ORDER for convenience while keeping a separate DELIVERY entity for tracking. Clarified primary keys and foreign keys in relationships, improving normalization and query flexibility."
+  }
+}

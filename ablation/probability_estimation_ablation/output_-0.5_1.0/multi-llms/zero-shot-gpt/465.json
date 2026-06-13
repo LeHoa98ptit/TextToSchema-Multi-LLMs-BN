@@ -1,0 +1,74 @@
+{
+  "filename": "465.txt",
+  "entity": {
+    "USER": 0.622459,
+    "EMAIL": 0.622459,
+    "ATTACHMENT": 0.622459,
+    "EMAIL_ATTACHMENT": 0.606733
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.510301,
+      "email address": 0.547911,
+      "password hash": 0.514104,
+      "account creation time": 0.520867
+    },
+    "EMAIL": {
+      "email id": 0.54264,
+      "sender id": 0.545448,
+      "recipient id": 0.539189,
+      "send time": 0.544609,
+      "subject": 0.558402,
+      "content": 0.564012
+    },
+    "ATTACHMENT": {
+      "attachment id": 0.524741,
+      "file path": 0.53299,
+      "file size": 0.538496,
+      "upload time": 0.527623
+    },
+    "EMAIL_ATTACHMENT": {
+      "email attachment id": 0.550151,
+      "email id": 0.552364,
+      "attachment id": 0.546556,
+      "email_attachment_id": 0.052501,
+      "email_id": 0.052501,
+      "attachment_id": 0.052501
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "description": "A user can send many emails; each email has exactly one sender",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999649
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "description": "A user can receive many emails; each email has exactly one recipient",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999649
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL_ATTACHMENT",
+      "description": "One EMAIL can be associated with many EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052501
+    },
+    {
+      "entity_1": "ATTACHMENT",
+      "entity_2": "EMAIL_ATTACHMENT",
+      "description": "One ATTACHMENT can be associated with many EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052501
+    }
+  ],
+  "processing_time": 12.85
+}

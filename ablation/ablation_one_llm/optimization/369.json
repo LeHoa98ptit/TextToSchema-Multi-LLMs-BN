@@ -1,0 +1,91 @@
+{
+  "entity": [
+    "CONTENT",
+    "USER",
+    "OPERATION",
+    "WORKFLOW",
+    "VERSION",
+    "LOG",
+    "ASSOC_CONTENT_USER"
+  ],
+  "attribute": {
+    "CONTENT": [
+      "content_id",
+      "title",
+      "description",
+      "state",
+      "creation_time",
+      "publication_time"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "role"
+    ],
+    "OPERATION": [
+      "operation_id",
+      "operation_type",
+      "operation_time",
+      "user_id",
+      "content_id"
+    ],
+    "WORKFLOW": [
+      "workflow_id",
+      "workflow_type",
+      "content_id",
+      "state"
+    ],
+    "VERSION": [
+      "version_id",
+      "content_id",
+      "version_number",
+      "creation_time"
+    ],
+    "LOG": [
+      "log_id",
+      "operation_id",
+      "log_time",
+      "description"
+    ],
+    "ASSOC_CONTENT_USER": [
+      "assoc_content_user_id",
+      "content_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.5347,
+  "ilp_runtime": 0.084
+}

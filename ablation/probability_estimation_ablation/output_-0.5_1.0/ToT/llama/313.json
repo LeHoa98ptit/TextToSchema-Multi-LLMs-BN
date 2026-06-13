@@ -1,0 +1,127 @@
+{
+  "filename": "313.txt",
+  "entity": {
+    "USER": 0.622459,
+    "MEXICAN_TORTILLA": 0.605372,
+    "INGREDIENT": 0.622459,
+    "INGREDIENT_TYPE": 0.551343,
+    "PERMISSION": 0.622459,
+    "ASSOC_MEXICAN_TORTILLA_INGREDIENT": 0.000647,
+    "ASSOC_USER_PERMISSION": 0.994829,
+    "ASSOC_MEXICAN_TORTILLA_PERMISSION": 0.122845
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.511322,
+      "password": 0.532534,
+      "account_activation_status": 0.521227,
+      "permission_level": 0.541553,
+      "contact_information": 0.530395,
+      "address": 0.524893
+    },
+    "MEXICAN_TORTILLA": {
+      "creation_time": 0.536378,
+      "design": 0.545904,
+      "production_date": 0.540628,
+      "sale_date": 0.538407
+    },
+    "INGREDIENT": {
+      "type": 0.530697,
+      "name": 0.522017,
+      "quantity": 0.537929,
+      "unit": 0.535745
+    },
+    "INGREDIENT_TYPE": {
+      "description": 0.535266,
+      "category": 0.548422
+    },
+    "PERMISSION": {
+      "permission_name": 0.534917,
+      "permission_description": 0.542494
+    },
+    "ASSOC_MEXICAN_TORTILLA_INGREDIENT": {
+      "assoc_mexican_tortilla_ingredient_id": 0.000647,
+      "mexican_tortilla_id": 0.000647,
+      "ingredient_id": 0.000647
+    },
+    "ASSOC_USER_PERMISSION": {
+      "assoc_user_permission_id": 0.994829,
+      "user_id": 0.994829,
+      "permission_id": 0.994829
+    },
+    "ASSOC_MEXICAN_TORTILLA_PERMISSION": {
+      "assoc_mexican_tortilla_permission_id": 0.122845,
+      "mexican_tortilla_id": 0.122845,
+      "permission_id": 0.122845
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "MEXICAN_TORTILLA",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple mexican tortillas",
+      "probability": 0.83425
+    },
+    {
+      "entity_1": "MEXICAN_TORTILLA",
+      "entity_2": "ASSOC_MEXICAN_TORTILLA_INGREDIENT",
+      "description": "One MEXICAN_TORTILLA can be associated with many ASSOC_MEXICAN_TORTILLA_INGREDIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000647
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "ASSOC_MEXICAN_TORTILLA_INGREDIENT",
+      "description": "One INGREDIENT can be associated with many ASSOC_MEXICAN_TORTILLA_INGREDIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000647
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "INGREDIENT_TYPE",
+      "cardinality": "1:1",
+      "description": "An ingredient is associated with one ingredient type",
+      "probability": 0.99967
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PERMISSION",
+      "description": "One USER can be associated with many ASSOC_USER_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994829
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_USER_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_USER_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994829
+    },
+    {
+      "entity_1": "MEXICAN_TORTILLA",
+      "entity_2": "ASSOC_MEXICAN_TORTILLA_PERMISSION",
+      "description": "One MEXICAN_TORTILLA can be associated with many ASSOC_MEXICAN_TORTILLA_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122845
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_MEXICAN_TORTILLA_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_MEXICAN_TORTILLA_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.122845
+    }
+  ],
+  "processing_time": 15.87,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added contact information and address attributes to the USER entity, and added a many-to-many relationship between MEXICAN_TORTILLA and PERMISSION for fine-grained access control."
+  }
+}

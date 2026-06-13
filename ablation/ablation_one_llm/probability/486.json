@@ -1,0 +1,94 @@
+{
+  "filename": "486.txt",
+  "entity": {
+    "MINING_COMPANY": 0.802025,
+    "MINE": 0.817574,
+    "MINERAL_RESOURCE": 0.804176,
+    "PERSON": 0.695741,
+    "EXTRACTION_RECORD": 0.743492,
+    "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD": 0.391608
+  },
+  "attribute": {
+    "MINING_COMPANY": {
+      "company_name": 0.775349,
+      "company_address": 0.767846
+    },
+    "MINE": {
+      "mine_name": 0.743381,
+      "mine_location": 0.751709,
+      "mine_attribute": 0.760927
+    },
+    "MINERAL_RESOURCE": {
+      "resource_name": 0.774583,
+      "resource_attribute": 0.774722,
+      "reserve": 0.772941,
+      "discovery_date": 0.777407
+    },
+    "PERSON": {
+      "person_name": 0.742016,
+      "person_charge": 0.746087
+    },
+    "EXTRACTION_RECORD": {
+      "extraction_date": 0.753937,
+      "extraction_volume": 0.757644,
+      "extraction_cost": 0.767154
+    },
+    "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD": {
+      "assoc_mineral_resource_extraction_record_id": 0.391608,
+      "mineral_resource_id": 0.391608,
+      "extraction_record_id": 0.391608
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MINING_COMPANY",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "description": "A mining company can own multiple mines, and each mine is owned by one mining company.",
+      "probability": 0.124574
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "1:N",
+      "description": "A mine can have multiple mineral resources, and each mineral resource is found in one mine.",
+      "probability": 0.807442
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A mineral resource can have multiple extraction records, and each extraction record is for one mineral resource.",
+      "probability": 0.391608
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "description": "A person can be in charge of multiple mines, and each mine has one person in charge.",
+      "probability": 0.996483
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A person can be responsible for multiple extraction records, and each extraction record is done by one person.",
+      "probability": 0.999961
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.391608
+    },
+    {
+      "entity_1": "EXTRACTION_RECORD",
+      "entity_2": "ASSOC_MINERAL_RESOURCE_EXTRACTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.391608
+    }
+  ],
+  "processing_time": 7.61
+}

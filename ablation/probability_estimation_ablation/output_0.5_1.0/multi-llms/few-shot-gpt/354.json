@@ -1,0 +1,61 @@
+{
+  "filename": "354.txt",
+  "entity": {
+    "USER": 0.817574,
+    "IMAGE": 0.817574,
+    "SEND_RECORD": 0.752092,
+    "SEND_LINK": 0.753469
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.735592,
+      "phone number": 0.733562
+    },
+    "IMAGE": {
+      "image id": 0.761492,
+      "image url": 0.766893,
+      "compressed image url": 0.770787,
+      "image description": 0.765721,
+      "compression signature": 0.769162
+    },
+    "SEND_RECORD": {
+      "send record id": 0.759316,
+      "user id": 0.752064,
+      "image id": 0.773755,
+      "send time": 0.765589,
+      "send link id": 0.764033
+    },
+    "SEND_LINK": {
+      "send link id": 0.756322,
+      "link url": 0.75604,
+      "generated at": 0.760566
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SEND_RECORD",
+      "description": "A user can generate many send records, each send record is created by exactly one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983406
+    },
+    {
+      "entity_1": "IMAGE",
+      "entity_2": "SEND_RECORD",
+      "description": "An image can be sent many times, each send record references exactly one image.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962161
+    },
+    {
+      "entity_1": "SEND_RECORD",
+      "entity_2": "SEND_LINK",
+      "description": "Each send record generates a unique send link, and each send link belongs to exactly one send record.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.9929
+    }
+  ],
+  "processing_time": 23.42
+}

@@ -1,0 +1,68 @@
+{
+  "filename": "377.txt",
+  "entity": {
+    "POST": 0.622459,
+    "TAG": 0.622459,
+    "POST_TAG": 0.542175,
+    "ASSOC_POST_TAG": 0.133932
+  },
+  "attribute": {
+    "POST": {
+      "post_id": 0.525517,
+      "title": 0.521505,
+      "content": 0.529054,
+      "created_at": 0.517134
+    },
+    "TAG": {
+      "tag_id": 0.55325,
+      "name": 0.539343
+    },
+    "POST_TAG": {
+      "post_id": 0.549475,
+      "tag_id": 0.555097,
+      "created_at": 0.536392
+    },
+    "ASSOC_POST_TAG": {
+      "assoc_post_tag_id": 0.133932,
+      "post_id": 0.133932,
+      "tag_id": 0.133932
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "POST",
+      "entity_2": "POST_TAG",
+      "cardinality": "1:N",
+      "description": "Each POST can have multiple POST_TAG rows; FK_POST_TAG_post_id references POST.post_id",
+      "probability": 0.520209
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "POST_TAG",
+      "cardinality": "1:N",
+      "description": "Each TAG can appear in multiple POST_TAG rows; FK_POST_TAG_tag_id references TAG.tag_id",
+      "probability": 0.94918
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_POST_TAG",
+      "description": "One POST can be associated with many ASSOC_POST_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.133932
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_POST_TAG",
+      "description": "One TAG can be associated with many ASSOC_POST_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.133932
+    }
+  ],
+  "processing_time": 6.16,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added explicit foreign‑key intent in relationship descriptions, defined composite primary key (post_id, tag_id) for POST_TAG to enforce uniqueness, clarified that POST_TAG.created_at records association time, and noted indexing strategy for time‑based queries. No unnecessary entities were introduced."
+  }
+}

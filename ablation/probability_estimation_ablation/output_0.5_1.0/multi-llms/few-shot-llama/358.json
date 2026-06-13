@@ -1,0 +1,83 @@
+{
+  "filename": "358.txt",
+  "entity": {
+    "TASK": 0.817574,
+    "EXECUTION_INSTANCE": 0.792851,
+    "PROCESS_INSTANCE": 0.788649,
+    "PROCESS_DEFINITION": 0.76904,
+    "TENANT": 0.817574
+  },
+  "attribute": {
+    "TASK": {
+      "task id": 0.766724,
+      "task type": 0.773367,
+      "lock information": 0.779405,
+      "execution instance id": 0.769305,
+      "process instance id": 0.772269,
+      "process definition id": 0.774063,
+      "number of retries": 0.771464,
+      "exception information": 0.776946,
+      "expiration time": 0.762687,
+      "repeat configuration": 0.772149,
+      "processor configuration": 0.774969,
+      "tenant id": 0.773051
+    },
+    "EXECUTION_INSTANCE": {
+      "execution instance id": 0.755534,
+      "process instance id": 0.762811,
+      "process definition id": 0.767992
+    },
+    "PROCESS_INSTANCE": {
+      "process instance id": 0.762385
+    },
+    "PROCESS_DEFINITION": {
+      "process definition id": 0.763825
+    },
+    "TENANT": {
+      "tenant id": 0.749588
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXECUTION_INSTANCE",
+      "description": "Each task is associated with one execution instance, and each execution instance can include multiple tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968079
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "PROCESS_INSTANCE",
+      "description": "Each execution instance is part of one process instance, and each process instance can have multiple execution instances.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997235
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "PROCESS_DEFINITION",
+      "description": "Each execution instance follows one process definition, and each process definition can be used by multiple execution instances.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.912586
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TENANT",
+      "description": "Each task belongs to one tenant, and each tenant can have multiple tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004544
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "PROCESS_DEFINITION",
+      "description": "Each process instance follows one process definition, and each process definition can be used by multiple process instances.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.979115
+    }
+  ],
+  "processing_time": 19.69
+}

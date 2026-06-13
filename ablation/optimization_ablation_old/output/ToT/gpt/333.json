@@ -1,0 +1,216 @@
+{
+  "entity": [
+    "USER",
+    "USER_TYPE",
+    "ADMIN_PRIVILEGE",
+    "USER_TYPE_PRIVILEGE",
+    "PROFILE",
+    "CONNECTION_REQUEST",
+    "FRIENDSHIP",
+    "HOMEPAGE",
+    "HOMEPAGE_MEMBER",
+    "POST",
+    "LOGIN_SESSION",
+    "NOTIFICATION",
+    "ASSOC_USER_TYPE_ADMIN_PRIVILEGE",
+    "ASSOC_USER_FRIENDSHIP"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "registration_timestamp",
+      "type_id"
+    ],
+    "USER_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "ADMIN_PRIVILEGE": [
+      "privilege_id",
+      "privilege_name",
+      "description"
+    ],
+    "USER_TYPE_PRIVILEGE": [
+      "id",
+      "type_id",
+      "privilege_id"
+    ],
+    "PROFILE": [
+      "profile_id",
+      "user_id",
+      "phone",
+      "address",
+      "birthday",
+      "gender",
+      "relationship_status",
+      "interests",
+      "motto",
+      "hometown",
+      "current_location",
+      "profile_picture"
+    ],
+    "CONNECTION_REQUEST": [
+      "request_id",
+      "sender_id",
+      "receiver_id",
+      "request_time",
+      "status"
+    ],
+    "FRIENDSHIP": [
+      "friendship_id",
+      "user1_id",
+      "user2_id",
+      "connection_time"
+    ],
+    "HOMEPAGE": [
+      "homepage_id",
+      "owner_id",
+      "title",
+      "introduction",
+      "creation_time"
+    ],
+    "HOMEPAGE_MEMBER": [
+      "membership_id",
+      "homepage_id",
+      "user_id",
+      "join_time",
+      "role"
+    ],
+    "POST": [
+      "post_id",
+      "homepage_id",
+      "author_id",
+      "content",
+      "posting_time",
+      "edit_timestamp"
+    ],
+    "LOGIN_SESSION": [
+      "session_id",
+      "user_id",
+      "login_time",
+      "logout_time",
+      "ip_address"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "user_id",
+      "type",
+      "content",
+      "created_time",
+      "is_read"
+    ],
+    "ASSOC_USER_TYPE_ADMIN_PRIVILEGE": [
+      "assoc_user_type_admin_privilege_id",
+      "user_type_id",
+      "admin_privilege_id"
+    ],
+    "ASSOC_USER_FRIENDSHIP": [
+      "assoc_user_friendship_id",
+      "user_id",
+      "friendship_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_TYPE",
+      "entity_2": "ASSOC_USER_TYPE_ADMIN_PRIVILEGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMIN_PRIVILEGE",
+      "entity_2": "ASSOC_USER_TYPE_ADMIN_PRIVILEGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_TYPE",
+      "entity_2": "USER_TYPE_PRIVILEGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMIN_PRIVILEGE",
+      "entity_2": "USER_TYPE_PRIVILEGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FRIENDSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FRIENDSHIP",
+      "entity_2": "ASSOC_USER_FRIENDSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HOMEPAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HOMEPAGE_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOMEPAGE",
+      "entity_2": "HOMEPAGE_MEMBER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "HOMEPAGE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 106.4593,
+  "ilp_runtime": 0.118
+}

@@ -1,0 +1,155 @@
+{
+  "entity": [
+    "ORGANIZATION",
+    "PROCESS",
+    "EVENT",
+    "PROCESS_TYPE",
+    "EVENT_TYPE",
+    "RESOURCE",
+    "STATUS",
+    "RESOURCE_ALLOCATION",
+    "PROCESS_LOG",
+    "EVENT_LOG"
+  ],
+  "attribute": {
+    "ORGANIZATION": [
+      "org_id",
+      "org_name",
+      "address",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "PROCESS": [
+      "process_id",
+      "process_name",
+      "org_id",
+      "parent_process_id",
+      "process_type_id",
+      "status_id",
+      "start_time",
+      "end_time",
+      "description",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "EVENT": [
+      "event_id",
+      "process_id",
+      "event_type_id",
+      "status_id",
+      "timestamp",
+      "details",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "PROCESS_TYPE": [
+      "process_type_id",
+      "type_name",
+      "description"
+    ],
+    "EVENT_TYPE": [
+      "event_type_id",
+      "type_name",
+      "description"
+    ],
+    "RESOURCE": [
+      "resource_id",
+      "resource_name",
+      "resource_type",
+      "capacity",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "RESOURCE_ALLOCATION": [
+      "allocation_id",
+      "process_id",
+      "resource_id",
+      "quantity",
+      "start_date",
+      "end_date",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "PROCESS_LOG": [
+      "log_id",
+      "process_id",
+      "log_timestamp",
+      "message",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ],
+    "EVENT_LOG": [
+      "log_id",
+      "event_id",
+      "log_timestamp",
+      "message",
+      "created_at",
+      "created_by",
+      "updated_at",
+      "updated_by"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_TYPE",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_ALLOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 68.5372,
+  "ilp_runtime": 0.038
+}

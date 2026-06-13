@@ -1,0 +1,129 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "APPLICATION",
+    "WEB_SERVICE",
+    "INVOCATION",
+    "ERROR",
+    "MONITORING_RECORD",
+    "PERFORMANCE_METRIC",
+    "USER_ROLE"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "email"
+    ],
+    "ROLE": [
+      "role id",
+      "role name"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "permission name",
+      "description"
+    ],
+    "APPLICATION": [
+      "application id",
+      "app code",
+      "app type",
+      "description",
+      "creation date"
+    ],
+    "WEB_SERVICE": [
+      "web service id",
+      "service code",
+      "description",
+      "application id"
+    ],
+    "INVOCATION": [
+      "invocation id",
+      "web service id",
+      "user id",
+      "invocation timestamp",
+      "return status",
+      "delay time ms"
+    ],
+    "ERROR": [
+      "error id",
+      "error code",
+      "description",
+      "error timestamp",
+      "return status",
+      "invocation id"
+    ],
+    "MONITORING_RECORD": [
+      "monitoring record id",
+      "invocation id",
+      "error id",
+      "metric id",
+      "statistic id",
+      "record timestamp"
+    ],
+    "PERFORMANCE_METRIC": [
+      "metric id",
+      "metric name",
+      "success rate",
+      "count",
+      "period start",
+      "period end"
+    ],
+    "USER_ROLE": [
+      "user_role_id",
+      "user_id",
+      "role_id",
+      "id_USER_ROLE",
+      "id_USER",
+      "id_ROLE"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEB_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INVOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ERROR",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERFORMANCE_METRIC",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 78.8179,
+  "ilp_runtime": 0.122
+}

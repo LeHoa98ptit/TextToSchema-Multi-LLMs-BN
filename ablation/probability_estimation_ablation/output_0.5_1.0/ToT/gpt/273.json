@@ -1,0 +1,80 @@
+{
+  "filename": "273.txt",
+  "entity": {
+    "RESTAURANT": 0.817574,
+    "CUSTOMER": 0.817574,
+    "FEEDBACK": 0.817574,
+    "FEEDBACK_ITEM": 0.798782,
+    "PROCESSING_LOG": 0.742939
+  },
+  "attribute": {
+    "RESTAURANT": {
+      "restaurant_id": 0.779939,
+      "name": 0.775436,
+      "address": 0.774957,
+      "phone": 0.777167
+    },
+    "CUSTOMER": {
+      "customer_id": 0.762957,
+      "first_name": 0.758444,
+      "last_name": 0.756265,
+      "email": 0.7594,
+      "phone": 0.764615
+    },
+    "FEEDBACK": {
+      "feedback_id": 0.77216,
+      "restaurant_id": 0.791135,
+      "customer_id": 0.777384,
+      "submitted_at": 0.765951
+    },
+    "FEEDBACK_ITEM": {
+      "item_id": 0.773245,
+      "feedback_id": 0.775188,
+      "type": 0.7772,
+      "value": 0.77786
+    },
+    "PROCESSING_LOG": {
+      "log_id": 0.747413,
+      "feedback_id": 0.769012,
+      "status": 0.764247,
+      "changed_at": 0.745486,
+      "processed_by": 0.75652,
+      "remarks": 0.75905
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "Each restaurant can have many feedback records",
+      "probability": 0.177407
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "Each customer may submit multiple feedback entries",
+      "probability": 0.995261
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "FEEDBACK_ITEM",
+      "cardinality": "1:N",
+      "description": "A feedback can consist of multiple items (e.g., rating, comment, suggestion)",
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "PROCESSING_LOG",
+      "cardinality": "1:N",
+      "description": "Each feedback may have several processing status changes recorded over time",
+      "probability": 0.002987
+    }
+  ],
+  "processing_time": 16.44,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

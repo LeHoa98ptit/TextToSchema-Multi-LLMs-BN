@@ -1,0 +1,112 @@
+{
+  "filename": "441.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "FUND": 0.622459,
+    "TRANSACTION": 0.622459,
+    "USER": 0.622459,
+    "ROLE": 0.476243,
+    "ALLOCATION": 0.485329
+  },
+  "attribute": {
+    "PROJECT": {
+      "project id": 0.536334,
+      "project name": 0.541839,
+      "project budget": 0.555136,
+      "remaining fund": 0.552578,
+      "project responsible": 0.5497
+    },
+    "FUND": {
+      "fund id": 0.540987,
+      "fund name": 0.544697,
+      "total amount": 0.543479,
+      "available amount": 0.547563
+    },
+    "TRANSACTION": {
+      "transaction id": 0.507712,
+      "project id": 0.53509,
+      "fund id": 0.530886,
+      "transaction time": 0.505577,
+      "transaction purpose": 0.523618,
+      "transaction description": 0.523491,
+      "transaction operator": 0.523894,
+      "transaction amount": 0.521738
+    },
+    "USER": {
+      "user id": 0.513041,
+      "user name": 0.510618,
+      "role id": 0.517969
+    },
+    "ROLE": {
+      "role id": 0.516439,
+      "role name": 0.518532,
+      "permissions": 0.531723
+    },
+    "ALLOCATION": {
+      "allocation id": 0.531032,
+      "project id": 0.553943,
+      "fund id": 0.542358,
+      "allocated amount": 0.533324,
+      "allocation date": 0.532538
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TRANSACTION",
+      "description": "A project can have many fund usage transactions; each transaction is associated with exactly one project.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.013304
+    },
+    {
+      "entity_1": "FUND",
+      "entity_2": "TRANSACTION",
+      "description": "A fund can be used in many transactions; each transaction uses exactly one fund.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.642135
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "description": "A user (operator) can perform many transactions; each transaction is performed by exactly one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992601
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ALLOCATION",
+      "description": "A project can have multiple internal fund allocations; each allocation belongs to one project.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.610581
+    },
+    {
+      "entity_1": "FUND",
+      "entity_2": "ALLOCATION",
+      "description": "A fund can be allocated to multiple projects; each allocation references one fund.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.92622
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "description": "A user can be responsible for many projects; each project has exactly one responsible user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.745605
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "A role can be assigned to many users; each user has exactly one role.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997482
+    }
+  ],
+  "processing_time": 3.87
+}

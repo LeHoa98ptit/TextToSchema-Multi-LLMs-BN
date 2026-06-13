@@ -1,0 +1,76 @@
+{
+  "entity": [
+    "STUDENT",
+    "DEPARTMENT",
+    "MEAL_CARD",
+    "RECHARGE_TRANSACTION",
+    "CONSUMPTION_TRANSACTION",
+    "LOCATION"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "name",
+      "gender",
+      "birth_date",
+      "department_id",
+      "phone",
+      "email",
+      "address"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name"
+    ],
+    "MEAL_CARD": [
+      "card_id",
+      "student_id",
+      "balance",
+      "issue_date",
+      "status"
+    ],
+    "RECHARGE_TRANSACTION": [
+      "recharge_id",
+      "card_id",
+      "amount",
+      "recharge_time",
+      "location_id"
+    ],
+    "CONSUMPTION_TRANSACTION": [
+      "consumption_id",
+      "card_id",
+      "amount",
+      "consumption_time",
+      "location_id",
+      "item_description"
+    ],
+    "LOCATION": [
+      "location_id",
+      "name",
+      "type",
+      "address"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "CONSUMPTION_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "CONSUMPTION_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 29.9786,
+  "ilp_runtime": 0.065
+}

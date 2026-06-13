@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "REAGENT",
+    "LABORATORY",
+    "PERSON",
+    "USAGE_RECORD",
+    "INVENTORY",
+    "ALERT",
+    "REPORT",
+    "ASSOC_REAGENT_LABORATORY"
+  ],
+  "attribute": {
+    "REAGENT": [
+      "name",
+      "specification",
+      "expiration_date",
+      "quantity"
+    ],
+    "LABORATORY": [
+      "lab_id",
+      "location",
+      "person_in_charge"
+    ],
+    "PERSON": [
+      "person_id",
+      "name",
+      "role"
+    ],
+    "USAGE_RECORD": [
+      "usage_id",
+      "reagent_id",
+      "lab_id",
+      "usage_date",
+      "quantity_used"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "reagent_id",
+      "lab_id",
+      "quantity_available"
+    ],
+    "ALERT": [
+      "alert_id",
+      "reagent_id",
+      "expiration_date",
+      "alert_date"
+    ],
+    "REPORT": [
+      "report_id",
+      "reagent_id",
+      "lab_id",
+      "usage_date",
+      "quantity_used"
+    ],
+    "ASSOC_REAGENT_LABORATORY": [
+      "assoc_reagent_laboratory_id",
+      "reagent_id",
+      "laboratory_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "ASSOC_REAGENT_LABORATORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "ASSOC_REAGENT_LABORATORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "PERSON",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.5162,
+  "ilp_runtime": 0.064
+}

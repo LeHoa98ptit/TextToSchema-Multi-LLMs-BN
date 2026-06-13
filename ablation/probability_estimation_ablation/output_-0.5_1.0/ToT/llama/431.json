@@ -1,0 +1,112 @@
+{
+  "filename": "431.txt",
+  "entity": {
+    "HOSPITAL": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "DOCTOR": 0.622459,
+    "USER": 0.622459,
+    "APPOINTMENT": 0.622459,
+    "SCHEDULE": 0.492301,
+    "RECORD": 0.622459
+  },
+  "attribute": {
+    "HOSPITAL": {
+      "name": 0.550757,
+      "address": 0.550182,
+      "phone": 0.550811,
+      "email": 0.543591
+    },
+    "DEPARTMENT": {
+      "name": 0.531177,
+      "description": 0.540677,
+      "head_doctor": 0.550506
+    },
+    "DOCTOR": {
+      "name": 0.538879,
+      "specialty": 0.544019,
+      "consultation_time": 0.547606
+    },
+    "USER": {
+      "username": 0.497749,
+      "password": 0.513456,
+      "contact_info": 0.518382,
+      "appointment_history": 0.539625
+    },
+    "APPOINTMENT": {
+      "date": 0.54522,
+      "time": 0.547053,
+      "status": 0.558541,
+      "doctor_id": 0.559595,
+      "user_id": 0.549961
+    },
+    "SCHEDULE": {
+      "doctor_id": 0.547641,
+      "department_id": 0.535247,
+      "consultation_time": 0.538389,
+      "remaining_appointments": 0.536312
+    },
+    "RECORD": {
+      "appointment_id": 0.545287,
+      "user_id": 0.516848,
+      "doctor_id": 0.544639,
+      "department_id": 0.533842,
+      "status": 0.528581
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOSPITAL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A hospital has multiple departments",
+      "probability": 0.049544
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DOCTOR",
+      "cardinality": "1:N",
+      "description": "A department has multiple doctors",
+      "probability": 0.005431
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "A doctor has multiple schedules",
+      "probability": 0.090944
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A doctor has multiple appointments",
+      "probability": 0.639633
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A user has multiple appointments",
+      "probability": 0.992321
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "RECORD",
+      "cardinality": "1:1",
+      "description": "An appointment has one record",
+      "probability": 0.744967
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "A department has multiple schedules",
+      "probability": 0.068043
+    }
+  ],
+  "processing_time": 16.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationships and attributes, added additional constraints to ensure data consistency and security, and simplified the model while retaining its strengths."
+  }
+}

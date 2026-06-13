@@ -1,0 +1,148 @@
+{
+  "filename": "350.txt",
+  "entity": {
+    "PARTICIPANT": 0.817574,
+    "COMPANY": 0.71549,
+    "TICKET": 0.817574,
+    "DISCOUNT_CODE": 0.805699,
+    "CONFERENCE_SCHEDULE": 0.765577,
+    "MEETING": 0.739448,
+    "WORKSHOP": 0.817574,
+    "SPEAKER": 0.709261,
+    "ASSOC_TICKET_DISCOUNT_CODE": 0.43867,
+    "ASSOC_WORKSHOP_SPEAKER": 0.015696
+  },
+  "attribute": {
+    "PARTICIPANT": {
+      "participant_id": 0.759474,
+      "email": 0.765373,
+      "company_id": 0.761587
+    },
+    "COMPANY": {
+      "company_id": 0.740019,
+      "description": 0.756972
+    },
+    "TICKET": {
+      "ticket_id": 0.760141,
+      "description": 0.770563,
+      "price": 0.755649
+    },
+    "DISCOUNT_CODE": {
+      "discount_code_id": 0.753806,
+      "code_type": 0.755986
+    },
+    "CONFERENCE_SCHEDULE": {
+      "schedule_id": 0.769865,
+      "description": 0.784999
+    },
+    "MEETING": {
+      "meeting_id": 0.767131,
+      "description": 0.778852,
+      "date": 0.764927,
+      "start_time": 0.761605,
+      "end_time": 0.760672,
+      "room": 0.768509
+    },
+    "WORKSHOP": {
+      "workshop_id": 0.77083,
+      "description": 0.776375,
+      "requirement": 0.777851,
+      "location": 0.764075,
+      "date": 0.766236,
+      "start_time": 0.764961,
+      "end_time": 0.766474,
+      "capacity": 0.770608
+    },
+    "SPEAKER": {
+      "speaker_id": 0.749588,
+      "company_id": 0.751927,
+      "description": 0.758264
+    },
+    "ASSOC_TICKET_DISCOUNT_CODE": {
+      "assoc_ticket_discount_code_id": 0.43867,
+      "ticket_id": 0.43867,
+      "discount_code_id": 0.43867
+    },
+    "ASSOC_WORKSHOP_SPEAKER": {
+      "assoc_workshop_speaker_id": 0.015696,
+      "workshop_id": 0.015696,
+      "speaker_id": 0.015696
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "TICKET",
+      "description": "A participant can purchase many tickets, and each ticket is purchased by one participant.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.9955
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "COMPANY",
+      "description": "A participant is associated with one company, and each company can have many participants.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.651087
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "ASSOC_TICKET_DISCOUNT_CODE",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.43867
+    },
+    {
+      "entity_1": "DISCOUNT_CODE",
+      "entity_2": "ASSOC_TICKET_DISCOUNT_CODE",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.43867
+    },
+    {
+      "entity_1": "CONFERENCE_SCHEDULE",
+      "entity_2": "MEETING",
+      "description": "A conference schedule can have many meetings, and each meeting is part of one conference schedule.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.99856
+    },
+    {
+      "entity_1": "CONFERENCE_SCHEDULE",
+      "entity_2": "WORKSHOP",
+      "description": "A conference schedule can have many workshops, and each workshop is part of one conference schedule.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.959394
+    },
+    {
+      "entity_1": "WORKSHOP",
+      "entity_2": "ASSOC_WORKSHOP_SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015696
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "ASSOC_WORKSHOP_SPEAKER",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015696
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "COMPANY",
+      "description": "A speaker is associated with one company, and each company can have many speakers.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.601129
+    }
+  ],
+  "processing_time": 14.71
+}

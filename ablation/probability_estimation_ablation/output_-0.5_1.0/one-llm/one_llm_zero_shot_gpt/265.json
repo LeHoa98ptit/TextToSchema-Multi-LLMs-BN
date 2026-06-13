@@ -1,0 +1,156 @@
+{
+  "filename": "265.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "PRODUCTION_LINE": 0.451726,
+    "BATCH": 0.438316,
+    "CHESSBOARD": 0.622459,
+    "CHESS_PIECE": 0.59298,
+    "INSPECTION": 0.622459,
+    "DEFECT_TYPE": 0.452593,
+    "QUALITY_ALERT": 0.507374,
+    "INSPECTION_MODEL": 0.545176,
+    "PRODUCTION_PROCESS": 0.445789,
+    "ASSOC_CHESSBOARD_CHESS_PIECE": 0.264292
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.530661,
+      "name": 0.541132,
+      "location": 0.529221
+    },
+    "PRODUCTION_LINE": {
+      "line_id": 0.531397,
+      "name": 0.539366
+    },
+    "BATCH": {
+      "batch_id": 0.504689,
+      "production_date": 0.51708,
+      "line_id": 0.511194
+    },
+    "CHESSBOARD": {
+      "board_id": 0.554557,
+      "size": 0.549376,
+      "material": 0.559648
+    },
+    "CHESS_PIECE": {
+      "piece_id": 0.547304,
+      "type": 0.559282,
+      "color": 0.554348,
+      "material": 0.555717
+    },
+    "INSPECTION": {
+      "inspection_id": 0.536727,
+      "inspection_time": 0.537299,
+      "result": 0.544829,
+      "notes": 0.544763
+    },
+    "DEFECT_TYPE": {
+      "defect_type_id": 0.5336,
+      "description": 0.539442
+    },
+    "QUALITY_ALERT": {
+      "alert_id": 0.524215,
+      "alert_time": 0.524358,
+      "severity": 0.529722,
+      "description": 0.538858
+    },
+    "INSPECTION_MODEL": {
+      "model_id": 0.535132,
+      "model_name": 0.539254,
+      "version": 0.541485,
+      "algorithm": 0.546495
+    },
+    "PRODUCTION_PROCESS": {
+      "process_id": 0.535841,
+      "start_time": 0.528598,
+      "end_time": 0.529566,
+      "model_running_time": 0.532638,
+      "evaluation_result": 0.549543
+    },
+    "ASSOC_CHESSBOARD_CHESS_PIECE": {
+      "assoc_chessboard_chess_piece_id": 0.264292,
+      "chessboard_id": 0.264292,
+      "chess_piece_id": 0.264292
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "probability": 0.02342
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CHESSBOARD",
+      "cardinality": "1:N",
+      "probability": 0.067361
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "INSPECTION_MODEL",
+      "cardinality": "1:N",
+      "probability": 9e-06
+    },
+    {
+      "entity_1": "PRODUCTION_LINE",
+      "entity_2": "BATCH",
+      "cardinality": "1:N",
+      "probability": 0.001034
+    },
+    {
+      "entity_1": "BATCH",
+      "entity_2": "CHESSBOARD",
+      "cardinality": "1:N",
+      "probability": 0.000803
+    },
+    {
+      "entity_1": "BATCH",
+      "entity_2": "PRODUCTION_PROCESS",
+      "cardinality": "1:N",
+      "probability": 0.000498
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "ASSOC_CHESSBOARD_CHESS_PIECE",
+      "description": "One CHESSBOARD can be associated with many ASSOC_CHESSBOARD_CHESS_PIECE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.264292
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "ASSOC_CHESSBOARD_CHESS_PIECE",
+      "description": "One CHESS_PIECE can be associated with many ASSOC_CHESSBOARD_CHESS_PIECE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.264292
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "INSPECTION",
+      "cardinality": "1:N",
+      "probability": 0.307069
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "DEFECT_TYPE",
+      "cardinality": "1:1",
+      "probability": 0.008454
+    },
+    {
+      "entity_1": "INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:1",
+      "probability": 0.20675
+    },
+    {
+      "entity_1": "INSPECTION_MODEL",
+      "entity_2": "PRODUCTION_PROCESS",
+      "cardinality": "1:N",
+      "probability": 0.00024
+    }
+  ],
+  "processing_time": 34.71
+}

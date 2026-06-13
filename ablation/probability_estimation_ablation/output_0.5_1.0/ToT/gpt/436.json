@@ -1,0 +1,232 @@
+{
+  "filename": "436.txt",
+  "entity": {
+    "ADMINISTRATOR": 0.817574,
+    "USER": 0.817574,
+    "NEWS_ARTICLE": 0.804081,
+    "CATEGORY": 0.710806,
+    "TAG": 0.707092,
+    "ADVERTISEMENT": 0.715877,
+    "COMMENT": 0.7161,
+    "MESSAGE": 0.731511,
+    "WEBSITE_SETTING": 0.703057,
+    "MEMBER_PROFILE": 0.761914,
+    "LOGIN_RECORD": 0.686348,
+    "ASSOC_NEWS_ARTICLE_TAG": 0.010132,
+    "ASSOC_ADVERTISEMENT_CATEGORY": 0.005843
+  },
+  "attribute": {
+    "ADMINISTRATOR": {
+      "admin_id": 0.751016,
+      "username": 0.758296,
+      "password": 0.752745,
+      "full_name": 0.756435,
+      "email": 0.756704,
+      "hire_date": 0.749822
+    },
+    "USER": {
+      "user_id": 0.739793,
+      "username": 0.735858,
+      "password": 0.742555,
+      "email": 0.747123,
+      "phone": 0.737492,
+      "registration_date": 0.738965,
+      "status": 0.758237
+    },
+    "NEWS_ARTICLE": {
+      "article_id": 0.75725,
+      "title": 0.766021,
+      "summary": 0.766203,
+      "content": 0.773131,
+      "author_id": 0.760588,
+      "release_time": 0.75711,
+      "last_edit_time": 0.762124,
+      "status": 0.76542,
+      "view_count": 0.757772
+    },
+    "CATEGORY": {
+      "category_id": 0.736106,
+      "name": 0.747708,
+      "description": 0.763055
+    },
+    "TAG": {
+      "tag_id": 0.729406,
+      "name": 0.741928
+    },
+    "ADVERTISEMENT": {
+      "ad_id": 0.744177,
+      "title": 0.755447,
+      "content": 0.764047,
+      "image_url": 0.741989,
+      "target_url": 0.743716,
+      "start_date": 0.744432,
+      "end_date": 0.744146,
+      "status": 0.75527,
+      "placement": 0.753618
+    },
+    "COMMENT": {
+      "comment_id": 0.738197,
+      "content": 0.760734,
+      "post_time": 0.74135,
+      "edit_time": 0.745106,
+      "status": 0.752994
+    },
+    "MESSAGE": {
+      "message_id": 0.744612,
+      "subject": 0.754491,
+      "body": 0.751242,
+      "sent_time": 0.742069,
+      "read_flag": 0.744705
+    },
+    "WEBSITE_SETTING": {
+      "setting_id": 0.737268,
+      "site_name": 0.738621,
+      "logo_url": 0.733804,
+      "footer_text": 0.743005,
+      "contact_email": 0.738997,
+      "copyright": 0.741717
+    },
+    "MEMBER_PROFILE": {
+      "profile_id": 0.737441,
+      "user_id": 0.739652,
+      "nickname": 0.748124,
+      "avatar_url": 0.74086,
+      "bio": 0.750164,
+      "birthdate": 0.741567,
+      "gender": 0.749394
+    },
+    "LOGIN_RECORD": {
+      "record_id": 0.732834,
+      "user_id": 0.73711,
+      "login_time": 0.738753,
+      "ip_address": 0.730545,
+      "device": 0.732796
+    },
+    "ASSOC_NEWS_ARTICLE_TAG": {
+      "assoc_news_article_tag_id": 0.010132,
+      "news_article_id": 0.010132,
+      "tag_id": 0.010132
+    },
+    "ASSOC_ADVERTISEMENT_CATEGORY": {
+      "assoc_advertisement_category_id": 0.005843,
+      "advertisement_id": 0.005843,
+      "category_id": 0.005843
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "NEWS_ARTICLE",
+      "cardinality": "1:N",
+      "description": "Administrator creates, edits, and publishes many news articles",
+      "probability": 0.600359
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADVERTISEMENT",
+      "cardinality": "1:N",
+      "description": "Administrator manages many advertisements",
+      "probability": 0.000483
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "WEBSITE_SETTING",
+      "cardinality": "1:1",
+      "description": "Administrator configures the single website setting record",
+      "probability": 0.004359
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MEMBER_PROFILE",
+      "cardinality": "1:N",
+      "description": "Administrator can add, delete or modify member profiles",
+      "probability": 0.025317
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_RECORD",
+      "cardinality": "1:N",
+      "description": "Each login creates a record",
+      "probability": 0.999655
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MEMBER_PROFILE",
+      "cardinality": "1:1",
+      "description": "Each user has exactly one profile",
+      "probability": 0.999404
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "User writes many comments",
+      "probability": 0.96297
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "NEWS_ARTICLE",
+      "cardinality": "N:1",
+      "description": "Comment belongs to one news article",
+      "probability": 0.00568
+    },
+    {
+      "entity_1": "NEWS_ARTICLE",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each article is classified under one category",
+      "probability": 0.249993
+    },
+    {
+      "entity_1": "NEWS_ARTICLE",
+      "entity_2": "ASSOC_NEWS_ARTICLE_TAG",
+      "description": "One NEWS_ARTICLE can be associated with many ASSOC_NEWS_ARTICLE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010132
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_NEWS_ARTICLE_TAG",
+      "description": "One TAG can be associated with many ASSOC_NEWS_ARTICLE_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010132
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_CATEGORY",
+      "description": "One ADVERTISEMENT can be associated with many ASSOC_ADVERTISEMENT_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005843
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_ADVERTISEMENT_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_ADVERTISEMENT_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005843
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "User sends many messages to administrators",
+      "probability": 0.999707
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "ADMINISTRATOR",
+      "cardinality": "N:1",
+      "description": "Each message is addressed to one administrator",
+      "probability": 0.004374
+    }
+  ],
+  "processing_time": 935.5,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

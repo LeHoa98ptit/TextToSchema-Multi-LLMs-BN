@@ -1,0 +1,85 @@
+{
+  "filename": "387.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "AIRLINE": 0.622459,
+    "FLIGHT": 0.622459,
+    "RESERVATION": 0.622459,
+    "PAYMENT": 0.622459,
+    "ASSOC_AIRLINE_RESERVATION": 0.908081
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "contact_information": 0.545997,
+      "credit_card_number": 0.534428
+    },
+    "AIRLINE": {
+      "contact_information": 0.561962
+    },
+    "FLIGHT": {
+      "flight_number": 0.551583,
+      "destination": 0.541922,
+      "departure_time": 0.548209,
+      "arrival_time": 0.551084
+    },
+    "RESERVATION": {
+      "reservation_number": 0.543183,
+      "reservation_date": 0.539385,
+      "reservation_time": 0.540886,
+      "number_of_tickets": 0.546993
+    },
+    "PAYMENT": {
+      "payment_record": 0.530285,
+      "payment_date": 0.52626,
+      "payment_method": 0.52692
+    },
+    "ASSOC_AIRLINE_RESERVATION": {
+      "assoc_airline_reservation_id": 0.908081,
+      "airline_id": 0.908081,
+      "reservation_id": 0.908081
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "probability": 0.002384
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "probability": 0.999965
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "probability": 0.86243
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "probability": 0.90318
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "ASSOC_AIRLINE_RESERVATION",
+      "description": "One AIRLINE can be associated with many ASSOC_AIRLINE_RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.908081
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_AIRLINE_RESERVATION",
+      "description": "One RESERVATION can be associated with many ASSOC_AIRLINE_RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.908081
+    }
+  ],
+  "processing_time": 12.45
+}

@@ -1,0 +1,109 @@
+{
+  "filename": "333.txt",
+  "entity": {
+    "USER": 0.622459,
+    "HOMEPAGE": 0.622459,
+    "CONNECTION": 0.622459,
+    "PERSONAL_INFO": 0.517143,
+    "POST": 0.477914,
+    "ASSOC_USER_HOMEPAGE": 0.99802
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.528581,
+      "password": 0.531538,
+      "email": 0.534238
+    },
+    "HOMEPAGE": {
+      "title": 0.53514,
+      "introduction": 0.552207,
+      "creation_time": 0.539386
+    },
+    "CONNECTION": {
+      "connection_time": 0.523412,
+      "request_send_time": 0.52144,
+      "connection_status": 0.518559,
+      "last_interaction_time": 0.525305
+    },
+    "PERSONAL_INFO": {
+      "motto": 0.540879,
+      "hometown": 0.540973,
+      "current_location": 0.534898,
+      "birthday": 0.528601,
+      "gender": 0.544813,
+      "relationship_status": 0.543938,
+      "interest": 0.546613,
+      "phone": 0.546294,
+      "address": 0.544561
+    },
+    "POST": {
+      "text_content": 0.511403,
+      "posting_time": 0.524449,
+      "post_type": 0.516117,
+      "engagement_metrics": 0.523146
+    },
+    "ASSOC_USER_HOMEPAGE": {
+      "assoc_user_homepage_id": 0.99802,
+      "user_id": 0.99802,
+      "homepage_id": 0.99802
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "HOMEPAGE",
+      "cardinality": "1:N",
+      "description": "A user can create multiple homepages",
+      "probability": 0.99802
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION",
+      "cardinality": "1:N",
+      "description": "A user can establish multiple connections",
+      "probability": 0.998793
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_HOMEPAGE",
+      "description": "One USER can be associated with many ASSOC_USER_HOMEPAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99802
+    },
+    {
+      "entity_1": "HOMEPAGE",
+      "entity_2": "ASSOC_USER_HOMEPAGE",
+      "description": "One HOMEPAGE can be associated with many ASSOC_USER_HOMEPAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99802
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERSONAL_INFO",
+      "cardinality": "1:1",
+      "description": "A user has one personal info",
+      "probability": 0.976558
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create multiple posts",
+      "probability": 0.863508
+    },
+    {
+      "entity_1": "HOMEPAGE",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A homepage can have multiple posts",
+      "probability": 0.982578
+    }
+  ],
+  "processing_time": 22.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added connection_status and last_interaction_time to CONNECTION entity, and post_type and engagement_metrics to POST entity. Retained strengths from previous model and ensured optimal final model."
+  }
+}

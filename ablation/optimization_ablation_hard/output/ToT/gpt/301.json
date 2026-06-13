@@ -1,0 +1,166 @@
+{
+  "entity": [
+    "USER",
+    "SEAT",
+    "RESERVATION",
+    "LAYOUT_TEMPLATE",
+    "AREA",
+    "EVENT",
+    "OCCASION",
+    "PRICE_CATEGORY",
+    "SEAT_STATUS_LOG",
+    "ASSOC_RESERVATION_SEAT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "first_name",
+      "last_name",
+      "contact_number",
+      "email",
+      "password_hash",
+      "created_at",
+      "updated_at"
+    ],
+    "SEAT": [
+      "seat_id",
+      "area_id",
+      "price_category_id",
+      "x_coord",
+      "y_coord",
+      "row_number",
+      "column_number",
+      "type",
+      "base_price",
+      "is_valid",
+      "created_at",
+      "updated_at"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "user_id",
+      "event_id",
+      "reservation_timestamp",
+      "total_amount",
+      "payment_status",
+      "created_at",
+      "updated_at"
+    ],
+    "LAYOUT_TEMPLATE": [
+      "template_id",
+      "name",
+      "description",
+      "suitable_for",
+      "created_at",
+      "updated_at"
+    ],
+    "AREA": [
+      "area_id",
+      "name",
+      "description",
+      "template_id",
+      "created_at",
+      "updated_at"
+    ],
+    "EVENT": [
+      "event_id",
+      "title",
+      "event_date",
+      "start_time",
+      "end_time",
+      "venue",
+      "occasion_id",
+      "template_id",
+      "created_at",
+      "updated_at"
+    ],
+    "OCCASION": [
+      "occasion_id",
+      "name",
+      "time_period",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "PRICE_CATEGORY": [
+      "category_id",
+      "name",
+      "multiplier",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "SEAT_STATUS_LOG": [
+      "log_id",
+      "seat_id",
+      "reservation_id",
+      "user_id",
+      "previous_status",
+      "new_status",
+      "changed_at"
+    ],
+    "ASSOC_RESERVATION_SEAT": [
+      "assoc_reservation_seat_id",
+      "reservation_id",
+      "seat_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OCCASION",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LAYOUT_TEMPLATE",
+      "entity_2": "AREA",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AREA",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRICE_CATEGORY",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "SEAT_STATUS_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 83.5477,
+  "ilp_runtime": 0.102
+}

@@ -1,0 +1,109 @@
+{
+  "filename": "296.txt",
+  "entity": {
+    "CLIENT": 0.817574,
+    "FINANCIAL_ADVISOR": 0.807772,
+    "INVESTMENT_PORTFOLIO": 0.788699,
+    "FINANCIAL_PRODUCT": 0.767527,
+    "TRANSACTION": 0.817574,
+    "FINANCIAL_NEED": 0.778544,
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT": 0.976402
+  },
+  "attribute": {
+    "CLIENT": {
+      "client_d": 0.742608,
+      "contact_number": 0.740965,
+      "risk_preference": 0.755367,
+      "total_asset": 0.753938
+    },
+    "FINANCIAL_ADVISOR": {
+      "advisor_id": 0.756626,
+      "hire_date": 0.749227,
+      "contact_number": 0.752496,
+      "advisor_name": 0.759978
+    },
+    "INVESTMENT_PORTFOLIO": {
+      "portfolio_d": 0.759141,
+      "client_d": 0.766444,
+      "product_code": 0.76501,
+      "quantity_hold": 0.759474
+    },
+    "FINANCIAL_PRODUCT": {
+      "product_code": 0.759966,
+      "product_type": 0.765115,
+      "product_value": 0.759578,
+      "product_description": 0.771493
+    },
+    "TRANSACTION": {
+      "transaction_d": 0.74028,
+      "portfolio_d": 0.763415,
+      "product_code": 0.749171,
+      "transaction_type": 0.747434,
+      "transaction_quantity": 0.747738,
+      "transaction_price": 0.741209,
+      "transaction_time": 0.735446
+    },
+    "FINANCIAL_NEED": {
+      "need_id": 0.763127,
+      "client_d": 0.769172,
+      "need_type": 0.76882,
+      "need_description": 0.771478
+    },
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT": {
+      "assoc_investment_portfolio_financial_product_id": 0.976402,
+      "investment_portfolio_id": 0.976402,
+      "financial_product_id": 0.976402
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "FINANCIAL_ADVISOR",
+      "cardinality": "N:1",
+      "description": "A client is assigned to one financial advisor",
+      "probability": 0.512128
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PORTFOLIO",
+      "cardinality": "1:N",
+      "description": "A client can have multiple investment portfolios",
+      "probability": 0.790069
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "description": "One INVESTMENT_PORTFOLIO can be associated with many ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976402
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "description": "One FINANCIAL_PRODUCT can be associated with many ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.976402
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "An investment portfolio can have multiple transactions",
+      "probability": 0.060211
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "FINANCIAL_NEED",
+      "cardinality": "1:N",
+      "description": "A client can have multiple financial needs",
+      "probability": 0.875231
+    }
+  ],
+  "processing_time": 28.09,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for financial need to provide more detailed information about client needs, retained strengths of the original model, and ensured the final model is optimal."
+  }
+}

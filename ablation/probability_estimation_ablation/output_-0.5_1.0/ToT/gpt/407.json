@@ -1,0 +1,86 @@
+{
+  "filename": "407.txt",
+  "entity": {
+    "STORE": 0.622459,
+    "CUSTOMER": 0.622459,
+    "ADDRESS": 0.478488,
+    "CONSUMPTION": 0.622459,
+    "GENDER": 0.470958
+  },
+  "attribute": {
+    "STORE": {
+      "store_id": 0.539639,
+      "store_name": 0.540574,
+      "store_phone": 0.544593,
+      "address_id": 0.533942
+    },
+    "CUSTOMER": {
+      "customer_id": 0.533212,
+      "first_name": 0.535475,
+      "last_name": 0.535613,
+      "age": 0.529812,
+      "gender_id": 0.537349,
+      "address_id": 0.53296
+    },
+    "ADDRESS": {
+      "address_id": 0.517906,
+      "street": 0.519589,
+      "city": 0.525924,
+      "state": 0.524318,
+      "zip": 0.515215
+    },
+    "CONSUMPTION": {
+      "consumption_id": 0.533982,
+      "consumption_date": 0.539469,
+      "total_amount": 0.530087,
+      "store_id": 0.548252,
+      "customer_id": 0.545641
+    },
+    "GENDER": {
+      "gender_id": 0.52227,
+      "gender_name": 0.521585
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STORE",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "Each store is linked to one address; an address can host many stores",
+      "probability": 0.993115
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "description": "Each customer is linked to one address; an address can host many customers",
+      "probability": 0.368092
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "GENDER",
+      "cardinality": "N:1",
+      "description": "Each customer has one gender; a gender can be referenced by many customers",
+      "probability": 0.502143
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "CONSUMPTION",
+      "cardinality": "1:N",
+      "description": "A store can have many consumption records",
+      "probability": 0.558754
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONSUMPTION",
+      "cardinality": "1:N",
+      "description": "A customer can have many consumption records",
+      "probability": 0.099941
+    }
+  ],
+  "processing_time": 7.85,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Extracted GENDER into a lookup entity to enforce consistency and future extensibility; replaced the direct gender attribute in CUSTOMER with a foreign key gender_id. Retained shared ADDRESS entity to avoid duplication. Kept essential STORE, CUSTOMER, CONSUMPTION entities and their 1:N relationships as per domain description. Added explicit relationship definitions and clarified cardinalities. The model remains simple, efficient, and now supports standardized gender values."
+  }
+}

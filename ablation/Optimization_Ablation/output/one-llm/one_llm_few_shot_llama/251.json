@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "PET",
+    "GROOMER",
+    "GROOM_SERVICE",
+    "SERVICE_ITEM",
+    "ASSOC_GROOM_SERVICE_SERVICE_ITEM"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "phone",
+      "address"
+    ],
+    "PET": [
+      "pet_id",
+      "breed",
+      "age",
+      "weight",
+      "fur_characteristic",
+      "customer_id"
+    ],
+    "GROOMER": [
+      "groomer_id",
+      "name",
+      "specialization",
+      "year_of_experience",
+      "rating"
+    ],
+    "GROOM_SERVICE": [
+      "groom_service_id",
+      "pet_id",
+      "groomer_id",
+      "service_date",
+      "customer_rating"
+    ],
+    "SERVICE_ITEM": [
+      "service_item_id",
+      "service_name",
+      "duration",
+      "price"
+    ],
+    "ASSOC_GROOM_SERVICE_SERVICE_ITEM": [
+      "assoc_groom_service_service_item_id",
+      "groom_service_id",
+      "service_item_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOM_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROOM_SERVICE",
+      "entity_2": "ASSOC_GROOM_SERVICE_SERVICE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE_ITEM",
+      "entity_2": "ASSOC_GROOM_SERVICE_SERVICE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.4586,
+  "ilp_runtime": 0.067
+}

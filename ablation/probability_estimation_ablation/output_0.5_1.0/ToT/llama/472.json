@@ -1,0 +1,82 @@
+{
+  "filename": "472.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "COURSE": 0.705702,
+    "HOMEWORK": 0.817574,
+    "GRADE_FEEDBACK": 0.768738
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.769802,
+      "class": 0.770527,
+      "phone_number": 0.767987,
+      "email": 0.771959
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.765606,
+      "phone_number": 0.761363,
+      "email": 0.764944
+    },
+    "COURSE": {
+      "course_id": 0.762445,
+      "course_name": 0.763379
+    },
+    "HOMEWORK": {
+      "homework_id": 0.775275,
+      "content": 0.781235,
+      "submission_time": 0.776408,
+      "grade_status": 0.782413
+    },
+    "GRADE_FEEDBACK": {
+      "grade_feedback_id": 0.772868,
+      "score": 0.773035,
+      "grade_time": 0.776152,
+      "overall_feedback": 0.773102,
+      "upload_time": 0.772826
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "description": "A student can submit multiple homework assignments",
+      "probability": 0.039833
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "An instructor can teach multiple courses",
+      "probability": 0.637459
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "description": "An instructor can grade multiple homework assignments",
+      "probability": 0.004068
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "description": "A course can have multiple homework assignments",
+      "probability": 0.971002
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "GRADE_FEEDBACK",
+      "cardinality": "1:1",
+      "description": "Each homework assignment has one grade and feedback",
+      "probability": 0.762265
+    }
+  ],
+  "processing_time": 15.7,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged GRADE and FEEDBACK entities into a single entity GRADE_FEEDBACK, added a relationship between INSTRUCTOR and COURSE, and added a relationship between COURSE and HOMEWORK to improve completeness"
+  }
+}

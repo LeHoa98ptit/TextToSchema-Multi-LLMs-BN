@@ -1,0 +1,129 @@
+{
+  "filename": "383.txt",
+  "entity": {
+    "UNIVERSITY": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "STUDENT": 0.622459,
+    "PROFESSOR": 0.622459,
+    "COURSE": 0.622459,
+    "REGISTRATION": 0.622459,
+    "ASSOC_STUDENT_COURSE": 0.049992
+  },
+  "attribute": {
+    "UNIVERSITY": {
+      "name": 0.552972,
+      "location": 0.550105,
+      "established_year": 0.553863,
+      "website": 0.557167
+    },
+    "DEPARTMENT": {
+      "name": 0.545361,
+      "description": 0.551428,
+      "head_of_department": 0.540556,
+      "department_email": 0.541803
+    },
+    "STUDENT": {
+      "name": 0.553731,
+      "address": 0.558096,
+      "enrollment_year": 0.561914,
+      "date_of_birth": 0.559398,
+      "student_id": 0.555866,
+      "major": 0.54651
+    },
+    "PROFESSOR": {
+      "name": 0.544478,
+      "office_number": 0.547335,
+      "office_start_time": 0.550451,
+      "office_duration": 0.550958,
+      "professor_id": 0.55037,
+      "field_of_expertise": 0.532782
+    },
+    "COURSE": {
+      "name": 0.545296,
+      "semester": 0.55798,
+      "year": 0.531171,
+      "teaching_professor": 0.566552,
+      "class_day": 0.554115,
+      "course_duration": 0.560791,
+      "course_id": 0.55233,
+      "credits": 0.535383
+    },
+    "REGISTRATION": {
+      "registration_time": 0.534053,
+      "course_id": 0.559142,
+      "student_id": 0.554247,
+      "grade": 0.539783,
+      "registration_status": 0.524454
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.049992,
+      "student_id": 0.049992,
+      "course_id": 0.049992
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "UNIVERSITY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A university has multiple departments",
+      "probability": 0.795517
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A department has multiple students",
+      "probability": 0.99927
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROFESSOR",
+      "cardinality": "1:N",
+      "description": "A department has multiple professors",
+      "probability": 0.810387
+    },
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "A professor teaches multiple courses",
+      "probability": 0.768058
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.049992
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.049992
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A student has multiple registrations",
+      "probability": 0.998357
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A course has multiple registrations",
+      "probability": 0.01194
+    }
+  ],
+  "processing_time": 27.64,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added more detailed attributes for university and department, refined relationships between entities for better data integrity, and included additional attributes for student, professor, and course to enhance data comprehensiveness."
+  }
+}

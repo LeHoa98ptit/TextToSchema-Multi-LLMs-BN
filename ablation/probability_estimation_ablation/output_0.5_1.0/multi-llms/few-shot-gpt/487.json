@@ -1,0 +1,110 @@
+{
+  "filename": "487.txt",
+  "entity": {
+    "CODE": 0.817574,
+    "CODE_SYSTEM": 0.788599,
+    "CODE_RELATIONSHIP": 0.802358,
+    "AUDIT_LOG": 0.686649,
+    "USER": 0.712058
+  },
+  "attribute": {
+    "CODE": {
+      "code id": 0.754489,
+      "code value": 0.757281,
+      "description": 0.75771,
+      "code system id": 0.762413
+    },
+    "CODE_SYSTEM": {
+      "code system id": 0.764338,
+      "system name": 0.764065,
+      "description": 0.77225
+    },
+    "CODE_RELATIONSHIP": {
+      "relationship id": 0.766562,
+      "source code id": 0.762665,
+      "target code id": 0.761689,
+      "code system id": 0.771683,
+      "effective start date": 0.770675,
+      "effective end date": 0.76984,
+      "created by": 0.77038,
+      "created at": 0.766861,
+      "modified by": 0.768364,
+      "modified at": 0.76559,
+      "unique code relationship": 0.777086
+    },
+    "AUDIT_LOG": {
+      "audit id": 0.74721,
+      "entity name": 0.746782,
+      "entity id": 0.745841,
+      "action": 0.748618,
+      "performed by": 0.747107,
+      "performed at": 0.746545,
+      "change details": 0.753273
+    },
+    "USER": {
+      "user id": 0.739159,
+      "username": 0.725521,
+      "full name": 0.736084,
+      "email": 0.73607
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CODE_SYSTEM",
+      "entity_2": "CODE",
+      "description": "Each code belongs to exactly one code system, while a code system can have many codes.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "CODE_RELATIONSHIP",
+      "description": "A code can be the source code in many code relationships; each relationship has exactly one source code.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999994
+    },
+    {
+      "entity_1": "CODE",
+      "entity_2": "CODE_RELATIONSHIP",
+      "description": "A code can be the target code in many code relationships; each relationship has exactly one target code.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999994
+    },
+    {
+      "entity_1": "CODE_SYSTEM",
+      "entity_2": "CODE_RELATIONSHIP",
+      "description": "Each code relationship is defined within a single code system, while a code system can define many code relationships.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999728
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_RELATIONSHIP",
+      "description": "A user creates many code relationships; each code relationship has exactly one creator.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.091852
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_RELATIONSHIP",
+      "description": "A user modifies many code relationships; each code relationship has exactly one modifier.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.091852
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "description": "A user can perform many audit log entries; each audit log entry records exactly one performing user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.981974
+    }
+  ],
+  "processing_time": 20.51
+}

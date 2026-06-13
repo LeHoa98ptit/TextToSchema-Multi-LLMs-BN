@@ -1,0 +1,126 @@
+{
+  "entity": [
+    "HOTEL",
+    "RESTAURANT",
+    "TABLE",
+    "CUSTOMER",
+    "RESERVATION",
+    "RESERVATION_RECORD",
+    "DISH",
+    "MENU",
+    "ORDER"
+  ],
+  "attribute": {
+    "HOTEL": [
+      "hotel_id",
+      "name",
+      "address",
+      "star_rating",
+      "phone"
+    ],
+    "RESTAURANT": [
+      "restaurant_id",
+      "hotel_id",
+      "name",
+      "location",
+      "operating_hours",
+      "cuisine_type"
+    ],
+    "TABLE": [
+      "table_id",
+      "restaurant_id",
+      "table_number",
+      "capacity",
+      "status"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email",
+      "loyalty_level"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "customer_id",
+      "restaurant_id",
+      "reservation_time",
+      "party_size",
+      "special_requests",
+      "status"
+    ],
+    "RESERVATION_RECORD": [
+      "record_id",
+      "reservation_id",
+      "table_id",
+      "assigned_time"
+    ],
+    "DISH": [
+      "dish_id",
+      "name",
+      "price",
+      "category",
+      "description",
+      "is_vegetarian"
+    ],
+    "MENU": [
+      "menu_id",
+      "restaurant_id",
+      "effective_date"
+    ],
+    "ORDER": [
+      "order_id",
+      "reservation_id",
+      "dish_id",
+      "quantity",
+      "notes"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "RESTAURANT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION_RECORD",
+      "entity_2": "TABLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DISH",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.5964,
+  "ilp_runtime": 0.054
+}

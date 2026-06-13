@@ -1,0 +1,186 @@
+{
+  "entity": [
+    "PARTICIPANT",
+    "COMPANY",
+    "TICKET",
+    "DISCOUNT_CODE",
+    "TICKET_PURCHASE",
+    "WORKSHOP",
+    "WORKSHOP_REGISTRATION",
+    "MEETING",
+    "SPEAKER",
+    "SPEAKER_WORKSHOP",
+    "SPEAKER_MEETING",
+    "CONFERENCE_OFFER",
+    "SCHEDULE"
+  ],
+  "attribute": {
+    "PARTICIPANT": [
+      "participant_id",
+      "first_name",
+      "last_name",
+      "email",
+      "company_id"
+    ],
+    "COMPANY": [
+      "company_id",
+      "company_name",
+      "address"
+    ],
+    "TICKET": [
+      "ticket_id",
+      "description",
+      "base_price",
+      "offer_id"
+    ],
+    "DISCOUNT_CODE": [
+      "discount_code",
+      "code_type",
+      "percentage",
+      "valid_until"
+    ],
+    "TICKET_PURCHASE": [
+      "purchase_id",
+      "participant_id",
+      "ticket_id",
+      "discount_code",
+      "net_price",
+      "purchase_date"
+    ],
+    "WORKSHOP": [
+      "workshop_id",
+      "description",
+      "requirement",
+      "location",
+      "date",
+      "start_time",
+      "end_time",
+      "capacity",
+      "max_participants"
+    ],
+    "WORKSHOP_REGISTRATION": [
+      "registration_id",
+      "participant_id",
+      "workshop_id",
+      "registration_date",
+      "status"
+    ],
+    "MEETING": [
+      "meeting_id",
+      "description",
+      "date",
+      "start_time",
+      "end_time",
+      "room"
+    ],
+    "SPEAKER": [
+      "speaker_id",
+      "first_name",
+      "last_name",
+      "company_id",
+      "bio"
+    ],
+    "SPEAKER_WORKSHOP": [
+      "assignment_id",
+      "speaker_id",
+      "workshop_id",
+      "role"
+    ],
+    "SPEAKER_MEETING": [
+      "assignment_id",
+      "speaker_id",
+      "meeting_id",
+      "role"
+    ],
+    "CONFERENCE_OFFER": [
+      "offer_id",
+      "offer_name",
+      "start_date",
+      "end_date",
+      "description"
+    ],
+    "SCHEDULE": [
+      "schedule_id",
+      "offer_id",
+      "entity_type",
+      "entity_id",
+      "sequence_number"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET_PURCHASE",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET_PURCHASE",
+      "entity_2": "TICKET",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET_PURCHASE",
+      "entity_2": "DISCOUNT_CODE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "CONFERENCE_OFFER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKSHOP_REGISTRATION",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKSHOP_REGISTRATION",
+      "entity_2": "WORKSHOP",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPEAKER_WORKSHOP",
+      "entity_2": "SPEAKER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPEAKER_WORKSHOP",
+      "entity_2": "WORKSHOP",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPEAKER_MEETING",
+      "entity_2": "SPEAKER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SPEAKER_MEETING",
+      "entity_2": "MEETING",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "WORKSHOP",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 106.3955,
+  "ilp_runtime": 0.071
+}

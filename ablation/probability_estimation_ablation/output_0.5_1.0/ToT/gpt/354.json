@@ -1,0 +1,86 @@
+{
+  "filename": "354.txt",
+  "entity": {
+    "USER": 0.817574,
+    "IMAGE": 0.817574,
+    "SEND_RECORD": 0.752092,
+    "SEND_LINK": 0.753469,
+    "AUDIT_LOG": 0.686649
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.734463,
+      "name": 0.732804,
+      "email": 0.751796,
+      "phone_number": 0.736785,
+      "created_at": 0.739793
+    },
+    "IMAGE": {
+      "image_id": 0.758863,
+      "image_url": 0.762095,
+      "compressed_url": 0.766818,
+      "description": 0.762214,
+      "signature": 0.763287,
+      "compression_algorithm": 0.764709,
+      "original_file_size": 0.75828,
+      "compressed_file_size": 0.762119,
+      "uploaded_at": 0.76796
+    },
+    "SEND_RECORD": {
+      "record_id": 0.751209,
+      "user_id": 0.750275,
+      "image_id": 0.770472,
+      "send_time": 0.758793,
+      "created_at": 0.751027
+    },
+    "SEND_LINK": {
+      "link_id": 0.753789,
+      "record_id": 0.760202,
+      "link_url": 0.754988,
+      "expiration_time": 0.756141,
+      "created_at": 0.754383
+    },
+    "AUDIT_LOG": {
+      "audit_id": 0.73664,
+      "link_id": 0.747276,
+      "accessed_at": 0.736952,
+      "ip_address": 0.736359,
+      "user_agent": 0.738781
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SEND_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can generate many send records",
+      "probability": 0.983436
+    },
+    {
+      "entity_1": "IMAGE",
+      "entity_2": "SEND_RECORD",
+      "cardinality": "1:N",
+      "description": "An image can be sent many times, each represented by a send record",
+      "probability": 0.963688
+    },
+    {
+      "entity_1": "SEND_RECORD",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:1",
+      "description": "Each send record has a single download link",
+      "probability": 0.994842
+    },
+    {
+      "entity_1": "SEND_LINK",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "A download link can be accessed many times, each access recorded in the audit log",
+      "probability": 0.005572
+    }
+  ],
+  "processing_time": 23.48,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added explicit foreign‑key attributes (user_id, image_id in SEND_RECORD; record_id in SEND_LINK; link_id in AUDIT_LOG) to clarify relational mapping. Enriched IMAGE with optional compression metadata (algorithm, original/compressed file sizes). Standardized timestamps (created_at, uploaded_at, send_time, accessed_at). Introduced AUDIT_LOG entity for lightweight tracking of link accesses. Retained core entities and relationships while improving completeness, accuracy, and consistency."
+  }
+}

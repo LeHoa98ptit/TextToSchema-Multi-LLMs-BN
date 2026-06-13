@@ -1,0 +1,66 @@
+{
+  "entity": [
+    "USER",
+    "POST",
+    "FOLLOW_RELATIONSHIP",
+    "NOTIFICATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "email",
+      "password hash",
+      "verification status",
+      "account status",
+      "created at"
+    ],
+    "POST": [
+      "post id",
+      "publisher user id",
+      "content",
+      "publish time",
+      "attachment url"
+    ],
+    "FOLLOW_RELATIONSHIP": [
+      "follower user id",
+      "followee user id",
+      "follow time",
+      "primary key"
+    ],
+    "NOTIFICATION": [
+      "notification id",
+      "notification type",
+      "recipient user id",
+      "related post id",
+      "notification time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 22.4777,
+  "ilp_runtime": 0.053
+}

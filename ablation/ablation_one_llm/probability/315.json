@@ -1,0 +1,72 @@
+{
+  "filename": "315.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "BOOK": 0.817574,
+    "BORROWER": 0.789581,
+    "BORROWING_EVENT": 0.747458,
+    "RETURN_EVENT": 0.74473
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "personnel_id": 0.749313,
+      "name": 0.749039,
+      "role": 0.75375,
+      "contact_information": 0.750223
+    },
+    "BOOK": {
+      "book_id": 0.751922,
+      "title": 0.747646,
+      "author": 0.743703,
+      "publication_date": 0.749056,
+      "status": 0.757591
+    },
+    "BORROWER": {
+      "borrower_id": 0.747361,
+      "name": 0.749353,
+      "contact_information": 0.749833
+    },
+    "BORROWING_EVENT": {
+      "borrowing_id": 0.739722,
+      "borrow_date": 0.738214,
+      "return_date": 0.734986,
+      "status": 0.744931
+    },
+    "RETURN_EVENT": {
+      "return_id": 0.72469,
+      "return_date": 0.728566,
+      "book_condition": 0.742831
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROWING_EVENT",
+      "cardinality": "1:N",
+      "description": "Each personnel can manage many borrowing events, but each borrowing event is managed by one personnel.",
+      "probability": 0.958021
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROWING_EVENT",
+      "cardinality": "1:N",
+      "description": "Each book can be borrowed many times, but each borrowing event is associated with one book.",
+      "probability": 0.956743
+    },
+    {
+      "entity_1": "BORROWER",
+      "entity_2": "BORROWING_EVENT",
+      "cardinality": "1:N",
+      "description": "Each borrower can have many borrowing events, but each borrowing event is associated with one borrower.",
+      "probability": 0.9993
+    },
+    {
+      "entity_1": "BORROWING_EVENT",
+      "entity_2": "RETURN_EVENT",
+      "cardinality": "1:1",
+      "description": "Each borrowing event is associated with one return event, and each return event is associated with one borrowing event.",
+      "probability": 0.404016
+    }
+  ],
+  "processing_time": 10.48
+}

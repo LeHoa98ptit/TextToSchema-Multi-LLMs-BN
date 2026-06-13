@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "USER",
+    "EVENT",
+    "EVENT_TYPE",
+    "REGISTRATION",
+    "MESSAGE",
+    "LOCATION",
+    "PHOTO"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "username",
+      "email",
+      "password_hash",
+      "contact_number",
+      "date_joined",
+      "avatar_photo_id"
+    ],
+    "EVENT": [
+      "eventid",
+      "title",
+      "description",
+      "start_time",
+      "end_time",
+      "max_participants",
+      "status",
+      "locationid",
+      "typeid",
+      "creator_userid"
+    ],
+    "EVENT_TYPE": [
+      "typeid",
+      "name",
+      "category"
+    ],
+    "REGISTRATION": [
+      "registrationid",
+      "registered_at",
+      "status",
+      "interest_level",
+      "userid",
+      "eventid"
+    ],
+    "MESSAGE": [
+      "messageid",
+      "content",
+      "sent_at",
+      "is_system",
+      "eventid",
+      "userid",
+      "parent_message_id"
+    ],
+    "LOCATION": [
+      "locationid",
+      "venue_name",
+      "address",
+      "city",
+      "state",
+      "postal_code",
+      "latitude",
+      "longitude"
+    ],
+    "PHOTO": [
+      "photoid",
+      "url",
+      "uploaded_at",
+      "is_profile",
+      "userid"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "EVENT_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 64.4978,
+  "ilp_runtime": 0.046
+}

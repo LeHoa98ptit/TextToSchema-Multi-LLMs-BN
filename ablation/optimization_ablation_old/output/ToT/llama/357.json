@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "LOCATION",
+    "VEHICLE",
+    "VEHICLE_CATEGORY",
+    "RENTAL_PRICE",
+    "USER",
+    "RESERVATION",
+    "NEWS",
+    "PAYMENT"
+  ],
+  "attribute": {
+    "LOCATION": [
+      "address",
+      "telephone",
+      "business_hour"
+    ],
+    "VEHICLE": [
+      "license_plate_number",
+      "brand",
+      "model",
+      "photo"
+    ],
+    "VEHICLE_CATEGORY": [
+      "category",
+      "rental_price_weekday",
+      "rental_price_weekend"
+    ],
+    "RENTAL_PRICE": [
+      "rental_price_id",
+      "vehicle_license_plate_number",
+      "category",
+      "rental_price_weekday",
+      "rental_price_weekend"
+    ],
+    "USER": [
+      "user_id",
+      "email_address",
+      "telephone",
+      "postal_code",
+      "city",
+      "credit_card_information"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "reservation_date",
+      "return_date",
+      "vehicle_license_plate_number",
+      "user_id"
+    ],
+    "NEWS": [
+      "news_id",
+      "news_title",
+      "news_content",
+      "post_date"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "payment_method",
+      "payment_date",
+      "amount",
+      "reservation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "NEWS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.2767,
+  "ilp_runtime": 0.076
+}

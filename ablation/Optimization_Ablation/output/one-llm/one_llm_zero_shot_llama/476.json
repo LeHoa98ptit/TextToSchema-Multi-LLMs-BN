@@ -1,0 +1,85 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "SALE_ORDER",
+    "PRODUCTION_PLAN",
+    "RAW_MATERIAL",
+    "SUPPLIER",
+    "PRODUCT",
+    "INVENTORY",
+    "DELIVERY",
+    "FINANCIAL_RECORD"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "d",
+      "contact_number",
+      "address"
+    ],
+    "SALE_ORDER": [
+      "d",
+      "customer_d",
+      "expect_delivery_date",
+      "order_status"
+    ],
+    "PRODUCTION_PLAN": [
+      "production_sequence",
+      "quantity",
+      "production_status"
+    ],
+    "RAW_MATERIAL": [
+      "d",
+      "order_quantity",
+      "supply_quantity",
+      "order_status"
+    ],
+    "SUPPLIER": [
+      "d",
+      "raw_material_d",
+      "order_quantity"
+    ],
+    "PRODUCT": [
+      "d",
+      "quantity",
+      "status"
+    ],
+    "INVENTORY": [
+      "quantity",
+      "status"
+    ],
+    "DELIVERY": [
+      "delivery_time",
+      "location",
+      "status"
+    ],
+    "FINANCIAL_RECORD": [
+      "income",
+      "expense",
+      "transaction_type",
+      "date",
+      "status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 14.9664,
+  "ilp_runtime": 0.021
+}

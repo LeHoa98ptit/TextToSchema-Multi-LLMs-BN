@@ -1,0 +1,83 @@
+{
+  "filename": "471.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "CREDIT_CARD_APPLICATION": 0.540213,
+    "CREDIT_CARD": 0.595849,
+    "TRANSACTION": 0.622459,
+    "ACTIVATION_NOTIFICATION": 0.422163
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "address": 0.541365,
+      "contact_number": 0.538703,
+      "name": 0.539778,
+      "email": 0.538288
+    },
+    "CREDIT_CARD_APPLICATION": {
+      "application_date": 0.553197,
+      "credit_card_type": 0.564832,
+      "status": 0.572794
+    },
+    "CREDIT_CARD": {
+      "card_number": 0.562257,
+      "type": 0.564609,
+      "validity_period": 0.550039,
+      "credit_limit": 0.554566,
+      "activation_status": 0.568772,
+      "issue_date": 0.552764
+    },
+    "TRANSACTION": {
+      "transaction_date": 0.535674,
+      "transaction_description": 0.54902,
+      "transaction_status": 0.544021,
+      "amount": 0.543516
+    },
+    "ACTIVATION_NOTIFICATION": {
+      "notification_date": 0.521451,
+      "activation_code": 0.52972
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A customer can submit multiple credit card applications",
+      "probability": 0.946689
+    },
+    {
+      "entity_1": "CREDIT_CARD_APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:1",
+      "description": "A credit card application is associated with one credit card",
+      "probability": 0.999976
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A credit card can have multiple transactions",
+      "probability": 0.999154
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "ACTIVATION_NOTIFICATION",
+      "cardinality": "1:1",
+      "description": "A credit card is associated with one activation notification",
+      "probability": 0.747877
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple credit cards",
+      "probability": 0.59295
+    }
+  ],
+  "processing_time": 11.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'application_status' from CUSTOMER entity, as it is already covered by the CREDIT_CARD_APPLICATION entity. Added a new relationship between CUSTOMER and CREDIT_CARD to reflect the fact that a customer can have multiple credit cards."
+  }
+}

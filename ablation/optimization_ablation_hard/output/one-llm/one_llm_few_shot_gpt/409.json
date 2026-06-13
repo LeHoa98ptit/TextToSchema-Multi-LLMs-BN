@@ -1,0 +1,83 @@
+{
+  "entity": [
+    "USER",
+    "PRODUCT",
+    "CART",
+    "CART_ITEM",
+    "ORDER",
+    "ORDER_ITEM"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "price",
+      "inventory_quantity",
+      "description"
+    ],
+    "CART": [
+      "cart_id",
+      "user_id",
+      "creation_time"
+    ],
+    "CART_ITEM": [
+      "cart_item_id",
+      "cart_id",
+      "product_id",
+      "quantity"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "creation_time",
+      "status"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.7139,
+  "ilp_runtime": 0.058
+}

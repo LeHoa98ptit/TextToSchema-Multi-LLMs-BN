@@ -1,0 +1,93 @@
+{
+  "filename": "267.txt",
+  "entity": {
+    "HOTEL": 0.622459,
+    "ROOM": 0.622459,
+    "ROOM_TYPE": 0.533102,
+    "CUSTOMER": 0.622459,
+    "RESERVATION": 0.622459,
+    "PAYMENT": 0.491076
+  },
+  "attribute": {
+    "HOTEL": {
+      "name": 0.562833,
+      "address": 0.564058,
+      "city": 0.549509,
+      "country": 0.543538
+    },
+    "ROOM": {
+      "room_number": 0.562471,
+      "floor": 0.538997,
+      "max_occupancy": 0.543333
+    },
+    "ROOM_TYPE": {
+      "type": 0.552629,
+      "description": 0.563784,
+      "price": 0.550938
+    },
+    "CUSTOMER": {
+      "name": 0.54561,
+      "phone_number": 0.544281,
+      "email": 0.52936,
+      "address": 0.54547,
+      "loyalty_program": 0.539879,
+      "loyalty_points": 0.53626
+    },
+    "RESERVATION": {
+      "reservation_date": 0.542436,
+      "check_in_date": 0.540166,
+      "check_out_date": 0.545494,
+      "status": 0.542781,
+      "total_cost": 0.537464,
+      "reservation_id": 0.543499
+    },
+    "PAYMENT": {
+      "payment_method": 0.510826,
+      "payment_date": 0.512075,
+      "amount": 0.518489,
+      "payment_status": 0.518876
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "ROOM",
+      "cardinality": "1:N",
+      "description": "A hotel has multiple rooms",
+      "probability": 0.862835
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ROOM_TYPE",
+      "cardinality": "1:1",
+      "description": "A room has one room type",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can make multiple reservations",
+      "probability": 0.00636
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A room can have multiple reservations",
+      "probability": 0.996924
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "A reservation has one payment",
+      "probability": 0.871993
+    }
+  ],
+  "processing_time": 17.53,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added loyalty program information to the CUSTOMER entity, included a unique reservation_id in the RESERVATION entity, and added payment_status to the PAYMENT entity to better reflect the business rules of the hotel reservation system."
+  }
+}

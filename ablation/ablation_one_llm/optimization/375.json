@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "DEVICE",
+    "USER",
+    "DEVICE_FAILURE",
+    "STAFF",
+    "USER_CONNECTION",
+    "DEVICE_MAINTENANCE"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device_d",
+      "device_type",
+      "ip_address",
+      "installation_location",
+      "installation_time",
+      "device_status"
+    ],
+    "USER": [
+      "user_d",
+      "user_account",
+      "user_password"
+    ],
+    "DEVICE_FAILURE": [
+      "device_d",
+      "failure_occurrence_time",
+      "failure_type",
+      "failure_description",
+      "handle_status",
+      "remark"
+    ],
+    "STAFF": [
+      "staff_d",
+      "contact_information"
+    ],
+    "USER_CONNECTION": [
+      "user_d",
+      "device_d",
+      "connection_time",
+      "disconnection_time",
+      "bandwidth",
+      "user_ip"
+    ],
+    "DEVICE_MAINTENANCE": [
+      "device_d",
+      "staff_d",
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_result",
+      "remark"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "DEVICE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 45.5797,
+  "ilp_runtime": 0.071
+}

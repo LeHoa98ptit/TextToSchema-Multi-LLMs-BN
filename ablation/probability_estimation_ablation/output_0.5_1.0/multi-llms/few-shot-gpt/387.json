@@ -1,0 +1,90 @@
+{
+  "filename": "387.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "AIRLINE": 0.817574,
+    "FLIGHT": 0.817574,
+    "RESERVATION": 0.817574,
+    "TICKET": 0.724561,
+    "PAYMENT": 0.817574
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.757759,
+      "contact information": 0.768447,
+      "credit card number": 0.757588
+    },
+    "AIRLINE": {
+      "airline id": 0.768103,
+      "contact information": 0.780084
+    },
+    "FLIGHT": {
+      "flight number": 0.768534,
+      "destination": 0.762798,
+      "departure time": 0.762979,
+      "arrival time": 0.764695,
+      "airline id": 0.767478
+    },
+    "RESERVATION": {
+      "reservation number": 0.762531,
+      "reservation date": 0.759583,
+      "reservation time": 0.761447,
+      "ticket quantity": 0.770421,
+      "customer id": 0.76888,
+      "flight number": 0.772676
+    },
+    "TICKET": {
+      "ticket id": 0.753261,
+      "reservation number": 0.764291
+    },
+    "PAYMENT": {
+      "payment id": 0.752371,
+      "reservation number": 0.766683,
+      "payment date": 0.751631,
+      "payment method": 0.755803
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "description": "An airline operates multiple flights; each flight is operated by one airline.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "description": "A flight can have many reservations; each reservation is for one flight.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.966356
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "description": "A customer can make multiple reservations; each reservation belongs to one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006336
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "description": "A reservation includes one or more tickets; each ticket belongs to one reservation.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993958
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "PAYMENT",
+      "description": "Each reservation has exactly one associated payment; each payment corresponds to one reservation.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.984126
+    }
+  ],
+  "processing_time": 17.48
+}

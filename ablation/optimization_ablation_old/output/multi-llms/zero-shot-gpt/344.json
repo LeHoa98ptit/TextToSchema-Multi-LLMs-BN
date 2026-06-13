@@ -1,0 +1,124 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "APPLICATION",
+    "WEB_SERVICE",
+    "ERROR",
+    "MONITOR_DATUM",
+    "INVOCATION",
+    "USER_ROLE",
+    "PERMISSION_APPLICATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "email",
+      "role ids"
+    ],
+    "ROLE": [
+      "role id",
+      "role name",
+      "permission ids"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "permission name"
+    ],
+    "APPLICATION": [
+      "application id",
+      "application code",
+      "application type",
+      "description",
+      "creation date"
+    ],
+    "WEB_SERVICE": [
+      "web service id",
+      "service code",
+      "description"
+    ],
+    "ERROR": [
+      "error id",
+      "error code",
+      "description",
+      "error timestamp",
+      "return status"
+    ],
+    "MONITOR_DATUM": [
+      "monitor datum id",
+      "invocation time",
+      "return status",
+      "delay time",
+      "performance metric",
+      "success rate",
+      "invocation count",
+      "period start",
+      "period end",
+      "user id",
+      "application id",
+      "web service id",
+      "error id"
+    ],
+    "INVOCATION": [
+      "invocation id",
+      "web service id",
+      "user id",
+      "invocation timestamp",
+      "return status",
+      "delay time",
+      "performance metric"
+    ],
+    "USER_ROLE": [
+      "user_role_id",
+      "user_id",
+      "role_id",
+      "ID_USER_ROLE",
+      "ID_USER",
+      "ID_ROLE"
+    ],
+    "PERMISSION_APPLICATION": [
+      "permission_application_id",
+      "permission_id",
+      "application_id",
+      "ID_PERMISSION_APPLICATION",
+      "ID_PERMISSION",
+      "ID_APPLICATION"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "PERMISSION_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEB_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 91.5057,
+  "ilp_runtime": 0.03
+}

@@ -1,0 +1,151 @@
+{
+  "filename": "439.txt",
+  "entity": {
+    "USER": 0.817574,
+    "MERCHANT": 0.817574,
+    "ADMINISTRATOR": 0.720391,
+    "ACCOUNT": 0.751084,
+    "RECYCLING_REQUEST": 0.711237,
+    "ORDER": 0.817574,
+    "PAYMENT": 0.817574,
+    "RATING": 0.817574,
+    "WASTE_ITEM": 0.763957
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.75276,
+      "mobile phone": 0.756191,
+      "wechat id": 0.751283
+    },
+    "MERCHANT": {
+      "merchant id": 0.766806
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.748367
+    },
+    "ACCOUNT": {
+      "account id": 0.754312,
+      "user id": 0.75531,
+      "password hash": 0.752237
+    },
+    "RECYCLING_REQUEST": {
+      "request id": 0.767415,
+      "user id": 0.771216,
+      "request timestamp": 0.761641,
+      "location": 0.770039
+    },
+    "WASTE_ITEM": {
+      "waste item id": 0.776742,
+      "request id": 0.773367,
+      "item type": 0.778706,
+      "quantity": 0.779904
+    },
+    "ORDER": {
+      "order id": 0.750484,
+      "request id": 0.755371,
+      "merchant id": 0.764732,
+      "status": 0.759851,
+      "created at": 0.752792,
+      "fulfilled at": 0.755732
+    },
+    "PAYMENT": {
+      "payment id": 0.757031,
+      "order id": 0.758232,
+      "amount": 0.754838,
+      "payment method": 0.763815,
+      "payment status": 0.760315,
+      "payment date": 0.749462
+    },
+    "RATING": {
+      "rating id": 0.740593,
+      "order id": 0.747304,
+      "user id": 0.749603,
+      "rating score": 0.736174,
+      "comment": 0.74318,
+      "rating timestamp": 0.738333
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "description": "Each user registers a single account for login.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "description": "A user can post many recycling requests.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.985246
+    },
+    {
+      "entity_1": "RECYCLING_REQUEST",
+      "entity_2": "WASTE_ITEM",
+      "description": "Each recycling request can contain multiple waste items.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.154005
+    },
+    {
+      "entity_1": "RECYCLING_REQUEST",
+      "entity_2": "ORDER",
+      "description": "A recycling request is fulfilled by a single order.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.000268
+    },
+    {
+      "entity_1": "MERCHANT",
+      "entity_2": "ORDER",
+      "description": "A merchant can accept and fulfill many orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.017368
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "description": "Each order has one associated payment record.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.878515
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RATING",
+      "description": "A user can give ratings for many orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994556
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "description": "Each order can receive at most one rating.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.482717
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "USER",
+      "description": "An administrator can access information of many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.193648
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MERCHANT",
+      "description": "An administrator can access information of many merchants.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000917
+    }
+  ],
+  "processing_time": 30.13
+}

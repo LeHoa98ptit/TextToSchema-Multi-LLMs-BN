@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "PRODUCT",
+    "ORDER",
+    "ORDER_ITEM",
+    "PICKING_LIST",
+    "PICKING_LIST_ITEM",
+    "DELIVERY_ORDER",
+    "INVOICE",
+    "RECEIVABLE_REPORT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "phone",
+      "email",
+      "address"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "description",
+      "price",
+      "inventory_quantity"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_date",
+      "status",
+      "total_amount"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "PICKING_LIST": [
+      "picking_list_id",
+      "generated_date"
+    ],
+    "PICKING_LIST_ITEM": [
+      "picking_list_item_id",
+      "pick_quantity",
+      "pick_status"
+    ],
+    "DELIVERY_ORDER": [
+      "delivery_id",
+      "delivery_time",
+      "delivery_status"
+    ],
+    "INVOICE": [
+      "invoice_id",
+      "invoice_date",
+      "total_amount"
+    ],
+    "RECEIVABLE_REPORT": [
+      "report_id",
+      "report_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PICKING_LIST",
+      "entity_2": "PICKING_LIST_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.3172,
+  "ilp_runtime": 0.069
+}

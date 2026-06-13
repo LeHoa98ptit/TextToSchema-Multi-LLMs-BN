@@ -1,0 +1,128 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "DEPARTMENT",
+    "ROLE",
+    "PERMISSION",
+    "EQUIPMENT_STATUS_LOG",
+    "EQUIPMENT_BORROWING",
+    "ACCOUNT_ACTIVITY_LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password hash",
+      "mobile number",
+      "role id"
+    ],
+    "EQUIPMENT": [
+      "equipment id",
+      "equipment code",
+      "model",
+      "status",
+      "calibration date",
+      "calibration validity",
+      "calibration result",
+      "location",
+      "department id",
+      "person in charge id",
+      "remark"
+    ],
+    "DEPARTMENT": [
+      "department id",
+      "department name"
+    ],
+    "ROLE": [
+      "role id",
+      "role name",
+      "description"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "permission name",
+      "description"
+    ],
+    "EQUIPMENT_STATUS_LOG": [
+      "status log id",
+      "equipment id",
+      "status",
+      "log timestamp",
+      "photo url",
+      "remark"
+    ],
+    "EQUIPMENT_BORROWING": [
+      "borrowing id",
+      "equipment id",
+      "borrower id",
+      "borrowing time",
+      "borrow equipment photos",
+      "iou photos",
+      "recipient id",
+      "receive area",
+      "receive time",
+      "receive equipment photos",
+      "returner id",
+      "return time",
+      "return equipment photos",
+      "monitoring data",
+      "remark"
+    ],
+    "ACCOUNT_ACTIVITY_LOG": [
+      "activity log id",
+      "equipment id",
+      "borrowing account id",
+      "receive account id",
+      "return account id",
+      "activity timestamp",
+      "remark"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_STATUS_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_BORROWING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_BORROWING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 61.2141,
+  "ilp_runtime": 0.03
+}

@@ -1,0 +1,70 @@
+{
+  "entity": [
+    "USER",
+    "ACCOUNT",
+    "CURRENCY",
+    "TRANSACTION",
+    "TRANSACTION_STATUS"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "name",
+      "email",
+      "phone"
+    ],
+    "ACCOUNT": [
+      "account_id",
+      "account_number",
+      "balance",
+      "frozen_amount",
+      "created_at"
+    ],
+    "CURRENCY": [
+      "currency_code",
+      "currency_name",
+      "symbol"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "amount",
+      "transaction_type",
+      "created_at",
+      "description"
+    ],
+    "TRANSACTION_STATUS": [
+      "status_id",
+      "status",
+      "error_info",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CURRENCY",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_STATUS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.5804,
+  "ilp_runtime": 0.07
+}

@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "PROBE",
+    "CELESTIAL_BODY",
+    "INSTRUMENT",
+    "OBSERVATION",
+    "MISSION",
+    "ASSOC_PROBE_INSTRUMENT",
+    "ASSOC_PROBE_CELESTIAL_BODY",
+    "ASSOC_MISSION_CELESTIAL_BODY"
+  ],
+  "attribute": {
+    "PROBE": [
+      "probe_id",
+      "weight",
+      "launch_date",
+      "service_life",
+      "operational_status",
+      "remaining_fuel"
+    ],
+    "CELESTIAL_BODY": [
+      "body_id",
+      "name",
+      "type",
+      "orbital_parameters",
+      "physical_characteristics"
+    ],
+    "INSTRUMENT": [
+      "instrument_id",
+      "weight",
+      "power_consumption",
+      "accuracy"
+    ],
+    "OBSERVATION": [
+      "observation_id",
+      "observation_time",
+      "observation_result",
+      "observation_accuracy",
+      "research_value"
+    ],
+    "MISSION": [
+      "mission_id",
+      "priority",
+      "resource_allocation",
+      "execution_status",
+      "datum_acquisition_status",
+      "flight_trajectory"
+    ],
+    "ASSOC_PROBE_INSTRUMENT": [
+      "assoc_probe_instrument_id",
+      "probe_id",
+      "instrument_id"
+    ],
+    "ASSOC_PROBE_CELESTIAL_BODY": [
+      "assoc_probe_celestial_body_id",
+      "probe_id",
+      "celestial_body_id"
+    ],
+    "ASSOC_MISSION_CELESTIAL_BODY": [
+      "assoc_mission_celestial_body_id",
+      "mission_id",
+      "celestial_body_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "ASSOC_PROBE_INSTRUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSTRUMENT",
+      "entity_2": "ASSOC_PROBE_INSTRUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "OBSERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "ASSOC_MISSION_CELESTIAL_BODY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "ASSOC_MISSION_CELESTIAL_BODY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.8207,
+  "ilp_runtime": 0.044
+}

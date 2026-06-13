@@ -1,0 +1,99 @@
+{
+  "filename": "492.txt",
+  "entity": {
+    "DEPARTMENT": 0.817574,
+    "POSITION": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "MANAGEMENT_RELATIONSHIP": 0.758102,
+    "SALARY_REPORT": 0.759127,
+    "HIERARCHY_CHART": 0.681809
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "name": 0.761683,
+      "description": 0.763492
+    },
+    "POSITION": {
+      "title": 0.758098,
+      "salary": 0.762317
+    },
+    "EMPLOYEE": {
+      "name": 0.769998,
+      "email": 0.760831,
+      "phone_number": 0.758683,
+      "superior_id": 0.773472
+    },
+    "MANAGEMENT_RELATIONSHIP": {
+      "relationship_type": 0.762183,
+      "start_date": 0.755265,
+      "end_date": 0.759918
+    },
+    "SALARY_REPORT": {
+      "report_date": 0.772775,
+      "total_salary": 0.775179,
+      "department_id": 0.777462,
+      "position_id": 0.777619
+    },
+    "HIERARCHY_CHART": {
+      "chart_date": 0.751472,
+      "employee_id": 0.778296,
+      "level": 0.75736
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "POSITION",
+      "cardinality": "1:N",
+      "description": "A department can have multiple positions",
+      "probability": 0.980465
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A position can be held by multiple employees",
+      "probability": 0.977955
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "An employee can have multiple subordinates",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "MANAGEMENT_RELATIONSHIP",
+      "cardinality": "1:N",
+      "description": "An employee can have multiple management relationships",
+      "probability": 0.970462
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "SALARY_REPORT",
+      "cardinality": "1:N",
+      "description": "A department can have multiple salary reports",
+      "probability": 0.001176
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "SALARY_REPORT",
+      "cardinality": "1:N",
+      "description": "A position can have multiple salary reports",
+      "probability": 0.008833
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "HIERARCHY_CHART",
+      "cardinality": "1:N",
+      "description": "An employee can be part of multiple hierarchy charts",
+      "probability": 0.007662
+    }
+  ],
+  "processing_time": 9.12,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added entities for salary reports and hierarchy charts, refined relationships between entities, and added attributes to support the main functions of the system"
+  }
+}

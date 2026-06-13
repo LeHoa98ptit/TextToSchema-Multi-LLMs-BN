@@ -1,0 +1,128 @@
+{
+  "filename": "284.txt",
+  "entity": {
+    "CLIENT": 0.817574,
+    "CONTACT": 0.719826,
+    "ADVERTISEMENT": 0.817574,
+    "AD_CONTENT": 0.742671,
+    "BROADCAST": 0.817574,
+    "TIMESLOT": 0.744064,
+    "SCHEDULE": 0.723202,
+    "PAYMENT": 0.701573
+  },
+  "attribute": {
+    "CLIENT": {
+      "client_id": 0.743462,
+      "name": 0.750116,
+      "tax_id": 0.735387,
+      "primary_contact_name": 0.747264,
+      "primary_contact_phone": 0.751761,
+      "primary_contact_email": 0.742414
+    },
+    "CONTACT": {
+      "contact_id": 0.743432,
+      "client_id": 0.747444,
+      "name": 0.749569,
+      "phone": 0.748372,
+      "email": 0.742297,
+      "role": 0.748475
+    },
+    "ADVERTISEMENT": {
+      "ad_id": 0.764418,
+      "client_id": 0.767788,
+      "title": 0.767844,
+      "total_duration": 0.770254,
+      "total_cost": 0.761421,
+      "status": 0.77193
+    },
+    "AD_CONTENT": {
+      "content_id": 0.756716,
+      "ad_id": 0.75872,
+      "media_type": 0.760784,
+      "file_path": 0.746205,
+      "length_seconds": 0.761355
+    },
+    "BROADCAST": {
+      "broadcast_id": 0.770738,
+      "broadcast_date": 0.772224,
+      "program_name": 0.767225
+    },
+    "TIMESLOT": {
+      "slot_id": 0.756551,
+      "broadcast_id": 0.769148,
+      "start_time": 0.747488,
+      "end_time": 0.747324,
+      "status": 0.752326
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.746634,
+      "ad_id": 0.759562,
+      "slot_id": 0.755918,
+      "air_date": 0.747857,
+      "order_in_slot": 0.753527
+    },
+    "PAYMENT": {
+      "payment_id": 0.731857,
+      "ad_id": 0.745194,
+      "amount": 0.738402,
+      "payment_date": 0.732764,
+      "method": 0.74229
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "A client may have multiple contact persons; CONTACT is optional if primary contact data is stored in CLIENT",
+      "probability": 0.001345
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ADVERTISEMENT",
+      "cardinality": "1:N",
+      "description": "A client can create many advertisements",
+      "probability": 0.99667
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "AD_CONTENT",
+      "cardinality": "1:1",
+      "description": "Each advertisement has exactly one primary content record (enforced by a UNIQUE constraint on AD_CONTENT.ad_id)",
+      "probability": 0.999521
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "An advertisement can have many scheduled airings",
+      "probability": 0.33622
+    },
+    {
+      "entity_1": "TIMESLOT",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "A time slot can host many scheduled advertisements",
+      "probability": 0.142653
+    },
+    {
+      "entity_1": "BROADCAST",
+      "entity_2": "TIMESLOT",
+      "cardinality": "1:N",
+      "description": "A broadcast program contains multiple time slots",
+      "probability": 0.160716
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "An advertisement may involve multiple payment installments (optional feature)",
+      "probability": 0.676829
+    }
+  ],
+  "processing_time": 25.24,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added optional primary contact fields directly to CLIENT to reduce joins when only one contact exists. Introduced a STATUS attribute on TIMESLOT to indicate availability/reservation. Clarified the 1:1 relationship between ADVERTISEMENT and AD_CONTENT with a UNIQUE constraint on AD_CONTENT.ad_id. Retained CONTACT entity for cases with multiple contacts. Kept PAYMENT entity as an optional component for financial tracking, preserving model completeness while allowing future simplification."
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "entity": [
+    "USER",
+    "PHONE",
+    "PRODUCT",
+    "CATEGORY",
+    "ORDER",
+    "ORDER_ITEM",
+    "CART",
+    "CART_ITEM",
+    "PAYMENT",
+    "ADDRESS"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "username",
+      "password",
+      "email",
+      "registration_time",
+      "last_login"
+    ],
+    "PHONE": [
+      "phone_id",
+      "user_id",
+      "phone_number",
+      "type"
+    ],
+    "PRODUCT": [
+      "productid",
+      "name",
+      "description",
+      "price",
+      "stock_quantity",
+      "brand",
+      "weight",
+      "dimensions",
+      "category_id"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "parent_category_id"
+    ],
+    "ORDER": [
+      "orderid",
+      "user_id",
+      "order_time",
+      "total_price",
+      "status",
+      "payment_id",
+      "shipping_address_id"
+    ],
+    "ORDER_ITEM": [
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "CART": [
+      "cart_id",
+      "user_id",
+      "created_at",
+      "updated_at",
+      "status"
+    ],
+    "CART_ITEM": [
+      "cart_id",
+      "product_id",
+      "quantity",
+      "added_at"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "method",
+      "amount",
+      "payment_time",
+      "status"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "user_id",
+      "line1",
+      "line2",
+      "city",
+      "state",
+      "zip",
+      "country",
+      "type"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PHONE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 67.8948,
+  "ilp_runtime": 0.046
+}

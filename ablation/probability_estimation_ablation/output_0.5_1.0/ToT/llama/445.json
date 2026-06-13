@@ -1,0 +1,129 @@
+{
+  "filename": "445.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "UNIT": 0.817574,
+    "ADMINISTRATOR": 0.742671,
+    "VISITOR": 0.817574,
+    "APPOINTMENT": 0.817574,
+    "ACCESS_CONTROL_DEVICE": 0.75211,
+    "HEALTH_INFORMATION": 0.751401,
+    "TRAVEL_TRAJECTORY": 0.683196,
+    "ASSOC_PERSONNEL_UNIT": 0.996385
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "d": 0.76769,
+      "type": 0.7691,
+      "phone_number": 0.763286,
+      "email": 0.759834
+    },
+    "UNIT": {
+      "d": 0.757818,
+      "type": 0.758529,
+      "description": 0.758177
+    },
+    "ADMINISTRATOR": {
+      "d": 0.762856,
+      "role": 0.758515,
+      "management_role": 0.761808
+    },
+    "VISITOR": {
+      "d": 0.759218,
+      "phone_number": 0.75249,
+      "email": 0.750028,
+      "visit_purpose": 0.752272
+    },
+    "APPOINTMENT": {
+      "d": 0.759867,
+      "schedule_entry_time": 0.749383,
+      "schedule_exit_time": 0.744378,
+      "status": 0.759326,
+      "review_status": 0.75572
+    },
+    "ACCESS_CONTROL_DEVICE": {
+      "d": 0.770969,
+      "location": 0.759219,
+      "status": 0.767374,
+      "device_type": 0.758167
+    },
+    "HEALTH_INFORMATION": {
+      "temperature": 0.757023,
+      "symptom": 0.758825,
+      "health_code_color": 0.75911,
+      "track_time": 0.759101,
+      "vaccination_status": 0.758956,
+      "medical_history": 0.760814
+    },
+    "TRAVEL_TRAJECTORY": {
+      "travel_time": 0.736366,
+      "location": 0.730764,
+      "personnel_d": 0.756839,
+      "mode_of_transportation": 0.73611,
+      "destination": 0.735133
+    },
+    "ASSOC_PERSONNEL_UNIT": {
+      "assoc_personnel_unit_id": 0.996385,
+      "personnel_id": 0.996385,
+      "unit_id": 0.996385
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_UNIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996385
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "ASSOC_PERSONNEL_UNIT",
+      "description": "One UNIT can be associated with many ASSOC_PERSONNEL_UNIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996385
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A visitor can have multiple appointments",
+      "probability": 0.874635
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "Personnel can have multiple appointments",
+      "probability": 0.997743
+    },
+    {
+      "entity_1": "ACCESS_CONTROL_DEVICE",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "description": "An access control device can record access for multiple personnel",
+      "probability": 0.002477
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_INFORMATION",
+      "cardinality": "1:N",
+      "description": "Personnel can have multiple health information records",
+      "probability": 0.001971
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "TRAVEL_TRAJECTORY",
+      "cardinality": "1:N",
+      "description": "Personnel can have multiple travel trajectory records",
+      "probability": 0.755501
+    }
+  ],
+  "processing_time": 1016.36,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added vaccination status and medical history to HEALTH_INFORMATION entity, and mode of transportation and destination to TRAVEL_TRAJECTORY entity. Removed redundant attributes from PERSONNEL entity."
+  }
+}

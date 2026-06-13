@@ -1,0 +1,91 @@
+{
+  "filename": "414.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "SALE_POINT": 0.598519,
+    "DEVICE": 0.622459,
+    "CITY": 0.622459,
+    "VENUE": 0.622459,
+    "SALE_PLAN": 0.602981
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_name": 0.524904,
+      "company_address": 0.526422,
+      "company_description": 0.532793
+    },
+    "SALE_POINT": {
+      "sale_point_id": 0.562367,
+      "address": 0.568769,
+      "sale_point_description": 0.574207
+    },
+    "DEVICE": {
+      "device_id": 0.517807,
+      "device_model": 0.530045
+    },
+    "CITY": {
+      "city_name": 0.5334,
+      "province": 0.518941
+    },
+    "VENUE": {
+      "venue_name": 0.553224,
+      "venue_description": 0.561043,
+      "venue_capacity": 0.55451
+    },
+    "SALE_PLAN": {
+      "sale_plan_id": 0.547345,
+      "sale_plan_description": 0.557871,
+      "start_date": 0.546805,
+      "end_date": 0.545043
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SALE_POINT",
+      "cardinality": "1:N",
+      "description": "A company can have multiple sale points",
+      "probability": 0.947207
+    },
+    {
+      "entity_1": "SALE_POINT",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "description": "A sale point can have multiple devices",
+      "probability": 0.08229
+    },
+    {
+      "entity_1": "SALE_POINT",
+      "entity_2": "CITY",
+      "cardinality": "1:1",
+      "description": "A sale point is located in one city",
+      "probability": 0.990786
+    },
+    {
+      "entity_1": "SALE_POINT",
+      "entity_2": "VENUE",
+      "cardinality": "1:1",
+      "description": "A sale point is associated with one venue",
+      "probability": 0.834343
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SALE_PLAN",
+      "cardinality": "1:N",
+      "description": "A company can have multiple sale plans",
+      "probability": 0.817788
+    },
+    {
+      "entity_1": "SALE_PLAN",
+      "entity_2": "SALE_POINT",
+      "cardinality": "1:N",
+      "description": "A sale plan can be associated with multiple sale points",
+      "probability": 0.998629
+    }
+  ],
+  "processing_time": 15.33,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes city_population and device_serial_number to improve efficiency and consistency."
+  }
+}

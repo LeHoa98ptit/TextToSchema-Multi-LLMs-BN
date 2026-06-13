@@ -1,0 +1,107 @@
+{
+  "filename": "494.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ARTICLE": 0.817574,
+    "CATEGORY": 0.817574,
+    "COMMENT": 0.817574,
+    "ASSOC_ARTICLE_CATEGORY": 0.997644
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.744882,
+      "password": 0.754941,
+      "nickname": 0.751349,
+      "gender": 0.76639,
+      "creation_time": 0.755922,
+      "biography": 0.768572
+    },
+    "ARTICLE": {
+      "title": 0.758205,
+      "author": 0.753038,
+      "cover_image": 0.74788,
+      "link": 0.752486,
+      "summary": 0.762116,
+      "permission": 0.769132,
+      "status": 0.761603,
+      "content": 0.772346,
+      "like_number": 0.75757,
+      "dislike_number": 0.749472,
+      "read_number": 0.754552,
+      "creation_time": 0.757866
+    },
+    "CATEGORY": {
+      "parent_category": 0.747394,
+      "level": 0.763703,
+      "description": 0.770015,
+      "icon": 0.749489,
+      "link": 0.753207
+    },
+    "COMMENT": {
+      "reply_comment": 0.751083,
+      "article": 0.758657,
+      "user": 0.758444,
+      "content": 0.771821,
+      "creation_time": 0.753034
+    },
+    "ASSOC_ARTICLE_CATEGORY": {
+      "assoc_article_category_id": 0.997644,
+      "article_id": 0.997644,
+      "category_id": 0.997644
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "One user can have many comments.",
+      "probability": 0.960994
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "One article can have many comments.",
+      "probability": 0.00341
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "One comment can have many reply comments.",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ASSOC_ARTICLE_CATEGORY",
+      "description": "One ARTICLE can be associated with many ASSOC_ARTICLE_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997644
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_ARTICLE_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_ARTICLE_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997644
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "One category can have many sub-categories.",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ARTICLE",
+      "cardinality": "1:N",
+      "description": "One user can author many articles.",
+      "probability": 0.512413
+    }
+  ],
+  "processing_time": 21.59
+}

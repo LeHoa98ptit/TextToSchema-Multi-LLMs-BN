@@ -1,0 +1,100 @@
+{
+  "filename": "489.txt",
+  "entity": {
+    "APPLICATION": 0.817574,
+    "CHANNEL": 0.817574,
+    "CLIENT": 0.817574,
+    "EVENT": 0.817574,
+    "SUBSCRIPTION": 0.727485,
+    "ASSOC_CHANNEL_CLIENT": 0.4081
+  },
+  "attribute": {
+    "APPLICATION": {
+      "appid": 0.751577,
+      "name": 0.756283,
+      "description": 0.771291
+    },
+    "CHANNEL": {
+      "channelid": 0.761326,
+      "status": 0.767157,
+      "type": 0.760086,
+      "creationdate": 0.758248
+    },
+    "CLIENT": {
+      "duser": 0.755395,
+      "username": 0.747007,
+      "email": 0.756144,
+      "password": 0.743717
+    },
+    "EVENT": {
+      "eventid": 0.750648,
+      "timestamp": 0.750558,
+      "type": 0.757416,
+      "payload": 0.762642,
+      "severity": 0.752427,
+      "category": 0.752318
+    },
+    "SUBSCRIPTION": {
+      "subscriptionid": 0.757584,
+      "clientid": 0.758293,
+      "channelid": 0.765921,
+      "subscriptiondate": 0.75466
+    },
+    "ASSOC_CHANNEL_CLIENT": {
+      "assoc_channel_client_id": 0.4081,
+      "channel_id": 0.4081,
+      "client_id": 0.4081
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CHANNEL",
+      "cardinality": "1:N",
+      "description": "An application can have multiple channels",
+      "probability": 0.837843
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "ASSOC_CHANNEL_CLIENT",
+      "description": "One CHANNEL can be associated with many ASSOC_CHANNEL_CLIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.4081
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_CHANNEL_CLIENT",
+      "description": "One CLIENT can be associated with many ASSOC_CHANNEL_CLIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.4081
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "A channel can have multiple events",
+      "probability": 0.485598
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A client can have multiple subscriptions",
+      "probability": 0.997648
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A channel can have multiple subscriptions",
+      "probability": 0.571536
+    }
+  ],
+  "processing_time": 9.36,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added event severity and event category attributes to the EVENT entity to enhance model completeness"
+  }
+}

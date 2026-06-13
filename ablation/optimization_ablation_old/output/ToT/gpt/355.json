@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "RACE",
+    "TRACK",
+    "HORSE",
+    "JOCKEY",
+    "RACE_HORSE",
+    "RESULT",
+    "BETTOR",
+    "BET",
+    "BET_DETAIL",
+    "PAYMENT",
+    "STATISTICS"
+  ],
+  "attribute": {
+    "RACE": [
+      "race_id",
+      "race_name",
+      "start_time",
+      "end_time",
+      "race_date",
+      "track_id"
+    ],
+    "TRACK": [
+      "track_id",
+      "track_name",
+      "location",
+      "surface_type"
+    ],
+    "HORSE": [
+      "horse_id",
+      "horse_name",
+      "birth_date",
+      "gender",
+      "trainer",
+      "owner"
+    ],
+    "JOCKEY": [
+      "jockey_id",
+      "jockey_name",
+      "license_number",
+      "experience_years"
+    ],
+    "RACE_HORSE": [
+      "race_horse_id",
+      "race_id",
+      "horse_id",
+      "jockey_id",
+      "post_position"
+    ],
+    "RESULT": [
+      "result_id",
+      "race_id",
+      "horse_id",
+      "final_rank",
+      "finish_time",
+      "prize_money"
+    ],
+    "BETTOR": [
+      "bettor_id",
+      "full_name",
+      "phone",
+      "email",
+      "address"
+    ],
+    "BET": [
+      "bet_id",
+      "bettor_id",
+      "race_id",
+      "bet_time",
+      "total_amount"
+    ],
+    "BET_DETAIL": [
+      "bet_detail_id",
+      "bet_id",
+      "race_horse_id",
+      "selected_rank",
+      "stake_amount"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "bet_id",
+      "payment_date",
+      "amount",
+      "payment_method"
+    ],
+    "STATISTICS": [
+      "stat_id",
+      "race_id",
+      "horse_id",
+      "win_rate",
+      "average_finish_position"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RACE",
+      "entity_2": "RACE_HORSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "RACE_HORSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BET",
+      "entity_2": "BET_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.1002,
+  "ilp_runtime": 0.034
+}

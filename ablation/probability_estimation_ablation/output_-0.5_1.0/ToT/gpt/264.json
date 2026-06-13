@@ -1,0 +1,162 @@
+{
+  "filename": "264.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "POSITION": 0.47517,
+    "ROOM": 0.622459,
+    "ROOM_TYPE": 0.533102,
+    "STATUS": 0.481009,
+    "CUSTOMER": 0.622459,
+    "RESERVATION": 0.622459,
+    "RESERVATION_ROOM": 0.566381,
+    "ARRANGEMENT": 0.5071
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "dept_id": 0.519432,
+      "dept_name": 0.518648,
+      "manager_emp_id": 0.52965
+    },
+    "EMPLOYEE": {
+      "emp_id": 0.533665,
+      "emp_name": 0.532814,
+      "position_id": 0.539646,
+      "phone": 0.53295,
+      "salary": 0.520089,
+      "dept_id": 0.534926
+    },
+    "POSITION": {
+      "position_id": 0.51672,
+      "position_name": 0.519672
+    },
+    "ROOM": {
+      "room_number": 0.546784,
+      "room_type_id": 0.54224,
+      "charge": 0.538184,
+      "status_code": 0.545366
+    },
+    "ROOM_TYPE": {
+      "room_type_id": 0.545089,
+      "type_name": 0.543513,
+      "standard_charge": 0.539034
+    },
+    "STATUS": {
+      "status_code": 0.513511,
+      "description": 0.519632
+    },
+    "CUSTOMER": {
+      "cust_id": 0.531695,
+      "unit": 0.537201,
+      "contact_person": 0.527066,
+      "contact_number": 0.52688,
+      "contact_address": 0.516563
+    },
+    "RESERVATION": {
+      "reservation_id": 0.528996,
+      "cust_id": 0.531734,
+      "reservation_date": 0.520398,
+      "check_in_date": 0.524751,
+      "check_out_date": 0.526868,
+      "total_rooms": 0.552654
+    },
+    "RESERVATION_ROOM": {
+      "reservation_id": 0.544342,
+      "room_type_id": 0.551021,
+      "quantity": 0.554778,
+      "price_at_reservation": 0.535754
+    },
+    "ARRANGEMENT": {
+      "arrangement_id": 0.544111,
+      "reservation_id": 0.54533,
+      "room_number": 0.557623,
+      "salesperson_emp_id": 0.546709,
+      "gender": 0.543514,
+      "telephone": 0.539446
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees",
+      "probability": 0.999868
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each department designates one manager (employee) via manager_emp_id (unique foreign key)",
+      "probability": 0.999868
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "Each employee holds one position",
+      "probability": 0.955532
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ROOM_TYPE",
+      "cardinality": "N:1",
+      "description": "Each room belongs to a room type",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "description": "Each room has a status (e.g., occupied, clean, maintenance)",
+      "probability": 0.298559
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer can submit many reservation applications",
+      "probability": 0.001092
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_ROOM",
+      "cardinality": "1:N",
+      "description": "A reservation may request multiple room types with quantities",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "RESERVATION_ROOM",
+      "entity_2": "ROOM_TYPE",
+      "cardinality": "N:1",
+      "description": "Links each reservation line to a specific room type",
+      "probability": 0.999783
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "description": "One reservation can lead to many concrete room arrangements",
+      "probability": 0.736781
+    },
+    {
+      "entity_1": "ARRANGEMENT",
+      "entity_2": "ROOM",
+      "cardinality": "N:1",
+      "description": "Each arrangement assigns a specific room",
+      "probability": 0.991303
+    },
+    {
+      "entity_1": "ARRANGEMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "description": "A salesperson (employee) is responsible for the arrangement",
+      "probability": 0.020146
+    }
+  ],
+  "processing_time": 41.12,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added composite primary key (reservation_id, room_type_id) for RESERVATION_ROOM and introduced price_at_reservation to capture the charge at booking time. Created STATUS entity for extensible room status management and linked it to ROOM. Declared manager_emp_id in DEPARTMENT as a unique foreign key to enforce the 1:1 manager relationship. Documented all foreign‑key relationships implicitly via attribute naming. Added explicit STATUS relationship. The model retains normalization, supports multiple room types per reservation, and improves referential integrity and extensibility."
+  }
+}

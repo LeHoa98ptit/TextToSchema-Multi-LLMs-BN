@@ -1,0 +1,95 @@
+{
+  "filename": "434.txt",
+  "entity": {
+    "USER": 0.622459,
+    "MAZE": 0.622459,
+    "MAP": 0.622459,
+    "SKYBOX": 0.622459,
+    "GAME": 0.622459,
+    "GAME_HISTORY": 0.510448
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.510109,
+      "password": 0.524535,
+      "email": 0.520495,
+      "registration_date": 0.523317
+    },
+    "MAZE": {
+      "description": 0.567227,
+      "creation_date": 0.566746,
+      "modify_date": 0.555615,
+      "maze_id": 0.558055
+    },
+    "MAP": {
+      "map_datum": 0.52335,
+      "creation_date": 0.535245,
+      "modify_date": 0.524033,
+      "map_id": 0.521832,
+      "maze_id": 0.562343
+    },
+    "SKYBOX": {
+      "file_path": 0.538303,
+      "description": 0.552935,
+      "creation_date": 0.545416,
+      "modify_date": 0.536173,
+      "skybox_id": 0.539646
+    },
+    "GAME": {
+      "user_score": 0.534944,
+      "game_start_time": 0.534762,
+      "game_end_time": 0.531751,
+      "game_status": 0.534745,
+      "game_id": 0.532881,
+      "user_id": 0.533875,
+      "maze_id": 0.562938
+    },
+    "GAME_HISTORY": {
+      "game_id": 0.537315,
+      "creation_date": 0.542651,
+      "modification_date": 0.535824
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "GAME",
+      "cardinality": "1:N",
+      "description": "A user can participate in multiple games",
+      "probability": 0.998058
+    },
+    {
+      "entity_1": "MAZE",
+      "entity_2": "MAP",
+      "cardinality": "1:N",
+      "description": "A maze can have multiple maps",
+      "probability": 0.248528
+    },
+    {
+      "entity_1": "MAZE",
+      "entity_2": "GAME",
+      "cardinality": "1:N",
+      "description": "A maze can be played in multiple games",
+      "probability": 0.711217
+    },
+    {
+      "entity_1": "SKYBOX",
+      "entity_2": "MAZE",
+      "cardinality": "1:N",
+      "description": "A skybox can be used in multiple mazes",
+      "probability": 0.282421
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "GAME_HISTORY",
+      "cardinality": "1:1",
+      "description": "A game has one game history",
+      "probability": 0.49648
+    }
+  ],
+  "processing_time": 17.01,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a separate entity for game creation and modification dates (GAME_HISTORY) to improve data normalization, and retained the strengths of the previous model while addressing the identified issues."
+  }
+}

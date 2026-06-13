@@ -1,0 +1,87 @@
+{
+  "filename": "315.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "BOOK": 0.817574,
+    "BORROWER": 0.789581,
+    "BORROWING_EVENT": 0.747458,
+    "RETURN_EVENT": 0.74473,
+    "ASSOC_BOOK_BORROWER": 0.990363
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "name": 0.749039,
+      "email": 0.745008,
+      "phone": 0.738856,
+      "role": 0.75375
+    },
+    "BOOK": {
+      "title": 0.747646,
+      "author": 0.743703,
+      "publication_date": 0.749056,
+      "isbn": 0.757773
+    },
+    "BORROWER": {
+      "borrower_name": 0.748805,
+      "borrower_email": 0.747091,
+      "borrower_phone": 0.739921
+    },
+    "BORROWING_EVENT": {
+      "start_time": 0.733584,
+      "end_time": 0.736113,
+      "return_status": 0.738074
+    },
+    "RETURN_EVENT": {
+      "return_date": 0.728566,
+      "copy_info": 0.731636
+    },
+    "ASSOC_BOOK_BORROWER": {
+      "assoc_book_borrower_id": 0.990363,
+      "book_id": 0.990363,
+      "borrower_id": 0.990363
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROWER",
+      "cardinality": "1:N",
+      "probability": 0.751776
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROWING_EVENT",
+      "cardinality": "1:N",
+      "probability": 0.862637
+    },
+    {
+      "entity_1": "BORROWER",
+      "entity_2": "BORROWING_EVENT",
+      "cardinality": "1:N",
+      "probability": 0.996124
+    },
+    {
+      "entity_1": "BORROWING_EVENT",
+      "entity_2": "RETURN_EVENT",
+      "cardinality": "1:1",
+      "probability": 0.184697
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_BORROWER",
+      "description": "One BOOK can be associated with many ASSOC_BOOK_BORROWER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990363
+    },
+    {
+      "entity_1": "BORROWER",
+      "entity_2": "ASSOC_BOOK_BORROWER",
+      "description": "One BORROWER can be associated with many ASSOC_BOOK_BORROWER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990363
+    }
+  ],
+  "processing_time": 22.47
+}

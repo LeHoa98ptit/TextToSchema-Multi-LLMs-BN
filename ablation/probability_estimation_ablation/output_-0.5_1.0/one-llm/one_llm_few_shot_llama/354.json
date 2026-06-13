@@ -1,0 +1,75 @@
+{
+  "filename": "354.txt",
+  "entity": {
+    "USER": 0.622459,
+    "IMAGE": 0.622459,
+    "SEND_RECORD": 0.527422,
+    "SEND_LINK": 0.529267
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.504346,
+      "phone_number": 0.507331,
+      "user_information": 0.517276
+    },
+    "IMAGE": {
+      "image_id": 0.536548,
+      "image_url": 0.540958,
+      "image_description": 0.5447,
+      "compress_signature": 0.544646,
+      "upload_original": 0.541775,
+      "compressed_version_url": 0.545086
+    },
+    "SEND_RECORD": {
+      "send_id": 0.532139,
+      "sender": 0.54756,
+      "send_time": 0.536454,
+      "image_id": 0.55255
+    },
+    "SEND_LINK": {
+      "link_id": 0.529696,
+      "send_link": 0.535215,
+      "generate_time": 0.536364,
+      "image_id": 0.552671,
+      "sender": 0.54232
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SEND_RECORD",
+      "cardinality": "1:N",
+      "description": "Each user can have many send records, and each send record is associated with exactly one user.",
+      "probability": 0.983369
+    },
+    {
+      "entity_1": "IMAGE",
+      "entity_2": "SEND_RECORD",
+      "cardinality": "1:N",
+      "description": "Each image can be sent many times, and each send record is associated with exactly one image.",
+      "probability": 0.962947
+    },
+    {
+      "entity_1": "SEND_RECORD",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:1",
+      "description": "Each send record is associated with exactly one send link, and each send link is associated with exactly one send record.",
+      "probability": 0.992711
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:N",
+      "description": "Each user can have many send links, and each send link is associated with exactly one user.",
+      "probability": 0.974732
+    },
+    {
+      "entity_1": "IMAGE",
+      "entity_2": "SEND_LINK",
+      "cardinality": "1:N",
+      "description": "Each image can have many send links, and each send link is associated with exactly one image.",
+      "probability": 0.988545
+    }
+  ],
+  "processing_time": 19.24
+}

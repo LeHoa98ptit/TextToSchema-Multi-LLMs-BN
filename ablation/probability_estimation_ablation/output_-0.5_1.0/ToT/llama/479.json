@@ -1,0 +1,112 @@
+{
+  "filename": "479.txt",
+  "entity": {
+    "SUBSIDIARY": 0.622459,
+    "BUSINESS_DEPARTMENT": 0.599504,
+    "EMPLOYEE": 0.622459,
+    "USER": 0.471755,
+    "REAL_ESTATE": 0.60573,
+    "FAMILY_MEMBER": 0.476093,
+    "IDENTITY_VERIFICATION": 0.428469,
+    "SYSTEM_ADMINISTRATOR": 0.47764
+  },
+  "attribute": {
+    "SUBSIDIARY": {
+      "name": 0.56194,
+      "address": 0.55924,
+      "phone_number": 0.558014,
+      "manager_name": 0.57351,
+      "contact_address": 0.555807
+    },
+    "BUSINESS_DEPARTMENT": {
+      "name": 0.560351,
+      "address": 0.552956,
+      "phone_number": 0.544757,
+      "supervisor_name": 0.557902,
+      "affiliate_subsidary": 0.542624
+    },
+    "EMPLOYEE": {
+      "name": 0.548361,
+      "position": 0.547281,
+      "phone_number": 0.539345,
+      "department_id": 0.556552
+    },
+    "USER": {
+      "username": 0.493884,
+      "password": 0.509253,
+      "email": 0.512023,
+      "role": 0.536676
+    },
+    "REAL_ESTATE": {
+      "property_name": 0.530136,
+      "agent_name": 0.535712,
+      "property_type": 0.532168,
+      "price": 0.510992,
+      "status": 0.53311
+    },
+    "FAMILY_MEMBER": {
+      "name": 0.526118,
+      "relationship": 0.525336,
+      "employee_id": 0.547054
+    },
+    "IDENTITY_VERIFICATION": {
+      "verification_id": 0.516668,
+      "user_id": 0.517278,
+      "verification_date": 0.512585
+    },
+    "SYSTEM_ADMINISTRATOR": {
+      "admin_id": 0.531503,
+      "username": 0.524425,
+      "password": 0.525392
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUBSIDIARY",
+      "entity_2": "BUSINESS_DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A subsidiary can have multiple business departments",
+      "probability": 0.989212
+    },
+    {
+      "entity_1": "BUSINESS_DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A business department can have multiple employees",
+      "probability": 0.999485
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "FAMILY_MEMBER",
+      "cardinality": "1:N",
+      "description": "An employee can have multiple family members",
+      "probability": 0.141737
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "IDENTITY_VERIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple identity verifications",
+      "probability": 0.997929
+    },
+    {
+      "entity_1": "SYSTEM_ADMINISTRATOR",
+      "entity_2": "REAL_ESTATE",
+      "cardinality": "1:N",
+      "description": "A system administrator can manage multiple real estate properties",
+      "probability": 2e-06
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "BUSINESS_DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "An employee belongs to one business department",
+      "probability": 0.999485
+    }
+  ],
+  "processing_time": 15.79,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, improved naming conventions, added department_id to EMPLOYEE entity, added employee_id to FAMILY_MEMBER entity, and added status to REAL_ESTATE entity to improve data consistency and clarity."
+  }
+}

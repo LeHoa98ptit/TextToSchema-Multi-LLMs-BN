@@ -1,0 +1,122 @@
+{
+  "entity": [
+    "USER",
+    "CONTACT",
+    "GROUP_CHAT",
+    "GROUP_CHAT_APPLICATION",
+    "USER_GROUP",
+    "MESSAGE",
+    "MESSAGE_READ"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "phone",
+      "registration_time",
+      "status"
+    ],
+    "CONTACT": [
+      "contact_id",
+      "user_id",
+      "contact_user_id",
+      "nickname",
+      "added_time"
+    ],
+    "GROUP_CHAT": [
+      "group_id",
+      "group_name",
+      "creator_id",
+      "creation_time",
+      "description",
+      "max_members",
+      "is_private",
+      "member_count",
+      "is_deleted",
+      "deleted_time"
+    ],
+    "GROUP_CHAT_APPLICATION": [
+      "application_id",
+      "user_id",
+      "group_id",
+      "apply_time",
+      "status",
+      "note"
+    ],
+    "USER_GROUP": [
+      "membership_id",
+      "user_id",
+      "group_id",
+      "join_time",
+      "leave_time",
+      "role",
+      "is_muted"
+    ],
+    "MESSAGE": [
+      "message_id",
+      "sender_id",
+      "receiver_id",
+      "group_id",
+      "send_time",
+      "content_type",
+      "text_content",
+      "image_url",
+      "file_url",
+      "is_deleted"
+    ],
+    "MESSAGE_READ": [
+      "read_id",
+      "message_id",
+      "reader_id",
+      "read_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROUP_CHAT_APPLICATION",
+      "entity_2": "GROUP_CHAT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MESSAGE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MESSAGE_READ",
+      "entity_2": "MESSAGE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MESSAGE_READ",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 74.3139,
+  "ilp_runtime": 0.074
+}

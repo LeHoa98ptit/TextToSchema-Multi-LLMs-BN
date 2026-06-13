@@ -1,0 +1,140 @@
+{
+  "filename": "400.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "COLLEGE": 0.464634,
+    "BOOK": 0.622459,
+    "BOOK_CATEGORY": 0.501375,
+    "NOTIFICATION": 0.622459,
+    "PUBLISHER": 0.622459,
+    "ASSOC_USER_BOOK": 0.312217
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.508251,
+      "password": 0.525024,
+      "email": 0.529822,
+      "registration_time": 0.524044,
+      "college_id": 0.529477,
+      "profile_picture": 0.509166,
+      "bio": 0.524036,
+      "phone_number": 0.518915
+    },
+    "ROLE": {
+      "role_name": 0.540935,
+      "role_description": 0.551848
+    },
+    "COLLEGE": {
+      "college_id": 0.521853,
+      "college_name": 0.522839,
+      "address": 0.524653,
+      "website": 0.527382
+    },
+    "BOOK": {
+      "book_id": 0.533785,
+      "author": 0.533385,
+      "publisher_id": 0.543301,
+      "publication_date": 0.532496,
+      "book_category_id": 0.534906,
+      "isbn": 0.53774,
+      "book_description": 0.549437
+    },
+    "BOOK_CATEGORY": {
+      "book_category_id": 0.532417,
+      "category_name": 0.535728,
+      "category_description": 0.546678
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.523247,
+      "title": 0.533822,
+      "content": 0.5427,
+      "release_date": 0.525093,
+      "publisher_id": 0.536199,
+      "notification_type": 0.529297
+    },
+    "PUBLISHER": {
+      "publisher_id": 0.531748,
+      "publisher_name": 0.533851,
+      "address": 0.531746,
+      "website": 0.539054
+    },
+    "ASSOC_USER_BOOK": {
+      "assoc_user_book_id": 0.312217,
+      "user_id": 0.312217,
+      "book_id": 0.312217
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "description": "A user can have one role",
+      "probability": 0.997651
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLEGE",
+      "cardinality": "1:1",
+      "description": "A user is associated with one college",
+      "probability": 0.135847
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_BOOK",
+      "description": "One USER can be associated with many ASSOC_USER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.312217
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_USER_BOOK",
+      "description": "One BOOK can be associated with many ASSOC_USER_BOOK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.312217
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_CATEGORY",
+      "cardinality": "1:1",
+      "description": "A book belongs to one category",
+      "probability": 0.99959
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "PUBLISHER",
+      "cardinality": "1:1",
+      "description": "A book is published by one publisher",
+      "probability": 0.395478
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can receive multiple notifications",
+      "probability": 0.998552
+    },
+    {
+      "entity_1": "NOTIFICATION",
+      "entity_2": "PUBLISHER",
+      "cardinality": "1:1",
+      "description": "A notification is published by one publisher",
+      "probability": 0.099083
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A book can have multiple notifications",
+      "probability": 0.008608
+    }
+  ],
+  "processing_time": 26.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more attributes to the USER entity, added more attributes to the COLLEGE and PUBLISHER entities, added a new relationship between BOOK and NOTIFICATION, and added more attributes to the BOOK and BOOK_CATEGORY entities"
+  }
+}

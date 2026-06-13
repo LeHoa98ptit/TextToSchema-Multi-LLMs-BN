@@ -1,0 +1,132 @@
+{
+  "filename": "425.txt",
+  "entity": {
+    "USER": 0.720391,
+    "BUILDING": 0.716161,
+    "DORMITORY": 0.817574,
+    "STUDENT": 0.817574,
+    "APPLICATION": 0.817574,
+    "MAINTENANCE_RECORD": 0.754415,
+    "ANNOUNCEMENT": 0.817574,
+    "ASSOC_APPLICATION_USER": 0.993209
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.733197,
+      "password": 0.749443,
+      "role": 0.754356
+    },
+    "BUILDING": {
+      "type": 0.750021,
+      "location": 0.744801,
+      "description": 0.754038
+    },
+    "DORMITORY": {
+      "type": 0.777968,
+      "number": 0.776496,
+      "bed": 0.769756,
+      "belong_building": 0.774551
+    },
+    "STUDENT": {
+      "id": 0.762826,
+      "gender": 0.762167,
+      "belong_dormitory": 0.781465,
+      "class": 0.760711
+    },
+    "APPLICATION": {
+      "type": 0.746118,
+      "applicant": 0.752143,
+      "content": 0.748682,
+      "time": 0.741131,
+      "status": 0.752915,
+      "opinion": 0.74995
+    },
+    "MAINTENANCE_RECORD": {
+      "id": 0.751011,
+      "dormitory": 0.781964,
+      "fault_description": 0.753532,
+      "repair_time": 0.747697,
+      "maintenance_staff": 0.767973,
+      "maintenance_situation": 0.756907,
+      "completion_time": 0.750053
+    },
+    "ANNOUNCEMENT": {
+      "id": 0.73763,
+      "title": 0.74285,
+      "content": 0.745276,
+      "release_time": 0.73723
+    },
+    "ASSOC_APPLICATION_USER": {
+      "assoc_application_user_id": 0.993209,
+      "application_id": 0.993209,
+      "user_id": 0.993209
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "BUILDING",
+      "cardinality": "1:N",
+      "probability": 0.330889
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "probability": 0.735424
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "probability": 0.03372
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "probability": 0.999698
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "probability": 0.256496
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_APPLICATION_USER",
+      "description": "One APPLICATION can be associated with many ASSOC_APPLICATION_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993209
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_APPLICATION_USER",
+      "description": "One USER can be associated with many ASSOC_APPLICATION_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993209
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.879444
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.998672
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "probability": 0.68385
+    }
+  ],
+  "processing_time": 34.82
+}

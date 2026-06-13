@@ -1,0 +1,108 @@
+{
+  "entity": [
+    "DEVICE",
+    "USER",
+    "STAFF",
+    "NETWORK_TRAFFIC_RECORD",
+    "DEVICE_FAILURE",
+    "USER_CONNECTION",
+    "DEVICE_MAINTENANCE_RECORD"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device id",
+      "name",
+      "type",
+      "ip address",
+      "installation location",
+      "installation time",
+      "device status"
+    ],
+    "USER": [
+      "user id",
+      "user account",
+      "user password"
+    ],
+    "STAFF": [
+      "staff id",
+      "name",
+      "contact information"
+    ],
+    "NETWORK_TRAFFIC_RECORD": [
+      "network traffic record id",
+      "device id",
+      "timestamp",
+      "upload traffic",
+      "download traffic",
+      "total traffic",
+      "traffic status"
+    ],
+    "DEVICE_FAILURE": [
+      "device failure id",
+      "device id",
+      "failure occurrence time",
+      "failure type",
+      "failure description",
+      "handling status",
+      "remarks"
+    ],
+    "USER_CONNECTION": [
+      "user connection id",
+      "user id",
+      "device id",
+      "connection time",
+      "disconnection time",
+      "bandwidth used",
+      "user ip"
+    ],
+    "DEVICE_MAINTENANCE_RECORD": [
+      "device maintenance record id",
+      "device id",
+      "staff id",
+      "maintenance time",
+      "maintenance content",
+      "maintenance result",
+      "remarks"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "NETWORK_TRAFFIC_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "DEVICE_MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.0431,
+  "ilp_runtime": 0.024
+}

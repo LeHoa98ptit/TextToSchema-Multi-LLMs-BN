@@ -1,0 +1,110 @@
+{
+  "entity": [
+    "CONTENT",
+    "USER",
+    "VERSION",
+    "WORKFLOW",
+    "WORKFLOW_STATE",
+    "OPERATION_LOG",
+    "COMMENT",
+    "PERMISSION"
+  ],
+  "attribute": {
+    "CONTENT": [
+      "id",
+      "title",
+      "body",
+      "created_at",
+      "updated_at",
+      "creator_id",
+      "workflow_id",
+      "current_state_id",
+      "current_version_id",
+      "content_type"
+    ],
+    "USER": [
+      "id",
+      "username",
+      "email",
+      "password_hash",
+      "created_at"
+    ],
+    "VERSION": [
+      "id",
+      "content_id",
+      "version_number",
+      "body",
+      "created_at",
+      "created_by"
+    ],
+    "WORKFLOW": [
+      "id",
+      "name",
+      "description"
+    ],
+    "WORKFLOW_STATE": [
+      "id",
+      "workflow_id",
+      "name",
+      "sequence_order"
+    ],
+    "OPERATION_LOG": [
+      "id",
+      "content_id",
+      "version_id",
+      "user_id",
+      "operation_type",
+      "operation_time",
+      "from_state_id",
+      "to_state_id",
+      "comment_id"
+    ],
+    "COMMENT": [
+      "id",
+      "user_id",
+      "text",
+      "created_at"
+    ],
+    "PERMISSION": [
+      "id",
+      "user_id",
+      "workflow_state_id",
+      "operation_type",
+      "allowed"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW",
+      "entity_2": "WORKFLOW_STATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.9792,
+  "ilp_runtime": 0.059
+}

@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "PIPELINE",
+    "COMPANY",
+    "MAINTENANCE_PERSONNEL",
+    "MAINTENANCE_TASK",
+    "MAINTENANCE_DETAIL",
+    "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL"
+  ],
+  "attribute": {
+    "PIPELINE": [
+      "pipeline_id",
+      "starting_point",
+      "end_point",
+      "length",
+      "diameter"
+    ],
+    "COMPANY": [
+      "company_id",
+      "company_name"
+    ],
+    "MAINTENANCE_PERSONNEL": [
+      "personnel_id",
+      "personnel_name"
+    ],
+    "MAINTENANCE_TASK": [
+      "task_id",
+      "task_description"
+    ],
+    "MAINTENANCE_DETAIL": [
+      "detail_id",
+      "maintenance_time",
+      "performance_evaluation"
+    ],
+    "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL": [
+      "assoc_pipeline_maintenance_personnel_id",
+      "pipeline_id",
+      "maintenance_personnel_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PIPELINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "MAINTENANCE_DETAIL",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PIPELINE",
+      "entity_2": "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "ASSOC_PIPELINE_MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 45.6546,
+  "ilp_runtime": 0.027
+}

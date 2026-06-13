@@ -1,0 +1,80 @@
+{
+  "filename": "405.txt",
+  "entity": {
+    "DRUG": 0.622459,
+    "DOCTOR": 0.622459,
+    "PATIENT": 0.622459,
+    "PRESCRIPTION": 0.622459,
+    "CONSULTATION": 0.479237,
+    "PAYMENT": 0.622459
+  },
+  "attribute": {
+    "DRUG": {
+      "drug id": 0.542098,
+      "specification": 0.551695,
+      "usage": 0.542918
+    },
+    "DOCTOR": {
+      "doctor id": 0.538669,
+      "address": 0.543947,
+      "phone number": 0.539284
+    },
+    "PATIENT": {
+      "patient id": 0.542287,
+      "address": 0.547197,
+      "phone number": 0.537563
+    },
+    "PRESCRIPTION": {
+      "prescription id": 0.542255,
+      "medical order date": 0.542878,
+      "category": 0.558983,
+      "prescribing doctor id": 0.551326,
+      "remark": 0.540588
+    },
+    "CONSULTATION": {
+      "consultation id": 0.534966,
+      "doctor id": 0.543428,
+      "patient id": 0.543774
+    },
+    "PAYMENT": {
+      "payment id": 0.521175,
+      "prescription id": 0.543239,
+      "discount": 0.518137
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "description": "A doctor can prescribe many prescriptions; each prescription is written by one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.035164
+    },
+    {
+      "entity_1": "PRESCRIPTION",
+      "entity_2": "PAYMENT",
+      "description": "A prescription can have one or more payment records; each payment is linked to a single prescription.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.156711
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "description": "A doctor participates in many consultations; each consultation involves one doctor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.352631
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "description": "A patient may have many consultations; each consultation is for one patient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994163
+    }
+  ],
+  "processing_time": 15.95
+}

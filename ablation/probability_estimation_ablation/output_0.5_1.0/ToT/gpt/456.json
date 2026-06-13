@@ -1,0 +1,185 @@
+{
+  "filename": "456.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "PRODUCT": 0.817574,
+    "DISTRIBUTION_DEPARTMENT": 0.76872,
+    "PURCHASE_ORDER": 0.7517,
+    "PAYMENT_ORDER": 0.769289,
+    "SUPPLY_REQUEST": 0.725936,
+    "DISTRIBUTION_NOTIFICATION": 0.732981,
+    "INVENTORY": 0.817574,
+    "SUPPLIER": 0.747439,
+    "STOCKOUT_NOTIFICATION": 0.676077
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.775766,
+      "name": 0.775301,
+      "address": 0.770004,
+      "manager_name": 0.771141,
+      "phone": 0.76625
+    },
+    "PRODUCT": {
+      "product_id": 0.738342,
+      "name": 0.745961,
+      "description": 0.744472,
+      "unit_price": 0.740778
+    },
+    "DISTRIBUTION_DEPARTMENT": {
+      "department_id": 0.749567,
+      "name": 0.754437,
+      "address": 0.752012,
+      "manager_name": 0.751469,
+      "phone": 0.75093
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_id": 0.746344,
+      "purchase_date": 0.742733,
+      "quantity": 0.765292,
+      "unit_price": 0.750031,
+      "supplier_id": 0.753363,
+      "product_id": 0.749626
+    },
+    "PAYMENT_ORDER": {
+      "payment_order_id": 0.741253,
+      "payment_date": 0.737556,
+      "payment_status": 0.743775,
+      "amount": 0.749188,
+      "purchase_order_id": 0.744195
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.753553,
+      "request_time": 0.754025,
+      "quantity": 0.769357,
+      "supermarket_id": 0.779615,
+      "product_id": 0.757148
+    },
+    "DISTRIBUTION_NOTIFICATION": {
+      "notification_id": 0.743016,
+      "distribution_time": 0.745167,
+      "quantity": 0.762581,
+      "request_id": 0.74374,
+      "product_id": 0.748697,
+      "department_id": 0.74733
+    },
+    "INVENTORY": {
+      "inventory_id": 0.759641,
+      "quantity": 0.768506,
+      "storage_location": 0.755297,
+      "supermarket_id": 0.777744,
+      "product_id": 0.756412
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.75428,
+      "name": 0.756537,
+      "address": 0.754251,
+      "phone": 0.74702
+    },
+    "STOCKOUT_NOTIFICATION": {
+      "stockout_id": 0.74848,
+      "notification_date": 0.742557,
+      "required_quantity": 0.75775,
+      "product_id": 0.750358,
+      "supermarket_id": 0.77159
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supermarket can stock many different products",
+      "probability": 0.083737
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A supermarket can create many supply requests",
+      "probability": 0.010698
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each supply request is for a single product",
+      "probability": 0.389073
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A supply request may generate one or more distribution notifications",
+      "probability": 0.937354
+    },
+    {
+      "entity_1": "DISTRIBUTION_NOTIFICATION",
+      "entity_2": "DISTRIBUTION_DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each distribution notification is handled by one distribution department",
+      "probability": 0.998546
+    },
+    {
+      "entity_1": "DISTRIBUTION_NOTIFICATION",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "The notification specifies which product is being distributed",
+      "probability": 0.366854
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "A purchase order concerns a single product",
+      "probability": 0.244632
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "Each purchase order is placed with one supplier",
+      "probability": 0.841021
+    },
+    {
+      "entity_1": "PAYMENT_ORDER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "N:1",
+      "description": "One purchase order can be settled by multiple payment orders",
+      "probability": 0.998998
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "SUPERMARKET",
+      "cardinality": "N:1",
+      "description": "Inventory records belong to a specific supermarket",
+      "probability": 0.193439
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Inventory records track quantity of a specific product",
+      "probability": 0.895789
+    },
+    {
+      "entity_1": "STOCKOUT_NOTIFICATION",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "A stockout notification refers to a product lacking sufficient inventory",
+      "probability": 0.027517
+    },
+    {
+      "entity_1": "STOCKOUT_NOTIFICATION",
+      "entity_2": "SUPERMARKET",
+      "cardinality": "N:1",
+      "description": "The stockout occurs at a particular supermarket",
+      "probability": 0.003251
+    }
+  ],
+  "processing_time": 18.72,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing core entities (INVENTORY, SUPPLIER, STOCKOUT_NOTIFICATION) and their attributes to capture stock levels, storage locations, supplier details, and stockout events. Refined relationships to reflect real-world cardinalities (e.g., 1:N between SUPERMARKET and INVENTORY, N:1 between PURCHASE_ORDER and SUPPLIER, N:1 between PAYMENT_ORDER and PURCHASE_ORDER). Included foreign key attributes in associative entities for traceability. Expanded DISTRIBUTION_NOTIFICATION to link to PRODUCT and REQUEST, and clarified its handling department. Overall model now aligns closely with the domain description while preserving the original high‑level structure."
+  }
+}

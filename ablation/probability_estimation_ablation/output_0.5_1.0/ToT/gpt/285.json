@@ -1,0 +1,138 @@
+{
+  "filename": "285.txt",
+  "entity": {
+    "ADVERTISEMENT": 0.817574,
+    "CONTENT": 0.741005,
+    "SCHEDULE": 0.70988,
+    "BROADCAST": 0.817574,
+    "RATING": 0.686068,
+    "CUSTOMER": 0.817574,
+    "AD_CUSTOMER_TARGET": 0.733763,
+    "BROADCAST_VIEW": 0.76742
+  },
+  "attribute": {
+    "ADVERTISEMENT": {
+      "ad_id": 0.768671,
+      "title": 0.771729,
+      "description": 0.775919,
+      "total_duration": 0.771398,
+      "created_at": 0.762265
+    },
+    "CONTENT": {
+      "content_id": 0.738855,
+      "ad_id": 0.757657,
+      "media_type": 0.740874,
+      "file_path": 0.727053,
+      "length_seconds": 0.741421
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.74393,
+      "ad_id": 0.759583,
+      "start_date": 0.743277,
+      "end_date": 0.742613,
+      "repeat_pattern": 0.746073,
+      "status": 0.752453
+    },
+    "BROADCAST": {
+      "broadcast_id": 0.763019,
+      "schedule_id": 0.761483,
+      "actual_start": 0.759764,
+      "actual_end": 0.757459,
+      "actual_duration": 0.760784,
+      "rating_id": 0.762605,
+      "status": 0.769067
+    },
+    "RATING": {
+      "rating_id": 0.745524,
+      "score": 0.742938,
+      "comments": 0.743855,
+      "rated_at": 0.746115
+    },
+    "CUSTOMER": {
+      "customer_id": 0.751505,
+      "name": 0.756595,
+      "email": 0.756135,
+      "phone": 0.754742,
+      "address": 0.753258
+    },
+    "AD_CUSTOMER_TARGET": {
+      "ad_customer_id": 0.759908,
+      "ad_id": 0.760739,
+      "customer_id": 0.760997,
+      "campaign_start": 0.762838,
+      "campaign_end": 0.761632,
+      "priority": 0.767417,
+      "budget": 0.767956
+    },
+    "BROADCAST_VIEW": {
+      "view_id": 0.75038,
+      "broadcast_id": 0.758672,
+      "customer_id": 0.760765,
+      "view_timestamp": 0.750305,
+      "viewer_device": 0.752701
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "CONTENT",
+      "cardinality": "1:N",
+      "description": "Each advertisement can have multiple content items (e.g., video, audio).",
+      "probability": 0.198496
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:N",
+      "description": "An advertisement may have several broadcast schedules.",
+      "probability": 0.871952
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "BROADCAST",
+      "cardinality": "1:N",
+      "description": "A schedule generates many actual broadcast instances.",
+      "probability": 0.077622
+    },
+    {
+      "entity_1": "BROADCAST",
+      "entity_2": "RATING",
+      "cardinality": "1:1",
+      "description": "Each broadcast can receive one rating record (optional; not every broadcast is rated).",
+      "probability": 0.000159
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "AD_CUSTOMER_TARGET",
+      "cardinality": "1:N",
+      "description": "Advertisement linked to targeting records for specific customers.",
+      "probability": 0.992962
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "AD_CUSTOMER_TARGET",
+      "cardinality": "1:N",
+      "description": "Customer linked to targeting records for advertisements.",
+      "probability": 0.942889
+    },
+    {
+      "entity_1": "BROADCAST",
+      "entity_2": "BROADCAST_VIEW",
+      "cardinality": "1:N",
+      "description": "Each broadcast may be viewed by many customers; each view is recorded.",
+      "probability": 0.999554
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BROADCAST_VIEW",
+      "cardinality": "1:N",
+      "description": "Each customer may view many broadcasts; each view instance is stored.",
+      "probability": 0.765209
+    }
+  ],
+  "processing_time": 32.48,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added associative entity AD_CUSTOMER_TARGET to capture targeting details (campaign dates, priority, budget) and replaced the direct N:M ad‑customer link. Introduced BROADCAST_VIEW junction to record which customers actually viewed a broadcast with timestamp and device info. Added STATUS attributes to SCHEDULE and BROADCAST for lifecycle tracking. Made the rating relationship optional (described in relationship). Preserved all strong entities and relationships from the best candidate while enhancing granularity and analytical capability."
+  }
+}

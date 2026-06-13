@@ -1,0 +1,114 @@
+{
+  "filename": "330.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "USER_ROLE": 0.595416,
+    "IDENTITY_KEY": 0.596812,
+    "AUTH_SCHEME": 0.451156,
+    "PERMISSION": 0.522809,
+    "ROLE_PERMISSION": 0.562152
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.532885,
+      "username": 0.514369,
+      "password_hash": 0.529891,
+      "status": 0.540835,
+      "email": 0.534406,
+      "display_language": 0.518032,
+      "time_zone": 0.524605,
+      "datetime_format": 0.522351,
+      "created_at": 0.517146,
+      "updated_at": 0.506215
+    },
+    "ROLE": {
+      "roleid": 0.545222,
+      "rolename": 0.541425,
+      "description": 0.55378,
+      "created_at": 0.532782
+    },
+    "USER_ROLE": {
+      "user_id": 0.54562,
+      "role_id": 0.54458,
+      "assigned_at": 0.536622,
+      "assigned_by": 0.5393,
+      "role_order": 0.546666,
+      "revoked_at": 0.531484
+    },
+    "IDENTITY_KEY": {
+      "identity_key_id": 0.531929,
+      "user_id": 0.546048,
+      "auth_scheme_id": 0.522779,
+      "key_value": 0.535113,
+      "created_at": 0.526975
+    },
+    "AUTH_SCHEME": {
+      "auth_scheme_id": 0.515411,
+      "scheme_name": 0.517978,
+      "description": 0.542435,
+      "protocol": 0.529057,
+      "metadata_url": 0.519455
+    },
+    "PERMISSION": {
+      "permission_id": 0.528664,
+      "permission_code": 0.520024,
+      "description": 0.551678
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.542118,
+      "permission_id": 0.539992,
+      "granted_at": 0.531896,
+      "revoked_at": 0.532455
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user may hold many role assignments",
+      "probability": 0.999587
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users",
+      "probability": 0.998227
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "IDENTITY_KEY",
+      "cardinality": "1:N",
+      "description": "A user can have multiple identity keys for different authentication schemes",
+      "probability": 0.999862
+    },
+    {
+      "entity_1": "AUTH_SCHEME",
+      "entity_2": "IDENTITY_KEY",
+      "cardinality": "1:N",
+      "description": "Each identity key references one authentication scheme",
+      "probability": 0.273733
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can be granted many permissions",
+      "probability": 0.998241
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be linked to many roles",
+      "probability": 0.999639
+    }
+  ],
+  "processing_time": 25.09,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added composite unique constraint (user_id, role_id) on USER_ROLE to prevent duplicate assignments; introduced 'role_order' to preserve assignment sequence and 'revoked_at' to support soft‑deletion/audit for USER_ROLE. Expanded AUTH_SCHEME with 'protocol' and 'metadata_url' for external provider details. Added 'revoked_at' to ROLE_PERMISSION for permission revocation tracking. Documented intended foreign‑key cascade rules (e.g., USER cascade delete to USER_ROLE and IDENTITY_KEY; ROLE cascade delete to USER_ROLE and ROLE_PERMISSION optional). Recommended indexes on USER.username, USER.email, PERMISSION.permission_code, and AUTH_SCHEME.scheme_name for performance."
+  }
+}

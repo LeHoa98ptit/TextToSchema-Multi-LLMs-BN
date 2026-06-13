@@ -1,0 +1,95 @@
+{
+  "entity": [
+    "SUPERMARKET",
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "PRODUCT",
+    "ASSIGNMENT",
+    "STOCK",
+    "POSITION",
+    "CONTACT_INFO"
+  ],
+  "attribute": {
+    "SUPERMARKET": [
+      "supermarket_id",
+      "name",
+      "address",
+      "manager_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "manager_id",
+      "supermarket_id"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "name",
+      "salary",
+      "department_id",
+      "position_id",
+      "contact_info_id"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "model",
+      "unit_price"
+    ],
+    "ASSIGNMENT": [
+      "employee_id",
+      "product_id",
+      "assignment_date"
+    ],
+    "STOCK": [
+      "supermarket_id",
+      "product_id",
+      "stock_quantity",
+      "reorder_level"
+    ],
+    "POSITION": [
+      "position_id",
+      "title",
+      "description"
+    ],
+    "CONTACT_INFO": [
+      "contact_info_id",
+      "phone",
+      "email",
+      "address"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.8129,
+  "ilp_runtime": 0.089
+}

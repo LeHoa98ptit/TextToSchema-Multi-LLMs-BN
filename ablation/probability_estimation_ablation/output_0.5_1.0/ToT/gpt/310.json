@@ -1,0 +1,56 @@
+{
+  "filename": "310.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SESSION": 0.817574,
+    "SESSION_AUDIT": 0.75358
+  },
+  "attribute": {
+    "USER": {
+      "user_id PK": 0.751441,
+      "username": 0.746229,
+      "password": 0.759862,
+      "email": 0.759445,
+      "phone_number": 0.75342,
+      "creation_time": 0.767002,
+      "last_access_time": 0.767452
+    },
+    "SESSION": {
+      "session_id PK": 0.760582,
+      "user_id FK": 0.76599,
+      "creation_time": 0.771006,
+      "last_access_time": 0.771496,
+      "max_inactivity_interval": 0.764296,
+      "expiration_time": 0.774822,
+      "principal_attribute": 0.760866
+    },
+    "SESSION_AUDIT": {
+      "audit_id PK": 0.758002,
+      "session_id FK": 0.764368,
+      "event_type": 0.757271,
+      "event_timestamp": 0.759853,
+      "ip_address": 0.753241
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SESSION",
+      "cardinality": "1:N",
+      "description": "Each user may own many sessions; a session is linked to exactly one user",
+      "probability": 0.089229
+    },
+    {
+      "entity_1": "SESSION",
+      "entity_2": "SESSION_AUDIT",
+      "cardinality": "1:N",
+      "description": "A session can generate multiple audit records (e.g., login, logout, timeout)",
+      "probability": 0.97637
+    }
+  ],
+  "processing_time": 13.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit primary‑key (PK) and foreign‑key (FK) annotations for all entities, defined FK constraints (SESSION.user_id → USER.user_id, SESSION_AUDIT.session_id → SESSION.session_id), clarified that SESSION_AUDIT is an optional auditing module, suggested indexes on SESSION.creation_time and SESSION.last_access_time for efficient expiration checks, and noted enumeration constraints for principal_attribute and event_type to enforce data integrity."
+  }
+}

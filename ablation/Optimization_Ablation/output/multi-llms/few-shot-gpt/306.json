@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "TASK",
+    "SCHEDULER",
+    "TRIGGER",
+    "LOCK",
+    "TASK_INSTANCE",
+    "SCHEDULER_LOG",
+    "TASK_TRIGGER",
+    "SCHEDULER_TASK"
+  ],
+  "attribute": {
+    "TASK": [
+      "task id",
+      "description",
+      "task class",
+      "persistence flag",
+      "concurrent execution flag",
+      "dependent task id"
+    ],
+    "SCHEDULER": [
+      "scheduler id",
+      "status",
+      "configuration",
+      "scheduler log id"
+    ],
+    "TRIGGER": [
+      "trigger id",
+      "trigger type",
+      "repeat count",
+      "repeat interval",
+      "trigger count",
+      "cron expression",
+      "timezone",
+      "attribute string",
+      "attribute integer",
+      "attribute long",
+      "attribute decimal",
+      "attribute boolean",
+      "attribute blob",
+      "binary data"
+    ],
+    "LOCK": [
+      "lock id",
+      "status",
+      "description"
+    ],
+    "TASK_INSTANCE": [
+      "task instance id",
+      "task id"
+    ],
+    "SCHEDULER_LOG": [
+      "scheduler log id",
+      "scheduler id",
+      "log message",
+      "log timestamp"
+    ],
+    "TASK_TRIGGER": [
+      "task_trigger_id",
+      "task_id",
+      "trigger_id",
+      "execution_time",
+      "priority",
+      "trigger_status",
+      "start_time",
+      "end_time",
+      "calendar",
+      "fault_instruction"
+    ],
+    "SCHEDULER_TASK": [
+      "scheduler_task_id",
+      "scheduler_id",
+      "task_id",
+      "trigger_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 68.1198,
+  "ilp_runtime": 0.061
+}

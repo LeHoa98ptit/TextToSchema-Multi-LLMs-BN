@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "USER",
+    "TASK",
+    "FILE",
+    "STATUS",
+    "PRIORITY",
+    "ASSIGNMENT",
+    "COMMENT",
+    "TASK_FILE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "date_of_birth",
+      "created_at",
+      "avatar_file_id"
+    ],
+    "TASK": [
+      "task_id",
+      "title",
+      "description",
+      "creation_date",
+      "completion_date",
+      "remark",
+      "status_id",
+      "priority_id"
+    ],
+    "FILE": [
+      "file_id",
+      "file_name",
+      "file_type",
+      "file_size",
+      "file_path",
+      "uploaded_at"
+    ],
+    "STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "PRIORITY": [
+      "priority_id",
+      "priority_level",
+      "description"
+    ],
+    "ASSIGNMENT": [
+      "assignment_id",
+      "task_id",
+      "creator_user_id",
+      "assignee_user_id",
+      "assigned_at"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "task_id",
+      "user_id",
+      "comment_text",
+      "commented_at"
+    ],
+    "TASK_FILE": [
+      "task_file_id",
+      "task_id",
+      "file_id",
+      "attached_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "TASK_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.9335,
+  "ilp_runtime": 0.073
+}

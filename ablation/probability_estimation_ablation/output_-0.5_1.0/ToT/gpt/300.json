@@ -1,0 +1,161 @@
+{
+  "filename": "300.txt",
+  "entity": {
+    "MATERIAL": 0.622459,
+    "VENDOR": 0.518042,
+    "SUPPLY_PROJECT": 0.574589,
+    "USER": 0.485454,
+    "PROJECT_MATERIAL": 0.520663,
+    "BILL": 0.622459,
+    "BILL_ITEM": 0.544085,
+    "VERIFICATION_LOG": 0.434282
+  },
+  "attribute": {
+    "MATERIAL": {
+      "material_code": 0.517816,
+      "description": 0.529572,
+      "unit": 0.53256,
+      "unit_cost": 0.531942,
+      "vendor_id": 0.516763,
+      "created_at": 0.505483,
+      "updated_at": 0.500361
+    },
+    "VENDOR": {
+      "vendor_id": 0.514994,
+      "name": 0.527264,
+      "contact_info": 0.52405,
+      "created_at": 0.510354,
+      "updated_at": 0.504639
+    },
+    "SUPPLY_PROJECT": {
+      "project_number": 0.545905,
+      "title": 0.545342,
+      "description": 0.558517,
+      "creation_date": 0.542321,
+      "closing_date": 0.533631,
+      "project_manager_id": 0.537258,
+      "total_estimated_cost": 0.539465,
+      "status": 0.54599,
+      "created_at": 0.532432,
+      "updated_at": 0.525628
+    },
+    "USER": {
+      "user_id": 0.502901,
+      "name": 0.501337,
+      "role": 0.514332,
+      "email": 0.50851,
+      "created_at": 0.494755,
+      "updated_at": 0.49546
+    },
+    "PROJECT_MATERIAL": {
+      "id": 0.526466,
+      "project_number": 0.530905,
+      "material_code": 0.526126,
+      "quantity": 0.549732,
+      "unit_cost": 0.541497,
+      "charge": 0.534339,
+      "created_at": 0.516545,
+      "updated_at": 0.510378
+    },
+    "BILL": {
+      "bill_number": 0.528089,
+      "project_number": 0.537534,
+      "bill_date": 0.527793,
+      "created_by": 0.52198,
+      "verified_by": 0.52472,
+      "total_amount": 0.539079,
+      "created_at": 0.516106,
+      "updated_at": 0.51743
+    },
+    "BILL_ITEM": {
+      "id": 0.533922,
+      "bill_number": 0.540002,
+      "material_code": 0.540603,
+      "quantity": 0.547453,
+      "unit_cost": 0.547138,
+      "charge": 0.539502,
+      "created_at": 0.527732,
+      "updated_at": 0.527334
+    },
+    "VERIFICATION_LOG": {
+      "log_id": 0.507649,
+      "bill_number": 0.528823,
+      "verifier_id": 0.507444,
+      "verification_date": 0.50987,
+      "status": 0.512934,
+      "comments": 0.511471,
+      "created_at": 0.50189,
+      "updated_at": 0.502092
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "VENDOR",
+      "cardinality": "N:1",
+      "description": "Each material is supplied by one vendor; a vendor can supply many materials.",
+      "probability": 0.159278
+    },
+    {
+      "entity_1": "SUPPLY_PROJECT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A project has one project manager (user); a user may manage many projects.",
+      "probability": 0.043286
+    },
+    {
+      "entity_1": "SUPPLY_PROJECT",
+      "entity_2": "PROJECT_MATERIAL",
+      "cardinality": "1:N",
+      "description": "A project contains multiple material line items.",
+      "probability": 0.725168
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "PROJECT_MATERIAL",
+      "cardinality": "1:N",
+      "description": "A material can appear in many project‑material records.",
+      "probability": 0.998696
+    },
+    {
+      "entity_1": "SUPPLY_PROJECT",
+      "entity_2": "BILL",
+      "cardinality": "1:0..1",
+      "description": "Each project may generate a single bill after closure.",
+      "probability": 0.001478
+    },
+    {
+      "entity_1": "BILL",
+      "entity_2": "BILL_ITEM",
+      "cardinality": "1:N",
+      "description": "A bill consists of multiple billed material items.",
+      "probability": 0.331361
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "BILL_ITEM",
+      "cardinality": "1:N",
+      "description": "A material can be billed many times across different bills.",
+      "probability": 0.406501
+    },
+    {
+      "entity_1": "BILL",
+      "entity_2": "VERIFICATION_LOG",
+      "cardinality": "1:N",
+      "description": "Each bill may have multiple verification attempts or logs.",
+      "probability": 0.449952
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "VERIFICATION_LOG",
+      "cardinality": "1:N",
+      "description": "A user (verifier) can create many verification log entries.",
+      "probability": 0.54138
+    }
+  ],
+  "processing_time": 37.21,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added audit timestamps (created_at, updated_at) to every entity for change tracking. Introduced a STATUS attribute on SUPPLY_PROJECT to capture lifecycle states. Removed redundant verification_status from BILL, relying on VERIFICATION_LOG for current status. Adjusted SUPPLY_PROJECT‑BILL cardinality to optional (1:0..1) reflecting real‑world bill generation after project closure. Clarified foreign‑key intent in attributes and kept unit_cost in MATERIAL as default while allowing overrides in PROJECT_MATERIAL and BILL_ITEM. Ensured all relationships and entity definitions remain consistent and comprehensive."
+  }
+}

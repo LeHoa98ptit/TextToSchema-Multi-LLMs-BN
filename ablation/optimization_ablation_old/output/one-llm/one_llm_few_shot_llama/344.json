@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "APPLICATION",
+    "WEB_SERVICE",
+    "ERROR_INFORMATION",
+    "MONITOR_DATUM",
+    "ASSOC_USER_ROLE",
+    "ASSOC_USER_APPLICATION"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "email"
+    ],
+    "ROLE": [
+      "role_name",
+      "description"
+    ],
+    "APPLICATION": [
+      "d_code",
+      "type",
+      "description"
+    ],
+    "WEB_SERVICE": [
+      "d_code",
+      "description",
+      "creation_date"
+    ],
+    "ERROR_INFORMATION": [
+      "error_code",
+      "description",
+      "timestamp",
+      "return_status"
+    ],
+    "MONITOR_DATUM": [
+      "invocation_time",
+      "return_status",
+      "delay_time",
+      "performance_metric"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ],
+    "ASSOC_USER_APPLICATION": [
+      "assoc_user_application_id",
+      "user_id",
+      "application_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEB_SERVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_USER_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 70.9024,
+  "ilp_runtime": 0.033
+}

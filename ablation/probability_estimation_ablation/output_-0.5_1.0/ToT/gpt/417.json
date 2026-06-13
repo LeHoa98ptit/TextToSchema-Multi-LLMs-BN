@@ -1,0 +1,171 @@
+{
+  "filename": "417.txt",
+  "entity": {
+    "USER": 0.622459,
+    "POST": 0.622459,
+    "COMMENT": 0.622459,
+    "CATEGORY": 0.622459,
+    "NOTIFICATION": 0.622459,
+    "POST_LIKE": 0.494825,
+    "POST_FAVORITE": 0.49425,
+    "COMMENT_LIKE": 0.541579
+  },
+  "attribute": {
+    "USER": {
+      "user_id (PK)": 0.518478,
+      "username": 0.51607,
+      "email": 0.531859,
+      "password": 0.521683,
+      "avatar_link": 0.514095,
+      "registration_date": 0.515963,
+      "status": 0.545053
+    },
+    "POST": {
+      "post_id (PK)": 0.519692,
+      "title": 0.527967,
+      "content": 0.531394,
+      "post_time": 0.517904,
+      "status": 0.538873,
+      "reply_count": 0.546665,
+      "like_count": 0.534868,
+      "favorite_count": 0.527331,
+      "is_pinned": 0.514082,
+      "author_id (FK → USER.user_id)": 0.515468,
+      "category_id (FK → CATEGORY.category_id)": 0.528554
+    },
+    "COMMENT": {
+      "comment_id (PK)": 0.533603,
+      "content": 0.545309,
+      "comment_time": 0.536806,
+      "like_count": 0.545285,
+      "reply_count": 0.548684,
+      "is_deleted": 0.524244,
+      "author_id (FK → USER.user_id)": 0.530588,
+      "post_id (FK → POST.post_id)": 0.531629,
+      "parent_comment_id (FK → COMMENT.comment_id, nullable)": 0.527085
+    },
+    "CATEGORY": {
+      "category_id (PK)": 0.527243,
+      "name": 0.538478,
+      "description": 0.549066,
+      "created_time": 0.526816
+    },
+    "NOTIFICATION": {
+      "notification_id (PK)": 0.530852,
+      "message_number": 0.535414,
+      "content": 0.546745,
+      "created_time": 0.526341,
+      "read_status": 0.53096,
+      "user_id (FK → USER.user_id)": 0.536037
+    },
+    "POST_LIKE": {
+      "post_like_id (PK)": 0.523448,
+      "user_id (FK → USER.user_id)": 0.529174,
+      "post_id (FK → POST.post_id)": 0.520323,
+      "liked_at": 0.525635
+    },
+    "POST_FAVORITE": {
+      "post_favorite_id (PK)": 0.513665,
+      "user_id (FK → USER.user_id)": 0.523285,
+      "post_id (FK → POST.post_id)": 0.516126,
+      "favorited_at": 0.516481
+    },
+    "COMMENT_LIKE": {
+      "comment_like_id (PK)": 0.536205,
+      "user_id (FK → USER.user_id)": 0.540324,
+      "comment_id (FK → COMMENT.comment_id)": 0.531797,
+      "liked_at": 0.527353
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user authors many posts",
+      "probability": 0.863969
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user writes many comments",
+      "probability": 0.961617
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments",
+      "probability": 0.017822
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each post belongs to one category",
+      "probability": 0.316835
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST_LIKE",
+      "cardinality": "1:N",
+      "description": "A user can like many posts (through POST_LIKE)",
+      "probability": 0.498787
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "POST_LIKE",
+      "cardinality": "1:N",
+      "description": "A post can be liked by many users",
+      "probability": 0.981377
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST_FAVORITE",
+      "cardinality": "1:N",
+      "description": "A user can favorite many posts",
+      "probability": 0.975394
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "POST_FAVORITE",
+      "cardinality": "1:N",
+      "description": "A post can be favorited by many users",
+      "probability": 0.971064
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT_LIKE",
+      "cardinality": "1:N",
+      "description": "A user can like many comments",
+      "probability": 0.689825
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT_LIKE",
+      "cardinality": "1:N",
+      "description": "A comment can be liked by many users",
+      "probability": 0.99955
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Self‑referencing relationship for nested replies (parent_comment → child_comment)",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user receives many notifications",
+      "probability": 0.998606
+    }
+  ],
+  "processing_time": 20.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "filename": "380.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "AIRLINE": 0.817574,
+    "PARTNERSHIP": 0.738251,
+    "CUSTOMER": 0.817574,
+    "AIRPORT": 0.770387,
+    "FLIGHT": 0.817574,
+    "RESERVATION": 0.817574,
+    "TICKET": 0.724561,
+    "ASSOC_COMPANY_AIRLINE": 0.576461
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.747667,
+      "name": 0.751948,
+      "headquarters_address": 0.737885
+    },
+    "AIRLINE": {
+      "airline_id": 0.769372,
+      "phone": 0.766823,
+      "address": 0.774584
+    },
+    "PARTNERSHIP": {
+      "partnership_id": 0.7391,
+      "company_id": 0.743982,
+      "airline_id": 0.766633,
+      "partner_since": 0.743767
+    },
+    "CUSTOMER": {
+      "customer_id": 0.761538,
+      "first_name": 0.76209,
+      "last_name": 0.75931,
+      "phone": 0.763995,
+      "email": 0.766793,
+      "date_of_birth": 0.759764
+    },
+    "AIRPORT": {
+      "airport_code": 0.754947,
+      "name": 0.755149,
+      "city": 0.751861,
+      "country": 0.745846
+    },
+    "FLIGHT": {
+      "flight_number": 0.768492,
+      "airline_id": 0.768493,
+      "departure_airport_code": 0.762968,
+      "arrival_airport_code": 0.76548,
+      "departure_time": 0.767908,
+      "arrival_time": 0.770061,
+      "capacity": 0.763786
+    },
+    "RESERVATION": {
+      "reservation_id": 0.772,
+      "customer_id": 0.778727,
+      "flight_number": 0.781231,
+      "reservation_time": 0.773346,
+      "total_price": 0.764637,
+      "status": 0.771397
+    },
+    "TICKET": {
+      "ticket_id": 0.756666,
+      "reservation_id": 0.771548,
+      "seat_number": 0.762827,
+      "class": 0.758997,
+      "price": 0.749826
+    },
+    "ASSOC_COMPANY_AIRLINE": {
+      "assoc_company_airline_id": 0.576461,
+      "company_id": 0.576461,
+      "airline_id": 0.576461
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ASSOC_COMPANY_AIRLINE",
+      "description": "One COMPANY can be associated with many ASSOC_COMPANY_AIRLINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.576461
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "ASSOC_COMPANY_AIRLINE",
+      "description": "One AIRLINE can be associated with many ASSOC_COMPANY_AIRLINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.576461
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PARTNERSHIP",
+      "cardinality": "1:N",
+      "description": "A company can be involved in many partnership records",
+      "probability": 0.976704
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "PARTNERSHIP",
+      "cardinality": "1:N",
+      "description": "An airline can be involved in many partnership records",
+      "probability": 0.006609
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airline operates many flights",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "AIRPORT",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airport serves as the departure point for many flights",
+      "probability": 0.999334
+    },
+    {
+      "entity_1": "AIRPORT",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "description": "An airport serves as the arrival point for many flights",
+      "probability": 0.999334
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A customer may have multiple reservations",
+      "probability": 0.006344
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A flight can be booked by many reservations",
+      "probability": 0.957377
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "description": "A reservation can contain one or more tickets",
+      "probability": 0.994135
+    }
+  ],
+  "processing_time": 30.64,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Split the ambiguous AIRPORT‑FLIGHT relationship into two distinct 1:N relationships for departure and arrival airports. 2. Converted the COMPANY‑AIRLINE partnership to a many‑to‑many relationship using an associative PARTNERSHIP entity, allowing storage of partnership-specific attributes like partner_since. 3. Replaced the ticket_quantity attribute with a dedicated TICKET entity to capture per‑ticket details (seat, class, price) and linked it to RESERVATION via a 1:N relationship. 4. Retained useful attributes (capacity, status, total_price) while removing redundant ones, keeping the model both comprehensive and efficient."
+  }
+}

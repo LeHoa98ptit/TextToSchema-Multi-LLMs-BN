@@ -1,0 +1,129 @@
+{
+  "entity": [
+    "STUDENT",
+    "INSTRUCTOR",
+    "COURSE",
+    "CLASS",
+    "ENROLLMENT",
+    "ASSIGNMENT",
+    "SUBMISSION",
+    "GRADE",
+    "CLASS_INSTRUCTOR",
+    "SUBMISSION_FILE"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "first_name",
+      "last_name",
+      "email",
+      "enrollment_year"
+    ],
+    "INSTRUCTOR": [
+      "instructor_id",
+      "first_name",
+      "last_name",
+      "email",
+      "office"
+    ],
+    "COURSE": [
+      "course_id",
+      "course_code",
+      "title",
+      "credits"
+    ],
+    "CLASS": [
+      "class_id",
+      "term",
+      "year",
+      "schedule",
+      "course_id"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id",
+      "student_id",
+      "class_id",
+      "enrollment_date",
+      "status"
+    ],
+    "ASSIGNMENT": [
+      "assignment_id",
+      "title",
+      "description",
+      "due_date",
+      "max_score",
+      "class_id",
+      "created_at",
+      "updated_at"
+    ],
+    "SUBMISSION": [
+      "submission_id",
+      "submit_timestamp",
+      "plagiarism_score",
+      "assignment_id",
+      "student_id",
+      "created_at",
+      "updated_at"
+    ],
+    "GRADE": [
+      "grade_id",
+      "score",
+      "letter_grade",
+      "feedback",
+      "graded_timestamp",
+      "submission_id",
+      "instructor_id",
+      "created_at",
+      "updated_at"
+    ],
+    "CLASS_INSTRUCTOR": [
+      "class_instructor_id",
+      "class_id",
+      "instructor_id",
+      "role",
+      "assigned_date"
+    ],
+    "SUBMISSION_FILE": [
+      "file_id",
+      "submission_id",
+      "file_url",
+      "upload_timestamp",
+      "file_name",
+      "file_type"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "CLASS_INSTRUCTOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "CLASS_INSTRUCTOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "SUBMISSION_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 64.0402,
+  "ilp_runtime": 0.115
+}

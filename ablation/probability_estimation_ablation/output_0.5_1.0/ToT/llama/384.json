@@ -1,0 +1,123 @@
+{
+  "filename": "384.txt",
+  "entity": {
+    "TASK": 0.817574,
+    "PARAMETER": 0.817574,
+    "ORGANISM": 0.817574,
+    "TASK_OWNER": 0.734875,
+    "ALGORITHM": 0.697116,
+    "TASK_EXECUTION_RESULT": 0.748419,
+    "ORGANISM_EXCLUSION": 0.753785,
+    "ASSOC_TASK_ORGANISM": 0.165496
+  },
+  "attribute": {
+    "TASK": {
+      "task_title": 0.765396,
+      "creation_date": 0.76441,
+      "task_status": 0.767308,
+      "end_date": 0.760835,
+      "status_reason": 0.765097,
+      "query_statement": 0.769543,
+      "database": 0.783583,
+      "executable_file": 0.758983
+    },
+    "PARAMETER": {
+      "parameter_name": 0.74023,
+      "parameter_value": 0.736574,
+      "parameter_type": 0.740778
+    },
+    "ORGANISM": {
+      "organism_name": 0.768553,
+      "organism_type": 0.768993
+    },
+    "TASK_OWNER": {
+      "owner_name": 0.75362,
+      "owner_email": 0.750807
+    },
+    "ALGORITHM": {
+      "algorithm_name": 0.743425,
+      "algorithm_version": 0.739253
+    },
+    "TASK_EXECUTION_RESULT": {
+      "result_id": 0.761101,
+      "result_date": 0.759512,
+      "result_status": 0.759385,
+      "result_details": 0.766153
+    },
+    "ORGANISM_EXCLUSION": {
+      "exclusion_id": 0.766049,
+      "exclusion_date": 0.761892,
+      "exclusion_reason": 0.760915
+    },
+    "ASSOC_TASK_ORGANISM": {
+      "assoc_task_organism_id": 0.165496,
+      "task_id": 0.165496,
+      "organism_id": 0.165496
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "PARAMETER",
+      "cardinality": "1:N",
+      "description": "A task can have multiple parameters",
+      "probability": 0.027611
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TASK_ORGANISM",
+      "description": "One TASK can be associated with many ASSOC_TASK_ORGANISM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.165496
+    },
+    {
+      "entity_1": "ORGANISM",
+      "entity_2": "ASSOC_TASK_ORGANISM",
+      "description": "One ORGANISM can be associated with many ASSOC_TASK_ORGANISM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.165496
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_OWNER",
+      "cardinality": "1:1",
+      "description": "A task is owned by one task owner",
+      "probability": 0.999509
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ALGORITHM",
+      "cardinality": "1:1",
+      "description": "A task uses one algorithm",
+      "probability": 0.820958
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION_RESULT",
+      "cardinality": "1:N",
+      "description": "A task can have multiple execution results",
+      "probability": 0.999974
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ORGANISM_EXCLUSION",
+      "cardinality": "1:N",
+      "description": "A task can exclude multiple organisms",
+      "probability": 0.003525
+    },
+    {
+      "entity_1": "ORGANISM",
+      "entity_2": "ORGANISM_EXCLUSION",
+      "cardinality": "1:N",
+      "description": "An organism can be excluded from multiple tasks",
+      "probability": 0.425417
+    }
+  ],
+  "processing_time": 40.08,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for task execution results and organism exclusion to enhance model completeness and accuracy."
+  }
+}

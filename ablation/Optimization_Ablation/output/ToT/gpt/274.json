@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "USER",
+    "FEEDBACK",
+    "EMPLOYEE",
+    "COMPANY",
+    "PROCESSING",
+    "STATUS_LOOKUP"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "contact_number",
+      "email",
+      "registered_date"
+    ],
+    "FEEDBACK": [
+      "feedback_id",
+      "user_id",
+      "content",
+      "feedback_time"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "name",
+      "contact_number",
+      "work_status",
+      "company_id"
+    ],
+    "COMPANY": [
+      "company_id",
+      "company_name",
+      "address",
+      "contact_number"
+    ],
+    "PROCESSING": [
+      "processing_id",
+      "feedback_id",
+      "employee_id",
+      "processing_time",
+      "processing_result",
+      "status_id"
+    ],
+    "STATUS_LOOKUP": [
+      "status_id",
+      "status_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PROCESSING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS_LOOKUP",
+      "entity_2": "PROCESSING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 22.1407,
+  "ilp_runtime": 0.077
+}

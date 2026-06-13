@@ -1,0 +1,85 @@
+{
+  "filename": "283.txt",
+  "entity": {
+    "BOOK": 0.817574,
+    "AUTHOR": 0.817574,
+    "EDITOR": 0.817574,
+    "CATEGORY": 0.817574,
+    "BOOK_AUTHOR": 0.800241,
+    "BOOK_EDITOR": 0.774815
+  },
+  "attribute": {
+    "BOOK": {
+      "bookid": 0.779683,
+      "title": 0.763866,
+      "isbn": 0.777369,
+      "publicationdate": 0.769077,
+      "categoryid": 0.774517
+    },
+    "AUTHOR": {
+      "authorid": 0.761679,
+      "email": 0.759406,
+      "phone": 0.76177
+    },
+    "EDITOR": {
+      "editorid": 0.755769,
+      "email": 0.756418,
+      "phone": 0.754743
+    },
+    "CATEGORY": {
+      "categoryid": 0.743815,
+      "categoryname": 0.739641,
+      "description": 0.750878
+    },
+    "BOOK_AUTHOR": {
+      "bookid": 0.781754,
+      "authorid": 0.776517
+    },
+    "BOOK_EDITOR": {
+      "bookid": 0.787921,
+      "editorid": 0.779098
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "A book belongs to one category",
+      "probability": 0.995778
+    },
+    {
+      "entity_1": "BOOK_AUTHOR",
+      "entity_2": "BOOK",
+      "cardinality": "1:1",
+      "description": "A book author relationship",
+      "probability": 0.99917
+    },
+    {
+      "entity_1": "BOOK_AUTHOR",
+      "entity_2": "AUTHOR",
+      "cardinality": "1:1",
+      "description": "An author in a book author relationship",
+      "probability": 0.99998
+    },
+    {
+      "entity_1": "BOOK_EDITOR",
+      "entity_2": "BOOK",
+      "cardinality": "1:1",
+      "description": "A book editor relationship",
+      "probability": 0.990159
+    },
+    {
+      "entity_1": "BOOK_EDITOR",
+      "entity_2": "EDITOR",
+      "cardinality": "1:1",
+      "description": "An editor in a book editor relationship",
+      "probability": 0.999856
+    }
+  ],
+  "processing_time": 14.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated many-to-many relationships between authors, editors, and books using bridge entities BOOK_AUTHOR and BOOK_EDITOR, removed redundant relationships, and retained essential attributes."
+  }
+}

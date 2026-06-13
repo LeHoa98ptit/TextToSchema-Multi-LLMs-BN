@@ -1,0 +1,128 @@
+{
+  "filename": "316.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EBOOK": 0.736509,
+    "DOCUMENT": 0.817574,
+    "CATEGORY": 0.817574,
+    "DIRECTORY": 0.701761,
+    "READ_STAT": 0.740064
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.742006,
+      "username": 0.735356,
+      "email": 0.744828,
+      "password_hash": 0.737002,
+      "registration_date": 0.739041,
+      "status": 0.752594
+    },
+    "EBOOK": {
+      "ebook_id": 0.763722,
+      "title": 0.765021,
+      "cover_image_url": 0.756293,
+      "short_description": 0.761973,
+      "publish_date": 0.751294,
+      "total_reads": 0.765641,
+      "category_id": 0.765729
+    },
+    "DOCUMENT": {
+      "document_id": 0.754458,
+      "title": 0.760296,
+      "content": 0.77479,
+      "order_in_ebook": 0.762686,
+      "created_date": 0.739586,
+      "directory_id": 0.752932
+    },
+    "CATEGORY": {
+      "category_id": 0.743492,
+      "name": 0.756266,
+      "display_order": 0.743998,
+      "parent_category_id": 0.74094
+    },
+    "DIRECTORY": {
+      "directory_id": 0.738951,
+      "name": 0.742493,
+      "display_order": 0.743217,
+      "parent_directory_id": 0.738669,
+      "ebook_id": 0.759922
+    },
+    "READ_STAT": {
+      "stat_id": 0.740072,
+      "user_id": 0.74253,
+      "ebook_id": 0.764927,
+      "date": 0.743815,
+      "read_seconds": 0.73437
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "READ_STAT",
+      "cardinality": "1:N",
+      "description": "A user can have many reading statistic records",
+      "probability": 0.72437
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "READ_STAT",
+      "cardinality": "1:N",
+      "description": "An e‑book can have many reading statistic records",
+      "probability": 0.000558
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "DOCUMENT",
+      "cardinality": "1:N",
+      "description": "An e‑book consists of ordered documents",
+      "probability": 0.768888
+    },
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "DIRECTORY",
+      "cardinality": "N:1",
+      "description": "Each document resides in a single directory",
+      "probability": 0.993286
+    },
+    {
+      "entity_1": "DIRECTORY",
+      "entity_2": "EBOOK",
+      "cardinality": "N:1",
+      "description": "Directories are scoped to one e‑book",
+      "probability": 0.653656
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "description": "Self‑reference for hierarchical categories (parent_category_id)",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "EBOOK",
+      "cardinality": "1:N",
+      "description": "A category groups many e‑books",
+      "probability": 0.309378
+    },
+    {
+      "entity_1": "EBOOK",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each e‑book belongs to one category",
+      "probability": 0.309378
+    },
+    {
+      "entity_1": "DIRECTORY",
+      "entity_2": "DIRECTORY",
+      "cardinality": "1:N",
+      "description": "Self‑reference for hierarchical directories (parent_directory_id)",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 31.89,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Removed the unnecessary LIKE entity to simplify the model. Added foreign‑key attributes (category_id in EBOOK, directory_id in DOCUMENT) to make relationships explicit. Introduced a self‑referencing relationship for DIRECTORY to support multi‑level directory hierarchies. Kept hierarchical CATEGORY with parent_category_id. Clarified relationships and retained efficient core entities. Suggested (outside JSON) a unique constraint on (user_id, ebook_id, date) in READ_STAT and a trigger/derived column to keep EBOOK.total_reads synchronized."
+  }
+}

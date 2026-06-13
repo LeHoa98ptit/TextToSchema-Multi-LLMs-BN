@@ -1,0 +1,116 @@
+{
+  "filename": "263.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "LECTURER": 0.817574,
+    "HOMEWORK": 0.817574,
+    "SUBMISSION": 0.796231,
+    "GRADE": 0.817574,
+    "EVALUATION": 0.817574,
+    "NOTIFICATION": 0.697749,
+    "INSPECTION_REPORT": 0.773976
+  },
+  "attribute": {
+    "STUDENT": {
+      "student id": 0.764857,
+      "student name": 0.7696,
+      "student email": 0.768915
+    },
+    "LECTURER": {
+      "lecturer id": 0.756978,
+      "lecturer name": 0.756843,
+      "lecturer email": 0.757818
+    },
+    "HOMEWORK": {
+      "homework id": 0.770336,
+      "homework title": 0.773945,
+      "homework description": 0.773929
+    },
+    "SUBMISSION": {
+      "submission id": 0.744496,
+      "student id": 0.764172,
+      "homework id": 0.776815,
+      "submission time": 0.747485
+    },
+    "GRADE": {
+      "grade id": 0.765722,
+      "submission id": 0.773041,
+      "score": 0.769399,
+      "evaluation": 0.772674
+    },
+    "EVALUATION": {
+      "evaluation id": 0.74963,
+      "grade id": 0.766773,
+      "evaluation comment": 0.757826
+    },
+    "NOTIFICATION": {
+      "notification id": 0.734911,
+      "submission id": 0.742979,
+      "notification message": 0.743394
+    },
+    "INSPECTION_REPORT": {
+      "inspection report id": 0.751015,
+      "grade id": 0.764043,
+      "inspection comment": 0.759708
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "description": "A student can submit multiple homework assignments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.034897
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "HOMEWORK",
+      "description": "A homework assignment can have multiple submissions",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.82044
+    },
+    {
+      "entity_1": "LECTURER",
+      "entity_2": "GRADE",
+      "description": "A lecturer can grade multiple homework assignments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.020197
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "GRADE",
+      "description": "A submission is associated with one grade",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.075383
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "EVALUATION",
+      "description": "A grade is associated with one evaluation",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.265985
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "NOTIFICATION",
+      "description": "A submission is associated with one notification",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.241996
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "INSPECTION_REPORT",
+      "description": "A grade can have multiple inspection reports",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999201
+    }
+  ],
+  "processing_time": 33.69
+}

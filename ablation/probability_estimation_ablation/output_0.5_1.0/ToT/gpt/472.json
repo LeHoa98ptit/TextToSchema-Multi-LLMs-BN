@@ -1,0 +1,137 @@
+{
+  "filename": "472.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "COURSE": 0.705702,
+    "ENROLLMENT": 0.734485,
+    "HOMEWORK": 0.817574,
+    "HOMEWORK_SUBMISSION": 0.764822,
+    "GRADE": 0.817574
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.769802,
+      "first_name": 0.767504,
+      "last_name": 0.76882,
+      "class": 0.770527,
+      "phone": 0.765506,
+      "email": 0.771959,
+      "date_of_birth": 0.761847
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.765606,
+      "first_name": 0.764991,
+      "last_name": 0.764733,
+      "phone": 0.760541,
+      "email": 0.764944,
+      "office": 0.763703
+    },
+    "COURSE": {
+      "course_id": 0.762445,
+      "instructor_id": 0.768429,
+      "course_code": 0.767677,
+      "title": 0.760871,
+      "description": 0.768357,
+      "credits": 0.76471
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.749275,
+      "student_id": 0.761145,
+      "course_id": 0.763742,
+      "enrollment_date": 0.745177,
+      "status": 0.752622
+    },
+    "HOMEWORK": {
+      "homework_id": 0.775275,
+      "course_id": 0.778776,
+      "title": 0.769762,
+      "description": 0.767998,
+      "due_date": 0.763841,
+      "max_score": 0.772501
+    },
+    "HOMEWORK_SUBMISSION": {
+      "submission_id": 0.774778,
+      "homework_id": 0.779687,
+      "student_id": 0.78234,
+      "content": 0.783201,
+      "submission_time": 0.773256,
+      "is_successful": 0.774449,
+      "attempt_number": 0.776678,
+      "notification_status": 0.777089,
+      "student_notified_at": 0.777245,
+      "instructor_notified_at": 0.779551
+    },
+    "GRADE": {
+      "grade_id": 0.772874,
+      "submission_id": 0.775977,
+      "score": 0.769009,
+      "feedback_text": 0.776589,
+      "graded_at": 0.770414,
+      "feedback_provided_at": 0.775249
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999892
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can have many enrollment records",
+      "probability": 0.190025
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "An instructor teaches multiple courses",
+      "probability": 0.640515
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:N",
+      "description": "A course assigns many homework assignments",
+      "probability": 0.970789
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "HOMEWORK_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A student can submit many homework submissions",
+      "probability": 0.043067
+    },
+    {
+      "entity_1": "HOMEWORK",
+      "entity_2": "HOMEWORK_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Each homework can have many submissions",
+      "probability": 0.999742
+    },
+    {
+      "entity_1": "HOMEWORK_SUBMISSION",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "description": "Each submission receives a single grade record",
+      "probability": 0.082931
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "HOMEWORK_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Instructors review and grade many submissions",
+      "probability": 0.003974
+    }
+  ],
+  "processing_time": 10.33,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged FEEDBACK into GRADE to simplify the schema while preserving feedback details. Added explicit foreign‑key attributes to ENROLLMENT, COURSE, HOMEWORK, HOMEWORK_SUBMISSION, and GRADE for clear relationship implementation. Introduced attempt_number and notification fields (status, timestamps) in HOMEWORK_SUBMISSION to capture multiple attempts and system notification requirements. Removed the separate FEEDBACK entity and its relationship. Ensured all entity names are singular and attribute naming is consistent."
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "entity": [
+    "USER",
+    "VEHICLE",
+    "MAINTENANCE",
+    "DEPARTURE",
+    "MAINTENANCE_APPLICATION",
+    "REPAIR_SHOP",
+    "ANNOUNCEMENT",
+    "TOKEN"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "full_name",
+      "phone_number",
+      "role",
+      "is_active",
+      "created_at",
+      "updated_at"
+    ],
+    "VEHICLE": [
+      "vehicle_id",
+      "license_plate",
+      "photo_url",
+      "status",
+      "category",
+      "make",
+      "model",
+      "year",
+      "created_at",
+      "updated_at"
+    ],
+    "MAINTENANCE": [
+      "maintenance_id",
+      "vehicle_id",
+      "maintenance_time",
+      "detail",
+      "cost",
+      "review_status",
+      "review_comment",
+      "review_reply",
+      "performed_by_user_id",
+      "repair_shop_id",
+      "created_at"
+    ],
+    "DEPARTURE": [
+      "departure_id",
+      "vehicle_id",
+      "departure_time",
+      "note",
+      "driver_user_id",
+      "created_at"
+    ],
+    "MAINTENANCE_APPLICATION": [
+      "application_id",
+      "vehicle_id",
+      "application_time",
+      "reason",
+      "review_status",
+      "review_comment",
+      "review_reply",
+      "submitted_by_user_id",
+      "created_at"
+    ],
+    "REPAIR_SHOP": [
+      "shop_id",
+      "shop_name",
+      "contact_person",
+      "contact_number",
+      "address",
+      "created_at",
+      "updated_at"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "title",
+      "content",
+      "creation_time",
+      "updated_at",
+      "created_by_user_id"
+    ],
+    "TOKEN": [
+      "token_id",
+      "token_value",
+      "user_id",
+      "token_type",
+      "creation_time",
+      "expiration_time",
+      "is_revoked"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "DEPARTURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REPAIR_SHOP",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TOKEN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 70.76,
+  "ilp_runtime": 0.102
+}

@@ -1,0 +1,53 @@
+{
+  "entity": [
+    "ORDER",
+    "DELIVERY_PERSON",
+    "DELIVERY",
+    "PAYMENT_REQUEST"
+  ],
+  "attribute": {
+    "ORDER": [
+      "order_number",
+      "employee_id",
+      "total_price",
+      "delivery_time",
+      "delivery_address",
+      "payment_method"
+    ],
+    "DELIVERY_PERSON": [
+      "delivery_person_id",
+      "name",
+      "phone_number",
+      "address"
+    ],
+    "DELIVERY": [
+      "delivery_id",
+      "order_number",
+      "delivery_time",
+      "delivery_address",
+      "delivery_person_id"
+    ],
+    "PAYMENT_REQUEST": [
+      "payment_request_id",
+      "order_number",
+      "employee_id",
+      "payment_status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DELIVERY",
+      "entity_2": "DELIVERY_PERSON",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 13.9982,
+  "ilp_runtime": 0.062
+}

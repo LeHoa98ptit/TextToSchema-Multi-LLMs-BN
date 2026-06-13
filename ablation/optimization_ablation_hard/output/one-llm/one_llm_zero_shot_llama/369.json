@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "CONTENT",
+    "USER",
+    "OPERATION",
+    "VERSION",
+    "COMMENT",
+    "PERMISSION",
+    "ASSOC_PERMISSION_CONTENT"
+  ],
+  "attribute": {
+    "CONTENT": [
+      "id",
+      "title",
+      "description",
+      "state",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "id",
+      "username",
+      "email",
+      "password",
+      "role"
+    ],
+    "OPERATION": [
+      "id",
+      "type",
+      "time",
+      "user_id",
+      "content_id"
+    ],
+    "VERSION": [
+      "id",
+      "content_id",
+      "version_number",
+      "created_at"
+    ],
+    "COMMENT": [
+      "id",
+      "content_id",
+      "user_id",
+      "comment_text",
+      "created_at"
+    ],
+    "PERMISSION": [
+      "id",
+      "user_id",
+      "content_id",
+      "permission_type"
+    ],
+    "ASSOC_PERMISSION_CONTENT": [
+      "assoc_permission_content_id",
+      "permission_id",
+      "content_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_PERMISSION_CONTENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "ASSOC_PERMISSION_CONTENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.5454,
+  "ilp_runtime": 0.167
+}

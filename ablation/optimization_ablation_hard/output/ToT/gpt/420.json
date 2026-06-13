@@ -1,0 +1,171 @@
+{
+  "entity": [
+    "USER",
+    "NEWS",
+    "NEWS_CATEGORY",
+    "VIDEO",
+    "VIDEO_CATEGORY",
+    "INSTRUCTOR",
+    "VIDEO_INSTRUCTOR",
+    "ORDER",
+    "PAYMENT",
+    "LEARN_RECORD",
+    "COLLECTION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone_number",
+      "wechat_openid",
+      "qq_number",
+      "email",
+      "registration_time",
+      "account_status"
+    ],
+    "NEWS": [
+      "news_id",
+      "title",
+      "content",
+      "publication_time",
+      "read_count",
+      "status",
+      "author_user_id",
+      "category_id"
+    ],
+    "NEWS_CATEGORY": [
+      "category_id",
+      "category_name",
+      "sort_order"
+    ],
+    "VIDEO": [
+      "video_id",
+      "title",
+      "description",
+      "cover_image",
+      "duration",
+      "price",
+      "status",
+      "directory_path",
+      "course_count",
+      "total_duration",
+      "category_id"
+    ],
+    "VIDEO_CATEGORY": [
+      "category_id",
+      "category_name",
+      "parent_category_id"
+    ],
+    "INSTRUCTOR": [
+      "instructor_id",
+      "avatar",
+      "title",
+      "introduction",
+      "teaching_experience_years",
+      "professional_field",
+      "teaching_achievement"
+    ],
+    "VIDEO_INSTRUCTOR": [
+      "video_id",
+      "instructor_id"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "video_id",
+      "order_time",
+      "status",
+      "total_amount"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "order_id",
+      "method",
+      "status",
+      "payment_time"
+    ],
+    "LEARN_RECORD": [
+      "learn_id",
+      "user_id",
+      "video_id",
+      "purchase_time",
+      "expiration_time",
+      "view_duration",
+      "completion_status",
+      "progress_percent",
+      "last_viewed_at"
+    ],
+    "COLLECTION": [
+      "collection_id",
+      "user_id",
+      "video_id",
+      "collection_time",
+      "is_active"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "NEWS",
+      "entity_2": "NEWS_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COLLECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LEARN_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LEARN_RECORD",
+      "entity_2": "VIDEO",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "VIDEO_INSTRUCTOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VIDEO_INSTRUCTOR",
+      "entity_2": "INSTRUCTOR",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VIDEO",
+      "entity_2": "VIDEO_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VIDEO_CATEGORY",
+      "entity_2": "VIDEO_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 92.4231,
+  "ilp_runtime": 0.08
+}

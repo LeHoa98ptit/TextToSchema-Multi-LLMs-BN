@@ -1,0 +1,85 @@
+{
+  "filename": "322.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "DEVICE": 0.817574,
+    "SITE": 0.817574,
+    "USER": 0.817574,
+    "ASSOC_EMPLOYEE_DEVICE": 0.252377
+  },
+  "attribute": {
+    "COMPANY": {
+      "website_address": 0.761627,
+      "creation_time": 0.758973,
+      "company_name": 0.759384
+    },
+    "EMPLOYEE": {
+      "name": 0.77292,
+      "position": 0.769371,
+      "salary": 0.758059,
+      "employee_id": 0.773059
+    },
+    "DEVICE": {
+      "device_specify": 0.754592,
+      "device_id": 0.753622,
+      "device_type": 0.75114
+    },
+    "SITE": {
+      "hostname": 0.750695,
+      "mark": 0.746237,
+      "site_id": 0.747721,
+      "creation_date": 0.749498
+    },
+    "USER": {
+      "username": 0.74231,
+      "email": 0.757749,
+      "password": 0.756279,
+      "login_time": 0.75423,
+      "user_id": 0.750399,
+      "login_history": 0.756735
+    },
+    "ASSOC_EMPLOYEE_DEVICE": {
+      "assoc_employee_device_id": 0.252377,
+      "employee_id": 0.252377,
+      "device_id": 0.252377
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A company has multiple employees",
+      "probability": 0.834553
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_DEVICE",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_DEVICE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252377
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "ASSOC_EMPLOYEE_DEVICE",
+      "description": "One DEVICE can be associated with many ASSOC_EMPLOYEE_DEVICE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252377
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "description": "A user can create multiple sites",
+      "probability": 0.962004
+    }
+  ],
+  "processing_time": 14.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant LOGIN_HISTORY entity and integrated its attributes into the USER entity as login_history. Added company_name attribute to COMPANY entity and device_type attribute to DEVICE entity for completeness. Simplified relationships by removing the redundant entity."
+  }
+}

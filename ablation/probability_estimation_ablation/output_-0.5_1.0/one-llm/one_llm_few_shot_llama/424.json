@@ -1,0 +1,95 @@
+{
+  "filename": "424.txt",
+  "entity": {
+    "USER": 0.622459,
+    "SYSTEM": 0.622459,
+    "LOGIN_RECORD": 0.522684,
+    "AUTHORIZATION": 0.622459,
+    "ASSOC_USER_SYSTEM": 0.977118
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.511768,
+      "password": 0.542495,
+      "phone_number": 0.525558,
+      "email": 0.536523,
+      "account_status": 0.545907
+    },
+    "SYSTEM": {
+      "system_id": 0.532132,
+      "system_domain": 0.536405,
+      "access_time": 0.537636,
+      "callback_url": 0.510722,
+      "secret_key": 0.531404,
+      "token_validity_period": 0.543464,
+      "system_status": 0.544012,
+      "enable_approval": 0.533791,
+      "require_login": 0.547448
+    },
+    "LOGIN_RECORD": {
+      "login_time": 0.546169,
+      "login_ip": 0.54349,
+      "token_expiration_time": 0.539568,
+      "logout_time": 0.536718,
+      "login_status": 0.548751
+    },
+    "AUTHORIZATION": {
+      "authorization_time": 0.539216,
+      "authorization_status": 0.543435,
+      "effective_time": 0.538455,
+      "expiration_time": 0.536962
+    },
+    "ASSOC_USER_SYSTEM": {
+      "assoc_user_system_id": 0.977118,
+      "user_id": 0.977118,
+      "system_id": 0.977118
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_RECORD",
+      "cardinality": "1:N",
+      "description": "Each user can have many login records.",
+      "probability": 0.999917
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "LOGIN_RECORD",
+      "cardinality": "1:N",
+      "description": "Each system can have many login records.",
+      "probability": 0.417917
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_SYSTEM",
+      "description": "One USER can be associated with many ASSOC_USER_SYSTEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977118
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "ASSOC_USER_SYSTEM",
+      "description": "One SYSTEM can be associated with many ASSOC_USER_SYSTEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977118
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "description": "Each user can have many authorizations.",
+      "probability": 0.999886
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "description": "Each system can have many authorizations.",
+      "probability": 0.840671
+    }
+  ],
+  "processing_time": 18.99
+}

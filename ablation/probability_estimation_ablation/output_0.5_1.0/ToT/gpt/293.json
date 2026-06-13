@@ -1,0 +1,150 @@
+{
+  "filename": "293.txt",
+  "entity": {
+    "MINE": 0.817574,
+    "LOCATION": 0.708973,
+    "EQUIPMENT": 0.817574,
+    "EQUIPMENT_MODEL": 0.770582,
+    "PERSONNEL": 0.817574,
+    "CONTACT_INFO": 0.712365,
+    "MAINTENANCE_EVENT": 0.757735,
+    "MAINTENANCE_COST": 0.767955,
+    "EQUIPMENT_USAGE_LOG": 0.740775
+  },
+  "attribute": {
+    "MINE": {
+      "mine_id": 0.742258,
+      "name": 0.743101,
+      "location_id": 0.747665
+    },
+    "LOCATION": {
+      "location_id": 0.737363,
+      "address": 0.740534,
+      "city": 0.737045,
+      "province": 0.738165,
+      "country": 0.734923,
+      "latitude": 0.732033,
+      "longitude": 0.732011
+    },
+    "EQUIPMENT": {
+      "equipment_id": 0.772304,
+      "serial_number": 0.757754,
+      "model_id": 0.767689,
+      "mine_id": 0.776976,
+      "status": 0.772874,
+      "purchase_date": 0.76661,
+      "purchase_price": 0.763089,
+      "vendor": 0.762941
+    },
+    "EQUIPMENT_MODEL": {
+      "model_id": 0.764323,
+      "manufacturer": 0.766384,
+      "model_name": 0.765748,
+      "equipment_type": 0.773917,
+      "specifications": 0.772259
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.762455,
+      "name": 0.758245,
+      "position": 0.756613,
+      "contact_id": 0.758859
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.748023,
+      "phone_number": 0.749184,
+      "email": 0.748176,
+      "address": 0.748332
+    },
+    "MAINTENANCE_EVENT": {
+      "event_id": 0.749599,
+      "equipment_id": 0.77145,
+      "maintenance_date": 0.75421,
+      "content": 0.761081,
+      "personnel_id": 0.76856,
+      "cost_id": 0.757532
+    },
+    "MAINTENANCE_COST": {
+      "cost_id": 0.761222,
+      "labor_cost": 0.76088,
+      "parts_cost": 0.758811,
+      "total_cost": 0.759665
+    },
+    "EQUIPMENT_USAGE_LOG": {
+      "usage_log_id": 0.773107,
+      "equipment_id": 0.777228,
+      "usage_date": 0.771796,
+      "hours_operated": 0.772437,
+      "operator_id": 0.77438
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MINE",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "description": "Each mine is associated with a single geographic location",
+      "probability": 0.903419
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "description": "A mine operates many equipment items",
+      "probability": 0.731354
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_MODEL",
+      "cardinality": "N:1",
+      "description": "Each equipment unit is built from one equipment model",
+      "probability": 0.999998
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "description": "Equipment can have many maintenance events over its life",
+      "probability": 0.975715
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "description": "A maintenance event is performed by one personnel member",
+      "probability": 0.925938
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "MAINTENANCE_COST",
+      "cardinality": "1:1",
+      "description": "Cost breakdown is recorded for each maintenance event",
+      "probability": 0.981181
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each personnel record has one set of contact details",
+      "probability": 0.005903
+    },
+    {
+      "entity_1": "EQUIPMENT_USAGE_LOG",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "N:1",
+      "description": "Each usage log entry records operation of a specific equipment unit",
+      "probability": 0.999768
+    },
+    {
+      "entity_1": "EQUIPMENT_USAGE_LOG",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "description": "Each usage log entry records the personnel (operator) responsible for the operation",
+      "probability": 0.378888
+    }
+  ],
+  "processing_time": 37.47,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged PURCHASE attributes into EQUIPMENT to reduce join complexity while preserving purchase details. Added EQUIPMENT_USAGE_LOG entity to capture daily usage, hours operated, and operator, supporting statistical analysis of equipment utilization. Retained separate CONTACT_INFO for flexible contact management. Preserved normalized structure for equipment, models, maintenance events, and cost breakdowns. Updated relationships to reflect new usage log entity and removed the now‑redundant EQUIPMENT‑PURCHASE relationship."
+  }
+}

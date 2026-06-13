@@ -1,0 +1,103 @@
+{
+  "entity": [
+    "PARK",
+    "PERSON",
+    "PLANT",
+    "MAINTENANCE",
+    "RECORD",
+    "PERSONNEL",
+    "ASSOC_MAINTENANCE_PERSONNEL"
+  ],
+  "attribute": {
+    "PARK": [
+      "location",
+      "area",
+      "responsible_person",
+      "park_name",
+      "park_type"
+    ],
+    "PERSON": [
+      "name",
+      "contact_info",
+      "email",
+      "phone_number",
+      "address"
+    ],
+    "PLANT": [
+      "specie",
+      "quantity",
+      "growth_status",
+      "recording_time",
+      "plant_age",
+      "plant_health"
+    ],
+    "MAINTENANCE": [
+      "maintenance_time",
+      "maintenance_content",
+      "maintenance_cost",
+      "maintenance_personnel",
+      "maintenance_frequency",
+      "maintenance_priority"
+    ],
+    "RECORD": [
+      "recording_time",
+      "recorder",
+      "plant_specie",
+      "plant_quantity",
+      "record_type",
+      "record_description"
+    ],
+    "PERSONNEL": [
+      "name",
+      "role",
+      "personnel_id",
+      "department",
+      "job_title"
+    ],
+    "ASSOC_MAINTENANCE_PERSONNEL": [
+      "assoc_maintenance_personnel_id",
+      "maintenance_id",
+      "personnel_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PARK",
+      "entity_2": "PERSON",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "ASSOC_MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RECORD",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.309,
+  "ilp_runtime": 0.04
+}

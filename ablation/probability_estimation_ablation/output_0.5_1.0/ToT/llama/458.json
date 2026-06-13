@@ -1,0 +1,90 @@
+{
+  "filename": "458.txt",
+  "entity": {
+    "MEMBER": 0.817574,
+    "BOOK": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.792523,
+    "PAYMENT": 0.717156,
+    "ORDER_STATUS": 0.739525
+  },
+  "attribute": {
+    "MEMBER": {
+      "username": 0.750482,
+      "password": 0.760746,
+      "address": 0.764444,
+      "postal_code": 0.761549,
+      "telephone": 0.760802,
+      "expenditure_point": 0.760554
+    },
+    "BOOK": {
+      "book_type": 0.762393,
+      "book_title": 0.7574,
+      "author": 0.754624,
+      "publisher": 0.764432,
+      "publication_date": 0.755457,
+      "isbn": 0.767666,
+      "price": 0.756067
+    },
+    "ORDER": {
+      "sale_order_date": 0.75573,
+      "shipping_date": 0.745927,
+      "order_total": 0.755082
+    },
+    "ORDER_DETAIL": {
+      "quantity": 0.772259,
+      "subtotal": 0.763835
+    },
+    "PAYMENT": {
+      "payment_method": 0.746248,
+      "payment_date": 0.743087,
+      "amount": 0.746138
+    },
+    "ORDER_STATUS": {
+      "status": 0.754759,
+      "status_date": 0.746336
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A member can have multiple orders",
+      "probability": 0.998154
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order details",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "BOOK",
+      "cardinality": "N:1",
+      "description": "An order detail is associated with one book",
+      "probability": 0.043205
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order is associated with one payment",
+      "probability": 0.437088
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order statuses",
+      "probability": 0.99816
+    }
+  ],
+  "processing_time": 16.58,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for payment information and order status to further enhance the model, while retaining the strengths of the original model and addressing the identified issues."
+  }
+}

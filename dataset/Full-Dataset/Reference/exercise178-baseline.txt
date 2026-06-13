@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "Customer",
+    "Payment Method",
+    "Prescription",
+    "Medication",
+    "Prescription Medication Association",
+    "Order",
+    "Verification Log"
+  ],
+  "attribut": {
+    "Customer": [
+      "Customer ID",
+      "Name",
+      "Address",
+      "Contact Information",
+      "Email",
+      "Password",
+      "Agreement Status"
+    ],
+    "Payment Method": [
+      "Payment Method ID",
+      "Customer ID",
+      "Payment Type",
+      "Payment Details"
+    ],
+    "Prescription": [
+      "Prescription ID",
+      "Customer ID",
+      "Doctor Name",
+      "Doctor Hospital",
+      "Doctor Contact Information",
+      "Prescription Status",
+      "Submission Time"
+    ],
+    "Medication": [
+      "Medication ID",
+      "Medication Name",
+      "Dosage",
+      "Stock Quantity",
+      "Price"
+    ],
+    "Prescription Medication Association": [
+      "Prescription ID",
+      "Medication ID",
+      "Quantity"
+    ],
+    "Order": [
+      "Order ID",
+      "Customer ID",
+      "Prescription ID",
+      "Total Price",
+      "Order Status",
+      "Order Time",
+      "Mailing Address"
+    ],
+    "Verification Log": [
+      "Log ID",
+      "Prescription ID",
+      "Verification Time",
+      "Verification Result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Customer",
+      "entity_2": "Payment Method",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Customer",
+      "entity_2": "Prescription",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Prescription",
+      "entity_2": "Prescription Medication Association",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Medication",
+      "entity_2": "Prescription Medication Association",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Prescription Medication Association",
+      "entity_2": "Order",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Customer",
+      "entity_2": "Order",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Prescription Medication Association",
+      "entity_2": "Verification Log",
+      "cardinality": "1:N"
+    }
+  ]
+}

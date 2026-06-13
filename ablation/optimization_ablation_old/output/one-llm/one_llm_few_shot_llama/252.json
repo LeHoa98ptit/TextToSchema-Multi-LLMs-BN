@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "PLAYER",
+    "GAME",
+    "SINGLE_PLAYER_GAME",
+    "PLAYER_BATTLE",
+    "COMMUNICATION",
+    "ASSOC_PLAYER_PLAYER_BATTLE"
+  ],
+  "attribute": {
+    "PLAYER": [
+      "username",
+      "password",
+      "phone_number",
+      "registration_time"
+    ],
+    "GAME": [
+      "game_rule",
+      "game_content",
+      "maximum_number_of_players"
+    ],
+    "SINGLE_PLAYER_GAME": [
+      "game_start_time",
+      "game_end_time",
+      "game_status"
+    ],
+    "PLAYER_BATTLE": [
+      "battle_start_time",
+      "battle_end_time",
+      "battle_result"
+    ],
+    "COMMUNICATION": [
+      "communication_start_time",
+      "communication_end_time",
+      "communication_content"
+    ],
+    "ASSOC_PLAYER_PLAYER_BATTLE": [
+      "assoc_player_player_battle_id",
+      "player_id",
+      "player_battle_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYER_BATTLE",
+      "entity_2": "ASSOC_PLAYER_PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 44.7528,
+  "ilp_runtime": 0.049
+}

@@ -1,0 +1,101 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "DORMITORY",
+    "COURSE",
+    "GRADE",
+    "REPAIR_REQUEST",
+    "ASSOC_USER_COURSE"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email",
+      "student_id"
+    ],
+    "ROLE": [
+      "role_name",
+      "role_description"
+    ],
+    "DORMITORY": [
+      "name",
+      "location",
+      "capacity"
+    ],
+    "COURSE": [
+      "code",
+      "name",
+      "credits"
+    ],
+    "GRADE": [
+      "score",
+      "course_code",
+      "user_id"
+    ],
+    "REPAIR_REQUEST": [
+      "description",
+      "status",
+      "dormitory_name",
+      "user_id"
+    ],
+    "ASSOC_USER_COURSE": [
+      "assoc_user_course_id",
+      "user_id",
+      "course_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_USER_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.3986,
+  "ilp_runtime": 0.077
+}

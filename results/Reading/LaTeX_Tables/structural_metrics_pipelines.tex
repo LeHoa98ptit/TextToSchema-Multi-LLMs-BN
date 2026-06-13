@@ -1,0 +1,40 @@
+% Requires: \usepackage{booktabs}, \usepackage{colortbl}, \usepackage{xcolor}
+\begin{table*}[t]
+\centering
+\caption{\textcolor{blue}{ER model quality metrics for pipeline comparison.}}
+\label{tab:structural_metrics_pipelines}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Pipeline}
+& \textbf{Basic Counts}
+& \textbf{Complexity}
+& \textbf{Redundancy (\%)} $\downarrow$
+& \textbf{Well-Formedness (\%)} $\uparrow$ \\
+\midrule
+& E | R | A | Total
+& R/E | N:M (\%) | A/E
+& Dup | Similar
+& Ent w/ A | Valid Card | Not Isolated \\
+\rowcolor{gray!15}
+\multicolumn{5}{@{}l}{\textit{Our Approach}} \\
+\textbf{Multi-LLM-BN-Llama3} & 4.85 | 4.37 | 21.88 | 31.1 & 0.87 | 0.0 | 4.61 & 0.0 | 0.23 & 100.0 | 100.0 | 100.0 \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{5}{@{}l}{\textit{Baselines}} \\
+TEXT-To-ERD-GPT & 5.63 | 5.4 | 29.39 | 40.42 & 0.94 | 0.0 | 5.34 & 2.81 | 0.36 & 100.0 | 99.04 | 98.13 \\
+TEXT-To-ERD-Llama3 & 5.33 | 4.7 | 25.65 | 35.69 & 0.87 | 0.0 | 4.91 & 1.38 | 0.51 & 100.0 | 99.79 | 98.61 \\
+DSL-ToT-DM & 5.36 | 5.07 | 20.96 | 31.38 & 0.93 | 12.66 | 4.13 & 4.44 | 0.28 & 98.19 | 99.45 | 97.93 \\
+SchemaAgent-GPT & 5.39 | 5.39 | 27.25 | 38.02 & 0.95 | 16.32 | 5.02 & 3.68 | 0.13 & 98.93 | 98.93 | 99.14 \\
+\midrule
+\rowcolor{gray!15}
+\multicolumn{5}{@{}l}{\textit{Variants}} \\
+Multi-LLM-BN-Llama3 (noWiki) & 4.29 | 3.18 | 20.28 | 27.75 & 0.73 | 0.0 | 4.77 & 0.25 | 0.39 & 100.0 | 100.0 | 100.0 \\
+Multi-LLM-noBN-GPT & 5.65 | 5.08 | 23.33 | 34.06 & 0.89 | 9.75 | 4.26 & 2.94 | 0.03 & 94.38 | 97.59 | 94.03 \\
+Multi-LLM-noBN-Llama3 & 4.63 | 4.15 | 20.66 | 29.44 & 0.88 | 12.66 | 4.58 & 1.91 | 0.11 & 98.11 | 100.0 | 97.58 \\
+One-LLM-BN-Llama3 & 6.0 | 5.95 | 22.44 | 34.39 & 0.98 | 0.0 | 3.79 & 0.0 | 0.44 & 100.0 | 100.0 | 100.0 \\
+One-LLM-BN-Llama3 (noWiki) & 4.87 | 3.7 | 18.91 | 27.48 & 0.75 | 0.0 | 3.91 & 0.62 | 0.47 & 100.0 | 99.59 | 99.59 \\
+\bottomrule
+\end{tabular}
+\end{table*}

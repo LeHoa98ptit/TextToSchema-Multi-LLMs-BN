@@ -1,0 +1,66 @@
+{
+  "filename": "381.txt",
+  "entity": {
+    "USER": 0.622459,
+    "NEWS": 0.622459,
+    "SUBSCRIPTION": 0.622459,
+    "STATUS": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.510385,
+      "name": 0.513209,
+      "email": 0.538299
+    },
+    "NEWS": {
+      "news_id": 0.549781,
+      "title": 0.545357,
+      "content": 0.557358,
+      "publish_date": 0.550611
+    },
+    "STATUS": {
+      "status_id": 0.530216,
+      "name": 0.534868,
+      "description": 0.541098
+    },
+    "SUBSCRIPTION": {
+      "subscription_id": 0.556427,
+      "user_id": 0.550851,
+      "news_id": 0.573929,
+      "status_id": 0.562319,
+      "created_at": 0.548587,
+      "updated_at": 0.558338,
+      "ip_address": 0.557218,
+      "subscribed_at": 0.554005,
+      "cancelled_at": 0.553792
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A user can have many subscriptions",
+      "probability": 0.999927
+    },
+    {
+      "entity_1": "NEWS",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A news item can be subscribed to by many users",
+      "probability": 0.029001
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "Each subscription has one status; a status can be used by many subscriptions",
+      "probability": 0.978657
+    }
+  ],
+  "processing_time": 7.94,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Extracted subscription status into a separate STATUS lookup entity for extensibility. Added foreign‑key attributes (user_id, news_id, status_id) to SUBSCRIPTION to enforce referential integrity. Updated relationships to reflect these FK links while preserving the original lean structure and core attributes."
+  }
+}

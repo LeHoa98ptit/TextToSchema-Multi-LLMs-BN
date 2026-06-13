@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "USER",
+    "APPOINTMENT",
+    "MEDICAL_INSTITUTION",
+    "OPERATOR",
+    "EXAMINATION",
+    "PAYMENT",
+    "INSURANCE"
+  ],
+  "attribute": {
+    "USER": [
+      "email",
+      "phone_number",
+      "birth_date",
+      "gender",
+      "password_hash",
+      "address",
+      "insurance_status"
+    ],
+    "APPOINTMENT": [
+      "description",
+      "document",
+      "creation_date",
+      "appointment_date",
+      "status"
+    ],
+    "MEDICAL_INSTITUTION": [
+      "name",
+      "address",
+      "opening_time",
+      "closing_time"
+    ],
+    "OPERATOR": [
+      "username",
+      "password_hash",
+      "full_name",
+      "role"
+    ],
+    "EXAMINATION": [
+      "code",
+      "name",
+      "description"
+    ],
+    "PAYMENT": [
+      "amount",
+      "currency",
+      "method",
+      "payment_date",
+      "status"
+    ],
+    "INSURANCE": [
+      "policy_number",
+      "provider_name",
+      "coverage_type",
+      "status",
+      "effective_date",
+      "expiry_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "OPERATOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "EXAMINATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.774,
+  "ilp_runtime": 0.193
+}

@@ -1,0 +1,124 @@
+{
+  "filename": "481.txt",
+  "entity": {
+    "EXPERT": 0.712222,
+    "RULE": 0.817574,
+    "CROP": 0.817574,
+    "SENSOR": 0.817574,
+    "DATUM": 0.817574,
+    "ANALYSIS": 0.730035,
+    "PREDICTION": 0.71025,
+    "ASSOC_RULE_DATUM": 0.042163
+  },
+  "attribute": {
+    "EXPERT": {
+      "expert_id": 0.746512,
+      "name": 0.744721,
+      "email": 0.741735,
+      "phone": 0.743483
+    },
+    "RULE": {
+      "rule_id": 0.747715,
+      "description": 0.754432,
+      "criteria": 0.755558,
+      "created_at": 0.738813,
+      "expert_id": 0.750424
+    },
+    "CROP": {
+      "crop_id": 0.76784,
+      "name": 0.763962,
+      "crop_type": 0.770533,
+      "field_location": 0.764334,
+      "planted_date": 0.765331,
+      "harvested_date": 0.767754
+    },
+    "SENSOR": {
+      "sensor_id": 0.755397,
+      "sensor_type": 0.762423,
+      "location": 0.758971,
+      "installation_date": 0.75784
+    },
+    "DATUM": {
+      "datum_id": 0.75298,
+      "sensor_id": 0.766312,
+      "crop_id": 0.773767,
+      "collection_time": 0.757717,
+      "data_type": 0.75866,
+      "value": 0.756912
+    },
+    "ANALYSIS": {
+      "analysis_id": 0.744753,
+      "datum_id": 0.757288,
+      "rule_id": 0.750725,
+      "result": 0.739361,
+      "analysis_time": 0.746416
+    },
+    "PREDICTION": {
+      "prediction_id": 0.737341,
+      "crop_id": 0.768799,
+      "predicted_value": 0.732236,
+      "prediction_time": 0.738463,
+      "model_name": 0.734734
+    },
+    "ASSOC_RULE_DATUM": {
+      "assoc_rule_datum_id": 0.042163,
+      "rule_id": 0.042163,
+      "datum_id": 0.042163
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPERT",
+      "entity_2": "RULE",
+      "cardinality": "1:N",
+      "probability": 0.083376
+    },
+    {
+      "entity_1": "RULE",
+      "entity_2": "ASSOC_RULE_DATUM",
+      "description": "One RULE can be associated with many ASSOC_RULE_DATUM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.042163
+    },
+    {
+      "entity_1": "DATUM",
+      "entity_2": "ASSOC_RULE_DATUM",
+      "description": "One DATUM can be associated with many ASSOC_RULE_DATUM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.042163
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "DATUM",
+      "cardinality": "1:N",
+      "probability": 0.019816
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "DATUM",
+      "cardinality": "1:N",
+      "probability": 0.000797
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "PREDICTION",
+      "cardinality": "1:N",
+      "probability": 0.000844
+    },
+    {
+      "entity_1": "DATUM",
+      "entity_2": "ANALYSIS",
+      "cardinality": "1:N",
+      "probability": 0.461411
+    },
+    {
+      "entity_1": "RULE",
+      "entity_2": "ANALYSIS",
+      "cardinality": "1:N",
+      "probability": 0.779536
+    }
+  ],
+  "processing_time": 21.5
+}

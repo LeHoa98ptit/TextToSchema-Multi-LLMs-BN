@@ -1,0 +1,244 @@
+{
+  "filename": "313.txt",
+  "entity": {
+    "INGREDIENT": 0.817574,
+    "INGREDIENT_TYPE": 0.769608,
+    "TORTILLA": 0.817574,
+    "TORTILLA_INGREDIENT": 0.790758,
+    "USER": 0.817574,
+    "ROLE": 0.728099,
+    "USER_ROLE": 0.734875,
+    "PERMISSION": 0.817574,
+    "ROLE_PERMISSION": 0.774535,
+    "SALE": 0.784992,
+    "SALE_ITEM": 0.755968,
+    "PRODUCTION": 0.817574,
+    "PRODUCTION_USAGE": 0.767099
+  },
+  "attribute": {
+    "INGREDIENT": {
+      "ingredient_id": 0.755607,
+      "name": 0.748028,
+      "type_id": 0.761087,
+      "unit": 0.758271,
+      "cost_per_unit": 0.753248,
+      "current_stock": 0.750608,
+      "created_by": 0.762575,
+      "created_at": 0.756944,
+      "updated_at": 0.746663
+    },
+    "INGREDIENT_TYPE": {
+      "type_id": 0.760988,
+      "type_name": 0.758089,
+      "description": 0.757918,
+      "created_by": 0.762321,
+      "created_at": 0.757049,
+      "updated_at": 0.746608
+    },
+    "TORTILLA": {
+      "tortilla_id": 0.760584,
+      "design_name": 0.759413,
+      "creation_timestamp": 0.754128,
+      "size_cm": 0.756282,
+      "standard_price": 0.753522,
+      "created_by": 0.760306,
+      "created_at": 0.754875,
+      "updated_at": 0.747164
+    },
+    "TORTILLA_INGREDIENT": {
+      "tortilla_id": 0.764676,
+      "ingredient_id": 0.761038,
+      "quantity_required": 0.76996,
+      "created_by": 0.766515,
+      "created_at": 0.761458,
+      "updated_at": 0.753652
+    },
+    "USER": {
+      "user_id": 0.752077,
+      "username": 0.73987,
+      "password_hash": 0.745141,
+      "email": 0.745192,
+      "is_active": 0.74186,
+      "created_at": 0.743513,
+      "last_login": 0.742353,
+      "created_by": 0.749116,
+      "updated_at": 0.734391
+    },
+    "ROLE": {
+      "role_id": 0.75157,
+      "role_name": 0.750104,
+      "description": 0.75826,
+      "parent_role_id": 0.747559,
+      "created_by": 0.752167,
+      "created_at": 0.746819,
+      "updated_at": 0.736898
+    },
+    "USER_ROLE": {
+      "user_id": 0.755652,
+      "role_id": 0.754173,
+      "assigned_at": 0.744635,
+      "created_by": 0.753467,
+      "created_at": 0.748124,
+      "updated_at": 0.739446
+    },
+    "PERMISSION": {
+      "permission_id": 0.758223,
+      "permission_name": 0.757661,
+      "description": 0.77004,
+      "created_by": 0.754004,
+      "created_at": 0.748672,
+      "updated_at": 0.741574
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.75586,
+      "permission_id": 0.756244,
+      "created_by": 0.755247,
+      "created_at": 0.750367,
+      "updated_at": 0.74314
+    },
+    "SALE": {
+      "sale_id": 0.755007,
+      "sale_timestamp": 0.747712,
+      "customer_user_id": 0.757666,
+      "total_amount": 0.751244,
+      "payment_method": 0.74102,
+      "status": 0.750346,
+      "created_by": 0.755317,
+      "created_at": 0.749672,
+      "updated_at": 0.738155
+    },
+    "SALE_ITEM": {
+      "sale_id": 0.75537,
+      "tortilla_id": 0.765507,
+      "quantity": 0.759917,
+      "unit_price": 0.748159,
+      "line_total": 0.750956,
+      "created_by": 0.756902,
+      "created_at": 0.750417,
+      "updated_at": 0.738918
+    },
+    "PRODUCTION": {
+      "production_id": 0.758073,
+      "production_timestamp": 0.749762,
+      "operator_user_id": 0.758901,
+      "batch_number": 0.746632,
+      "total_output": 0.745799,
+      "created_by": 0.755845,
+      "created_at": 0.747195,
+      "updated_at": 0.733799
+    },
+    "PRODUCTION_USAGE": {
+      "production_id": 0.76408,
+      "ingredient_id": 0.774184,
+      "quantity_used": 0.764566,
+      "created_by": 0.758168,
+      "created_at": 0.747383,
+      "updated_at": 0.736839
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INGREDIENT_TYPE",
+      "entity_2": "INGREDIENT",
+      "cardinality": "1:N",
+      "description": "Each ingredient belongs to one ingredient type",
+      "probability": 0.999669
+    },
+    {
+      "entity_1": "TORTILLA",
+      "entity_2": "TORTILLA_INGREDIENT",
+      "cardinality": "1:N",
+      "description": "A tortilla design references many ingredient‑quantity pairs",
+      "probability": 0.998486
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "TORTILLA_INGREDIENT",
+      "cardinality": "1:N",
+      "description": "An ingredient can appear in many tortilla recipes",
+      "probability": 0.915132
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user can be assigned multiple roles",
+      "probability": 0.997358
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users",
+      "probability": 0.986052
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role aggregates many permissions",
+      "probability": 0.993708
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can belong to many roles",
+      "probability": 0.998497
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "description": "A role may have a parent role (role hierarchy)",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "SALE",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "description": "Each sale can contain multiple tortilla line items",
+      "probability": 0.999765
+    },
+    {
+      "entity_1": "TORTILLA",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "description": "A tortilla can appear in many sale items",
+      "probability": 0.256405
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "description": "A customer user can place many sales",
+      "probability": 0.998294
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PRODUCTION",
+      "cardinality": "1:N",
+      "description": "An operator user can record many production batches",
+      "probability": 0.038914
+    },
+    {
+      "entity_1": "PRODUCTION",
+      "entity_2": "PRODUCTION_USAGE",
+      "cardinality": "1:N",
+      "description": "Each production batch consumes multiple ingredient quantities",
+      "probability": 0.915145
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "PRODUCTION_USAGE",
+      "cardinality": "1:N",
+      "description": "An ingredient can be used in many production records",
+      "probability": 0.040997
+    }
+  ],
+  "processing_time": 63.46,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added inventory attribute (current_stock) to INGREDIENT and comprehensive audit fields (created_by, created_at, updated_at) to every table. Introduced role hierarchy via parent_role_id in ROLE. Included explicit foreign‑key style audit columns to support traceability. Prepared the model for cascade rules and indexing by clarifying relationships. Enhanced consistency and completeness while preserving the robust many‑to‑many associative entities and role‑based permission structure."
+  }
+}

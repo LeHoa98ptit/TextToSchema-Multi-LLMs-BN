@@ -1,0 +1,17 @@
+The following is the database requirements analysis for the customer order management system: The system involves the management of customers, orders, order items, and quotations, including the roles of users in customer order creation and quotation.
+
+First, there is the customer (Customer ID, Creation Time, Update Time, Deletion Time, Email, Name) entity, which records the detailed information of the customer. Customer ID serves as the Primary key, while Email and Name serve as the basic contact information of the customer. The customer table ensures that each customer's record is complete, including the creation, update, and deletion times of the customer.
+
+The order (Order ID, Creation Time, Update Time, Deletion Time, Order Description, Delivery Date, Invoice Number, Currency Type, Order Number, Creator User ID, Customer ID) entity records the detailed information of the order. Each order is identified by the Order ID as the Primary key, and the Creator User ID and Customer ID are associated with the user table and customer table, ensuring the relationship between the order creator and the customer. The order table also records important information such as the delivery date and invoice number of the order.
+
+The order item (Order Item ID, Creation Time, Update Time, Deletion Time, Description, Quantity, Unit, Unit Price, Order ID) entity records the specific items under each order, and each order can contain multiple order items. The order item is associated with the order table through a Foreign key, ensuring that each order item belongs to a specific order.
+
+The user (User ID, Creation Time, Update Time, Deletion Time, Email, Username, Password) entity records all user information in the system, including the basic information and authentication information of the user. The user table is the creator of orders and quotations, managing the interaction between customers and orders.
+
+In addition, the user creates orders for customers (Order ID, Customer ID) relationship table represents the many-to-many relationship between users and customers. A user can create multiple orders for a customer, and each customer can also have orders created by multiple users.
+
+The order items of an order (Order Item ID, Order ID) relationship table is used to record the multiple order items contained in each order, ensuring that each order item is associated with a specific order in the order table.
+
+The user quotes for customers (Quotation ID, Customer ID) relationship table records the quotation information provided by users to customers, representing the many-to-many relationship between users and customers.
+
+These designs ensure that the system can effectively manage the relationships between customers, orders, order items, and quotations, and support the role of users in the order creation and quotation process.

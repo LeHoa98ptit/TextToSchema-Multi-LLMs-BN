@@ -1,0 +1,60 @@
+{
+  "filename": "298.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "SALARY_LEVEL": 0.59686
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "name": 0.556121,
+      "position": 0.569893,
+      "phone_number": 0.55184,
+      "salary": 0.557162,
+      "supervisor_id": 0.550509
+    },
+    "DEPARTMENT": {
+      "department_number": 0.537807,
+      "location": 0.537475
+    },
+    "SALARY_LEVEL": {
+      "salary_range": 0.562049,
+      "level_description": 0.560187
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "An employee is assigned to one department",
+      "probability": 0.999895
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY_LEVEL",
+      "cardinality": "N:1",
+      "description": "An employee has one salary level",
+      "probability": 0.93051
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department has multiple employees",
+      "probability": 0.999895
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "An employee has one supervisor, and a supervisor can have multiple employees",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 8.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a self-referential relationship to the employee entity to represent supervisors, and added a supervisor_id attribute to the employee entity to store the id of the supervisor."
+  }
+}

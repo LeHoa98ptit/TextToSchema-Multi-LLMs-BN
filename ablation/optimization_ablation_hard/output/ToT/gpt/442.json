@@ -1,0 +1,147 @@
+{
+  "entity": [
+    "MEDICAL_INSTITUTION",
+    "DEPARTMENT",
+    "PERSONNEL",
+    "VEHICLE",
+    "WASTE_TYPE",
+    "WASTE_ITEM",
+    "INBOUND_BATCH",
+    "OUTBOUND_BATCH",
+    "INBOUND_BATCH_ITEM",
+    "OUTBOUND_BATCH_ITEM"
+  ],
+  "attribute": {
+    "MEDICAL_INSTITUTION": [
+      "institution_id",
+      "name",
+      "address",
+      "contact_info"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "institution_id",
+      "name",
+      "description"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "institution_id",
+      "department_id",
+      "name",
+      "role",
+      "contact_info"
+    ],
+    "VEHICLE": [
+      "vehicle_id",
+      "institution_id",
+      "license_plate",
+      "model",
+      "capacity"
+    ],
+    "WASTE_TYPE": [
+      "type_id",
+      "name",
+      "description"
+    ],
+    "WASTE_ITEM": [
+      "waste_id",
+      "traceability_code",
+      "type_id",
+      "weight",
+      "generation_time",
+      "collection_time",
+      "status",
+      "department_id",
+      "inbound_batch_id",
+      "outbound_batch_id"
+    ],
+    "INBOUND_BATCH": [
+      "inbound_batch_id",
+      "batch_number",
+      "expected_quantity",
+      "actual_quantity",
+      "expected_weight",
+      "actual_weight",
+      "inbound_time",
+      "collector_id",
+      "confirmer_id"
+    ],
+    "OUTBOUND_BATCH": [
+      "outbound_batch_id",
+      "batch_number",
+      "outbound_quantity",
+      "outbound_weight",
+      "outbound_time",
+      "transporter_id",
+      "confirmer_id",
+      "vehicle_id",
+      "start_time",
+      "end_time"
+    ],
+    "INBOUND_BATCH_ITEM": [
+      "inbound_batch_id",
+      "waste_id",
+      "quantity",
+      "weight"
+    ],
+    "OUTBOUND_BATCH_ITEM": [
+      "outbound_batch_id",
+      "waste_id",
+      "quantity",
+      "weight"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "MEDICAL_INSTITUTION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WASTE_ITEM",
+      "entity_2": "WASTE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INBOUND_BATCH",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OUTBOUND_BATCH",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OUTBOUND_BATCH",
+      "entity_2": "VEHICLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INBOUND_BATCH",
+      "entity_2": "INBOUND_BATCH_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OUTBOUND_BATCH",
+      "entity_2": "OUTBOUND_BATCH_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 73.6939,
+  "ilp_runtime": 0.073
+}

@@ -1,0 +1,122 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.530138,
+    "PICKING_LIST": 0.432024,
+    "PICKING_LIST_ITEM": 0.42458,
+    "DELIVERY_ORDER": 0.566111,
+    "INVOICE": 0.622459,
+    "RECEIVABLE_REPORT": 0.479836
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.528647,
+      "name": 0.532157,
+      "phone": 0.530775,
+      "email": 0.536387,
+      "address": 0.52441
+    },
+    "PRODUCT": {
+      "product_id": 0.51282,
+      "name": 0.517603,
+      "description": 0.530951,
+      "price": 0.51421,
+      "inventory_quantity": 0.543358
+    },
+    "ORDER": {
+      "order_id": 0.533766,
+      "order_date": 0.531974,
+      "status": 0.550752,
+      "total_amount": 0.540757
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.534329,
+      "quantity": 0.555507,
+      "unit_price": 0.539279,
+      "line_total": 0.543687
+    },
+    "PICKING_LIST": {
+      "picking_list_id": 0.507547,
+      "generated_date": 0.503192
+    },
+    "PICKING_LIST_ITEM": {
+      "picking_list_item_id": 0.509909,
+      "pick_quantity": 0.527659,
+      "pick_status": 0.513065
+    },
+    "DELIVERY_ORDER": {
+      "delivery_id": 0.537812,
+      "delivery_time": 0.537633,
+      "delivery_status": 0.545421
+    },
+    "INVOICE": {
+      "invoice_id": 0.535235,
+      "invoice_date": 0.533222,
+      "total_amount": 0.540825
+    },
+    "RECEIVABLE_REPORT": {
+      "report_id": 0.53373,
+      "report_date": 0.531438
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.942682
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.99933
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.85105
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "cardinality": "1:1",
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "PICKING_LIST",
+      "entity_2": "PICKING_LIST_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.991035
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PICKING_LIST_ITEM",
+      "cardinality": "1:N",
+      "probability": 2.3e-05
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:1",
+      "probability": 0.991852
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:1",
+      "probability": 0.92555
+    },
+    {
+      "entity_1": "RECEIVABLE_REPORT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 2e-06
+    }
+  ],
+  "processing_time": 17.27
+}

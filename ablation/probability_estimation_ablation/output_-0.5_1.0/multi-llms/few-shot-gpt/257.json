@@ -1,0 +1,123 @@
+{
+  "filename": "257.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "HOTEL": 0.523308,
+    "FLIGHT": 0.622459,
+    "AIRLINE": 0.570919,
+    "BOOKING": 0.622459,
+    "TICKET": 0.622459,
+    "ORDER": 0.622459
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.545322,
+      "gender": 0.553559,
+      "customer type": 0.563027,
+      "contact number": 0.530513,
+      "discount rate": 0.550764
+    },
+    "HOTEL": {
+      "hotel id": 0.545969
+    },
+    "FLIGHT": {
+      "flight id": 0.539596,
+      "flight date": 0.53479,
+      "airline id": 0.540209,
+      "departure location": 0.537133,
+      "departure time": 0.539636,
+      "destination": 0.542335,
+      "arrival time": 0.53874
+    },
+    "AIRLINE": {
+      "airline id": 0.540136,
+      "airline name": 0.543138
+    },
+    "BOOKING": {
+      "booking id": 0.553779,
+      "booking date": 0.553555,
+      "check time": 0.555495,
+      "discount rate": 0.554526,
+      "customer id": 0.562105,
+      "flight id": 0.548022,
+      "ticket id": 0.548179
+    },
+    "TICKET": {
+      "ticket id": 0.533684
+    },
+    "ORDER": {
+      "order id": 0.519327,
+      "customer id": 0.538245,
+      "flight id": 0.542728,
+      "ticket id": 0.536079,
+      "discount rate": 0.536706
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "CUSTOMER",
+      "description": "A hotel manages multiple customers; each customer is associated with one hotel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.263685
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "description": "An airline operates many flights; each flight is operated by one airline.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BOOKING",
+      "description": "A customer can make many bookings; each booking is made by one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.740578
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "BOOKING",
+      "description": "A flight can have many bookings; each booking refers to one flight.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995345
+    },
+    {
+      "entity_1": "BOOKING",
+      "entity_2": "TICKET",
+      "description": "Each booking generates exactly one ticket; each ticket belongs to one booking.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999688
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place many orders; each order is placed by one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963449
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "ORDER",
+      "description": "A flight can be referenced by many orders; each order references one flight.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.019929
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "TICKET",
+      "description": "Each order includes one ticket; each ticket is linked to one order.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.986245
+    }
+  ],
+  "processing_time": 4.11
+}

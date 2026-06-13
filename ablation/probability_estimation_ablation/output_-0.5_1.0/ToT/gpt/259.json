@@ -1,0 +1,131 @@
+{
+  "filename": "259.txt",
+  "entity": {
+    "USER": 0.622459,
+    "EMAIL_ACCOUNT": 0.554186,
+    "CONTACT": 0.526475,
+    "EMAIL": 0.622459,
+    "ATTACHMENT": 0.622459,
+    "EMAIL_RECIPIENT": 0.531782
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.514985,
+      "username": 0.514408,
+      "password": 0.52543,
+      "primary_email": 0.543498,
+      "created_at": 0.511651
+    },
+    "EMAIL_ACCOUNT": {
+      "account_id": 0.54094,
+      "user_id": 0.54119,
+      "email_address": 0.547004,
+      "account_password": 0.541533,
+      "created_at": 0.533299
+    },
+    "CONTACT": {
+      "contact_id": 0.523465,
+      "user_id": 0.522263,
+      "first_name": 0.530054,
+      "last_name": 0.535986,
+      "phone_number": 0.519835,
+      "work_address": 0.53236,
+      "email_address": 0.543077,
+      "created_at": 0.520418
+    },
+    "EMAIL": {
+      "email_id": 0.539678,
+      "sender_user_id": 0.538896,
+      "sender_account_id": 0.541765,
+      "sender_email_address": 0.544287,
+      "subject": 0.559486,
+      "content": 0.558558,
+      "status": 0.550799,
+      "folder": 0.558503,
+      "send_time": 0.535471,
+      "receive_time": 0.538594,
+      "created_at": 0.533853,
+      "updated_at": 0.531065
+    },
+    "ATTACHMENT": {
+      "attachment_id": 0.531423,
+      "email_id": 0.54954,
+      "filename": 0.534092,
+      "size": 0.535354,
+      "mime_type": 0.534156,
+      "created_at": 0.529513
+    },
+    "EMAIL_RECIPIENT": {
+      "recipient_id": 0.53752,
+      "email_id": 0.540292,
+      "recipient_type": 0.539386,
+      "recipient_user_id": 0.536147,
+      "recipient_contact_id": 0.535925,
+      "external_email_address": 0.53554,
+      "recipient_seq": 0.542576
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL_ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A user can own multiple email accounts",
+      "probability": 0.999616
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "description": "A user maintains many contacts",
+      "probability": 0.99951
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "A user may be the sender of many emails",
+      "probability": 0.999542
+    },
+    {
+      "entity_1": "EMAIL_ACCOUNT",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "An email account can send many emails",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ATTACHMENT",
+      "cardinality": "1:N",
+      "description": "An email can have multiple attachments",
+      "probability": 0.055618
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "description": "An email can have multiple recipient entries",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "description": "A user can appear as a recipient in many emails",
+      "probability": 0.999554
+    },
+    {
+      "entity_1": "CONTACT",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "description": "A contact can be referenced as a recipient in many emails",
+      "probability": 0.989718
+    }
+  ],
+  "processing_time": 33.86,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a polymorphic EMAIL_RECIPIENT entity with recipient_type discriminator and nullable foreign keys to USER, CONTACT, or an external email address, enabling storage of contacts and arbitrary external recipients. Introduced surrogate primary keys for all tables and explicit foreign‑key attributes. Added audit timestamps (created_at, updated_at) to USER, EMAIL_ACCOUNT, CONTACT, EMAIL, and ATTACHMENT. Included sender_email_address in EMAIL for immutable audit of the sender address and a folder attribute to track email placement (INBOX, SENT, TRASH, etc.). Added recipient_seq to preserve ordering of recipients. Strengthened referential integrity by defining clear 1:N and optional relationships, and prepared for unique constraints on (email_id, recipient_user_id/contact_id/external_email_address) to avoid duplicates."
+  }
+}

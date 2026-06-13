@@ -1,0 +1,82 @@
+{
+  "filename": "497.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "EVENT": 0.817574,
+    "RESULT": 0.817574,
+    "REGISTRATION": 0.703558,
+    "AWARD": 0.732295
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.762763,
+      "gender": 0.75727,
+      "grade": 0.760069,
+      "class": 0.762069,
+      "contact": 0.762345,
+      "student_id": 0.764758
+    },
+    "EVENT": {
+      "event_type": 0.76211,
+      "event_time": 0.764491,
+      "event_date": 0.764275,
+      "event_id": 0.760483
+    },
+    "RESULT": {
+      "result": 0.75426,
+      "event_date": 0.765323,
+      "position": 0.750813,
+      "score": 0.755856
+    },
+    "REGISTRATION": {
+      "registration_time": 0.750732,
+      "registration_status": 0.748938
+    },
+    "AWARD": {
+      "award_type": 0.757176,
+      "award_description": 0.759554
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A student can have multiple registrations, but a registration is associated with one student.",
+      "probability": 0.993444
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "EVENT",
+      "cardinality": "N:1",
+      "description": "A registration is associated with one event, and an event can have multiple registrations.",
+      "probability": 0.026391
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "description": "A student can have multiple results, but a result is associated with one student.",
+      "probability": 0.475782
+    },
+    {
+      "entity_1": "RESULT",
+      "entity_2": "AWARD",
+      "cardinality": "1:1",
+      "description": "A result can have one award, and an award is associated with one result.",
+      "probability": 0.960454
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "RESULT",
+      "cardinality": "1:N",
+      "description": "An event can have multiple results, but a result is associated with one event.",
+      "probability": 0.164601
+    }
+  ],
+  "processing_time": 7.21,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added attributes to capture additional information about students, events, and results. Removed redundant attributes and added a new relationship between EVENT and RESULT to improve data consistency and completeness."
+  }
+}

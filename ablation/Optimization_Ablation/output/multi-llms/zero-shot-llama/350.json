@@ -1,0 +1,119 @@
+{
+  "entity": [
+    "PARTICIPANT",
+    "COMPANY",
+    "CONFERENCE",
+    "TICKET",
+    "WORKSHOP",
+    "DISCOUNT_CODE",
+    "SPEAKER",
+    "MEETING",
+    "CONFERENCE_SCHEDULE",
+    "TICKET_RECORD"
+  ],
+  "attribute": {
+    "PARTICIPANT": [
+      "participant id",
+      "company",
+      "email"
+    ],
+    "COMPANY": [
+      "company id",
+      "description"
+    ],
+    "CONFERENCE": [
+      "conference id",
+      "description"
+    ],
+    "TICKET": [
+      "ticket id",
+      "description",
+      "price"
+    ],
+    "WORKSHOP": [
+      "workshop id",
+      "description",
+      "requirement",
+      "location",
+      "date",
+      "start time",
+      "end time",
+      "capacity"
+    ],
+    "DISCOUNT_CODE": [
+      "discount code id",
+      "code type"
+    ],
+    "SPEAKER": [
+      "speaker id",
+      "company",
+      "description"
+    ],
+    "MEETING": [
+      "meeting id",
+      "description",
+      "date",
+      "start time",
+      "end time",
+      "room"
+    ],
+    "CONFERENCE_SCHEDULE": [
+      "conference schedule id",
+      "conference id",
+      "meeting id"
+    ],
+    "TICKET_RECORD": [
+      "ticket_record_id",
+      "participant_id",
+      "ticket_id",
+      "NET_PRICE",
+      "DISCOUNT_CODE_ID"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "TICKET_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "TICKET_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "WORKSHOP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "MEETING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "CONFERENCE_SCHEDULE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONFERENCE_SCHEDULE",
+      "entity_2": "MEETING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 79.3964,
+  "ilp_runtime": 0.063
+}

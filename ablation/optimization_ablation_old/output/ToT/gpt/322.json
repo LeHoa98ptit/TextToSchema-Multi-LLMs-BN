@@ -1,0 +1,98 @@
+{
+  "entity": [
+    "COMPANY",
+    "EMPLOYEE",
+    "DEVICE",
+    "USER",
+    "SITE",
+    "EMPLOYEE_DEVICE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "website_address",
+      "created_at",
+      "is_deleted"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "name",
+      "position",
+      "salary",
+      "company_id",
+      "created_at",
+      "updated_at",
+      "is_deleted"
+    ],
+    "DEVICE": [
+      "device_id",
+      "serial_number",
+      "device_type",
+      "created_at",
+      "updated_at",
+      "is_deleted"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "password_salt",
+      "last_login_time",
+      "employee_id",
+      "created_at",
+      "updated_at",
+      "is_deleted"
+    ],
+    "SITE": [
+      "site_id",
+      "hostname",
+      "created_at",
+      "is_deleted",
+      "company_id",
+      "created_by_user_id"
+    ],
+    "EMPLOYEE_DEVICE": [
+      "employee_id",
+      "device_id",
+      "assign_date",
+      "return_date",
+      "created_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_DEVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "EMPLOYEE_DEVICE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.9856,
+  "ilp_runtime": 0.079
+}

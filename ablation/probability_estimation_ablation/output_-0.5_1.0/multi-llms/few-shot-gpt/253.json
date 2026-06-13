@@ -1,0 +1,96 @@
+{
+  "filename": "253.txt",
+  "entity": {
+    "USER": 0.622459,
+    "GROUP_CHAT": 0.599744,
+    "MESSAGE": 0.622459,
+    "GROUP_CHAT_MEMBER": 0.569987
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.524282,
+      "username": 0.516161,
+      "password hash": 0.51945,
+      "contact info": 0.544038,
+      "registration time": 0.527131
+    },
+    "GROUP_CHAT": {
+      "group chat id": 0.557106,
+      "creator user id": 0.559002,
+      "creation time": 0.561547,
+      "member count": 0.566816
+    },
+    "MESSAGE": {
+      "message id": 0.556524,
+      "sender user id": 0.552482,
+      "receiver user id": 0.55649,
+      "group chat id": 0.566857,
+      "send time": 0.554498,
+      "message type": 0.56415,
+      "content": 0.563867,
+      "is read": 0.546522
+    },
+    "GROUP_CHAT_MEMBER": {
+      "user id": 0.560745,
+      "group chat id": 0.557822,
+      "join time": 0.560281,
+      "note": 0.566563,
+      "leave time": 0.55306,
+      "apply status": 0.55733,
+      "group_chat_member_id": 0.360738,
+      "user_id": 0.360738,
+      "group_chat_id": 0.360738
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "GROUP_CHAT",
+      "description": "A user can create many group chats, each group chat has exactly one creator user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.360738
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "description": "A user can send many messages; each message has exactly one sender user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999394
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "description": "A user can receive many messages; each message has at most one receiver user (null for group messages).",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999394
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "MESSAGE",
+      "description": "A group chat can contain many messages; each message belongs to at most one group chat.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000725
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GROUP_CHAT_MEMBER",
+      "description": "One USER can be associated with many GROUP_CHAT_MEMBER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.360738
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "GROUP_CHAT_MEMBER",
+      "description": "One GROUP_CHAT can be associated with many GROUP_CHAT_MEMBER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.360738
+    }
+  ],
+  "processing_time": 5.11
+}

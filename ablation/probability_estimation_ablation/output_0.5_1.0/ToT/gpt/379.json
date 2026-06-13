@@ -1,0 +1,73 @@
+{
+  "filename": "379.txt",
+  "entity": {
+    "INVOICE": 0.817574,
+    "CUSTOMER": 0.817574,
+    "TERM": 0.817574,
+    "CONTACT_PERSON": 0.710559
+  },
+  "attribute": {
+    "INVOICE": {
+      "invoice_id": 0.769552,
+      "invoice_date": 0.767858,
+      "total_amount": 0.770554,
+      "status": 0.780682,
+      "note": 0.779169,
+      "payment_date": 0.768266,
+      "payment_mime_type": 0.767562,
+      "electronic_content": 0.782358
+    },
+    "CUSTOMER": {
+      "customer_id": 0.752492,
+      "address": 0.753235,
+      "default_term_id": 0.754272
+    },
+    "TERM": {
+      "term_id": 0.747815,
+      "description": 0.761569,
+      "payment_day": 0.759471,
+      "interest_rate": 0.755024
+    },
+    "CONTACT_PERSON": {
+      "contact_id": 0.740191,
+      "name": 0.746619,
+      "phone": 0.743484,
+      "email": 0.742363
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "Each invoice is issued to one customer",
+      "probability": 0.503612
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "TERM",
+      "cardinality": "N:1",
+      "description": "Each invoice follows a single payment term",
+      "probability": 0.294498
+    },
+    {
+      "entity_1": "CONTACT_PERSON",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "A customer can have multiple contact persons; each contact belongs to one customer",
+      "probability": 0.730616
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "TERM",
+      "cardinality": "N:1",
+      "description": "Optional default payment term for a customer",
+      "probability": 0.805269
+    }
+  ],
+  "processing_time": 16.91,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added a CONTACT_PERSON entity to allow multiple contacts per customer and to track contact details independently. Introduced an optional default_term_id attribute and a corresponding CUSTOMER‑TERM relationship to represent a customer's default payment term without enforcing it. Preserved all original core entities, attributes, and relationships for simplicity and efficiency."
+  }
+}

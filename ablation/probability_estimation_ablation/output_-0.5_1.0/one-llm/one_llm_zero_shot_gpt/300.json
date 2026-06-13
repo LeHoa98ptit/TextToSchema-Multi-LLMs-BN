@@ -1,0 +1,98 @@
+{
+  "filename": "300.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "MATERIAL": 0.622459,
+    "PROJECT_MATERIAL": 0.520663,
+    "BILL": 0.622459,
+    "BILL_DETAIL": 0.53733,
+    "ASSOC_PROJECT_MATERIAL": 0.003162
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_number": 0.529788,
+      "creation_date": 0.526149,
+      "closing_date": 0.520029
+    },
+    "MATERIAL": {
+      "material_code": 0.517816,
+      "description": 0.529572,
+      "unit": 0.53256
+    },
+    "PROJECT_MATERIAL": {
+      "project_number": 0.530905,
+      "material_code": 0.526126,
+      "quantity": 0.549732,
+      "unit_cost": 0.541497,
+      "charge": 0.534339
+    },
+    "BILL": {
+      "bill_number": 0.528089,
+      "creation_time": 0.535437,
+      "modification_time": 0.526457,
+      "verification_status": 0.529012,
+      "error_handling_flag": 0.522571
+    },
+    "BILL_DETAIL": {
+      "bill_number": 0.541841,
+      "material_code": 0.544847,
+      "quantity": 0.553323,
+      "unit_cost": 0.550056,
+      "charge": 0.542815
+    },
+    "ASSOC_PROJECT_MATERIAL": {
+      "assoc_project_material_id": 0.003162,
+      "project_id": 0.003162,
+      "material_id": 0.003162
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_MATERIAL",
+      "cardinality": "1:N",
+      "probability": 0.992511
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "PROJECT_MATERIAL",
+      "cardinality": "1:N",
+      "probability": 0.99876
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_PROJECT_MATERIAL",
+      "description": "One PROJECT can be associated with many ASSOC_PROJECT_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003162
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "ASSOC_PROJECT_MATERIAL",
+      "description": "One MATERIAL can be associated with many ASSOC_PROJECT_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003162
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "BILL",
+      "cardinality": "1:1",
+      "probability": 0.000658
+    },
+    {
+      "entity_1": "BILL",
+      "entity_2": "BILL_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.993276
+    },
+    {
+      "entity_1": "MATERIAL",
+      "entity_2": "BILL_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.012848
+    }
+  ],
+  "processing_time": 15.65
+}

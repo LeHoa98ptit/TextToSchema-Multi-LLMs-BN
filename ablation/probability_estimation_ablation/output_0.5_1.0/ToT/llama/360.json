@@ -1,0 +1,102 @@
+{
+  "filename": "360.txt",
+  "entity": {
+    "LOG": 0.817574,
+    "OPERATOR": 0.817574,
+    "SYSTEM": 0.817574,
+    "USER_ROLE": 0.688368,
+    "PERMISSION": 0.695678,
+    "LOG_CATEGORY": 0.750373,
+    "SYSTEM_TYPE": 0.73098
+  },
+  "attribute": {
+    "LOG": {
+      "log_level": 0.76654,
+      "content": 0.771505,
+      "category": 0.775245,
+      "timestamp": 0.760607,
+      "lifecycle": 0.769956,
+      "operation_type": 0.769206,
+      "execution_content": 0.761662,
+      "log_category_id": 0.761203
+    },
+    "OPERATOR": {
+      "account": 0.756848,
+      "password": 0.75502,
+      "contact_information": 0.751059,
+      "name": 0.743782,
+      "email": 0.748955
+    },
+    "SYSTEM": {
+      "name": 0.749666,
+      "description": 0.767976,
+      "operation_history": 0.766058,
+      "system_type_id": 0.74389
+    },
+    "USER_ROLE": {
+      "role_name": 0.748051,
+      "role_description": 0.762178
+    },
+    "PERMISSION": {
+      "permission_name": 0.743577,
+      "permission_description": 0.756479
+    },
+    "LOG_CATEGORY": {
+      "category_name": 0.757075,
+      "category_description": 0.767844
+    },
+    "SYSTEM_TYPE": {
+      "type_name": 0.741971,
+      "type_description": 0.759465
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "An operator can create multiple logs",
+      "probability": 0.611572
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "A system can have multiple logs",
+      "probability": 0.000728
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "An operator can have multiple user roles",
+      "probability": 0.839346
+    },
+    {
+      "entity_1": "USER_ROLE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "A user role can have multiple permissions",
+      "probability": 0.931514
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "LOG_CATEGORY",
+      "cardinality": "1:1",
+      "description": "A log belongs to one log category",
+      "probability": 0.999976
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "SYSTEM_TYPE",
+      "cardinality": "1:1",
+      "description": "A system belongs to one system type",
+      "probability": 0.999722
+    }
+  ],
+  "processing_time": 21.78,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'LOG_CATEGORY' and 'SYSTEM_TYPE' entities to further categorize logs and differentiate between system types, respectively. Updated 'LOG' and 'SYSTEM' entities with foreign keys to 'LOG_CATEGORY' and 'SYSTEM_TYPE' entities."
+  }
+}

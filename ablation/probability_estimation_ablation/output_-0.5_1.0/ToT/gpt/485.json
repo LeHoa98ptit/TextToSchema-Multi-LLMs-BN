@@ -1,0 +1,177 @@
+{
+  "filename": "485.txt",
+  "entity": {
+    "PROTECTION_AREA": 0.58829,
+    "LOCATION": 0.531682,
+    "PERSON": 0.454724,
+    "SPECIES": 0.534221,
+    "AREA_SPECIES": 0.531458,
+    "OBSERVATION": 0.469139,
+    "ENVIRONMENTAL_READING": 0.51542,
+    "SENSOR": 0.47031,
+    "ASSOC_PERSON_PROTECTION_AREA": 0.001984,
+    "ASSOC_PROTECTION_AREA_SPECIES": 0.40209
+  },
+  "attribute": {
+    "PROTECTION_AREA": {
+      "area_id": 0.54159,
+      "name": 0.542939,
+      "size": 0.53193,
+      "establishment_date": 0.541179
+    },
+    "LOCATION": {
+      "location_id": 0.507701,
+      "latitude": 0.50518,
+      "longitude": 0.501964,
+      "description": 0.527769
+    },
+    "PERSON": {
+      "person_id": 0.507005,
+      "full_name": 0.503246,
+      "email": 0.504917,
+      "phone": 0.507578,
+      "role": 0.513484
+    },
+    "SPECIES": {
+      "species_id": 0.527036,
+      "common_name": 0.522263,
+      "scientific_name": 0.524513,
+      "kingdom": 0.530012,
+      "conservation_status": 0.544615
+    },
+    "AREA_SPECIES": {
+      "area_id": 0.546519,
+      "species_id": 0.546003,
+      "first_recorded_date": 0.549236
+    },
+    "OBSERVATION": {
+      "observation_id": 0.517819,
+      "observation_time": 0.516941,
+      "quantity": 0.51997,
+      "growth_status": 0.521335,
+      "health_indicator": 0.533567,
+      "recorder_id": 0.541795,
+      "area_id": 0.530556,
+      "species_id": 0.536055
+    },
+    "ENVIRONMENTAL_READING": {
+      "reading_id": 0.52946,
+      "reading_time": 0.527032,
+      "temperature": 0.528723,
+      "humidity": 0.535549,
+      "rainfall": 0.535712,
+      "wind_speed": 0.526143,
+      "sensor_id": 0.544001,
+      "area_id": 0.547918
+    },
+    "SENSOR": {
+      "sensor_id": 0.524107,
+      "sensor_type": 0.529197,
+      "model": 0.533417,
+      "serial_number": 0.516685,
+      "installation_date": 0.52496,
+      "maintenance_date": 0.532494,
+      "calibration_date": 0.513667,
+      "firmware_version": 0.520243,
+      "area_id": 0.533628
+    },
+    "ASSOC_PERSON_PROTECTION_AREA": {
+      "assoc_person_protection_area_id": 0.001984,
+      "person_id": 0.001984,
+      "protection_area_id": 0.001984
+    },
+    "ASSOC_PROTECTION_AREA_SPECIES": {
+      "assoc_protection_area_species_id": 0.40209,
+      "protection_area_id": 0.40209,
+      "species_id": 0.40209
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "description": "Each protection area is linked to a single geographic location record",
+      "probability": 0.998622
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSOC_PERSON_PROTECTION_AREA",
+      "description": "One PERSON can be associated with many ASSOC_PERSON_PROTECTION_AREA.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001984
+    },
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "ASSOC_PERSON_PROTECTION_AREA",
+      "description": "One PROTECTION_AREA can be associated with many ASSOC_PERSON_PROTECTION_AREA.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001984
+    },
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "ASSOC_PROTECTION_AREA_SPECIES",
+      "description": "One PROTECTION_AREA can be associated with many ASSOC_PROTECTION_AREA_SPECIES.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.40209
+    },
+    {
+      "entity_1": "SPECIES",
+      "entity_2": "ASSOC_PROTECTION_AREA_SPECIES",
+      "description": "One SPECIES can be associated with many ASSOC_PROTECTION_AREA_SPECIES.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.40209
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "description": "Each observation is recorded by one person",
+      "probability": 0.025896
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "SPECIES",
+      "cardinality": "N:1",
+      "description": "Each observation concerns a single species",
+      "probability": 0.123409
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "description": "Observations are linked to the area where they were made",
+      "probability": 0.990829
+    },
+    {
+      "entity_1": "ENVIRONMENTAL_READING",
+      "entity_2": "SENSOR",
+      "cardinality": "N:1",
+      "description": "Each environmental reading is produced by one sensor",
+      "probability": 0.973107
+    },
+    {
+      "entity_1": "ENVIRONMENTAL_READING",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "description": "Readings are associated with the area where the sensor is installed",
+      "probability": 0.795775
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "description": "Each sensor is installed in a single protection area; an area can have many sensors",
+      "probability": 0.993179
+    }
+  ],
+  "processing_time": 10.57,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested explicit SENSOR‑PROTECTION_AREA relationship, added sensor calibration_date and firmware_version attributes, consolidated PERSON name fields into a single full_name attribute, renamed OBSERVATION.growth_stage to growth_status for consistent terminology, and retained the many‑to‑many AREA_SPECIES association with a unique composite key (area_id, species_id). All previous strengths are preserved while addressing the identified gaps."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "filename": "288.txt",
+  "entity": {
+    "SITE": 0.817574,
+    "MONITORING_PERSONNEL": 0.7709,
+    "MAINTENANCE_PERSONNEL": 0.806823,
+    "MONITORING_SESSION": 0.751905,
+    "MAINTENANCE_ACTIVITY": 0.773871,
+    "ENVIRONMENTAL_DATA": 0.687638
+  },
+  "attribute": {
+    "SITE": {
+      "location": 0.748741,
+      "responsible_person": 0.757093,
+      "contact_detail": 0.752144
+    },
+    "MONITORING_PERSONNEL": {
+      "contact_detail": 0.780024,
+      "scope": 0.782317,
+      "personnel_id": 0.778711
+    },
+    "MAINTENANCE_PERSONNEL": {
+      "contact_detail": 0.77905,
+      "scope": 0.781042,
+      "personnel_id": 0.77345
+    },
+    "MONITORING_SESSION": {
+      "timestamp": 0.752392,
+      "monitoring_result": 0.756974,
+      "session_id": 0.751081
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "maintenance_time": 0.770343,
+      "maintenance_content": 0.771436,
+      "maintenance_cost": 0.770474,
+      "activity_id": 0.763165
+    },
+    "ENVIRONMENTAL_DATA": {
+      "air_quality_index": 0.76745,
+      "air_quality_status": 0.770347,
+      "water_quality_index": 0.767326,
+      "water_quality_status": 0.769952,
+      "noise_level_value": 0.757933,
+      "noise_level_status": 0.764845
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SITE",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A site is managed by multiple monitoring personnel",
+      "probability": 0.003842
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A site is maintained by multiple maintenance personnel",
+      "probability": 0.150959
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "ENVIRONMENTAL_DATA",
+      "cardinality": "1:1",
+      "description": "A monitoring session records environmental data",
+      "probability": 0.042454
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "MAINTENANCE_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A maintenance activity is performed by multiple maintenance personnel",
+      "probability": 0.959802
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "MONITORING_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A monitoring session is conducted by multiple monitoring personnel",
+      "probability": 0.980415
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "description": "A site has multiple monitoring sessions",
+      "probability": 0.099156
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "A site has multiple maintenance activities",
+      "probability": 0.7606
+    }
+  ],
+  "processing_time": 20.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged redundant relationships, added more detailed attributes for certain entities, and introduced a new entity for environmental data to improve the model's efficiency and completeness."
+  }
+}

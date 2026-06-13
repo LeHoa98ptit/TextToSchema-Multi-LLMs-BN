@@ -1,0 +1,146 @@
+{
+  "filename": "456.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "PRODUCT": 0.622459,
+    "DISTRIBUTION_DEPARTMENT": 0.550106,
+    "PURCHASE_ORDER": 0.526899,
+    "PAYMENT_ORDER": 0.550898,
+    "SUPPLY_REQUEST": 0.493525,
+    "DISTRIBUTION_NOTIFICATION": 0.50245,
+    "STOCKOUT_NOTIFICATION": 0.434332,
+    "ASSOC_SUPERMARKET_PRODUCT": 0.026122,
+    "ASSOC_DISTRIBUTION_DEPARTMENT_PRODUCT": 0.001913
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.56,
+      "supermarket_address": 0.553186,
+      "manager": 0.55736,
+      "phone_number": 0.552767
+    },
+    "PRODUCT": {
+      "product_id": 0.509341,
+      "product_name": 0.511834,
+      "inventory_quantity": 0.544853,
+      "storage_location": 0.512554
+    },
+    "DISTRIBUTION_DEPARTMENT": {
+      "department_id": 0.524058,
+      "department_address": 0.523362,
+      "manager": 0.534019,
+      "phone_number": 0.523975
+    },
+    "PURCHASE_ORDER": {
+      "purchase_id": 0.521366,
+      "purchase_date": 0.515051,
+      "supplier": 0.539861,
+      "purchase_quantity": 0.53919
+    },
+    "PAYMENT_ORDER": {
+      "payment_id": 0.512978,
+      "payment_date": 0.508326,
+      "payment_status": 0.516414
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.529379,
+      "request_time": 0.530013,
+      "request_quantity": 0.542655
+    },
+    "DISTRIBUTION_NOTIFICATION": {
+      "notice_id": 0.511258,
+      "distribution_quantity": 0.535664,
+      "distribution_time": 0.518241
+    },
+    "STOCKOUT_NOTIFICATION": {
+      "notification_id": 0.522838
+    },
+    "ASSOC_SUPERMARKET_PRODUCT": {
+      "assoc_supermarket_product_id": 0.026122,
+      "supermarket_id": 0.026122,
+      "product_id": 0.026122
+    },
+    "ASSOC_DISTRIBUTION_DEPARTMENT_PRODUCT": {
+      "assoc_distribution_department_product_id": 0.001913,
+      "distribution_department_id": 0.001913,
+      "product_id": 0.001913
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.001534
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.110201
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.08872
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PAYMENT_ORDER",
+      "cardinality": "1:1",
+      "probability": 0.99699
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "cardinality": "1:N",
+      "probability": 0.17877
+    },
+    {
+      "entity_1": "DISTRIBUTION_DEPARTMENT",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "cardinality": "1:N",
+      "probability": 0.996165
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "STOCKOUT_NOTIFICATION",
+      "cardinality": "1:N",
+      "probability": 0.008879
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "ASSOC_SUPERMARKET_PRODUCT",
+      "description": "One SUPERMARKET can be associated with many ASSOC_SUPERMARKET_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.026122
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SUPERMARKET_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SUPERMARKET_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.026122
+    },
+    {
+      "entity_1": "DISTRIBUTION_DEPARTMENT",
+      "entity_2": "ASSOC_DISTRIBUTION_DEPARTMENT_PRODUCT",
+      "description": "One DISTRIBUTION_DEPARTMENT can be associated with many ASSOC_DISTRIBUTION_DEPARTMENT_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001913
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_DISTRIBUTION_DEPARTMENT_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_DISTRIBUTION_DEPARTMENT_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001913
+    }
+  ],
+  "processing_time": 27.0
+}

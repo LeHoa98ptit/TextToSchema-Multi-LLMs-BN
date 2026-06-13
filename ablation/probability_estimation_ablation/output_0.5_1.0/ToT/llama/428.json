@@ -1,0 +1,122 @@
+{
+  "filename": "428.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ROLE": 0.734212,
+    "DORMITORY": 0.817574,
+    "COURSE": 0.718352,
+    "GRADE": 0.817574,
+    "REPAIR_REQUEST": 0.793377,
+    "ASSOC_USER_COURSE": 0.825239
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.742525,
+      "password": 0.758333,
+      "email": 0.75259,
+      "student_id": 0.776312
+    },
+    "ROLE": {
+      "role_name": 0.749698,
+      "role_description": 0.752082
+    },
+    "DORMITORY": {
+      "name": 0.767272,
+      "location": 0.764969,
+      "capacity": 0.76706
+    },
+    "COURSE": {
+      "code": 0.763843,
+      "name": 0.756282,
+      "credits": 0.747947
+    },
+    "GRADE": {
+      "score": 0.753043,
+      "course_code": 0.765788,
+      "user_id": 0.772874
+    },
+    "REPAIR_REQUEST": {
+      "description": 0.751873,
+      "status": 0.747981,
+      "dormitory_name": 0.767662,
+      "user_id": 0.754681
+    },
+    "ASSOC_USER_COURSE": {
+      "assoc_user_course_id": 0.825239,
+      "user_id": 0.825239,
+      "course_id": 0.825239
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "A user can have one role",
+      "probability": 0.993956
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to multiple users",
+      "probability": 0.993956
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "description": "A user can submit multiple repair requests",
+      "probability": 0.997376
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A user can have multiple grades",
+      "probability": 0.997227
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A course can have multiple grades",
+      "probability": 0.999234
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_COURSE",
+      "description": "One USER can be associated with many ASSOC_USER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825239
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_USER_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_USER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825239
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "description": "A dormitory can have multiple repair requests",
+      "probability": 8.9e-05
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "cardinality": "N:1",
+      "description": "A user can be assigned to one dormitory",
+      "probability": 0.989803
+    }
+  ],
+  "processing_time": 23.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a 'ROLE' entity to generalize user roles, adjusted attribute naming for consistency, reviewed relationship cardinality for accuracy, and added relationships to ensure data integrity"
+  }
+}

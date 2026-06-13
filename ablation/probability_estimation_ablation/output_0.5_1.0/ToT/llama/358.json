@@ -1,0 +1,100 @@
+{
+  "filename": "358.txt",
+  "entity": {
+    "PROCESS_DEFINITION": 0.76904,
+    "PROCESS_INSTANCE": 0.788649,
+    "TASK": 0.817574,
+    "TASK_EXECUTION": 0.789647,
+    "TENANT": 0.817574,
+    "EXCEPTION": 0.706884,
+    "SCHEDULE": 0.707423
+  },
+  "attribute": {
+    "PROCESS_DEFINITION": {
+      "name": 0.76375,
+      "description": 0.769794
+    },
+    "PROCESS_INSTANCE": {
+      "start_time": 0.7583,
+      "end_time": 0.759891,
+      "status": 0.766671
+    },
+    "TASK": {
+      "task_type": 0.765861,
+      "execution_result": 0.764315,
+      "priority_level": 0.766722,
+      "deadline": 0.769113
+    },
+    "TASK_EXECUTION": {
+      "start_time": 0.764512,
+      "end_time": 0.765461,
+      "result": 0.767909,
+      "execution_status": 0.770927
+    },
+    "TENANT": {
+      "tenant_id": 0.747792,
+      "name": 0.749564,
+      "description": 0.759629
+    },
+    "EXCEPTION": {
+      "exception_type": 0.747112,
+      "message": 0.745676,
+      "timestamp": 0.748084
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.753598,
+      "frequency_type": 0.754805,
+      "expiration_time": 0.753798,
+      "repeat_interval": 0.754852
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "description": "A process definition can have multiple process instances",
+      "probability": 0.979085
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A process instance can have multiple tasks",
+      "probability": 0.085022
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "description": "A task can have multiple executions",
+      "probability": 0.999919
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "EXCEPTION",
+      "cardinality": "1:N",
+      "description": "A task execution can have multiple exceptions",
+      "probability": 0.026317
+    },
+    {
+      "entity_1": "SCHEDULE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "A schedule can have multiple tasks",
+      "probability": 0.980742
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "description": "A tenant can have multiple process instances",
+      "probability": 0.013221
+    }
+  ],
+  "processing_time": 20.71,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant 'version' attribute from PROCESS_DEFINITION, added 'priority_level' and 'deadline' to TASK, and added 'frequency_type' and 'repeat_interval' to SCHEDULE to provide more detail and clarity."
+  }
+}

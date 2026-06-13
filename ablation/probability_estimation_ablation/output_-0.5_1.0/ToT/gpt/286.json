@@ -1,0 +1,88 @@
+{
+  "filename": "286.txt",
+  "entity": {
+    "PERFORMANCE": 0.622459,
+    "ACTOR": 0.622459,
+    "VENUE": 0.622459,
+    "ROLE": 0.50545,
+    "PARTICIPATION": 0.528918
+  },
+  "attribute": {
+    "PERFORMANCE": {
+      "performance_id": 0.535897,
+      "title": 0.547838,
+      "description": 0.54282,
+      "genre": 0.55214,
+      "start_time": 0.538432,
+      "end_time": 0.536666,
+      "duration_minutes": 0.541283
+    },
+    "ACTOR": {
+      "actor_id": 0.546589,
+      "first_name": 0.540455,
+      "last_name": 0.537607,
+      "date_of_birth": 0.540841,
+      "email": 0.550137,
+      "phone": 0.539868
+    },
+    "VENUE": {
+      "venue_id": 0.559346,
+      "name": 0.559351,
+      "address": 0.556912,
+      "city": 0.548978,
+      "state": 0.553013,
+      "zip_code": 0.539251,
+      "seating_capacity": 0.56796
+    },
+    "ROLE": {
+      "role_id": 0.524616,
+      "character_name": 0.526593,
+      "role_type": 0.524568
+    },
+    "PARTICIPATION": {
+      "participation_id": 0.538777,
+      "performance_id": 0.553482,
+      "actor_id": 0.561308,
+      "role_id": 0.537155,
+      "status": 0.541122,
+      "invitation_sent_at": 0.532173,
+      "response_at": 0.539683,
+      "notes": 0.540432
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "VENUE",
+      "cardinality": "N:1",
+      "description": "Each Performance is scheduled at one Venue; a Venue can host many Performances",
+      "probability": 0.015897
+    },
+    {
+      "entity_1": "ACTOR",
+      "entity_2": "PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "An Actor can have multiple Participation records (appearances in performances)",
+      "probability": 0.262816
+    },
+    {
+      "entity_1": "PERFORMANCE",
+      "entity_2": "PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "A Performance can involve many Participations (actors/roles)",
+      "probability": 0.020937
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "A Role can be assigned to many Participation entries; each Participation references one Role (optional for generic cameo)",
+      "probability": 0.557089
+    }
+  ],
+  "processing_time": 17.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit foreign‑key attributes (performance_id, actor_id, role_id) to PARTICIPATION to make the associative entity fully functional. Enriched PARTICIPATION with status (enum: invited, confirmed, declined, cancelled), invitation_sent_at and response_at timestamps for invitation tracking. Kept the separate ROLE entity for flexibility while allowing it to be nullable when a role name is not needed. Declared email as a unique attribute for ACTOR. Included venue city/state already and retained seating_capacity. Documented cardinalities clearly and prepared for uniqueness constraints such as (performance_id, actor_id) in PARTICIPATION."
+  }
+}

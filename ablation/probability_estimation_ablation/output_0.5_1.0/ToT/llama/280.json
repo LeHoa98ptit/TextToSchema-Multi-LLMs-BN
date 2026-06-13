@@ -1,0 +1,104 @@
+{
+  "filename": "280.txt",
+  "entity": {
+    "MOVIE": 0.817574,
+    "DIRECTOR": 0.733783,
+    "ACTOR": 0.735206,
+    "PRODUCER": 0.817574,
+    "PROJECT_TYPE": 0.698233,
+    "FILMING_LOCATION": 0.706345,
+    "ASSOC_MOVIE_FILMING_LOCATION": 0.949166
+  },
+  "attribute": {
+    "MOVIE": {
+      "title": 0.75676,
+      "budget": 0.775591,
+      "filming_time": 0.777524,
+      "project_type_id": 0.775322
+    },
+    "DIRECTOR": {
+      "name": 0.771481,
+      "email": 0.763506,
+      "phone_number": 0.762009,
+      "years_of_experience": 0.766623,
+      "directing_style": 0.755183
+    },
+    "ACTOR": {
+      "name": 0.763031,
+      "email": 0.763134,
+      "phone_number": 0.764046,
+      "role": 0.764047,
+      "acting_experience": 0.76155
+    },
+    "PRODUCER": {
+      "name": 0.766223,
+      "email": 0.763083,
+      "phone_number": 0.764731,
+      "company": 0.768392
+    },
+    "PROJECT_TYPE": {
+      "type_name": 0.755476,
+      "description": 0.770818
+    },
+    "FILMING_LOCATION": {
+      "location_name": 0.768194,
+      "address": 0.768216
+    },
+    "ASSOC_MOVIE_FILMING_LOCATION": {
+      "assoc_movie_filming_location_id": 0.949166,
+      "movie_id": 0.949166,
+      "filming_location_id": 0.949166
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MOVIE",
+      "entity_2": "DIRECTOR",
+      "cardinality": "1:1",
+      "description": "A movie is directed by one director",
+      "probability": 0.97535
+    },
+    {
+      "entity_1": "MOVIE",
+      "entity_2": "ACTOR",
+      "cardinality": "1:N",
+      "description": "A movie has multiple actors",
+      "probability": 0.22619
+    },
+    {
+      "entity_1": "MOVIE",
+      "entity_2": "PRODUCER",
+      "cardinality": "1:1",
+      "description": "A movie is produced by one producer",
+      "probability": 0.131962
+    },
+    {
+      "entity_1": "MOVIE",
+      "entity_2": "PROJECT_TYPE",
+      "cardinality": "1:1",
+      "description": "A movie has one project type",
+      "probability": 0.067011
+    },
+    {
+      "entity_1": "MOVIE",
+      "entity_2": "ASSOC_MOVIE_FILMING_LOCATION",
+      "description": "One MOVIE can be associated with many ASSOC_MOVIE_FILMING_LOCATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.949166
+    },
+    {
+      "entity_1": "FILMING_LOCATION",
+      "entity_2": "ASSOC_MOVIE_FILMING_LOCATION",
+      "description": "One FILMING_LOCATION can be associated with many ASSOC_MOVIE_FILMING_LOCATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.949166
+    }
+  ],
+  "processing_time": 17.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated many-to-many relationship between movies and filming locations, split experience attribute into separate attributes for directors and actors, and retained strengths from the original model."
+  }
+}

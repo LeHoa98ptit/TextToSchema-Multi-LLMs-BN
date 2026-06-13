@@ -1,0 +1,220 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "CONTACT_INFO": 0.725518,
+    "PRODUCT": 0.817574,
+    "PRODUCT_PRICE": 0.733255,
+    "INVENTORY": 0.754489,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.754119,
+    "ORDER_STATUS": 0.749021,
+    "PICKING_LIST": 0.674015,
+    "PICKING_ITEM": 0.677673,
+    "DELIVERY_ORDER": 0.780057,
+    "INVOICE": 0.817574,
+    "ACCOUNT_RECEIVABLE": 0.681484,
+    "RECEIVABLE_REPORT": 0.714899
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.753007,
+      "name": 0.755619,
+      "tax_id": 0.748777
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.740118,
+      "customer_id": 0.74905,
+      "phone": 0.74491,
+      "email": 0.747171,
+      "billing_address": 0.740974,
+      "shipping_address": 0.742327
+    },
+    "PRODUCT": {
+      "product_id": 0.741023,
+      "sku": 0.748413,
+      "description": 0.754723
+    },
+    "PRODUCT_PRICE": {
+      "price_id": 0.739479,
+      "product_id": 0.741271,
+      "effective_date": 0.74224,
+      "price": 0.739617
+    },
+    "INVENTORY": {
+      "inventory_id": 0.754226,
+      "product_id": 0.754302,
+      "quantity_on_hand": 0.760229,
+      "reorder_point": 0.756615
+    },
+    "ORDER": {
+      "order_id": 0.75681,
+      "customer_id": 0.763241,
+      "order_date": 0.755483,
+      "requested_delivery_date": 0.760559,
+      "order_status_id": 0.755633,
+      "total_amount": 0.761948
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.757226,
+      "order_id": 0.758781,
+      "product_id": 0.756339,
+      "quantity": 0.772582,
+      "unit_price": 0.760867,
+      "line_total": 0.764083
+    },
+    "ORDER_STATUS": {
+      "status_id": 0.755393,
+      "status_name": 0.756203,
+      "description": 0.770361
+    },
+    "PICKING_LIST": {
+      "picking_list_id": 0.736953,
+      "order_id": 0.753011,
+      "generated_timestamp": 0.732231,
+      "picker_employee_id": 0.745346
+    },
+    "PICKING_ITEM": {
+      "picking_item_id": 0.741793,
+      "picking_list_id": 0.739118,
+      "order_item_id": 0.754367,
+      "pick_quantity": 0.753533,
+      "pick_status": 0.74349
+    },
+    "DELIVERY_ORDER": {
+      "delivery_order_id": 0.7588,
+      "order_id": 0.760751,
+      "carrier": 0.76467,
+      "tracking_number": 0.761568,
+      "scheduled_delivery_time": 0.755876,
+      "delivery_status": 0.765341
+    },
+    "INVOICE": {
+      "invoice_id": 0.757895,
+      "order_id": 0.766451,
+      "invoice_date": 0.756408,
+      "due_date": 0.758545,
+      "total_amount": 0.761998,
+      "paid_amount": 0.758177,
+      "payment_status": 0.76096
+    },
+    "ACCOUNT_RECEIVABLE": {
+      "ar_id": 0.741669,
+      "invoice_id": 0.757576,
+      "customer_id": 0.752667,
+      "outstanding_amount": 0.75264,
+      "aging_bucket": 0.74839
+    },
+    "RECEIVABLE_REPORT": {
+      "report_id": 0.756784,
+      "report_date": 0.755085,
+      "total_outstanding": 0.758417,
+      "total_overdue": 0.758008
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each customer has one set of contact details",
+      "probability": 0.011099
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_PRICE",
+      "cardinality": "1:N",
+      "description": "A product can have multiple price records over time",
+      "probability": 0.999395
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "Each product has a single inventory record",
+      "probability": 0.92793
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Customers place many orders",
+      "probability": 0.962673
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_STATUS",
+      "cardinality": "N:1",
+      "description": "Orders reference a status",
+      "probability": 0.999197
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999935
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "A product can appear in many order items",
+      "probability": 0.958392
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "cardinality": "1:1",
+      "description": "One picking list is generated per order",
+      "probability": 3e-06
+    },
+    {
+      "entity_1": "PICKING_LIST",
+      "entity_2": "PICKING_ITEM",
+      "cardinality": "1:N",
+      "description": "A picking list contains many picking items",
+      "probability": 0.023553
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PICKING_ITEM",
+      "cardinality": "1:1",
+      "description": "Each order item maps to a single picking item",
+      "probability": 0.04984
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "cardinality": "1:1",
+      "description": "Each order creates one delivery order",
+      "probability": 0.999238
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:1",
+      "description": "Each order generates one invoice",
+      "probability": 0.98071
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "ACCOUNT_RECEIVABLE",
+      "cardinality": "1:1",
+      "description": "Invoice is linked to an account receivable entry",
+      "probability": 0.337679
+    },
+    {
+      "entity_1": "ACCOUNT_RECEIVABLE",
+      "entity_2": "RECEIVABLE_REPORT",
+      "cardinality": "N:1",
+      "description": "Many AR entries are summarized in a daily receivable report",
+      "probability": 0.969354
+    }
+  ],
+  "processing_time": 19.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

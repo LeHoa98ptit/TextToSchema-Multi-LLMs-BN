@@ -1,0 +1,88 @@
+{
+  "filename": "274.txt",
+  "entity": {
+    "USER": 0.622459,
+    "FEEDBACK": 0.622459,
+    "COMPANY": 0.513772,
+    "CUSTOMER_SERVICE_REPRESENTATIVE": 0.570649,
+    "PROCESSOR": 0.514671,
+    "FEEDBACK_PROCESSING": 0.862312
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.510664,
+      "contact number": 0.527179,
+      "email": 0.535176
+    },
+    "FEEDBACK": {
+      "feedback content": 0.563922,
+      "feedback time": 0.55895,
+      "processing status": 0.575467,
+      "processing result": 0.562904,
+      "username": 0.548254
+    },
+    "COMPANY": {
+      "company name": 0.520303
+    },
+    "CUSTOMER_SERVICE_REPRESENTATIVE": {
+      "employee id": 0.5407,
+      "contact information": 0.557945,
+      "work status": 0.560484
+    },
+    "PROCESSOR": {
+      "processor id": 0.522722,
+      "processing time": 0.52698,
+      "processing result": 0.535401
+    },
+    "FEEDBACK_PROCESSING": {
+      "feedback_processing_id": 0.862312,
+      "customer_service_representative_id": 0.862312,
+      "feedback_id": 0.862312,
+      "PROCESSING_TIME": 0.862312,
+      "PROCESSING_RESULT": 0.862312
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FEEDBACK",
+      "description": "A user can provide multiple feedback",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993803
+    },
+    {
+      "entity_1": "CUSTOMER_SERVICE_REPRESENTATIVE",
+      "entity_2": "FEEDBACK_PROCESSING",
+      "description": "One CUSTOMER_SERVICE_REPRESENTATIVE can be associated with many FEEDBACK_PROCESSING.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.862312
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "FEEDBACK_PROCESSING",
+      "description": "One FEEDBACK can be associated with many FEEDBACK_PROCESSING.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.862312
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CUSTOMER_SERVICE_REPRESENTATIVE",
+      "description": "A company has multiple customer service representatives",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014479
+    },
+    {
+      "entity_1": "CUSTOMER_SERVICE_REPRESENTATIVE",
+      "entity_2": "COMPANY",
+      "description": "A customer service representative belongs to one company",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.014479
+    }
+  ],
+  "processing_time": 7.9
+}

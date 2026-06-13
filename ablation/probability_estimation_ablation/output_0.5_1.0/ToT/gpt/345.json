@@ -1,0 +1,188 @@
+{
+  "filename": "345.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "PROFESSOR": 0.817574,
+    "COURSE": 0.817574,
+    "SUBJECT": 0.817574,
+    "COURSE_OFFERING": 0.736897,
+    "ENROLLMENT": 0.734485,
+    "PROFESSOR_COURSE": 0.780452,
+    "SUBJECT_PREREQUISITE": 0.740525,
+    "SUBJECT_EQUIVALENCE": 0.74857,
+    "ASSOC_PROFESSOR_COURSE": 0.549559,
+    "ASSOC_COURSE_OFFERING_SUBJECT": 0.977106,
+    "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE": 0.979154
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.772765,
+      "name": 0.7698,
+      "email": 0.775628,
+      "date_of_birth": 0.770026,
+      "total_credit": 0.772319,
+      "average_grade": 0.752125
+    },
+    "PROFESSOR": {
+      "professor_id": 0.767759,
+      "name": 0.761792,
+      "email": 0.767133,
+      "office": 0.758554
+    },
+    "COURSE": {
+      "course_id": 0.779045,
+      "course_code": 0.779224,
+      "name": 0.772472,
+      "total_credit": 0.774641,
+      "description": 0.777269
+    },
+    "SUBJECT": {
+      "subject_id": 0.75997,
+      "subject_code": 0.758901,
+      "name": 0.763744,
+      "credit": 0.767779,
+      "description": 0.751885
+    },
+    "COURSE_OFFERING": {
+      "offering_id": 0.769587,
+      "course_id": 0.782792,
+      "semester": 0.783485,
+      "year": 0.773742,
+      "schedule": 0.777549,
+      "capacity": 0.772701
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.76183,
+      "student_id": 0.771217,
+      "offering_id": 0.760814,
+      "enrollment_date": 0.758185,
+      "grade": 0.762286,
+      "grade_point": 0.762677,
+      "status": 0.758583
+    },
+    "PROFESSOR_COURSE": {
+      "prof_course_id": 0.781779,
+      "professor_id": 0.779666,
+      "course_id": 0.783865,
+      "role": 0.77999
+    },
+    "SUBJECT_PREREQUISITE": {
+      "prereq_id": 0.775061,
+      "subject_id": 0.777593,
+      "prerequisite_subject_id": 0.778861,
+      "required_grade": 0.77959
+    },
+    "SUBJECT_EQUIVALENCE": {
+      "equivalence_id": 0.746175,
+      "subject_id": 0.754505,
+      "equivalent_subject_id": 0.750523,
+      "equivalence_type": 0.745839,
+      "equivalence_reason": 0.745998
+    },
+    "ASSOC_PROFESSOR_COURSE": {
+      "assoc_professor_course_id": 0.549559,
+      "professor_id": 0.549559,
+      "course_id": 0.549559
+    },
+    "ASSOC_COURSE_OFFERING_SUBJECT": {
+      "assoc_course_offering_subject_id": 0.977106,
+      "course_offering_id": 0.977106,
+      "subject_id": 0.977106
+    },
+    "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE": {
+      "assoc_subject_subject_equivalence_id": 0.979154,
+      "subject_id": 0.979154,
+      "subject_equivalence_id": 0.979154
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "ASSOC_PROFESSOR_COURSE",
+      "description": "One PROFESSOR can be associated with many ASSOC_PROFESSOR_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.549559
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_PROFESSOR_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_PROFESSOR_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.549559
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_OFFERING",
+      "cardinality": "1:N",
+      "description": "A course can be offered in multiple semesters (offering_id references course_id)",
+      "probability": 0.138201
+    },
+    {
+      "entity_1": "COURSE_OFFERING",
+      "entity_2": "ASSOC_COURSE_OFFERING_SUBJECT",
+      "description": "One COURSE_OFFERING can be associated with many ASSOC_COURSE_OFFERING_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977106
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_COURSE_OFFERING_SUBJECT",
+      "description": "One SUBJECT can be associated with many ASSOC_COURSE_OFFERING_SUBJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977106
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student may have many enrollment records",
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "ENROLLMENT",
+      "entity_2": "COURSE_OFFERING",
+      "cardinality": "N:1",
+      "description": "Each enrollment refers to a specific course offering",
+      "probability": 0.43629
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT_PREREQUISITE",
+      "cardinality": "1:N",
+      "description": "A subject can be a prerequisite for many other subjects (subject_id is the prerequisite)",
+      "probability": 0.999045
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT_PREREQUISITE",
+      "cardinality": "1:N",
+      "description": "A subject can have many prerequisite subjects (prerequisite_subject_id points to required subject)",
+      "probability": 0.999045
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE",
+      "description": "One SUBJECT can be associated with many ASSOC_SUBJECT_SUBJECT_EQUIVALENCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.979154
+    },
+    {
+      "entity_1": "SUBJECT_EQUIVALENCE",
+      "entity_2": "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE",
+      "description": "One SUBJECT_EQUIVALENCE can be associated with many ASSOC_SUBJECT_SUBJECT_EQUIVALENCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.979154
+    }
+  ],
+  "processing_time": 34.16,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged the duplicated Professor‑Course relationships into a single associative entity PROFESSOR_COURSE with a role attribute (instructor/coordinator). Refined prerequisite handling by introducing SUBJECT_PREREQUISITE that links a subject to its prerequisite subject, enabling true subject‑to‑subject prerequisite chains. Replaced generic EQUIVALENT_SUBJECT with SUBJECT_EQUIVALENCE, adding a composite unique constraint on (subject_id, equivalent_subject_id). Added capacity to COURSE_OFFERING and grade_point to ENROLLMENT for scheduling and GPA calculations. Ensured consistent primary‑key naming (*_id) and made foreign‑key links explicit in relationship descriptions."
+  }
+}

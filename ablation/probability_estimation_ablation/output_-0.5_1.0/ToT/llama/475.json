@@ -1,0 +1,86 @@
+{
+  "filename": "475.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "PRODUCT": 0.622459,
+    "ASSOC_EMPLOYEE_PRODUCT": 0.000281
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.562119,
+      "address": 0.563159,
+      "manager": 0.57179,
+      "contact_number": 0.560631
+    },
+    "DEPARTMENT": {
+      "department_id": 0.532036,
+      "department_manager": 0.548977,
+      "contact_number": 0.534759
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.543988,
+      "contact_information": 0.551438,
+      "position": 0.558255,
+      "salary": 0.533606
+    },
+    "PRODUCT": {
+      "product_id": 0.518824,
+      "model": 0.538242,
+      "unit_price": 0.529086,
+      "quantity": 0.538345,
+      "product_category": 0.522162,
+      "supplier_info": 0.544835
+    },
+    "ASSOC_EMPLOYEE_PRODUCT": {
+      "assoc_employee_product_id": 0.000281,
+      "employee_id": 0.000281,
+      "product_id": 0.000281
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A supermarket has multiple departments",
+      "probability": 0.997809
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department has multiple employees",
+      "probability": 0.99989
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_PRODUCT",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000281
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_EMPLOYEE_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_EMPLOYEE_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000281
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supermarket has multiple products",
+      "probability": 0.034678
+    }
+  ],
+  "processing_time": 8.32,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added unique identifiers for supermarkets and departments, and included additional attributes to the 'PRODUCT' entity such as 'product_category' and 'supplier_info' to enhance the model's completeness."
+  }
+}

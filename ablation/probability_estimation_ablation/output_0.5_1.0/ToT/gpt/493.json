@@ -1,0 +1,99 @@
+{
+  "filename": "493.txt",
+  "entity": {
+    "ENTERPRISE": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "ROLE": 0.817574,
+    "ATTENDANCE": 0.817574,
+    "ITEM": 0.717014,
+    "LOCATION": 0.703057
+  },
+  "attribute": {
+    "ENTERPRISE": {
+      "enterprise_id": 0.762615,
+      "name": 0.764788,
+      "creation_time": 0.767536,
+      "update_time": 0.761506
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.766962,
+      "enterprise_id": 0.770816,
+      "email": 0.770107,
+      "password_hash": 0.761041,
+      "identification_number": 0.769142,
+      "role_id": 0.760955,
+      "creation_time": 0.770233,
+      "update_time": 0.768336
+    },
+    "ROLE": {
+      "role_id": 0.746003,
+      "name": 0.746601,
+      "hourly_wage": 0.753686,
+      "daily_work_hours": 0.765889,
+      "lunchtime": 0.760812
+    },
+    "ATTENDANCE": {
+      "attendance_id": 0.759605,
+      "employee_id": 0.769604,
+      "check_time": 0.764484,
+      "remark": 0.755921,
+      "location_id": 0.756611
+    },
+    "ITEM": {
+      "item_id": 0.741924,
+      "employee_id": 0.767747,
+      "task_description": 0.76633,
+      "completion_status": 0.748207,
+      "creation_time": 0.754729,
+      "update_time": 0.749938
+    },
+    "LOCATION": {
+      "location_id": 0.730674,
+      "latitude": 0.72958,
+      "longitude": 0.730128,
+      "address": 0.733269
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ENTERPRISE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "An enterprise employs many employees",
+      "probability": 0.927098
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many employees",
+      "probability": 0.05301
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "Each employee may have multiple attendance records",
+      "probability": 0.998354
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "description": "A location can be referenced by many attendance records",
+      "probability": 0.571702
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ITEM",
+      "cardinality": "1:N",
+      "description": "Employees create multiple items (tasks)",
+      "probability": 0.001637
+    }
+  ],
+  "processing_time": 7.0,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Renamed attributes for clarity (status → completion_status, daily_hours → daily_work_hours). Standardised timestamp names to creation_time and update_time across all entities. Added LOCATION entity to capture structured check‑location data and linked it to ATTENDANCE. Updated EMPLOYEE to store password_hash and enforce unique email concept. Included update_time for ENTERPRISE for consistency. Documented foreign‑key relationships implicitly via attribute naming."
+  }
+}

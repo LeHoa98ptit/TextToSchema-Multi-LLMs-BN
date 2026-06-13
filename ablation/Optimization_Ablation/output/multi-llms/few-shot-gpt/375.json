@@ -1,0 +1,102 @@
+{
+  "entity": [
+    "DEVICE",
+    "USER",
+    "STAFF",
+    "NETWORK_TRAFFIC",
+    "DEVICE_FAILURE",
+    "MAINTENANCE_RECORD",
+    "USER_CONNECTION"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device id",
+      "device type",
+      "ip address",
+      "installation location",
+      "installation time",
+      "device status"
+    ],
+    "USER": [
+      "user id",
+      "user account",
+      "user password"
+    ],
+    "STAFF": [
+      "staff id",
+      "contact information"
+    ],
+    "NETWORK_TRAFFIC": [
+      "device id",
+      "timestamp",
+      "upload traffic",
+      "download traffic",
+      "total traffic",
+      "traffic status"
+    ],
+    "DEVICE_FAILURE": [
+      "device id",
+      "failure occurrence time",
+      "failure type",
+      "failure description",
+      "handle status",
+      "remark"
+    ],
+    "MAINTENANCE_RECORD": [
+      "device id",
+      "maintenance time",
+      "staff id",
+      "maintenance content",
+      "maintenance result",
+      "remark"
+    ],
+    "USER_CONNECTION": [
+      "user id",
+      "device id",
+      "connection time",
+      "disconnection time",
+      "bandwidth",
+      "user ip",
+      "user_connection_id",
+      "user_id",
+      "device_id",
+      "connection_time",
+      "disconnection_time",
+      "user_ip"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_FAILURE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "USER_CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.6096,
+  "ilp_runtime": 0.059
+}

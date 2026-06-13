@@ -1,0 +1,153 @@
+{
+  "filename": "451.txt",
+  "entity": {
+    "INTRUSION_DETECTION_SYSTEM": 0.528145,
+    "INTRUSION_DETECTION_RECORD": 0.525154,
+    "INTELLIGENT_CONTROL_SYSTEM": 0.491626,
+    "RESPONSE_PLAN": 0.521013,
+    "KNOWLEDGE_BASE": 0.580786,
+    "KNOWLEDGE_BASE_MANAGEMENT_SYSTEM": 0.560231,
+    "ALARM_MANAGEMENT_SYSTEM": 0.55705,
+    "ALARM": 0.622459,
+    "KNOWLEDGE_INTRUSION_DETECTION_RECORD": 0.720799
+  },
+  "attribute": {
+    "INTRUSION_DETECTION_SYSTEM": {
+      "id": 0.563571,
+      "detection time": 0.56296,
+      "source ip address": 0.556034,
+      "destination ip address": 0.555229,
+      "source port number": 0.554856,
+      "destination port number": 0.553901,
+      "attack type": 0.575642,
+      "threat level": 0.572596
+    },
+    "INTRUSION_DETECTION_RECORD": {
+      "record id": 0.551728,
+      "detection time": 0.56056,
+      "source ip address": 0.548173,
+      "destination ip address": 0.54621,
+      "source port number": 0.548651,
+      "destination port number": 0.547029,
+      "attack type": 0.565841,
+      "threat level": 0.563671
+    },
+    "INTELLIGENT_CONTROL_SYSTEM": {
+      "id": 0.544629
+    },
+    "RESPONSE_PLAN": {
+      "plan id": 0.517905,
+      "plan generation time": 0.516655,
+      "plan type": 0.521711,
+      "detailed plan content": 0.51949,
+      "execution status": 0.522879
+    },
+    "KNOWLEDGE_BASE": {
+      "id": 0.5401
+    },
+    "KNOWLEDGE_BASE_MANAGEMENT_SYSTEM": {
+      "id": 0.555386
+    },
+    "ALARM_MANAGEMENT_SYSTEM": {
+      "id": 0.558802
+    },
+    "ALARM": {
+      "alarm id": 0.538033,
+      "alarm time": 0.532556,
+      "alarm level": 0.540707,
+      "alarm content": 0.547535,
+      "processing status": 0.55772
+    },
+    "KNOWLEDGE": {
+      "knowledge id": 0.543098,
+      "record id": 0.534757,
+      "knowledge category": 0.539645,
+      "intrusion behavior": 0.547305,
+      "security configuration": 0.555658,
+      "good practice": 0.529453,
+      "knowledge description": 0.539792,
+      "knowledge source": 0.538178,
+      "knowledge reliability": 0.532044
+    },
+    "KNOWLEDGE_INTRUSION_DETECTION_RECORD": {
+      "knowledge_intrusion_detection_record_id": 0.720799,
+      "knowledge_id": 0.720799,
+      "intrusion_detection_record_id": 0.720799
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_DETECTION_SYSTEM",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "description": "Intrusion detection system generates intrusion detection records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999863
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "RESPONSE_PLAN",
+      "description": "Intrusion detection records trigger response plans",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.587776
+    },
+    {
+      "entity_1": "INTELLIGENT_CONTROL_SYSTEM",
+      "entity_2": "RESPONSE_PLAN",
+      "description": "Intelligent control system generates response plans",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.84433
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE",
+      "entity_2": "KNOWLEDGE",
+      "description": "Knowledge base contains knowledge",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.958526
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE_MANAGEMENT_SYSTEM",
+      "entity_2": "KNOWLEDGE_BASE",
+      "description": "Knowledge base management system manages knowledge base",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999737
+    },
+    {
+      "entity_1": "ALARM_MANAGEMENT_SYSTEM",
+      "entity_2": "ALARM",
+      "description": "Alarm management system generates alarms",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99996
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_SYSTEM",
+      "entity_2": "ALARM",
+      "description": "Intrusion detection system triggers alarms",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998845
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "KNOWLEDGE_INTRUSION_DETECTION_RECORD",
+      "description": "One KNOWLEDGE can be associated with many KNOWLEDGE_INTRUSION_DETECTION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.720799
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "KNOWLEDGE_INTRUSION_DETECTION_RECORD",
+      "description": "One INTRUSION_DETECTION_RECORD can be associated with many KNOWLEDGE_INTRUSION_DETECTION_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.720799
+    }
+  ],
+  "processing_time": 38.15
+}

@@ -1,0 +1,218 @@
+{
+  "filename": "423.txt",
+  "entity": {
+    "COURSE": 0.622459,
+    "CHAPTER": 0.622459,
+    "INSTRUCTOR": 0.622459,
+    "STUDENT": 0.534719,
+    "CATEGORY": 0.492326,
+    "ENROLLMENT": 0.461228,
+    "COURSE_INSTRUCTOR": 0.591096,
+    "FEEDBACK": 0.469538,
+    "RATING": 0.456858,
+    "CHAPTER_PREREQ": 0.512972,
+    "ASSOC_COURSE_INSTRUCTOR": 0.325156,
+    "ASSOC_STUDENT_COURSE": 0.0121,
+    "ASSOC_CHAPTER_CHAPTER": 1.0
+  },
+  "attribute": {
+    "COURSE": {
+      "course_id": 0.558347,
+      "title": 0.556266,
+      "subtitle": 0.536311,
+      "description": 0.565301,
+      "total_lessons": 0.569162,
+      "total_duration": 0.554772,
+      "difficulty_level": 0.551917,
+      "recommendation_status": 0.561234,
+      "created_at": 0.538555,
+      "updated_at": 0.537148
+    },
+    "CHAPTER": {
+      "chapter_id": 0.520779,
+      "course_id": 0.560633,
+      "title": 0.528611,
+      "description": 0.537326,
+      "video_url": 0.530974,
+      "material_url": 0.525768,
+      "duration": 0.528014,
+      "sequence_number": 0.526449,
+      "created_at": 0.518354,
+      "updated_at": 0.520786
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.561318,
+      "full_name": 0.561797,
+      "avatar": 0.545079,
+      "bio": 0.552919,
+      "teaching_experience_years": 0.563611,
+      "professional_field": 0.559966,
+      "profile_url": 0.559136,
+      "rating_average": 0.55819,
+      "created_at": 0.549082,
+      "updated_at": 0.549006
+    },
+    "STUDENT": {
+      "student_id": 0.546511,
+      "full_name": 0.551126,
+      "avatar": 0.536085,
+      "gender": 0.540787,
+      "age": 0.539259,
+      "email": 0.53983,
+      "phone": 0.535753,
+      "registration_date": 0.542447,
+      "account_status": 0.545966,
+      "membership_level": 0.555293,
+      "points": 0.544558,
+      "last_login": 0.53807,
+      "created_at": 0.535465,
+      "updated_at": 0.53608
+    },
+    "CATEGORY": {
+      "category_id": 0.515193,
+      "name": 0.527746,
+      "target_audience": 0.523469,
+      "description": 0.534478,
+      "created_at": 0.512571,
+      "updated_at": 0.514255
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.533819,
+      "student_id": 0.544985,
+      "course_id": 0.558171,
+      "enroll_date": 0.532854,
+      "progress_percentage": 0.540523,
+      "completion_status": 0.533998,
+      "last_accessed_chapter_id": 0.537065,
+      "total_learning_time": 0.550111
+    },
+    "COURSE_INSTRUCTOR": {
+      "ci_id": 0.565732,
+      "course_id": 0.570568,
+      "instructor_id": 0.566145,
+      "role": 0.568594,
+      "assigned_date": 0.555496
+    },
+    "FEEDBACK": {
+      "feedback_id": 0.510716,
+      "student_id": 0.54577,
+      "course_id": 0.557126,
+      "comment_text": 0.507222,
+      "submitted_at": 0.513787
+    },
+    "RATING": {
+      "rating_id": 0.515787,
+      "student_id": 0.545486,
+      "course_id": 0.555629,
+      "rating_value": 0.514511,
+      "rated_at": 0.51666
+    },
+    "CHAPTER_PREREQ": {
+      "chapter_id": 0.51501,
+      "prerequisite_chapter_id": 0.53133
+    },
+    "ASSOC_COURSE_INSTRUCTOR": {
+      "assoc_course_instructor_id": 0.325156,
+      "course_id": 0.325156,
+      "instructor_id": 0.325156
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.0121,
+      "student_id": 0.0121,
+      "course_id": 0.0121
+    },
+    "ASSOC_CHAPTER_CHAPTER": {
+      "assoc_chapter_chapter_id": 1.0,
+      "chapter_id": 1.0
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each course belongs to one category",
+      "probability": 0.189115
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CHAPTER",
+      "cardinality": "1:N",
+      "description": "A course contains many chapters",
+      "probability": 0.610027
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_COURSE_INSTRUCTOR",
+      "description": "One COURSE can be associated with many ASSOC_COURSE_INSTRUCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.325156
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "ASSOC_COURSE_INSTRUCTOR",
+      "description": "One INSTRUCTOR can be associated with many ASSOC_COURSE_INSTRUCTOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.325156
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.0121
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.0121
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "A student can submit many feedback records",
+      "probability": 0.053635
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "description": "A student can give many ratings (one per course)",
+      "probability": 0.044493
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "A course can receive many feedback entries",
+      "probability": 0.778681
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "description": "A course can have many rating entries",
+      "probability": 0.192943
+    },
+    {
+      "entity_1": "CHAPTER",
+      "entity_2": "ASSOC_CHAPTER_CHAPTER",
+      "description": "One CHAPTER can be associated with many ASSOC_CHAPTER_CHAPTER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 21.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "filename": "369.txt",
+  "entity": {
+    "CONTENT": 0.817574,
+    "USER": 0.817574,
+    "OPERATION": 0.817574,
+    "WORKFLOW": 0.817574,
+    "VERSION": 0.723242,
+    "LOG": 0.716629,
+    "ASSOC_CONTENT_USER": 0.667329
+  },
+  "attribute": {
+    "CONTENT": {
+      "content_id": 0.750241,
+      "title": 0.752648,
+      "description": 0.763682,
+      "state": 0.767658,
+      "creation_time": 0.752996,
+      "publication_time": 0.756193
+    },
+    "USER": {
+      "user_id": 0.735522,
+      "username": 0.729081,
+      "email": 0.741566,
+      "role": 0.759093
+    },
+    "OPERATION": {
+      "operation_id": 0.740894,
+      "operation_type": 0.746057,
+      "operation_time": 0.744878,
+      "user_id": 0.742024,
+      "content_id": 0.750948
+    },
+    "WORKFLOW": {
+      "workflow_id": 0.742982,
+      "workflow_type": 0.750737,
+      "content_id": 0.753773,
+      "state": 0.766994
+    },
+    "VERSION": {
+      "version_id": 0.74096,
+      "content_id": 0.750868,
+      "version_number": 0.740943,
+      "creation_time": 0.747459
+    },
+    "LOG": {
+      "log_id": 0.736651,
+      "operation_id": 0.744637,
+      "log_time": 0.738161,
+      "description": 0.754679
+    },
+    "ASSOC_CONTENT_USER": {
+      "assoc_content_user_id": 0.667329,
+      "content_id": 0.667329,
+      "user_id": 0.667329
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "description": "One CONTENT can be associated with many ASSOC_CONTENT_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.667329
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_CONTENT_USER",
+      "description": "One USER can be associated with many ASSOC_CONTENT_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.667329
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "description": "Each content item can have many operations (e.g., creation, review, publication), and each operation is related to one content item.",
+      "probability": 0.913626
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "description": "Each user can perform many operations, and each operation is performed by one user.",
+      "probability": 0.991194
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "WORKFLOW",
+      "cardinality": "1:N",
+      "description": "Each content item can have many workflows (e.g., different versions or states), and each workflow is related to one content item.",
+      "probability": 0.011844
+    },
+    {
+      "entity_1": "WORKFLOW",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "description": "Each workflow can have many versions, and each version is related to one workflow.",
+      "probability": 0.518849
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "Each operation can generate many log entries, and each log entry is related to one operation.",
+      "probability": 0.955015
+    }
+  ],
+  "processing_time": 28.0
+}

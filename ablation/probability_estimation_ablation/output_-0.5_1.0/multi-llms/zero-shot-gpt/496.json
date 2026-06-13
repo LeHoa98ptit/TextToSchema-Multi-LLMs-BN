@@ -1,0 +1,106 @@
+{
+  "filename": "496.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "CATEGORY": 0.474023,
+    "TRANSACTION": 0.622459,
+    "EVALUATION": 0.481683
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.509804,
+      "phone number": 0.511771,
+      "email": 0.520153,
+      "avatar url": 0.499897,
+      "nickname": 0.510776,
+      "gender": 0.51918,
+      "age": 0.519932,
+      "location": 0.513909,
+      "personal introduction": 0.530758,
+      "d card photo url": 0.511018,
+      "facial recognition data": 0.527725,
+      "phone binding": 0.519716,
+      "email binding": 0.513834
+    },
+    "PRODUCT": {
+      "product id": 0.525273,
+      "title": 0.532534,
+      "detailed description": 0.54115,
+      "condition description": 0.529428,
+      "original price": 0.522363,
+      "sell price": 0.528008,
+      "photos": 0.53576,
+      "category id": 0.526593,
+      "transaction location": 0.546786,
+      "negotiation min price": 0.524859,
+      "negotiation max price": 0.527993,
+      "validity start date": 0.519189,
+      "validity end date": 0.518292,
+      "status": 0.540511,
+      "created at": 0.526853
+    },
+    "CATEGORY": {
+      "category id": 0.514749,
+      "name": 0.52306
+    },
+    "TRANSACTION": {
+      "transaction id": 0.527452,
+      "buyer user id": 0.539619,
+      "product id": 0.538592,
+      "status": 0.535968,
+      "transaction time": 0.528532,
+      "transaction location": 0.535989,
+      "method": 0.541352
+    },
+    "EVALUATION": {
+      "evaluation id": 0.506615,
+      "transaction id": 0.524702,
+      "rating": 0.515818,
+      "comment": 0.512266
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PRODUCT",
+      "description": "A user can publish multiple second‑hand products; each product is posted by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015284
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "description": "Each product is assigned to one category; a category can contain many products.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000259
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "description": "A user (buyer) can be involved in multiple transactions; each transaction records one buyer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990387
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "TRANSACTION",
+      "description": "A product can have multiple transaction records (e.g., offers, sales); each transaction refers to one product.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.35602
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "EVALUATION",
+      "description": "Each transaction may have a single evaluation containing rating and comment.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.693357
+    }
+  ],
+  "processing_time": 28.57
+}

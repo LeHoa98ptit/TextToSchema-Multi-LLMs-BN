@@ -1,0 +1,84 @@
+{
+  "filename": "413.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "TRAINING_COURSE": 0.591507,
+    "TRAINING_RECORD": 0.527223,
+    "ASSOC_EMPLOYEE_TRAINING_COURSE": 0.484124
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.553054,
+      "name": 0.55246,
+      "gender": 0.5554,
+      "position": 0.567061,
+      "contact_number": 0.54528,
+      "hire_date": 0.549198
+    },
+    "DEPARTMENT": {
+      "department_id": 0.536316,
+      "department_name": 0.543516,
+      "department_manager": 0.551239,
+      "department_phone": 0.535056
+    },
+    "TRAINING_COURSE": {
+      "course_id": 0.561386,
+      "course_name": 0.562805,
+      "course_duration": 0.555064,
+      "instructor": 0.556938,
+      "course_description": 0.566009
+    },
+    "TRAINING_RECORD": {
+      "training_id": 0.553572,
+      "training_date": 0.556708,
+      "training_score": 0.552067,
+      "pass_status": 0.54566
+    },
+    "ASSOC_EMPLOYEE_TRAINING_COURSE": {
+      "assoc_employee_training_course_id": 0.484124,
+      "employee_id": 0.484124,
+      "training_course_id": 0.484124
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "An employee belongs to one department, and a department can have many employees.",
+      "probability": 0.999912
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "TRAINING_RECORD",
+      "cardinality": "1:N",
+      "description": "An employee can have many training records, and a training record is associated with one employee.",
+      "probability": 0.997489
+    },
+    {
+      "entity_1": "TRAINING_COURSE",
+      "entity_2": "TRAINING_RECORD",
+      "cardinality": "1:N",
+      "description": "A training course can have many training records, and a training record is associated with one training course.",
+      "probability": 0.999926
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING_COURSE",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_TRAINING_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.484124
+    },
+    {
+      "entity_1": "TRAINING_COURSE",
+      "entity_2": "ASSOC_EMPLOYEE_TRAINING_COURSE",
+      "description": "One TRAINING_COURSE can be associated with many ASSOC_EMPLOYEE_TRAINING_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.484124
+    }
+  ],
+  "processing_time": 18.34
+}

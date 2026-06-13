@@ -1,0 +1,136 @@
+{
+  "entity": [
+    "PROJECT",
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "ROLE_PERMISSION",
+    "TRANSACTION",
+    "BUDGET_ADJUSTMENT",
+    "ALERT",
+    "REPORT",
+    "DEPARTMENT"
+  ],
+  "attribute": {
+    "PROJECT": [
+      "project_id",
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "total_budget",
+      "remaining_fund",
+      "status",
+      "created_at",
+      "updated_at",
+      "department_id"
+    ],
+    "USER": [
+      "user_id",
+      "name",
+      "email",
+      "role_id",
+      "department_id",
+      "created_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name",
+      "description"
+    ],
+    "ROLE_PERMISSION": [
+      "role_id",
+      "permission_id"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "project_id",
+      "user_id",
+      "transaction_time",
+      "purpose",
+      "description",
+      "amount",
+      "transaction_type"
+    ],
+    "BUDGET_ADJUSTMENT": [
+      "adjustment_id",
+      "project_id",
+      "adjustment_date",
+      "amount",
+      "reason",
+      "approved_by_user_id"
+    ],
+    "ALERT": [
+      "alert_id",
+      "project_id",
+      "alert_type",
+      "generated_at",
+      "message",
+      "resolved_flag",
+      "resolved_by_user_id",
+      "resolved_at"
+    ],
+    "REPORT": [
+      "report_id",
+      "generated_by_user_id",
+      "generated_at",
+      "report_type",
+      "criteria"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "manager_user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BUDGET_ADJUSTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "REPORT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.8964,
+  "ilp_runtime": 0.077
+}

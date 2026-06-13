@@ -1,0 +1,81 @@
+{
+  "filename": "335.txt",
+  "entity": {
+    "BUCKET": 0.817574,
+    "PERMISSION": 0.817574,
+    "USER": 0.817574,
+    "TENANT": 0.817574,
+    "ASSOC_PERMISSION_USER": 0.988002
+  },
+  "attribute": {
+    "BUCKET": {
+      "bucket_id": 0.770007,
+      "description": 0.766867
+    },
+    "PERMISSION": {
+      "permission_id": 0.771729,
+      "type": 0.775089,
+      "access_key": 0.773713,
+      "access_password": 0.769818,
+      "secret_key": 0.768514,
+      "status": 0.77128,
+      "create_time": 0.764993
+    },
+    "USER": {
+      "user_id": 0.754108
+    },
+    "TENANT": {
+      "tenant_id": 0.766711
+    },
+    "ASSOC_PERMISSION_USER": {
+      "assoc_permission_user_id": 0.988002,
+      "permission_id": 0.988002,
+      "user_id": 0.988002
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BUCKET",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "Each bucket can have multiple permissions, and each permission is associated with exactly one bucket.",
+      "probability": 0.961447
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "Each user can have multiple permissions, and each permission is created by exactly one user.",
+      "probability": 0.988002
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "BUCKET",
+      "cardinality": "1:N",
+      "description": "Each tenant can have multiple buckets, and each bucket is associated with exactly one tenant.",
+      "probability": 0.189221
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "Each tenant can have multiple users, and each user is associated with exactly one tenant.",
+      "probability": 0.951127
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_PERMISSION_USER",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988002
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_PERMISSION_USER",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988002
+    }
+  ],
+  "processing_time": 6.71
+}

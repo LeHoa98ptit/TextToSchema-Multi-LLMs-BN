@@ -1,0 +1,85 @@
+{
+  "filename": "452.txt",
+  "entity": {
+    "USER": 0.817574,
+    "STUDENT": 0.817574,
+    "CERTIFICATE": 0.817574,
+    "CERTIFICATE_CATEGORY": 0.768222,
+    "STUDENT_ACHIEVEMENT": 0.764498
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.738127,
+      "password": 0.750197,
+      "email": 0.748907,
+      "role": 0.750828,
+      "creation_time": 0.749964,
+      "update_time": 0.744391
+    },
+    "STUDENT": {
+      "student_id": 0.778206,
+      "major": 0.766578,
+      "creation_time": 0.7711,
+      "update_time": 0.765946
+    },
+    "CERTIFICATE": {
+      "certificate_id": 0.770704,
+      "certificate_name": 0.772443,
+      "issue_institution": 0.780117,
+      "issuance_date": 0.767306,
+      "certificate_hash": 0.768129,
+      "certificate_status": 0.772527,
+      "creation_time": 0.769996,
+      "update_time": 0.765624,
+      "category_id": 0.770767
+    },
+    "CERTIFICATE_CATEGORY": {
+      "category_id": 0.769088,
+      "category_name": 0.770142,
+      "description": 0.776633
+    },
+    "STUDENT_ACHIEVEMENT": {
+      "achievement_id": 0.76851,
+      "student_id": 0.776351,
+      "achievement_name": 0.764139,
+      "description": 0.766815,
+      "creation_time": 0.765409,
+      "update_time": 0.764077
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "STUDENT",
+      "cardinality": "1:1",
+      "description": "A user is associated with a student",
+      "probability": 0.999005
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CERTIFICATE",
+      "cardinality": "1:N",
+      "description": "A student can have multiple certificates",
+      "probability": 0.998567
+    },
+    {
+      "entity_1": "CERTIFICATE",
+      "entity_2": "CERTIFICATE_CATEGORY",
+      "cardinality": "N:1",
+      "description": "A certificate belongs to a category",
+      "probability": 0.994289
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "STUDENT_ACHIEVEMENT",
+      "cardinality": "1:N",
+      "description": "A student can have multiple achievements",
+      "probability": 0.870223
+    }
+  ],
+  "processing_time": 17.78,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added CERTIFICATE_CATEGORY and STUDENT_ACHIEVEMENT entities to capture more nuances of the domain, and established relationships between CERTIFICATE and CERTIFICATE_CATEGORY, and between STUDENT and STUDENT_ACHIEVEMENT."
+  }
+}

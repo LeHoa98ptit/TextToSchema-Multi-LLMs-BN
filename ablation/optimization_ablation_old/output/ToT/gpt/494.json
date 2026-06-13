@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "USER",
+    "ARTICLE",
+    "CATEGORY",
+    "COMMENT",
+    "ARTICLE_CATEGORY"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "nickname",
+      "gender",
+      "creation_time",
+      "biography",
+      "email",
+      "phone",
+      "last_login_time",
+      "status"
+    ],
+    "ARTICLE": [
+      "article_id",
+      "title",
+      "author_id",
+      "cover_image_link",
+      "summary",
+      "permission",
+      "status",
+      "content",
+      "like_count",
+      "dislike_count",
+      "read_count",
+      "creation_time",
+      "update_timestamp",
+      "is_featured"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "parent_category_id",
+      "level",
+      "description",
+      "icon_link"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "article_id",
+      "user_id",
+      "reply_comment_id",
+      "content",
+      "creation_time",
+      "status",
+      "like_count"
+    ],
+    "ARTICLE_CATEGORY": [
+      "article_id",
+      "category_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ARTICLE_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ARTICLE_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "0..1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 60.4612,
+  "ilp_runtime": 0.047
+}

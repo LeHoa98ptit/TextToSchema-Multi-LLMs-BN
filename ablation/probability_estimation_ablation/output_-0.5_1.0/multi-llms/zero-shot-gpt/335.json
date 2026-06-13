@@ -1,0 +1,73 @@
+{
+  "filename": "335.txt",
+  "entity": {
+    "BUCKET": 0.622459,
+    "PERMISSION": 0.622459,
+    "USER": 0.622459,
+    "TENANT": 0.622459,
+    "ACCOUNT": 0.526076
+  },
+  "attribute": {
+    "BUCKET": {
+      "bucket id": 0.54541
+    },
+    "PERMISSION": {
+      "permission id": 0.554987,
+      "bucket id": 0.574981,
+      "access type": 0.5631,
+      "access key": 0.562409,
+      "secret key": 0.553756,
+      "status": 0.553681,
+      "create time": 0.549973,
+      "description": 0.561875,
+      "creator user id": 0.555504,
+      "tenant id": 0.5663
+    },
+    "USER": {
+      "user id": 0.530589
+    },
+    "TENANT": {
+      "tenant id": 0.545432
+    },
+    "ACCOUNT": {
+      "account id": 0.528855,
+      "access key": 0.55003,
+      "secret key": 0.534008
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BUCKET",
+      "entity_2": "PERMISSION",
+      "description": "A bucket can have multiple permission records; each permission is associated with one bucket",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.945615
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "PERMISSION",
+      "description": "An account (access_key/secret_key) can be referenced by multiple permission records; each permission uses one account",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.426577
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "description": "A user creates permission records; one user may create many permissions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98815
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PERMISSION",
+      "description": "A tenant owns permission records; one tenant may have many permissions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.726826
+    }
+  ],
+  "processing_time": 6.93
+}

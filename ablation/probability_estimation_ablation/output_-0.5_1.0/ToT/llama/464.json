@@ -1,0 +1,86 @@
+{
+  "filename": "464.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "PROJECT": 0.622459,
+    "ASSOC_PROJECT_EMPLOYEE": 0.796876
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "name": 0.560407,
+      "salary": 0.550927,
+      "position": 0.562993,
+      "education_level": 0.566377,
+      "employee_id": 0.561389,
+      "hire_date": 0.544146,
+      "job_description": 0.566525
+    },
+    "DEPARTMENT": {
+      "dept_name": 0.540219,
+      "dept_id": 0.537586,
+      "manager": 0.54981,
+      "dept_location": 0.531196,
+      "dept_description": 0.550165
+    },
+    "PROJECT": {
+      "project_name": 0.526246,
+      "project_id": 0.52982,
+      "project_manager": 0.540347,
+      "start_date": 0.522067,
+      "end_date": 0.52026,
+      "project_status": 0.52868,
+      "budget": 0.532773,
+      "project_description": 0.535523
+    },
+    "ASSOC_PROJECT_EMPLOYEE": {
+      "assoc_project_employee_id": 0.796876,
+      "project_id": 0.796876,
+      "employee_id": 0.796876
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department manages multiple employees",
+      "probability": 0.999912
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:1",
+      "description": "A project belongs to one department",
+      "probability": 0.802304
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_PROJECT_EMPLOYEE",
+      "description": "One PROJECT can be associated with many ASSOC_PROJECT_EMPLOYEE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.796876
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_PROJECT_EMPLOYEE",
+      "description": "One EMPLOYEE can be associated with many ASSOC_PROJECT_EMPLOYEE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.796876
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A department has multiple projects",
+      "probability": 0.802304
+    }
+  ],
+  "processing_time": 8.24,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more attributes to the PROJECT entity, such as project status and budget, and included additional attributes for EMPLOYEE and DEPARTMENT entities to enhance the model's completeness and accuracy."
+  }
+}

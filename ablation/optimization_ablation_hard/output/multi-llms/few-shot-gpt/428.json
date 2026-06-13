@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "ADMINISTRATOR",
+    "TEACHER",
+    "USER",
+    "DORMITORY",
+    "COURSE",
+    "GRADE",
+    "DORMITORY_REPAIR_REQUEST",
+    "ADMIN_DORMITORY_MAINTENANCE",
+    "TEACHER_COURSE_MAINTENANCE"
+  ],
+  "attribute": {
+    "ADMINISTRATOR": [
+      "admin id",
+      "admin name"
+    ],
+    "TEACHER": [
+      "teacher id",
+      "teacher name"
+    ],
+    "USER": [
+      "user id",
+      "full name",
+      "email",
+      "date of birth"
+    ],
+    "DORMITORY": [
+      "dormitory id",
+      "dormitory name",
+      "location",
+      "capacity"
+    ],
+    "COURSE": [
+      "course id",
+      "course name",
+      "description",
+      "credits"
+    ],
+    "GRADE": [
+      "grade id",
+      "user id",
+      "course id",
+      "grade value",
+      "grade date"
+    ],
+    "DORMITORY_REPAIR_REQUEST": [
+      "request id",
+      "user id",
+      "dormitory id",
+      "description",
+      "request date",
+      "status"
+    ],
+    "ADMIN_DORMITORY_MAINTENANCE": [
+      "admin_dormitory_maintenance_id"
+    ],
+    "TEACHER_COURSE_MAINTENANCE": [
+      "teacher_course_maintenance_id",
+      "teacher_id",
+      "course_id",
+      "maintenance id",
+      "teacher id",
+      "course id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ADMIN_DORMITORY_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHER_COURSE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHER_COURSE_MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY_REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "DORMITORY_REPAIR_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 79.3566,
+  "ilp_runtime": 0.08
+}

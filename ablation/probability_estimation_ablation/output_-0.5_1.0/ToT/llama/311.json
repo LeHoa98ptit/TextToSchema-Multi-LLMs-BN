@@ -1,0 +1,94 @@
+{
+  "filename": "311.txt",
+  "entity": {
+    "ORGANIZATION": 0.622459,
+    "PROCESS": 0.622459,
+    "EVENT": 0.622459,
+    "RESOURCE": 0.496725,
+    "LOG": 0.622459,
+    "ASSOC_PROCESS_RESOURCE": 0.000575
+  },
+  "attribute": {
+    "ORGANIZATION": {
+      "name": 0.531906,
+      "description": 0.550717,
+      "address": 0.523968
+    },
+    "PROCESS": {
+      "id": 0.541027,
+      "type": 0.550571,
+      "status": 0.55469,
+      "start_time": 0.542659,
+      "end_time": 0.545065,
+      "parent_process": 0.544102
+    },
+    "EVENT": {
+      "id": 0.522945,
+      "type": 0.534736,
+      "timestamp": 0.537471,
+      "status": 0.543387,
+      "log_info": 0.544816
+    },
+    "RESOURCE": {
+      "id": 0.512591,
+      "type": 0.521553,
+      "availability": 0.518926
+    },
+    "LOG": {
+      "id": 0.51868,
+      "log_info": 0.529903,
+      "timestamp": 0.53375,
+      "log_level": 0.519537,
+      "severity": 0.525554
+    },
+    "ASSOC_PROCESS_RESOURCE": {
+      "assoc_process_resource_id": 0.000575,
+      "process_id": 0.000575,
+      "resource_id": 0.000575
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "PROCESS",
+      "cardinality": "1:N",
+      "description": "An organization initiates multiple processes",
+      "probability": 0.897444
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "A process generates multiple events",
+      "probability": 0.085794
+    },
+    {
+      "entity_1": "PROCESS",
+      "entity_2": "ASSOC_PROCESS_RESOURCE",
+      "description": "One PROCESS can be associated with many ASSOC_PROCESS_RESOURCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000575
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "ASSOC_PROCESS_RESOURCE",
+      "description": "One RESOURCE can be associated with many ASSOC_PROCESS_RESOURCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000575
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "LOG",
+      "cardinality": "1:1",
+      "description": "An event is associated with a log entry",
+      "probability": 0.048757
+    }
+  ],
+  "processing_time": 16.78,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added log level and severity attributes to the LOG entity to provide more detailed log information, while retaining the strengths of the original model and addressing the identified issues."
+  }
+}

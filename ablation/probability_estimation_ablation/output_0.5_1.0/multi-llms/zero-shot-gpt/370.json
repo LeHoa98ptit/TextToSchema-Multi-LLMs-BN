@@ -1,0 +1,119 @@
+{
+  "filename": "370.txt",
+  "entity": {
+    "PLATFORM": 0.817574,
+    "USER": 0.817574,
+    "PRODUCT": 0.817574,
+    "SHOPPING_CART": 0.800353,
+    "CART_ITEM": 0.761932,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378
+  },
+  "attribute": {
+    "PLATFORM": {
+      "platform id": 0.752339
+    },
+    "USER": {
+      "user id": 0.746187,
+      "phone number": 0.757672,
+      "address": 0.752174,
+      "payment method": 0.759714
+    },
+    "PRODUCT": {
+      "product id": 0.767935,
+      "manufacturer": 0.761779,
+      "flavor": 0.760716,
+      "number of puffs": 0.768781,
+      "unit price": 0.755734,
+      "stock quantity": 0.7746
+    },
+    "SHOPPING_CART": {
+      "cart id": 0.762506,
+      "user id": 0.764107
+    },
+    "CART_ITEM": {
+      "cart id": 0.759505,
+      "product id": 0.765586,
+      "quantity": 0.775373
+    },
+    "ORDER": {
+      "order id": 0.756199,
+      "user id": 0.755035,
+      "order creation time": 0.751925,
+      "order status": 0.757299
+    },
+    "ORDER_ITEM": {
+      "order id": 0.757209,
+      "product id": 0.767191,
+      "quantity": 0.77488,
+      "unit price": 0.760741
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLATFORM",
+      "entity_2": "PRODUCT",
+      "description": "Platform sells many products",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.149143
+    },
+    {
+      "entity_1": "PLATFORM",
+      "entity_2": "USER",
+      "description": "Users register on the platform",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.870147
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "description": "Each user has a single shopping cart",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.997499
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "CART_ITEM",
+      "description": "A shopping cart contains multiple cart items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999116
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_ITEM",
+      "description": "A product can appear in many cart items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.870997
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place multiple orders",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999085
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "An order consists of multiple order items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "description": "A product can appear in many order items",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.959232
+    }
+  ],
+  "processing_time": 20.35
+}

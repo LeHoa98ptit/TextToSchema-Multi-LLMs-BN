@@ -1,0 +1,108 @@
+{
+  "filename": "355.txt",
+  "entity": {
+    "RACE": 0.817574,
+    "HORSE": 0.817574,
+    "BETTOR": 0.817574,
+    "BET": 0.817574,
+    "STATISTIC": 0.69608,
+    "ASSOC_HORSE_RACE": 0.47038
+  },
+  "attribute": {
+    "RACE": {
+      "start_time": 0.761641,
+      "end_time": 0.757172,
+      "result": 0.762688,
+      "race_id": 0.764144
+    },
+    "HORSE": {
+      "racehorse_number": 0.769081,
+      "rank": 0.765405,
+      "horse_name": 0.7625,
+      "horse_age": 0.755956
+    },
+    "BETTOR": {
+      "phone": 0.750261,
+      "identity": 0.750558,
+      "bettor_name": 0.76102,
+      "bettor_email": 0.759762
+    },
+    "BET": {
+      "bet_result": 0.765578,
+      "race_id": 0.769809,
+      "bet_amount": 0.759334,
+      "bet_type": 0.762395,
+      "bettor_id": 0.765049
+    },
+    "STATISTIC": {
+      "win_rate": 0.759163,
+      "loss_rate": 0.743954,
+      "average_bet_amount": 0.764493,
+      "total_bets": 0.766335,
+      "total_wins": 0.760088
+    },
+    "ASSOC_HORSE_RACE": {
+      "assoc_horse_race_id": 0.47038,
+      "horse_id": 0.47038,
+      "race_id": 0.47038
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RACE",
+      "entity_2": "BET",
+      "cardinality": "1:N",
+      "description": "A race can have multiple bets",
+      "probability": 0.044548
+    },
+    {
+      "entity_1": "HORSE",
+      "entity_2": "ASSOC_HORSE_RACE",
+      "description": "One HORSE can be associated with many ASSOC_HORSE_RACE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.47038
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "ASSOC_HORSE_RACE",
+      "description": "One RACE can be associated with many ASSOC_HORSE_RACE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.47038
+    },
+    {
+      "entity_1": "BETTOR",
+      "entity_2": "BET",
+      "cardinality": "1:N",
+      "description": "A bettor can place multiple bets",
+      "probability": 0.186178
+    },
+    {
+      "entity_1": "BET",
+      "entity_2": "STATISTIC",
+      "cardinality": "1:1",
+      "description": "A bet is associated with a statistic",
+      "probability": 0.013163
+    },
+    {
+      "entity_1": "RACE",
+      "entity_2": "STATISTIC",
+      "cardinality": "1:1",
+      "description": "A race is associated with a statistic",
+      "probability": 0.980553
+    },
+    {
+      "entity_1": "BETTOR",
+      "entity_2": "STATISTIC",
+      "cardinality": "1:1",
+      "description": "A bettor is associated with a statistic",
+      "probability": 0.00053
+    }
+  ],
+  "processing_time": 19.28,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added bettor_id to BET entity, added total_bets and total_wins to STATISTIC entity, and added a relationship between BETTOR and STATISTIC to improve the model's efficiency and completeness."
+  }
+}

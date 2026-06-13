@@ -1,0 +1,113 @@
+{
+  "entity": [
+    "USER",
+    "SUPPLY",
+    "ACTION",
+    "CROP",
+    "GROWTH_MODEL",
+    "MODEL_EVALUATION",
+    "SENSOR",
+    "METEOROLOGY"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone_number",
+      "registration_time",
+      "login_time",
+      "role"
+    ],
+    "SUPPLY": [
+      "supply_id",
+      "user_id",
+      "supply_type",
+      "quantity",
+      "supply_time",
+      "location"
+    ],
+    "ACTION": [
+      "action_id",
+      "user_id",
+      "crop_id",
+      "action_type",
+      "action_time",
+      "location",
+      "details"
+    ],
+    "CROP": [
+      "crop_id",
+      "crop_name",
+      "crop_type",
+      "growth_model_id"
+    ],
+    "GROWTH_MODEL": [
+      "model_id",
+      "model_name",
+      "parameters",
+      "creation_time"
+    ],
+    "MODEL_EVALUATION": [
+      "evaluation_id",
+      "model_id",
+      "user_id",
+      "evaluation_time",
+      "metric_name",
+      "metric_value",
+      "location"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type",
+      "location",
+      "burial_depth",
+      "deployment_time"
+    ],
+    "METEOROLOGY": [
+      "meteorology_id",
+      "sensor_id",
+      "timestamp",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind_speed",
+      "light_intensity",
+      "location"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SUPPLY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "ACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GROWTH_MODEL",
+      "entity_2": "CROP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MODEL_EVALUATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.1723,
+  "ilp_runtime": 0.078
+}

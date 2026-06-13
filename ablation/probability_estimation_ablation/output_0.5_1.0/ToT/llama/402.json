@@ -1,0 +1,183 @@
+{
+  "filename": "402.txt",
+  "entity": {
+    "DOCTOR": 0.732099,
+    "DEPARTMENT": 0.817574,
+    "DEPARTMENT_PERSONNEL": 0.789664,
+    "PATIENT": 0.727644,
+    "DIAGNOSIS": 0.817574,
+    "TREATMENT": 0.740525,
+    "DIAGNOSIS_TREATMENT": 0.7817,
+    "WARD": 0.817574,
+    "REGISTRATION_CATEGORY": 0.756779,
+    "DRUG": 0.817574,
+    "DRUG_LIST": 0.750129,
+    "ASSOC_DOCTOR_DEPARTMENT": 0.00543,
+    "ASSOC_PATIENT_WARD": 6.9e-05,
+    "ASSOC_DRUG_DRUG_LIST": 0.999151
+  },
+  "attribute": {
+    "DOCTOR": {
+      "gender": 0.75964,
+      "title": 0.760761,
+      "date_of_birth": 0.756604,
+      "employment_year": 0.759849,
+      "work_permit": 0.75584
+    },
+    "DEPARTMENT": {
+      "department_number": 0.75941,
+      "department_phone_number": 0.757909,
+      "department_address": 0.757224
+    },
+    "DEPARTMENT_PERSONNEL": {
+      "personnel_name": 0.766524,
+      "personnel_role": 0.762422
+    },
+    "PATIENT": {
+      "gender": 0.760355,
+      "age": 0.752168,
+      "contact_information": 0.771357
+    },
+    "DIAGNOSIS": {
+      "diagnosis_description": 0.757857,
+      "diagnosis_date": 0.748222,
+      "diagnosis_type": 0.757604
+    },
+    "TREATMENT": {
+      "treatment_content": 0.756545,
+      "treatment_outcome": 0.750724
+    },
+    "DIAGNOSIS_TREATMENT": {
+      "case_number": 0.762255,
+      "diagnosis_treatment_content": 0.765414,
+      "treatment_plan": 0.763955
+    },
+    "WARD": {
+      "ward_number": 0.763005,
+      "number_of_beds": 0.765405,
+      "ward_level": 0.762125
+    },
+    "REGISTRATION_CATEGORY": {
+      "category_number": 0.754204,
+      "category_description": 0.760479,
+      "registration_fee": 0.745461,
+      "category_type": 0.748703
+    },
+    "DRUG": {
+      "quantity": 0.762675,
+      "price": 0.749551,
+      "barcode": 0.762024,
+      "expiration_date": 0.745493
+    },
+    "DRUG_LIST": {
+      "drug_list_number": 0.774245,
+      "drug_information": 0.777705,
+      "list_description": 0.779845
+    },
+    "ASSOC_DOCTOR_DEPARTMENT": {
+      "assoc_doctor_department_id": 0.00543,
+      "doctor_id": 0.00543,
+      "department_id": 0.00543
+    },
+    "ASSOC_PATIENT_WARD": {
+      "assoc_patient_ward_id": 6.9e-05,
+      "patient_id": 6.9e-05,
+      "ward_id": 6.9e-05
+    },
+    "ASSOC_DRUG_DRUG_LIST": {
+      "assoc_drug_drug_list_id": 0.999151,
+      "drug_id": 0.999151,
+      "drug_list_id": 0.999151
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "ASSOC_DOCTOR_DEPARTMENT",
+      "description": "One DOCTOR can be associated with many ASSOC_DOCTOR_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00543
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_DOCTOR_DEPARTMENT",
+      "description": "One DEPARTMENT can be associated with many ASSOC_DOCTOR_DEPARTMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00543
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DEPARTMENT_PERSONNEL",
+      "cardinality": "1:N",
+      "description": "A department can have multiple personnel",
+      "probability": 0.999952
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple diagnoses",
+      "probability": 0.958211
+    },
+    {
+      "entity_1": "DIAGNOSIS",
+      "entity_2": "TREATMENT",
+      "cardinality": "1:N",
+      "description": "A diagnosis can have multiple treatments",
+      "probability": 0.988048
+    },
+    {
+      "entity_1": "TREATMENT",
+      "entity_2": "DIAGNOSIS_TREATMENT",
+      "cardinality": "1:N",
+      "description": "A treatment can have multiple diagnosis and treatments",
+      "probability": 0.999913
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "ASSOC_PATIENT_WARD",
+      "description": "One PATIENT can be associated with many ASSOC_PATIENT_WARD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 6.9e-05
+    },
+    {
+      "entity_1": "WARD",
+      "entity_2": "ASSOC_PATIENT_WARD",
+      "description": "One WARD can be associated with many ASSOC_PATIENT_WARD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 6.9e-05
+    },
+    {
+      "entity_1": "DRUG",
+      "entity_2": "ASSOC_DRUG_DRUG_LIST",
+      "description": "One DRUG can be associated with many ASSOC_DRUG_DRUG_LIST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999151
+    },
+    {
+      "entity_1": "DRUG_LIST",
+      "entity_2": "ASSOC_DRUG_DRUG_LIST",
+      "description": "One DRUG_LIST can be associated with many ASSOC_DRUG_DRUG_LIST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999151
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "REGISTRATION_CATEGORY",
+      "cardinality": "1:N",
+      "description": "A patient can be registered under multiple categories",
+      "probability": 0.014813
+    }
+  ],
+  "processing_time": 38.14,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added attributes to REGISTRATION_CATEGORY entity, refined relationships between DIAGNOSIS and TREATMENT entities, and added attributes to DRUG entity to better reflect hospital management system complexities"
+  }
+}

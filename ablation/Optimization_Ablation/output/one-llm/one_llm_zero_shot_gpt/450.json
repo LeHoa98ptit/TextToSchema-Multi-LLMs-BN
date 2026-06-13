@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "COMPANY",
+    "DEPARTMENT",
+    "USER",
+    "ASSET_CATEGORY",
+    "ASSET",
+    "ASSET_CIRCULATION_RECORD"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "description"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "description",
+      "company_id"
+    ],
+    "USER": [
+      "user_id",
+      "name",
+      "email",
+      "department_id"
+    ],
+    "ASSET_CATEGORY": [
+      "category_id",
+      "type",
+      "description"
+    ],
+    "ASSET": [
+      "asset_id",
+      "name",
+      "category_id",
+      "department_id",
+      "status",
+      "scrap_indicator",
+      "creator_id",
+      "creation_time",
+      "updater_id",
+      "update_time"
+    ],
+    "ASSET_CIRCULATION_RECORD": [
+      "record_id",
+      "asset_id",
+      "user_id",
+      "circulation_status",
+      "circulation_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ASSET_CATEGORY",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ASSET",
+      "entity_2": "ASSET_CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET_CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.6,
+  "ilp_runtime": 0.078
+}

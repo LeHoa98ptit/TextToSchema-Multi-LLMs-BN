@@ -1,0 +1,112 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CONTACT_PERSON",
+    "PRODUCT",
+    "CATEGORY",
+    "BRAND",
+    "SUPPLIER",
+    "ORDER",
+    "ORDER_DETAIL",
+    "PAYMENT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "address",
+      "phone",
+      "email",
+      "customer_type",
+      "credit_rating"
+    ],
+    "CONTACT_PERSON": [
+      "contact_id",
+      "customer_id",
+      "name",
+      "phone",
+      "email",
+      "position"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "specification",
+      "unit_price",
+      "inventory_quantity",
+      "production_date",
+      "category_id",
+      "brand_id",
+      "supplier_id"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "BRAND": [
+      "brand_id",
+      "name",
+      "description"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_name",
+      "phone",
+      "email",
+      "address"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "order_time",
+      "order_status",
+      "total_amount"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "order_id",
+      "payment_method",
+      "payment_status",
+      "payment_time",
+      "amount"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.3619,
+  "ilp_runtime": 0.038
+}

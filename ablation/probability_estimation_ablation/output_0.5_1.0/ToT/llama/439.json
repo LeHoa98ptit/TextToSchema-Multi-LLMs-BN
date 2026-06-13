@@ -1,0 +1,98 @@
+{
+  "filename": "439.txt",
+  "entity": {
+    "USER": 0.817574,
+    "MERCHANT": 0.817574,
+    "ORDER": 0.817574,
+    "RECYCLING_REQUEST": 0.711237,
+    "PAYMENT": 0.817574,
+    "RATING": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "name": 0.74705,
+      "phone_number": 0.751856,
+      "wechat_id": 0.74815
+    },
+    "MERCHANT": {
+      "name": 0.761915,
+      "contact_info": 0.767008,
+      "address": 0.765533,
+      "rating": 0.761152,
+      "business_hours": 0.76265,
+      "location": 0.761731
+    },
+    "ORDER": {
+      "order_id": 0.74448,
+      "status": 0.759851,
+      "total_cost": 0.747301,
+      "payment_method": 0.754921
+    },
+    "RECYCLING_REQUEST": {
+      "request_id": 0.761294,
+      "location": 0.770039,
+      "time": 0.768357,
+      "waste_item_type": 0.776228,
+      "quantity": 0.778041
+    },
+    "PAYMENT": {
+      "payment_id": 0.753901,
+      "amount": 0.754838,
+      "payment_time": 0.75261
+    },
+    "RATING": {
+      "rating_id": 0.740584,
+      "rating_value": 0.738072,
+      "comment": 0.74318
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:N",
+      "description": "A user can post multiple recycling requests",
+      "probability": 0.984126
+    },
+    {
+      "entity_1": "MERCHANT",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A merchant can fulfill multiple orders",
+      "probability": 0.023497
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:1",
+      "description": "An order is related to one recycling request",
+      "probability": 0.000266
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order is related to one payment",
+      "probability": 0.877219
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "RATING",
+      "cardinality": "1:1",
+      "description": "An order is related to one rating",
+      "probability": 0.486621
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple payments",
+      "probability": 0.999827
+    }
+  ],
+  "processing_time": 17.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed email and password attributes for users, added business hours and location attributes for merchants, and added a relationship between users and payments for payment history"
+  }
+}

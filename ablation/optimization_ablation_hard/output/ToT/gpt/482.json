@@ -1,0 +1,106 @@
+{
+  "entity": [
+    "CLIENT",
+    "VEHICLE",
+    "CATEGORY",
+    "EMPLOYEE",
+    "DEPARTMENT",
+    "MAINTENANCE_ORDER",
+    "ASSIGNMENT"
+  ],
+  "attribute": {
+    "CLIENT": [
+      "client_number",
+      "client_type",
+      "discount_rate",
+      "contact_person",
+      "contact_phone",
+      "address"
+    ],
+    "VEHICLE": [
+      "license_plate",
+      "model",
+      "color",
+      "category_id",
+      "client_number"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "category_name",
+      "description"
+    ],
+    "EMPLOYEE": [
+      "employee_number",
+      "position",
+      "phone_number",
+      "home_address",
+      "department_number"
+    ],
+    "DEPARTMENT": [
+      "department_number",
+      "supervisor_employee_number",
+      "phone_number"
+    ],
+    "MAINTENANCE_ORDER": [
+      "order_number",
+      "license_plate",
+      "maintenance_content",
+      "man_hour",
+      "order_date",
+      "status",
+      "priority"
+    ],
+    "ASSIGNMENT": [
+      "assignment_id",
+      "order_number",
+      "employee_number",
+      "role_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_ORDER",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.3132,
+  "ilp_runtime": 0.049
+}

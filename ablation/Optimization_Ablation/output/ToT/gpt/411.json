@@ -1,0 +1,168 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CUSTOMER_CLASSIFICATION",
+    "CONTACT_PERSON",
+    "PRODUCT",
+    "PRODUCT_CLASSIFICATION",
+    "CATEGORY",
+    "BRAND",
+    "SUPPLIER",
+    "ORDER",
+    "ORDER_DETAIL",
+    "PAYMENT",
+    "PAYMENT_METHOD"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "customer_name",
+      "tax_id",
+      "registration_date",
+      "address",
+      "phone",
+      "email",
+      "website"
+    ],
+    "CUSTOMER_CLASSIFICATION": [
+      "customer_id",
+      "customer_type",
+      "credit_rating",
+      "segment"
+    ],
+    "CONTACT_PERSON": [
+      "contact_id",
+      "customer_id",
+      "first_name",
+      "last_name",
+      "position",
+      "mobile",
+      "email"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "sku",
+      "specification",
+      "unit_price",
+      "inventory_qty",
+      "production_date",
+      "expiry_date",
+      "weight",
+      "dimensions"
+    ],
+    "PRODUCT_CLASSIFICATION": [
+      "product_id",
+      "category_id",
+      "brand_id",
+      "supplier_id"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "category_name",
+      "parent_category_id"
+    ],
+    "BRAND": [
+      "brand_id",
+      "brand_name",
+      "brand_origin"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "supplier_name",
+      "contact_name",
+      "contact_phone",
+      "address",
+      "email"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "order_date",
+      "required_delivery_date",
+      "order_status",
+      "shipping_method",
+      "total_amount"
+    ],
+    "ORDER_DETAIL": [
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "discount",
+      "line_total"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "order_id",
+      "payment_method_id",
+      "payment_status",
+      "payment_time",
+      "amount_paid",
+      "transaction_reference"
+    ],
+    "PAYMENT_METHOD": [
+      "payment_method_id",
+      "method_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CLASSIFICATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_CLASSIFICATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 79.9668,
+  "ilp_runtime": 0.093
+}

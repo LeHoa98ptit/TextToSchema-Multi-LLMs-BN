@@ -1,0 +1,113 @@
+{
+  "filename": "338.txt",
+  "entity": {
+    "SCHOOL": 0.817574,
+    "COLLEGE": 0.817574,
+    "STUDENT": 0.817574,
+    "TEACHER": 0.817574,
+    "COURSE": 0.817574,
+    "ENROLLMENT": 0.817574
+  },
+  "attribute": {
+    "SCHOOL": {
+      "school_name": 0.759397,
+      "school_type": 0.761436,
+      "location": 0.757516,
+      "total_number_staff": 0.770521,
+      "total_number_student": 0.76957
+    },
+    "COLLEGE": {
+      "college_name": 0.771469,
+      "college_location": 0.771937,
+      "total_number_staff": 0.780053,
+      "total_number_student": 0.776921
+    },
+    "STUDENT": {
+      "d": 0.766371,
+      "gender": 0.763457,
+      "date_birth": 0.766922,
+      "age": 0.762243,
+      "telephone": 0.763301,
+      "registration_time": 0.768786,
+      "student_name": 0.769181
+    },
+    "TEACHER": {
+      "d": 0.757834,
+      "gender": 0.755947,
+      "age": 0.755925,
+      "contact_information": 0.765727,
+      "title": 0.758534,
+      "teacher_name": 0.761327
+    },
+    "COURSE": {
+      "d": 0.745132,
+      "credit_number": 0.771275,
+      "course_summary": 0.768526,
+      "class_hour": 0.768299,
+      "classroom": 0.768334,
+      "course_name": 0.764669
+    },
+    "ENROLLMENT": {
+      "enrollment_time": 0.762494,
+      "course_grade": 0.777815,
+      "student_d": 0.775404,
+      "course_d": 0.777499
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SCHOOL",
+      "entity_2": "COLLEGE",
+      "cardinality": "1:N",
+      "description": "A school has multiple colleges",
+      "probability": 0.531546
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A college has multiple students",
+      "probability": 0.051358
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "TEACHER",
+      "cardinality": "1:N",
+      "description": "A college has multiple teachers",
+      "probability": 0.994893
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "A teacher teaches multiple courses",
+      "probability": 0.986856
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "SCHOOL",
+      "cardinality": "1:N",
+      "description": "A school has multiple teachers",
+      "probability": 0.222012
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student has multiple enrollments",
+      "probability": 0.999954
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course has multiple enrollments",
+      "probability": 0.570166
+    }
+  ],
+  "processing_time": 25.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added school name and school type to the SCHOOL entity, and added a relationship between TEACHER and SCHOOL. Removed the N:M relationship between STUDENT and COURSE, and instead used the ENROLLMENT entity to represent this relationship."
+  }
+}

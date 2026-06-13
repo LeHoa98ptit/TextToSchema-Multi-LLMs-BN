@@ -1,0 +1,140 @@
+{
+  "entity": [
+    "STUDENT",
+    "PROFESSOR",
+    "COURSE",
+    "SUBJECT",
+    "COURSE_OFFERING",
+    "ENROLLMENT",
+    "SUBJECT_PREREQUISITE",
+    "SUBJECT_EQUIVALENCE",
+    "ASSOC_PROFESSOR_COURSE",
+    "ASSOC_COURSE_OFFERING_SUBJECT",
+    "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "name",
+      "email",
+      "date_of_birth",
+      "total_credit",
+      "average_grade"
+    ],
+    "PROFESSOR": [
+      "professor_id",
+      "name",
+      "email",
+      "office"
+    ],
+    "COURSE": [
+      "course_id",
+      "course_code",
+      "name",
+      "total_credit",
+      "description"
+    ],
+    "SUBJECT": [
+      "subject_id",
+      "subject_code",
+      "name",
+      "credit",
+      "description"
+    ],
+    "COURSE_OFFERING": [
+      "offering_id",
+      "course_id",
+      "semester",
+      "year",
+      "schedule",
+      "capacity"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id",
+      "student_id",
+      "offering_id",
+      "enrollment_date",
+      "grade",
+      "grade_point",
+      "status"
+    ],
+    "SUBJECT_PREREQUISITE": [
+      "prereq_id",
+      "subject_id",
+      "prerequisite_subject_id",
+      "required_grade"
+    ],
+    "SUBJECT_EQUIVALENCE": [
+      "equivalence_id",
+      "subject_id",
+      "equivalent_subject_id",
+      "equivalence_type",
+      "equivalence_reason"
+    ],
+    "ASSOC_PROFESSOR_COURSE": [
+      "assoc_professor_course_id"
+    ],
+    "ASSOC_COURSE_OFFERING_SUBJECT": [
+      "assoc_course_offering_subject_id",
+      "course_offering_id",
+      "subject_id"
+    ],
+    "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE": [
+      "assoc_subject_subject_equivalence_id",
+      "subject_id",
+      "subject_equivalence_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "ASSOC_PROFESSOR_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_PROFESSOR_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE_OFFERING",
+      "entity_2": "ASSOC_COURSE_OFFERING_SUBJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_COURSE_OFFERING_SUBJECT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "SUBJECT_PREREQUISITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUBJECT_EQUIVALENCE",
+      "entity_2": "ASSOC_SUBJECT_SUBJECT_EQUIVALENCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 78.3364,
+  "ilp_runtime": 0.143
+}

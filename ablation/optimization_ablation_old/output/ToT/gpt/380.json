@@ -1,0 +1,102 @@
+{
+  "entity": [
+    "COMPANY",
+    "AIRLINE",
+    "PARTNERSHIP",
+    "CUSTOMER",
+    "AIRPORT",
+    "FLIGHT",
+    "RESERVATION",
+    "TICKET"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "headquarters_address"
+    ],
+    "AIRLINE": [
+      "airline_id",
+      "phone",
+      "address"
+    ],
+    "PARTNERSHIP": [
+      "partnership_id",
+      "company_id",
+      "airline_id",
+      "partner_since"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email",
+      "date_of_birth"
+    ],
+    "AIRPORT": [
+      "airport_code",
+      "name",
+      "city",
+      "country"
+    ],
+    "FLIGHT": [
+      "flight_number",
+      "airline_id",
+      "departure_airport_code",
+      "arrival_airport_code",
+      "departure_time",
+      "arrival_time",
+      "capacity"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "customer_id",
+      "flight_number",
+      "reservation_time",
+      "total_price",
+      "status"
+    ],
+    "TICKET": [
+      "ticket_id",
+      "reservation_id",
+      "seat_number",
+      "class",
+      "price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "PARTNERSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AIRPORT",
+      "entity_2": "FLIGHT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 49.8331,
+  "ilp_runtime": 0.071
+}

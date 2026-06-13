@@ -1,0 +1,145 @@
+{
+  "filename": "360.txt",
+  "entity": {
+    "LOG": 0.817574,
+    "OPERATOR": 0.817574,
+    "ACCOUNT": 0.716852,
+    "ROLE": 0.727307,
+    "PERMISSION": 0.695678,
+    "LOG_CATEGORY": 0.750373,
+    "AUDIT_EVENT": 0.697242,
+    "ASSOC_OPERATOR_ROLE": 0.146789,
+    "ASSOC_ROLE_PERMISSION": 0.575081
+  },
+  "attribute": {
+    "LOG": {
+      "log_id": 0.758774,
+      "level": 0.770654,
+      "content": 0.771505,
+      "current_status": 0.755361,
+      "category_id": 0.757523,
+      "created_by_account_id": 0.754086,
+      "created_at": 0.748629,
+      "updated_at": 0.742911,
+      "deleted_at": 0.751452
+    },
+    "OPERATOR": {
+      "operator_id": 0.740675,
+      "full_name": 0.736604,
+      "contact_info": 0.749897
+    },
+    "ACCOUNT": {
+      "account_id": 0.744072,
+      "username": 0.739001,
+      "password_hash": 0.74131,
+      "operator_id": 0.748853
+    },
+    "ROLE": {
+      "role_id": 0.746817,
+      "role_name": 0.748863,
+      "description": 0.76398
+    },
+    "PERMISSION": {
+      "permission_id": 0.742428,
+      "permission_name": 0.743577,
+      "description": 0.762996
+    },
+    "LOG_CATEGORY": {
+      "category_id": 0.755271,
+      "name": 0.765428,
+      "description": 0.777575
+    },
+    "AUDIT_EVENT": {
+      "audit_id": 0.751904,
+      "log_id": 0.758793,
+      "operator_id": 0.753419,
+      "event_type": 0.75162,
+      "event_timestamp": 0.748365,
+      "details": 0.766981
+    },
+    "ASSOC_OPERATOR_ROLE": {
+      "assoc_operator_role_id": 0.146789,
+      "operator_id": 0.146789,
+      "role_id": 0.146789
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.575081,
+      "role_id": 0.575081,
+      "permission_id": 0.575081
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "description": "Each operator is associated with a single authentication account",
+      "probability": 0.672741
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "ASSOC_OPERATOR_ROLE",
+      "description": "One OPERATOR can be associated with many ASSOC_OPERATOR_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.146789
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_OPERATOR_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_OPERATOR_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.146789
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.575081
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.575081
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "LOG_CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each log is classified under a single category",
+      "probability": 0.999924
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "description": "The account that originally created the log",
+      "probability": 0.988692
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "AUDIT_EVENT",
+      "cardinality": "1:N",
+      "description": "A log can have multiple audit events (creation, modification, deletion, read, etc.)",
+      "probability": 0.167071
+    },
+    {
+      "entity_1": "AUDIT_EVENT",
+      "entity_2": "OPERATOR",
+      "cardinality": "N:1",
+      "description": "Each audit event is performed by a single operator",
+      "probability": 0.005131
+    }
+  ],
+  "processing_time": 24.84,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Consolidated LOG_LIFECYCLE and OPERATION_HISTORY into a single AUDIT_EVENT entity to eliminate redundancy and capture all lifecycle and operational actions. Added creator reference (created_by_account_id) and timestamps (created_at, updated_at, deleted_at) to LOG for direct audit of creation and soft‑deletion. Introduced ROLE‑PERMISSION many‑to‑many relationship to model role‑based access control, removing the direct ACCOUNT‑PERMISSION link. Standardised attribute names to snake_case and included explicit foreign keys for category, creator, and audit links. Preserved existing strengths such as RBAC (OPERATOR‑ROLE), detailed operator/account separation, and comprehensive audit trail."
+  }
+}

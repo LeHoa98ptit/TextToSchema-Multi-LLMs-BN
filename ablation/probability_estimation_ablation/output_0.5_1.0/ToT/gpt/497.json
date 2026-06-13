@@ -1,0 +1,125 @@
+{
+  "filename": "497.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "CONTACT_INFO": 0.725518,
+    "EVENT": 0.817574,
+    "EVENT_TYPE": 0.761151,
+    "REGISTRATION": 0.703558,
+    "REGISTRATION_STATUS": 0.684213,
+    "RESULT": 0.817574,
+    "AWARD": 0.732295
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.764758,
+      "first_name": 0.762257,
+      "last_name": 0.761782,
+      "gender": 0.75727,
+      "grade": 0.760069,
+      "class": 0.762069
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.744616,
+      "student_id": 0.763409,
+      "phone": 0.745695,
+      "email": 0.747152,
+      "address": 0.743267
+    },
+    "EVENT": {
+      "event_id": 0.760483,
+      "event_name": 0.76296,
+      "event_type_id": 0.756899,
+      "event_date": 0.764275,
+      "start_time": 0.761657,
+      "end_time": 0.760114,
+      "location": 0.758871
+    },
+    "EVENT_TYPE": {
+      "type_id": 0.753489,
+      "type_name": 0.756812,
+      "description": 0.766338
+    },
+    "REGISTRATION": {
+      "registration_id": 0.747575,
+      "student_id": 0.764733,
+      "event_id": 0.761124,
+      "registration_time": 0.750732,
+      "status_code": 0.74581
+    },
+    "REGISTRATION_STATUS": {
+      "status_code": 0.745511,
+      "status_name": 0.749033,
+      "status_description": 0.750029
+    },
+    "RESULT": {
+      "result_id": 0.7497,
+      "registration_id": 0.755881,
+      "performance": 0.749561,
+      "result_date": 0.754642,
+      "rank": 0.752097
+    },
+    "AWARD": {
+      "award_id": 0.758303,
+      "result_id": 0.760457,
+      "award_name": 0.75836,
+      "award_description": 0.759554
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each student has exactly one set of contact details",
+      "probability": 0.001042
+    },
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "One event type classifies many events",
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A student can register for multiple events",
+      "probability": 0.955136
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "An event can have many registrations",
+      "probability": 0.026333
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "REGISTRATION_STATUS",
+      "cardinality": "N:1",
+      "description": "Each registration is assigned one status (e.g., pending, confirmed, cancelled)",
+      "probability": 0.98952
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "RESULT",
+      "cardinality": "1:1",
+      "description": "Each registration yields at most one result record",
+      "probability": 0.175879
+    },
+    {
+      "entity_1": "RESULT",
+      "entity_2": "AWARD",
+      "cardinality": "1:0..1",
+      "description": "A result may be linked to an award (e.g., medal) or not",
+      "probability": 0.943342
+    }
+  ],
+  "processing_time": 8.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a REGISTRATION_STATUS lookup entity and changed REGISTRATION.status to a foreign key (status_code) to enforce ENUM values. Declared a UNIQUE constraint on (student_id, event_id) in REGISTRATION to prevent duplicate registrations (not shown in JSON but part of the physical design). Introduced a CHECK constraint concept on RESULT.performance to validate units according to the associated EVENT_TYPE. Suggested indexes on all foreign‑key columns (student_id, event_id, event_type_id, registration_id, result_id, status_code) for performance. Documented business rules (e.g., results only entered after event_date) to be enforced via triggers or application logic. Retained the separate CONTACT_INFO entity for flexibility while noting it could be merged into STUDENT for very small deployments."
+  }
+}

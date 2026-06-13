@@ -1,0 +1,110 @@
+{
+  "filename": "289.txt",
+  "entity": {
+    "PRODUCTION_PROCESS": 0.593439,
+    "OPERATOR": 0.622459,
+    "DEPARTMENT": 0.454452,
+    "MONITORING_RECORD": 0.477665,
+    "PARAMETER": 0.622459,
+    "CONTACT_INFO": 0.432686,
+    "PROCESS_ASSIGNMENT": 0.536609
+  },
+  "attribute": {
+    "PRODUCTION_PROCESS": {
+      "process_id": 0.563993,
+      "start_time": 0.569482,
+      "end_time": 0.568248,
+      "status": 0.567644
+    },
+    "OPERATOR": {
+      "operator_id": 0.522981,
+      "name": 0.533212,
+      "department_id": 0.544908
+    },
+    "DEPARTMENT": {
+      "department_id": 0.542248,
+      "name": 0.546107
+    },
+    "MONITORING_RECORD": {
+      "record_id": 0.540207,
+      "recording_time": 0.557282,
+      "value": 0.552733,
+      "parameter_id": 0.542631,
+      "process_id": 0.560666
+    },
+    "PARAMETER": {
+      "parameter_id": 0.514664,
+      "name": 0.51951,
+      "unit": 0.525088
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.535156,
+      "email": 0.534497,
+      "phone": 0.533368,
+      "address": 0.536106
+    },
+    "PROCESS_ASSIGNMENT": {
+      "assignment_id": 0.539141,
+      "process_id": 0.548823,
+      "operator_id": 0.546623,
+      "assignment_start_time": 0.549512,
+      "assignment_end_time": 0.547913
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each operator belongs to one department; a department has many operators",
+      "probability": 0.877158
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each operator has a single set of contact details",
+      "probability": 0.040085
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each department has a single set of contact details",
+      "probability": 0.000576
+    },
+    {
+      "entity_1": "PRODUCTION_PROCESS",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "description": "A production process generates multiple monitoring records",
+      "probability": 0.136747
+    },
+    {
+      "entity_1": "MONITORING_RECORD",
+      "entity_2": "PARAMETER",
+      "cardinality": "N:1",
+      "description": "Each monitoring record records a value for one parameter",
+      "probability": 0.469627
+    },
+    {
+      "entity_1": "PRODUCTION_PROCESS",
+      "entity_2": "PROCESS_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A production process can have multiple operator assignments (shifts)",
+      "probability": 0.009618
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "PROCESS_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An operator can be assigned to many production processes (possibly across shifts)",
+      "probability": 0.004893
+    }
+  ],
+  "processing_time": 19.21,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a CONTACT_INFO entity for full, reusable contact details and linked it 1:1 with both OPERATOR and DEPARTMENT. Introduced PROCESS_ASSIGNMENT associative entity to support many‑to‑many operator participation per production process, enabling shift work modeling. Added a 'status' attribute to PRODUCTION_PROCESS for lifecycle tracking. Removed the direct operator_id from PRODUCTION_PROCESS to avoid redundancy. Kept core entities and relationships, improved normalization, completeness, and flexibility while preserving efficiency."
+  }
+}

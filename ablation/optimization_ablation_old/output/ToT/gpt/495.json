@@ -1,0 +1,130 @@
+{
+  "entity": [
+    "DOCTOR",
+    "DEPARTMENT",
+    "PERSONNEL",
+    "WARD",
+    "PATIENT",
+    "MEDICINE",
+    "DIAGNOSIS",
+    "CONSULTATION",
+    "PRESCRIPTION",
+    "MEDICATION_RETRIEVAL"
+  ],
+  "attribute": {
+    "DOCTOR": [
+      "doctor_id",
+      "name",
+      "gender",
+      "title",
+      "years_of_service",
+      "phone",
+      "department_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "person_in_charge_id",
+      "total_staff",
+      "location",
+      "phone"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "role",
+      "department_id",
+      "hire_date",
+      "phone"
+    ],
+    "WARD": [
+      "ward_id",
+      "bed_count",
+      "level",
+      "location",
+      "status"
+    ],
+    "PATIENT": [
+      "patient_id",
+      "name",
+      "gender",
+      "age",
+      "contact",
+      "admission_date",
+      "discharge_date",
+      "ward_id"
+    ],
+    "MEDICINE": [
+      "medicine_id",
+      "name",
+      "quantity_on_hand",
+      "unit_price",
+      "sale_price",
+      "remark"
+    ],
+    "DIAGNOSIS": [
+      "diagnosis_id",
+      "description",
+      "diagnosis_date"
+    ],
+    "CONSULTATION": [
+      "consultation_id",
+      "patient_id",
+      "doctor_id",
+      "consultation_time",
+      "diagnosis_id",
+      "treatment",
+      "remarks"
+    ],
+    "PRESCRIPTION": [
+      "prescription_id",
+      "consultation_id",
+      "medicine_id",
+      "dosage",
+      "frequency",
+      "duration",
+      "quantity_prescribed"
+    ],
+    "MEDICATION_RETRIEVAL": [
+      "retrieval_id",
+      "patient_id",
+      "medicine_id",
+      "retrieval_time",
+      "quantity_dispensed"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONSULTATION",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICATION_RETRIEVAL",
+      "entity_2": "PATIENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICATION_RETRIEVAL",
+      "entity_2": "MEDICINE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.9025,
+  "ilp_runtime": 0.064
+}

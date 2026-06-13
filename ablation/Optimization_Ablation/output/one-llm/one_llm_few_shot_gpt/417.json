@@ -1,0 +1,82 @@
+{
+  "entity": [
+    "USER",
+    "POST",
+    "COMMENT",
+    "CATEGORY",
+    "NOTIFICATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password",
+      "avatar_link",
+      "registration_date"
+    ],
+    "POST": [
+      "post_id",
+      "title",
+      "content",
+      "post_time",
+      "status",
+      "reply_count",
+      "like_count",
+      "favorite_count",
+      "user_id",
+      "category_id"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "content",
+      "comment_time",
+      "like_count",
+      "reply_count",
+      "user_id",
+      "post_id",
+      "parent_comment_id"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "category_name",
+      "description"
+    ],
+    "NOTIFICATION": [
+      "notification_id",
+      "message_number",
+      "content",
+      "read_status",
+      "user_id",
+      "created_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.0245,
+  "ilp_runtime": 0.161
+}

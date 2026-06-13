@@ -1,0 +1,162 @@
+{
+  "filename": "471.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "APPLICATION": 0.715287,
+    "APPLICATION_STATUS": 0.671196,
+    "CARD_TYPE": 0.76015,
+    "CREDIT_CARD": 0.800305,
+    "TRANSACTION": 0.817574,
+    "TRANSACTION_STATUS": 0.757643,
+    "NOTIFICATION": 0.690509
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.761562,
+      "first_name": 0.765014,
+      "last_name": 0.761468,
+      "date_of_birth": 0.759622,
+      "ssn": 0.765127,
+      "street": 0.755052,
+      "city": 0.754265,
+      "state": 0.757337,
+      "postal_code": 0.761244,
+      "country": 0.748407,
+      "email": 0.760141,
+      "phone_number": 0.757634,
+      "mobile_number": 0.753047
+    },
+    "APPLICATION": {
+      "application_id": 0.739724,
+      "customer_id": 0.760403,
+      "submission_date": 0.745178,
+      "requested_limit": 0.743379,
+      "remarks": 0.756143,
+      "status_code": 0.747328,
+      "type_code": 0.742138
+    },
+    "APPLICATION_STATUS": {
+      "status_code": 0.747925,
+      "status_description": 0.752494
+    },
+    "CARD_TYPE": {
+      "type_code": 0.758813,
+      "type_name": 0.759457,
+      "annual_fee": 0.759714,
+      "reward_program": 0.75846
+    },
+    "CREDIT_CARD": {
+      "card_number": 0.777357,
+      "customer_id": 0.780814,
+      "application_id": 0.777699,
+      "type_code": 0.775616,
+      "issue_date": 0.770625,
+      "expiry_date": 0.765351,
+      "credit_limit": 0.771912,
+      "current_balance": 0.767754,
+      "activation_date": 0.774836,
+      "activation_method": 0.780611,
+      "activation_status": 0.781912,
+      "activation_pin": 0.775513
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.760545,
+      "card_number": 0.778035,
+      "transaction_timestamp": 0.753431,
+      "merchant_name": 0.767161,
+      "amount": 0.763958,
+      "currency": 0.752235,
+      "description": 0.768978,
+      "status_code": 0.765234
+    },
+    "TRANSACTION_STATUS": {
+      "status_code": 0.762687,
+      "status_description": 0.764811
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.738876,
+      "customer_id": 0.754089,
+      "card_number": 0.766033,
+      "notification_type": 0.739871,
+      "sent_timestamp": 0.736308,
+      "content": 0.745491
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A customer may submit multiple credit‑card applications",
+      "probability": 0.991608
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_STATUS",
+      "cardinality": "N:1",
+      "description": "Each application is assigned a status (e.g., pending, approved, rejected)",
+      "probability": 0.998342
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CARD_TYPE",
+      "cardinality": "N:1",
+      "description": "Application specifies the desired card type",
+      "probability": 0.000731
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:0..1",
+      "description": "If approved, the application results in a credit card",
+      "probability": 0.018982
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "description": "A customer can own multiple credit cards",
+      "probability": 0.600053
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CARD_TYPE",
+      "cardinality": "N:1",
+      "description": "Each credit card belongs to a defined card type",
+      "probability": 0.991051
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A credit card can have many transactions",
+      "probability": 0.999159
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_STATUS",
+      "cardinality": "N:1",
+      "description": "Each transaction has a status (e.g., pending, settled, declined)",
+      "probability": 0.999959
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "System sends various notifications (confirmation, activation, rejection) to a customer",
+      "probability": 0.561148
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "Card‑related notifications (activation success, expiry reminder) are linked to the card",
+      "probability": 0.998539
+    }
+  ],
+  "processing_time": 13.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged ADDRESS and CONTACT attributes directly into CUSTOMER to simplify the schema and improve performance. Integrated activation details (date, method, status, PIN) into CREDIT_CARD, removing the separate CARD_ACTIVATION entity. Added activation_pin attribute for secure PIN storage. Introduced a direct CUSTOMER‑CREDIT_CARD relationship to reflect card ownership. Retained lookup tables for statuses and card types to preserve normalization and consistency. Updated relationships and foreign‑key attributes accordingly, and removed redundant entities while keeping all domain concepts covered."
+  }
+}

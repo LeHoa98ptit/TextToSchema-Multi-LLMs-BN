@@ -1,0 +1,80 @@
+{
+  "filename": "364.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "USER": 0.622459,
+    "LOGIN_RESPONSE_TYPE": 0.568369,
+    "LOGIN_ATTEMPT": 0.553544,
+    "LOGIN_RESPONSE_RECORD": 0.570723
+  },
+  "attribute": {
+    "COMPANY": {
+      "company id": 0.536713
+    },
+    "USER": {
+      "user id": 0.533108,
+      "company id": 0.548605,
+      "username": 0.515891,
+      "phone number": 0.523322,
+      "job title": 0.551354
+    },
+    "LOGIN_RESPONSE_TYPE": {
+      "response type id": 0.547595,
+      "label": 0.554741
+    },
+    "LOGIN_ATTEMPT": {
+      "attempt id": 0.537497,
+      "user id": 0.539891
+    },
+    "LOGIN_RESPONSE_RECORD": {
+      "record id": 0.545997,
+      "user id": 0.55353,
+      "login time": 0.548846,
+      "response type id": 0.547787,
+      "response label": 0.548918
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "description": "A company employs multiple users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.888025
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_ATTEMPT",
+      "description": "A user can make many login attempts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994756
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "description": "A user can have many login response records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997315
+    },
+    {
+      "entity_1": "LOGIN_RESPONSE_TYPE",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "description": "Each response record references one response type; a type can appear in many records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999983
+    },
+    {
+      "entity_1": "LOGIN_ATTEMPT",
+      "entity_2": "LOGIN_RESPONSE_RECORD",
+      "description": "Each login attempt generates a single response record",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.99531
+    }
+  ],
+  "processing_time": 13.87
+}

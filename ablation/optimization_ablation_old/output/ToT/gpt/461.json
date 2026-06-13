@@ -1,0 +1,116 @@
+{
+  "entity": [
+    "PRODUCT",
+    "CATEGORY",
+    "STORAGE_LOCATION",
+    "CUSTOMER",
+    "ORDER",
+    "ORDER_ITEM",
+    "PERSONNEL",
+    "INVENTORY_HISTORY",
+    "ORDER_ASSIGNMENT"
+  ],
+  "attribute": {
+    "PRODUCT": [
+      "product_id",
+      "product_name",
+      "unit_price",
+      "stock_quantity",
+      "unit_measurement",
+      "category_id",
+      "storage_location_id",
+      "description",
+      "last_updated"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "category_name",
+      "description"
+    ],
+    "STORAGE_LOCATION": [
+      "location_id",
+      "aisle",
+      "rack",
+      "bin",
+      "description"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "customer_name",
+      "gender",
+      "age",
+      "phone",
+      "address"
+    ],
+    "ORDER": [
+      "order_id",
+      "customer_id",
+      "order_time",
+      "delivery_address",
+      "order_status",
+      "estimated_delivery_time",
+      "total_price",
+      "last_updated"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total",
+      "last_updated"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "personnel_name",
+      "phone",
+      "gender",
+      "position",
+      "employment_date"
+    ],
+    "INVENTORY_HISTORY": [
+      "inventory_history_id",
+      "product_id",
+      "change_quantity",
+      "change_type",
+      "change_timestamp",
+      "reason"
+    ],
+    "ORDER_ASSIGNMENT": [
+      "order_assignment_id",
+      "order_id",
+      "personnel_id",
+      "assignment_role",
+      "assigned_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_ASSIGNMENT",
+      "entity_2": "ORDER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 43.9977,
+  "ilp_runtime": 0.041
+}

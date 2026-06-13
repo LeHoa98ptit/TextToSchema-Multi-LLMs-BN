@@ -1,0 +1,93 @@
+{
+  "filename": "438.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "SHOPPING_CART": 0.800353,
+    "ASSOC_PRODUCT_SHOPPING_CART": 0.252524,
+    "ASSOC_ORDER_PRODUCT": 0.002091
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.735617,
+      "password": 0.756539,
+      "contact_information": 0.750062,
+      "registration_time": 0.747012
+    },
+    "PRODUCT": {
+      "product_id": 0.752257,
+      "product_price": 0.75435,
+      "stock_quantity": 0.759581,
+      "product_description": 0.754085
+    },
+    "ORDER": {
+      "order_id": 0.747001,
+      "user_id": 0.754458,
+      "order_time": 0.750246,
+      "total_price": 0.755617,
+      "order_status": 0.749477
+    },
+    "SHOPPING_CART": {
+      "cart_id": 0.763163,
+      "user_id": 0.766897,
+      "product_id": 0.765136,
+      "quantity": 0.775973
+    },
+    "ASSOC_PRODUCT_SHOPPING_CART": {
+      "assoc_product_shopping_cart_id": 0.252524,
+      "product_id": 0.252524,
+      "shopping_cart_id": 0.252524
+    },
+    "ASSOC_ORDER_PRODUCT": {
+      "assoc_order_product_id": 0.002091,
+      "order_id": 0.002091,
+      "product_id": 0.002091
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each user can have many orders, and each order is associated with exactly one user.",
+      "probability": 0.999081
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:N",
+      "description": "Each user can have one shopping cart, and each shopping cart is associated with exactly one user.",
+      "probability": 0.997451
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252524
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252524
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002091
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002091
+    }
+  ],
+  "processing_time": 6.8
+}

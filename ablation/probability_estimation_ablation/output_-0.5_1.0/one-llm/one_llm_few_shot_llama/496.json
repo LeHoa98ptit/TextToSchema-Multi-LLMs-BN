@@ -1,0 +1,103 @@
+{
+  "filename": "496.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "CATEGORY": 0.474023,
+    "LOCATION": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "phone_number": 0.513386,
+      "email": 0.520153,
+      "d_card_photo": 0.516271,
+      "facial_recognition": 0.521328,
+      "avatar": 0.505928,
+      "nickname": 0.510776,
+      "gender": 0.51918,
+      "age": 0.519932,
+      "location": 0.513909,
+      "personal_introduction": 0.522628
+    },
+    "PRODUCT": {
+      "product_title": 0.526138,
+      "detailed_description": 0.540751,
+      "condition_description": 0.530251,
+      "original_price": 0.525244,
+      "sell_price": 0.525374,
+      "product_category": 0.531495,
+      "transaction_location": 0.53739,
+      "price_negotiation_range": 0.528766,
+      "validity_period": 0.526175,
+      "product_status": 0.53123
+    },
+    "TRANSACTION": {
+      "transaction_status": 0.529135,
+      "transaction_time": 0.525777,
+      "transaction_location": 0.526606,
+      "transaction_method": 0.532929,
+      "transaction_evaluation": 0.536825
+    },
+    "CATEGORY": {
+      "category_name": 0.515544,
+      "category_description": 0.521775
+    },
+    "LOCATION": {
+      "location_name": 0.499105,
+      "location_description": 0.516053
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each user can publish many products, and each product is published by one user.",
+      "probability": 0.015332
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each user can participate in many transactions, and each transaction involves two users (buyer and seller).",
+      "probability": 0.992622
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each product can be involved in many transactions, and each transaction involves one product.",
+      "probability": 0.437201
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each category can have many products, and each product belongs to one category.",
+      "probability": 0.000259
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each location can be the site of many transactions, and each transaction takes place at one location.",
+      "probability": 0.989339
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOCATION",
+      "cardinality": "1:N",
+      "description": "Each user can have many locations, and each location is associated with many users.",
+      "probability": 0.91003
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "LOCATION",
+      "cardinality": "1:N",
+      "description": "Each product can be associated with many locations, and each location can have many products.",
+      "probability": 0.005526
+    }
+  ],
+  "processing_time": 17.5
+}

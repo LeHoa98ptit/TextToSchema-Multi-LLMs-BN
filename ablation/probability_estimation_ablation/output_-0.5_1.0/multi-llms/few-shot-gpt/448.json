@@ -1,0 +1,242 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.49625,
+    "UNIT": 0.49775,
+    "EQUIPMENT": 0.622459,
+    "EQUIPMENT_CATEGORY": 0.555644,
+    "MANUFACTURER": 0.483331,
+    "EQUIPMENT_USAGE_RECORD": 0.520763,
+    "COURSE": 0.622459,
+    "CONSUMABLE": 0.622459,
+    "CONSUMABLE_CATEGORY": 0.534893,
+    "CONSUMABLE_TRANSACTION": 0.542994,
+    "HAZARDOUS_CHEMICAL": 0.580664,
+    "CHEMICAL_TRANSACTION": 0.512148,
+    "LOCATION": 0.486328,
+    "ASSOC_USER_COURSE": 0.663933
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.509285,
+      "username": 0.501793,
+      "password": 0.51443,
+      "phone number": 0.507599,
+      "unit id": 0.523291,
+      "role id": 0.517487
+    },
+    "ROLE": {
+      "role id": 0.521502,
+      "role name": 0.521459
+    },
+    "UNIT": {
+      "unit id": 0.521927,
+      "unit name": 0.525911
+    },
+    "EQUIPMENT": {
+      "equipment id": 0.544351,
+      "equipment model": 0.551447,
+      "equipment category id": 0.552535,
+      "manufacturer id": 0.535872,
+      "status": 0.552321,
+      "acquisition date": 0.534093
+    },
+    "EQUIPMENT_CATEGORY": {
+      "equipment category id": 0.554027,
+      "category name": 0.552811
+    },
+    "MANUFACTURER": {
+      "manufacturer id": 0.515187,
+      "manufacturer name": 0.518668
+    },
+    "EQUIPMENT_USAGE_RECORD": {
+      "usage record id": 0.546304,
+      "equipment id": 0.548495,
+      "user id": 0.545904,
+      "usage timestamp": 0.546387,
+      "purpose": 0.556517,
+      "course id": 0.569229
+    },
+    "COURSE": {
+      "course id": 0.538245,
+      "course name": 0.543202,
+      "class time": 0.538439,
+      "location id": 0.538951,
+      "teacher id": 0.534881
+    },
+    "LOCATION": {
+      "location id": 0.503008,
+      "location name": 0.502953
+    },
+    "CONSUMABLE": {
+      "consumable id": 0.520161,
+      "consumable name": 0.529325,
+      "consumable category id": 0.525916,
+      "quantity": 0.539438,
+      "status": 0.534788
+    },
+    "CONSUMABLE_CATEGORY": {
+      "consumable category id": 0.524572,
+      "category name": 0.530214
+    },
+    "CONSUMABLE_TRANSACTION": {
+      "transaction id": 0.517664,
+      "consumable id": 0.519103,
+      "transaction type": 0.531867,
+      "quantity": 0.541025,
+      "transaction timestamp": 0.518789,
+      "user id": 0.518988
+    },
+    "HAZARDOUS_CHEMICAL": {
+      "chemical id": 0.528015,
+      "chemical name": 0.523134,
+      "quantity": 0.538545,
+      "status": 0.533431
+    },
+    "CHEMICAL_TRANSACTION": {
+      "transaction id": 0.520437,
+      "chemical id": 0.525264,
+      "transaction type": 0.530795,
+      "quantity": 0.537135,
+      "transaction timestamp": 0.519667,
+      "user id": 0.525928
+    },
+    "ASSOC_USER_COURSE": {
+      "assoc_user_course_id": 0.663933,
+      "user_id": 0.663933,
+      "course_id": 0.663933
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each user is assigned one role; a role can be assigned to many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997501
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "description": "Each user belongs to one unit; a unit can have many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995198
+    },
+    {
+      "entity_1": "EQUIPMENT_CATEGORY",
+      "entity_2": "EQUIPMENT",
+      "description": "Each equipment belongs to one category; a category can include many equipment items.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999994
+    },
+    {
+      "entity_1": "MANUFACTURER",
+      "entity_2": "EQUIPMENT",
+      "description": "Each equipment is produced by one manufacturer; a manufacturer can produce many equipment items.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.896433
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "description": "Each usage record refers to one equipment; an equipment can have many usage records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "description": "Each usage record is created by one user; a user can create many equipment usage records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996944
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "EQUIPMENT_USAGE_RECORD",
+      "description": "A usage record may be linked to one course; a course can have many equipment usage records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.636096
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_COURSE",
+      "description": "One USER can be associated with many ASSOC_USER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.663933
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_USER_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_USER_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.663933
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COURSE",
+      "description": "Each course is assigned one teacher (a user); a teacher can teach many courses.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.663933
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "COURSE",
+      "description": "Each course takes place at one location; a location can host many courses.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.300774
+    },
+    {
+      "entity_1": "CONSUMABLE_CATEGORY",
+      "entity_2": "CONSUMABLE",
+      "description": "Each consumable belongs to one category; a category can include many consumables.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998152
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "description": "Each consumable transaction involves one consumable; a consumable can have many transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989485
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_TRANSACTION",
+      "description": "Each consumable transaction is performed by one user; a user can perform many consumable transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999207
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "description": "Each chemical transaction involves one hazardous chemical; a chemical can have many transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.384067
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHEMICAL_TRANSACTION",
+      "description": "Each chemical transaction is performed by one user; a user can perform many chemical transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977203
+    }
+  ],
+  "processing_time": 9.18
+}

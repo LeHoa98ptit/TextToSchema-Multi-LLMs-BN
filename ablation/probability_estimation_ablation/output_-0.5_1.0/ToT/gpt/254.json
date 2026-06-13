@@ -1,0 +1,211 @@
+{
+  "filename": "254.txt",
+  "entity": {
+    "STATION": 0.622459,
+    "SEISMOMETER": 0.622459,
+    "CALIBRATION": 0.622459,
+    "CALIBRATION_PARAMETER": 0.564145,
+    "CALIBRATION_TEST": 0.569791,
+    "USER": 0.622459,
+    "ROLE": 0.49625,
+    "PERMISSION": 0.485754,
+    "ROLE_PERMISSION": 0.448558,
+    "PERSONNEL": 0.517318,
+    "ASSOC_ROLE_PERMISSION": 0.498095
+  },
+  "attribute": {
+    "STATION": {
+      "station_id": 0.523022,
+      "name": 0.52206,
+      "station_type": 0.525318,
+      "province": 0.522159,
+      "latitude": 0.513434,
+      "longitude": 0.51716,
+      "created_at": 0.517853,
+      "updated_at": 0.519766,
+      "created_by": 0.521524
+    },
+    "SEISMOMETER": {
+      "seismo_id": 0.53941,
+      "serial_number": 0.533714,
+      "model": 0.540202,
+      "install_date": 0.538815,
+      "station_id": 0.54756,
+      "mechanical_period": 0.541541,
+      "equivalent_pendulum_length": 0.538436,
+      "moment_of_inertia": 0.535196,
+      "coil_sensitivity": 0.535839,
+      "voltage_sensitivity": 0.534052,
+      "created_at": 0.535722,
+      "updated_at": 0.540111,
+      "created_by": 0.537908
+    },
+    "CALIBRATION": {
+      "calib_id": 0.516084,
+      "seismo_id": 0.536483,
+      "calib_date": 0.514153,
+      "performed_by_user_id": 0.524436,
+      "overall_result": 0.524633,
+      "created_at": 0.511893,
+      "updated_at": 0.5123,
+      "created_by": 0.516558
+    },
+    "CALIBRATION_PARAMETER": {
+      "param_id": 0.515545,
+      "calib_id": 0.515583,
+      "parameter_name": 0.518348,
+      "value": 0.521111,
+      "unit": 0.525395,
+      "created_at": 0.51032,
+      "updated_at": 0.510387,
+      "created_by": 0.515085
+    },
+    "CALIBRATION_TEST": {
+      "test_id": 0.515146,
+      "calib_id": 0.516802,
+      "test_type": 0.516508,
+      "test_date": 0.511816,
+      "test_result": 0.51778,
+      "notes": 0.524408,
+      "created_at": 0.509592,
+      "updated_at": 0.509472,
+      "created_by": 0.514374
+    },
+    "USER": {
+      "user_id": 0.510625,
+      "username": 0.501743,
+      "password_hash": 0.505325,
+      "full_name": 0.515007,
+      "email": 0.515886,
+      "role_id": 0.515138,
+      "station_id": 0.522569,
+      "created_at": 0.503693,
+      "updated_at": 0.508503,
+      "created_by": 0.505477
+    },
+    "ROLE": {
+      "role_id": 0.511738,
+      "role_name": 0.516389,
+      "description": 0.526556,
+      "created_at": 0.510858,
+      "updated_at": 0.513424,
+      "created_by": 0.511175
+    },
+    "PERMISSION": {
+      "permission_id": 0.510155,
+      "entity": 0.519079,
+      "operation": 0.521264,
+      "description": 0.525677,
+      "created_at": 0.503395,
+      "updated_at": 0.508129,
+      "created_by": 0.506357
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.512142,
+      "permission_id": 0.512916,
+      "created_at": 0.508566,
+      "updated_at": 0.510934
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.533127,
+      "name": 0.533611,
+      "position": 0.533456,
+      "contact": 0.531929,
+      "station_id": 0.5345,
+      "created_at": 0.523533,
+      "updated_at": 0.530814,
+      "created_by": 0.524153
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.498095,
+      "role_id": 0.498095,
+      "permission_id": 0.498095
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STATION",
+      "entity_2": "SEISMOMETER",
+      "cardinality": "1:N",
+      "description": "A station hosts many seismometers",
+      "probability": 0.265556
+    },
+    {
+      "entity_1": "SEISMOMETER",
+      "entity_2": "CALIBRATION",
+      "cardinality": "1:N",
+      "description": "A seismometer can have multiple calibration events",
+      "probability": 0.898596
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "CALIBRATION_PARAMETER",
+      "cardinality": "1:N",
+      "description": "Each calibration records several measured parameters",
+      "probability": 0.994111
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "CALIBRATION_TEST",
+      "cardinality": "1:N",
+      "description": "A calibration may involve multiple test types (e.g., vibration‑table, comparison)",
+      "probability": 0.995045
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "The user who performed the calibration (performed_by_user_id)",
+      "probability": 0.264394
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "Each user is assigned a single role",
+      "probability": 0.997417
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many users",
+      "probability": 0.997417
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.498095
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.498095
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "STATION",
+      "cardinality": "N:1",
+      "description": "Users operate within a specific station",
+      "probability": 0.053111
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "STATION",
+      "cardinality": "N:1",
+      "description": "Personnel records are associated with the station they belong to",
+      "probability": 0.901119
+    }
+  ],
+  "processing_time": 72.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Merged SEISMOMETER_SPEC into SEISMOMETER to simplify the model. 2. Added explicit CALIBRATION‑USER relationship (performed_by_user_id). 3. Converted ROLE‑PERMISSION to a many‑to‑many association via a ROLE_PERMISSION junction table. 4. Introduced audit fields (created_at, updated_at, created_by) to all major entities for traceability. 5. Clarified and expanded relationship descriptions, ensuring referential integrity constraints are represented."
+  }
+}

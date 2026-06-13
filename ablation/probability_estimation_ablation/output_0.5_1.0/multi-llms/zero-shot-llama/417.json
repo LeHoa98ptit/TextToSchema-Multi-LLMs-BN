@@ -1,0 +1,117 @@
+{
+  "filename": "417.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "CATEGORY": 0.817574,
+    "NOTIFICATION": 0.817574,
+    "ASSOC_POST_CATEGORY": 0.373075
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.743512,
+      "email": 0.755397,
+      "password": 0.747776,
+      "avatar link": 0.739536,
+      "registration date": 0.741692
+    },
+    "POST": {
+      "post id": 0.748654,
+      "title": 0.752499,
+      "content": 0.755052,
+      "category": 0.769952,
+      "post time": 0.752221,
+      "status": 0.76057,
+      "reply count": 0.767093,
+      "like count": 0.763598,
+      "favorite count": 0.754437,
+      "posting user id": 0.749847
+    },
+    "COMMENT": {
+      "comment id": 0.759064,
+      "comment content": 0.76002,
+      "post id": 0.760995,
+      "like count": 0.765158,
+      "reply count": 0.7667,
+      "post time": 0.76268,
+      "posting user id": 0.759339
+    },
+    "CATEGORY": {
+      "category id": 0.757025,
+      "category": 0.765297
+    },
+    "NOTIFICATION": {
+      "notification id": 0.756029,
+      "notification message": 0.759104,
+      "notification number": 0.754393,
+      "notification content": 0.762777,
+      "user id": 0.758048,
+      "read status": 0.757094
+    },
+    "ASSOC_POST_CATEGORY": {
+      "assoc_post_category_id": 0.373075,
+      "post_id": 0.373075,
+      "category_id": 0.373075
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "description": "A user can make multiple posts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.864993
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "description": "A post can have multiple comments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.017729
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "description": "A comment can have multiple replies",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "description": "A user can make multiple comments",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.961773
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_POST_CATEGORY",
+      "description": "One POST can be associated with many ASSOC_POST_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.373075
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_POST_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_POST_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.373075
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "description": "A user can have multiple notifications",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998576
+    }
+  ],
+  "processing_time": 32.72
+}

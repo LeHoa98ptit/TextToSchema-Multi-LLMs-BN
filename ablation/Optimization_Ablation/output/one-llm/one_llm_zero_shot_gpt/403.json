@@ -1,0 +1,94 @@
+{
+  "entity": [
+    "STUDENT",
+    "ADMINISTRATOR",
+    "BOOK",
+    "BORROW_RECORD",
+    "RETURN_RECORD",
+    "AUDIT"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "student_number",
+      "grade",
+      "major",
+      "contact_number",
+      "email"
+    ],
+    "ADMINISTRATOR": [
+      "administrator_id",
+      "job_number",
+      "contact_number",
+      "email",
+      "position"
+    ],
+    "BOOK": [
+      "book_id",
+      "title",
+      "author",
+      "publisher",
+      "publication_date",
+      "category",
+      "stock_quantity",
+      "borrow_quantity"
+    ],
+    "BORROW_RECORD": [
+      "borrow_id",
+      "student_id",
+      "book_id",
+      "borrow_date",
+      "return_date",
+      "review_status"
+    ],
+    "RETURN_RECORD": [
+      "return_id",
+      "student_id",
+      "book_id",
+      "return_date",
+      "review_status"
+    ],
+    "AUDIT": [
+      "audit_id",
+      "administrator_id",
+      "book_id",
+      "borrowing_status",
+      "audit_date",
+      "audit_result"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "BORROW_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROW_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "RETURN_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "RETURN_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "AUDIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.3215,
+  "ilp_runtime": 0.063
+}

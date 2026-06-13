@@ -1,0 +1,168 @@
+{
+  "filename": "296.txt",
+  "entity": {
+    "COMPANY": 0.522585,
+    "ADVISOR": 0.622459,
+    "CLIENT": 0.622459,
+    "PORTFOLIO": 0.622459,
+    "HOLDING": 0.472278,
+    "TRANSACTION": 0.622459,
+    "RISK_PROFILE": 0.440286,
+    "INVESTMENT_PLAN": 0.56097,
+    "PLAN_ITEM": 0.445567,
+    "PRODUCT": 0.622459,
+    "PRODUCT_TYPE": 0.482507
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.523082,
+      "company_name": 0.526331,
+      "address": 0.51487,
+      "contact_number": 0.514249
+    },
+    "ADVISOR": {
+      "advisor_id": 0.515934,
+      "company_id": 0.525424,
+      "name": 0.524106,
+      "hire_date": 0.505936,
+      "contact_number": 0.512129
+    },
+    "CLIENT": {
+      "client_id": 0.517101,
+      "advisor_id": 0.525002,
+      "name": 0.5229,
+      "contact_number": 0.512745,
+      "total_asset": 0.529896
+    },
+    "PORTFOLIO": {
+      "portfolio_id": 0.534504,
+      "client_id": 0.536034,
+      "portfolio_name": 0.543428,
+      "creation_date": 0.527427,
+      "total_value": 0.530153
+    },
+    "HOLDING": {
+      "holding_id": 0.506101,
+      "portfolio_id": 0.531578,
+      "product_code": 0.510752,
+      "quantity": 0.520463,
+      "average_price": 0.512175,
+      "last_update": 0.496744
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.509565,
+      "holding_id": 0.510288,
+      "transaction_type": 0.521231,
+      "quantity": 0.52967,
+      "price": 0.516111,
+      "transaction_time": 0.505607,
+      "remarks": 0.529688
+    },
+    "RISK_PROFILE": {
+      "client_id": 0.524862,
+      "risk_level": 0.525376,
+      "risk_score": 0.525961,
+      "investment_horizon": 0.537595
+    },
+    "INVESTMENT_PLAN": {
+      "plan_id": 0.536285,
+      "client_id": 0.545575,
+      "plan_name": 0.542297,
+      "creation_date": 0.530456
+    },
+    "PLAN_ITEM": {
+      "plan_id": 0.513807,
+      "product_code": 0.516189,
+      "target_quantity": 0.516809,
+      "target_allocation": 0.517943
+    },
+    "PRODUCT": {
+      "product_code": 0.511817,
+      "product_name": 0.51527,
+      "product_type_id": 0.512907,
+      "product_value": 0.516252
+    },
+    "PRODUCT_TYPE": {
+      "product_type_id": 0.51335,
+      "type_name": 0.517978,
+      "description": 0.532483
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ADVISOR",
+      "cardinality": "1:N",
+      "description": "A wealth‑management company employs many advisors",
+      "probability": 0.892127
+    },
+    {
+      "entity_1": "ADVISOR",
+      "entity_2": "CLIENT",
+      "cardinality": "1:N",
+      "description": "Each advisor serves multiple clients",
+      "probability": 0.009903
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "RISK_PROFILE",
+      "cardinality": "1:1",
+      "description": "Every client has a single risk profile",
+      "probability": 0.019778
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "PORTFOLIO",
+      "cardinality": "1:N",
+      "description": "A client may maintain one or more investment portfolios",
+      "probability": 0.5528
+    },
+    {
+      "entity_1": "PORTFOLIO",
+      "entity_2": "HOLDING",
+      "cardinality": "1:N",
+      "description": "A portfolio contains many holdings (product positions)",
+      "probability": 0.95513
+    },
+    {
+      "entity_1": "HOLDING",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "Each holding can generate multiple buy/sell transactions",
+      "probability": 0.389979
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PLAN",
+      "cardinality": "1:N",
+      "description": "Clients may have several investment plans over time",
+      "probability": 0.873835
+    },
+    {
+      "entity_1": "INVESTMENT_PLAN",
+      "entity_2": "PLAN_ITEM",
+      "cardinality": "1:N",
+      "description": "An investment plan consists of multiple plan items (product allocations)",
+      "probability": 0.068021
+    },
+    {
+      "entity_1": "PLAN_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each plan item references one product",
+      "probability": 0.927701
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PRODUCT_TYPE",
+      "cardinality": "N:1",
+      "description": "Products are categorized by a product type",
+      "probability": 0.998649
+    }
+  ],
+  "processing_time": 46.15,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added an explicit PORTFOLIO entity to align with the domain term \"investment portfolio\" and to simplify reporting of client holdings. Re‑structured HOLDING to reference PORTFOLIO instead of CLIENT, clarifying the hierarchy (COMPANY → ADVISOR → CLIENT → PORTFOLIO → HOLDING → TRANSACTION). Retained the detailed RISK_PROFILE, PRODUCT, PRODUCT_TYPE, INVESTMENT_PLAN and PLAN_ITEM structures for comprehensive analytics while keeping them optional where appropriate. Updated relationships to reflect the new portfolio layer and ensured all original strengths (company‑advisor‑client chain, product taxonomy, transaction tracking) remain intact."
+  }
+}

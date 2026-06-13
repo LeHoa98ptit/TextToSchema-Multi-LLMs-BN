@@ -1,0 +1,147 @@
+{
+  "entity": [
+    "INTRUSION_RECORD",
+    "NETWORK_PACKET",
+    "DETECTION_ALGORITHM",
+    "SYSTEM_COMPONENT",
+    "RESPONSE_PLAN",
+    "PLAN_TYPE",
+    "KNOWLEDGE",
+    "KNOWLEDGE_CATEGORY",
+    "ALARM",
+    "PLAN_KNOWLEDGE"
+  ],
+  "attribute": {
+    "INTRUSION_RECORD": [
+      "record_id",
+      "detection_time",
+      "threat_level",
+      "attack_type",
+      "src_ip",
+      "dst_ip",
+      "src_port",
+      "dst_port",
+      "algorithm_id"
+    ],
+    "NETWORK_PACKET": [
+      "packet_id",
+      "capture_time",
+      "src_ip",
+      "dst_ip",
+      "src_port",
+      "dst_port",
+      "protocol",
+      "payload",
+      "record_id"
+    ],
+    "DETECTION_ALGORITHM": [
+      "algorithm_id",
+      "name",
+      "version",
+      "parameters",
+      "model_type",
+      "accuracy"
+    ],
+    "SYSTEM_COMPONENT": [
+      "component_id",
+      "name",
+      "role"
+    ],
+    "RESPONSE_PLAN": [
+      "plan_id",
+      "generation_time",
+      "execution_status",
+      "plan_content",
+      "type_id",
+      "blocking_isolation"
+    ],
+    "PLAN_TYPE": [
+      "type_id",
+      "type_name",
+      "description"
+    ],
+    "KNOWLEDGE": [
+      "knowledge_id",
+      "description",
+      "reliability",
+      "source",
+      "category_id"
+    ],
+    "KNOWLEDGE_CATEGORY": [
+      "category_id",
+      "category_name"
+    ],
+    "ALARM": [
+      "alarm_id",
+      "alarm_time",
+      "alarm_level",
+      "alarm_content",
+      "processing_status",
+      "record_id",
+      "plan_id"
+    ],
+    "PLAN_KNOWLEDGE": [
+      "plan_id",
+      "knowledge_id",
+      "usage_detail"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_RECORD",
+      "entity_2": "DETECTION_ALGORITHM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DETECTION_ALGORITHM",
+      "entity_2": "SYSTEM_COMPONENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTRUSION_RECORD",
+      "entity_2": "NETWORK_PACKET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTRUSION_RECORD",
+      "entity_2": "ALARM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESPONSE_PLAN",
+      "entity_2": "PLAN_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESPONSE_PLAN",
+      "entity_2": "PLAN_KNOWLEDGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "PLAN_KNOWLEDGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAN_KNOWLEDGE",
+      "entity_2": "KNOWLEDGE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "KNOWLEDGE_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.7878,
+  "ilp_runtime": 0.108
+}

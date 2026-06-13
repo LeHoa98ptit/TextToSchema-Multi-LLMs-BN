@@ -1,0 +1,99 @@
+{
+  "filename": "335.txt",
+  "entity": {
+    "PERMISSION": 0.817574,
+    "BUCKET": 0.817574,
+    "USER": 0.817574,
+    "TENANT": 0.817574,
+    "OSS_ACCESS": 0.752762
+  },
+  "attribute": {
+    "PERMISSION": {
+      "type": 0.775089,
+      "access_key": 0.773713,
+      "access_password": 0.769818,
+      "secret_key": 0.768514,
+      "status": 0.77128,
+      "create_time": 0.764993,
+      "description": 0.777088,
+      "bucket_id": 0.785012,
+      "user_id": 0.771746,
+      "tenant_id": 0.780391
+    },
+    "BUCKET": {
+      "bucket_id": 0.770007,
+      "bucket_name": 0.766629,
+      "creation_time": 0.763874,
+      "bucket_description": 0.770339
+    },
+    "USER": {
+      "user_id": 0.754108,
+      "username": 0.73605,
+      "email": 0.740613,
+      "password": 0.755609,
+      "phone_number": 0.743294,
+      "address": 0.750888,
+      "tenant_id": 0.770225
+    },
+    "TENANT": {
+      "tenant_id": 0.766711,
+      "tenant_name": 0.765342,
+      "tenant_description": 0.767016
+    },
+    "OSS_ACCESS": {
+      "oss_access_id": 0.768752,
+      "bucket_id": 0.77779,
+      "permission_id": 0.775897,
+      "access_time": 0.763333
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BUCKET",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "A bucket can have multiple permissions",
+      "probability": 0.962444
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple permissions",
+      "probability": 0.988067
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "BUCKET",
+      "cardinality": "1:N",
+      "description": "A tenant can have multiple buckets",
+      "probability": 0.186424
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TENANT",
+      "cardinality": "1:1",
+      "description": "A user belongs to one tenant",
+      "probability": 0.937361
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "OSS_ACCESS",
+      "cardinality": "1:N",
+      "description": "A permission can have multiple oss access records",
+      "probability": 0.594544
+    },
+    {
+      "entity_1": "BUCKET",
+      "entity_2": "OSS_ACCESS",
+      "cardinality": "1:N",
+      "description": "A bucket can have multiple oss access records",
+      "probability": 0.001216
+    }
+  ],
+  "processing_time": 23.18,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added phone number and address attributes to the USER entity, and added a relationship between the USER and TENANT entities to capture the tenant that each user belongs to."
+  }
+}

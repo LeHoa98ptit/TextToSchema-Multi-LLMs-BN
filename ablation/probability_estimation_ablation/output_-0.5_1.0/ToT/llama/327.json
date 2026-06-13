@@ -1,0 +1,111 @@
+{
+  "filename": "327.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "ADDRESS": 0.622459,
+    "RESOURCE": 0.622459,
+    "ORDER_ITEM": 0.523807,
+    "PAYMENT": 0.4963,
+    "ORDER_HISTORY": 0.50515
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "phone_number": 0.534012,
+      "name": 0.538696,
+      "email": 0.54018
+    },
+    "ORDER": {
+      "order_id": 0.518477,
+      "currency": 0.535327,
+      "start_time": 0.521384,
+      "order_status": 0.52099
+    },
+    "ADDRESS": {
+      "country": 0.536538,
+      "city": 0.539618,
+      "postal_code": 0.534454,
+      "district": 0.538964,
+      "street": 0.536217,
+      "address_type": 0.528655
+    },
+    "RESOURCE": {
+      "resource_id": 0.503708,
+      "resource_type": 0.511096,
+      "resource_description": 0.517712
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.518577,
+      "resource_id": 0.52285,
+      "quantity": 0.542098
+    },
+    "PAYMENT": {
+      "payment_id": 0.512309,
+      "payment_method": 0.51008,
+      "payment_date": 0.508542,
+      "amount": 0.517602
+    },
+    "ORDER_HISTORY": {
+      "order_history_id": 0.515153,
+      "order_id": 0.516988,
+      "status": 0.531726,
+      "date": 0.525746
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.964212
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple addresses",
+      "probability": 0.371133
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can include multiple order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "RESOURCE",
+      "cardinality": "1:1",
+      "description": "An order item is associated with one resource",
+      "probability": 0.048005
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "An order is associated with one shipping address",
+      "probability": 0.856288
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order is associated with one payment",
+      "probability": 0.419932
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_HISTORY",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order history entries",
+      "probability": 0.998573
+    }
+  ],
+  "processing_time": 20.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for payment information and order history to further enhance the model, while retaining the strengths of the original model and addressing identified issues."
+  }
+}

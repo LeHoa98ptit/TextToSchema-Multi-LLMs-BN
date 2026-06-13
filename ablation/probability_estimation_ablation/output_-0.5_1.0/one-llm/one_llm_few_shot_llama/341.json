@@ -1,0 +1,72 @@
+{
+  "filename": "341.txt",
+  "entity": {
+    "USER": 0.622459,
+    "COMMENT": 0.622459,
+    "APPLICATION": 0.475969,
+    "PUBLICATION": 0.523732,
+    "ASSOC_COMMENT_APPLICATION": 0.043464
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.517424,
+      "email": 0.531054,
+      "password": 0.524406,
+      "contact_url": 0.526995
+    },
+    "COMMENT": {
+      "comment_id": 0.563613,
+      "content": 0.581425,
+      "format": 0.58164,
+      "publication_time": 0.566214
+    },
+    "APPLICATION": {
+      "application_id": 0.515307,
+      "name": 0.516251,
+      "description": 0.528779
+    },
+    "PUBLICATION": {
+      "publication_id": 0.520639,
+      "title": 0.519426,
+      "content": 0.538454
+    },
+    "ASSOC_COMMENT_APPLICATION": {
+      "assoc_comment_application_id": 0.043464,
+      "comment_id": 0.043464,
+      "application_id": 0.043464
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Each user can post many comments, and each comment is posted by one user.",
+      "probability": 0.959988
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "ASSOC_COMMENT_APPLICATION",
+      "description": "One COMMENT can be associated with many ASSOC_COMMENT_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.043464
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_COMMENT_APPLICATION",
+      "description": "One APPLICATION can be associated with many ASSOC_COMMENT_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.043464
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "PUBLICATION",
+      "cardinality": "1:N",
+      "description": "Each publication can have many comments, and each comment is related to one publication.",
+      "probability": 0.003403
+    }
+  ],
+  "processing_time": 9.7
+}

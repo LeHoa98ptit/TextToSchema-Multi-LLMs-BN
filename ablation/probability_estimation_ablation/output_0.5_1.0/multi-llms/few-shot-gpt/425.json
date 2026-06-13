@@ -1,0 +1,142 @@
+{
+  "filename": "425.txt",
+  "entity": {
+    "USER": 0.720391,
+    "BUILDING": 0.716161,
+    "DORMITORY": 0.817574,
+    "STUDENT": 0.817574,
+    "APPLICATION": 0.817574,
+    "MAINTENANCE_RECORD": 0.754415,
+    "ANNOUNCEMENT": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.733197,
+      "password": 0.749443,
+      "role": 0.754356
+    },
+    "BUILDING": {
+      "building id": 0.748418,
+      "type": 0.750021,
+      "location": 0.744801,
+      "description": 0.754038,
+      "manager username": 0.758265
+    },
+    "DORMITORY": {
+      "dormitory id": 0.775567,
+      "type": 0.777968,
+      "number": 0.776496,
+      "bed count": 0.771201,
+      "building id": 0.770994,
+      "support facilities": 0.779624,
+      "manager username": 0.780774
+    },
+    "STUDENT": {
+      "student id": 0.765985,
+      "gender": 0.762167,
+      "class": 0.760711,
+      "dormitory id": 0.778355
+    },
+    "APPLICATION": {
+      "application id": 0.735435,
+      "application type": 0.743865,
+      "student id": 0.763815,
+      "application content": 0.746514,
+      "application time": 0.739458,
+      "application status": 0.750378,
+      "admin opinion": 0.756497,
+      "processed by": 0.746601
+    },
+    "MAINTENANCE_RECORD": {
+      "maintenance record id": 0.749943,
+      "dormitory id": 0.779007,
+      "fault description": 0.75239,
+      "repair time": 0.744606,
+      "maintenance staff username": 0.764198,
+      "maintenance situation": 0.756418,
+      "completion time": 0.751348
+    },
+    "ANNOUNCEMENT": {
+      "announcement id": 0.738397,
+      "title": 0.74285,
+      "content": 0.745276,
+      "release time": 0.734826,
+      "admin username": 0.749309
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "BUILDING",
+      "description": "A building has one responsible dormitory manager (a USER); a manager can be responsible for multiple buildings.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.655273
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "description": "Each dormitory has one responsible dormitory manager (a USER); a manager may manage many dormitories.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.982174
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "DORMITORY",
+      "description": "A dormitory belongs to one building; a building can contain multiple dormitories.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.430979
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "description": "A student is assigned to one dormitory; a dormitory can house many students.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999949
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "description": "A student submits applications; each application is submitted by one student.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.712483
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "description": "An administrator (or manager) processes applications; each application is processed by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996974
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "description": "A maintenance record refers to one dormitory; a dormitory can have many maintenance records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98149
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "description": "A maintenance staff user creates maintenance records; each record is created by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999553
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "description": "An administrator publishes announcements; each announcement is published by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.864777
+    }
+  ],
+  "processing_time": 40.93
+}

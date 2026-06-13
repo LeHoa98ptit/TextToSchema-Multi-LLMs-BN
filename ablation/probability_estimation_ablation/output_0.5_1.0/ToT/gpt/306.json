@@ -1,0 +1,170 @@
+{
+  "filename": "306.txt",
+  "entity": {
+    "TASK": 0.817574,
+    "TRIGGER": 0.817574,
+    "SIMPLE_TRIGGER": 0.774954,
+    "CRON_TRIGGER": 0.753097,
+    "COMPLEX_TRIGGER": 0.763813,
+    "SCHEDULER": 0.817574,
+    "LOCK": 0.817574,
+    "TASK_TRIGGER": 0.757661,
+    "SCHEDULER_TASK": 0.77037,
+    "SCHEDULER_LOCK": 0.758102,
+    "CALENDAR": 0.734719
+  },
+  "attribute": {
+    "TASK": {
+      "task_id": 0.758431,
+      "task_name": 0.760592,
+      "task_description": 0.764483,
+      "persistence_flag": 0.761401,
+      "concurrent_execution_flag": 0.763797,
+      "depend_task_id": 0.761252,
+      "class_name": 0.751301
+    },
+    "TRIGGER": {
+      "trigger_id": 0.751505,
+      "trigger_type": 0.757191,
+      "start_time": 0.758231,
+      "end_time": 0.760019,
+      "priority": 0.764363,
+      "status": 0.761761,
+      "calendar_id": 0.746005
+    },
+    "SIMPLE_TRIGGER": {
+      "trigger_id": 0.749411,
+      "repeat_count": 0.758236,
+      "repeat_interval": 0.759831,
+      "trigger_count": 0.757206
+    },
+    "CRON_TRIGGER": {
+      "trigger_id": 0.75799,
+      "cron_expression": 0.758191,
+      "timezone": 0.758365
+    },
+    "COMPLEX_TRIGGER": {
+      "trigger_id": 0.760008,
+      "attribute_string": 0.753709,
+      "attribute_integer": 0.755485,
+      "attribute_long": 0.754684,
+      "attribute_decimal": 0.755186,
+      "attribute_boolean": 0.753881,
+      "attribute_blob": 0.753544
+    },
+    "SCHEDULER": {
+      "scheduler_id": 0.762345,
+      "status": 0.763277,
+      "configuration": 0.762866,
+      "log": 0.758729,
+      "instance_name": 0.749926
+    },
+    "LOCK": {
+      "lock_id": 0.74166,
+      "status": 0.749541,
+      "description": 0.750588
+    },
+    "TASK_TRIGGER": {
+      "task_id": 0.767404,
+      "trigger_id": 0.766164,
+      "execution_time": 0.769212,
+      "priority": 0.775494,
+      "trigger_status": 0.769561,
+      "fault_instruction": 0.768222
+    },
+    "SCHEDULER_TASK": {
+      "scheduler_id": 0.767419,
+      "task_id": 0.768731,
+      "schedule_time": 0.768853,
+      "last_run_time": 0.762819
+    },
+    "SCHEDULER_LOCK": {
+      "scheduler_id": 0.762603,
+      "lock_id": 0.760413,
+      "acquisition_time": 0.757482,
+      "release_time": 0.758472
+    },
+    "CALENDAR": {
+      "calendar_id": 0.732149,
+      "calendar_name": 0.731714,
+      "description": 0.744096
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "description": "A task can be linked to many task‑trigger records (FK task_id). Cascade delete on task removes related task_trigger rows.",
+      "probability": 0.999675
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "description": "A trigger can be linked to many task‑trigger records (FK trigger_id). Cascade delete on trigger removes related task_trigger rows.",
+      "probability": 0.994261
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "SIMPLE_TRIGGER",
+      "cardinality": "1:1",
+      "description": "Simple trigger inherits generic trigger (PK trigger_id).",
+      "probability": 0.999985
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "CRON_TRIGGER",
+      "cardinality": "1:1",
+      "description": "Cron trigger inherits generic trigger (PK trigger_id).",
+      "probability": 0.995204
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "COMPLEX_TRIGGER",
+      "cardinality": "1:1",
+      "description": "Complex trigger (including blob data) inherits generic trigger (PK trigger_id).",
+      "probability": 0.999928
+    },
+    {
+      "entity_1": "CALENDAR",
+      "entity_2": "TRIGGER",
+      "cardinality": "1:N",
+      "description": "A calendar definition can be referenced by many triggers (FK calendar_id).",
+      "probability": 5.4e-05
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "description": "A scheduler can schedule many tasks (FK scheduler_id). Cascade delete on scheduler removes related scheduler_task rows.",
+      "probability": 0.99895
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "description": "A task can be scheduled by many scheduler‑task entries (FK task_id). Cascade delete on task removes related scheduler_task rows.",
+      "probability": 0.998561
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_LOCK",
+      "cardinality": "1:N",
+      "description": "A scheduler may acquire multiple locks (FK scheduler_id). Cascade delete on scheduler removes related scheduler_lock rows.",
+      "probability": 0.999648
+    },
+    {
+      "entity_1": "LOCK",
+      "entity_2": "SCHEDULER_LOCK",
+      "cardinality": "1:N",
+      "description": "A lock can be referenced by many scheduler‑lock records (FK lock_id). Cascade delete on lock removes related scheduler_lock rows.",
+      "probability": 0.99945
+    }
+  ],
+  "processing_time": 65.81,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged BLOB_TRIGGER into COMPLEX_TRIGGER to reduce table count; introduced CALENDAR entity for reusable calendar definitions; normalized all attribute names to snake_case; added explicit foreign‑key relationships and noted cascade delete rules for referential integrity; documented indexes and PKs via composite keys in associative tables; retained comprehensive trigger sub‑type inheritance and many‑to‑many associative tables (TASK_TRIGGER, SCHEDULER_TASK, SCHEDULER_LOCK)."
+  }
+}

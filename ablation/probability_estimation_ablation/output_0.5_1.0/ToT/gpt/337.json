@@ -1,0 +1,131 @@
+{
+  "filename": "337.txt",
+  "entity": {
+    "EXAM": 0.817574,
+    "QUESTION": 0.817574,
+    "EXAM_QUESTION": 0.794358,
+    "STUDENT": 0.817574,
+    "ENROLLMENT": 0.734485,
+    "SUBMISSION": 0.817574,
+    "SUBMISSION_ANSWER": 0.78076
+  },
+  "attribute": {
+    "EXAM": {
+      "exam_id": 0.785432,
+      "title": 0.784453,
+      "exam_start_datetime": 0.771559,
+      "exam_end_datetime": 0.773258,
+      "total_time_minutes": 0.764818,
+      "duration_minutes": 0.76847,
+      "total_max_score": 0.773751
+    },
+    "QUESTION": {
+      "question_id": 0.761575,
+      "content": 0.769708,
+      "default_max_score": 0.755625,
+      "question_type": 0.759496
+    },
+    "EXAM_QUESTION": {
+      "exam_question_id": 0.787747,
+      "exam_id": 0.787835,
+      "question_id": 0.784552,
+      "position": 0.788684,
+      "custom_max_score": 0.776488
+    },
+    "STUDENT": {
+      "student_id": 0.766463,
+      "first_name": 0.760351,
+      "last_name": 0.760714,
+      "email": 0.762223,
+      "registration_date": 0.761272
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.758142,
+      "student_id": 0.765044,
+      "exam_id": 0.782472,
+      "enrolled_date": 0.752524,
+      "role": 0.757189
+    },
+    "SUBMISSION": {
+      "submission_id": 0.753945,
+      "exam_id": 0.786075,
+      "student_id": 0.771397,
+      "submission_datetime": 0.746029,
+      "attempt_number": 0.753709,
+      "overall_status": 0.753059,
+      "total_score_obtained": 0.7615
+    },
+    "SUBMISSION_ANSWER": {
+      "submission_answer_id": 0.755305,
+      "submission_id": 0.755479,
+      "exam_question_id": 0.786705,
+      "answer_content": 0.755916,
+      "score_awarded": 0.757861,
+      "is_correct": 0.755402,
+      "feedback": 0.754877
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXAM",
+      "entity_2": "EXAM_QUESTION",
+      "cardinality": "1:N",
+      "description": "An exam is linked to many exam_question rows (order of questions)",
+      "probability": 0.999381
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "EXAM_QUESTION",
+      "cardinality": "1:N",
+      "description": "A question can appear in many exams via exam_question",
+      "probability": 0.918428
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "Students enroll in exams; enrollment captures role and date",
+      "probability": 0.999874
+    },
+    {
+      "entity_1": "EXAM",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "An exam has many enrollments (students registered)",
+      "probability": 0.647773
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A student may submit multiple attempts for the same or different exams",
+      "probability": 0.004047
+    },
+    {
+      "entity_1": "EXAM",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Each submission belongs to one exam",
+      "probability": 0.269623
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "SUBMISSION_ANSWER",
+      "cardinality": "1:N",
+      "description": "A submission contains answers for each exam_question",
+      "probability": 0.997082
+    },
+    {
+      "entity_1": "EXAM_QUESTION",
+      "entity_2": "SUBMISSION_ANSWER",
+      "cardinality": "1:N",
+      "description": "Each exam_question can have many answer records (one per submission)",
+      "probability": 0.0348
+    }
+  ],
+  "processing_time": 31.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added nullable duration_minutes to EXAM for flexible timing, attempt_number to SUBMISSION for multiple attempts, and feedback to SUBMISSION_ANSWER for reviewer comments. Enforced unique ordering of questions per exam via a UNIQUE constraint on (exam_id, position) in EXAM_QUESTION (documented in implementation). Updated model retains all strengths of candidate 2 and includes cascade delete considerations for referential integrity."
+  }
+}

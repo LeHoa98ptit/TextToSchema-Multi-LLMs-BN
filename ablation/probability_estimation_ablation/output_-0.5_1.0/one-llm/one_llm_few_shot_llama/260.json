@@ -1,0 +1,91 @@
+{
+  "filename": "260.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "COURSE": 0.622459,
+    "INSTRUCTOR": 0.534719,
+    "REGISTRATION": 0.622459,
+    "EXAMINATION_RESULT": 0.598015,
+    "ASSOC_STUDENT_COURSE": 0.039759
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.569249,
+      "date_of_birth": 0.564355,
+      "phone_number": 0.560503,
+      "home_address": 0.561388
+    },
+    "COURSE": {
+      "course_id": 0.567897,
+      "course_credit": 0.564698,
+      "class_time": 0.559676,
+      "location": 0.55632
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.554572,
+      "instructor_name": 0.551071
+    },
+    "REGISTRATION": {
+      "registration_id": 0.544369,
+      "registration_time": 0.540758,
+      "status": 0.550332
+    },
+    "EXAMINATION_RESULT": {
+      "examination_result_id": 0.539759,
+      "examination_grade": 0.547317,
+      "examination_date": 0.543369
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.039759,
+      "student_id": 0.039759,
+      "course_id": 0.039759
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "Each student can have many registrations, and each registration is associated with exactly one student.",
+      "probability": 0.998367
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "Each course can have many registrations, and each registration is associated with exactly one course.",
+      "probability": 0.012038
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "Each instructor can teach many courses, and each course is taught by exactly one instructor.",
+      "probability": 0.650777
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "EXAMINATION_RESULT",
+      "cardinality": "1:N",
+      "description": "Each student can have many examination results, and each examination result is associated with exactly one student.",
+      "probability": 0.97989
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.039759
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.039759
+    }
+  ],
+  "processing_time": 14.6
+}

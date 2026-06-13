@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "STUDENT",
+    "TEACHER",
+    "COURSE",
+    "COURSE_SELECTION",
+    "TEACHING_INFO",
+    "ASSOC_TEACHING_INFO_COURSE"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "name",
+      "gender",
+      "department",
+      "age",
+      "enrollment_date",
+      "major",
+      "login",
+      "password"
+    ],
+    "TEACHER": [
+      "name",
+      "gender",
+      "password",
+      "title",
+      "department",
+      "email",
+      "office_hours",
+      "phone_number"
+    ],
+    "COURSE": [
+      "course_id",
+      "course_name",
+      "credit",
+      "prerequisite"
+    ],
+    "COURSE_SELECTION": [
+      "student_id",
+      "course_id",
+      "grade"
+    ],
+    "TEACHING_INFO": [
+      "teacher_id",
+      "course_id",
+      "teaching_location",
+      "class_time"
+    ],
+    "ASSOC_TEACHING_INFO_COURSE": [
+      "assoc_teaching_info_course_id",
+      "teaching_info_id",
+      "course_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COURSE_SELECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE_SELECTION",
+      "entity_2": "COURSE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING_INFO",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHING_INFO",
+      "entity_2": "ASSOC_TEACHING_INFO_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_TEACHING_INFO_COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.1322,
+  "ilp_runtime": 0.021
+}

@@ -1,0 +1,106 @@
+{
+  "filename": "252.txt",
+  "entity": {
+    "PLAYER": 0.622459,
+    "GAME": 0.622459,
+    "SINGLE_PLAYER_GAME": 0.552926,
+    "PLAYER_COMMUNICATION": 0.530263,
+    "PLAYER_BATTLE": 0.545201
+  },
+  "attribute": {
+    "PLAYER": {
+      "player id": 0.539067,
+      "username": 0.531427,
+      "password": 0.538537,
+      "phone number": 0.522903,
+      "registration time": 0.534589
+    },
+    "GAME": {
+      "game id": 0.538219,
+      "game rule": 0.540896,
+      "game content": 0.54717,
+      "max players": 0.555937
+    },
+    "SINGLE_PLAYER_GAME": {
+      "player id": 0.550231,
+      "game id": 0.552891,
+      "game start time": 0.546004,
+      "game end time": 0.548212,
+      "game status": 0.555486
+    },
+    "PLAYER_COMMUNICATION": {
+      "player id": 0.545481,
+      "second player id": 0.551649,
+      "communication start time": 0.545722,
+      "communication end time": 0.547842,
+      "communication content": 0.550308
+    },
+    "PLAYER_BATTLE": {
+      "player id": 0.545096,
+      "second player id": 0.550348,
+      "game id": 0.549846,
+      "battle start time": 0.540229,
+      "battle end time": 0.539744,
+      "battle result": 0.54424
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "description": "A player can have many single-player game records, each record belongs to one player.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988305
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "description": "A game can be played many times in single-player mode, each record references one game.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.846009
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_COMMUNICATION",
+      "description": "A player can initiate many communications, each communication record references the initiating player.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.969323
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_COMMUNICATION",
+      "description": "A player can receive many communications, each communication record references the receiving player.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.969323
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_BATTLE",
+      "description": "A player can participate in many battles as the first participant, each battle record references that player.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991238
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "PLAYER_BATTLE",
+      "description": "A player can participate in many battles as the second participant, each battle record references that player.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991238
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "PLAYER_BATTLE",
+      "description": "A game can involve many battles, each battle record references one game.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.885016
+    }
+  ],
+  "processing_time": 5.73
+}

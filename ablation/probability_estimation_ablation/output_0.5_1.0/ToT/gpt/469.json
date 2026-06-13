@@ -1,0 +1,199 @@
+{
+  "filename": "469.txt",
+  "entity": {
+    "OWNER": 0.817574,
+    "HOUSE": 0.774378,
+    "DEPARTMENT": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "POSITION": 0.708457,
+    "PERMISSION": 0.728495,
+    "POSITION_PERMISSION": 0.699244,
+    "FEE_TYPE": 0.756926,
+    "FEE_RECORD": 0.75984,
+    "FEE_RECEIPT": 0.751532,
+    "ACCOUNT_RECEIVABLE_REPORT": 0.681788,
+    "OWNERSHIP": 0.796247
+  },
+  "attribute": {
+    "OWNER": {
+      "owner_id": 0.748877,
+      "full_name": 0.754466,
+      "workplace": 0.765967,
+      "contact_number": 0.755374,
+      "email": 0.751278
+    },
+    "HOUSE": {
+      "house_id": 0.762745,
+      "house_number": 0.763411,
+      "floor_area": 0.766709,
+      "address": 0.761183,
+      "construction_year": 0.761828
+    },
+    "DEPARTMENT": {
+      "department_id": 0.758507,
+      "department_name": 0.762683,
+      "phone_number": 0.757007,
+      "location": 0.760553,
+      "supervisor_id": 0.759182
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.760304,
+      "full_name": 0.764199,
+      "date_of_birth": 0.75303,
+      "gender": 0.757129,
+      "address": 0.763371,
+      "contact_number": 0.75734,
+      "password": 0.758441,
+      "position_id": 0.758496,
+      "department_id": 0.76581,
+      "supervisor_id": 0.756875
+    },
+    "POSITION": {
+      "position_id": 0.741152,
+      "title": 0.753043,
+      "level": 0.746984
+    },
+    "PERMISSION": {
+      "permission_id": 0.741525,
+      "description": 0.754629
+    },
+    "POSITION_PERMISSION": {
+      "position_id": 0.745151,
+      "permission_id": 0.745527
+    },
+    "FEE_TYPE": {
+      "fee_type_id": 0.753918,
+      "type_name": 0.754794,
+      "standard_rate": 0.749002
+    },
+    "FEE_RECORD": {
+      "fee_record_id": 0.755673,
+      "house_id": 0.771693,
+      "fee_type_id": 0.7578,
+      "billing_month": 0.755016,
+      "quantity": 0.758791,
+      "calculated_amount": 0.749122,
+      "due_date": 0.748617,
+      "paid_date": 0.752717,
+      "status": 0.760761
+    },
+    "FEE_RECEIPT": {
+      "receipt_id": 0.750326,
+      "fee_record_id": 0.753882,
+      "receipt_date": 0.745436,
+      "paid_amount": 0.745406,
+      "payment_method": 0.74195
+    },
+    "ACCOUNT_RECEIVABLE_REPORT": {
+      "report_id": 0.750998,
+      "report_month": 0.751728,
+      "total_due": 0.749272,
+      "total_paid": 0.753581,
+      "outstanding_balance": 0.751708
+    },
+    "OWNERSHIP": {
+      "ownership_id": 0.751361,
+      "owner_id": 0.750125,
+      "house_id": 0.763422,
+      "ownership_percentage": 0.758054
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "OWNER",
+      "entity_2": "OWNERSHIP",
+      "cardinality": "1:N",
+      "description": "An owner can have multiple ownership records",
+      "probability": 0.999759
+    },
+    {
+      "entity_1": "HOUSE",
+      "entity_2": "OWNERSHIP",
+      "cardinality": "1:N",
+      "description": "A house can be linked to multiple ownership records (joint ownership)",
+      "probability": 0.913496
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees",
+      "probability": 0.999907
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee belongs to one department",
+      "probability": 0.999907
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each department has one supervisor (referenced by DEPARTMENT.supervisor_id)",
+      "probability": 0.999907
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "An employee may have a direct supervisor (referenced by EMPLOYEE.supervisor_id)",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "description": "Each employee holds one position",
+      "probability": 0.983147
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "POSITION_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A position can be linked to multiple position‑permission rows",
+      "probability": 0.856802
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "POSITION_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A permission can be linked to multiple position‑permission rows",
+      "probability": 0.985455
+    },
+    {
+      "entity_1": "HOUSE",
+      "entity_2": "FEE_RECORD",
+      "cardinality": "1:N",
+      "description": "Each house generates many fee records over time",
+      "probability": 0.094402
+    },
+    {
+      "entity_1": "FEE_TYPE",
+      "entity_2": "FEE_RECORD",
+      "cardinality": "1:N",
+      "description": "A fee type can be used in many fee records",
+      "probability": 0.998927
+    },
+    {
+      "entity_1": "FEE_RECORD",
+      "entity_2": "FEE_RECEIPT",
+      "cardinality": "1:1",
+      "description": "Each fee record may produce a single receipt",
+      "probability": 0.981619
+    },
+    {
+      "entity_1": "FEE_RECEIPT",
+      "entity_2": "ACCOUNT_RECEIVABLE_REPORT",
+      "cardinality": "N:1",
+      "description": "Many receipts are aggregated into a monthly receivable report",
+      "probability": 0.00263
+    }
+  ],
+  "processing_time": 17.35,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented suggested improvements: added DEPARTMENT.supervisor_id FK, introduced POSITION_PERMISSION bridge for many‑to‑many Position‑Permission, created OWNERSHIP associative entity to support joint ownership and replaced direct OWNER‑HOUSE 1:N with M:N via OWNERSHIP, kept comprehensive employee attributes, retained all fee‑related entities, and clarified cascade and uniqueness considerations in descriptions."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "filename": "318.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.622459,
+    "MENU": 0.622459,
+    "PERMISSION": 0.622459,
+    "ASSOC_USER_ROLE": 0.99778,
+    "ASSOC_PERMISSION_MENU": 0.074788
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.505682,
+      "password": 0.536428,
+      "email": 0.517428
+    },
+    "ROLE": {
+      "role_id": 0.544334,
+      "role_name": 0.549118,
+      "description": 0.555939
+    },
+    "MENU": {
+      "menu_id": 0.5404,
+      "label": 0.543785,
+      "relative_url": 0.523202,
+      "parent_menu_id": 0.542565
+    },
+    "PERMISSION": {
+      "permission_id": 0.544069,
+      "role_id": 0.557206,
+      "menu_id": 0.566709,
+      "access_level": 0.556662
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.99778,
+      "user_id": 0.99778,
+      "role_id": 0.99778
+    },
+    "ASSOC_PERMISSION_MENU": {
+      "assoc_permission_menu_id": 0.074788,
+      "permission_id": 0.074788,
+      "menu_id": 0.074788
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99778
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99778
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can have multiple permissions",
+      "probability": 0.57417
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "description": "A menu can have multiple sub-menus",
+      "probability": 1.0
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_PERMISSION_MENU",
+      "description": "One PERMISSION can be associated with many ASSOC_PERMISSION_MENU.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.074788
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ASSOC_PERMISSION_MENU",
+      "description": "One MENU can be associated with many ASSOC_PERMISSION_MENU.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.074788
+    }
+  ],
+  "processing_time": 13.24,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant entity MENU_ITEM and integrated its attributes into MENU, removed redundant relationships and attributes to improve efficiency while maintaining the comprehensive nature of the model."
+  }
+}

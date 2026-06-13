@@ -1,0 +1,177 @@
+{
+  "filename": "410.txt",
+  "entity": {
+    "USER": 0.465181,
+    "VEHICLE": 0.622459,
+    "MAINTENANCE": 0.622459,
+    "DEPARTURE": 0.622459,
+    "APPLICATION": 0.465754,
+    "REPAIRSHOP": 0.5065,
+    "ANNOUNCEMENT": 0.482557,
+    "TOKEN": 0.446802,
+    "VEHICLE_TYPE": 0.541206,
+    "MAINTENANCE_TYPE": 0.544804,
+    "USER_ROLE": 0.437577
+  },
+  "attribute": {
+    "USER": {
+      "userd": 0.50503,
+      "password": 0.504862,
+      "role": 0.517634,
+      "username": 0.498925,
+      "email": 0.506632,
+      "phone": 0.494663
+    },
+    "VEHICLE": {
+      "vehicled": 0.54611,
+      "vehicle": 0.546673,
+      "photov": 0.53388,
+      "statusv": 0.542951,
+      "categoryv": 0.549136,
+      "vehicletype": 0.541285,
+      "vehiclemodel": 0.556394,
+      "vehicleyear": 0.539465,
+      "vehicle_type_id": 0.538713
+    },
+    "MAINTENANCE": {
+      "maintenanced": 0.54114,
+      "vehicled": 0.556117,
+      "maintenancetime": 0.536773,
+      "maintenancedetail": 0.545315,
+      "maintenancetype": 0.542612,
+      "maintenanceresult": 0.547025,
+      "maintenance_type_id": 0.539139
+    },
+    "DEPARTURE": {
+      "departureid": 0.524122,
+      "vehicled": 0.548265,
+      "departuretime": 0.515756,
+      "departuren": 0.527102,
+      "departurelocation": 0.523377,
+      "departurestatus": 0.529215
+    },
+    "APPLICATION": {
+      "applicationd": 0.504014,
+      "vehicled": 0.544133,
+      "applicationtime": 0.493032,
+      "applicationreason": 0.498567,
+      "applicationstatus": 0.510157,
+      "applicationresult": 0.504153
+    },
+    "REPAIRSHOP": {
+      "repairshopd": 0.521745,
+      "shop": 0.52663,
+      "contactperson": 0.52092,
+      "contactnumber": 0.521158,
+      "shopaddress": 0.524961,
+      "shopemail": 0.532592
+    },
+    "ANNOUNCEMENT": {
+      "announcementd": 0.508896,
+      "title": 0.508525,
+      "content": 0.518612,
+      "creationtime": 0.50593,
+      "expirationtime": 0.504548,
+      "announcementtype": 0.508384
+    },
+    "TOKEN": {
+      "tokenid": 0.510597,
+      "tokenvalue": 0.506046,
+      "creationtime": 0.507427,
+      "expirationtime": 0.510423,
+      "tokenstatus": 0.515692
+    },
+    "VEHICLE_TYPE": {
+      "vehicle_type_id": 0.537983,
+      "vehicle_type_name": 0.538791,
+      "vehicle_type_description": 0.547609
+    },
+    "MAINTENANCE_TYPE": {
+      "maintenance_type_id": 0.538282,
+      "maintenance_type_name": 0.537094,
+      "maintenance_type_description": 0.546646
+    },
+    "USER_ROLE": {
+      "user_role_id": 0.513921,
+      "user_role_name": 0.512051,
+      "user_role_description": 0.525952
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple vehicles",
+      "probability": 0.99757
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple maintenance records",
+      "probability": 0.990255
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "DEPARTURE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple departure records",
+      "probability": 0.769027
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple maintenance applications",
+      "probability": 0.600936
+    },
+    {
+      "entity_1": "REPAIRSHOP",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A repair shop can serve multiple vehicles",
+      "probability": 0.670355
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A user can submit multiple maintenance applications",
+      "probability": 0.998302
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:1",
+      "description": "A maintenance record is associated with one maintenance application",
+      "probability": 0.512601
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_TYPE",
+      "cardinality": "1:1",
+      "description": "A vehicle is associated with one vehicle type",
+      "probability": 0.997206
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "MAINTENANCE_TYPE",
+      "cardinality": "1:1",
+      "description": "A maintenance record is associated with one maintenance type",
+      "probability": 0.999615
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:1",
+      "description": "A user is associated with one user role",
+      "probability": 0.999797
+    }
+  ],
+  "processing_time": 50.39,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added 'VEHICLE_TYPE', 'MAINTENANCE_TYPE', and 'USER_ROLE' entities to store different types of vehicles, maintenance, and user roles. Established relationships between these new entities and existing entities to provide a more comprehensive and detailed model."
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "filename": "485.txt",
+  "entity": {
+    "WETLAND_PROTECTION_AREA": 0.753933,
+    "SPECIES": 0.757147,
+    "PERSONNEL": 0.701175,
+    "ENVIRONMENTAL_CHANGE": 0.741312,
+    "SENSOR": 0.70705
+  },
+  "attribute": {
+    "WETLAND_PROTECTION_AREA": {
+      "wetland protection area id": 0.783743,
+      "area name": 0.780255,
+      "location": 0.782128,
+      "person in charge id": 0.781302
+    },
+    "SPECIES": {
+      "species id": 0.75059,
+      "wetland protection area id": 0.784827,
+      "species name": 0.745962,
+      "category": 0.756477,
+      "quantity": 0.750234,
+      "growth status": 0.753414,
+      "recording time": 0.767334,
+      "recording personnel id": 0.772555
+    },
+    "PERSONNEL": {
+      "personnel id": 0.752532,
+      "full name": 0.748269,
+      "role": 0.753478,
+      "contact info": 0.759364
+    },
+    "ENVIRONMENTAL_CHANGE": {
+      "environmental change id": 0.763756,
+      "wetland protection area id": 0.785271,
+      "sensor id": 0.767119,
+      "recorded at": 0.775035,
+      "temperature": 0.753171,
+      "humidity": 0.757852,
+      "rainfall": 0.755526
+    },
+    "SENSOR": {
+      "sensor id": 0.751532,
+      "sensor type": 0.754225,
+      "installation date": 0.749764,
+      "location": 0.754953,
+      "manufacturer": 0.75176
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "WETLAND_PROTECTION_AREA",
+      "description": "A personnel (person in charge) can be responsible for multiple wetland protection areas, while each area has exactly one person in charge.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.188856
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "SPECIES",
+      "description": "Each wetland protection area can have many species records, each species record belongs to a single protection area.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005757
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "SPECIES",
+      "description": "A personnel records species observations; one personnel can record many species entries, each species entry is recorded by one personnel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.012284
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "ENVIRONMENTAL_CHANGE",
+      "description": "Environmental change records are taken for a specific wetland protection area; an area can have many such records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.088753
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "ENVIRONMENTAL_CHANGE",
+      "description": "Each sensor can generate many environmental change records; each record is captured by a single sensor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.240176
+    },
+    {
+      "entity_1": "WETLAND_PROTECTION_AREA",
+      "entity_2": "SENSOR",
+      "description": "Sensors are installed in wetland protection areas; an area can have multiple sensors, each sensor belongs to one area.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.689234
+    }
+  ],
+  "processing_time": 16.58
+}

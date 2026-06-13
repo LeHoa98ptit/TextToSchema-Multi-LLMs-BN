@@ -1,0 +1,88 @@
+{
+  "entity": [
+    "EMPLOYEE",
+    "PRODUCT",
+    "SUPPLIER",
+    "SALE",
+    "SALE_ITEM",
+    "INVENTORY",
+    "SUPPLIER_PRODUCT"
+  ],
+  "attribute": {
+    "EMPLOYEE": [
+      "employee_id",
+      "username",
+      "password",
+      "position",
+      "contact_information"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "purchase_price",
+      "sale_price",
+      "stock_quantity"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "phone_number"
+    ],
+    "SALE": [
+      "sale_id",
+      "sale_date",
+      "employee_id",
+      "total_amount"
+    ],
+    "SALE_ITEM": [
+      "sale_id",
+      "product_id",
+      "quantity",
+      "price"
+    ],
+    "INVENTORY": [
+      "inventory_id",
+      "product_id",
+      "stock_quantity",
+      "sale_price"
+    ],
+    "SUPPLIER_PRODUCT": [
+      "supplier_id",
+      "product_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SALE",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SALE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLIER_PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 41.6195,
+  "ilp_runtime": 0.038
+}

@@ -1,0 +1,134 @@
+{
+  "entity": [
+    "DISH",
+    "DISH_CATEGORY",
+    "INGREDIENT",
+    "DISH_INGREDIENT",
+    "USER",
+    "CART",
+    "CART_ITEM",
+    "ORDER",
+    "ORDER_DETAIL",
+    "DELIVERY"
+  ],
+  "attribute": {
+    "DISH": [
+      "dish_id",
+      "name",
+      "price",
+      "description",
+      "taste",
+      "recommendation_index",
+      "recommendation_status",
+      "category_id"
+    ],
+    "DISH_CATEGORY": [
+      "category_id",
+      "category_name",
+      "cuisine_type",
+      "special_feature"
+    ],
+    "INGREDIENT": [
+      "ingredient_id",
+      "ingredient_name",
+      "ingredient_description"
+    ],
+    "DISH_INGREDIENT": [
+      "dish_id",
+      "ingredient_id",
+      "quantity",
+      "unit"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "phone",
+      "address",
+      "registration_time",
+      "account_status"
+    ],
+    "CART": [
+      "cart_id",
+      "user_id",
+      "status",
+      "created_time"
+    ],
+    "CART_ITEM": [
+      "cart_item_id",
+      "cart_id",
+      "dish_id",
+      "quantity",
+      "add_time"
+    ],
+    "ORDER": [
+      "order_id",
+      "user_id",
+      "order_time",
+      "order_status",
+      "total_amount",
+      "delivery_address"
+    ],
+    "ORDER_DETAIL": [
+      "order_detail_id",
+      "order_id",
+      "dish_id",
+      "quantity",
+      "unit_price",
+      "total_price"
+    ],
+    "DELIVERY": [
+      "delivery_id",
+      "order_id",
+      "delivery_address",
+      "delivery_time",
+      "delivery_person"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "DISH_INGREDIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INGREDIENT",
+      "entity_2": "DISH_INGREDIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 77.3925,
+  "ilp_runtime": 0.067
+}

@@ -1,0 +1,108 @@
+{
+  "entity": [
+    "USER",
+    "BUILDING",
+    "DORMITORY",
+    "STUDENT",
+    "APPLICATION",
+    "MAINTENANCE_RECORD",
+    "ANNOUNCEMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "role"
+    ],
+    "BUILDING": [
+      "building_id",
+      "type",
+      "location",
+      "description",
+      "manager_id"
+    ],
+    "DORMITORY": [
+      "dormitory_id",
+      "type",
+      "number",
+      "bed_count",
+      "building_id",
+      "manager_id",
+      "facility"
+    ],
+    "STUDENT": [
+      "student_id",
+      "user_id",
+      "gender",
+      "class",
+      "dormitory_id"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "type",
+      "student_id",
+      "content",
+      "application_time",
+      "status",
+      "processing_opinion",
+      "processed_by"
+    ],
+    "MAINTENANCE_RECORD": [
+      "maintenance_record_id",
+      "dormitory_id",
+      "fault_description",
+      "repair_time",
+      "staff_id",
+      "situation",
+      "completion_time"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "title",
+      "content",
+      "release_time",
+      "admin_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "DORMITORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.8472,
+  "ilp_runtime": 0.038
+}

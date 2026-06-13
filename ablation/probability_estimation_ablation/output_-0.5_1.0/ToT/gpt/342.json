@@ -1,0 +1,62 @@
+{
+  "filename": "342.txt",
+  "entity": {
+    "STATION": 0.622459,
+    "NETWORK": 0.622459,
+    "STATION_NETWORK": 0.587539,
+    "GIS_SYSTEM": 0.5022
+  },
+  "attribute": {
+    "STATION": {
+      "station_id": 0.555849,
+      "station_name": 0.560757,
+      "latitude": 0.54339,
+      "longitude": 0.546937
+    },
+    "NETWORK": {
+      "network_id": 0.519756,
+      "network_name": 0.521782,
+      "network_description": 0.535276
+    },
+    "STATION_NETWORK": {
+      "station_id": 0.559387,
+      "network_id": 0.553393,
+      "effective_start": 0.555504,
+      "effective_end": 0.559972,
+      "gis_system_id": 0.551154
+    },
+    "GIS_SYSTEM": {
+      "gis_system_id": 0.519027,
+      "system_name": 0.520764,
+      "system_description": 0.534811
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STATION",
+      "entity_2": "STATION_NETWORK",
+      "cardinality": "1:N",
+      "description": "A station can participate in many station‑network relationship records",
+      "probability": 0.999956
+    },
+    {
+      "entity_1": "NETWORK",
+      "entity_2": "STATION_NETWORK",
+      "cardinality": "1:N",
+      "description": "A network can be linked to many stations through relationship records",
+      "probability": 0.99688
+    },
+    {
+      "entity_1": "GIS_SYSTEM",
+      "entity_2": "STATION_NETWORK",
+      "cardinality": "1:N",
+      "description": "A GIS system (if used) can be associated with many station‑network relationship records; the reference is optional",
+      "probability": 0.938088
+    }
+  ],
+  "processing_time": 11.96,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added explicit primary‑key definitions (station_id PK, network_id PK, composite PK (station_id, network_id, effective_start) for STATION_NETWORK). Declared foreign‑key constraints via relationships. Introduced optional GIS_SYSTEM entity with nullable gis_system_id in STATION_NETWORK to capture system‑level audit without mandatory complexity. Documented a check constraint ensuring effective_start < effective_end. Standardized naming to snake_case and clarified cardinalities."
+  }
+}

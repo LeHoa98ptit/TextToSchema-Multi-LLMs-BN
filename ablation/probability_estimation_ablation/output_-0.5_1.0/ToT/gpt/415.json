@@ -1,0 +1,143 @@
+{
+  "filename": "415.txt",
+  "entity": {
+    "USER": 0.622459,
+    "USER_LOGIN": 0.543391,
+    "MESSAGE": 0.622459,
+    "SERVER": 0.622459,
+    "SERVER_CLUSTER": 0.493225,
+    "PROTOCOL": 0.492126,
+    "SERVER_PROTOCOL": 0.501025,
+    "ASSOC_SERVER_PROTOCOL": 0.992977
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.512537,
+      "username": 0.510759,
+      "password_hash": 0.505891,
+      "password_salt": 0.51085,
+      "email": 0.522808,
+      "registered_ip": 0.525961,
+      "registered_port": 0.527763,
+      "created_at": 0.50371
+    },
+    "USER_LOGIN": {
+      "login_id": 0.513175,
+      "user_id": 0.513828,
+      "login_time": 0.512175,
+      "login_ip": 0.528375,
+      "login_port": 0.526422,
+      "is_successful": 0.513023
+    },
+    "MESSAGE": {
+      "message_id": 0.537477,
+      "sender_id": 0.532931,
+      "receiver_id": 0.5398,
+      "content": 0.544672,
+      "sent_at": 0.533748,
+      "status": 0.546243,
+      "is_archived": 0.520387,
+      "archived_at": 0.523683
+    },
+    "SERVER": {
+      "server_id": 0.520251,
+      "cluster_id": 0.517722,
+      "ip_address": 0.525457,
+      "port_number": 0.526214,
+      "max_clients": 0.535055,
+      "receive_buffer_size": 0.537644
+    },
+    "SERVER_CLUSTER": {
+      "cluster_id": 0.514158,
+      "name": 0.522866,
+      "description": 0.539586,
+      "created_at": 0.513951
+    },
+    "PROTOCOL": {
+      "protocol_id": 0.536923,
+      "name": 0.547239,
+      "version": 0.550251
+    },
+    "SERVER_PROTOCOL": {
+      "server_id": 0.539987,
+      "protocol_id": 0.541536
+    },
+    "ASSOC_SERVER_PROTOCOL": {
+      "assoc_server_protocol_id": 0.992977,
+      "server_id": 0.992977,
+      "protocol_id": 0.992977
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_LOGIN",
+      "cardinality": "1:N",
+      "description": "A user can have many login attempts",
+      "probability": 0.999991
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "User as sender can send many messages (sender_id)",
+      "probability": 0.999709
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "User as receiver can receive many messages (receiver_id)",
+      "probability": 0.999709
+    },
+    {
+      "entity_1": "SERVER_CLUSTER",
+      "entity_2": "SERVER",
+      "cardinality": "1:N",
+      "description": "A server cluster groups multiple servers",
+      "probability": 0.024964
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A server can host many users",
+      "probability": 0.956329
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "ASSOC_SERVER_PROTOCOL",
+      "description": "One SERVER can be associated with many ASSOC_SERVER_PROTOCOL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992977
+    },
+    {
+      "entity_1": "PROTOCOL",
+      "entity_2": "ASSOC_SERVER_PROTOCOL",
+      "description": "One PROTOCOL can be associated with many ASSOC_SERVER_PROTOCOL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.992977
+    },
+    {
+      "entity_1": "SERVER",
+      "entity_2": "SERVER_PROTOCOL",
+      "cardinality": "1:N",
+      "description": "Associative entity linking servers to protocols",
+      "probability": 0.99866
+    },
+    {
+      "entity_1": "PROTOCOL",
+      "entity_2": "SERVER_PROTOCOL",
+      "cardinality": "1:N",
+      "description": "Associative entity linking protocols to servers",
+      "probability": 0.999739
+    }
+  ],
+  "processing_time": 15.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged CHAT_HISTORY into MESSAGE with 'status', 'is_archived' and 'archived_at' attributes to avoid duplication. Added 'password_salt' to USER for stronger password storage. Introduced SERVER_CLUSTER entity to group multiple concurrent servers. Created SERVER_PROTOCOL associative entity to model the N:M relationship between SERVER and PROTOCOL explicitly. Updated MESSAGE with a detailed status enum for fine‑grained tracking. Clarified cascade delete intent in documentation (not shown in JSON). Added foreign‑key based relationships and prepared for indexing on sender_id, receiver_id, and protocol_id."
+  }
+}

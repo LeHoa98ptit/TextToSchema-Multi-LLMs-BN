@@ -1,0 +1,119 @@
+{
+  "filename": "392.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "CATEGORY": 0.513272,
+    "INVENTORY": 0.488377,
+    "SHIPMENT": 0.530811,
+    "PAYMENT": 0.482607,
+    "ASSOC_ORDER_PRODUCT": 0.002137
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.500832,
+      "age": 0.517081,
+      "gender": 0.522272,
+      "phone_number": 0.516345,
+      "email": 0.526383,
+      "shipping_address": 0.517737,
+      "password": 0.524346,
+      "order_history": 0.523288,
+      "wishlist": 0.512859
+    },
+    "PRODUCT": {
+      "category_id": 0.519301,
+      "price": 0.51747,
+      "description": 0.529185,
+      "image": 0.517677
+    },
+    "ORDER": {
+      "quantity": 0.530695,
+      "time": 0.52074,
+      "state": 0.520894,
+      "total_cost": 0.51586
+    },
+    "CATEGORY": {
+      "name": 0.513162,
+      "description": 0.522435
+    },
+    "INVENTORY": {
+      "quantity": 0.541289,
+      "reorder_level": 0.529895
+    },
+    "SHIPMENT": {
+      "tracking_number": 0.527208,
+      "shipping_date": 0.516882,
+      "expected_delivery_date": 0.515681
+    },
+    "PAYMENT": {
+      "payment_method": 0.509346,
+      "payment_date": 0.508046,
+      "amount": 0.511087
+    },
+    "ASSOC_ORDER_PRODUCT": {
+      "assoc_order_product_id": 0.002137,
+      "order_id": 0.002137,
+      "product_id": 0.002137
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can place multiple orders",
+      "probability": 0.999101
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002137
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002137
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A category can have multiple products",
+      "probability": 0.000259
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "description": "A product has one inventory",
+      "probability": 0.951572
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SHIPMENT",
+      "cardinality": "1:1",
+      "description": "An order has one shipment",
+      "probability": 0.046031
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order has one payment",
+      "probability": 0.482394
+    }
+  ],
+  "processing_time": 19.25,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added order history and wishlist attributes to the USER entity, removed redundant relationships, and improved efficiency by changing the relationship between ORDER and PRODUCT to N:M."
+  }
+}

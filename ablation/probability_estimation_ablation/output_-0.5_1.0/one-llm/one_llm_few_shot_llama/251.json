@@ -1,0 +1,89 @@
+{
+  "filename": "251.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "PET": 0.622459,
+    "GROOMER": 0.622459,
+    "GROOM_SERVICE": 0.553445,
+    "SERVICE_ITEM": 0.521861,
+    "ASSOC_GROOM_SERVICE_SERVICE_ITEM": 0.812867
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.523982,
+      "name": 0.526147,
+      "phone": 0.520267,
+      "address": 0.525667
+    },
+    "PET": {
+      "pet_id": 0.53658,
+      "breed": 0.527693,
+      "age": 0.525032,
+      "weight": 0.52936,
+      "fur_characteristic": 0.541112,
+      "customer_id": 0.54816
+    },
+    "GROOMER": {
+      "groomer_id": 0.548788,
+      "name": 0.544094,
+      "specialization": 0.551669,
+      "year_of_experience": 0.548199,
+      "rating": 0.549291
+    },
+    "GROOM_SERVICE": {
+      "groom_service_id": 0.555071,
+      "pet_id": 0.56476,
+      "groomer_id": 0.557082,
+      "service_date": 0.554641,
+      "customer_rating": 0.563245
+    },
+    "SERVICE_ITEM": {
+      "service_item_id": 0.527491,
+      "service_name": 0.532518,
+      "duration": 0.531567,
+      "price": 0.536832
+    },
+    "ASSOC_GROOM_SERVICE_SERVICE_ITEM": {
+      "assoc_groom_service_service_item_id": 0.812867,
+      "groom_service_id": 0.812867,
+      "service_item_id": 0.812867
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PET",
+      "cardinality": "1:N",
+      "probability": 0.855223
+    },
+    {
+      "entity_1": "GROOMER",
+      "entity_2": "GROOM_SERVICE",
+      "cardinality": "1:N",
+      "probability": 0.998055
+    },
+    {
+      "entity_1": "PET",
+      "entity_2": "GROOM_SERVICE",
+      "cardinality": "1:N",
+      "probability": 0.037038
+    },
+    {
+      "entity_1": "GROOM_SERVICE",
+      "entity_2": "ASSOC_GROOM_SERVICE_SERVICE_ITEM",
+      "description": "One GROOM_SERVICE can be associated with many ASSOC_GROOM_SERVICE_SERVICE_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.812867
+    },
+    {
+      "entity_1": "SERVICE_ITEM",
+      "entity_2": "ASSOC_GROOM_SERVICE_SERVICE_ITEM",
+      "description": "One SERVICE_ITEM can be associated with many ASSOC_GROOM_SERVICE_SERVICE_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.812867
+    }
+  ],
+  "processing_time": 13.64
+}

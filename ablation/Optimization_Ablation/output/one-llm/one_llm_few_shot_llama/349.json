@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "FILE",
+    "FILE_COLLECTION",
+    "REPLICA",
+    "ASSOC_FILE_FILE_COLLECTION",
+    "ASSOC_FILE_COLLECTION_FILE"
+  ],
+  "attribute": {
+    "FILE": [
+      "file_id",
+      "file_type",
+      "storage_location",
+      "status",
+      "record_count",
+      "size",
+      "creation_time",
+      "update_time",
+      "description",
+      "version_number"
+    ],
+    "FILE_COLLECTION": [
+      "collection_id",
+      "collection_description"
+    ],
+    "REPLICA": [
+      "replica_id",
+      "storage_location",
+      "node",
+      "device",
+      "update_time",
+      "status",
+      "version_number",
+      "index"
+    ],
+    "ASSOC_FILE_FILE_COLLECTION": [
+      "assoc_file_file_collection_id",
+      "file_id",
+      "file_collection_id"
+    ],
+    "ASSOC_FILE_COLLECTION_FILE": [
+      "assoc_file_collection_file_id",
+      "file_collection_id",
+      "file_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "FILE",
+      "entity_2": "ASSOC_FILE_FILE_COLLECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE_COLLECTION",
+      "entity_2": "ASSOC_FILE_FILE_COLLECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE_COLLECTION",
+      "entity_2": "ASSOC_FILE_COLLECTION_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FILE",
+      "entity_2": "ASSOC_FILE_COLLECTION_FILE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 116.1462,
+  "ilp_runtime": 0.019
+}

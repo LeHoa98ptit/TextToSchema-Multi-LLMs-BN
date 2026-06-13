@@ -1,0 +1,74 @@
+{
+  "entity": [
+    "RADIO_STATION",
+    "ADVERTISEMENT",
+    "CLIENT",
+    "BROADCAST_TIME_SLOT",
+    "ARRANGEMENT",
+    "ASSOC_ADVERTISEMENT_CLIENT"
+  ],
+  "attribute": {
+    "RADIO_STATION": [
+      "name",
+      "location",
+      "contact_info"
+    ],
+    "ADVERTISEMENT": [
+      "content",
+      "duration"
+    ],
+    "CLIENT": [
+      "name",
+      "contact_info",
+      "address",
+      "industry"
+    ],
+    "BROADCAST_TIME_SLOT": [
+      "start_time",
+      "end_time",
+      "day_of_week",
+      "date"
+    ],
+    "ARRANGEMENT": [
+      "arrangement_date",
+      "start_time",
+      "end_time",
+      "advertisement_id",
+      "client_id",
+      "radio_station_id"
+    ],
+    "ASSOC_ADVERTISEMENT_CLIENT": [
+      "assoc_advertisement_client_id",
+      "advertisement_id",
+      "client_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RADIO_STATION",
+      "entity_2": "BROADCAST_TIME_SLOT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_CLIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_CLIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RADIO_STATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 48.8491,
+  "ilp_runtime": 0.029
+}

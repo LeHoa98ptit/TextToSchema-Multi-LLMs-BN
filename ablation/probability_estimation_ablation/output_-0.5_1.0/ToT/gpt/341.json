@@ -1,0 +1,78 @@
+{
+  "filename": "341.txt",
+  "entity": {
+    "USER": 0.622459,
+    "COMMENT": 0.622459,
+    "APPLICATION": 0.475969,
+    "FORMAT": 0.465828
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.521996,
+      "username": 0.517424,
+      "email": 0.531054,
+      "is_anonymous": 0.537537,
+      "contact_url": 0.526995,
+      "session_token": 0.517142,
+      "created_at": 0.521503,
+      "last_login": 0.511744
+    },
+    "COMMENT": {
+      "comment_id": 0.563613,
+      "content": 0.581425,
+      "publication_time": 0.566214,
+      "is_deleted": 0.553583,
+      "edit_count": 0.554706,
+      "format_id": 0.565216,
+      "application_id": 0.563112,
+      "user_id": 0.563147,
+      "parent_comment_id": 0.55523
+    },
+    "APPLICATION": {
+      "app_id": 0.5145,
+      "app_name": 0.513218,
+      "repo_url": 0.525507,
+      "owner_team": 0.51427
+    },
+    "FORMAT": {
+      "format_id": 0.524366,
+      "name": 0.530269,
+      "mime_type": 0.517512
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user (registered or anonymous) authors many comments",
+      "probability": 0.968009
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Each comment is associated with one application",
+      "probability": 0.033428
+    },
+    {
+      "entity_1": "FORMAT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Each comment is stored in a specific format (HTML, Markdown)",
+      "probability": 0.008634
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Self‑referencing relationship for threaded replies (a comment may have many child replies)",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 15.41,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged ANONYMOUS_USER into a single USER entity with an is_anonymous flag and optional contact_url/session_token fields, reducing redundancy. Added parent_comment_id attribute to COMMENT to model reply threads explicitly. Kept FORMAT as a separate entity with a unique name constraint for extensibility. Retained timestamps with timezone awareness and optional edit tracking attributes. Simplified the schema while preserving all required functionality."
+  }
+}

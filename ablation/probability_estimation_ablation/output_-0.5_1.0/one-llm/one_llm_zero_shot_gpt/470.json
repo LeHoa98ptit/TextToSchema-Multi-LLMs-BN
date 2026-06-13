@@ -1,0 +1,114 @@
+{
+  "filename": "470.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "MENU_ITEM": 0.424262,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.523807,
+    "DELIVERY_PERSON": 0.558752,
+    "DELIVERY": 0.622459,
+    "PAYMENT_REQUEST": 0.593825,
+    "ASSOC_ORDER_MENU_ITEM": 0.03268
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.537213,
+      "name": 0.544447,
+      "phone_number": 0.543181,
+      "address": 0.550269
+    },
+    "MENU_ITEM": {
+      "menu_number": 0.530048,
+      "dish_name": 0.536185,
+      "price": 0.529262,
+      "special_offer_indicator": 0.533109
+    },
+    "ORDER": {
+      "order_number": 0.536133,
+      "employee_id": 0.545983,
+      "total_price": 0.523794,
+      "delivery_time": 0.535004,
+      "delivery_address": 0.543545,
+      "payment_method": 0.52986
+    },
+    "ORDER_ITEM": {
+      "order_number": 0.540428,
+      "menu_number": 0.543658,
+      "quantity": 0.550494,
+      "line_total_price": 0.530377
+    },
+    "DELIVERY_PERSON": {
+      "delivery_person_id": 0.535952,
+      "name": 0.531855,
+      "phone_number": 0.537188,
+      "address": 0.542763
+    },
+    "DELIVERY": {
+      "delivery_id": 0.534421,
+      "order_number": 0.544463,
+      "delivery_time": 0.532467,
+      "delivery_address": 0.53799,
+      "delivery_person_id": 0.534872
+    },
+    "PAYMENT_REQUEST": {
+      "payment_request_id": 0.530492,
+      "order_number": 0.545014,
+      "employee_id": 0.547321,
+      "payment_status": 0.531661
+    },
+    "ASSOC_ORDER_MENU_ITEM": {
+      "assoc_order_menu_item_id": 0.03268,
+      "order_id": 0.03268,
+      "menu_item_id": 0.03268
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.0002
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_MENU_ITEM",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_MENU_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.03268
+    },
+    {
+      "entity_1": "MENU_ITEM",
+      "entity_2": "ASSOC_ORDER_MENU_ITEM",
+      "description": "One MENU_ITEM can be associated with many ASSOC_ORDER_MENU_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.03268
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "probability": 0.006095
+    },
+    {
+      "entity_1": "DELIVERY",
+      "entity_2": "DELIVERY_PERSON",
+      "cardinality": "N:1",
+      "probability": 0.992165
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:1",
+      "probability": 0.099258
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.050807
+    }
+  ],
+  "processing_time": 14.87
+}

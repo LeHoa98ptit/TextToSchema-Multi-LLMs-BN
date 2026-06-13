@@ -1,0 +1,59 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "AUDITLOG"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "role_id"
+    ],
+    "ROLE": [
+      "name",
+      "description"
+    ],
+    "PERMISSION": [
+      "name",
+      "description",
+      "object_id",
+      "role_id"
+    ],
+    "AUDITLOG": [
+      "timestamp",
+      "access_result",
+      "user_id",
+      "object_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUDITLOG",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDITLOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 16.3532,
+  "ilp_runtime": 0.049
+}

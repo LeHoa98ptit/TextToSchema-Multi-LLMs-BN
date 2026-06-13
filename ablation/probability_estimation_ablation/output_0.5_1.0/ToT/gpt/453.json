@@ -1,0 +1,78 @@
+{
+  "filename": "453.txt",
+  "entity": {
+    "STORE": 0.817574,
+    "ADDRESS": 0.746324,
+    "DEPARTMENT": 0.817574,
+    "EMPLOYEE": 0.817574
+  },
+  "attribute": {
+    "STORE": {
+      "store_id": 0.752698,
+      "store_name": 0.752925,
+      "address_id": 0.745173,
+      "phone": 0.752953
+    },
+    "ADDRESS": {
+      "address_id": 0.736663,
+      "street": 0.744709,
+      "city": 0.748236,
+      "state": 0.744199,
+      "zip_code": 0.740093,
+      "country": 0.736842
+    },
+    "DEPARTMENT": {
+      "dept_id": 0.762749,
+      "dept_name": 0.764909,
+      "location": 0.76437,
+      "distribution": 0.764723,
+      "phone": 0.767699,
+      "manager_id": 0.765441
+    },
+    "EMPLOYEE": {
+      "emp_id": 0.759716,
+      "first_name": 0.760912,
+      "last_name": 0.760645,
+      "position": 0.77127,
+      "phone": 0.76754,
+      "email": 0.762822,
+      "salary": 0.755924,
+      "dept_id": 0.77243
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STORE",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:1",
+      "description": "Each store has exactly one address record",
+      "probability": 0.990482
+    },
+    {
+      "entity_1": "STORE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A store comprises multiple departments",
+      "probability": 0.9984
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees",
+      "probability": 0.999913
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "manager_id in DEPARTMENT references the EMPLOYEE who is the manager; the referenced employee must belong to the same department",
+      "probability": 0.999913
+    }
+  ],
+  "processing_time": 4.57,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a separate ADDRESS entity to normalize store address details and allow finer granularity. Included email attribute for EMPLOYEE to support additional contact channels. Retained first_name and last_name for clear employee identification. Clarified manager relationship with a constraint that the manager must be an employee of the department. Updated STORE to reference ADDRESS via address_id, preserving the original 1:1 relationship. All original strengths (core entities, manager reference, 1:N relationships) are retained while eliminating redundancy and enhancing extensibility."
+  }
+}

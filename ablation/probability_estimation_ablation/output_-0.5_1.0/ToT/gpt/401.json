@@ -1,0 +1,117 @@
+{
+  "filename": "401.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TEACHER": 0.622459,
+    "CLASS": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "MAJOR": 0.622459
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.553415,
+      "name": 0.548259,
+      "gender": 0.549587,
+      "date_of_birth": 0.550415,
+      "home_address": 0.546002,
+      "enrollment_date": 0.548405,
+      "student_grade_level": 0.554083,
+      "major_id": 0.553189,
+      "class_id": 0.553429,
+      "department_id": 0.557339
+    },
+    "TEACHER": {
+      "teacher_id": 0.560262,
+      "name": 0.549032,
+      "gender": 0.551907,
+      "date_of_birth": 0.559207,
+      "home_address": 0.55407,
+      "hire_date": 0.549304,
+      "teacher_rank": 0.553337,
+      "department_id": 0.563791
+    },
+    "CLASS": {
+      "class_id": 0.52638,
+      "class_code": 0.526707,
+      "name": 0.534706,
+      "grade": 0.53395,
+      "major_id": 0.535686,
+      "head_teacher_id": 0.560641,
+      "department_id": 0.54636,
+      "capacity": 0.541416
+    },
+    "DEPARTMENT": {
+      "department_id": 0.528765,
+      "name": 0.531118,
+      "size": 0.534077
+    },
+    "MAJOR": {
+      "major_id": 0.526811,
+      "name": 0.516096,
+      "department_id": 0.532976
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CLASS",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A class contains many students; each student belongs to one class",
+      "probability": 0.999222
+    },
+    {
+      "entity_1": "MAJOR",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A major has many students; each student declares one major",
+      "probability": 0.421131
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "A department enrolls many students; each student belongs to one department",
+      "probability": 0.999269
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "TEACHER",
+      "cardinality": "1:1",
+      "description": "Each class has one head teacher",
+      "probability": 0.198574
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "CLASS",
+      "cardinality": "1:N",
+      "description": "A department oversees many classes; each class belongs to one department",
+      "probability": 0.008144
+    },
+    {
+      "entity_1": "MAJOR",
+      "entity_2": "CLASS",
+      "cardinality": "1:N",
+      "description": "A major can have many classes; each class is linked to one major",
+      "probability": 0.01777
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "TEACHER",
+      "cardinality": "1:N",
+      "description": "A department employs many teachers; each teacher belongs to one department",
+      "probability": 0.071155
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "MAJOR",
+      "cardinality": "1:N",
+      "description": "A department offers many majors; each major is under one department",
+      "probability": 0.572821
+    }
+  ],
+  "processing_time": 12.32,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added explicit DEPARTMENT_ID attribute to STUDENT and a corresponding 1:N relationship (DEPARTMENT‑STUDENT). Clarified grade-related attributes by renaming to student_grade_level and teacher_rank. Included CLASS_CODE for unique class identification. Ensured all teacher personal fields (home_address, hire_date) are present. Retained normalized structure, head‑teacher 1:1 constraint, and all core entities and relationships. The model now fully reflects the domain description with improved completeness, accuracy, and clarity."
+  }
+}

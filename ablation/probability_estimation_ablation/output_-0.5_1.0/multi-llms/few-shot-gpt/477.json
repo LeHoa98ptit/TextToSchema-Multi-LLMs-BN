@@ -1,0 +1,97 @@
+{
+  "filename": "477.txt",
+  "entity": {
+    "BILLING_METHOD": 0.591169,
+    "TRANSACTION": 0.622459,
+    "TRANSACTION_DETAIL": 0.542547,
+    "DISCOUNT": 0.490851,
+    "REBATE": 0.595801,
+    "PAYMENT": 0.622459
+  },
+  "attribute": {
+    "BILLING_METHOD": {
+      "billing method id": 0.549987,
+      "method name": 0.55035,
+      "description": 0.567921
+    },
+    "TRANSACTION": {
+      "transaction id": 0.530258,
+      "transaction time": 0.542024,
+      "billing method id": 0.555101,
+      "total amount": 0.554135,
+      "payment id": 0.543296
+    },
+    "TRANSACTION_DETAIL": {
+      "transaction detail id": 0.532842,
+      "transaction id": 0.53201,
+      "product id": 0.524457,
+      "quantity": 0.553716,
+      "unit price": 0.5429,
+      "line total": 0.554314
+    },
+    "DISCOUNT": {
+      "discount id": 0.53513,
+      "transaction id": 0.547167,
+      "discount type": 0.546563,
+      "discount value": 0.53156,
+      "description": 0.544815
+    },
+    "REBATE": {
+      "rebate id": 0.524685,
+      "transaction id": 0.53296,
+      "rebate type": 0.534269,
+      "rebate amount": 0.530347,
+      "description": 0.536146
+    },
+    "PAYMENT": {
+      "payment id": 0.541614,
+      "transaction id": 0.544439,
+      "payment method": 0.563579,
+      "amount paid": 0.550102,
+      "payment time": 0.549897
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BILLING_METHOD",
+      "entity_2": "TRANSACTION",
+      "description": "Each transaction selects one billing method, while a billing method can be used by many transactions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.22086
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PAYMENT",
+      "description": "Each transaction results in a single actual payment record.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.96222
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "description": "A transaction is recorded with multiple transaction detail lines.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DISCOUNT",
+      "description": "A transaction may have zero or more discount records applied.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.786764
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REBATE",
+      "description": "A transaction may have zero or more rebate records applied.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.877119
+    }
+  ],
+  "processing_time": 3.04
+}

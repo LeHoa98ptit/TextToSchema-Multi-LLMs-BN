@@ -1,0 +1,191 @@
+{
+  "filename": "353.txt",
+  "entity": {
+    "PAGE": 0.817574,
+    "PAGE_NAVIGATION": 0.753116,
+    "PAGE_STYLE": 0.748269,
+    "PAGE_EVENT": 0.744996,
+    "PAGE_HISTORY": 0.739004,
+    "USER": 0.720391,
+    "ADMIN": 0.791568,
+    "ROLE": 0.734212,
+    "PERMISSION": 0.817574,
+    "ROLE_PERMISSION": 0.774535,
+    "USER_ROLE": 0.734875,
+    "USER_PERMISSION": 0.787011,
+    "PAGE_GROUP": 0.740525,
+    "GROUP_PERMISSION": 0.765774
+  },
+  "attribute": {
+    "PAGE": {
+      "page_id": 0.750513,
+      "alias": 0.754675,
+      "title": 0.755916,
+      "display_order": 0.750611,
+      "visibility": 0.761449,
+      "created_at": 0.749169,
+      "updated_at": 0.746331,
+      "creator_admin_id": 0.760777,
+      "last_modified_admin_id": 0.752488,
+      "dynamic_display": 0.751401
+    },
+    "PAGE_NAVIGATION": {
+      "nav_id": 0.748575,
+      "page_id": 0.751195,
+      "parent_nav_id": 0.746248,
+      "position": 0.755224,
+      "is_dynamic": 0.75137
+    },
+    "PAGE_STYLE": {
+      "style_id": 0.746296,
+      "page_id": 0.749144,
+      "css_class": 0.74632,
+      "theme": 0.757985,
+      "custom_css": 0.752146
+    },
+    "PAGE_EVENT": {
+      "event_id": 0.743393,
+      "page_id": 0.746465,
+      "event_type": 0.746661,
+      "target_url": 0.741514,
+      "script": 0.750678
+    },
+    "PAGE_HISTORY": {
+      "history_id": 0.751992,
+      "page_id": 0.751011,
+      "admin_id": 0.761614,
+      "change_timestamp": 0.746098,
+      "change_description": 0.751162
+    },
+    "USER": {
+      "user_id": 0.742784,
+      "username": 0.732807,
+      "email": 0.74638,
+      "address": 0.74908,
+      "registered_at": 0.743938,
+      "last_login": 0.742893
+    },
+    "ADMIN": {
+      "admin_id": 0.753671,
+      "username": 0.754339,
+      "email": 0.756799,
+      "registered_at": 0.752246,
+      "last_login": 0.748141
+    },
+    "ROLE": {
+      "role_id": 0.749449,
+      "role_name": 0.752287,
+      "description": 0.761939
+    },
+    "PERMISSION": {
+      "permission_id": 0.748856,
+      "permission_name": 0.752881,
+      "description": 0.7632
+    },
+    "ROLE_PERMISSION": {
+      "role_id": 0.752473,
+      "permission_id": 0.752187
+    },
+    "USER_ROLE": {
+      "user_id": 0.751099,
+      "role_id": 0.751245
+    },
+    "USER_PERMISSION": {
+      "user_id": 0.7497,
+      "permission_id": 0.749163
+    },
+    "PAGE_GROUP": {
+      "group_id": 0.745711,
+      "group_name": 0.747629,
+      "description": 0.759485
+    },
+    "GROUP_PERMISSION": {
+      "group_id": 0.741848,
+      "permission_id": 0.744952
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PAGE_NAVIGATION",
+      "cardinality": "1:N",
+      "description": "A page can appear in multiple navigation entries (menus or hierarchies)",
+      "probability": 0.995844
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PAGE_STYLE",
+      "cardinality": "1:0..1",
+      "description": "A page may have an optional style definition",
+      "probability": 0.997676
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PAGE_EVENT",
+      "cardinality": "1:N",
+      "description": "A page can have multiple click or load events",
+      "probability": 0.989436
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PAGE_HISTORY",
+      "cardinality": "1:N",
+      "description": "All modifications to a page are stored as history records",
+      "probability": 0.939882
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "PAGE",
+      "cardinality": "1:N",
+      "description": "An administrator creates (creator_admin_id) and may later modify (last_modified_admin_id) pages",
+      "probability": 0.000148
+    },
+    {
+      "entity_1": "ADMIN",
+      "entity_2": "PAGE_HISTORY",
+      "cardinality": "1:N",
+      "description": "An administrator creates many history entries when editing pages",
+      "probability": 1e-06
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "description": "A user can be assigned multiple roles",
+      "probability": 0.997396
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "description": "Each role aggregates many permissions",
+      "probability": 0.993372
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PERMISSION",
+      "cardinality": "1:N",
+      "description": "Permissions can be granted directly to a user",
+      "probability": 0.999855
+    },
+    {
+      "entity_1": "PAGE_GROUP",
+      "entity_2": "GROUP_PERMISSION",
+      "cardinality": "1:N",
+      "description": "A page group can have several permissions governing access",
+      "probability": 0.028215
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PAGE_GROUP",
+      "cardinality": "N:1",
+      "description": "Pages belong to a single group",
+      "probability": 0.999256
+    }
+  ],
+  "processing_time": 41.98,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added creator_admin_id and last_modified_admin_id to PAGE for direct admin‑page traceability. Changed PAGE‑PAGE_NAVIGATION cardinality to 1:N to allow a page to appear in multiple menus. Introduced PERMISSION entity and USER_PERMISSION linking table for direct user permissions. Added dynamic_display boolean to PAGE and kept is_dynamic in PAGE_NAVIGATION for menu‑level dynamics. Made PAGE_STYLE optional (1:0..1). Added explicit ADMIN‑PAGE relationship. Updated relationships to reflect these changes while preserving the original strengths of role‑based access, history tracking, and group permissions."
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "filename": "314.txt",
+  "entity": {
+    "DEPARTMENT": 0.817574,
+    "ROLE": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "SALARY": 0.817574,
+    "ASSOC_ROLE_EMPLOYEE": 0.091832
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "description": 0.766967,
+      "id": 0.753537
+    },
+    "ROLE": {
+      "salary": 0.757919,
+      "name": 0.748668,
+      "department": 0.763078
+    },
+    "EMPLOYEE": {
+      "detail": 0.778619,
+      "name": 0.767838,
+      "role": 0.771157,
+      "department": 0.769822,
+      "salary": 0.767841
+    },
+    "SALARY": {
+      "leave_status": 0.766107,
+      "actual_salary": 0.76143,
+      "salary_history": 0.766469,
+      "benefits": 0.758705
+    },
+    "ASSOC_ROLE_EMPLOYEE": {
+      "assoc_role_employee_id": 0.091832,
+      "role_id": 0.091832,
+      "employee_id": 0.091832
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ROLE",
+      "cardinality": "1:N",
+      "description": "A department can have multiple roles",
+      "probability": 0.978005
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_EMPLOYEE",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_EMPLOYEE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.091832
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_ROLE_EMPLOYEE",
+      "description": "One EMPLOYEE can be associated with many ASSOC_ROLE_EMPLOYEE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.091832
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department can have multiple employees",
+      "probability": 0.999908
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY",
+      "cardinality": "1:1",
+      "description": "An employee has one salary record",
+      "probability": 0.937745
+    }
+  ],
+  "processing_time": 12.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added salary_history and benefits attributes to the SALARY entity to enhance the model's completeness, while retaining the strengths of the original model and addressing the identified issues."
+  }
+}

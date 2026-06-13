@@ -1,0 +1,96 @@
+{
+  "filename": "336.txt",
+  "entity": {
+    "USER": 0.622459,
+    "CATEGORY": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_PRODUCT": 0.587999,
+    "PRODUCT": 0.622459,
+    "ASSOC_ORDER_PRODUCT_PRODUCT": 0.999298
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.50551,
+      "email": 0.521384,
+      "password": 0.517893,
+      "creation_time": 0.512442,
+      "update_time": 0.517096
+    },
+    "CATEGORY": {
+      "category_id": 0.528576,
+      "category_alias": 0.525019,
+      "cover_image_path": 0.521187,
+      "creation_time": 0.529147,
+      "update_time": 0.535644
+    },
+    "ORDER": {
+      "order_id": 0.520869,
+      "user_id": 0.521704,
+      "delivery_address": 0.518187,
+      "postal_code": 0.522008,
+      "order_status": 0.522954,
+      "total_order_price": 0.527188,
+      "creation_time": 0.522365,
+      "update_time": 0.526731
+    },
+    "ORDER_PRODUCT": {
+      "order_product_id": 0.53243,
+      "order_id": 0.532271,
+      "product_id": 0.537302,
+      "product_quantity": 0.540732
+    },
+    "PRODUCT": {
+      "product_id": 0.531961,
+      "product_name": 0.534125,
+      "product_description": 0.543572,
+      "product_price": 0.534059,
+      "category_id": 0.542828,
+      "product_status": 0.534413,
+      "cover_image_path": 0.512485,
+      "creation_time": 0.528485,
+      "update_time": 0.531042
+    },
+    "ASSOC_ORDER_PRODUCT_PRODUCT": {
+      "assoc_order_product_product_id": 0.999298,
+      "order_product_id": 0.999298,
+      "product_id": 0.999298
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.997492
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PRODUCT",
+      "cardinality": "1:N",
+      "probability": 0.999655
+    },
+    {
+      "entity_1": "ORDER_PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT_PRODUCT",
+      "description": "One ORDER_PRODUCT can be associated with many ASSOC_ORDER_PRODUCT_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999298
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_PRODUCT_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_PRODUCT_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999298
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "probability": 7.2e-05
+    }
+  ],
+  "processing_time": 19.81
+}

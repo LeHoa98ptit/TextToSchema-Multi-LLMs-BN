@@ -1,0 +1,80 @@
+{
+  "filename": "273.txt",
+  "entity": {
+    "RESTAURANT": 0.622459,
+    "CUSTOMER": 0.622459,
+    "FEEDBACK": 0.622459,
+    "FEEDBACK_ITEM": 0.59356,
+    "PROCESSING_LOG": 0.51532
+  },
+  "attribute": {
+    "RESTAURANT": {
+      "restaurant_id": 0.565941,
+      "name": 0.559532,
+      "address": 0.558854,
+      "phone": 0.561987
+    },
+    "CUSTOMER": {
+      "customer_id": 0.54214,
+      "first_name": 0.535979,
+      "last_name": 0.533029,
+      "email": 0.537279,
+      "phone": 0.54442
+    },
+    "FEEDBACK": {
+      "feedback_id": 0.554914,
+      "restaurant_id": 0.582192,
+      "customer_id": 0.562296,
+      "submitted_at": 0.546264
+    },
+    "FEEDBACK_ITEM": {
+      "item_id": 0.556439,
+      "feedback_id": 0.559182,
+      "type": 0.562034,
+      "value": 0.562973
+    },
+    "PROCESSING_LOG": {
+      "log_id": 0.521203,
+      "feedback_id": 0.550512,
+      "status": 0.543913,
+      "changed_at": 0.518661,
+      "processed_by": 0.533374,
+      "remarks": 0.536803
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "Each restaurant can have many feedback records",
+      "probability": 0.177407
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "Each customer may submit multiple feedback entries",
+      "probability": 0.995261
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "FEEDBACK_ITEM",
+      "cardinality": "1:N",
+      "description": "A feedback can consist of multiple items (e.g., rating, comment, suggestion)",
+      "probability": 0.999894
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "PROCESSING_LOG",
+      "cardinality": "1:N",
+      "description": "Each feedback may have several processing status changes recorded over time",
+      "probability": 0.002987
+    }
+  ],
+  "processing_time": 15.1,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

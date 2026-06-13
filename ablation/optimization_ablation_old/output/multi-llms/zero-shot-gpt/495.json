@@ -1,0 +1,110 @@
+{
+  "entity": [
+    "DOCTOR",
+    "DEPARTMENT",
+    "WARD",
+    "PATIENT",
+    "MEDICINE",
+    "CONSULTATION",
+    "DIAGNOSIS",
+    "MEDICATION_RETRIEVAL",
+    "PERSONNEL"
+  ],
+  "attribute": {
+    "DOCTOR": [
+      "doctor id",
+      "gender",
+      "title",
+      "year of service",
+      "phone number",
+      "department id"
+    ],
+    "DEPARTMENT": [
+      "department id",
+      "person charge id",
+      "total number personnel",
+      "location",
+      "phone number"
+    ],
+    "WARD": [
+      "ward id",
+      "number of beds",
+      "ward level",
+      "location"
+    ],
+    "PATIENT": [
+      "patient id",
+      "gender",
+      "age",
+      "contact information",
+      "consultation date",
+      "diagnosis description",
+      "ward id"
+    ],
+    "MEDICINE": [
+      "medicine id",
+      "inventory quantity",
+      "price",
+      "sale price",
+      "remark"
+    ],
+    "CONSULTATION": [
+      "consultation id",
+      "patient id",
+      "doctor id",
+      "consultation time",
+      "diagnosis description",
+      "treatment result",
+      "remark"
+    ],
+    "DIAGNOSIS": [
+      "diagnosis id",
+      "patient id",
+      "description"
+    ],
+    "MEDICATION_RETRIEVAL": [
+      "retrieval id",
+      "patient id",
+      "medicine id",
+      "retrieval time",
+      "quantity"
+    ],
+    "PERSONNEL": [
+      "personnel id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.4548,
+  "ilp_runtime": 0.032
+}

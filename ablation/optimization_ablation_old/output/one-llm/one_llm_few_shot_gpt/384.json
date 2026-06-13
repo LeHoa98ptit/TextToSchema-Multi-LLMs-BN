@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "TASK",
+    "TASK_PARAMETER",
+    "ORGANISM",
+    "TASK_ORGANISM_INCLUDE",
+    "TASK_ORGANISM_EXCLUDE"
+  ],
+  "attribute": {
+    "TASK": [
+      "task_id",
+      "title",
+      "creation_date",
+      "status",
+      "end_date",
+      "status_reason",
+      "query_statement",
+      "executable_file",
+      "algorithm_option",
+      "owner_id"
+    ],
+    "TASK_PARAMETER": [
+      "parameter_id",
+      "task_id",
+      "name",
+      "value"
+    ],
+    "ORGANISM": [
+      "organism_id",
+      "name"
+    ],
+    "TASK_ORGANISM_INCLUDE": [
+      "task_id",
+      "organism_id"
+    ],
+    "TASK_ORGANISM_EXCLUDE": [
+      "task_id",
+      "organism_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_PARAMETER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_ORGANISM_INCLUDE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANISM",
+      "entity_2": "TASK_ORGANISM_INCLUDE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_ORGANISM_EXCLUDE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANISM",
+      "entity_2": "TASK_ORGANISM_EXCLUDE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.707,
+  "ilp_runtime": 0.027
+}

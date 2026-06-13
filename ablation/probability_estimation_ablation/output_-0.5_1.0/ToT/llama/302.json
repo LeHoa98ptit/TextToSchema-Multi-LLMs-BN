@@ -1,0 +1,122 @@
+{
+  "filename": "302.txt",
+  "entity": {
+    "DOCTOR": 0.532205,
+    "PATIENT": 0.622459,
+    "MEDICINE": 0.586909,
+    "MEDICATION_RECORD": 0.512622,
+    "CONSULTATION_RECORD": 0.561832,
+    "PRESCRIPTION": 0.540784,
+    "MEDICAL_HISTORY": 0.4976,
+    "EMERGENCY_CONTACT": 0.455642
+  },
+  "attribute": {
+    "DOCTOR": {
+      "gender": 0.536521,
+      "telephone_number": 0.556328,
+      "date_birth": 0.547673,
+      "age": 0.536181,
+      "department": 0.545442,
+      "affiliation": 0.534421,
+      "level": 0.546972,
+      "record_id": 0.557937
+    },
+    "PATIENT": {
+      "gender": 0.540251,
+      "date_birth": 0.546135,
+      "age": 0.534523,
+      "phone": 0.542715,
+      "address": 0.550813
+    },
+    "MEDICINE": {
+      "unit_price": 0.545154,
+      "inventory": 0.562986,
+      "side_effects": 0.526359,
+      "interactions": 0.53644
+    },
+    "MEDICATION_RECORD": {
+      "dosage": 0.559249,
+      "frequency": 0.558766,
+      "precaution": 0.552827,
+      "start_date": 0.555323,
+      "end_date": 0.549227
+    },
+    "CONSULTATION_RECORD": {
+      "consultation_time": 0.549255,
+      "diagnosis_result": 0.553556,
+      "treatment_recommendation": 0.561731,
+      "follow_up": 0.550776
+    },
+    "PRESCRIPTION": {
+      "prescription_time": 0.537445,
+      "prescribed_medicine": 0.549513,
+      "dosage_instructions": 0.547605
+    },
+    "MEDICAL_HISTORY": {
+      "medical_conditions": 0.544691,
+      "allergies": 0.523985,
+      "previous_treatments": 0.526314
+    },
+    "EMERGENCY_CONTACT": {
+      "emergency_contact_number": 0.538618,
+      "emergency_contact_name": 0.533279,
+      "emergency_contact_relationship": 0.537652
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION_RECORD",
+      "cardinality": "1:N",
+      "description": "A doctor can have multiple consultation records",
+      "probability": 0.981155
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple medication records",
+      "probability": 0.997148
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RECORD",
+      "cardinality": "1:N",
+      "description": "A medicine can be prescribed in multiple medication records",
+      "probability": 0.874183
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A doctor can prescribe multiple medicines",
+      "probability": 0.005321
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "PRESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A patient can have multiple prescriptions",
+      "probability": 0.120197
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICAL_HISTORY",
+      "cardinality": "1:1",
+      "description": "A patient has one medical history",
+      "probability": 0.857573
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "EMERGENCY_CONTACT",
+      "cardinality": "1:1",
+      "description": "A patient has one emergency contact",
+      "probability": 0.331173
+    }
+  ],
+  "processing_time": 26.04,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for medical history and emergency contact information to improve data normalization and reduce redundancy."
+  }
+}

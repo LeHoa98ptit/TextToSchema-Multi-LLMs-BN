@@ -1,0 +1,113 @@
+{
+  "filename": "409.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "SHOPPING_CART": 0.573782,
+    "PAYMENT": 0.499225,
+    "ASSOC_PRODUCT_SHOPPING_CART": 0.252091,
+    "ASSOC_PRODUCT_ORDER": 0.002094
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.50532,
+      "password": 0.528232,
+      "email": 0.528545,
+      "registration_date": 0.51823
+    },
+    "PRODUCT": {
+      "price": 0.531681,
+      "inventory_quantity": 0.558085,
+      "description": 0.537946,
+      "product_id": 0.531498
+    },
+    "ORDER": {
+      "creation_time": 0.521266,
+      "order_status": 0.523687,
+      "total_cost": 0.531077,
+      "payment_method": 0.530812,
+      "order_tracking_info": 0.535378
+    },
+    "SHOPPING_CART": {
+      "product_quantity": 0.559025,
+      "cart_id": 0.537812,
+      "user_id": 0.543019
+    },
+    "PAYMENT": {
+      "payment_date": 0.520715,
+      "payment_amount": 0.529901,
+      "payment_method": 0.52779
+    },
+    "ASSOC_PRODUCT_SHOPPING_CART": {
+      "assoc_product_shopping_cart_id": 0.252091,
+      "product_id": 0.252091,
+      "shopping_cart_id": 0.252091
+    },
+    "ASSOC_PRODUCT_ORDER": {
+      "assoc_product_order_id": 0.002094,
+      "product_id": 0.002094,
+      "order_id": 0.002094
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "description": "A user has one shopping cart",
+      "probability": 0.997493
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user can have multiple orders",
+      "probability": 0.999083
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_SHOPPING_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252091
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_PRODUCT_SHOPPING_CART",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_PRODUCT_SHOPPING_CART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252091
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "An order has one payment",
+      "probability": 0.91024
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_ORDER",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002094
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_PRODUCT_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_PRODUCT_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002094
+    }
+  ],
+  "processing_time": 14.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'unit_price' from PRODUCT entity, added 'order_tracking_info' attribute to ORDER entity to provide more detailed feedback for orders."
+  }
+}

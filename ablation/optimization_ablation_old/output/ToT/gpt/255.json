@@ -1,0 +1,197 @@
+{
+  "entity": [
+    "PRODUCTION_REPORT",
+    "EQUIPMENT",
+    "ALARM_NOTIFICATION",
+    "INSPECTION_PLAN",
+    "INSPECTION_RECORD",
+    "FAILURE_REPORT",
+    "REPAIR_WORK_ORDER",
+    "REPAIR_DETAIL",
+    "QUALITY_RECORD",
+    "DAILY_QUALITY_REPORT",
+    "USER",
+    "ROLE",
+    "ANNOUNCEMENT",
+    "JOB_POSITION",
+    "JOB_APPLICATION",
+    "USER_OPERATION_HISTORY"
+  ],
+  "attribute": {
+    "PRODUCTION_REPORT": [
+      "report_id",
+      "report_type",
+      "report_date",
+      "production_datum",
+      "production_indicator",
+      "completion_status",
+      "metal_recovery_rate",
+      "grade",
+      "equipment_id"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "model",
+      "main_category",
+      "sub_category",
+      "location",
+      "operation_status",
+      "last_maintenance_date"
+    ],
+    "ALARM_NOTIFICATION": [
+      "alarm_id",
+      "equipment_id",
+      "alarm_type",
+      "alarm_timestamp",
+      "resolved_status"
+    ],
+    "INSPECTION_PLAN": [
+      "plan_id",
+      "equipment_id",
+      "scheduled_date",
+      "inspector_id",
+      "description"
+    ],
+    "INSPECTION_RECORD": [
+      "record_id",
+      "plan_id",
+      "performed_date",
+      "findings",
+      "status"
+    ],
+    "FAILURE_REPORT": [
+      "failure_id",
+      "equipment_id",
+      "reporter_id",
+      "failure_type",
+      "failure_time",
+      "processing_status",
+      "description"
+    ],
+    "REPAIR_WORK_ORDER": [
+      "work_order_id",
+      "failure_id",
+      "repair_personnel_id",
+      "start_time",
+      "end_time",
+      "status",
+      "details"
+    ],
+    "REPAIR_DETAIL": [
+      "detail_id",
+      "work_order_id",
+      "step_description",
+      "timestamp"
+    ],
+    "QUALITY_RECORD": [
+      "quality_record_id",
+      "equipment_id",
+      "metal_recovery_rate",
+      "grade",
+      "report_date",
+      "source"
+    ],
+    "DAILY_QUALITY_REPORT": [
+      "daily_report_id",
+      "report_date",
+      "grade",
+      "recovery_rate"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "role_id",
+      "permission",
+      "status",
+      "email",
+      "created_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "content",
+      "release_time",
+      "status",
+      "created_by",
+      "publish_time",
+      "delete_time"
+    ],
+    "JOB_POSITION": [
+      "position_id",
+      "title",
+      "description",
+      "responsibility",
+      "requirement"
+    ],
+    "JOB_APPLICATION": [
+      "application_id",
+      "user_id",
+      "position_id",
+      "application_date",
+      "match_rate",
+      "status"
+    ],
+    "USER_OPERATION_HISTORY": [
+      "history_id",
+      "user_id",
+      "operation_type",
+      "operation_timestamp",
+      "details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "QUALITY_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "INSPECTION_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSPECTION_PLAN",
+      "entity_2": "INSPECTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAILURE_REPORT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_OPERATION_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "JOB_POSITION",
+      "entity_2": "JOB_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 89.8724,
+  "ilp_runtime": 0.107
+}

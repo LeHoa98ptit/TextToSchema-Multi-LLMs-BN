@@ -1,0 +1,132 @@
+{
+  "entity": [
+    "RealEstateAgent",
+    "Owner",
+    "Renter",
+    "Guarantor",
+    "Property",
+    "Agreement",
+    "Payments",
+    "Fines",
+    "AgentReferrals"
+  ],
+  "attribut": {
+    "RealEstateAgent": [
+      "id_realEstate",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Owner": [
+      "id_owner",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Renter": [
+      "id_renter",
+      "name",
+      "phoneNumber",
+      "email"
+    ],
+    "Guarantor": [
+      "id_guarantor"
+    ],
+    "Property": [
+      "id_property",
+      "address",
+      "rentValue",
+      "id_owner",
+      "id_realEstate",
+      "lastMaintenanceDate"
+    ],
+    "Agreement": [
+      "id_agreement",
+      "id_property",
+      "id_renter",
+      "rentInitialDate",
+      "rentFinalDate",
+      "activeContract",
+      "monthlyRent",
+      "depositAmount",
+      "clauses",
+      "id_guarantor",
+      "depositRefunded"
+    ],
+    "Payments": [
+      "id_payment",
+      "id_agreement",
+      "monthReference",
+      "yearReference",
+      "amountPaid",
+      "paymentAccount",
+      "receivingAccount",
+      "paymentDate"
+    ],
+    "Fines": [
+      "id_fine",
+      "id_agreement",
+      "fineDate",
+      "fineAmount",
+      "reason",
+      "evidence",
+      "isFirstInfraction"
+    ],
+    "AgentReferrals": [
+      "id_referral",
+      "id_agent_referred",
+      "id_agent_referrer",
+      "referralDate",
+      "commissionEarned"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Owner",
+      "entity_2": "Property",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "RealEstateAgent",
+      "entity_2": "Property",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Property",
+      "entity_2": "Agreement",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Renter",
+      "entity_2": "Agreement",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Agreement",
+      "entity_2": "Payments",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Agreement",
+      "entity_2": "Guarantor",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Agreement",
+      "entity_2": "Fines",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "RealEstateAgent",
+      "entity_2": "AgentReferrals",
+      "cardinality": "1:N",
+      "role": "referred"
+    },
+    {
+      "entity_1": "RealEstateAgent",
+      "entity_2": "AgentReferrals",
+      "cardinality": "1:N",
+      "role": "referrer"
+    }
+  ]
+}

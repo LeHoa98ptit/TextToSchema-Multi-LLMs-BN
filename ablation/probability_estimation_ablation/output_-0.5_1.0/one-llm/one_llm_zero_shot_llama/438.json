@@ -1,0 +1,101 @@
+{
+  "filename": "438.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "ORDER": 0.622459,
+    "SHOPPING_CART": 0.595922,
+    "ORDER_ITEM": 0.523807,
+    "ASSOC_SHOPPING_CART_PRODUCT": 0.128879,
+    "ASSOC_ORDER_ITEM_PRODUCT": 0.850549
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.505828,
+      "password": 0.533399,
+      "contact_information": 0.524715,
+      "registration_time": 0.520674
+    },
+    "PRODUCT": {
+      "product_id": 0.527643,
+      "price": 0.522942,
+      "stock_quantity": 0.537525,
+      "description": 0.529346
+    },
+    "ORDER": {
+      "order_id": 0.520659,
+      "total_price": 0.532155,
+      "order_time": 0.52496,
+      "order_status": 0.523938
+    },
+    "SHOPPING_CART": {
+      "cart_id": 0.542422
+    },
+    "ORDER_ITEM": {
+      "quantity": 0.549527
+    },
+    "ASSOC_SHOPPING_CART_PRODUCT": {
+      "assoc_shopping_cart_product_id": 0.128879,
+      "shopping_cart_id": 0.128879,
+      "product_id": 0.128879
+    },
+    "ASSOC_ORDER_ITEM_PRODUCT": {
+      "assoc_order_item_product_id": 0.850549,
+      "order_item_id": 0.850549,
+      "product_id": 0.850549
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.9984
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "cardinality": "1:1",
+      "probability": 0.994705
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One SHOPPING_CART can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.128879
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SHOPPING_CART_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SHOPPING_CART_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.128879
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.999319
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "ASSOC_ORDER_ITEM_PRODUCT",
+      "description": "One ORDER_ITEM can be associated with many ASSOC_ORDER_ITEM_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.850549
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_ITEM_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_ITEM_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.850549
+    }
+  ],
+  "processing_time": 13.79
+}

@@ -1,0 +1,131 @@
+{
+  "entity": [
+    "USER",
+    "POST",
+    "COMMENT",
+    "CATEGORY",
+    "NOTIFICATION",
+    "POST_LIKE",
+    "POST_FAVORITE",
+    "COMMENT_LIKE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id (PK)",
+      "username",
+      "email",
+      "password",
+      "avatar_link",
+      "registration_date",
+      "status"
+    ],
+    "POST": [
+      "post_id (PK)",
+      "title",
+      "content",
+      "post_time",
+      "status",
+      "reply_count",
+      "like_count",
+      "favorite_count",
+      "is_pinned",
+      "author_id (FK → USER.user_id)",
+      "category_id (FK → CATEGORY.category_id)"
+    ],
+    "COMMENT": [
+      "comment_id (PK)",
+      "content",
+      "comment_time",
+      "like_count",
+      "reply_count",
+      "is_deleted",
+      "author_id (FK → USER.user_id)",
+      "post_id (FK → POST.post_id)",
+      "parent_comment_id (FK → COMMENT.comment_id, nullable)"
+    ],
+    "CATEGORY": [
+      "category_id (PK)",
+      "name",
+      "description",
+      "created_time"
+    ],
+    "NOTIFICATION": [
+      "notification_id (PK)",
+      "message_number",
+      "content",
+      "created_time",
+      "read_status",
+      "user_id (FK → USER.user_id)"
+    ],
+    "POST_LIKE": [
+      "post_like_id (PK)",
+      "user_id (FK → USER.user_id)",
+      "post_id (FK → POST.post_id)",
+      "liked_at"
+    ],
+    "POST_FAVORITE": [
+      "post_favorite_id (PK)",
+      "user_id (FK → USER.user_id)",
+      "post_id (FK → POST.post_id)",
+      "favorited_at"
+    ],
+    "COMMENT_LIKE": [
+      "comment_like_id (PK)",
+      "user_id (FK → USER.user_id)",
+      "comment_id (FK → COMMENT.comment_id)",
+      "liked_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "POST_LIKE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST_FAVORITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "POST_FAVORITE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT_LIKE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 63.4753,
+  "ilp_runtime": 0.018
+}

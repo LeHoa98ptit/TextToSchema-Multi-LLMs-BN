@@ -1,0 +1,244 @@
+{
+  "filename": "369.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.49525,
+    "PERMISSION": 0.622459,
+    "CONTENT": 0.622459,
+    "CONTENT_VERSION": 0.493025,
+    "WORKFLOW": 0.622459,
+    "STATE": 0.622459,
+    "STATE_HISTORY": 0.545524,
+    "LOG": 0.481958,
+    "COMMENT": 0.481309,
+    "ASSOC_USER_ROLE": 0.993083,
+    "ASSOC_ROLE_PERMISSION": 0.242395,
+    "ASSOC_WORKFLOW_STATE": 0.009382
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.505706,
+      "username": 0.497492,
+      "email": 0.513527,
+      "full_name": 0.510205,
+      "created_at": 0.500672,
+      "is_active": 0.510412
+    },
+    "ROLE": {
+      "role_id": 0.513364,
+      "name": 0.51921,
+      "description": 0.537867
+    },
+    "PERMISSION": {
+      "permission_id": 0.511564,
+      "name": 0.522702,
+      "description": 0.533733
+    },
+    "CONTENT": {
+      "content_id": 0.524954,
+      "title": 0.528166,
+      "summary": 0.541078,
+      "body": 0.537649,
+      "content_type": 0.533899,
+      "created_at": 0.515505,
+      "created_by": 0.52052,
+      "updated_at": 0.517794,
+      "updated_by": 0.521123,
+      "workflow_id": 0.531068,
+      "current_state_id": 0.519124,
+      "is_published": 0.533194
+    },
+    "CONTENT_VERSION": {
+      "version_id": 0.523826,
+      "content_id": 0.527962,
+      "version_number": 0.524326,
+      "body_snapshot": 0.516921,
+      "change_summary": 0.531018,
+      "created_at": 0.520285,
+      "created_by": 0.524891
+    },
+    "WORKFLOW": {
+      "workflow_id": 0.515376,
+      "name": 0.537418,
+      "description": 0.549731,
+      "is_active": 0.521571
+    },
+    "STATE": {
+      "state_id": 0.50465,
+      "name": 0.502183,
+      "description": 0.521077,
+      "is_terminal": 0.517989
+    },
+    "STATE_HISTORY": {
+      "history_id": 0.517658,
+      "content_id": 0.527653,
+      "state_id": 0.512937,
+      "changed_at": 0.513733,
+      "changed_by": 0.51872,
+      "comment": 0.509717
+    },
+    "LOG": {
+      "log_id": 0.507158,
+      "content_id": 0.523213,
+      "operation_type": 0.523752,
+      "operation_time": 0.519128,
+      "operator_user_id": 0.513515,
+      "details": 0.534468
+    },
+    "COMMENT": {
+      "comment_id": 0.496241,
+      "content_id": 0.512843,
+      "user_id": 0.503081,
+      "text": 0.515793,
+      "created_at": 0.497311,
+      "parent_comment_id": 0.495941
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.993083,
+      "user_id": 0.993083,
+      "role_id": 0.993083
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.242395,
+      "role_id": 0.242395,
+      "permission_id": 0.242395
+    },
+    "ASSOC_WORKFLOW_STATE": {
+      "assoc_workflow_state_id": 0.009382,
+      "workflow_id": 0.009382,
+      "state_id": 0.009382
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTENT",
+      "cardinality": "1:N",
+      "description": "A user creates many content items",
+      "probability": 0.667996
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTENT_VERSION",
+      "cardinality": "1:N",
+      "description": "A user creates many content versions",
+      "probability": 0.993099
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "A user performs many logged operations",
+      "probability": 0.998502
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user writes many comments",
+      "probability": 0.963101
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993083
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993083
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.242395
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.242395
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "WORKFLOW",
+      "cardinality": "N:1",
+      "description": "Each content follows a single workflow definition",
+      "probability": 0.011636
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "STATE",
+      "cardinality": "N:1",
+      "description": "Current state of a content item",
+      "probability": 9.4e-05
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "CONTENT_VERSION",
+      "cardinality": "1:N",
+      "description": "A content item can have multiple versions",
+      "probability": 0.999861
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "STATE_HISTORY",
+      "cardinality": "1:N",
+      "description": "State transition history for a content item",
+      "probability": 0.002711
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "LOG",
+      "cardinality": "1:N",
+      "description": "Operations performed on a content item are logged",
+      "probability": 4.2e-05
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Comments are attached to a content item",
+      "probability": 5e-06
+    },
+    {
+      "entity_1": "WORKFLOW",
+      "entity_2": "ASSOC_WORKFLOW_STATE",
+      "description": "One WORKFLOW can be associated with many ASSOC_WORKFLOW_STATE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.009382
+    },
+    {
+      "entity_1": "STATE",
+      "entity_2": "ASSOC_WORKFLOW_STATE",
+      "description": "One STATE can be associated with many ASSOC_WORKFLOW_STATE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.009382
+    },
+    {
+      "entity_1": "STATE",
+      "entity_2": "STATE_HISTORY",
+      "cardinality": "1:N",
+      "description": "Each state history entry references a state",
+      "probability": 0.997992
+    }
+  ],
+  "processing_time": 29.62,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing entities (ROLE, CONTENT_VERSION, STATE_HISTORY) and enriched attributes for auditability (updated_at, updated_by, change_summary, is_active flags, content_type, etc.). Introduced many‑to‑many relationships for role‑permission and user‑role management, and for workflow‑state definitions. Added STATE_HISTORY to capture state transitions with timestamps and comments. Expanded LOG to store operation details. Included COMMENT threading support. Strengthened referential integrity by explicitly linking current_state_id and workflow_id in CONTENT. Overall model now fully supports versioning, detailed audit trails, permission hierarchies, and workflow state management."
+  }
+}

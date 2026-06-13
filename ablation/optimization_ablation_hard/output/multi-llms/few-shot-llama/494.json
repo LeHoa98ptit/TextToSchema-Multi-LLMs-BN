@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "USER",
+    "ARTICLE",
+    "CATEGORY",
+    "COMMENT",
+    "ASSOC_ARTICLE_CATEGORY"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password",
+      "nickname",
+      "gender",
+      "creation time",
+      "biography"
+    ],
+    "ARTICLE": [
+      "article id",
+      "title",
+      "author",
+      "cover image link",
+      "summary",
+      "comment permission",
+      "status",
+      "content",
+      "number of likes",
+      "number of dislikes",
+      "number of reads",
+      "creation time"
+    ],
+    "CATEGORY": [
+      "id",
+      "parent category id",
+      "level",
+      "name",
+      "description",
+      "icon link"
+    ],
+    "COMMENT": [
+      "comment id",
+      "replied comment id",
+      "article id",
+      "user id",
+      "content",
+      "creation time"
+    ],
+    "ASSOC_ARTICLE_CATEGORY": [
+      "assoc_article_category_id",
+      "article_id",
+      "category_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ASSOC_ARTICLE_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_ARTICLE_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 80.2827,
+  "ilp_runtime": 0.058
+}

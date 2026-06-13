@@ -1,0 +1,161 @@
+{
+  "filename": "447.txt",
+  "entity": {
+    "USER": 0.817574,
+    "UNIT": 0.728317,
+    "ROLE": 0.727088,
+    "FINANCIAL_DOCUMENT": 0.75606,
+    "ADMINISTRATOR": 0.742671,
+    "NOTIFICATION": 0.817574,
+    "SYSTEM_CONFIGURATION": 0.727366,
+    "DATABASE": 0.817574,
+    "DIRECTORY": 0.817574,
+    "DOCUMENT_CATEGORY": 0.732883,
+    "FAQ": 0.717035
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.748388,
+      "username": 0.738435,
+      "password": 0.746835,
+      "phone number": 0.738734,
+      "unit id": 0.749033,
+      "role id": 0.756684
+    },
+    "UNIT": {
+      "unit id": 0.742081,
+      "unit name": 0.740195,
+      "description": 0.748127
+    },
+    "ROLE": {
+      "role id": 0.753285,
+      "role name": 0.752649,
+      "description": 0.76022
+    },
+    "FINANCIAL_DOCUMENT": {
+      "document id": 0.763363,
+      "title": 0.761623,
+      "document number": 0.76225,
+      "issue unit id": 0.760995,
+      "issue date": 0.757385,
+      "category id": 0.763241,
+      "document level": 0.767127,
+      "validity status": 0.764214,
+      "remark": 0.760935,
+      "content": 0.767947,
+      "attachment path": 0.762363,
+      "last operation time": 0.764348,
+      "last operation type": 0.768462
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.762574,
+      "username": 0.76294,
+      "password": 0.759044
+    },
+    "NOTIFICATION": {
+      "notification id": 0.746148,
+      "publisher user id": 0.754458,
+      "content": 0.758192,
+      "issue date": 0.746125,
+      "status": 0.752177
+    },
+    "SYSTEM_CONFIGURATION": {
+      "config id": 0.753554,
+      "config key": 0.754727,
+      "config value": 0.751503,
+      "datum type": 0.75636,
+      "file upload directory": 0.766915,
+      "admin id": 0.762775
+    },
+    "DATABASE": {
+      "database id": 0.752747,
+      "name": 0.755439,
+      "directory id": 0.755743,
+      "datum type": 0.757678,
+      "file upload directory": 0.766236
+    },
+    "DIRECTORY": {
+      "directory id": 0.748083,
+      "path": 0.745912,
+      "description": 0.76652
+    },
+    "DOCUMENT_CATEGORY": {
+      "category id": 0.751588,
+      "category name": 0.752941,
+      "description": 0.760679
+    },
+    "FAQ": {
+      "faq id": 0.753188,
+      "question": 0.750296,
+      "answer": 0.745295,
+      "category id": 0.749184
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "UNIT",
+      "entity_2": "USER",
+      "description": "A unit can have many registered users; each user belongs to one unit",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99519
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "A role can be assigned to many users; each user has one role",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997536
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "description": "A unit issues financial documents; each document is issued by one unit",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.877571
+    },
+    {
+      "entity_1": "DOCUMENT_CATEGORY",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "description": "A document category classifies many financial documents; each document belongs to one category",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.818326
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "FINANCIAL_DOCUMENT",
+      "description": "An administrator performs the last operation on a financial document; each document records the last admin who acted on it",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.072337
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "description": "A user publishes notifications; each notification has one publishing user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998527
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "SYSTEM_CONFIGURATION",
+      "description": "An administrator creates/modifies system configuration records; each configuration record is managed by one administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.022337
+    },
+    {
+      "entity_1": "DIRECTORY",
+      "entity_2": "DATABASE",
+      "description": "A directory stores many databases; each database is located in one directory",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997672
+    }
+  ],
+  "processing_time": 1017.73
+}

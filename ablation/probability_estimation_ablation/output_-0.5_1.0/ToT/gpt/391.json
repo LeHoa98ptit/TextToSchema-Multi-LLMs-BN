@@ -1,0 +1,99 @@
+{
+  "filename": "391.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TERM": 0.622459,
+    "POST": 0.622459,
+    "COMMENT": 0.622459,
+    "ASSOC_STUDENT_TERM": 0.33575
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.560052,
+      "name": 0.562824,
+      "gender": 0.5547,
+      "major": 0.549001,
+      "password": 0.561129,
+      "enrollment_time": 0.553649
+    },
+    "TERM": {
+      "term_id": 0.525646,
+      "name": 0.531672,
+      "start_date": 0.525594,
+      "end_date": 0.526655
+    },
+    "POST": {
+      "post_id": 0.513081,
+      "topic": 0.536791,
+      "content": 0.535564,
+      "publication_date": 0.520541,
+      "author_id": 0.51093,
+      "term_id": 0.53229,
+      "is_deleted": 0.520718
+    },
+    "COMMENT": {
+      "comment_id": 0.522727,
+      "content": 0.543704,
+      "comment_time": 0.533026,
+      "commenter_id": 0.5236,
+      "post_id": 0.52283,
+      "is_deleted": 0.523746
+    },
+    "ASSOC_STUDENT_TERM": {
+      "assoc_student_term_id": 0.33575,
+      "student_id": 0.33575,
+      "term_id": 0.33575
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_TERM",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_TERM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.33575
+    },
+    {
+      "entity_1": "TERM",
+      "entity_2": "ASSOC_STUDENT_TERM",
+      "description": "One TERM can be associated with many ASSOC_STUDENT_TERM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.33575
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A student (author) can create many posts",
+      "probability": 0.004798
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "TERM",
+      "cardinality": "N:1",
+      "description": "Posts are published within a specific term",
+      "probability": 0.406398
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments",
+      "probability": 0.01772
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A student can write many comments",
+      "probability": 0.529344
+    }
+  ],
+  "processing_time": 11.3,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added explicit foreign‑key attributes author_id (POST), term_id (POST), commenter_id (COMMENT) and post_id (COMMENT) to make relationships concrete. Introduced optional term scheduling attributes start_date and end_date (nullable) for future use. Added soft‑delete flag is_deleted to POST and COMMENT to support safe modification/deletion while preserving referential integrity. Clarified primary key intent through attribute naming and kept the model minimal and efficient."
+  }
+}

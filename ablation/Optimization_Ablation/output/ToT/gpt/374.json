@@ -1,0 +1,130 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "DEPARTMENT",
+    "WORK_UNIT",
+    "RESOURCE",
+    "TRANSACTION",
+    "DOCUMENT",
+    "LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "registration_date",
+      "status",
+      "role_id",
+      "dept_id"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "DEPARTMENT": [
+      "dept_id",
+      "dept_name",
+      "responsibility_desc"
+    ],
+    "WORK_UNIT": [
+      "unit_id",
+      "unit_name",
+      "responsibility_desc",
+      "dept_id"
+    ],
+    "RESOURCE": [
+      "resource_id",
+      "resource_code",
+      "description",
+      "storage_location",
+      "budget_year",
+      "acquisition_value"
+    ],
+    "TRANSACTION": [
+      "trans_id",
+      "trans_date",
+      "trans_type",
+      "amount",
+      "resource_id",
+      "receiver_user_id",
+      "unit_id",
+      "donation_flag",
+      "compliance_status",
+      "doc_id"
+    ],
+    "DOCUMENT": [
+      "doc_id",
+      "doc_name",
+      "content",
+      "created_date",
+      "author_user_id",
+      "approval_status",
+      "approver_user_id",
+      "approval_date"
+    ],
+    "LOG": [
+      "log_id",
+      "operation_time",
+      "operation_type",
+      "user_id",
+      "trans_id",
+      "details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DOCUMENT",
+      "cardinality": "0:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.5394,
+  "ilp_runtime": 0.058
+}

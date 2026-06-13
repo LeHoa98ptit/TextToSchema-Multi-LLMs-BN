@@ -1,0 +1,98 @@
+{
+  "filename": "395.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "DEPARTMENT": 0.498625,
+    "MEAL_CARD": 0.598159,
+    "LOCATION": 0.622459,
+    "CONSUMPTION_RECORD": 0.599072,
+    "RECHARGE_RECORD": 0.511548
+  },
+  "attribute": {
+    "STUDENT": {
+      "student id": 0.551151,
+      "department id": 0.550131,
+      "phone number": 0.536631,
+      "email address": 0.535103
+    },
+    "DEPARTMENT": {
+      "department id": 0.52158,
+      "department name": 0.522925
+    },
+    "MEAL_CARD": {
+      "card id": 0.54551,
+      "student id": 0.565896,
+      "balance": 0.56255
+    },
+    "LOCATION": {
+      "location id": 0.503727,
+      "location name": 0.507076,
+      "location type": 0.516661
+    },
+    "CONSUMPTION_RECORD": {
+      "consumption id": 0.545236,
+      "card id": 0.541818,
+      "location id": 0.532943,
+      "transaction time": 0.540723,
+      "amount": 0.551508
+    },
+    "RECHARGE_RECORD": {
+      "recharge id": 0.510888,
+      "card id": 0.516437,
+      "recharge time": 0.51594,
+      "amount": 0.522357,
+      "location id": 0.506471
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "STUDENT",
+      "description": "A department has many students; each student belongs to one department",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999269
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "MEAL_CARD",
+      "description": "Each student is assigned exactly one meal card and each card belongs to one student",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.476569
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "CONSUMPTION_RECORD",
+      "description": "A meal card can generate many consumption records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.946958
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "CONSUMPTION_RECORD",
+      "description": "A location can be associated with many consumption records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993293
+    },
+    {
+      "entity_1": "MEAL_CARD",
+      "entity_2": "RECHARGE_RECORD",
+      "description": "A meal card can have many recharge records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 4.1e-05
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "RECHARGE_RECORD",
+      "description": "A location can be the site of many recharge records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.967486
+    }
+  ],
+  "processing_time": 20.5
+}

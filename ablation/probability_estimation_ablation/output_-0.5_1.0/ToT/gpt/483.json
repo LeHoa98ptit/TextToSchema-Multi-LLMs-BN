@@ -1,0 +1,104 @@
+{
+  "filename": "483.txt",
+  "entity": {
+    "PAYMENT_PLATFORM": 0.529665,
+    "USER": 0.622459,
+    "INTERMEDIARY": 0.622459,
+    "OPERATION": 0.622459,
+    "PAYMENT": 0.622459,
+    "OPERATION_INTERMEDIARY": 0.534644
+  },
+  "attribute": {
+    "PAYMENT_PLATFORM": {
+      "platform_id": 0.556829,
+      "platform_name": 0.556539,
+      "platform_address": 0.551116,
+      "created_at": 0.540195,
+      "updated_at": 0.533324
+    },
+    "USER": {
+      "user_id": 0.513932,
+      "user_name": 0.511908,
+      "contact_info": 0.522781,
+      "registration_method": 0.522535,
+      "created_at": 0.49877,
+      "updated_at": 0.498258
+    },
+    "INTERMEDIARY": {
+      "intermediary_id": 0.539831,
+      "intermediary_name": 0.543358,
+      "status": 0.547804,
+      "created_at": 0.515123,
+      "updated_at": 0.506005
+    },
+    "OPERATION": {
+      "operation_id": 0.526214,
+      "operation_type": 0.525826,
+      "operation_time": 0.527382,
+      "platform_id": 0.536866,
+      "created_at": 0.500938,
+      "updated_at": 0.494741
+    },
+    "PAYMENT": {
+      "payment_id": 0.545396,
+      "user_id": 0.546428,
+      "operation_id": 0.555193,
+      "payment_status": 0.54922,
+      "payment_time": 0.542823,
+      "amount": 0.547959,
+      "currency": 0.538902,
+      "created_at": 0.528122,
+      "updated_at": 0.523094
+    },
+    "OPERATION_INTERMEDIARY": {
+      "operation_id": 0.544576,
+      "intermediary_id": 0.549783,
+      "role": 0.556791,
+      "participation_time": 0.552757,
+      "created_at": 0.523949,
+      "updated_at": 0.510643
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PAYMENT_PLATFORM",
+      "entity_2": "OPERATION",
+      "cardinality": "1:N",
+      "description": "A payment platform can host many operations",
+      "probability": 0.209452
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "A user can have many payment records",
+      "probability": 0.999799
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "description": "An operation can be linked to many payment records",
+      "probability": 0.895826
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "OPERATION_INTERMEDIARY",
+      "cardinality": "1:N",
+      "description": "An operation can involve multiple intermediary participation records",
+      "probability": 0.997182
+    },
+    {
+      "entity_1": "INTERMEDIARY",
+      "entity_2": "OPERATION_INTERMEDIARY",
+      "cardinality": "1:N",
+      "description": "An intermediary can participate in multiple operations",
+      "probability": 0.999909
+    }
+  ],
+  "processing_time": 10.15,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added audit fields (created_at, updated_at) to all entities for traceability. Included financial attributes (amount, currency) in PAYMENT. Replaced direct N:M relationship between OPERATION and INTERMEDIARY with an explicit associative entity OPERATION_INTERMEDIARY to capture role and participation_time. Preserved existing strong relationships and clarified cardinalities."
+  }
+}

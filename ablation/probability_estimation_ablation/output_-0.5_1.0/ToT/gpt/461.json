@@ -1,0 +1,174 @@
+{
+  "filename": "461.txt",
+  "entity": {
+    "PRODUCT": 0.622459,
+    "CATEGORY": 0.473625,
+    "STORAGE_LOCATION": 0.413867,
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.523807,
+    "PERSONNEL": 0.622459,
+    "INVENTORY_HISTORY": 0.438833,
+    "ORDER_ASSIGNMENT": 0.512697,
+    "ASSOC_ORDER_PERSONNEL": 0.005767
+  },
+  "attribute": {
+    "PRODUCT": {
+      "product_id": 0.512449,
+      "product_name": 0.51893,
+      "unit_price": 0.521899,
+      "stock_quantity": 0.535081,
+      "unit_measurement": 0.531458,
+      "category_id": 0.51408,
+      "storage_location_id": 0.518055,
+      "description": 0.530661,
+      "last_updated": 0.514754
+    },
+    "CATEGORY": {
+      "category_id": 0.50355,
+      "category_name": 0.508932,
+      "description": 0.531809
+    },
+    "STORAGE_LOCATION": {
+      "location_id": 0.509623,
+      "aisle": 0.534964,
+      "rack": 0.524342,
+      "bin": 0.524394,
+      "description": 0.530693
+    },
+    "CUSTOMER": {
+      "customer_id": 0.52016,
+      "customer_name": 0.528075,
+      "gender": 0.543691,
+      "age": 0.526848,
+      "phone": 0.529322,
+      "address": 0.52527
+    },
+    "ORDER": {
+      "order_id": 0.516561,
+      "customer_id": 0.525659,
+      "order_time": 0.517953,
+      "delivery_address": 0.532749,
+      "order_status": 0.527674,
+      "estimated_delivery_time": 0.52645,
+      "total_price": 0.52493,
+      "last_updated": 0.512456
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.517093,
+      "order_id": 0.518702,
+      "product_id": 0.521082,
+      "quantity": 0.547477,
+      "unit_price": 0.532388,
+      "line_total": 0.532319,
+      "last_updated": 0.515324
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.541603,
+      "personnel_name": 0.547467,
+      "phone": 0.542071,
+      "gender": 0.544955,
+      "position": 0.551062,
+      "employment_date": 0.531406
+    },
+    "INVENTORY_HISTORY": {
+      "inventory_history_id": 0.530088,
+      "product_id": 0.529876,
+      "change_quantity": 0.535036,
+      "change_type": 0.528465,
+      "change_timestamp": 0.518859,
+      "reason": 0.535923
+    },
+    "ORDER_ASSIGNMENT": {
+      "order_assignment_id": 0.521938,
+      "order_id": 0.52153,
+      "personnel_id": 0.549424,
+      "assignment_role": 0.532548,
+      "assigned_time": 0.523257
+    },
+    "ASSOC_ORDER_PERSONNEL": {
+      "assoc_order_personnel_id": 0.005767,
+      "order_id": 0.005767,
+      "personnel_id": 0.005767
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "Each product belongs to one category",
+      "probability": 0.000187
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "STORAGE_LOCATION",
+      "cardinality": "N:1",
+      "description": "Each product is stored at a single location",
+      "probability": 0.00349
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each order item references one product",
+      "probability": 0.97006
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "Each order is placed by one customer",
+      "probability": 0.959551
+    },
+    {
+      "entity_1": "ORDER_ASSIGNMENT",
+      "entity_2": "ORDER",
+      "cardinality": "N:1",
+      "description": "Each assignment links to one order",
+      "probability": 0.981467
+    },
+    {
+      "entity_1": "ORDER_ASSIGNMENT",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "description": "Each assignment links to one personnel",
+      "probability": 0.009108
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PERSONNEL",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005767
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_ORDER_PERSONNEL",
+      "description": "One PERSONNEL can be associated with many ASSOC_ORDER_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005767
+    },
+    {
+      "entity_1": "INVENTORY_HISTORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "Each inventory history record references one product",
+      "probability": 0.632952
+    }
+  ],
+  "processing_time": 15.68,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented suggested enhancements: added UNIQUE business rule for product_name within a category (documented for implementation), introduced INVENTORY_HISTORY entity to track stock changes over time, added last_updated timestamps to PRODUCT, ORDER, and ORDER_ITEM for audit trails, replaced the simple ORDER‑PERSONNEL N:1 relationship with an associative ORDER_ASSIGNMENT entity to support multiple delivery personnel per order, and defined relationships for the new entities. Foreign‑key cascade considerations and indexing recommendations are noted for implementation."
+  }
+}

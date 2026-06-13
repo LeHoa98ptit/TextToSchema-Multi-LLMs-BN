@@ -1,0 +1,119 @@
+{
+  "entity": [
+    "USER",
+    "EMAIL_ACCOUNT",
+    "CONTACT",
+    "EMAIL",
+    "ATTACHMENT",
+    "EMAIL_RECIPIENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "primary_email",
+      "created_at"
+    ],
+    "EMAIL_ACCOUNT": [
+      "account_id",
+      "user_id",
+      "email_address",
+      "account_password",
+      "created_at"
+    ],
+    "CONTACT": [
+      "contact_id",
+      "user_id",
+      "first_name",
+      "last_name",
+      "phone_number",
+      "work_address",
+      "email_address",
+      "created_at"
+    ],
+    "EMAIL": [
+      "email_id",
+      "sender_user_id",
+      "sender_account_id",
+      "sender_email_address",
+      "subject",
+      "content",
+      "status",
+      "folder",
+      "send_time",
+      "receive_time",
+      "created_at",
+      "updated_at"
+    ],
+    "ATTACHMENT": [
+      "attachment_id",
+      "email_id",
+      "filename",
+      "size",
+      "mime_type",
+      "created_at"
+    ],
+    "EMAIL_RECIPIENT": [
+      "recipient_id",
+      "email_id",
+      "recipient_type",
+      "recipient_user_id",
+      "recipient_contact_id",
+      "external_email_address",
+      "recipient_seq"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTACT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMAIL_ACCOUNT",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ATTACHMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTACT",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 80.5779,
+  "ilp_runtime": 0.078
+}

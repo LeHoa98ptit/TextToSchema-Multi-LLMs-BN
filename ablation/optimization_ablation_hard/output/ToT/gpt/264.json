@@ -1,0 +1,110 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "POSITION",
+    "ROOM",
+    "ROOM_TYPE",
+    "RESERVATION",
+    "RESERVATION_ROOM",
+    "ARRANGEMENT"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "dept_id",
+      "dept_name",
+      "manager_emp_id"
+    ],
+    "EMPLOYEE": [
+      "emp_id",
+      "emp_name",
+      "position_id",
+      "phone",
+      "salary",
+      "dept_id"
+    ],
+    "POSITION": [
+      "position_id",
+      "position_name"
+    ],
+    "ROOM": [
+      "room_number",
+      "room_type_id",
+      "charge",
+      "status_code"
+    ],
+    "ROOM_TYPE": [
+      "room_type_id",
+      "type_name",
+      "standard_charge"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "cust_id",
+      "reservation_date",
+      "check_in_date",
+      "check_out_date",
+      "total_rooms"
+    ],
+    "RESERVATION_ROOM": [
+      "reservation_id",
+      "room_type_id",
+      "quantity",
+      "price_at_reservation"
+    ],
+    "ARRANGEMENT": [
+      "arrangement_id",
+      "reservation_id",
+      "room_number",
+      "salesperson_emp_id",
+      "gender",
+      "telephone"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "POSITION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROOM",
+      "entity_2": "ROOM_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_ROOM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION_ROOM",
+      "entity_2": "ROOM_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ARRANGEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ARRANGEMENT",
+      "entity_2": "ROOM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 70.1434,
+  "ilp_runtime": 0.145
+}

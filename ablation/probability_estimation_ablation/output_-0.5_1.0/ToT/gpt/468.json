@@ -1,0 +1,209 @@
+{
+  "filename": "468.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "APPLICATION": 0.622459,
+    "CREDIT_CARD": 0.595849,
+    "CARD_TYPE": 0.5383,
+    "REVIEW": 0.468965,
+    "LETTER": 0.48468,
+    "TRANSACTION": 0.622459,
+    "TRANSACTION_TYPE": 0.527746,
+    "APPLICATION_STATUS": 0.503575,
+    "CARD_STATUS": 0.530512,
+    "LETTER_STATUS": 0.441716
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_number": 0.5368,
+      "full_name": 0.529802,
+      "date_of_birth": 0.53067,
+      "address": 0.526724,
+      "phone": 0.524719,
+      "email": 0.528308,
+      "registration_date": 0.532399,
+      "created_at": 0.525743,
+      "updated_at": 0.524184
+    },
+    "APPLICATION": {
+      "application_number": 0.527763,
+      "customer_number": 0.545473,
+      "submission_time": 0.533046,
+      "requested_card_type_id": 0.539913,
+      "requested_credit_limit": 0.550335,
+      "status_code": 0.525353,
+      "review_time": 0.534583,
+      "approval_time": 0.533076,
+      "rejection_time": 0.535071,
+      "created_at": 0.51075,
+      "updated_at": 0.509947
+    },
+    "CREDIT_CARD": {
+      "card_number": 0.5532,
+      "customer_number": 0.554564,
+      "card_type_id": 0.551538,
+      "issue_date": 0.544956,
+      "expiry_date": 0.538739,
+      "credit_limit": 0.54948,
+      "available_credit": 0.554117,
+      "status_code": 0.559711,
+      "created_at": 0.545427,
+      "updated_at": 0.544061
+    },
+    "CARD_TYPE": {
+      "card_type_id": 0.538908,
+      "type_name": 0.536755,
+      "description": 0.546192,
+      "default_credit_limit": 0.547551,
+      "interest_rate": 0.539802,
+      "created_at": 0.529066,
+      "updated_at": 0.530594
+    },
+    "REVIEW": {
+      "review_id": 0.521039,
+      "application_number": 0.543661,
+      "reviewer_id": 0.519621,
+      "review_time": 0.523042,
+      "decision": 0.520134,
+      "comments": 0.509303,
+      "created_at": 0.516776,
+      "updated_at": 0.51652
+    },
+    "LETTER": {
+      "letter_id": 0.518592,
+      "application_number": 0.539077,
+      "letter_type": 0.515743,
+      "letter_status_code": 0.529042,
+      "send_date": 0.515071,
+      "content": 0.520795,
+      "created_at": 0.513819,
+      "updated_at": 0.516431
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.534992,
+      "card_number": 0.556164,
+      "transaction_time": 0.540041,
+      "transaction_type_id": 0.532893,
+      "merchant_name": 0.54091,
+      "amount": 0.54132,
+      "currency": 0.524922,
+      "description": 0.555985,
+      "status": 0.545835,
+      "created_at": 0.525749,
+      "updated_at": 0.526625
+    },
+    "TRANSACTION_TYPE": {
+      "transaction_type_id": 0.533404,
+      "type_name": 0.535865,
+      "description": 0.555965,
+      "created_at": 0.527169,
+      "updated_at": 0.529143
+    },
+    "APPLICATION_STATUS": {
+      "status_code": 0.524892,
+      "status_name": 0.522563,
+      "description": 0.535884
+    },
+    "CARD_STATUS": {
+      "status_code": 0.542402,
+      "status_name": 0.544483,
+      "description": 0.548887
+    },
+    "LETTER_STATUS": {
+      "status_code": 0.530434,
+      "status_name": 0.530586,
+      "description": 0.530018
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A customer may submit multiple applications",
+      "probability": 0.990751
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:N",
+      "description": "A customer can hold multiple credit cards",
+      "probability": 0.604073
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CARD_TYPE",
+      "cardinality": "N:1",
+      "description": "Each application requests one card type",
+      "probability": 0.000732
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "An application can have multiple review records (audit trail)",
+      "probability": 0.114575
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "LETTER",
+      "cardinality": "1:1",
+      "description": "A confirmation or rejection letter is generated per application",
+      "probability": 0.000842
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:1",
+      "description": "An approved application results in one credit card",
+      "probability": 0.019238
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_STATUS",
+      "cardinality": "N:1",
+      "description": "Applications have a status (pending, approved, rejected, etc.)",
+      "probability": 0.990633
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CARD_TYPE",
+      "cardinality": "N:1",
+      "description": "Each card belongs to a specific card type",
+      "probability": 0.968089
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CARD_STATUS",
+      "cardinality": "N:1",
+      "description": "Cards have a status (active, blocked, expired, etc.)",
+      "probability": 0.986527
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A credit card can generate many transactions",
+      "probability": 0.999155
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_TYPE",
+      "cardinality": "N:1",
+      "description": "Each transaction has one type (purchase, cash‑advance, etc.)",
+      "probability": 0.997126
+    },
+    {
+      "entity_1": "LETTER",
+      "entity_2": "LETTER_STATUS",
+      "cardinality": "N:1",
+      "description": "Letter status indicates confirmation or rejection",
+      "probability": 0.998895
+    }
+  ],
+  "processing_time": 22.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Split the generic STATUS entity into three dedicated lookup tables (APPLICATION_STATUS, CARD_STATUS, LETTER_STATUS) to simplify joins and reflect distinct status domains. 2. Changed Review relationship to 1:N, allowing multiple review entries per application for audit trails. 3. Added LETTER_STATUS foreign key (letter_status_code) to explicitly capture confirmation vs. rejection instead of relying solely on free‑text letter_type. 4. Standardized timestamp attribute names across all entities to created_at and updated_at for consistency. 5. Renamed requested_card_type to requested_card_type_id and linked it to CARD_TYPE. 6. Ensured all entities have appropriate primary keys and foreign key references, preserving the comprehensive coverage of the original model while improving clarity and extensibility."
+  }
+}

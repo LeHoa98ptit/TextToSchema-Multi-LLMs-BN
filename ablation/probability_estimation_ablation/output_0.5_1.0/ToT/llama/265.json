@@ -1,0 +1,115 @@
+{
+  "filename": "265.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "CHESS_GAME": 0.787981,
+    "CHESSBOARD": 0.817574,
+    "CHESS_PIECE": 0.798396,
+    "QUALITY_INSPECTION": 0.801517,
+    "DEFECT_TYPE": 0.692067,
+    "QUALITY_ALERT": 0.736819,
+    "QUALITY_INSPECTION_MODEL": 0.780623
+  },
+  "attribute": {
+    "COMPANY": {
+      "name": 0.762222,
+      "address": 0.752681,
+      "production_line_id": 0.76055
+    },
+    "CHESS_GAME": {
+      "game_id": 0.772909,
+      "game_type": 0.776717,
+      "batch_id": 0.772022,
+      "production_line_id": 0.782527
+    },
+    "CHESSBOARD": {
+      "board_id": 0.771905,
+      "board_type": 0.774233,
+      "position": 0.775567
+    },
+    "CHESS_PIECE": {
+      "piece_id": 0.766702,
+      "piece_type": 0.771974,
+      "color": 0.771756,
+      "position": 0.772672,
+      "board_id": 0.771443
+    },
+    "QUALITY_INSPECTION": {
+      "inspection_id": 0.765741,
+      "inspection_time": 0.765097,
+      "result": 0.770627,
+      "piece_id": 0.767842,
+      "model_id": 0.765742
+    },
+    "DEFECT_TYPE": {
+      "defect_id": 0.759888,
+      "defect_description": 0.760035
+    },
+    "QUALITY_ALERT": {
+      "alert_id": 0.749686,
+      "alert_description": 0.75502,
+      "inspection_id": 0.764057
+    },
+    "QUALITY_INSPECTION_MODEL": {
+      "model_id": 0.764337,
+      "model_type": 0.76574,
+      "running_time": 0.765956
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "CHESS_GAME",
+      "cardinality": "1:N",
+      "description": "A company produces multiple chess games",
+      "probability": 0.191192
+    },
+    {
+      "entity_1": "CHESS_GAME",
+      "entity_2": "CHESSBOARD",
+      "cardinality": "1:1",
+      "description": "A chess game is represented by one chessboard",
+      "probability": 0.413677
+    },
+    {
+      "entity_1": "CHESSBOARD",
+      "entity_2": "CHESS_PIECE",
+      "cardinality": "1:N",
+      "description": "A chessboard contains multiple chess pieces",
+      "probability": 0.845347
+    },
+    {
+      "entity_1": "CHESS_PIECE",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "description": "A chess piece undergoes multiple quality inspections",
+      "probability": 0.864996
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "DEFECT_TYPE",
+      "cardinality": "1:N",
+      "description": "A quality inspection may identify multiple defect types",
+      "probability": 0.569666
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION",
+      "entity_2": "QUALITY_ALERT",
+      "cardinality": "1:N",
+      "description": "A quality inspection may generate multiple quality alerts",
+      "probability": 0.99938
+    },
+    {
+      "entity_1": "QUALITY_INSPECTION_MODEL",
+      "entity_2": "QUALITY_INSPECTION",
+      "cardinality": "1:N",
+      "description": "A quality inspection model is used for multiple quality inspections",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 22.59,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationships and attributes, ensured consistent naming conventions throughout the model, and added production_line_id to CHESS_GAME to establish a direct relationship between COMPANY and CHESS_GAME."
+  }
+}

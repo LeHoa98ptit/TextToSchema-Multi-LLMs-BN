@@ -1,0 +1,130 @@
+{
+  "filename": "446.txt",
+  "entity": {
+    "USER": 0.622459,
+    "SENSOR": 0.622459,
+    "CROP": 0.622459,
+    "GROWTH_MODEL": 0.597606,
+    "METEOROLOGY": 0.558284,
+    "SUPPLY_RECORD": 0.489951,
+    "ACTION_RECORD": 0.517718,
+    "EVALUATION_RECORD": 0.526974
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.508335,
+      "password": 0.515815,
+      "phone_number": 0.520711,
+      "registration_time": 0.525521,
+      "login_time": 0.512393,
+      "role": 0.524939
+    },
+    "SENSOR": {
+      "location": 0.529622,
+      "burial_depth": 0.526226,
+      "sensor_type": 0.532031
+    },
+    "CROP": {
+      "type": 0.548566,
+      "growth_model": 0.571671,
+      "planting_time": 0.557315,
+      "fertilizing_time": 0.553085
+    },
+    "GROWTH_MODEL": {
+      "model_parameter": 0.538607,
+      "creation_time": 0.540257,
+      "model_name": 0.539082
+    },
+    "METEOROLOGY": {
+      "temperature": 0.519054,
+      "humidity": 0.527219,
+      "rainfall": 0.529205,
+      "wind_speed": 0.528719,
+      "light_intensity": 0.53047,
+      "record_time": 0.534249
+    },
+    "SUPPLY_RECORD": {
+      "supply_time": 0.532869,
+      "location": 0.528706,
+      "water_amount": 0.5454,
+      "fertilizer_amount": 0.557632,
+      "crop_id": 0.55698
+    },
+    "ACTION_RECORD": {
+      "action_time": 0.523145,
+      "location": 0.520905,
+      "action_type": 0.518046,
+      "action_detail": 0.523463,
+      "crop_id": 0.537847
+    },
+    "EVALUATION_RECORD": {
+      "evaluation_time": 0.525109,
+      "location": 0.52842,
+      "evaluation_metric": 0.528284,
+      "evaluation_value": 0.52506
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CROP",
+      "cardinality": "1:N",
+      "description": "A user can have multiple crops",
+      "probability": 0.198866
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGY",
+      "cardinality": "1:N",
+      "description": "A sensor can record multiple meteorology data",
+      "probability": 0.914762
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "GROWTH_MODEL",
+      "cardinality": "1:1",
+      "description": "A crop is associated with one growth model",
+      "probability": 0.404599
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SUPPLY_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can have multiple supply records",
+      "probability": 0.998667
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can have multiple action records",
+      "probability": 0.756782
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EVALUATION_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can have multiple evaluation records",
+      "probability": 0.980804
+    },
+    {
+      "entity_1": "SUPPLY_RECORD",
+      "entity_2": "CROP",
+      "cardinality": "N:1",
+      "description": "A supply record is associated with one crop",
+      "probability": 0.053696
+    },
+    {
+      "entity_1": "ACTION_RECORD",
+      "entity_2": "CROP",
+      "cardinality": "N:1",
+      "description": "An action record is associated with one crop",
+      "probability": 0.019124
+    }
+  ],
+  "processing_time": 20.62,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added relationships between SUPPLY_RECORD and CROP, and between ACTION_RECORD and CROP to capture the interactions between users, crops, and supply/actions."
+  }
+}

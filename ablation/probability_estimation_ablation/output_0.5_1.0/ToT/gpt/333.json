@@ -1,0 +1,247 @@
+{
+  "filename": "333.txt",
+  "entity": {
+    "USER": 0.817574,
+    "USER_TYPE": 0.741542,
+    "ADMIN_PRIVILEGE": 0.716751,
+    "USER_TYPE_PRIVILEGE": 0.707692,
+    "PROFILE": 0.739236,
+    "CONNECTION_REQUEST": 0.75345,
+    "FRIENDSHIP": 0.718453,
+    "HOMEPAGE": 0.817574,
+    "HOMEPAGE_MEMBER": 0.753097,
+    "POST": 0.713327,
+    "LOGIN_SESSION": 0.679135,
+    "NOTIFICATION": 0.691385,
+    "ASSOC_USER_TYPE_ADMIN_PRIVILEGE": 0.978558,
+    "ASSOC_USER_FRIENDSHIP": 0.873244
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.75491,
+      "username": 0.752958,
+      "password_hash": 0.743479,
+      "email": 0.757159,
+      "registration_timestamp": 0.751945,
+      "type_id": 0.753832
+    },
+    "USER_TYPE": {
+      "type_id": 0.751097,
+      "type_name": 0.755074
+    },
+    "ADMIN_PRIVILEGE": {
+      "privilege_id": 0.739529,
+      "privilege_name": 0.739913,
+      "description": 0.750128
+    },
+    "USER_TYPE_PRIVILEGE": {
+      "id": 0.749495,
+      "type_id": 0.746714,
+      "privilege_id": 0.745413
+    },
+    "PROFILE": {
+      "profile_id": 0.751633,
+      "user_id": 0.756102,
+      "phone": 0.759838,
+      "address": 0.758686,
+      "birthday": 0.747889,
+      "gender": 0.75776,
+      "relationship_status": 0.753061,
+      "interests": 0.7617,
+      "motto": 0.748514,
+      "hometown": 0.753891,
+      "current_location": 0.746701,
+      "profile_picture": 0.743266
+    },
+    "CONNECTION_REQUEST": {
+      "request_id": 0.748163,
+      "sender_id": 0.74596,
+      "receiver_id": 0.748535,
+      "request_time": 0.750536,
+      "status": 0.750658
+    },
+    "FRIENDSHIP": {
+      "friendship_id": 0.751099,
+      "user1_id": 0.759658,
+      "user2_id": 0.758305,
+      "connection_time": 0.759362
+    },
+    "HOMEPAGE": {
+      "homepage_id": 0.757755,
+      "owner_id": 0.759477,
+      "title": 0.757825,
+      "introduction": 0.770227,
+      "creation_time": 0.760946
+    },
+    "HOMEPAGE_MEMBER": {
+      "membership_id": 0.757606,
+      "homepage_id": 0.761349,
+      "user_id": 0.764272,
+      "join_time": 0.767778,
+      "role": 0.765485
+    },
+    "POST": {
+      "post_id": 0.740952,
+      "homepage_id": 0.757465,
+      "author_id": 0.746273,
+      "content": 0.750253,
+      "posting_time": 0.749862,
+      "edit_timestamp": 0.731538
+    },
+    "LOGIN_SESSION": {
+      "session_id": 0.745321,
+      "user_id": 0.751745,
+      "login_time": 0.749158,
+      "logout_time": 0.743212,
+      "ip_address": 0.747743
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.736194,
+      "user_id": 0.750565,
+      "type": 0.748792,
+      "content": 0.750647,
+      "created_time": 0.744065,
+      "is_read": 0.733828
+    },
+    "ASSOC_USER_TYPE_ADMIN_PRIVILEGE": {
+      "assoc_user_type_admin_privilege_id": 0.978558,
+      "user_type_id": 0.978558,
+      "admin_privilege_id": 0.978558
+    },
+    "ASSOC_USER_FRIENDSHIP": {
+      "assoc_user_friendship_id": 0.873244,
+      "user_id": 0.873244,
+      "friendship_id": 0.873244
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_TYPE",
+      "cardinality": "N:1",
+      "description": "Each user is assigned one type (regular or administrator).",
+      "probability": 0.999878
+    },
+    {
+      "entity_1": "USER_TYPE",
+      "entity_2": "ASSOC_USER_TYPE_ADMIN_PRIVILEGE",
+      "description": "One USER_TYPE can be associated with many ASSOC_USER_TYPE_ADMIN_PRIVILEGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.978558
+    },
+    {
+      "entity_1": "ADMIN_PRIVILEGE",
+      "entity_2": "ASSOC_USER_TYPE_ADMIN_PRIVILEGE",
+      "description": "One ADMIN_PRIVILEGE can be associated with many ASSOC_USER_TYPE_ADMIN_PRIVILEGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.978558
+    },
+    {
+      "entity_1": "USER_TYPE",
+      "entity_2": "USER_TYPE_PRIVILEGE",
+      "cardinality": "1:N",
+      "description": "Link table that associates user types with privileges.",
+      "probability": 0.997212
+    },
+    {
+      "entity_1": "ADMIN_PRIVILEGE",
+      "entity_2": "USER_TYPE_PRIVILEGE",
+      "cardinality": "1:N",
+      "description": "Link table that associates privileges with user types.",
+      "probability": 0.998652
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "description": "A user has exactly one personal profile.",
+      "probability": 0.999209
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION_REQUEST",
+      "cardinality": "1:N",
+      "description": "A user can send many connection requests.",
+      "probability": 0.951748
+    },
+    {
+      "entity_1": "CONNECTION_REQUEST",
+      "entity_2": "FRIENDSHIP",
+      "cardinality": "1:1",
+      "description": "An accepted request creates a friendship record.",
+      "probability": 0.067557
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FRIENDSHIP",
+      "description": "One USER can be associated with many ASSOC_USER_FRIENDSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.873244
+    },
+    {
+      "entity_1": "FRIENDSHIP",
+      "entity_2": "ASSOC_USER_FRIENDSHIP",
+      "description": "One FRIENDSHIP can be associated with many ASSOC_USER_FRIENDSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.873244
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HOMEPAGE",
+      "cardinality": "1:N",
+      "description": "A user can own multiple homepages.",
+      "probability": 0.997996
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HOMEPAGE_MEMBER",
+      "cardinality": "1:N",
+      "description": "A user can have many homepage memberships.",
+      "probability": 0.998113
+    },
+    {
+      "entity_1": "HOMEPAGE",
+      "entity_2": "HOMEPAGE_MEMBER",
+      "cardinality": "1:N",
+      "description": "A homepage can have many members.",
+      "probability": 0.981711
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can author many posts.",
+      "probability": 0.862535
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "HOMEPAGE",
+      "cardinality": "N:1",
+      "description": "Each post belongs to a single homepage.",
+      "probability": 0.979884
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_SESSION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple login sessions over time.",
+      "probability": 0.782272
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "System generates notifications for a user (e.g., new friend request, homepage join).",
+      "probability": 0.995668
+    }
+  ],
+  "processing_time": 61.59,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated admin privilege management via ADMIN_PRIVILEGE and USER_TYPE_PRIVILEGE tables; added PROFILE_PICTURE to PROFILE; ensured USER.username and USER.email are unique; defined composite unique key on (user1_id, user2_id) in FRIENDSHIP to prevent duplicates; introduced NOTIFICATION entity for system alerts; clarified cascade‑delete expectations in relationship descriptions; retained all original strengths while adding missing temporal attributes and fine‑grained role handling."
+  }
+}

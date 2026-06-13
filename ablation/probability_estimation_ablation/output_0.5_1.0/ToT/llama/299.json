@@ -1,0 +1,74 @@
+{
+  "filename": "299.txt",
+  "entity": {
+    "CITY": 0.817574,
+    "WEATHER_FORECAST": 0.806168,
+    "WEATHER_TYPE": 0.761315,
+    "ASSOC_WEATHER_FORECAST_WEATHER_TYPE": 0.84553
+  },
+  "attribute": {
+    "CITY": {
+      "longitude": 0.753838,
+      "latitude": 0.756054,
+      "country": 0.749941,
+      "population": 0.75056,
+      "timezone": 0.7579
+    },
+    "WEATHER_FORECAST": {
+      "date": 0.766462,
+      "sunrise": 0.766132,
+      "sunset": 0.762518,
+      "temperature": 0.767868,
+      "feel_like_temperature": 0.768232,
+      "atmospheric_pressure": 0.769467,
+      "humidity": 0.766399,
+      "wind_speed": 0.770292,
+      "wind_direction": 0.76815,
+      "cloud_cover": 0.770732,
+      "precipitation_probability": 0.771176
+    },
+    "WEATHER_TYPE": {
+      "main_description": 0.783772,
+      "detailed_description": 0.781197,
+      "icon": 0.77269,
+      "temperature_range": 0.772077,
+      "wind_speed_range": 0.775236,
+      "precipitation_type": 0.774797
+    },
+    "ASSOC_WEATHER_FORECAST_WEATHER_TYPE": {
+      "assoc_weather_forecast_weather_type_id": 0.84553,
+      "weather_forecast_id": 0.84553,
+      "weather_type_id": 0.84553
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CITY",
+      "entity_2": "WEATHER_FORECAST",
+      "cardinality": "1:N",
+      "description": "A city can have multiple weather forecasts",
+      "probability": 0.508016
+    },
+    {
+      "entity_1": "WEATHER_FORECAST",
+      "entity_2": "ASSOC_WEATHER_FORECAST_WEATHER_TYPE",
+      "description": "One WEATHER_FORECAST can be associated with many ASSOC_WEATHER_FORECAST_WEATHER_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.84553
+    },
+    {
+      "entity_1": "WEATHER_TYPE",
+      "entity_2": "ASSOC_WEATHER_FORECAST_WEATHER_TYPE",
+      "description": "One WEATHER_TYPE can be associated with many ASSOC_WEATHER_FORECAST_WEATHER_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.84553
+    }
+  ],
+  "processing_time": 18.15,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a many-to-many relationship between WEATHER_FORECAST and WEATHER_TYPE, and additional attributes to the WEATHER_TYPE entity to provide more detailed information about each weather type."
+  }
+}

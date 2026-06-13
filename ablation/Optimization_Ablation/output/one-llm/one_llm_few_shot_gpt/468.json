@@ -1,0 +1,60 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CREDIT_CARD_APPLICATION",
+    "CREDIT_CARD",
+    "TRANSACTION"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_number"
+    ],
+    "CREDIT_CARD_APPLICATION": [
+      "application_number",
+      "customer_number",
+      "submission_time",
+      "application_result",
+      "credit_card_type"
+    ],
+    "CREDIT_CARD": [
+      "credit_card_number",
+      "customer_number",
+      "credit_card_type",
+      "validity_start",
+      "validity_end",
+      "credit_limit",
+      "issue_date",
+      "update_time"
+    ],
+    "TRANSACTION": [
+      "transaction_number",
+      "credit_card_number",
+      "customer_number",
+      "transaction_time",
+      "transaction_type",
+      "transaction_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD_APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD_APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.0805,
+  "ilp_runtime": 0.082
+}

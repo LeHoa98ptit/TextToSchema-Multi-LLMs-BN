@@ -1,0 +1,141 @@
+{
+  "filename": "288.txt",
+  "entity": {
+    "SITE": 0.817574,
+    "PERSON": 0.723582,
+    "CONTACT_INFO": 0.779886,
+    "MONITORING_SESSION": 0.751905,
+    "MONITORING_RESULT": 0.758138,
+    "MAINTENANCE_ACTIVITY": 0.773871,
+    "ASSOC_PERSON_MONITORING_SESSION": 0.083859,
+    "ASSOC_PERSON_MAINTENANCE_ACTIVITY": 0.825843
+  },
+  "attribute": {
+    "SITE": {
+      "site_id": 0.737867,
+      "site_code": 0.739382,
+      "name": 0.7426,
+      "latitude": 0.743272,
+      "longitude": 0.743003,
+      "address": 0.745618
+    },
+    "PERSON": {
+      "person_id": 0.738768,
+      "first_name": 0.73527,
+      "last_name": 0.737884,
+      "role": 0.744518,
+      "scope": 0.753672
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.744628,
+      "person_id": 0.743436,
+      "phone": 0.744221,
+      "email": 0.74516,
+      "postal_address": 0.741355
+    },
+    "MONITORING_SESSION": {
+      "session_id": 0.751081,
+      "site_id": 0.75614,
+      "timestamp": 0.752392,
+      "result_summary": 0.750286
+    },
+    "MONITORING_RESULT": {
+      "result_id": 0.739775,
+      "session_id": 0.745407,
+      "parameter": 0.756811,
+      "value": 0.753986,
+      "unit": 0.764925
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "activity_id": 0.763165,
+      "site_id": 0.763783,
+      "maintenance_time": 0.770343,
+      "content": 0.775416,
+      "cost": 0.765001
+    },
+    "ASSOC_PERSON_MONITORING_SESSION": {
+      "assoc_person_monitoring_session_id": 0.083859,
+      "person_id": 0.083859,
+      "monitoring_session_id": 0.083859
+    },
+    "ASSOC_PERSON_MAINTENANCE_ACTIVITY": {
+      "assoc_person_maintenance_activity_id": 0.825843,
+      "person_id": 0.825843,
+      "maintenance_activity_id": 0.825843
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SITE",
+      "entity_2": "MONITORING_SESSION",
+      "cardinality": "1:N",
+      "description": "Each site can host many monitoring sessions",
+      "probability": 0.099212
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "MONITORING_RESULT",
+      "cardinality": "1:N",
+      "description": "A session records multiple environmental parameters (air, water, noise, etc.)",
+      "probability": 0.789758
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each person has a single set of contact details",
+      "probability": 0.577648
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSOC_PERSON_MONITORING_SESSION",
+      "description": "One PERSON can be associated with many ASSOC_PERSON_MONITORING_SESSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.083859
+    },
+    {
+      "entity_1": "MONITORING_SESSION",
+      "entity_2": "ASSOC_PERSON_MONITORING_SESSION",
+      "description": "One MONITORING_SESSION can be associated with many ASSOC_PERSON_MONITORING_SESSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.083859
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSOC_PERSON_MAINTENANCE_ACTIVITY",
+      "description": "One PERSON can be associated with many ASSOC_PERSON_MAINTENANCE_ACTIVITY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825843
+    },
+    {
+      "entity_1": "MAINTENANCE_ACTIVITY",
+      "entity_2": "ASSOC_PERSON_MAINTENANCE_ACTIVITY",
+      "description": "One MAINTENANCE_ACTIVITY can be associated with many ASSOC_PERSON_MAINTENANCE_ACTIVITY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.825843
+    },
+    {
+      "entity_1": "SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "cardinality": "1:N",
+      "description": "A site can have many maintenance activities over time",
+      "probability": 0.757322
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "description": "Each site has one responsible person; a person may be responsible for multiple sites",
+      "probability": 0.844802
+    }
+  ],
+  "processing_time": 22.15,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit responsible‑person relationship between PERSON and SITE; removed redundant personnel_id from MAINTENANCE_ACTIVITY; introduced a 'scope' attribute in PERSON to capture monitoring/maintenance scope; added 'result_summary' to MONITORING_SESSION for quick aggregated view; retained many‑to‑many links for monitoring and maintenance personnel and kept separate CONTACT_INFO entity for clean contact details."
+  }
+}

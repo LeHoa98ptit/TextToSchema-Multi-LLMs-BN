@@ -1,0 +1,121 @@
+{
+  "entity": [
+    "SCHOOL",
+    "COLLEGE",
+    "STUDENT",
+    "TEACHER",
+    "COURSE",
+    "ENROLLMENT",
+    "TEACHING",
+    "CLASSROOM"
+  ],
+  "attribute": {
+    "SCHOOL": [
+      "school_id",
+      "name",
+      "address"
+    ],
+    "COLLEGE": [
+      "college_id",
+      "name",
+      "location",
+      "total_staff",
+      "total_students"
+    ],
+    "STUDENT": [
+      "student_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "birth_date",
+      "age",
+      "telephone",
+      "email",
+      "registration_time",
+      "status",
+      "college_id"
+    ],
+    "TEACHER": [
+      "teacher_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "age",
+      "email",
+      "phone",
+      "title",
+      "status",
+      "college_id"
+    ],
+    "COURSE": [
+      "course_id",
+      "title",
+      "credit",
+      "summary",
+      "class_hour",
+      "status"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id",
+      "student_id",
+      "course_id",
+      "enrollment_time",
+      "grade"
+    ],
+    "TEACHING": [
+      "teaching_id",
+      "teacher_id",
+      "course_id",
+      "classroom_id",
+      "semester",
+      "year",
+      "schedule"
+    ],
+    "CLASSROOM": [
+      "classroom_id",
+      "building",
+      "room_number",
+      "capacity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SCHOOL",
+      "entity_2": "COLLEGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COLLEGE",
+      "entity_2": "TEACHER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLASSROOM",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.1219,
+  "ilp_runtime": 0.062
+}

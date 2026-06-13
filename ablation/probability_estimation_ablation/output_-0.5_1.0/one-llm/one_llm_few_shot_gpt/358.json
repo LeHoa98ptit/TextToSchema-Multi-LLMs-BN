@@ -1,0 +1,164 @@
+{
+  "filename": "358.txt",
+  "entity": {
+    "TENANT": 0.622459,
+    "PROCESS_DEFINITION": 0.550552,
+    "PROCESS_INSTANCE": 0.578544,
+    "TASK": 0.622459,
+    "TASK_TYPE": 0.522061,
+    "SCHEDULE": 0.470758,
+    "EXECUTION_INSTANCE": 0.584725,
+    "TASK_EXECUTION": 0.580006,
+    "LOCK_INFO": 0.449498,
+    "EXCEPTION_INFO": 0.434454
+  },
+  "attribute": {
+    "TENANT": {
+      "tenant_id": 0.521704,
+      "name": 0.524054,
+      "description": 0.537591
+    },
+    "PROCESS_DEFINITION": {
+      "process_definition_id": 0.543888,
+      "tenant_id": 0.549284,
+      "name": 0.543229,
+      "version": 0.547144,
+      "description": 0.551602
+    },
+    "PROCESS_INSTANCE": {
+      "process_instance_id": 0.537705,
+      "process_definition_id": 0.5435,
+      "tenant_id": 0.545208,
+      "start_time": 0.535784,
+      "end_time": 0.537947,
+      "status": 0.54726
+    },
+    "TASK": {
+      "task_id": 0.54121,
+      "process_definition_id": 0.556437,
+      "tenant_id": 0.5517,
+      "task_type_id": 0.540697,
+      "name": 0.552479,
+      "description": 0.558989
+    },
+    "TASK_TYPE": {
+      "task_type_id": 0.540289,
+      "name": 0.551455,
+      "description": 0.560085
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.52944,
+      "task_id": 0.543586,
+      "expiration_time": 0.529708,
+      "repeat_interval": 0.531125,
+      "repeat_cron": 0.525055,
+      "processor_config": 0.539658
+    },
+    "EXECUTION_INSTANCE": {
+      "execution_instance_id": 0.52782,
+      "process_instance_id": 0.537236,
+      "tenant_id": 0.533188,
+      "start_time": 0.530535,
+      "end_time": 0.532164,
+      "status": 0.543603
+    },
+    "TASK_EXECUTION": {
+      "task_execution_id": 0.550205,
+      "execution_instance_id": 0.549496,
+      "task_id": 0.54836,
+      "start_time": 0.544279,
+      "end_time": 0.545587,
+      "result": 0.548978,
+      "lock_info_id": 0.552774,
+      "exception_info_id": 0.553429
+    },
+    "LOCK_INFO": {
+      "lock_info_id": 0.524204,
+      "lock_key": 0.520282,
+      "lock_acquired_time": 0.52747,
+      "lock_released_time": 0.529718
+    },
+    "EXCEPTION_INFO": {
+      "exception_info_id": 0.523237,
+      "error_code": 0.52094,
+      "error_message": 0.519738,
+      "stack_trace": 0.518472,
+      "occurred_at": 0.520959
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESS_DEFINITION",
+      "cardinality": "1:N",
+      "probability": 5e-05
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "probability": 0.001607
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "probability": 0.000784
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "probability": 0.197394
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "probability": 0.800395
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "probability": 0.058059
+    },
+    {
+      "entity_1": "TASK_TYPE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "probability": 0.999929
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:1",
+      "probability": 0.859813
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "probability": 0.991081
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "probability": 0.999313
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "LOCK_INFO",
+      "cardinality": "1:1",
+      "probability": 0.521728
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "EXCEPTION_INFO",
+      "cardinality": "1:N",
+      "probability": 0.240016
+    }
+  ],
+  "processing_time": 41.83
+}

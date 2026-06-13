@@ -1,0 +1,108 @@
+{
+  "filename": "296.txt",
+  "entity": {
+    "CLIENT": 0.622459,
+    "FINANCIAL_ADVISOR": 0.60721,
+    "FINANCIAL_PRODUCT": 0.548448,
+    "INVESTMENT_PORTFOLIO": 0.578617,
+    "TRANSACTION": 0.622459,
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT": 0.92805,
+    "ASSOC_TRANSACTION_FINANCIAL_PRODUCT": 0.01182
+  },
+  "attribute": {
+    "CLIENT": {
+      "client_d": 0.514888,
+      "contact_number": 0.512745,
+      "risk_preference": 0.531818,
+      "total_asset": 0.529896
+    },
+    "FINANCIAL_ADVISOR": {
+      "advisor_d": 0.541337,
+      "hire_date": 0.523606,
+      "contact_number": 0.527963
+    },
+    "FINANCIAL_PRODUCT": {
+      "product_code": 0.538049,
+      "product_type": 0.545109,
+      "product_value": 0.537522
+    },
+    "INVESTMENT_PORTFOLIO": {
+      "portfolio_d": 0.536926,
+      "client_d": 0.546947,
+      "product_code": 0.544965,
+      "quantity": 0.543919
+    },
+    "TRANSACTION": {
+      "transaction_d": 0.511854,
+      "portfolio_d": 0.542769,
+      "product_code": 0.523532,
+      "transaction_type": 0.521231,
+      "transaction_quantity": 0.521633,
+      "transaction_price": 0.513062,
+      "transaction_time": 0.505607
+    },
+    "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT": {
+      "assoc_investment_portfolio_financial_product_id": 0.92805,
+      "investment_portfolio_id": 0.92805,
+      "financial_product_id": 0.92805
+    },
+    "ASSOC_TRANSACTION_FINANCIAL_PRODUCT": {
+      "assoc_transaction_financial_product_id": 0.01182,
+      "transaction_id": 0.01182,
+      "financial_product_id": 0.01182
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FINANCIAL_ADVISOR",
+      "entity_2": "CLIENT",
+      "cardinality": "1:N",
+      "probability": 0.1584
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "INVESTMENT_PORTFOLIO",
+      "cardinality": "1:N",
+      "probability": 0.361879
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "description": "One INVESTMENT_PORTFOLIO can be associated with many ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.92805
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT",
+      "description": "One FINANCIAL_PRODUCT can be associated with many ASSOC_INVESTMENT_PORTFOLIO_FINANCIAL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.92805
+    },
+    {
+      "entity_1": "INVESTMENT_PORTFOLIO",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "probability": 0.009962
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_FINANCIAL_PRODUCT",
+      "description": "One TRANSACTION can be associated with many ASSOC_TRANSACTION_FINANCIAL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01182
+    },
+    {
+      "entity_1": "FINANCIAL_PRODUCT",
+      "entity_2": "ASSOC_TRANSACTION_FINANCIAL_PRODUCT",
+      "description": "One FINANCIAL_PRODUCT can be associated with many ASSOC_TRANSACTION_FINANCIAL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.01182
+    }
+  ],
+  "processing_time": 23.9
+}

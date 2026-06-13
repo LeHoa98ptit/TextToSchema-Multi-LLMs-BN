@@ -1,0 +1,96 @@
+{
+  "filename": "372.txt",
+  "entity": {
+    "LEAGUE": 0.817574,
+    "REGION": 0.817574,
+    "PERSON": 0.73964,
+    "USER": 0.817574,
+    "DATUM": 0.817574,
+    "ASSOC_USER_LEAGUE": 0.60452
+  },
+  "attribute": {
+    "LEAGUE": {
+      "name": 0.769638,
+      "description": 0.780442,
+      "creation_time": 0.773401,
+      "version_number": 0.772207
+    },
+    "REGION": {
+      "name": 0.749785,
+      "location": 0.749271,
+      "league_id": 0.772245
+    },
+    "PERSON": {
+      "name": 0.733299,
+      "email": 0.737491,
+      "phone_number": 0.730181
+    },
+    "USER": {
+      "username": 0.736295,
+      "password": 0.745595,
+      "role": 0.753236
+    },
+    "DATUM": {
+      "league_id": 0.770824,
+      "modification_time": 0.752707,
+      "modifier": 0.754037,
+      "change_description": 0.757737
+    },
+    "ASSOC_USER_LEAGUE": {
+      "assoc_user_league_id": 0.60452,
+      "user_id": 0.60452,
+      "league_id": 0.60452
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "REGION",
+      "cardinality": "1:N",
+      "description": "A league can have multiple regions",
+      "probability": 0.638867
+    },
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "PERSON",
+      "cardinality": "1:1",
+      "description": "A league has one person in charge",
+      "probability": 0.911014
+    },
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A league can have multiple users",
+      "probability": 0.60452
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_LEAGUE",
+      "description": "One USER can be associated with many ASSOC_USER_LEAGUE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.60452
+    },
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "ASSOC_USER_LEAGUE",
+      "description": "One LEAGUE can be associated with many ASSOC_USER_LEAGUE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.60452
+    },
+    {
+      "entity_1": "LEAGUE",
+      "entity_2": "DATUM",
+      "cardinality": "1:N",
+      "description": "A league can have multiple datum entries",
+      "probability": 0.378969
+    }
+  ],
+  "processing_time": 20.12,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added DATUM entity to track changes and modifications to league information, included version number in LEAGUE entity to ensure data consistency in case of concurrent modifications"
+  }
+}

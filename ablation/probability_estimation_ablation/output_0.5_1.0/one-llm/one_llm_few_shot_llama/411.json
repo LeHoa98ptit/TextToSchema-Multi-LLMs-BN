@@ -1,0 +1,194 @@
+{
+  "filename": "411.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "CONTACT_PERSON": 0.710559,
+    "ADDRESS": 0.719665,
+    "ORDER": 0.817574,
+    "ORDER_DETAIL": 0.735187,
+    "PRODUCT": 0.817574,
+    "PAYMENT": 0.817574,
+    "SUPPLIER": 0.732335,
+    "BRAND": 0.739891,
+    "CATEGORY": 0.709797,
+    "ASSOC_ORDER_DETAIL_PRODUCT": 0.998207,
+    "ASSOC_PRODUCT_SUPPLIER": 0.016961,
+    "ASSOC_PRODUCT_BRAND": 0.977552,
+    "ASSOC_PRODUCT_CATEGORY": 7.2e-05
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.764599,
+      "customer_name": 0.768976,
+      "customer_type": 0.771456,
+      "credit_rating": 0.769322
+    },
+    "CONTACT_PERSON": {
+      "contact_person_id": 0.738698,
+      "contact_person_name": 0.741742,
+      "phone": 0.744183,
+      "email": 0.74285
+    },
+    "ADDRESS": {
+      "address_id": 0.732903,
+      "street": 0.740616,
+      "city": 0.739903,
+      "state": 0.739913,
+      "zip": 0.734998
+    },
+    "ORDER": {
+      "order_id": 0.739866,
+      "order_time": 0.740243,
+      "order_status": 0.744638
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.747441,
+      "product_quantity": 0.757822,
+      "unit_price": 0.75921,
+      "total": 0.761744
+    },
+    "PRODUCT": {
+      "product_id": 0.738176,
+      "product_name": 0.742505,
+      "product_specification": 0.752603,
+      "unit_price": 0.749414,
+      "inventory_quantity": 0.758131,
+      "production_date": 0.746036
+    },
+    "PAYMENT": {
+      "payment_id": 0.747984,
+      "payment_method": 0.751464,
+      "payment_status": 0.752383,
+      "payment_time": 0.749257
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.748126,
+      "supplier_name": 0.752119
+    },
+    "BRAND": {
+      "brand_id": 0.74148,
+      "brand_name": 0.744191
+    },
+    "CATEGORY": {
+      "category_id": 0.733146,
+      "category_name": 0.737811
+    },
+    "ASSOC_ORDER_DETAIL_PRODUCT": {
+      "assoc_order_detail_product_id": 0.998207,
+      "order_detail_id": 0.998207,
+      "product_id": 0.998207
+    },
+    "ASSOC_PRODUCT_SUPPLIER": {
+      "assoc_product_supplier_id": 0.016961,
+      "product_id": 0.016961,
+      "supplier_id": 0.016961
+    },
+    "ASSOC_PRODUCT_BRAND": {
+      "assoc_product_brand_id": 0.977552,
+      "product_id": 0.977552,
+      "brand_id": 0.977552
+    },
+    "ASSOC_PRODUCT_CATEGORY": {
+      "assoc_product_category_id": 7.2e-05,
+      "product_id": 7.2e-05,
+      "category_id": 7.2e-05
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "cardinality": "1:N",
+      "probability": 0.219694
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "probability": 0.261434
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.942698
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.999986
+    },
+    {
+      "entity_1": "ORDER_DETAIL",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "description": "One ORDER_DETAIL can be associated with many ASSOC_ORDER_DETAIL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998207
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_ORDER_DETAIL_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_ORDER_DETAIL_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998207
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "probability": 0.648019
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_SUPPLIER",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.016961
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_PRODUCT_SUPPLIER",
+      "description": "One SUPPLIER can be associated with many ASSOC_PRODUCT_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.016961
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_BRAND.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977552
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "ASSOC_PRODUCT_BRAND",
+      "description": "One BRAND can be associated with many ASSOC_PRODUCT_BRAND.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.977552
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_CATEGORY",
+      "description": "One PRODUCT can be associated with many ASSOC_PRODUCT_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 7.2e-05
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_PRODUCT_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_PRODUCT_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 7.2e-05
+    }
+  ],
+  "processing_time": 35.61
+}

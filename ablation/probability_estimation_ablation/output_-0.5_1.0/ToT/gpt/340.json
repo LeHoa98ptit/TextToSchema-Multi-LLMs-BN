@@ -1,0 +1,201 @@
+{
+  "filename": "340.txt",
+  "entity": {
+    "APPLICATION": 0.622459,
+    "LANGUAGE_REGION": 0.59257,
+    "COUNTRY": 0.507599,
+    "RESOURCE_FILE": 0.595873,
+    "RESOURCE_KEY": 0.511548,
+    "RESOURCE_VALUE": 0.529939,
+    "APP_LANG_SUPPORT": 0.493025,
+    "FILE_KEY": 0.5001,
+    "VERSION_HISTORY": 0.446901,
+    "COUNTRY_LANGUAGE": 0.554508,
+    "ASSOC_APPLICATION_LANGUAGE_REGION": 0.956716,
+    "ASSOC_RESOURCE_FILE_RESOURCE_KEY": 0.999721,
+    "ASSOC_COUNTRY_LANGUAGE_REGION": 0.995371
+  },
+  "attribute": {
+    "APPLICATION": {
+      "app_id": 0.513431,
+      "app_name": 0.51643,
+      "description": 0.544277,
+      "owner": 0.515987,
+      "created_at": 0.499638,
+      "updated_at": 0.497404
+    },
+    "LANGUAGE_REGION": {
+      "lang_region_id": 0.55008,
+      "iso_code": 0.557994,
+      "language_name": 0.553692,
+      "region_name": 0.554325,
+      "is_default": 0.546402,
+      "created_at": 0.535046
+    },
+    "COUNTRY": {
+      "country_id": 0.5405,
+      "country_name": 0.539361,
+      "iso_code": 0.552245,
+      "continent": 0.527774,
+      "created_at": 0.521724
+    },
+    "RESOURCE_FILE": {
+      "file_id": 0.52555,
+      "app_id": 0.526847,
+      "lang_region_id": 0.554949,
+      "file_path": 0.524317,
+      "file_format": 0.532514,
+      "base_language": 0.553259,
+      "file_version": 0.533245,
+      "checksum": 0.532444,
+      "created_at": 0.512275,
+      "updated_at": 0.509144
+    },
+    "RESOURCE_KEY": {
+      "key_id": 0.529169,
+      "key_name": 0.532917,
+      "key_description": 0.54379,
+      "key_version": 0.540674,
+      "created_at": 0.515105
+    },
+    "RESOURCE_VALUE": {
+      "value_id": 0.526496,
+      "key_id": 0.530497,
+      "file_id": 0.528852,
+      "value_content": 0.530011,
+      "value_version": 0.539093,
+      "status": 0.543492,
+      "last_modified": 0.511323
+    },
+    "APP_LANG_SUPPORT": {
+      "app_id": 0.5376,
+      "lang_region_id": 0.549425,
+      "support_status": 0.542794,
+      "added_on": 0.532734
+    },
+    "FILE_KEY": {
+      "file_id": 0.514059,
+      "key_id": 0.514408,
+      "order_index": 0.520779
+    },
+    "VERSION_HISTORY": {
+      "history_id": 0.514329,
+      "value_id": 0.515784,
+      "old_content": 0.506822,
+      "new_content": 0.509467,
+      "changed_at": 0.505703,
+      "changed_by": 0.507327,
+      "version_number": 0.517229,
+      "change_type": 0.511989
+    },
+    "COUNTRY_LANGUAGE": {
+      "country_id": 0.5533,
+      "lang_region_id": 0.556484
+    },
+    "ASSOC_APPLICATION_LANGUAGE_REGION": {
+      "assoc_application_language_region_id": 0.956716,
+      "application_id": 0.956716,
+      "language_region_id": 0.956716
+    },
+    "ASSOC_RESOURCE_FILE_RESOURCE_KEY": {
+      "assoc_resource_file_resource_key_id": 0.999721,
+      "resource_file_id": 0.999721,
+      "resource_key_id": 0.999721
+    },
+    "ASSOC_COUNTRY_LANGUAGE_REGION": {
+      "assoc_country_language_region_id": 0.995371,
+      "country_id": 0.995371,
+      "language_region_id": 0.995371
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "RESOURCE_FILE",
+      "cardinality": "1:N",
+      "description": "Each application can own multiple resource files",
+      "probability": 0.993382
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "RESOURCE_FILE",
+      "cardinality": "1:N",
+      "description": "A language/region can have many files (one per application)",
+      "probability": 0.029788
+    },
+    {
+      "entity_1": "RESOURCE_FILE",
+      "entity_2": "RESOURCE_VALUE",
+      "cardinality": "1:N",
+      "description": "Values are stored per file for a given key",
+      "probability": 0.666696
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "RESOURCE_VALUE",
+      "cardinality": "1:N",
+      "description": "A key can have many values across files and versions",
+      "probability": 0.978537
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_APPLICATION_LANGUAGE_REGION",
+      "description": "One APPLICATION can be associated with many ASSOC_APPLICATION_LANGUAGE_REGION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.956716
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "ASSOC_APPLICATION_LANGUAGE_REGION",
+      "description": "One LANGUAGE_REGION can be associated with many ASSOC_APPLICATION_LANGUAGE_REGION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.956716
+    },
+    {
+      "entity_1": "RESOURCE_FILE",
+      "entity_2": "ASSOC_RESOURCE_FILE_RESOURCE_KEY",
+      "description": "One RESOURCE_FILE can be associated with many ASSOC_RESOURCE_FILE_RESOURCE_KEY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999721
+    },
+    {
+      "entity_1": "RESOURCE_KEY",
+      "entity_2": "ASSOC_RESOURCE_FILE_RESOURCE_KEY",
+      "description": "One RESOURCE_KEY can be associated with many ASSOC_RESOURCE_FILE_RESOURCE_KEY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999721
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "ASSOC_COUNTRY_LANGUAGE_REGION",
+      "description": "One COUNTRY can be associated with many ASSOC_COUNTRY_LANGUAGE_REGION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995371
+    },
+    {
+      "entity_1": "LANGUAGE_REGION",
+      "entity_2": "ASSOC_COUNTRY_LANGUAGE_REGION",
+      "description": "One LANGUAGE_REGION can be associated with many ASSOC_COUNTRY_LANGUAGE_REGION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995371
+    },
+    {
+      "entity_1": "RESOURCE_VALUE",
+      "entity_2": "VERSION_HISTORY",
+      "cardinality": "1:N",
+      "description": "Historical change log for each resource value",
+      "probability": 6e-06
+    }
+  ],
+  "processing_time": 49.78,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added VERSION_HISTORY entity for full audit of value changes; introduced COUNTRY_LANGUAGE junction to model many‑to‑many between Country and Language/Region; clarified optional ordering in FILE_KEY; noted composite unique constraints (app_id, lang_region_id, file_path) and (iso_code, language_name, region_name) via documentation; retained all strong attributes and relationships from the best candidate while enhancing completeness, accuracy, and flexibility."
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "entity": [
+    "PROJECT",
+    "ACTIVITY",
+    "FUND_SOURCE",
+    "BUDGET",
+    "DEPARTMENT",
+    "ORGANIZATION",
+    "OBJECTIVE",
+    "ALLOCATION",
+    "CHANGE_HISTORY"
+  ],
+  "attribute": {
+    "PROJECT": [
+      "project_id",
+      "project_code",
+      "project_name",
+      "start_date",
+      "end_date",
+      "total_budget",
+      "description"
+    ],
+    "ACTIVITY": [
+      "activity_id",
+      "activity_code",
+      "activity_name",
+      "project_id",
+      "start_date",
+      "end_date",
+      "budget_amount"
+    ],
+    "FUND_SOURCE": [
+      "source_id",
+      "source_name",
+      "source_type"
+    ],
+    "BUDGET": [
+      "budget_id",
+      "project_id",
+      "source_id",
+      "amount",
+      "allocation_ratio",
+      "fiscal_year"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name",
+      "manager_name"
+    ],
+    "ORGANIZATION": [
+      "organization_id",
+      "organization_name",
+      "organization_type"
+    ],
+    "OBJECTIVE": [
+      "objective_id",
+      "project_id",
+      "objective_name",
+      "description"
+    ],
+    "ALLOCATION": [
+      "allocation_id",
+      "activity_id",
+      "source_id",
+      "amount",
+      "allocation_ratio"
+    ],
+    "CHANGE_HISTORY": [
+      "change_id",
+      "entity_type",
+      "entity_id",
+      "change_date",
+      "changed_by",
+      "change_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "OBJECTIVE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FUND_SOURCE",
+      "entity_2": "BUDGET",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACTIVITY",
+      "entity_2": "ALLOCATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CHANGE_HISTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 26.4654,
+  "ilp_runtime": 0.038
+}

@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "PROBE",
+    "SCIENTIFIC_INSTRUMENT",
+    "CELESTIAL_BODY",
+    "OBSERVATION",
+    "MISSION"
+  ],
+  "attribute": {
+    "PROBE": [
+      "probe id",
+      "weight",
+      "launch date",
+      "service life",
+      "instrument ids",
+      "operational status",
+      "remaining fuel",
+      "flight trajectory",
+      "target celestial body id"
+    ],
+    "SCIENTIFIC_INSTRUMENT": [
+      "instrument id",
+      "weight",
+      "power consumption",
+      "accuracy",
+      "operating parameters",
+      "calibration datum"
+    ],
+    "CELESTIAL_BODY": [
+      "celestial body id",
+      "type",
+      "orbital parameters",
+      "physical characteristics"
+    ],
+    "OBSERVATION": [
+      "observation id",
+      "probe id",
+      "celestial body id",
+      "observation time",
+      "observation datum",
+      "observation result",
+      "observation accuracy",
+      "research value"
+    ],
+    "MISSION": [
+      "mission id",
+      "probe id",
+      "target celestial body id",
+      "mission execution status",
+      "scientific datum acquisition status",
+      "mission priority",
+      "resource allocation"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "SCIENTIFIC_INSTRUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "PROBE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "OBSERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "OBSERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "MISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.6973,
+  "ilp_runtime": 0.035
+}

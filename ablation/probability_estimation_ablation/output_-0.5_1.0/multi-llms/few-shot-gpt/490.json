@@ -1,0 +1,163 @@
+{
+  "filename": "490.txt",
+  "entity": {
+    "PART": 0.622459,
+    "SUPPLIER": 0.622459,
+    "CUSTOMER": 0.622459,
+    "ORDER": 0.622459,
+    "ORDER_DETAIL": 0.505275,
+    "QUOTATION": 0.459216,
+    "COUNTRY": 0.534769,
+    "REGION": 0.5267
+  },
+  "attribute": {
+    "PART": {
+      "part id": 0.515182,
+      "part number": 0.523351,
+      "specification": 0.53763,
+      "unit price": 0.521212,
+      "inventory level": 0.553414
+    },
+    "SUPPLIER": {
+      "supplier id": 0.551576,
+      "contact person": 0.54934,
+      "phone": 0.54235,
+      "email": 0.550337,
+      "credit rating": 0.549247,
+      "country id": 0.551083,
+      "region id": 0.557668
+    },
+    "CUSTOMER": {
+      "customer id": 0.525341,
+      "contact name": 0.519973,
+      "phone": 0.523399,
+      "email": 0.529966,
+      "payment method": 0.536283,
+      "country id": 0.534711,
+      "region id": 0.541772
+    },
+    "ORDER": {
+      "order id": 0.52674,
+      "order time": 0.523324,
+      "customer id": 0.531822,
+      "delivery date": 0.51781,
+      "order status": 0.534441
+    },
+    "ORDER_DETAIL": {
+      "order detail id": 0.53364,
+      "order id": 0.532584,
+      "part id": 0.537029,
+      "supplier id": 0.557938,
+      "quantity": 0.548689,
+      "unit price": 0.540457,
+      "line total": 0.545649
+    },
+    "QUOTATION": {
+      "quotation id": 0.496577,
+      "supplier id": 0.539454,
+      "part id": 0.505175,
+      "quoted price": 0.50994,
+      "quotation date": 0.500151
+    },
+    "COUNTRY": {
+      "country id": 0.515807,
+      "country name": 0.512435
+    },
+    "REGION": {
+      "region id": 0.527644,
+      "region name": 0.52962,
+      "country id": 0.52696
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place many orders, each order belongs to one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963668
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "description": "An order consists of multiple order detail lines; each order detail belongs to one order.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ORDER_DETAIL",
+      "description": "A part can appear in many order detail lines; each order detail references one part.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.974325
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ORDER_DETAIL",
+      "description": "A supplier can supply many order detail lines; each order detail records the supplying supplier.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.119443
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "QUOTATION",
+      "description": "A part can have multiple quotations from suppliers; each quotation refers to one part.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.808303
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "QUOTATION",
+      "description": "A supplier can issue multiple quotations; each quotation is issued by one supplier.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.085925
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "REGION",
+      "description": "A country contains multiple regions; each region belongs to one country.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.300918
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "SUPPLIER",
+      "description": "A country can have many suppliers; each supplier is located in one country.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994952
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "SUPPLIER",
+      "description": "A region can have many suppliers; each supplier is located in one region.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.986205
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CUSTOMER",
+      "description": "A country can have many customers; each customer is located in one country.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.014455
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "CUSTOMER",
+      "description": "A region can have many customers; each customer is located in one region.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997967
+    }
+  ],
+  "processing_time": 6.17
+}

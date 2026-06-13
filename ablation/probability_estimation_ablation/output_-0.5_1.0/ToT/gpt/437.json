@@ -1,0 +1,158 @@
+{
+  "filename": "437.txt",
+  "entity": {
+    "student": 0.622459,
+    "task": 0.622459,
+    "simulation_module": 0.526625,
+    "simulation_result": 0.579544,
+    "thesis": 0.622459,
+    "assignment": 0.508799,
+    "enrollment": 0.504375,
+    "task_module": 0.519665
+  },
+  "attribute": {
+    "student": {
+      "student_id": 0.551568,
+      "name": 0.548303,
+      "class": 0.552228,
+      "major": 0.540595,
+      "email": 0.54395,
+      "phone": 0.531906
+    },
+    "task": {
+      "task_id": 0.530668,
+      "title": 0.540635,
+      "description": 0.546266,
+      "start_date": 0.530886,
+      "end_date": 0.535846,
+      "location": 0.530686,
+      "status": 0.537777,
+      "completion_status": 0.531958
+    },
+    "simulation_module": {
+      "module_id": 0.530605,
+      "type": 0.540173,
+      "description": 0.545364,
+      "code": 0.542292,
+      "credits": 0.544842
+    },
+    "simulation_result": {
+      "result_id": 0.534465,
+      "datum": 0.535392,
+      "analysis": 0.543739,
+      "simulation_date": 0.536514,
+      "score": 0.540949,
+      "student_id": 0.563584,
+      "module_id": 0.537802
+    },
+    "thesis": {
+      "thesis_id": 0.536038,
+      "title": 0.532042,
+      "content": 0.541139,
+      "submission_date": 0.536987,
+      "advisor_name": 0.525246,
+      "grade": 0.544895,
+      "student_id": 0.553586,
+      "task_id": 0.547071
+    },
+    "assignment": {
+      "assignment_id": 0.534036,
+      "assigned_date": 0.531466,
+      "role": 0.539451,
+      "grade": 0.538128,
+      "completion_status": 0.536801,
+      "student_id": 0.556584,
+      "task_id": 0.539052
+    },
+    "enrollment": {
+      "enrollment_id": 0.533411,
+      "enroll_date": 0.534771,
+      "grade": 0.538879,
+      "student_id": 0.547585,
+      "module_id": 0.541204
+    },
+    "task_module": {
+      "task_module_id": 0.531984,
+      "task_id": 0.530889,
+      "module_id": 0.529779,
+      "notes": 0.546873
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "student",
+      "entity_2": "assignment",
+      "cardinality": "1:N",
+      "description": "A student can have many task assignments",
+      "probability": 0.855545
+    },
+    {
+      "entity_1": "task",
+      "entity_2": "assignment",
+      "cardinality": "1:N",
+      "description": "A task can be assigned to many students",
+      "probability": 0.276284
+    },
+    {
+      "entity_1": "student",
+      "entity_2": "enrollment",
+      "cardinality": "1:N",
+      "description": "A student can enroll in multiple simulation modules",
+      "probability": 0.999711
+    },
+    {
+      "entity_1": "simulation_module",
+      "entity_2": "enrollment",
+      "cardinality": "1:N",
+      "description": "A module can have many student enrollments",
+      "probability": 0.004634
+    },
+    {
+      "entity_1": "simulation_module",
+      "entity_2": "simulation_result",
+      "cardinality": "1:N",
+      "description": "Each module may generate many simulation results",
+      "probability": 0.998431
+    },
+    {
+      "entity_1": "student",
+      "entity_2": "simulation_result",
+      "cardinality": "1:N",
+      "description": "Students submit many simulation results",
+      "probability": 0.526616
+    },
+    {
+      "entity_1": "student",
+      "entity_2": "thesis",
+      "cardinality": "1:0..1",
+      "description": "Each student writes at most one thesis (optional)",
+      "probability": 0.004848
+    },
+    {
+      "entity_1": "task",
+      "entity_2": "thesis",
+      "cardinality": "0..1:1",
+      "description": "A thesis is linked to one final design task; a task may have zero or one thesis",
+      "probability": 0.808905
+    },
+    {
+      "entity_1": "task",
+      "entity_2": "task_module",
+      "cardinality": "1:N",
+      "description": "A task can involve multiple simulation modules",
+      "probability": 0.999964
+    },
+    {
+      "entity_1": "simulation_module",
+      "entity_2": "task_module",
+      "cardinality": "1:N",
+      "description": "A simulation module can be used in multiple tasks",
+      "probability": 0.035088
+    }
+  ],
+  "processing_time": 13.13,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented the suggested optionality for the TASK‑THESIS relationship (0..1 on task side). Added a many‑to‑many associative entity TASK_MODULE to correctly model the relationship between tasks and simulation modules. Included foreign key attributes in SIMULATION_RESULT, THESIS, ASSIGNMENT, ENROLLMENT, and TASK_MODULE to enforce referential integrity. Added a completion_status attribute to ASSIGNMENT for outcome tracking. Standardized naming to singular entity names and snake_case attributes throughout the schema."
+  }
+}

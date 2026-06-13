@@ -1,0 +1,94 @@
+{
+  "filename": "365.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.79395,
+    "PRODUCT": 0.817574,
+    "IMAGE": 0.734524,
+    "ASSOC_CUSTOMER_PRODUCT": 0.00083
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "email": 0.771251,
+      "password": 0.772472,
+      "address": 0.768064,
+      "name": 0.767615,
+      "phone_number": 0.757769
+    },
+    "ORDER": {
+      "order_time": 0.750626,
+      "status": 0.762747,
+      "total_cost": 0.755003
+    },
+    "ORDER_ITEM": {
+      "quantity": 0.773574,
+      "purchase_price": 0.763587
+    },
+    "PRODUCT": {
+      "price": 0.753658,
+      "stock_quantity": 0.762765,
+      "description": 0.764106,
+      "image_path": 0.739787
+    },
+    "IMAGE": {
+      "image_path": 0.727947
+    },
+    "ASSOC_CUSTOMER_PRODUCT": {
+      "assoc_customer_product_id": 0.00083,
+      "customer_id": 0.00083,
+      "product_id": 0.00083
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.962841
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can include multiple order items",
+      "probability": 0.999979
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "An order item is associated with one product",
+      "probability": 0.959743
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "IMAGE",
+      "cardinality": "1:1",
+      "description": "A product has one image",
+      "probability": 0.995037
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_PRODUCT",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00083
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_CUSTOMER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_CUSTOMER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00083
+    }
+  ],
+  "processing_time": 14.11,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'image_description' from IMAGE entity and added a new relationship between CUSTOMER and PRODUCT to improve completeness and efficiency."
+  }
+}

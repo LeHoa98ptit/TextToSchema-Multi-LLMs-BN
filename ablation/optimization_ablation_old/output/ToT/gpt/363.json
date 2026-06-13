@@ -1,0 +1,125 @@
+{
+  "entity": [
+    "BOOK",
+    "AUTHOR",
+    "PUBLISHER",
+    "BOOK_COPY",
+    "READER",
+    "LOAN",
+    "RESERVATION",
+    "SHELF",
+    "LOCATION",
+    "ASSOC_BOOK_AUTHOR"
+  ],
+  "attribute": {
+    "BOOK": [
+      "isbn",
+      "title",
+      "publication_date",
+      "price"
+    ],
+    "AUTHOR": [
+      "author_id",
+      "name",
+      "biography"
+    ],
+    "PUBLISHER": [
+      "publisher_id",
+      "name",
+      "address",
+      "contact"
+    ],
+    "BOOK_COPY": [
+      "copy_id",
+      "isbn",
+      "copy_number",
+      "acquisition_date",
+      "condition",
+      "status"
+    ],
+    "READER": [
+      "reader_id",
+      "name",
+      "gender",
+      "age",
+      "phone",
+      "email",
+      "address",
+      "reader_type",
+      "max_borrow_limit",
+      "loan_period"
+    ],
+    "LOAN": [
+      "loan_id",
+      "copy_id",
+      "reader_id",
+      "borrowing_time",
+      "actual_return_date",
+      "status"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "copy_id",
+      "reader_id",
+      "reservation_time",
+      "expiration_time",
+      "status"
+    ],
+    "SHELF": [
+      "shelf_id",
+      "shelf_number",
+      "location_id"
+    ],
+    "LOCATION": [
+      "location_id",
+      "branch_name",
+      "floor",
+      "description"
+    ],
+    "ASSOC_BOOK_AUTHOR": [
+      "assoc_book_author_id",
+      "book_id",
+      "author_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_COPY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "LOAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK_COPY",
+      "entity_2": "LOAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 69.5686,
+  "ilp_runtime": 0.022
+}

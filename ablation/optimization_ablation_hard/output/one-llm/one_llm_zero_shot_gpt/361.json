@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "RESTAURANT",
+    "DISH",
+    "DISH_CATEGORY_TAG",
+    "USER",
+    "REVIEW",
+    "ASSOC_DISH_DISH_CATEGORY_TAG"
+  ],
+  "attribute": {
+    "RESTAURANT": [
+      "restaurant_id",
+      "name",
+      "address",
+      "phone_number",
+      "business_hours",
+      "average_cost_per_person",
+      "latitude",
+      "longitude",
+      "rating",
+      "review_count"
+    ],
+    "DISH": [
+      "dish_id",
+      "restaurant_id",
+      "name",
+      "price",
+      "description",
+      "satisfaction_rate",
+      "monthly_sale",
+      "image_url"
+    ],
+    "DISH_CATEGORY_TAG": [
+      "tag_id",
+      "name"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email"
+    ],
+    "REVIEW": [
+      "review_id",
+      "user_id",
+      "restaurant_id",
+      "rating",
+      "content",
+      "dining_time",
+      "photo_url",
+      "reply_time",
+      "reply_content"
+    ],
+    "ASSOC_DISH_DISH_CATEGORY_TAG": [
+      "assoc_dish_dish_category_tag_id",
+      "dish_id",
+      "dish_category_tag_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DISH",
+      "entity_2": "ASSOC_DISH_DISH_CATEGORY_TAG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISH_CATEGORY_TAG",
+      "entity_2": "ASSOC_DISH_DISH_CATEGORY_TAG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.3883,
+  "ilp_runtime": 0.136
+}

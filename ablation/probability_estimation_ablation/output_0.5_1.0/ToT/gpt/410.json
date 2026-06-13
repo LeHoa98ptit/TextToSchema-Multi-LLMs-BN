@@ -1,0 +1,174 @@
+{
+  "filename": "410.txt",
+  "entity": {
+    "USER": 0.702765,
+    "VEHICLE": 0.817574,
+    "MAINTENANCE": 0.817574,
+    "DEPARTURE": 0.817574,
+    "MAINTENANCE_APPLICATION": 0.767812,
+    "REPAIR_SHOP": 0.73208,
+    "ANNOUNCEMENT": 0.717116,
+    "TOKEN": 0.687058
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.736469,
+      "username": 0.730212,
+      "password_hash": 0.733771,
+      "email": 0.736243,
+      "full_name": 0.737395,
+      "phone_number": 0.732988,
+      "role": 0.744704,
+      "is_active": 0.730598,
+      "created_at": 0.730073,
+      "updated_at": 0.739346
+    },
+    "VEHICLE": {
+      "vehicle_id": 0.762546,
+      "license_plate": 0.755395,
+      "photo_url": 0.761902,
+      "status": 0.7699,
+      "category": 0.776887,
+      "make": 0.76926,
+      "model": 0.766798,
+      "year": 0.762726,
+      "created_at": 0.760957,
+      "updated_at": 0.766155
+    },
+    "MAINTENANCE": {
+      "maintenance_id": 0.762092,
+      "vehicle_id": 0.772649,
+      "maintenance_time": 0.761949,
+      "detail": 0.768189,
+      "cost": 0.754612,
+      "review_status": 0.763641,
+      "review_comment": 0.757245,
+      "review_reply": 0.760562,
+      "performed_by_user_id": 0.753383,
+      "repair_shop_id": 0.763782,
+      "created_at": 0.751331
+    },
+    "DEPARTURE": {
+      "departure_id": 0.751653,
+      "vehicle_id": 0.764893,
+      "departure_time": 0.748057,
+      "note": 0.752187,
+      "driver_user_id": 0.754394,
+      "created_at": 0.745857
+    },
+    "MAINTENANCE_APPLICATION": {
+      "application_id": 0.750974,
+      "vehicle_id": 0.772468,
+      "application_time": 0.750597,
+      "reason": 0.756908,
+      "review_status": 0.762561,
+      "review_comment": 0.756314,
+      "review_reply": 0.760253,
+      "submitted_by_user_id": 0.752194,
+      "created_at": 0.748232
+    },
+    "REPAIR_SHOP": {
+      "shop_id": 0.755254,
+      "shop_name": 0.75425,
+      "contact_person": 0.750317,
+      "contact_number": 0.750097,
+      "address": 0.749523,
+      "created_at": 0.749584,
+      "updated_at": 0.753375
+    },
+    "ANNOUNCEMENT": {
+      "announcement_id": 0.739196,
+      "title": 0.737711,
+      "content": 0.745448,
+      "creation_time": 0.739197,
+      "updated_at": 0.742042,
+      "created_by_user_id": 0.732055
+    },
+    "TOKEN": {
+      "token_id": 0.737201,
+      "token_value": 0.73483,
+      "user_id": 0.737522,
+      "token_type": 0.736809,
+      "creation_time": 0.738255,
+      "expiration_time": 0.73904,
+      "is_revoked": 0.738309
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:N",
+      "description": "A user (owner) can own many vehicles; each vehicle has one owner",
+      "probability": 0.99761
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have multiple maintenance records",
+      "probability": 0.990255
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "DEPARTURE",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many departure records",
+      "probability": 0.770984
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "MAINTENANCE_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A vehicle can have many maintenance applications",
+      "probability": 0.996288
+    },
+    {
+      "entity_1": "REPAIR_SHOP",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A repair shop can perform many maintenance actions; each maintenance record is linked to one shop",
+      "probability": 0.989787
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A user (mechanic or reviewer) can be associated with many maintenance records as reviewer or performer",
+      "probability": 0.98461
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEPARTURE",
+      "cardinality": "1:N",
+      "description": "A user (driver) can have many departure records",
+      "probability": 0.385007
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_APPLICATION",
+      "cardinality": "1:N",
+      "description": "A user can submit many maintenance applications",
+      "probability": 0.99971
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "description": "A user (admin) can publish many announcements",
+      "probability": 0.977161
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TOKEN",
+      "cardinality": "1:N",
+      "description": "A user can have multiple active tokens",
+      "probability": 0.964355
+    }
+  ],
+  "processing_time": 947.76,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added missing descriptive attributes (e.g., email, phone, vehicle make/model/year, maintenance cost, review status fields, token type and revocation flag). Introduced explicit foreign‑key relationships for owners, drivers, submitters, reviewers, and repair shops. Expanded relationships to capture who performs/reviews maintenance, who drives departures, and who submits applications. Added timestamps for creation and updates where appropriate. Refined cardinalities and descriptions for clearer semantics while preserving the original simple structure."
+  }
+}

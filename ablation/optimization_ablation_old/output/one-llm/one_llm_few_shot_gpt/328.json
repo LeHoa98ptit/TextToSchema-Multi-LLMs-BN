@@ -1,0 +1,104 @@
+{
+  "entity": [
+    "ADMINISTRATOR",
+    "SURVEY",
+    "QUESTION",
+    "OPTION",
+    "RESPONDENT",
+    "ANSWER",
+    "ASSOC_ANSWER_OPTION"
+  ],
+  "attribute": {
+    "ADMINISTRATOR": [
+      "admin_id",
+      "name",
+      "phone_number",
+      "account",
+      "password"
+    ],
+    "SURVEY": [
+      "survey_id",
+      "title",
+      "description",
+      "access_rule",
+      "access_password",
+      "start_time",
+      "end_time",
+      "status",
+      "logo_url",
+      "background_image_url",
+      "anonymity_setting",
+      "created_at",
+      "updated_at"
+    ],
+    "QUESTION": [
+      "question_id",
+      "title",
+      "description",
+      "required",
+      "status",
+      "validation_type",
+      "display_order",
+      "display_style",
+      "evaluation_status",
+      "evaluation_score",
+      "type",
+      "survey_id"
+    ],
+    "OPTION": [
+      "option_id",
+      "content",
+      "display_order",
+      "is_correct",
+      "status",
+      "question_id"
+    ],
+    "RESPONDENT": [
+      "respondent_id",
+      "name",
+      "email",
+      "phone_number"
+    ],
+    "ANSWER": [
+      "answer_id",
+      "submission_time",
+      "answer_content",
+      "respondent_id",
+      "question_id",
+      "survey_id"
+    ],
+    "ASSOC_ANSWER_OPTION": [
+      "assoc_answer_option_id",
+      "answer_id",
+      "option_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ANSWER",
+      "entity_2": "ASSOC_ANSWER_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPTION",
+      "entity_2": "ASSOC_ANSWER_OPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.9532,
+  "ilp_runtime": 0.044
+}

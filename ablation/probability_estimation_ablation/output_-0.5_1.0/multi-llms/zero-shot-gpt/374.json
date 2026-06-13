@@ -1,0 +1,100 @@
+{
+  "filename": "374.txt",
+  "entity": {
+    "USER": 0.622459,
+    "ROLE": 0.50585,
+    "SUPERVISORY_DEPARTMENT": 0.605468,
+    "WORK_UNIT": 0.466102,
+    "RESOURCE": 0.622459,
+    "RESOURCE_TRANSACTION": 0.525902,
+    "APPROVAL_DOCUMENT": 0.439473
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.5223,
+      "username": 0.501872,
+      "password": 0.523484,
+      "email": 0.520377,
+      "registration date": 0.513623,
+      "role id": 0.538632,
+      "last operation time": 0.523801
+    },
+    "ROLE": {
+      "role id": 0.537507,
+      "role name": 0.537757,
+      "description": 0.551962
+    },
+    "SUPERVISORY_DEPARTMENT": {
+      "supervisory department id": 0.56027,
+      "department name": 0.565971,
+      "responsibility description": 0.571079
+    },
+    "WORK_UNIT": {
+      "work unit id": 0.536972,
+      "unit name": 0.536488,
+      "responsibility description": 0.555655,
+      "supervisory department id": 0.558586
+    },
+    "RESOURCE": {
+      "resource code": 0.543083
+    },
+    "RESOURCE_TRANSACTION": {
+      "transaction id": 0.530904,
+      "resource code": 0.544628,
+      "work unit id": 0.54233,
+      "receiver user id": 0.541646,
+      "storage location": 0.538804,
+      "budget year": 0.542381,
+      "acquisition value": 0.540157,
+      "transaction timestamp": 0.524868
+    },
+    "APPROVAL_DOCUMENT": {
+      "document id": 0.523019,
+      "document name": 0.522759,
+      "content": 0.533697
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each user is assigned one role; a role can be assigned to many users",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997674
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "description": "A resource transaction records the receiving user; a user can be involved in many transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.993043
+    },
+    {
+      "entity_1": "RESOURCE",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "description": "Each transaction concerns one resource; a resource can appear in many transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999514
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "RESOURCE_TRANSACTION",
+      "description": "A transaction is associated with one work unit; a work unit can have many transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994523
+    },
+    {
+      "entity_1": "SUPERVISORY_DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "description": "Each work unit belongs to one supervisory department; a supervisory department can oversee many work units",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997391
+    }
+  ],
+  "processing_time": 24.69
+}

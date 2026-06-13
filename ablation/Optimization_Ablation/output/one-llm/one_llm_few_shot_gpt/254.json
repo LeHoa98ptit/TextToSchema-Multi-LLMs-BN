@@ -1,0 +1,82 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "STATION",
+    "SEISMOMETER",
+    "CALIBRATION_RECORD",
+    "PERSONNEL"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "role_id"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "STATION": [
+      "station_id",
+      "station_name",
+      "station_type",
+      "location"
+    ],
+    "SEISMOMETER": [
+      "seismometer_id",
+      "station_id",
+      "model",
+      "serial_number",
+      "voltage_sensitivity",
+      "coil_sensitivity",
+      "moment_inertia",
+      "equivalent_pendulum_length",
+      "mechanical_period"
+    ],
+    "CALIBRATION_RECORD": [
+      "record_id",
+      "seismometer_id",
+      "calibration_datetime",
+      "mechanical_period",
+      "equivalent_pendulum_length",
+      "moment_inertia",
+      "coil_sensitivity",
+      "comparison_result",
+      "vibration_table_test_result",
+      "amplitude",
+      "width"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "position",
+      "station_id",
+      "contact_info"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SEISMOMETER",
+      "entity_2": "CALIBRATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATION",
+      "entity_2": "PERSONNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.833,
+  "ilp_runtime": 0.051
+}

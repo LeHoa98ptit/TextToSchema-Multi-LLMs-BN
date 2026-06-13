@@ -1,0 +1,75 @@
+{
+  "filename": "465.txt",
+  "entity": {
+    "USER": 0.622459,
+    "EMAIL": 0.622459,
+    "ATTACHMENT": 0.622459,
+    "ASSOC_EMAIL_ATTACHMENT": 0.058809
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.558931,
+      "password": 0.522911,
+      "account_creation_time": 0.516072,
+      "account_id": 0.515774,
+      "account_status": 0.52115
+    },
+    "EMAIL": {
+      "sender": 0.563085,
+      "recipient": 0.558006,
+      "send_time": 0.538019,
+      "subject": 0.558402,
+      "content": 0.564012,
+      "email_id": 0.539711,
+      "parent_email_id": 0.536913
+    },
+    "ATTACHMENT": {
+      "attachment_size": 0.535443,
+      "upload_time": 0.521394,
+      "path_file": 0.528561,
+      "attachment_id": 0.520813
+    },
+    "ASSOC_EMAIL_ATTACHMENT": {
+      "assoc_email_attachment_id": 0.058809,
+      "email_id": 0.058809,
+      "attachment_id": 0.058809
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "A user can send many emails",
+      "probability": 0.999652
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ASSOC_EMAIL_ATTACHMENT",
+      "description": "One EMAIL can be associated with many ASSOC_EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.058809
+    },
+    {
+      "entity_1": "ATTACHMENT",
+      "entity_2": "ASSOC_EMAIL_ATTACHMENT",
+      "description": "One ATTACHMENT can be associated with many ASSOC_EMAIL_ATTACHMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.058809
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "An email can have many replies",
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 6.43,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added account status to the USER entity, added parent_email_id to the EMAIL entity to better reflect the reply relationship, and retained the strengths of the previous model while addressing the identified issues and integrating improvement suggestions from the evaluation."
+  }
+}

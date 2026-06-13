@@ -1,0 +1,97 @@
+{
+  "entity": [
+    "USER",
+    "ACTION",
+    "CROP",
+    "SENSOR",
+    "SENSOR_DATA",
+    "METEOROLOGICAL_RECORD",
+    "GROWTH_MODEL",
+    "MODEL_EVALUATION"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone_number",
+      "registration_time",
+      "login_time",
+      "role"
+    ],
+    "ACTION": [
+      "action_id",
+      "action_time",
+      "location",
+      "action_type",
+      "detail",
+      "water_amount",
+      "fertilizer_amount"
+    ],
+    "CROP": [
+      "crop_id",
+      "crop_type"
+    ],
+    "SENSOR": [
+      "sensor_id",
+      "sensor_type",
+      "deployment_time",
+      "location",
+      "burial_depth"
+    ],
+    "SENSOR_DATA": [
+      "data_id",
+      "collection_time",
+      "soil_moisture",
+      "temperature",
+      "rainfall",
+      "light_intensity",
+      "sensor_id"
+    ],
+    "METEOROLOGICAL_RECORD": [
+      "record_id",
+      "timestamp",
+      "temperature",
+      "humidity",
+      "rainfall",
+      "wind_speed",
+      "light_intensity",
+      "location"
+    ],
+    "GROWTH_MODEL": [
+      "model_id",
+      "parameters",
+      "creation_time",
+      "crop_id"
+    ],
+    "MODEL_EVALUATION": [
+      "evaluation_id",
+      "evaluation_metric",
+      "value",
+      "evaluation_time",
+      "location",
+      "model_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CROP",
+      "entity_2": "ACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "SENSOR_DATA",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGICAL_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 28.9294,
+  "ilp_runtime": 0.075
+}

@@ -1,0 +1,115 @@
+{
+  "filename": "422.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PROJECT": 0.817574,
+    "PROJECT_VERSION": 0.737362,
+    "TASK": 0.817574,
+    "CODE_SUBMISSION": 0.759547,
+    "ASSOC_USER_PROJECT": 0.57323
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.739591,
+      "username": 0.735101,
+      "password": 0.743662,
+      "email": 0.741518,
+      "phone": 0.73257,
+      "role": 0.749015,
+      "registration_time": 0.744694,
+      "login_time": 0.741533
+    },
+    "PROJECT": {
+      "project_id": 0.759767,
+      "project_name": 0.76227,
+      "project_introduction": 0.76658,
+      "responsible_person": 0.756737,
+      "creation_time": 0.766018,
+      "project_status": 0.7652
+    },
+    "PROJECT_VERSION": {
+      "version_id": 0.757131,
+      "project_id": 0.761907,
+      "version_number": 0.757855,
+      "release_date": 0.757526,
+      "version_description": 0.765658,
+      "stable_version": 0.751249
+    },
+    "TASK": {
+      "task_id": 0.75585,
+      "project_id": 0.762695,
+      "assign_user_id": 0.753423,
+      "task_status": 0.758751,
+      "start_time": 0.754401,
+      "end_time": 0.758917,
+      "task_description": 0.767946
+    },
+    "CODE_SUBMISSION": {
+      "submission_id": 0.746206,
+      "user_id": 0.748679,
+      "project_id": 0.759667,
+      "submission_time": 0.753425,
+      "submission_description": 0.760375,
+      "code_path": 0.747764
+    },
+    "ASSOC_USER_PROJECT": {
+      "assoc_user_project_id": 0.57323,
+      "user_id": 0.57323,
+      "project_id": 0.57323
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "Each user can have many tasks, and each task is assigned to exactly one user.",
+      "probability": 0.019355
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_VERSION",
+      "cardinality": "1:N",
+      "description": "Each project can have many versions, and each version is associated with exactly one project.",
+      "probability": 0.983631
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "Each project can have many tasks, and each task is associated with exactly one project.",
+      "probability": 0.955081
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Each user can have many code submissions, and each code submission is made by exactly one user.",
+      "probability": 0.742564
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CODE_SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Each project can have many code submissions, and each code submission is associated with exactly one project.",
+      "probability": 0.784715
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One USER can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.57323
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_USER_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_USER_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.57323
+    }
+  ],
+  "processing_time": 38.45
+}

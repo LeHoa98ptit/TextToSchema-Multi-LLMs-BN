@@ -1,0 +1,110 @@
+{
+  "filename": "291.txt",
+  "entity": {
+    "REAGENT": 0.622459,
+    "LABORATORY": 0.622459,
+    "PERSON": 0.4547,
+    "INVENTORY": 0.622459,
+    "USAGE": 0.622459,
+    "ALERT": 0.462297
+  },
+  "attribute": {
+    "REAGENT": {
+      "reagent_id": 0.55335,
+      "name": 0.553364,
+      "catalog_number": 0.5535,
+      "specification": 0.56869,
+      "safety_info": 0.56737
+    },
+    "LABORATORY": {
+      "lab_id": 0.556974,
+      "name": 0.547799,
+      "building": 0.546101,
+      "room_number": 0.551906,
+      "person_in_charge_id": 0.550175
+    },
+    "PERSON": {
+      "person_id": 0.511728,
+      "full_name": 0.50566,
+      "position": 0.505286,
+      "email": 0.501246
+    },
+    "INVENTORY": {
+      "inventory_id": 0.53411,
+      "reagent_id": 0.556394,
+      "lab_id": 0.554267,
+      "quantity_on_hand": 0.538037,
+      "batch_number": 0.532871,
+      "received_date": 0.537062,
+      "expiration_date": 0.541476,
+      "storage_location": 0.531256,
+      "status": 0.550256
+    },
+    "USAGE": {
+      "usage_id": 0.525706,
+      "inventory_id": 0.540821,
+      "person_id": 0.519738,
+      "usage_date": 0.530829,
+      "quantity_used": 0.540909,
+      "purpose": 0.527628,
+      "experiment_id": 0.539233
+    },
+    "ALERT": {
+      "alert_id": 0.508637,
+      "inventory_id": 0.532509,
+      "alert_type": 0.505323,
+      "alert_date": 0.511469,
+      "status": 0.524653,
+      "message": 0.51267
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "REAGENT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A reagent can have multiple inventory records (different batches, labs).",
+      "probability": 3e-05
+    },
+    {
+      "entity_1": "LABORATORY",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "Each laboratory maintains many inventory entries.",
+      "probability": 0.481573
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "USAGE",
+      "cardinality": "1:N",
+      "description": "Usage events are drawn from a specific inventory batch.",
+      "probability": 0.696616
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "USAGE",
+      "cardinality": "1:N",
+      "description": "A staff member can record many usage events.",
+      "probability": 0.000233
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "ALERT",
+      "cardinality": "1:N",
+      "description": "Alerts (e.g., impending expiration) are generated per inventory record.",
+      "probability": 0.012359
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "LABORATORY",
+      "cardinality": "1:N",
+      "description": "A person may be responsible for multiple laboratories; each laboratory has one person in charge.",
+      "probability": 0.872383
+    }
+  ],
+  "processing_time": 29.82,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the redundant REAGENT‑ALERT relationship; added a status attribute to INVENTORY for quick stock state queries; introduced PERSON_IN_CHARGE_ID in LABORATORY and a PERSON‑LABORATORY relationship to track laboratory managers; retained all core entities and relationships for comprehensive batch, expiration, usage, and alert management."
+  }
+}

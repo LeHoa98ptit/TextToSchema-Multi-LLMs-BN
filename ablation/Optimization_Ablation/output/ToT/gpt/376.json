@@ -1,0 +1,131 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "TECHNICIAN",
+    "CAR_MODEL",
+    "REPAIR_TASK",
+    "PART",
+    "SUPPLIER",
+    "ORDER",
+    "ORDER_PART",
+    "REPAIR_TASK_PART"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email",
+      "address",
+      "date_of_birth"
+    ],
+    "TECHNICIAN": [
+      "technician_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email",
+      "address",
+      "hire_date",
+      "skill_level"
+    ],
+    "CAR_MODEL": [
+      "model_id",
+      "make",
+      "model",
+      "year",
+      "engine_type"
+    ],
+    "REPAIR_TASK": [
+      "task_id",
+      "customer_id",
+      "technician_id",
+      "model_id",
+      "status",
+      "creation_date",
+      "completion_date",
+      "estimated_hours",
+      "total_cost"
+    ],
+    "PART": [
+      "part_id",
+      "serial_number",
+      "description",
+      "unit_price",
+      "weight",
+      "quantity_on_hand",
+      "reorder_level",
+      "last_restock_date",
+      "supplier_id"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "name",
+      "contact_name",
+      "contact_phone",
+      "email",
+      "address",
+      "rating"
+    ],
+    "ORDER": [
+      "order_id",
+      "task_id",
+      "order_date",
+      "delivery_status",
+      "total_amount"
+    ],
+    "ORDER_PART": [
+      "order_id",
+      "part_id",
+      "quantity_ordered",
+      "unit_price_at_order"
+    ],
+    "REPAIR_TASK_PART": [
+      "task_id",
+      "part_id",
+      "quantity_used",
+      "unit_price_at_use"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "REPAIR_TASK_PART",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "REPAIR_TASK_PART",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PART",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ORDER_PART",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 63.9842,
+  "ilp_runtime": 0.084
+}

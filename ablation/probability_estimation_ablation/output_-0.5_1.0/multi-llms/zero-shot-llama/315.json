@@ -1,0 +1,101 @@
+{
+  "filename": "315.txt",
+  "entity": {
+    "LIBRARY": 0.622459,
+    "PERSONNEL": 0.622459,
+    "BOOK": 0.622459,
+    "BORROWER": 0.579909,
+    "BORROWING_EVENT": 0.521262,
+    "BOOK_COPY": 0.501375
+  },
+  "attribute": {
+    "LIBRARY": {
+      "library id": 0.53258,
+      "library name": 0.541018
+    },
+    "PERSONNEL": {
+      "personnel id": 0.520368,
+      "personnel type": 0.530658,
+      "personal datum": 0.522055,
+      "contact information": 0.528035
+    },
+    "BOOK": {
+      "book id": 0.522896,
+      "book title": 0.524284,
+      "publication information": 0.537302
+    },
+    "BORROWER": {
+      "borrower id": 0.520241,
+      "borrower type": 0.529526
+    },
+    "BORROWING_EVENT": {
+      "borrowing event id": 0.509311,
+      "start time": 0.506219,
+      "end time": 0.50961,
+      "return status": 0.51392,
+      "borrowing_event_id": 0.091871,
+      "personnel_id": 0.091871,
+      "book_id": 0.091871,
+      "start_time": 0.091871,
+      "end_time": 0.091871,
+      "return_status": 0.091871
+    },
+    "BOOK_COPY": {
+      "book copy id": 0.525815,
+      "book id": 0.527957,
+      "copy information": 0.541036,
+      "borrowable status": 0.543635
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "LIBRARY",
+      "entity_2": "PERSONNEL",
+      "description": "A library has multiple personnel",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.067854
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROWING_EVENT",
+      "description": "One PERSONNEL can be associated with many BORROWING_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.091871
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BORROWING_EVENT",
+      "description": "One BOOK can be associated with many BORROWING_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.091871
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_COPY",
+      "description": "A book has multiple copies",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999971
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROWER",
+      "description": "A personnel is a borrower",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.910631
+    },
+    {
+      "entity_1": "BORROWING_EVENT",
+      "entity_2": "BOOK_COPY",
+      "description": "A borrowing event is associated with a book copy",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.014167
+    }
+  ],
+  "processing_time": 10.56
+}

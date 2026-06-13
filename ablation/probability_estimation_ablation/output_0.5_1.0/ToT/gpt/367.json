@@ -1,0 +1,118 @@
+{
+  "filename": "367.txt",
+  "entity": {
+    "USER": 0.817574,
+    "APPOINTMENT": 0.817574,
+    "MEDICAL_INSTITUTION": 0.810629,
+    "OPERATOR": 0.817574,
+    "EXAMINATION": 0.730133,
+    "PAYMENT": 0.702765,
+    "INSURANCE": 0.719947
+  },
+  "attribute": {
+    "USER": {
+      "email": 0.746788,
+      "phone_number": 0.75259,
+      "birth_date": 0.753811,
+      "gender": 0.751202,
+      "password_hash": 0.741124,
+      "address": 0.750349,
+      "insurance_status": 0.756917
+    },
+    "APPOINTMENT": {
+      "description": 0.781381,
+      "document": 0.781479,
+      "creation_date": 0.771832,
+      "appointment_date": 0.771455,
+      "status": 0.773399
+    },
+    "MEDICAL_INSTITUTION": {
+      "name": 0.765078,
+      "address": 0.769418,
+      "opening_time": 0.769598,
+      "closing_time": 0.761409
+    },
+    "OPERATOR": {
+      "username": 0.75314,
+      "password_hash": 0.745212,
+      "full_name": 0.742202,
+      "role": 0.752116
+    },
+    "EXAMINATION": {
+      "code": 0.765787,
+      "name": 0.760158,
+      "description": 0.766761
+    },
+    "PAYMENT": {
+      "amount": 0.735867,
+      "currency": 0.730073,
+      "method": 0.736197,
+      "payment_date": 0.736685,
+      "status": 0.743537
+    },
+    "INSURANCE": {
+      "policy_number": 0.753653,
+      "provider_name": 0.757916,
+      "coverage_type": 0.755175,
+      "status": 0.748742,
+      "effective_date": 0.745344,
+      "expiry_date": 0.742615
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "A user can schedule multiple appointments",
+      "probability": 0.992299
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "Each medical institution hosts many appointments",
+      "probability": 0.65256
+    },
+    {
+      "entity_1": "MEDICAL_INSTITUTION",
+      "entity_2": "OPERATOR",
+      "cardinality": "1:N",
+      "description": "Operators are assigned to a single medical institution",
+      "probability": 0.994325
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "description": "An operator may manage multiple appointments",
+      "probability": 0.991937
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "EXAMINATION",
+      "cardinality": "N:1",
+      "description": "Each appointment is linked to one examination type",
+      "probability": 0.919518
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "Each appointment has a single associated payment record",
+      "probability": 0.612646
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INSURANCE",
+      "cardinality": "1:N",
+      "description": "A user may hold multiple insurance policies",
+      "probability": 0.382663
+    }
+  ],
+  "processing_time": 329.49,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added 'name' attribute to MEDICAL_INSTITUTION (already present), introduced 'role' attribute for OPERATOR to capture permission levels, created a dedicated INSURANCE entity with detailed attributes and a 1:N relationship to USER for richer insurance management, and kept all existing strengths and relationships intact."
+  }
+}

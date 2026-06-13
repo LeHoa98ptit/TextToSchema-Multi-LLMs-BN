@@ -1,0 +1,207 @@
+{
+  "filename": "476.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "SALE_ORDER": 0.525553,
+    "ORDER_DETAIL": 0.505275,
+    "PRODUCT": 0.514446,
+    "RECIPE": 0.47759,
+    "RECIPE_DETAIL": 0.478538,
+    "RAW_MATERIAL": 0.586933,
+    "SUPPLIER": 0.622459,
+    "PURCHASE_ORDER": 0.520763,
+    "PURCHASE_ORDER_DETAIL": 0.472578,
+    "INVENTORY": 0.530637,
+    "PRODUCTION_PLAN": 0.546812,
+    "DELIVERY": 0.622459,
+    "FINANCIAL_RECORD": 0.511223
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.5287,
+      "name": 0.535949,
+      "contact_number": 0.526363,
+      "address": 0.531424
+    },
+    "SALE_ORDER": {
+      "order_id": 0.53096,
+      "order_date": 0.526661,
+      "expected_delivery_date": 0.525263,
+      "order_status": 0.536291,
+      "customer_id": 0.539588
+    },
+    "ORDER_DETAIL": {
+      "order_detail_id": 0.536721,
+      "order_id": 0.534459,
+      "product_id": 0.534543,
+      "quantity": 0.557293,
+      "unit_price": 0.542117
+    },
+    "PRODUCT": {
+      "product_id": 0.513565,
+      "name": 0.518436,
+      "description": 0.532524,
+      "price": 0.511432
+    },
+    "RECIPE": {
+      "recipe_id": 0.523616,
+      "product_id": 0.525311
+    },
+    "RECIPE_DETAIL": {
+      "recipe_detail_id": 0.534853,
+      "recipe_id": 0.53236,
+      "raw_material_id": 0.53254,
+      "quantity_required": 0.549112
+    },
+    "RAW_MATERIAL": {
+      "raw_material_id": 0.516159,
+      "name": 0.51641,
+      "unit": 0.527322,
+      "unit_price": 0.521666
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.541943,
+      "name": 0.539405,
+      "contact_number": 0.538722,
+      "address": 0.541003
+    },
+    "PURCHASE_ORDER": {
+      "purchase_order_id": 0.531185,
+      "supplier_id": 0.542064,
+      "order_date": 0.525844,
+      "status": 0.545956
+    },
+    "PURCHASE_ORDER_DETAIL": {
+      "purchase_order_detail_id": 0.548623,
+      "purchase_order_id": 0.544714,
+      "raw_material_id": 0.551193,
+      "quantity": 0.561089,
+      "unit_price": 0.545931
+    },
+    "INVENTORY": {
+      "inventory_id": 0.542496,
+      "item_type": 0.53844,
+      "item_id": 0.53473,
+      "quantity_on_hand": 0.544566,
+      "reorder_level": 0.536213
+    },
+    "PRODUCTION_PLAN": {
+      "plan_id": 0.545146,
+      "order_id": 0.547974,
+      "sequence_number": 0.542092,
+      "planned_quantity": 0.557388,
+      "start_date": 0.533982,
+      "end_date": 0.53461,
+      "status": 0.553801
+    },
+    "DELIVERY": {
+      "delivery_id": 0.528304,
+      "order_id": 0.530506,
+      "delivery_time": 0.528474,
+      "location": 0.530181,
+      "status": 0.533102
+    },
+    "FINANCIAL_RECORD": {
+      "transaction_id": 0.52121,
+      "transaction_type": 0.524517,
+      "amount": 0.518789,
+      "transaction_date": 0.518022,
+      "status": 0.526039,
+      "related_order_id": 0.525128,
+      "related_purchase_order_id": 0.535326
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.772207
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.642682
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.998214
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "RECIPE",
+      "cardinality": "1:1",
+      "probability": 0.131097
+    },
+    {
+      "entity_1": "RECIPE",
+      "entity_2": "RECIPE_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.999996
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "RECIPE_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.853579
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "PURCHASE_ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.035819
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.552422
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.99873
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "PRODUCTION_PLAN",
+      "cardinality": "1:1",
+      "probability": 0.026336
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "probability": 0.398248
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "FINANCIAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.000218
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "FINANCIAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.003112
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "probability": 0.772589
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "probability": 0.003971
+    }
+  ],
+  "processing_time": 30.5
+}

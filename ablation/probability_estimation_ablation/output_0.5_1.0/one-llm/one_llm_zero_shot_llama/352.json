@@ -1,0 +1,92 @@
+{
+  "filename": "352.txt",
+  "entity": {
+    "SUPPLIER": 0.817574,
+    "CUSTOMER": 0.817574,
+    "PRODUCT": 0.817574,
+    "INVOICE": 0.817574,
+    "INVOICE_PRODUCT": 0.804018,
+    "ASSOC_INVOICE_PRODUCT": 0.259742
+  },
+  "attribute": {
+    "SUPPLIER": {
+      "supplier_d": 0.763139,
+      "address": 0.76327,
+      "phone_number": 0.758535
+    },
+    "CUSTOMER": {
+      "customer_d": 0.758085,
+      "phone_number": 0.747845,
+      "address": 0.755093,
+      "email": 0.75834
+    },
+    "PRODUCT": {
+      "description": 0.755116,
+      "purchase_price": 0.754306,
+      "sell_price": 0.75002,
+      "inventory_quantity": 0.772606,
+      "minimum_inventory_quantity": 0.766362,
+      "supplier_d": 0.763159
+    },
+    "INVOICE": {
+      "invoice_d": 0.764979,
+      "date": 0.759937,
+      "tax": 0.763864,
+      "total_value": 0.761361,
+      "customer_d": 0.771271
+    },
+    "INVOICE_PRODUCT": {
+      "invoice_d": 0.767142,
+      "product_d": 0.76631,
+      "quantity": 0.777638
+    },
+    "ASSOC_INVOICE_PRODUCT": {
+      "assoc_invoice_product_id": 0.259742,
+      "invoice_id": 0.259742,
+      "product_id": 0.259742
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "probability": 0.017189
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "probability": 0.303321
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "INVOICE_PRODUCT",
+      "cardinality": "1:N",
+      "probability": 0.965637
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVOICE_PRODUCT",
+      "cardinality": "1:N",
+      "probability": 0.996615
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "ASSOC_INVOICE_PRODUCT",
+      "description": "One INVOICE can be associated with many ASSOC_INVOICE_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.259742
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_INVOICE_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_INVOICE_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.259742
+    }
+  ],
+  "processing_time": 27.97
+}

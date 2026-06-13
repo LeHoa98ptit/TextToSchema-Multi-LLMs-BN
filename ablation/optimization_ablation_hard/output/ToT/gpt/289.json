@@ -1,0 +1,68 @@
+{
+  "entity": [
+    "PRODUCTION_PROCESS",
+    "OPERATOR",
+    "DEPARTMENT",
+    "MONITORING_RECORD",
+    "PARAMETER",
+    "PROCESS_ASSIGNMENT"
+  ],
+  "attribute": {
+    "PRODUCTION_PROCESS": [
+      "process_id",
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "OPERATOR": [
+      "operator_id",
+      "name",
+      "department_id"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name"
+    ],
+    "MONITORING_RECORD": [
+      "record_id",
+      "recording_time",
+      "value",
+      "parameter_id",
+      "process_id"
+    ],
+    "PARAMETER": [
+      "parameter_id",
+      "name",
+      "unit"
+    ],
+    "PROCESS_ASSIGNMENT": [
+      "assignment_id",
+      "process_id",
+      "operator_id",
+      "assignment_start_time",
+      "assignment_end_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_RECORD",
+      "entity_2": "PARAMETER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCTION_PROCESS",
+      "entity_2": "PROCESS_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 10.2171,
+  "ilp_runtime": 0.027
+}

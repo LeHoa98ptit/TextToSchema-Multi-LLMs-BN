@@ -1,0 +1,82 @@
+{
+  "filename": "289.txt",
+  "entity": {
+    "PRODUCTION_PROCESS": 0.798702,
+    "OPERATOR": 0.817574,
+    "DEPARTMENT": 0.693663,
+    "MONITORING_RECORD": 0.713123,
+    "MONITOR_PARAMETER": 0.749266
+  },
+  "attribute": {
+    "PRODUCTION_PROCESS": {
+      "production process id": 0.782408,
+      "start time": 0.781836,
+      "end time": 0.778814,
+      "operator id": 0.783175
+    },
+    "OPERATOR": {
+      "operator id": 0.750919,
+      "department id": 0.769628,
+      "contact info": 0.773739
+    },
+    "DEPARTMENT": {
+      "department id": 0.763154,
+      "contact info": 0.772397
+    },
+    "MONITORING_RECORD": {
+      "monitoring record id": 0.769792,
+      "recording time": 0.775768,
+      "production process id": 0.786737,
+      "operator id": 0.774421,
+      "monitor parameter id": 0.769545
+    },
+    "MONITOR_PARAMETER": {
+      "monitor parameter id": 0.764677,
+      "parameter name": 0.763751,
+      "unit": 0.770359
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "OPERATOR",
+      "description": "Each operator belongs to one department, while a department can have many operators.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.872073
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "PRODUCTION_PROCESS",
+      "description": "Each production process is performed by one operator, and an operator can perform many production processes.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.356479
+    },
+    {
+      "entity_1": "PRODUCTION_PROCESS",
+      "entity_2": "MONITORING_RECORD",
+      "description": "Each monitoring record is associated with one production process, while a production process can have many monitoring records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.133662
+    },
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "MONITORING_RECORD",
+      "description": "Each monitoring record is created by one operator, and an operator can create many monitoring records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999206
+    },
+    {
+      "entity_1": "MONITOR_PARAMETER",
+      "entity_2": "MONITORING_RECORD",
+      "description": "Each monitoring record records one monitor parameter, while a monitor parameter can appear in many monitoring records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994635
+    }
+  ],
+  "processing_time": 14.52
+}

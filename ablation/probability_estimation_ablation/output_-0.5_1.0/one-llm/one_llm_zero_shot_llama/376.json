@@ -1,0 +1,117 @@
+{
+  "filename": "376.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "TECHNICIAN": 0.622459,
+    "CAR_MODEL": 0.532828,
+    "REPAIR_TASK": 0.595488,
+    "ORDER": 0.622459,
+    "SUPPLIER": 0.622459,
+    "PART": 0.622459,
+    "INVENTORY": 0.521237,
+    "ASSOC_ORDER_PART": 0.002444
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "d": 0.538338,
+      "phone_number": 0.524793
+    },
+    "TECHNICIAN": {
+      "d": 0.544868,
+      "contact": 0.546101,
+      "address": 0.541805
+    },
+    "CAR_MODEL": {
+      "d": 0.535532,
+      "model": 0.529749
+    },
+    "REPAIR_TASK": {
+      "d": 0.543454,
+      "task_status": 0.531681,
+      "customer_d": 0.549424,
+      "technician_d": 0.557179,
+      "task_creation_date": 0.524483,
+      "completion_date": 0.527946
+    },
+    "ORDER": {
+      "d": 0.524967,
+      "task_d": 0.543686,
+      "order_creation_date": 0.508145,
+      "delivery_status": 0.532713
+    },
+    "SUPPLIER": {
+      "d": 0.536525
+    },
+    "PART": {
+      "d": 0.523179,
+      "serial_number": 0.528757,
+      "description": 0.536626,
+      "price": 0.517567,
+      "supplier_d": 0.54272
+    },
+    "INVENTORY": {
+      "part_d": 0.546681,
+      "quantity": 0.54423
+    },
+    "ASSOC_ORDER_PART": {
+      "assoc_order_part_id": 0.002444,
+      "order_id": 0.002444,
+      "part_id": 0.002444
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "probability": 0.044486
+    },
+    {
+      "entity_1": "TECHNICIAN",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "probability": 0.959642
+    },
+    {
+      "entity_1": "CAR_MODEL",
+      "entity_2": "REPAIR_TASK",
+      "cardinality": "1:N",
+      "probability": 0.543519
+    },
+    {
+      "entity_1": "REPAIR_TASK",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.009951
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_ORDER_PART",
+      "description": "One ORDER can be associated with many ASSOC_ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002444
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ASSOC_ORDER_PART",
+      "description": "One PART can be associated with many ASSOC_ORDER_PART.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002444
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "probability": 0.033719
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PART",
+      "cardinality": "1:N",
+      "probability": 0.014488
+    }
+  ],
+  "processing_time": 22.78
+}

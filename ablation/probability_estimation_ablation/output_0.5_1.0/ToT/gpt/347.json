@@ -1,0 +1,268 @@
+{
+  "filename": "347.txt",
+  "entity": {
+    "MODEL": 0.817574,
+    "MODEL_METADATA": 0.739891,
+    "MODEL_RUN": 0.743683,
+    "RUN_METRIC": 0.714002,
+    "METRIC": 0.70289,
+    "DATASET": 0.817574,
+    "DATASET_METADATA": 0.746589,
+    "DATASET_VARIABLE_DETAILS": 0.733098,
+    "DATASET_TAG": 0.750653,
+    "TAG": 0.817574,
+    "MODEL_TYPE": 0.795646,
+    "HYPERPARAMETER": 0.817574,
+    "HYPERPARAMETER_VALUE": 0.785751,
+    "HYPERPARAMETER_DEF_VALUES": 0.776294,
+    "ID_MAP": 0.700294,
+    "LEADERBOARD": 0.704912,
+    "LEADERBOARD_METADATA": 0.681093
+  },
+  "attribute": {
+    "MODEL": {
+      "model_id": 0.751274,
+      "model_name": 0.754147,
+      "model_type_id": 0.749763,
+      "implementation": 0.756758,
+      "operational_status": 0.756259,
+      "created_at": 0.74872,
+      "updated_at": 0.750246
+    },
+    "MODEL_METADATA": {
+      "model_id": 0.753713,
+      "description": 0.760874,
+      "version": 0.756844,
+      "author": 0.74887,
+      "framework": 0.758712,
+      "framework_version": 0.749021
+    },
+    "MODEL_RUN": {
+      "run_id": 0.753095,
+      "model_id": 0.756741,
+      "dataset_id": 0.762968,
+      "start_time": 0.753035,
+      "end_time": 0.758566,
+      "runtime_seconds": 0.752216,
+      "run_path": 0.749785,
+      "max_models": 0.763874,
+      "run_status": 0.756639
+    },
+    "RUN_METRIC": {
+      "run_id": 0.754758,
+      "metric_id": 0.751994,
+      "metric_value": 0.752685
+    },
+    "METRIC": {
+      "metric_id": 0.745128,
+      "metric_name": 0.74342,
+      "description": 0.74628
+    },
+    "DATASET": {
+      "dataset_id": 0.75518,
+      "dataset_name": 0.754947,
+      "owner": 0.755794,
+      "license": 0.754182,
+      "visibility": 0.754613,
+      "url": 0.755804,
+      "created_at": 0.753772,
+      "updated_at": 0.755319
+    },
+    "DATASET_METADATA": {
+      "dataset_id": 0.755806,
+      "size_bytes": 0.749668,
+      "row_count": 0.760395,
+      "column_count": 0.758435,
+      "format": 0.759073,
+      "dataset_version": 0.754992
+    },
+    "DATASET_VARIABLE_DETAILS": {
+      "variable_id": 0.754083,
+      "dataset_id": 0.755077,
+      "variable_name": 0.753124,
+      "data_type": 0.759077,
+      "unique_value_count": 0.754832,
+      "null_value_count": 0.753159
+    },
+    "DATASET_TAG": {
+      "dataset_id": 0.755756,
+      "tag_id": 0.754188
+    },
+    "TAG": {
+      "tag_id": 0.738449,
+      "tag_name": 0.739474,
+      "description": 0.746196
+    },
+    "MODEL_TYPE": {
+      "model_type_id": 0.749368,
+      "type_name": 0.751037,
+      "description": 0.75864
+    },
+    "HYPERPARAMETER": {
+      "hyperparameter_id": 0.758127,
+      "name": 0.756996,
+      "description": 0.763308
+    },
+    "HYPERPARAMETER_VALUE": {
+      "run_id": 0.757226,
+      "hyperparameter_id": 0.756919,
+      "value": 0.756462
+    },
+    "HYPERPARAMETER_DEF_VALUES": {
+      "model_type_id": 0.767613,
+      "hyperparameter_id": 0.76182,
+      "default_value": 0.757144
+    },
+    "ID_MAP": {
+      "entity_type": 0.7433,
+      "entity_id": 0.741344,
+      "external_id": 0.735847
+    },
+    "LEADERBOARD": {
+      "leaderboard_id": 0.754072,
+      "model_id": 0.762379,
+      "metric_id": 0.759361,
+      "metric_value": 0.760601,
+      "rank": 0.757805,
+      "created_at": 0.752777
+    },
+    "LEADERBOARD_METADATA": {
+      "leaderboard_id": 0.755756,
+      "description": 0.761041,
+      "evaluation_date": 0.759738
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_METADATA",
+      "cardinality": "1:1",
+      "description": "Each model has exactly one metadata record",
+      "probability": 0.999481
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_RUN",
+      "cardinality": "1:N",
+      "description": "A model can be executed many times",
+      "probability": 0.983953
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "RUN_METRIC",
+      "cardinality": "1:N",
+      "description": "Each run records multiple evaluation metrics",
+      "probability": 0.099332
+    },
+    {
+      "entity_1": "RUN_METRIC",
+      "entity_2": "METRIC",
+      "cardinality": "N:1",
+      "description": "Metric values reference a standardized metric definition",
+      "probability": 0.796589
+    },
+    {
+      "entity_1": "LEADERBOARD",
+      "entity_2": "METRIC",
+      "cardinality": "N:1",
+      "description": "Leaderboard entries reference a standardized metric definition",
+      "probability": 0.075961
+    },
+    {
+      "entity_1": "MODEL_TYPE",
+      "entity_2": "MODEL",
+      "cardinality": "1:N",
+      "description": "Each model belongs to exactly one model type",
+      "probability": 0.993052
+    },
+    {
+      "entity_1": "MODEL_TYPE",
+      "entity_2": "HYPERPARAMETER_DEF_VALUES",
+      "cardinality": "1:N",
+      "description": "Default hyperparameter values are defined per model type",
+      "probability": 0.469591
+    },
+    {
+      "entity_1": "HYPERPARAMETER",
+      "entity_2": "HYPERPARAMETER_DEF_VALUES",
+      "cardinality": "1:N",
+      "description": "A hyperparameter can have default values for many model types",
+      "probability": 0.999685
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "HYPERPARAMETER_VALUE",
+      "cardinality": "1:N",
+      "description": "Each run stores the concrete hyperparameter values used",
+      "probability": 0.00125
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "DATASET",
+      "cardinality": "N:1",
+      "description": "Each run is executed on exactly one dataset",
+      "probability": 0.139129
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_METADATA",
+      "cardinality": "1:1",
+      "description": "Each dataset has a single metadata record",
+      "probability": 0.996074
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE_DETAILS",
+      "cardinality": "1:N",
+      "description": "A dataset contains many variable detail rows",
+      "probability": 0.998796
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_TAG",
+      "cardinality": "1:N",
+      "description": "A dataset can be linked to many tags",
+      "probability": 0.999793
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "DATASET_TAG",
+      "cardinality": "1:N",
+      "description": "A tag can be applied to many datasets",
+      "probability": 0.897592
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "LEADERBOARD",
+      "cardinality": "1:N",
+      "description": "A model can appear multiple times on the leaderboard (different metrics or dates)",
+      "probability": 0.188167
+    },
+    {
+      "entity_1": "LEADERBOARD",
+      "entity_2": "LEADERBOARD_METADATA",
+      "cardinality": "1:1",
+      "description": "Each leaderboard entry may have additional metadata",
+      "probability": 0.999402
+    },
+    {
+      "entity_1": "ID_MAP",
+      "entity_2": "MODEL",
+      "cardinality": "N:1",
+      "description": "External identifiers can reference models",
+      "probability": 0.5125
+    },
+    {
+      "entity_1": "ID_MAP",
+      "entity_2": "DATASET",
+      "cardinality": "N:1",
+      "description": "External identifiers can reference datasets",
+      "probability": 0.17219
+    }
+  ],
+  "processing_time": 90.05,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant DATA_MAP and MODEL_MAP tables, using the dataset_id foreign key in MODEL_RUN and the model_type_id foreign key in MODEL. Added OPERATIONAL_STATUS to MODEL and RUN_STATUS to MODEL_RUN to capture operational status concepts. Introduced METRIC entity for standardized metric names and linked RUN_METRIC and LEADERBOARD to it. Added dataset_version attribute to DATASET_METADATA for dataset versioning. Updated relationships to reflect the streamlined schema while preserving all domain concepts and ensuring consistency."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "filename": "263.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "LECTURER": 0.817574,
+    "HOMEWORK": 0.817574,
+    "SUBMISSION": 0.796231,
+    "GRADE": 0.817574
+  },
+  "attribute": {
+    "STUDENT": {
+      "name": 0.769679,
+      "id": 0.762744,
+      "email": 0.769651,
+      "student_id": 0.765039
+    },
+    "LECTURER": {
+      "name": 0.759196,
+      "id": 0.757839,
+      "department": 0.760249,
+      "lecturer_id": 0.761387
+    },
+    "HOMEWORK": {
+      "title": 0.77243,
+      "submission_date": 0.772216,
+      "deadline": 0.770844,
+      "description": 0.775327
+    },
+    "SUBMISSION": {
+      "submission_time": 0.747604,
+      "file": 0.757213,
+      "file_type": 0.745854,
+      "submission_status": 0.753538
+    },
+    "GRADE": {
+      "score": 0.769399,
+      "evaluation": 0.772674,
+      "feedback": 0.775061,
+      "inspection_date": 0.767405,
+      "inspection_opinion": 0.769397,
+      "inspection_report": 0.776641
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "A student can make multiple submissions",
+      "probability": 0.17616
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:1",
+      "description": "A submission is related to one homework",
+      "probability": 0.820445
+    },
+    {
+      "entity_1": "LECTURER",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A lecturer can give multiple grades",
+      "probability": 0.006639
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "HOMEWORK",
+      "cardinality": "1:1",
+      "description": "A grade is related to one homework",
+      "probability": 0.745748
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A student can receive multiple grades",
+      "probability": 0.695469
+    }
+  ],
+  "processing_time": 17.7,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged INSPECTION with GRADE to avoid redundancy, added more descriptive attributes to entities, and retained the strengths of the original model to improve completeness and accuracy."
+  }
+}

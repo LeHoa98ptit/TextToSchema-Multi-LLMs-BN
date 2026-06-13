@@ -1,0 +1,162 @@
+{
+  "filename": "303.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "STORY": 0.622459,
+    "TASK": 0.622459,
+    "SPRINT": 0.622459,
+    "ACCEPTANCE_CRITERION": 0.6002,
+    "USER": 0.500575,
+    "MESSAGE_EVENT": 0.51959,
+    "STORY_SPRINT": 0.55821
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.524504,
+      "name": 0.535748,
+      "description": 0.551394,
+      "start_date": 0.535822,
+      "end_date": 0.534542,
+      "status": 0.546019,
+      "created_at": 0.516951,
+      "updated_at": 0.515074
+    },
+    "STORY": {
+      "story_id": 0.537118,
+      "title": 0.537359,
+      "description": 0.542243,
+      "status": 0.550237,
+      "story_point": 0.541304,
+      "priority": 0.555264,
+      "project_id": 0.550134,
+      "created_at": 0.523365,
+      "updated_at": 0.53295
+    },
+    "TASK": {
+      "task_id": 0.530909,
+      "title": 0.546706,
+      "description": 0.557171,
+      "status": 0.545902,
+      "assigned_user_id": 0.522053,
+      "story_id": 0.5568,
+      "estimated_hours": 0.528862,
+      "actual_hours": 0.530845,
+      "created_at": 0.525458,
+      "updated_at": 0.524367
+    },
+    "SPRINT": {
+      "sprint_id": 0.535253,
+      "name": 0.536012,
+      "start_date": 0.541332,
+      "end_date": 0.53944,
+      "status": 0.55114,
+      "project_id": 0.543027,
+      "created_at": 0.528646,
+      "updated_at": 0.529376
+    },
+    "ACCEPTANCE_CRITERION": {
+      "criterion_id": 0.530094,
+      "description": 0.547874,
+      "status": 0.538428,
+      "story_id": 0.560355,
+      "created_at": 0.525048,
+      "updated_at": 0.523463
+    },
+    "USER": {
+      "user_id": 0.497441,
+      "username": 0.498396,
+      "full_name": 0.502343,
+      "email": 0.505029,
+      "role": 0.514343,
+      "created_at": 0.497149,
+      "updated_at": 0.500972
+    },
+    "MESSAGE_EVENT": {
+      "event_id": 0.516702,
+      "subject": 0.536382,
+      "message": 0.5313,
+      "topic": 0.542721,
+      "version": 0.534249,
+      "created_at": 0.515273,
+      "updated_at": 0.514325,
+      "project_id": 0.531398,
+      "author_user_id": 0.509888
+    },
+    "STORY_SPRINT": {
+      "story_id": 0.558974,
+      "sprint_id": 0.552927,
+      "assigned_at": 0.55042,
+      "is_current": 0.555106
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "STORY",
+      "cardinality": "1:N",
+      "description": "A project contains many stories",
+      "probability": 0.534805
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "SPRINT",
+      "cardinality": "1:N",
+      "description": "A project schedules multiple sprints",
+      "probability": 0.82577
+    },
+    {
+      "entity_1": "SPRINT",
+      "entity_2": "STORY_SPRINT",
+      "cardinality": "1:N",
+      "description": "A sprint can be linked to many story‑sprint assignments",
+      "probability": 0.998623
+    },
+    {
+      "entity_1": "STORY",
+      "entity_2": "STORY_SPRINT",
+      "cardinality": "1:N",
+      "description": "A story can be linked to many sprint assignments (history)",
+      "probability": 0.911635
+    },
+    {
+      "entity_1": "STORY",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "description": "Stories are broken into tasks",
+      "probability": 0.476361
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each task is assigned to one user",
+      "probability": 0.00816
+    },
+    {
+      "entity_1": "STORY",
+      "entity_2": "ACCEPTANCE_CRITERION",
+      "cardinality": "1:N",
+      "description": "Stories have multiple acceptance criteria",
+      "probability": 0.002933
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "MESSAGE_EVENT",
+      "cardinality": "1:N",
+      "description": "Project‑level communication events",
+      "probability": 0.001153
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE_EVENT",
+      "cardinality": "1:N",
+      "description": "Users author many message events",
+      "probability": 0.395884
+    }
+  ],
+  "processing_time": 51.14,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added audit timestamps (created_at, updated_at) to all core entities; introduced version field to MESSAGE_EVENT; added estimated_hours and actual_hours to TASK for effort tracking; replaced direct sprint_id in STORY with STORY_SPRINT junction table to support history and potential many‑to‑many sprint assignments; added role attribute to USER for RBAC; included is_current flag in STORY_SPRINT to identify the active sprint; retained original strengths such as clear one‑to‑many relationships and user assignment."
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "filename": "483.txt",
+  "entity": {
+    "PAYMENT_PLATFORM": 0.529665,
+    "USER": 0.622459,
+    "INTERMEDIARY": 0.622459,
+    "OPERATION": 0.622459,
+    "USER_PAYMENT_OPERATION": 0.991334,
+    "ASSOC_INTERMEDIARY_OPERATION": 0.252581
+  },
+  "attribute": {
+    "PAYMENT_PLATFORM": {
+      "platform id": 0.561915,
+      "platform address": 0.556664
+    },
+    "USER": {
+      "user id": 0.516722,
+      "contact information": 0.536424,
+      "registration method": 0.532507
+    },
+    "INTERMEDIARY": {
+      "intermediary id": 0.543634,
+      "intermediary status": 0.549677,
+      "operation id": 0.550422
+    },
+    "OPERATION": {
+      "operation id": 0.532795,
+      "operation type": 0.534859,
+      "operation time": 0.529749,
+      "platform id": 0.544401
+    },
+    "USER_PAYMENT_OPERATION": {
+      "user payment operation id": 0.563872,
+      "user id": 0.557804,
+      "operation id": 0.564504,
+      "payment status": 0.567396,
+      "payment time": 0.557816,
+      "intermediary id": 0.565383,
+      "user_payment_operation_id": 0.991334,
+      "user_id": 0.991334,
+      "operation_id": 0.991334,
+      "payment_status": 0.991334,
+      "payment_time": 0.991334
+    },
+    "ASSOC_INTERMEDIARY_OPERATION": {
+      "assoc_intermediary_operation_id": 0.252581,
+      "intermediary_id": 0.252581,
+      "operation_id": 0.252581
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PAYMENT_PLATFORM",
+      "entity_2": "OPERATION",
+      "description": "A payment platform can have multiple operations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.210096
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "A user can have multiple user payment operations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999974
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "An operation can have multiple user payment operations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991334
+    },
+    {
+      "entity_1": "INTERMEDIARY",
+      "entity_2": "ASSOC_INTERMEDIARY_OPERATION",
+      "description": "One INTERMEDIARY can be associated with many ASSOC_INTERMEDIARY_OPERATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252581
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "ASSOC_INTERMEDIARY_OPERATION",
+      "description": "One OPERATION can be associated with many ASSOC_INTERMEDIARY_OPERATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.252581
+    },
+    {
+      "entity_1": "INTERMEDIARY",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "An intermediary can be involved in multiple user payment operations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.003492
+    }
+  ],
+  "processing_time": 18.26
+}

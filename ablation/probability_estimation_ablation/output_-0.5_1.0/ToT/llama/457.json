@@ -1,0 +1,106 @@
+{
+  "filename": "457.txt",
+  "entity": {
+    "SUPERMARKET": 0.481334,
+    "PRODUCT": 0.622459,
+    "SUPPLIER": 0.548844,
+    "SUPPLY_REQUEST": 0.585938,
+    "DELIVERY_NOTIFICATION": 0.540362,
+    "STOCK_NOTIFICATION": 0.522859,
+    "PROCUREMENT": 0.622459
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "address": 0.554902,
+      "contact": 0.556016
+    },
+    "PRODUCT": {
+      "inventory": 0.570927,
+      "update_date": 0.520728
+    },
+    "SUPPLIER": {
+      "address": 0.556072,
+      "contact": 0.553437
+    },
+    "SUPPLY_REQUEST": {
+      "request_date": 0.548673,
+      "request_quantity": 0.560321
+    },
+    "DELIVERY_NOTIFICATION": {
+      "notification_id": 0.53238,
+      "delivery_date": 0.53588
+    },
+    "STOCK_NOTIFICATION": {
+      "notification_id": 0.535491,
+      "stock_date": 0.532734
+    },
+    "PROCUREMENT": {
+      "procurement_id": 0.543113,
+      "purchase_quantity": 0.559052,
+      "purchase_date": 0.542393
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A supermarket can submit multiple supply requests",
+      "probability": 0.010678
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A product can have multiple supply requests",
+      "probability": 0.52284
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A supplier can supply multiple products",
+      "probability": 0.036387
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROCUREMENT",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple procurements",
+      "probability": 0.291983
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PROCUREMENT",
+      "cardinality": "1:N",
+      "description": "A product can have multiple procurements",
+      "probability": 0.249303
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "DELIVERY_NOTIFICATION",
+      "cardinality": "1:1",
+      "description": "A supply request can generate one delivery notification",
+      "probability": 0.960567
+    },
+    {
+      "entity_1": "SUPPLY_REQUEST",
+      "entity_2": "STOCK_NOTIFICATION",
+      "cardinality": "1:1",
+      "description": "A supply request can generate one stock notification",
+      "probability": 0.214359
+    },
+    {
+      "entity_1": "STOCK_NOTIFICATION",
+      "entity_2": "PROCUREMENT",
+      "cardinality": "1:N",
+      "description": "A stock notification can lead to multiple procurements",
+      "probability": 0.009377
+    }
+  ],
+  "processing_time": 11.67,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes and added relationships between procurement and supplier, and between procurement and product to improve the model's completeness and accuracy."
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "filename": "467.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "PICKING_LIST": 0.674015,
+    "DELIVERY_ORDER": 0.780057,
+    "INVOICE": 0.817574,
+    "ACCOUNTS_RECEIVABLE_REPORT": 0.70042
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.754283,
+      "name": 0.755619,
+      "contact information": 0.760648
+    },
+    "PRODUCT": {
+      "product id": 0.745646,
+      "product name": 0.745442,
+      "price": 0.742089,
+      "inventory quantity": 0.768413
+    },
+    "ORDER": {
+      "order id": 0.761335,
+      "product id": 0.760567,
+      "customer id": 0.764442,
+      "order quantity": 0.772733,
+      "order status": 0.770574
+    },
+    "PICKING_LIST": {
+      "picking list id": 0.738856,
+      "order id": 0.754984,
+      "product id": 0.743936,
+      "picking quantity": 0.759203,
+      "picking status": 0.748992
+    },
+    "DELIVERY_ORDER": {
+      "delivery order id": 0.760678,
+      "order id": 0.761631,
+      "delivery time": 0.760953,
+      "delivery status": 0.76865
+    },
+    "INVOICE": {
+      "invoice id": 0.759959,
+      "order id": 0.768833,
+      "invoice amount": 0.764825,
+      "invoice date": 0.760205
+    },
+    "ACCOUNTS_RECEIVABLE_REPORT": {
+      "report id": 0.754822,
+      "order id": 0.762689,
+      "receivable amount": 0.759831,
+      "report date": 0.754575
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "A customer can place many orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962394
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PICKING_LIST",
+      "description": "An order can generate many picking lists.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 5e-06
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_ORDER",
+      "description": "An order can generate many delivery orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999184
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "INVOICE",
+      "description": "An order can generate many invoices.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980221
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ACCOUNTS_RECEIVABLE_REPORT",
+      "description": "An order can generate many accounts receivable reports.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 4e-06
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER",
+      "description": "A product can be part of many orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001334
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PICKING_LIST",
+      "description": "A product can be part of many picking lists.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 3.4e-05
+    }
+  ],
+  "processing_time": 1005.28
+}

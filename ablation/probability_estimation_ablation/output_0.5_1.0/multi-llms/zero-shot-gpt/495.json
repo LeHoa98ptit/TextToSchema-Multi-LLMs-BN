@@ -1,0 +1,144 @@
+{
+  "filename": "495.txt",
+  "entity": {
+    "DOCTOR": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "WARD": 0.817574,
+    "PATIENT": 0.817574,
+    "MEDICINE": 0.817574,
+    "CONSULTATION": 0.71441,
+    "DIAGNOSIS": 0.817574,
+    "MEDICATION_RETRIEVAL": 0.734602,
+    "PERSONNEL": 0.743931
+  },
+  "attribute": {
+    "DOCTOR": {
+      "doctor id": 0.763351,
+      "gender": 0.757212,
+      "title": 0.758662,
+      "year of service": 0.76508,
+      "phone number": 0.762701,
+      "department id": 0.76718
+    },
+    "DEPARTMENT": {
+      "department id": 0.75707,
+      "person charge id": 0.75578,
+      "total number personnel": 0.764016,
+      "location": 0.753447,
+      "phone number": 0.755521
+    },
+    "WARD": {
+      "ward id": 0.757483,
+      "number of beds": 0.765442,
+      "ward level": 0.757527,
+      "location": 0.754761
+    },
+    "PATIENT": {
+      "patient id": 0.770155,
+      "gender": 0.760599,
+      "age": 0.755848,
+      "contact information": 0.766504,
+      "consultation date": 0.75424,
+      "diagnosis description": 0.758178,
+      "ward id": 0.774657
+    },
+    "MEDICINE": {
+      "medicine id": 0.766649,
+      "inventory quantity": 0.767584,
+      "price": 0.752637,
+      "sale price": 0.748594,
+      "remark": 0.757025
+    },
+    "CONSULTATION": {
+      "consultation id": 0.755549,
+      "patient id": 0.766553,
+      "doctor id": 0.763257,
+      "consultation time": 0.746337,
+      "diagnosis description": 0.756099,
+      "treatment result": 0.753434,
+      "remark": 0.749673
+    },
+    "DIAGNOSIS": {
+      "diagnosis id": 0.750455,
+      "patient id": 0.763707,
+      "description": 0.742443
+    },
+    "MEDICATION_RETRIEVAL": {
+      "retrieval id": 0.765867,
+      "patient id": 0.768145,
+      "medicine id": 0.76503,
+      "retrieval time": 0.757076,
+      "quantity": 0.767098
+    },
+    "PERSONNEL": {
+      "personnel id": 0.758816
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DOCTOR",
+      "description": "Each doctor belongs to one department, a department can have many doctors",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005541
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PERSONNEL",
+      "description": "Each department has one person in charge, and a personnel member is in charge of at most one department",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.962041
+    },
+    {
+      "entity_1": "WARD",
+      "entity_2": "PATIENT",
+      "description": "Each patient is assigned to one ward, a ward can accommodate many patients",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 6.9e-05
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "DIAGNOSIS",
+      "description": "A patient can have multiple diagnoses, each diagnosis belongs to one patient",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.960639
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "CONSULTATION",
+      "description": "A patient can have many consultations, each consultation is linked to one patient",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994014
+    },
+    {
+      "entity_1": "DOCTOR",
+      "entity_2": "CONSULTATION",
+      "description": "A doctor can conduct many consultations, each consultation involves one doctor",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.341728
+    },
+    {
+      "entity_1": "PATIENT",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "description": "A patient can have multiple medication retrieval records, each retrieval record belongs to one patient",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968541
+    },
+    {
+      "entity_1": "MEDICINE",
+      "entity_2": "MEDICATION_RETRIEVAL",
+      "description": "A medicine can be retrieved many times, each retrieval record references one medicine",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.95113
+    }
+  ],
+  "processing_time": 29.42
+}

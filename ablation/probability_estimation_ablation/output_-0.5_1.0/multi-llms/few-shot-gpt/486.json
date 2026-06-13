@@ -1,0 +1,80 @@
+{
+  "filename": "486.txt",
+  "entity": {
+    "COMPANY": 0.546168,
+    "MINE": 0.622459,
+    "MINERAL_RESOURCE": 0.601711,
+    "PERSON": 0.456882,
+    "EXTRACTION": 0.622459
+  },
+  "attribute": {
+    "COMPANY": {
+      "company id": 0.529716
+    },
+    "MINE": {
+      "mine id": 0.50998,
+      "location": 0.525377
+    },
+    "MINERAL_RESOURCE": {
+      "mineral resource id": 0.557988,
+      "reserve": 0.556012,
+      "discovery date": 0.560117
+    },
+    "PERSON": {
+      "person id": 0.510813,
+      "role": 0.508911
+    },
+    "EXTRACTION": {
+      "extraction id": 0.537736,
+      "extraction date": 0.537906,
+      "extraction volume": 0.536162,
+      "extraction cost": 0.536895,
+      "mineral resource id": 0.569381,
+      "mine id": 0.555639,
+      "person id": 0.53182
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "MINE",
+      "description": "A mining company owns one or more mines, while each mine is owned by a single company.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.970047
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "MINERAL_RESOURCE",
+      "description": "A mineral resource is discovered at a specific mine; a mine can have many mineral resources.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.807234
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "EXTRACTION",
+      "description": "A person is responsible for one or more extraction events; each extraction record is linked to a single person.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.879806
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "EXTRACTION",
+      "description": "An extraction event extracts a specific mineral resource; a mineral resource can be extracted in many events.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.039086
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "EXTRACTION",
+      "description": "Extraction events occur at a mine; a mine can have many extraction records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004646
+    }
+  ],
+  "processing_time": 1.8
+}

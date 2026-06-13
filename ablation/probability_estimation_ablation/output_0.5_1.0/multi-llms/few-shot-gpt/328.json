@@ -1,0 +1,114 @@
+{
+  "filename": "328.txt",
+  "entity": {
+    "ADMINISTRATOR": 0.742671,
+    "SURVEY": 0.817574,
+    "QUESTION": 0.817574,
+    "OPTION": 0.817574,
+    "USER": 0.726771,
+    "ANSWER": 0.817574
+  },
+  "attribute": {
+    "ADMINISTRATOR": {
+      "admin id": 0.753611,
+      "phone number": 0.75229,
+      "account": 0.756502,
+      "password hash": 0.746524
+    },
+    "SURVEY": {
+      "survey id": 0.781458,
+      "title": 0.784346,
+      "description": 0.789138,
+      "access rule": 0.77904,
+      "password": 0.781016,
+      "start time": 0.772921,
+      "end time": 0.777534,
+      "status": 0.78781,
+      "logo url": 0.765101,
+      "background image url": 0.762636,
+      "anonymity": 0.765123,
+      "created by admin id": 0.781012,
+      "created at": 0.775872,
+      "updated at": 0.774447
+    },
+    "QUESTION": {
+      "question id": 0.754058,
+      "survey id": 0.779592,
+      "title": 0.754956,
+      "description": 0.763274,
+      "question type": 0.762222,
+      "is required": 0.757647,
+      "validation regex": 0.749027,
+      "display order": 0.753529,
+      "display style": 0.762209,
+      "evaluation status": 0.762644,
+      "evaluation score": 0.759902
+    },
+    "OPTION": {
+      "option id": 0.754097,
+      "question id": 0.765855,
+      "content": 0.76206,
+      "display order": 0.74451,
+      "is correct": 0.753833,
+      "status": 0.75815
+    },
+    "USER": {
+      "user id": 0.735581,
+      "username": 0.732921,
+      "password hash": 0.737269,
+      "email": 0.736769,
+      "created at": 0.737737
+    },
+    "ANSWER": {
+      "answer id": 0.746767,
+      "question id": 0.753149,
+      "user id": 0.748463,
+      "submission time": 0.753583,
+      "answer content": 0.757171,
+      "selected option ids": 0.763263
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "SURVEY",
+      "description": "An administrator creates, edits, and deletes surveys; each survey is created by one administrator, while an administrator can manage many surveys.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000456
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "QUESTION",
+      "description": "A survey contains multiple questions; each question belongs to exactly one survey.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.891611
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "OPTION",
+      "description": "A question can have multiple options; each option is defined for a single question.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.832904
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANSWER",
+      "description": "A user submits many answers; each answer record is associated with one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989462
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ANSWER",
+      "description": "A question receives many answers from respondents; each answer corresponds to one question.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999744
+    }
+  ],
+  "processing_time": 46.35
+}

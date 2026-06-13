@@ -1,0 +1,95 @@
+{
+  "filename": "301.txt",
+  "entity": {
+    "SEAT": 0.622459,
+    "USER": 0.622459,
+    "RESERVATION": 0.622459,
+    "TEMPLATE": 0.455444,
+    "OCCASION": 0.48418
+  },
+  "attribute": {
+    "SEAT": {
+      "seat_location": 0.547714,
+      "x_coordinate": 0.539525,
+      "y_coordinate": 0.537884,
+      "row": 0.540631,
+      "column": 0.550029,
+      "type": 0.546733,
+      "price": 0.533737,
+      "creation_time": 0.547796,
+      "update_time": 0.545602,
+      "validity": 0.549716,
+      "flag": 0.534709,
+      "seat_status": 0.550993
+    },
+    "USER": {
+      "contact_number": 0.517215,
+      "email_address": 0.512752,
+      "unique_id": 0.517305
+    },
+    "RESERVATION": {
+      "reservation_id": 0.550208,
+      "seat_id": 0.556705,
+      "user_id": 0.545357,
+      "reservation_time": 0.547315,
+      "purchase_time": 0.553089,
+      "reservation_status": 0.54956
+    },
+    "TEMPLATE": {
+      "template_id": 0.510729,
+      "template_description": 0.529038,
+      "suitable_occasion": 0.536093,
+      "template_name": 0.513188,
+      "layout_details": 0.534024
+    },
+    "OCCASION": {
+      "occasion_id": 0.52202,
+      "occasion_name": 0.52328,
+      "time_period": 0.525732,
+      "occasion_type": 0.522299,
+      "description": 0.524853
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SEAT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A seat can have multiple reservations",
+      "probability": 0.999682
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A user can make multiple reservations",
+      "probability": 0.554477
+    },
+    {
+      "entity_1": "TEMPLATE",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "description": "A template can be applied to multiple seats",
+      "probability": 0.974791
+    },
+    {
+      "entity_1": "OCCASION",
+      "entity_2": "TEMPLATE",
+      "cardinality": "1:N",
+      "description": "An occasion can have multiple templates",
+      "probability": 0.01071
+    },
+    {
+      "entity_1": "OCCASION",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "An occasion can have multiple reservations",
+      "probability": 0.97841
+    }
+  ],
+  "processing_time": 23.54,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more detail to the TEMPLATE and OCCASION entities, included seat_status and reservation_status attributes, and added a new relationship between OCCASION and RESERVATION to capture occasion-specific reservations."
+  }
+}

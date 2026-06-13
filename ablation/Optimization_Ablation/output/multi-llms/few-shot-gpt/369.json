@@ -1,0 +1,162 @@
+{
+  "entity": [
+    "CONTENT",
+    "USER",
+    "COMMENT",
+    "WORKFLOW",
+    "WORKFLOW_TYPE",
+    "WORKFLOW_STATE",
+    "VERSION",
+    "OPERATION_LOG",
+    "AUDIT_LOG",
+    "PERMISSION",
+    "ROLE"
+  ],
+  "attribute": {
+    "CONTENT": [
+      "content id",
+      "title",
+      "body",
+      "created at",
+      "created by user id",
+      "current state id",
+      "is published",
+      "version number"
+    ],
+    "USER": [
+      "user id",
+      "username",
+      "email",
+      "password hash",
+      "created at",
+      "role id"
+    ],
+    "COMMENT": [
+      "comment id",
+      "content id",
+      "user id",
+      "comment text",
+      "comment time"
+    ],
+    "WORKFLOW": [
+      "workflow id",
+      "content id",
+      "workflow type id",
+      "start time",
+      "end time",
+      "current state id"
+    ],
+    "WORKFLOW_TYPE": [
+      "workflow type id",
+      "type name",
+      "description"
+    ],
+    "WORKFLOW_STATE": [
+      "state id",
+      "workflow type id",
+      "state name",
+      "description",
+      "state order"
+    ],
+    "VERSION": [
+      "version id",
+      "content id",
+      "version number",
+      "created at",
+      "created by user id",
+      "change summary"
+    ],
+    "OPERATION_LOG": [
+      "log id",
+      "operation type",
+      "operation time",
+      "user id",
+      "content id",
+      "comment id",
+      "details"
+    ],
+    "AUDIT_LOG": [
+      "audit id",
+      "operation log id",
+      "audit time",
+      "auditor user id",
+      "notes"
+    ],
+    "PERMISSION": [
+      "permission id",
+      "role id",
+      "entity",
+      "action",
+      "description"
+    ],
+    "ROLE": [
+      "role id",
+      "role name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW_TYPE",
+      "entity_2": "WORKFLOW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW_STATE",
+      "entity_2": "WORKFLOW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORKFLOW_TYPE",
+      "entity_2": "WORKFLOW_STATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION_LOG",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 92.3124,
+  "ilp_runtime": 0.079
+}

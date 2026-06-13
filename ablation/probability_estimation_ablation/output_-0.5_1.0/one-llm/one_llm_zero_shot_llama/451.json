@@ -1,0 +1,127 @@
+{
+  "filename": "451.txt",
+  "entity": {
+    "INTRUSION_DETECTION_RECORD": 0.525154,
+    "RESPONSE_PLAN": 0.521013,
+    "KNOWLEDGE_BASE": 0.580786,
+    "ALARM": 0.622459,
+    "INTRUSION_BEHAVIOR": 0.599888,
+    "SECURITY_CONFIGURATION": 0.460011,
+    "GOOD_PRACTICE": 0.479786,
+    "INTELLIGENT_CONTROL_SYSTEM": 0.491626,
+    "NETWORK_TRAFFIC": 0.450735,
+    "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR": 0.78354
+  },
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": {
+      "record_id": 0.544126,
+      "detection_time": 0.553155,
+      "source_ip_address": 0.540857,
+      "destination_ip_address": 0.539904,
+      "source_port_number": 0.541919,
+      "destination_port_number": 0.542069,
+      "attack_type": 0.555946,
+      "threat_level": 0.556876
+    },
+    "RESPONSE_PLAN": {
+      "plan_id": 0.513579,
+      "plan_generation_time": 0.512585,
+      "plan_type": 0.514335,
+      "detailed_plan_content": 0.513254,
+      "execution_status": 0.518584
+    },
+    "KNOWLEDGE_BASE": {
+      "knowledge_id": 0.53093,
+      "record_category": 0.529371,
+      "knowledge_description": 0.536482,
+      "knowledge_source": 0.532042,
+      "knowledge_reliability": 0.53396
+    },
+    "ALARM": {
+      "alarm_id": 0.537473,
+      "alarm_time": 0.534953,
+      "alarm_level": 0.542472,
+      "alarm_content": 0.541508,
+      "processing_status": 0.549078
+    },
+    "INTRUSION_BEHAVIOR": {
+      "behavior_id": 0.547903,
+      "behavior_type": 0.551779,
+      "behavior_description": 0.557234
+    },
+    "SECURITY_CONFIGURATION": {
+      "configuration_id": 0.530782,
+      "configuration_type": 0.534086,
+      "configuration_description": 0.539488
+    },
+    "GOOD_PRACTICE": {
+      "practice_id": 0.524218,
+      "practice_type": 0.520953,
+      "practice_description": 0.522011
+    },
+    "INTELLIGENT_CONTROL_SYSTEM": {
+      "system_id": 0.542029,
+      "system_type": 0.543234,
+      "system_description": 0.546726
+    },
+    "NETWORK_TRAFFIC": {
+      "traffic_id": 0.534101,
+      "traffic_type": 0.535113,
+      "traffic_description": 0.539333
+    },
+    "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR": {
+      "assoc_knowledge_base_intrusion_behavior_id": 0.78354,
+      "knowledge_base_id": 0.78354,
+      "intrusion_behavior_id": 0.78354
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INTELLIGENT_CONTROL_SYSTEM",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "probability": 0.640806
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "cardinality": "1:1",
+      "probability": 0.99956
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE",
+      "entity_2": "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR",
+      "description": "One KNOWLEDGE_BASE can be associated with many ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.78354
+    },
+    {
+      "entity_1": "INTRUSION_BEHAVIOR",
+      "entity_2": "ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR",
+      "description": "One INTRUSION_BEHAVIOR can be associated with many ASSOC_KNOWLEDGE_BASE_INTRUSION_BEHAVIOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.78354
+    },
+    {
+      "entity_1": "SECURITY_CONFIGURATION",
+      "entity_2": "GOOD_PRACTICE",
+      "cardinality": "1:N",
+      "probability": 0.05064
+    },
+    {
+      "entity_1": "NETWORK_TRAFFIC",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.957415
+    },
+    {
+      "entity_1": "INTELLIGENT_CONTROL_SYSTEM",
+      "entity_2": "NETWORK_TRAFFIC",
+      "cardinality": "1:N",
+      "probability": 0.002246
+    }
+  ],
+  "processing_time": 28.67
+}

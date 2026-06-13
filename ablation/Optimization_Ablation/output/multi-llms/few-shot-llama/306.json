@@ -1,0 +1,77 @@
+{
+  "entity": [
+    "TASK",
+    "SCHEDULER",
+    "TRIGGER",
+    "LOCK",
+    "TASK_TRIGGER"
+  ],
+  "attribute": {
+    "TASK": [
+      "task id",
+      "task name",
+      "task description",
+      "class name",
+      "persistence flag",
+      "concurrent execution flag"
+    ],
+    "SCHEDULER": [
+      "scheduler id",
+      "scheduler name",
+      "scheduler status",
+      "scheduler configuration",
+      "scheduler logs"
+    ],
+    "TRIGGER": [
+      "trigger id",
+      "trigger name"
+    ],
+    "LOCK": [
+      "lock id",
+      "lock name",
+      "lock status",
+      "lock description"
+    ],
+    "TASK_TRIGGER": [
+      "task_trigger_id",
+      "task_id",
+      "trigger_id",
+      "next_execution_time",
+      "last_execution_time",
+      "priority",
+      "trigger_status",
+      "start_time",
+      "end_time",
+      "calendar_name",
+      "fault_instruction"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "LOCK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 30.4723,
+  "ilp_runtime": 0.065
+}

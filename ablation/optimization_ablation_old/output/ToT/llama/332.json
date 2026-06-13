@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "ALBUM",
+    "ARTIST",
+    "SONG",
+    "VIDEO",
+    "PLAYLIST",
+    "USER",
+    "ASSOC_ALBUM_ARTIST",
+    "ASSOC_PLAYLIST_SONG"
+  ],
+  "attribute": {
+    "ALBUM": [
+      "album_id",
+      "release_date",
+      "description"
+    ],
+    "ARTIST": [
+      "artist_id",
+      "name",
+      "bio"
+    ],
+    "SONG": [
+      "song_id",
+      "title",
+      "duration",
+      "popularity"
+    ],
+    "VIDEO": [
+      "video_id",
+      "url",
+      "duration"
+    ],
+    "PLAYLIST": [
+      "playlist_id",
+      "name",
+      "play_count",
+      "description"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password",
+      "location",
+      "preferences"
+    ],
+    "ASSOC_ALBUM_ARTIST": [
+      "assoc_album_artist_id",
+      "album_id",
+      "artist_id"
+    ],
+    "ASSOC_PLAYLIST_SONG": [
+      "assoc_playlist_song_id",
+      "playlist_id",
+      "song_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ALBUM",
+      "entity_2": "ASSOC_ALBUM_ARTIST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ARTIST",
+      "entity_2": "ASSOC_ALBUM_ARTIST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SONG",
+      "entity_2": "ALBUM",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYLIST",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLAYLIST",
+      "entity_2": "ASSOC_PLAYLIST_SONG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SONG",
+      "entity_2": "ASSOC_PLAYLIST_SONG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 50.3512,
+  "ilp_runtime": 0.071
+}

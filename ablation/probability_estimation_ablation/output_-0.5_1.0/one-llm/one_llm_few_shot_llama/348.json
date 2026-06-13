@@ -1,0 +1,84 @@
+{
+  "filename": "348.txt",
+  "entity": {
+    "PLUGIN": 0.622459,
+    "PLUGIN_TYPE": 0.58154,
+    "PLUGIN_VERSION": 0.518791,
+    "PLUGIN_EXECUTION": 0.506025,
+    "SQL_STATEMENT": 0.436987,
+    "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT": 0.004437
+  },
+  "attribute": {
+    "PLUGIN": {
+      "plugin_id": 0.538879,
+      "name": 0.54444,
+      "description": 0.558739
+    },
+    "PLUGIN_TYPE": {
+      "type_id": 0.536673,
+      "type_name": 0.538493,
+      "type_description": 0.540959
+    },
+    "PLUGIN_VERSION": {
+      "version_id": 0.535728,
+      "version_number": 0.537048,
+      "release_date": 0.539042
+    },
+    "PLUGIN_EXECUTION": {
+      "execution_id": 0.548934,
+      "start_time": 0.549207,
+      "end_time": 0.551682,
+      "status": 0.56149
+    },
+    "SQL_STATEMENT": {
+      "statement_id": 0.522926,
+      "statement_text": 0.519632,
+      "execution_result": 0.529227
+    },
+    "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT": {
+      "assoc_plugin_execution_sql_statement_id": 0.004437,
+      "plugin_execution_id": 0.004437,
+      "sql_statement_id": 0.004437
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_TYPE",
+      "cardinality": "N:1",
+      "description": "Each plugin is associated with one plugin type, and each plugin type can have many plugins.",
+      "probability": 0.999459
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_VERSION",
+      "cardinality": "1:N",
+      "description": "Each plugin can have many versions, and each version is associated with one plugin.",
+      "probability": 0.999946
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_EXECUTION",
+      "cardinality": "1:N",
+      "description": "Each plugin can have many executions, and each execution is associated with one plugin.",
+      "probability": 0.99806
+    },
+    {
+      "entity_1": "PLUGIN_EXECUTION",
+      "entity_2": "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT",
+      "description": "One PLUGIN_EXECUTION can be associated with many ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004437
+    },
+    {
+      "entity_1": "SQL_STATEMENT",
+      "entity_2": "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT",
+      "description": "One SQL_STATEMENT can be associated with many ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004437
+    }
+  ],
+  "processing_time": 11.52
+}

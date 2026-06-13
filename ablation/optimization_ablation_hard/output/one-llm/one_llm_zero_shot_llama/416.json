@@ -1,0 +1,109 @@
+{
+  "entity": [
+    "USER",
+    "COMPANY",
+    "JOB",
+    "CONVERSATION",
+    "MESSAGE_BOARD",
+    "MESSAGE",
+    "ASSOC_USER_CONVERSATION",
+    "ASSOC_COMPANY_CONVERSATION"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "email",
+      "avatar",
+      "nickname",
+      "registration_time",
+      "role"
+    ],
+    "COMPANY": [
+      "company_id",
+      "company_name",
+      "company_address",
+      "company_profile",
+      "contact_information"
+    ],
+    "JOB": [
+      "job_id",
+      "title",
+      "content",
+      "requirement",
+      "job_category",
+      "salary",
+      "education_level",
+      "work_location"
+    ],
+    "CONVERSATION": [
+      "conversation_id"
+    ],
+    "MESSAGE_BOARD": [
+      "message_board_id",
+      "message_content",
+      "message_time"
+    ],
+    "MESSAGE": [
+      "message_id",
+      "content",
+      "send_time"
+    ],
+    "ASSOC_USER_CONVERSATION": [
+      "assoc_user_conversation_id",
+      "user_id",
+      "conversation_id"
+    ],
+    "ASSOC_COMPANY_CONVERSATION": [
+      "assoc_company_conversation_id",
+      "company_id",
+      "conversation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE_BOARD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "JOB",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ASSOC_COMPANY_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "ASSOC_COMPANY_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 52.1616,
+  "ilp_runtime": 0.131
+}

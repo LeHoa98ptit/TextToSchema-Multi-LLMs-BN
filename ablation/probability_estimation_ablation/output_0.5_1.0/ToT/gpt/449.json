@@ -1,0 +1,129 @@
+{
+  "filename": "449.txt",
+  "entity": {
+    "EMPLOYEE": 0.817574,
+    "POSITION": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "TRAINING": 0.817574,
+    "TRAINER": 0.769963,
+    "EMPLOYEE_TRAINING": 0.760551,
+    "EMPLOYEE_POSITION_CHANGE": 0.776173
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_number": 0.780587,
+      "first_name": 0.774208,
+      "last_name": 0.775505,
+      "gender": 0.774741,
+      "date_of_birth": 0.771594,
+      "entry_date": 0.772589,
+      "resignation_date": 0.764539,
+      "phone": 0.767274,
+      "address": 0.775989,
+      "email_address": 0.767121,
+      "status": 0.778621,
+      "department_number": 0.779417
+    },
+    "POSITION": {
+      "position_number": 0.760636,
+      "position_title": 0.765395,
+      "responsibility": 0.761524,
+      "department_number": 0.780802,
+      "qualification": 0.768529,
+      "experience_years": 0.76907,
+      "skill_set": 0.75867
+    },
+    "DEPARTMENT": {
+      "department_number": 0.761195,
+      "department_name": 0.763418,
+      "function": 0.766056,
+      "planning_content": 0.76739
+    },
+    "TRAINING": {
+      "training_number": 0.769774,
+      "training_time": 0.763163,
+      "training_location": 0.767286,
+      "training_content": 0.766792,
+      "trainer_id": 0.763119
+    },
+    "TRAINER": {
+      "trainer_id": 0.753465,
+      "trainer_name": 0.753792,
+      "expertise_area": 0.755925,
+      "contact_phone": 0.746481,
+      "email": 0.749139
+    },
+    "EMPLOYEE_TRAINING": {
+      "emp_train_id": 0.778911,
+      "employee_number": 0.787538,
+      "training_number": 0.784041,
+      "attendance_status": 0.777609,
+      "score": 0.774785,
+      "completion_date": 0.773313
+    },
+    "EMPLOYEE_POSITION_CHANGE": {
+      "change_id": 0.776877,
+      "employee_number": 0.784783,
+      "old_position_number": 0.78011,
+      "new_position_number": 0.780369,
+      "change_date": 0.779501,
+      "reason": 0.780908
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee is assigned to one department.",
+      "probability": 0.999895
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each position belongs to one department.",
+      "probability": 0.970006
+    },
+    {
+      "entity_1": "TRAINING",
+      "entity_2": "TRAINER",
+      "cardinality": "N:1",
+      "description": "A training session is delivered by one trainer; a trainer can deliver many trainings.",
+      "probability": 0.999805
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_TRAINING",
+      "cardinality": "1:N",
+      "description": "Associative entity storing each employee's participation in trainings.",
+      "probability": 0.999359
+    },
+    {
+      "entity_1": "TRAINING",
+      "entity_2": "EMPLOYEE_TRAINING",
+      "cardinality": "1:N",
+      "description": "Associative entity storing participants of each training.",
+      "probability": 0.998637
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_POSITION_CHANGE",
+      "cardinality": "1:N",
+      "description": "Tracks every position change an employee experiences.",
+      "probability": 0.999357
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE_POSITION_CHANGE",
+      "cardinality": "1:N",
+      "description": "Positions referenced as old or new in change records.",
+      "probability": 0.996795
+    }
+  ],
+  "processing_time": 12.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged POSITION_REQUIREMENT attributes (qualification, experience_years, skill_set) directly into POSITION, eliminating a separate entity and improving efficiency. Removed the redundant EMPLOYEE‑POSITION direct relationship; current position is now derived from the latest EMPLOYEE_POSITION_CHANGE record, avoiding duplicate storage. Retained the TRAINER entity for richer trainer details while keeping foreign‑key constraints on all identifier attributes (department_number, trainer_id, employee_number, training_number, old_position_number, new_position_number). Updated relationships accordingly and documented derived current‑position logic."
+  }
+}

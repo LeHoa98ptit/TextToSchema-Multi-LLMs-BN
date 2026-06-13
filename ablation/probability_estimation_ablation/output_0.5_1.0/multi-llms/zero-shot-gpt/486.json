@@ -1,0 +1,84 @@
+{
+  "filename": "486.txt",
+  "entity": {
+    "MINING_COMPANY": 0.802025,
+    "MINE": 0.817574,
+    "MINERAL_RESOURCE": 0.804176,
+    "RESERVE": 0.705058,
+    "PERSON": 0.695741,
+    "EXTRACTION_RECORD": 0.743492,
+    "INFORMATION_SYSTEM": 0.693535
+  },
+  "attribute": {
+    "MINING_COMPANY": {
+      "mining company id": 0.77581
+    },
+    "MINE": {
+      "mine id": 0.738835,
+      "location": 0.750559
+    },
+    "MINERAL_RESOURCE": {
+      "mineral resource id": 0.774343
+    },
+    "RESERVE": {
+      "reserve id": 0.752168,
+      "discovery date": 0.762344
+    },
+    "PERSON": {
+      "person id": 0.739478,
+      "charge": 0.741911
+    },
+    "EXTRACTION_RECORD": {
+      "extraction record id": 0.754008,
+      "extraction date": 0.757969,
+      "extraction volume": 0.761879,
+      "extraction cost": 0.761841
+    },
+    "INFORMATION_SYSTEM": {
+      "information system id": 0.745201
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MINING_COMPANY",
+      "entity_2": "MINE",
+      "description": "A mining company owns multiple mines",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.123654
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "RESERVE",
+      "description": "A mineral resource can have multiple reserves with discovery dates",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.930203
+    },
+    {
+      "entity_1": "MINERAL_RESOURCE",
+      "entity_2": "EXTRACTION_RECORD",
+      "description": "Extraction records are created for a specific mineral resource",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.303129
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "EXTRACTION_RECORD",
+      "description": "A person is in charge of multiple extraction records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999943
+    },
+    {
+      "entity_1": "INFORMATION_SYSTEM",
+      "entity_2": "EXTRACTION_RECORD",
+      "description": "An information system performs statistical analysis on extraction records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996868
+    }
+  ],
+  "processing_time": 9.22
+}

@@ -1,0 +1,138 @@
+{
+  "filename": "383.txt",
+  "entity": {
+    "UNIVERSITY": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "STUDENT": 0.622459,
+    "PROFESSOR": 0.622459,
+    "COURSE": 0.622459,
+    "CLASS_OFFERING": 0.461874,
+    "ENROLLMENT": 0.509699,
+    "TEACHING_ASSIGNMENT": 0.488227
+  },
+  "attribute": {
+    "UNIVERSITY": {
+      "university_id": 0.552327,
+      "name": 0.552972,
+      "address": 0.553674
+    },
+    "DEPARTMENT": {
+      "department_id": 0.538579,
+      "name": 0.545361,
+      "chair": 0.531033
+    },
+    "STUDENT": {
+      "student_id": 0.555866,
+      "first_name": 0.552163,
+      "last_name": 0.55971,
+      "address": 0.558096,
+      "birth_date": 0.561291,
+      "enrollment_year": 0.561914,
+      "department_id": 0.56456
+    },
+    "PROFESSOR": {
+      "professor_id": 0.55037,
+      "first_name": 0.543476,
+      "last_name": 0.548649,
+      "office_number": 0.547335,
+      "office_start_time": 0.550451,
+      "office_duration": 0.550958,
+      "department_id": 0.555268
+    },
+    "COURSE": {
+      "course_id": 0.55233,
+      "title": 0.546478,
+      "credit_hours": 0.550079
+    },
+    "CLASS_OFFERING": {
+      "class_id": 0.526948,
+      "course_id": 0.553439,
+      "semester": 0.561058,
+      "year": 0.54576,
+      "class_day": 0.538461,
+      "class_duration": 0.54411
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.544152,
+      "student_id": 0.555515,
+      "class_id": 0.551636,
+      "registration_time": 0.54724,
+      "grade": 0.543703
+    },
+    "TEACHING_ASSIGNMENT": {
+      "assignment_id": 0.542078,
+      "professor_id": 0.557436,
+      "class_id": 0.545082
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "UNIVERSITY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A university comprises multiple departments",
+      "probability": 0.7957
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "description": "Students belong to one department",
+      "probability": 0.999102
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROFESSOR",
+      "cardinality": "1:N",
+      "description": "Professors are assigned to a department",
+      "probability": 0.724951
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "Courses are created by a department",
+      "probability": 0.01228
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CLASS_OFFERING",
+      "cardinality": "1:N",
+      "description": "Each course can have many class offerings (different semesters/years)",
+      "probability": 0.004725
+    },
+    {
+      "entity_1": "CLASS_OFFERING",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "Students enroll in a class offering; each enrollment records registration time and grade",
+      "probability": 0.941308
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollments",
+      "probability": 0.999973
+    },
+    {
+      "entity_1": "PROFESSOR",
+      "entity_2": "TEACHING_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A professor can have multiple teaching assignments",
+      "probability": 0.074882
+    },
+    {
+      "entity_1": "CLASS_OFFERING",
+      "entity_2": "TEACHING_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A class offering can have multiple teaching assignments (supports co‑teaching)",
+      "probability": 0.635332
+    }
+  ],
+  "processing_time": 19.77,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique constraint on (course_id, semester, year) for CLASS_OFFERING (documented in design notes). Introduced TEACHING_ASSIGNMENT associative entity to model a many‑to‑many relationship between PROFESSOR and CLASS_OFFERING, enabling co‑teaching. Removed professor_id from CLASS_OFFERING to avoid redundancy. Updated relationships accordingly. Noted cascade delete rules and foreign‑key indexing in implementation guidelines."
+  }
+}

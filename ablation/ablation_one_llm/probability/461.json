@@ -1,0 +1,79 @@
+{
+  "filename": "461.txt",
+  "entity": {
+    "PRODUCT": 0.817574,
+    "DISTRIBUTION_PERSONNEL": 0.761478,
+    "CUSTOMER": 0.817574,
+    "ORDER": 0.817574,
+    "ASSOC_PRODUCT_ORDER": 0.002111
+  },
+  "attribute": {
+    "PRODUCT": {
+      "product_id": 0.740737,
+      "unit_price": 0.74794,
+      "stock_quantity": 0.757782,
+      "unit_measurement": 0.7551,
+      "category": 0.758823,
+      "description": 0.754508,
+      "storage_location": 0.751885
+    },
+    "DISTRIBUTION_PERSONNEL": {
+      "personnel_id": 0.773777,
+      "phone": 0.774492,
+      "gender": 0.774941,
+      "position": 0.778478
+    },
+    "CUSTOMER": {
+      "customer_id": 0.746624,
+      "gender": 0.764085,
+      "age": 0.751662,
+      "phone": 0.75351,
+      "address": 0.750479
+    },
+    "ORDER": {
+      "order_id": 0.743887,
+      "order_creation_time": 0.743592,
+      "product_quantity": 0.759545,
+      "total_order_price": 0.749596,
+      "delivery_address": 0.756057,
+      "order_status": 0.75228,
+      "estimate_delivery_time": 0.751088
+    },
+    "ASSOC_PRODUCT_ORDER": {
+      "assoc_product_order_id": 0.002111,
+      "product_id": 0.002111,
+      "order_id": 0.002111
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_PRODUCT_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002111
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_PRODUCT_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002111
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each customer can place multiple orders, but each order is associated with only one customer.",
+      "probability": 0.964977
+    },
+    {
+      "entity_1": "DISTRIBUTION_PERSONNEL",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each distribution personnel can be responsible for multiple orders, but each order is assigned to only one personnel.",
+      "probability": 0.000142
+    }
+  ],
+  "processing_time": 9.46
+}

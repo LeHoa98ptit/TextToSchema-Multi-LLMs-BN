@@ -1,0 +1,93 @@
+{
+  "entity": [
+    "USER",
+    "ACCOUNT",
+    "RECYCLING_REQUEST",
+    "ORDER",
+    "PAYMENT",
+    "RATING",
+    "WASTE_ITEM"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "mobile phone",
+      "wechat id"
+    ],
+    "ACCOUNT": [
+      "account id",
+      "user id",
+      "password hash"
+    ],
+    "RECYCLING_REQUEST": [
+      "request id",
+      "user id",
+      "request timestamp",
+      "location"
+    ],
+    "ORDER": [
+      "order id",
+      "request id",
+      "merchant id",
+      "status",
+      "created at",
+      "fulfilled at"
+    ],
+    "PAYMENT": [
+      "payment id",
+      "order id",
+      "amount",
+      "payment method",
+      "payment status",
+      "payment date"
+    ],
+    "RATING": [
+      "rating id",
+      "order id",
+      "user id",
+      "rating score",
+      "comment",
+      "rating timestamp"
+    ],
+    "WASTE_ITEM": [
+      "waste item id",
+      "request id",
+      "item type",
+      "quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RECYCLING_REQUEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RECYCLING_REQUEST",
+      "entity_2": "WASTE_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RATING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 38.2024,
+  "ilp_runtime": 0.027
+}

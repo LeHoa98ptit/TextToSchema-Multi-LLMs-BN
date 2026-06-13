@@ -1,0 +1,180 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "APPLICATION",
+    "WEBSERVICE",
+    "ERROR",
+    "INVOCATION",
+    "METRIC",
+    "USER_ROLE",
+    "ROLE_PERMISSION",
+    "APP_USER",
+    "APP_PERMISSION",
+    "DAILY_METRIC",
+    "APPLICATION_METRIC"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "created_at",
+      "last_login",
+      "is_active"
+    ],
+    "ROLE": [
+      "role_id",
+      "name",
+      "description",
+      "created_at",
+      "is_deleted"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "code",
+      "description",
+      "created_at",
+      "is_deleted"
+    ],
+    "APPLICATION": [
+      "app_id",
+      "code",
+      "name",
+      "type",
+      "owner",
+      "created_at",
+      "is_deleted"
+    ],
+    "WEBSERVICE": [
+      "ws_id",
+      "code",
+      "description",
+      "endpoint_url",
+      "creation_date",
+      "app_id",
+      "is_deleted"
+    ],
+    "ERROR": [
+      "error_id",
+      "code",
+      "description",
+      "timestamp",
+      "return_status",
+      "ws_id",
+      "is_deleted",
+      "archived_at"
+    ],
+    "INVOCATION": [
+      "invocation_id",
+      "user_id",
+      "ws_id",
+      "invocation_time",
+      "return_status",
+      "delay_ms",
+      "metric_id",
+      "error_id",
+      "is_deleted",
+      "archived_at"
+    ],
+    "METRIC": [
+      "metric_id",
+      "success",
+      "response_time_ms",
+      "recorded_at"
+    ],
+    "USER_ROLE": [
+      "user_id",
+      "role_id",
+      "assigned_at"
+    ],
+    "ROLE_PERMISSION": [
+      "role_id",
+      "permission_id",
+      "granted_at"
+    ],
+    "APP_USER": [
+      "app_id",
+      "user_id",
+      "authorized_at"
+    ],
+    "APP_PERMISSION": [
+      "app_id",
+      "permission_id",
+      "granted_at"
+    ],
+    "DAILY_METRIC": [
+      "daily_metric_id",
+      "metric_date",
+      "total_invocations",
+      "successful_invocations",
+      "avg_response_time_ms",
+      "app_id",
+      "created_at"
+    ],
+    "APPLICATION_METRIC": [
+      "app_metric_id",
+      "app_id",
+      "period_start",
+      "period_end",
+      "total_invocations",
+      "success_rate",
+      "avg_response_time_ms",
+      "created_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APP_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "APP_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "APP_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_METRIC",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 91.2735,
+  "ilp_runtime": 0.106
+}

@@ -1,0 +1,206 @@
+{
+  "entity": [
+    "USER",
+    "ADDRESS",
+    "PAYMENT_METHOD",
+    "MANUFACTURER",
+    "FLAVOR",
+    "PRODUCT",
+    "CART",
+    "CART_ITEM",
+    "ORDER",
+    "ORDER_ITEM",
+    "PROMOTION",
+    "ORDER_PROMOTION"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "username",
+      "phone",
+      "email",
+      "password_hash",
+      "created_at",
+      "updated_at"
+    ],
+    "ADDRESS": [
+      "addressid",
+      "userid",
+      "street",
+      "city",
+      "state",
+      "zip",
+      "country",
+      "created_at",
+      "updated_at"
+    ],
+    "PAYMENT_METHOD": [
+      "payment_method_id",
+      "userid",
+      "method_type",
+      "provider",
+      "account_number",
+      "expiry_date",
+      "created_at",
+      "updated_at"
+    ],
+    "MANUFACTURER": [
+      "manufacturer_id",
+      "name",
+      "country",
+      "created_at",
+      "updated_at"
+    ],
+    "FLAVOR": [
+      "flavor_id",
+      "name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "manufacturer_id",
+      "flavor_id",
+      "puff_count",
+      "unit_price",
+      "stock_quantity",
+      "sku",
+      "created_at",
+      "updated_at"
+    ],
+    "CART": [
+      "cart_id",
+      "userid",
+      "created_at",
+      "updated_at"
+    ],
+    "CART_ITEM": [
+      "cart_item_id",
+      "cart_id",
+      "product_id",
+      "quantity",
+      "added_at",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER": [
+      "order_id",
+      "userid",
+      "address_id",
+      "payment_method_id",
+      "order_date",
+      "status",
+      "total_amount",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER_ITEM": [
+      "order_item_id",
+      "order_id",
+      "product_id",
+      "quantity",
+      "unit_price",
+      "line_total",
+      "created_at",
+      "updated_at"
+    ],
+    "PROMOTION": [
+      "promotion_id",
+      "code",
+      "description",
+      "discount_type",
+      "discount_value",
+      "start_date",
+      "end_date",
+      "active_flag",
+      "created_at",
+      "updated_at"
+    ],
+    "ORDER_PROMOTION": [
+      "order_promotion_id",
+      "order_id",
+      "promotion_id",
+      "discount_amount",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MANUFACTURER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLAVOR",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CART",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CART",
+      "entity_2": "CART_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CART_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_PROMOTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROMOTION",
+      "entity_2": "ORDER_PROMOTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 91.382,
+  "ilp_runtime": 0.055
+}

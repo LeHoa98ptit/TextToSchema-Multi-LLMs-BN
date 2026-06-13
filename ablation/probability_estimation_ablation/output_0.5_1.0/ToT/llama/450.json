@@ -1,0 +1,91 @@
+{
+  "filename": "450.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "USER": 0.817574,
+    "ASSET_CATEGORY": 0.757882,
+    "ASSET": 0.817574,
+    "ASSET_CIRCULATION": 0.753933
+  },
+  "attribute": {
+    "COMPANY": {
+      "name": 0.759445,
+      "description": 0.768331
+    },
+    "DEPARTMENT": {
+      "d_description": 0.771501,
+      "department_id": 0.759459
+    },
+    "USER": {
+      "user_d": 0.746085,
+      "affiliate_department": 0.760492,
+      "user_id": 0.745564
+    },
+    "ASSET_CATEGORY": {
+      "type": 0.776146,
+      "category_description": 0.770469,
+      "category_id": 0.766089
+    },
+    "ASSET": {
+      "asset_d": 0.775471,
+      "type": 0.774723,
+      "affiliated_department": 0.781255,
+      "status": 0.778568,
+      "scrap_indicator": 0.76843
+    },
+    "ASSET_CIRCULATION": {
+      "asset_d": 0.774726,
+      "circulate_user_d": 0.771059,
+      "circulation_status": 0.763872,
+      "creation_time": 0.769795,
+      "update_time": 0.765482,
+      "pende": 0.76514,
+      "receipt": 0.773711,
+      "receive": 0.769445,
+      "allocate": 0.768563
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A company has multiple departments",
+      "probability": 0.865842
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A department has multiple users",
+      "probability": 0.992988
+    },
+    {
+      "entity_1": "ASSET_CATEGORY",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "description": "An asset category has multiple assets",
+      "probability": 0.999868
+    },
+    {
+      "entity_1": "ASSET",
+      "entity_2": "ASSET_CIRCULATION",
+      "cardinality": "1:N",
+      "description": "An asset has multiple circulation records",
+      "probability": 0.883434
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET_CIRCULATION",
+      "cardinality": "1:N",
+      "description": "A user creates multiple asset circulation records",
+      "probability": 0.970982
+    }
+  ],
+  "processing_time": 18.71,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added attributes 'pende', 'receipt', 'receive', and 'allocate' to ASSET_CIRCULATION to provide a more comprehensive overview of asset circulation."
+  }
+}

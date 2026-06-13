@@ -1,0 +1,173 @@
+{
+  "filename": "252.txt",
+  "entity": {
+    "PLAYER": 0.817574,
+    "AUTHENTICATION": 0.675923,
+    "GAME": 0.817574,
+    "GAME_RULE": 0.734193,
+    "SINGLE_PLAYER_SESSION": 0.724062,
+    "COMMUNICATION_SESSION": 0.751046,
+    "MESSAGE": 0.712591,
+    "BATTLE_SESSION": 0.745205,
+    "BATTLE_PARTICIPANT": 0.756355,
+    "BATTLE_RESULT": 0.756134
+  },
+  "attribute": {
+    "PLAYER": {
+      "player_id": 0.76434,
+      "username": 0.755077,
+      "password_hash": 0.755286,
+      "phone_number": 0.753349,
+      "registration_time": 0.75827,
+      "account_status": 0.761465
+    },
+    "AUTHENTICATION": {
+      "auth_id": 0.732465,
+      "player_id": 0.75649,
+      "auth_method": 0.726832,
+      "last_login": 0.738794,
+      "token": 0.736703
+    },
+    "GAME": {
+      "game_id": 0.764401,
+      "name": 0.757677,
+      "content": 0.762264,
+      "max_players": 0.771906
+    },
+    "GAME_RULE": {
+      "rule_id": 0.762086,
+      "game_id": 0.76682,
+      "rule_description": 0.766846,
+      "configuration_json": 0.756118
+    },
+    "SINGLE_PLAYER_SESSION": {
+      "sps_id": 0.760785,
+      "player_id": 0.768803,
+      "game_id": 0.771968,
+      "start_time": 0.757614,
+      "end_time": 0.760891,
+      "session_status": 0.763232,
+      "score": 0.768986
+    },
+    "COMMUNICATION_SESSION": {
+      "comm_sess_id": 0.748273,
+      "initiator_id": 0.7427,
+      "responder_id": 0.746802,
+      "start_time": 0.748587,
+      "end_time": 0.751073
+    },
+    "MESSAGE": {
+      "message_id": 0.741739,
+      "comm_sess_id": 0.743317,
+      "sender_id": 0.739157,
+      "timestamp": 0.745798,
+      "content": 0.749979,
+      "message_type": 0.741413
+    },
+    "BATTLE_SESSION": {
+      "battle_id": 0.758906,
+      "game_id": 0.765231,
+      "start_time": 0.752464,
+      "end_time": 0.752674,
+      "battle_status": 0.760565
+    },
+    "BATTLE_PARTICIPANT": {
+      "bp_id": 0.760834,
+      "battle_id": 0.762297,
+      "player_id": 0.76703,
+      "role": 0.760621,
+      "individual_result": 0.759838
+    },
+    "BATTLE_RESULT": {
+      "result_id": 0.752771,
+      "battle_id": 0.755928,
+      "winner_player_id": 0.761846,
+      "loser_player_id": 0.761053,
+      "details": 0.753537
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "AUTHENTICATION",
+      "cardinality": "1:N",
+      "description": "A player can have multiple authentication records (e.g., password, OAuth, 2FA)",
+      "probability": 0.086446
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_SESSION",
+      "cardinality": "1:N",
+      "description": "A player can play many single‑player sessions",
+      "probability": 0.609504
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "SINGLE_PLAYER_SESSION",
+      "cardinality": "1:N",
+      "description": "A game can be used in many single‑player sessions",
+      "probability": 0.352851
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "GAME_RULE",
+      "cardinality": "1:N",
+      "description": "A game can have multiple rule configurations",
+      "probability": 0.069447
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "COMMUNICATION_SESSION",
+      "cardinality": "1:N",
+      "description": "A player can initiate many communication sessions",
+      "probability": 0.021056
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "COMMUNICATION_SESSION",
+      "cardinality": "1:N",
+      "description": "A player can be the responder in many communication sessions",
+      "probability": 0.021056
+    },
+    {
+      "entity_1": "COMMUNICATION_SESSION",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A communication session contains many messages",
+      "probability": 0.004664
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "BATTLE_SESSION",
+      "cardinality": "1:N",
+      "description": "A game can be used in many battle sessions",
+      "probability": 0.043358
+    },
+    {
+      "entity_1": "BATTLE_SESSION",
+      "entity_2": "BATTLE_PARTICIPANT",
+      "cardinality": "1:N",
+      "description": "Each battle has multiple participants",
+      "probability": 0.649037
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "BATTLE_PARTICIPANT",
+      "cardinality": "1:N",
+      "description": "A player can participate in many battles",
+      "probability": 0.073516
+    },
+    {
+      "entity_1": "BATTLE_SESSION",
+      "entity_2": "BATTLE_RESULT",
+      "cardinality": "1:1",
+      "description": "Each battle produces one result record",
+      "probability": 0.989683
+    }
+  ],
+  "processing_time": 63.08,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Changed PLAYER‑AUTHENTICATION relationship to 1:N to support multiple auth methods per player. Renamed status attributes to more specific names (account_status, session_status, battle_status). Added composite unique constraint concept on (initiator_id, responder_id, start_time) for COMMUNICATION_SESSION to avoid duplicate chat sessions. Noted that foreign‑key columns (player_id, game_id, battle_id, etc.) should be indexed for performance. Documented that fields auth_method, account_status, role, message_type, and other status fields are intended as ENUMs to enforce data integrity. Clarified that AUTHENTICATION can store various methods (password, OAuth, 2FA)."
+  }
+}

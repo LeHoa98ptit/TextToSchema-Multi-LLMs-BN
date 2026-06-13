@@ -1,0 +1,57 @@
+{
+  "entity": [
+    "USER",
+    "BLOCK",
+    "TRANSACTION",
+    "ASSOC_USER_TRANSACTION"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "public_key",
+      "address",
+      "creation_time"
+    ],
+    "BLOCK": [
+      "block_hash",
+      "creation_time",
+      "block_size",
+      "previous_block"
+    ],
+    "TRANSACTION": [
+      "transaction_time",
+      "operation_type",
+      "operation_content",
+      "sender_id",
+      "receiver_id",
+      "block_id"
+    ],
+    "ASSOC_USER_TRANSACTION": [
+      "assoc_user_transaction_id",
+      "user_id",
+      "transaction_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_USER_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BLOCK",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.8968,
+  "ilp_runtime": 0.066
+}

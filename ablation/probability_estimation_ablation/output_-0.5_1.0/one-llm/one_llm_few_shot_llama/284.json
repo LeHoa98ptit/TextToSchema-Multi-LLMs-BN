@@ -1,0 +1,98 @@
+{
+  "filename": "284.txt",
+  "entity": {
+    "RADIO_STATION": 0.600488,
+    "ADVERTISEMENT": 0.622459,
+    "CLIENT": 0.622459,
+    "BROADCAST_TIME_SLOT": 0.561216,
+    "ARRANGEMENT": 0.498225,
+    "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT": 0.337037
+  },
+  "attribute": {
+    "RADIO_STATION": {
+      "station_id": 0.569348,
+      "station_name": 0.572414,
+      "station_address": 0.569924
+    },
+    "ADVERTISEMENT": {
+      "ad_id": 0.544149,
+      "ad_content": 0.55138,
+      "ad_duration": 0.553709
+    },
+    "CLIENT": {
+      "client_id": 0.516005,
+      "client_name": 0.517852,
+      "client_contact_info": 0.527452
+    },
+    "BROADCAST_TIME_SLOT": {
+      "slot_id": 0.565539,
+      "slot_start_time": 0.565116,
+      "slot_end_time": 0.566912
+    },
+    "ARRANGEMENT": {
+      "arrangement_id": 0.527233,
+      "arrangement_time": 0.540406,
+      "arrangement_details": 0.537897
+    },
+    "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT": {
+      "assoc_advertisement_broadcast_time_slot_id": 0.337037,
+      "advertisement_id": 0.337037,
+      "broadcast_time_slot_id": 0.337037
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "RADIO_STATION",
+      "entity_2": "BROADCAST_TIME_SLOT",
+      "description": "A radio station has multiple broadcast time slots, and each time slot is associated with one radio station.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.99704
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "CLIENT",
+      "description": "An advertisement is associated with one client, and each client can have multiple advertisements.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.996762
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT",
+      "description": "One ADVERTISEMENT can be associated with many ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.337037
+    },
+    {
+      "entity_1": "BROADCAST_TIME_SLOT",
+      "entity_2": "ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT",
+      "description": "One BROADCAST_TIME_SLOT can be associated with many ASSOC_ADVERTISEMENT_BROADCAST_TIME_SLOT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.337037
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ARRANGEMENT",
+      "description": "A client can have multiple arrangements, and each arrangement is associated with one client.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.005838
+    },
+    {
+      "entity_1": "BROADCAST_TIME_SLOT",
+      "entity_2": "ARRANGEMENT",
+      "description": "A broadcast time slot can have multiple arrangements, and each arrangement is associated with one time slot.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.301905
+    }
+  ],
+  "processing_time": 13.97
+}

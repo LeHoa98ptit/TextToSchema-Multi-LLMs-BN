@@ -1,0 +1,65 @@
+{
+  "entity": [
+    "CITY",
+    "WEATHER_FORECAST",
+    "WEATHER_TYPE",
+    "ASSOC_WEATHER_FORECAST_WEATHER_TYPE"
+  ],
+  "attribute": {
+    "CITY": [
+      "city_id",
+      "longitude",
+      "latitude",
+      "country",
+      "population",
+      "timezone"
+    ],
+    "WEATHER_FORECAST": [
+      "forecast_id",
+      "date",
+      "sunrise",
+      "sunset",
+      "temperature",
+      "feel_like_temperature",
+      "atmospheric_pressure",
+      "humidity",
+      "wind_speed",
+      "wind_direction",
+      "cloud_cover",
+      "precipitation_probability"
+    ],
+    "WEATHER_TYPE": [
+      "type_id",
+      "main_description",
+      "detailed_description",
+      "icon"
+    ],
+    "ASSOC_WEATHER_FORECAST_WEATHER_TYPE": [
+      "assoc_weather_forecast_weather_type_id",
+      "weather_forecast_id",
+      "weather_type_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CITY",
+      "entity_2": "WEATHER_FORECAST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WEATHER_FORECAST",
+      "entity_2": "ASSOC_WEATHER_FORECAST_WEATHER_TYPE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WEATHER_TYPE",
+      "entity_2": "ASSOC_WEATHER_FORECAST_WEATHER_TYPE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 19.9919,
+  "ilp_runtime": 0.035
+}

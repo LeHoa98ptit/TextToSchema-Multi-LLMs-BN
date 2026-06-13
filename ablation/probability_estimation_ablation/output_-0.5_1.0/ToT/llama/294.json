@@ -1,0 +1,77 @@
+{
+  "filename": "294.txt",
+  "entity": {
+    "BRANCH_OFFICE": 0.58351,
+    "CUSTOMER": 0.622459,
+    "ACCOUNT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "ACCOUNT_TYPE": 0.506775
+  },
+  "attribute": {
+    "BRANCH_OFFICE": {
+      "branch_office_id": 0.551266,
+      "address": 0.561578,
+      "branch_office_record": 0.558684
+    },
+    "CUSTOMER": {
+      "customer_id": 0.527259,
+      "d_d_number": 0.538359,
+      "contact": 0.528906,
+      "phone_number": 0.528878,
+      "email_address": 0.526209
+    },
+    "ACCOUNT": {
+      "account_id": 0.536705,
+      "account_number": 0.550535,
+      "balance": 0.562084,
+      "open_date": 0.532085,
+      "account_type_id": 0.538045
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.525343,
+      "transaction_type": 0.537672,
+      "transaction_time": 0.527123,
+      "transaction_location": 0.53302,
+      "account_id": 0.542952
+    },
+    "ACCOUNT_TYPE": {
+      "account_type_id": 0.539184,
+      "account_type": 0.545453
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BRANCH_OFFICE",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "description": "A branch office serves multiple customers",
+      "probability": 0.150916
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ACCOUNT",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple accounts",
+      "probability": 0.604055
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "An account can have multiple transactions",
+      "probability": 0.997779
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ACCOUNT_TYPE",
+      "cardinality": "N:1",
+      "description": "An account is associated with one account type",
+      "probability": 0.999989
+    }
+  ],
+  "processing_time": 15.74,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added unique identifiers for each entity, re-evaluated and removed the direct relationship between branch office and account, and changed the account type relationship to N:1 to better reflect the association between accounts and account types."
+  }
+}

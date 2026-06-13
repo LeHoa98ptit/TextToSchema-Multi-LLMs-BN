@@ -1,0 +1,77 @@
+{
+  "filename": "465.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EMAIL": 0.817574,
+    "ATTACHMENT": 0.817574,
+    "EMAIL_RECIPIENT": 0.75534
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.737352,
+      "email_address": 0.764762,
+      "password": 0.748703,
+      "created_at": 0.737107
+    },
+    "EMAIL": {
+      "email_id": 0.761183,
+      "sender_id": 0.763031,
+      "subject": 0.774636,
+      "content": 0.778588,
+      "sent_at": 0.759947,
+      "is_draft": 0.759292,
+      "is_read": 0.763092,
+      "priority": 0.766448,
+      "thread_id": 0.751733
+    },
+    "ATTACHMENT": {
+      "attachment_id": 0.747118,
+      "email_id": 0.764902,
+      "file_name": 0.752189,
+      "file_path": 0.751514,
+      "size": 0.758549,
+      "uploaded_at": 0.753637,
+      "mime_type": 0.757469
+    },
+    "EMAIL_RECIPIENT": {
+      "email_id": 0.75943,
+      "user_id": 0.759454,
+      "recipient_type": 0.759923
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "EMAIL",
+      "cardinality": "1:N",
+      "description": "A USER (sender) can send many EMAILs; EMAIL.sender_id → USER.user_id",
+      "probability": 0.999645
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "ATTACHMENT",
+      "cardinality": "1:N",
+      "description": "An EMAIL may have multiple ATTACHMENTs; ATTACHMENT.email_id → EMAIL.email_id",
+      "probability": 0.048202
+    },
+    {
+      "entity_1": "EMAIL",
+      "entity_2": "EMAIL_RECIPIENT",
+      "cardinality": "1:N",
+      "description": "An EMAIL can have multiple EMAIL_RECIPIENT rows representing TO, CC, BCC; EMAIL_RECIPIENT.email_id → EMAIL.email_id",
+      "probability": 0.999999
+    },
+    {
+      "entity_1": "EMAIL_RECIPIENT",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "Each EMAIL_RECIPIENT references a USER who receives the email; EMAIL_RECIPIENT.user_id → USER.user_id",
+      "probability": 0.999655
+    }
+  ],
+  "processing_time": 6.5,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added optional email attributes (is_read, priority, thread_id) for status, importance and threading. Added mime_type to ATTACHMENT for file type handling. Renamed EMAIL_RECIPIENT.type to recipient_type for clarity (TO, CC, BCC). Explicitly documented foreign‑key constraints in relationship descriptions. Kept the original clean structure and associative entity to maintain efficiency and query clarity."
+  }
+}

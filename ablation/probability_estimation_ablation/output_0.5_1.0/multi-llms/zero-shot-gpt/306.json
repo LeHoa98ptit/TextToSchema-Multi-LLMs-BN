@@ -1,0 +1,194 @@
+{
+  "filename": "306.txt",
+  "entity": {
+    "TASK": 0.817574,
+    "SCHEDULER": 0.817574,
+    "TRIGGER": 0.817574,
+    "LOCK": 0.817574,
+    "SIMPLE_TRIGGER": 0.774954,
+    "CRON_TRIGGER": 0.753097,
+    "COMPLEX_TRIGGER": 0.763813,
+    "BLOB_TRIGGER": 0.743225,
+    "TASK_INSTANCE": 0.745034,
+    "TASK_TRIGGER": 0.801724,
+    "SCHEDULER_TASK": 0.987786,
+    "SCHEDULER_LOCK": 0.758102,
+    "TASK_DEPENDENCY": 1.0
+  },
+  "attribute": {
+    "TASK": {
+      "task id": 0.760429,
+      "description": 0.764267,
+      "class persistence flag": 0.76082,
+      "concurrent execution flag": 0.767533,
+      "depend task id": 0.764653
+    },
+    "SCHEDULER": {
+      "scheduler id": 0.762014,
+      "status": 0.763277,
+      "configuration": 0.762866,
+      "log": 0.758729
+    },
+    "TRIGGER": {
+      "trigger id": 0.753487,
+      "trigger type": 0.763665
+    },
+    "SIMPLE_TRIGGER": {
+      "trigger id": 0.750936,
+      "repeat count": 0.761505,
+      "repeat interval": 0.761681,
+      "trigger count": 0.761132
+    },
+    "CRON_TRIGGER": {
+      "trigger id": 0.758698,
+      "cron expression": 0.760311,
+      "timezone": 0.758365
+    },
+    "COMPLEX_TRIGGER": {
+      "trigger id": 0.762008,
+      "attr string": 0.749454,
+      "attr integer": 0.754101,
+      "attr long": 0.756611,
+      "attr decimal": 0.754183,
+      "attr boolean": 0.752785
+    },
+    "BLOB_TRIGGER": {
+      "trigger id": 0.751716,
+      "binary data": 0.751215
+    },
+    "LOCK": {
+      "lock id": 0.741149,
+      "lock status": 0.753438,
+      "lock description": 0.752223
+    },
+    "TASK_TRIGGER": {
+      "task id": 0.768803,
+      "trigger id": 0.767392,
+      "execution time": 0.801724,
+      "priority": 0.801724,
+      "trigger status": 0.801724,
+      "start time": 0.801724,
+      "end time": 0.801724,
+      "calendar": 0.801724,
+      "fault instruction": 0.801724,
+      "pk": 0.801724,
+      "task_trigger_id": 0.801724,
+      "task_id": 0.801724,
+      "trigger_id": 0.801724
+    },
+    "SCHEDULER_TASK": {
+      "scheduler id": 0.76773,
+      "task id": 0.769769,
+      "pk": 0.987786,
+      "scheduler_task_id": 0.987786,
+      "scheduler_id": 0.987786,
+      "task_id": 0.987786
+    },
+    "SCHEDULER_LOCK": {
+      "scheduler id": 0.762103,
+      "lock id": 0.759952,
+      "acquisition time": 0.756235,
+      "release time": 0.758986,
+      "pk": 0.758187,
+      "scheduler_lock_id": 0.564352,
+      "scheduler_id": 0.564352,
+      "lock_id": 0.564352
+    },
+    "TASK_DEPENDENCY": {
+      "task_dependency_id": 1.0,
+      "task_id": 1.0,
+      "pk": 1.0
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TRIGGER",
+      "description": "One TASK can be associated with many TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.801724
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "TASK_TRIGGER",
+      "description": "One TRIGGER can be associated with many TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.801724
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_TASK",
+      "description": "One SCHEDULER can be associated with many SCHEDULER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987786
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULER_TASK",
+      "description": "One TASK can be associated with many SCHEDULER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987786
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_LOCK",
+      "description": "One SCHEDULER can be associated with many SCHEDULER_LOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.564352
+    },
+    {
+      "entity_1": "LOCK",
+      "entity_2": "SCHEDULER_LOCK",
+      "description": "One LOCK can be associated with many SCHEDULER_LOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.564352
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "SIMPLE_TRIGGER",
+      "description": "A simple trigger is a specific type of trigger.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999985
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "CRON_TRIGGER",
+      "description": "A cron trigger is a specific type of trigger.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.995224
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "COMPLEX_TRIGGER",
+      "description": "A complex trigger is a specific type of trigger.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999923
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "BLOB_TRIGGER",
+      "description": "A blob trigger is a specific type of trigger.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.997135
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_DEPENDENCY",
+      "description": "One TASK can be associated with many TASK_DEPENDENCY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 57.59
+}

@@ -1,0 +1,73 @@
+{
+  "entity": [
+    "USER",
+    "POST",
+    "COMMENT",
+    "FOLLOW"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "email",
+      "avatar_path",
+      "password_hash",
+      "password_salt",
+      "date_of_birth",
+      "created_at",
+      "last_login",
+      "is_deleted"
+    ],
+    "POST": [
+      "post_id",
+      "user_id",
+      "title",
+      "content",
+      "created_at",
+      "updated_at",
+      "visibility",
+      "is_deleted"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "post_id",
+      "user_id",
+      "content",
+      "created_at",
+      "edited_at",
+      "is_deleted"
+    ],
+    "FOLLOW": [
+      "follower_id",
+      "followee_id",
+      "follow_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FOLLOW",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.0343,
+  "ilp_runtime": 0.068
+}

@@ -1,0 +1,87 @@
+{
+  "filename": "380.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "AIRLINE": 0.817574,
+    "FLIGHT": 0.817574,
+    "RESERVATION": 0.817574,
+    "ASSOC_FLIGHT_RESERVATION": 0.967338
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.76239,
+      "name": 0.765342,
+      "phone": 0.763995,
+      "email": 0.766793
+    },
+    "AIRLINE": {
+      "airline id": 0.768946,
+      "name": 0.770257,
+      "phone": 0.766823,
+      "address": 0.774584
+    },
+    "FLIGHT": {
+      "flight number": 0.766642,
+      "departure location": 0.76434,
+      "destination": 0.765428,
+      "departure time": 0.763082,
+      "arrival time": 0.766057,
+      "airline id": 0.768162
+    },
+    "RESERVATION": {
+      "reservation id": 0.773436,
+      "customer id": 0.779884,
+      "flight number": 0.780216,
+      "reservation time": 0.773441,
+      "number of tickets": 0.777222
+    },
+    "ASSOC_FLIGHT_RESERVATION": {
+      "assoc_flight_reservation_id": 0.967338,
+      "flight_id": 0.967338,
+      "reservation_id": 0.967338
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "description": "A customer can have many reservations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00633
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "FLIGHT",
+      "description": "An airline offers many flights.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "ASSOC_FLIGHT_RESERVATION",
+      "description": "One FLIGHT can be associated with many ASSOC_FLIGHT_RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.967338
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_FLIGHT_RESERVATION",
+      "description": "One RESERVATION can be associated with many ASSOC_FLIGHT_RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.967338
+    },
+    {
+      "entity_1": "AIRLINE",
+      "entity_2": "CUSTOMER",
+      "description": "This relationship does not exist directly, instead, it is implied through FLIGHT and RESERVATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005593
+    }
+  ],
+  "processing_time": 14.4
+}

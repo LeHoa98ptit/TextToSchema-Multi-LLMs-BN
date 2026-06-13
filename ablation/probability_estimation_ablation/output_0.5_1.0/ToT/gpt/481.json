@@ -1,0 +1,218 @@
+{
+  "filename": "481.txt",
+  "entity": {
+    "EXPERT": 0.712222,
+    "CROP": 0.817574,
+    "CROP_TYPE": 0.774221,
+    "FIELD": 0.711258,
+    "SENSOR": 0.817574,
+    "SENSOR_TYPE": 0.764102,
+    "SENSOR_LOCATION": 0.768044,
+    "MONITORING_RULE": 0.797671,
+    "MONITORING_DATUM": 0.800177,
+    "DATA_TYPE": 0.725199,
+    "ANALYSIS_RESULT": 0.74549,
+    "PREDICTION_RESULT": 0.717339,
+    "VISUALIZATION": 0.806761
+  },
+  "attribute": {
+    "EXPERT": {
+      "expert_id": 0.746512,
+      "full_name": 0.742163,
+      "email": 0.741735,
+      "phone": 0.743483,
+      "specialization": 0.745186
+    },
+    "CROP": {
+      "crop_id": 0.76784,
+      "field_id": 0.759989,
+      "crop_type_id": 0.766642,
+      "variety": 0.773425,
+      "planting_date": 0.768311,
+      "expected_harvest_date": 0.766649,
+      "status": 0.778902
+    },
+    "CROP_TYPE": {
+      "crop_type_id": 0.766681,
+      "name": 0.764587,
+      "optimal_temperature_min": 0.76619,
+      "optimal_temperature_max": 0.76635,
+      "optimal_rainfall_min": 0.765988,
+      "optimal_rainfall_max": 0.766394
+    },
+    "FIELD": {
+      "field_id": 0.737478,
+      "name": 0.746042,
+      "area_hectares": 0.757238,
+      "geo_boundary": 0.736823
+    },
+    "SENSOR": {
+      "sensor_id": 0.755397,
+      "sensor_type_id": 0.7555,
+      "location_id": 0.750217,
+      "installation_date": 0.75784,
+      "calibration_date": 0.755462,
+      "status": 0.770449
+    },
+    "SENSOR_TYPE": {
+      "sensor_type_id": 0.755942,
+      "type_name": 0.756153,
+      "measurement_unit": 0.764375,
+      "accuracy": 0.757281
+    },
+    "SENSOR_LOCATION": {
+      "location_id": 0.747789,
+      "field_id": 0.750017,
+      "latitude": 0.749619,
+      "longitude": 0.748745,
+      "height_meters": 0.753189
+    },
+    "MONITORING_RULE": {
+      "rule_id": 0.762372,
+      "expert_id": 0.762716,
+      "crop_type_id": 0.782193,
+      "data_type_id": 0.76682,
+      "condition_expression": 0.763474,
+      "threshold_value": 0.764422,
+      "action_description": 0.765566,
+      "effective_start": 0.762252,
+      "effective_end": 0.762056
+    },
+    "MONITORING_DATUM": {
+      "datum_id": 0.767951,
+      "sensor_id": 0.773271,
+      "data_type_id": 0.76918,
+      "collection_timestamp": 0.768751,
+      "value": 0.772526,
+      "quality_flag": 0.768665
+    },
+    "DATA_TYPE": {
+      "data_type_id": 0.74453,
+      "name": 0.754675,
+      "description": 0.761184
+    },
+    "ANALYSIS_RESULT": {
+      "analysis_id": 0.744558,
+      "datum_id": 0.753826,
+      "rule_id": 0.749054,
+      "result_status": 0.744503,
+      "generated_timestamp": 0.747232,
+      "remarks": 0.73963
+    },
+    "PREDICTION_RESULT": {
+      "prediction_id": 0.735817,
+      "crop_id": 0.758964,
+      "model_name": 0.732958,
+      "prediction_timestamp": 0.741264,
+      "predicted_yield": 0.733957,
+      "confidence_interval_low": 0.729869,
+      "confidence_interval_high": 0.730837
+    },
+    "VISUALIZATION": {
+      "visual_id": 0.737829,
+      "related_entity_type": 0.743088,
+      "related_entity_id": 0.739124,
+      "visual_type": 0.742243,
+      "url": 0.73229,
+      "created_timestamp": 0.745779
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPERT",
+      "entity_2": "MONITORING_RULE",
+      "cardinality": "1:N",
+      "description": "Experts create multiple monitoring rules",
+      "probability": 0.264851
+    },
+    {
+      "entity_1": "CROP_TYPE",
+      "entity_2": "MONITORING_RULE",
+      "cardinality": "1:N",
+      "description": "Each rule is defined for a specific crop type",
+      "probability": 0.111625
+    },
+    {
+      "entity_1": "CROP_TYPE",
+      "entity_2": "CROP",
+      "cardinality": "1:N",
+      "description": "A crop type can have many crop instances",
+      "probability": 0.999994
+    },
+    {
+      "entity_1": "FIELD",
+      "entity_2": "CROP",
+      "cardinality": "1:N",
+      "description": "A field can host many crops",
+      "probability": 0.000782
+    },
+    {
+      "entity_1": "FIELD",
+      "entity_2": "SENSOR_LOCATION",
+      "cardinality": "1:N",
+      "description": "Multiple sensor locations belong to a field",
+      "probability": 0.044383
+    },
+    {
+      "entity_1": "SENSOR_TYPE",
+      "entity_2": "SENSOR",
+      "cardinality": "1:N",
+      "description": "Each sensor is of a defined sensor type",
+      "probability": 0.999799
+    },
+    {
+      "entity_1": "SENSOR_LOCATION",
+      "entity_2": "SENSOR",
+      "cardinality": "1:N",
+      "description": "Sensors are installed at specific locations",
+      "probability": 0.999126
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "description": "Sensors produce many datum records",
+      "probability": 0.001363
+    },
+    {
+      "entity_1": "DATA_TYPE",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "description": "Each datum has a defined data type (temperature, rainfall, etc.)",
+      "probability": 0.952617
+    },
+    {
+      "entity_1": "MONITORING_DATUM",
+      "entity_2": "ANALYSIS_RESULT",
+      "cardinality": "1:N",
+      "description": "A datum can have zero or more analysis results based on applicable rules",
+      "probability": 0.000807
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "PREDICTION_RESULT",
+      "cardinality": "1:N",
+      "description": "Multiple predictions (different models or timestamps) can be stored per crop",
+      "probability": 0.018571
+    },
+    {
+      "entity_1": "ANALYSIS_RESULT",
+      "entity_2": "VISUALIZATION",
+      "cardinality": "1:N",
+      "description": "Analysis outcomes can be visualized in many ways",
+      "probability": 0.252486
+    },
+    {
+      "entity_1": "PREDICTION_RESULT",
+      "entity_2": "VISUALIZATION",
+      "cardinality": "1:N",
+      "description": "Prediction results may have associated visualizations",
+      "probability": 0.044417
+    }
+  ],
+  "processing_time": 18.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

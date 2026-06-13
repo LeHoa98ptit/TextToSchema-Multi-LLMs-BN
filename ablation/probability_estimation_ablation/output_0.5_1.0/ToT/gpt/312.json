@@ -1,0 +1,61 @@
+{
+  "filename": "312.txt",
+  "entity": {
+    "ALBUM": 0.817574,
+    "ROLE": 0.817574,
+    "PERMISSION": 0.817574,
+    "USER": 0.720391
+  },
+  "attribute": {
+    "ALBUM": {
+      "album_id": 0.776379,
+      "title": 0.765205,
+      "created_at": 0.762644
+    },
+    "ROLE": {
+      "role_id": 0.761798,
+      "role_name": 0.760032
+    },
+    "PERMISSION": {
+      "permission_id": 0.770611,
+      "album_id": 0.793594,
+      "role_id": 0.771293,
+      "view_permission": 0.771567,
+      "edit_permission": 0.768468,
+      "granted_at": 0.759752,
+      "granted_by_user_id": 0.760945
+    },
+    "USER": {
+      "user_id": 0.746598,
+      "username": 0.733475
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ALBUM",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "One album can have many permission records (album_id → PERMISSION.album_id)",
+      "probability": 0.865072
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "One role can be linked to many permission records (role_id → PERMISSION.role_id)",
+      "probability": 0.444266
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "One user can grant many permission records (user_id → PERMISSION.granted_by_user_id)",
+      "probability": 0.96064
+    }
+  ],
+  "processing_time": 12.59,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added audit attributes: created_at for ALBUM, granted_at and granted_by_user_id for PERMISSION. Introduced USER entity to capture the granter of permissions and defined explicit foreign‑key relationships. Kept original minimal structure and clear naming while enhancing traceability."
+  }
+}

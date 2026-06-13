@@ -1,0 +1,77 @@
+{
+  "filename": "451.txt",
+  "entity": {
+    "INTRUSION_DETECTION_RECORD": 0.525154,
+    "RESPONSE_PLAN": 0.521013,
+    "KNOWLEDGE_BASE_ENTRY": 0.542522,
+    "ALARM": 0.622459
+  },
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": {
+      "record id": 0.551728,
+      "detection time": 0.56056,
+      "source ip address": 0.548173,
+      "destination ip address": 0.54621,
+      "source port number": 0.548651,
+      "destination port number": 0.547029,
+      "attack type": 0.565841,
+      "threat level": 0.563671
+    },
+    "RESPONSE_PLAN": {
+      "plan id": 0.517905,
+      "plan generation time": 0.516655,
+      "plan type": 0.521711,
+      "detailed plan content": 0.51949,
+      "execution status": 0.522879
+    },
+    "KNOWLEDGE_BASE_ENTRY": {
+      "knowledge id": 0.541415,
+      "knowledge category": 0.544935,
+      "knowledge description": 0.545583,
+      "knowledge source": 0.543684,
+      "knowledge reliability": 0.540414
+    },
+    "ALARM": {
+      "alarm id": 0.538033,
+      "alarm time": 0.532556,
+      "alarm level": 0.540707,
+      "alarm content": 0.547535,
+      "processing status": 0.55772
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "description": "Each intrusion detection record generates one or more alarms.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99997
+    },
+    {
+      "entity_1": "ALARM",
+      "entity_2": "RESPONSE_PLAN",
+      "description": "Each alarm can trigger one or more response plans.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.477711
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE_ENTRY",
+      "entity_2": "RESPONSE_PLAN",
+      "description": "Each knowledge base entry can inform one or more response plans.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.846311
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE_ENTRY",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "description": "Each knowledge base entry can be used to judge one or more intrusion detection records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997274
+    }
+  ],
+  "processing_time": 18.96
+}

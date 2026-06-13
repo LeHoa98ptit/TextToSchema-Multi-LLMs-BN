@@ -1,0 +1,90 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "DEPARTMENT",
+    "PERSON",
+    "BORROWER",
+    "ASSOC_USER_DEPARTMENT"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "login",
+      "password",
+      "register mobile number",
+      "role",
+      "permission"
+    ],
+    "EQUIPMENT": [
+      "equipment id",
+      "equipment model",
+      "equipment status",
+      "calibration date",
+      "calibration validity",
+      "calibration result",
+      "equipment location",
+      "own department id",
+      "person in charge",
+      "remark"
+    ],
+    "DEPARTMENT": [
+      "department id",
+      "department name"
+    ],
+    "PERSON": [
+      "person id",
+      "person name"
+    ],
+    "BORROWER": [
+      "borrower id",
+      "borrowing time",
+      "borrow equipment id",
+      "iou photo",
+      "borrower_id",
+      "user_id",
+      "equipment_id",
+      "borrowing_time",
+      "iou_photo"
+    ],
+    "ASSOC_USER_DEPARTMENT": [
+      "assoc_user_department_id",
+      "user_id",
+      "department_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "BORROWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "BORROWER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_USER_DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 47.7144,
+  "ilp_runtime": 0.091
+}

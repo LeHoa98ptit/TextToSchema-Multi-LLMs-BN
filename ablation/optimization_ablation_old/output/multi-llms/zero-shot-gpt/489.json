@@ -1,0 +1,61 @@
+{
+  "entity": [
+    "APPLICATION",
+    "CHANNEL",
+    "CLIENT",
+    "EVENT",
+    "CHANNEL_SUBSCRIPTION"
+  ],
+  "attribute": {
+    "APPLICATION": [
+      "app id"
+    ],
+    "CHANNEL": [
+      "channel id",
+      "application id",
+      "creation timestamp",
+      "closing timestamp",
+      "is persistent",
+      "is private",
+      "online status",
+      "push notification enabled"
+    ],
+    "CLIENT": [
+      "user id",
+      "application id"
+    ],
+    "EVENT": [
+      "event id",
+      "channel id",
+      "event type",
+      "event timestamp",
+      "payload content"
+    ],
+    "CHANNEL_SUBSCRIPTION": [
+      "channel id",
+      "client id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CHANNEL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "CHANNEL_SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "CHANNEL_SUBSCRIPTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 22.6321,
+  "ilp_runtime": 0.03
+}

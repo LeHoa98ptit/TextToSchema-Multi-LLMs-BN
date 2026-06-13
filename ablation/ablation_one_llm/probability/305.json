@@ -1,0 +1,79 @@
+{
+  "filename": "305.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "NOTIFICATION": 0.817574,
+    "FOLLOW_RELATIONSHIP": 0.755451,
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": 0.856487
+  },
+  "attribute": {
+    "USER": {
+      "account_d": 0.757868,
+      "email": 0.761472,
+      "password": 0.751674,
+      "verification_status": 0.763395,
+      "account_status": 0.764148
+    },
+    "POST": {
+      "post_d": 0.744217,
+      "publisher_account_d": 0.761964,
+      "content": 0.753858,
+      "publish_time": 0.754103,
+      "attachment_link": 0.737773
+    },
+    "NOTIFICATION": {
+      "notification_type": 0.748491,
+      "recipient_account_d": 0.759441,
+      "related_post": 0.755293,
+      "user_notification_time": 0.752417
+    },
+    "FOLLOW_RELATIONSHIP": {
+      "follower_account_d": 0.768986,
+      "followee_account_d": 0.770188
+    },
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": {
+      "assoc_user_follow_relationship_id": 0.856487,
+      "user_id": 0.856487,
+      "follow_relationship_id": 0.856487
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can publish many posts, but each post is published by one user.",
+      "probability": 0.863941
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A user can receive many notifications, but each notification is received by one user.",
+      "probability": 0.997601
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.856487
+    },
+    {
+      "entity_1": "FOLLOW_RELATIONSHIP",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.856487
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A post can trigger many notifications, but each notification is related to one post.",
+      "probability": 0.985445
+    }
+  ],
+  "processing_time": 10.41
+}

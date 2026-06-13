@@ -1,0 +1,100 @@
+{
+  "filename": "468.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "CREDIT_CARD": 0.595849,
+    "APPLICATION": 0.622459,
+    "TRANSACTION": 0.622459,
+    "REVIEW": 0.468965,
+    "LETTER": 0.48468
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_number": 0.5368,
+      "name": 0.530703,
+      "address": 0.526724,
+      "phone_number": 0.527566
+    },
+    "CREDIT_CARD": {
+      "credit_card_number": 0.552906,
+      "type": 0.556829,
+      "validity_period": 0.546275,
+      "credit_limit": 0.54948,
+      "creation_time": 0.558773,
+      "update_time": 0.548889
+    },
+    "APPLICATION": {
+      "application_number": 0.527763,
+      "application_time": 0.520346,
+      "application_result": 0.523777,
+      "applicant_name": 0.539088,
+      "applicant_d_number": 0.538905
+    },
+    "TRANSACTION": {
+      "transaction_number": 0.545084,
+      "transaction_time": 0.540041,
+      "transaction_type": 0.543217,
+      "transaction_description": 0.553008,
+      "amount": 0.54132
+    },
+    "REVIEW": {
+      "review_time": 0.523042,
+      "review_result": 0.522346,
+      "review_description": 0.534723
+    },
+    "LETTER": {
+      "letter_type": 0.515743,
+      "letter_time": 0.517275,
+      "letter_description": 0.524661
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple applications",
+      "probability": 0.990701
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "REVIEW",
+      "cardinality": "1:1",
+      "description": "An application is associated with one review",
+      "probability": 0.117338
+    },
+    {
+      "entity_1": "REVIEW",
+      "entity_2": "CREDIT_CARD",
+      "cardinality": "1:1",
+      "description": "A review is associated with one credit card",
+      "probability": 0.914329
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A credit card can have multiple transactions",
+      "probability": 0.999151
+    },
+    {
+      "entity_1": "REVIEW",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "description": "A review is associated with one customer",
+      "probability": 0.998068
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "LETTER",
+      "cardinality": "1:1",
+      "description": "An application is associated with one letter",
+      "probability": 0.000828
+    }
+  ],
+  "processing_time": 15.2,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for letters sent to customers and included a relationship between the REVIEW entity and the CUSTOMER entity to track review results for each customer."
+  }
+}

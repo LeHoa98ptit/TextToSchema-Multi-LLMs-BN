@@ -1,0 +1,82 @@
+{
+  "entity": [
+    "USER",
+    "BICYCLE",
+    "TRIP",
+    "FAULT_RECORD",
+    "BILLING_RULE",
+    "TRIP_BILLING"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "phone number",
+      "name",
+      "credit",
+      "status"
+    ],
+    "BICYCLE": [
+      "bicycle id",
+      "location",
+      "status",
+      "unlock code"
+    ],
+    "TRIP": [
+      "trip id",
+      "bicycle number",
+      "start time",
+      "end time",
+      "cost",
+      "payment status"
+    ],
+    "FAULT_RECORD": [
+      "fault id",
+      "user number",
+      "bicycle number",
+      "fault description",
+      "reporting time"
+    ],
+    "BILLING_RULE": [
+      "billing rule id",
+      "billing method",
+      "unit price",
+      "minimum fee"
+    ],
+    "TRIP_BILLING": [
+      "trip_billing_id",
+      "trip_id",
+      "billing_rule_id",
+      "billing_method",
+      "unit_price",
+      "minimum_fee"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAULT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "FAULT_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BILLING_RULE",
+      "entity_2": "TRIP_BILLING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.6299,
+  "ilp_runtime": 0.053
+}

@@ -1,0 +1,105 @@
+{
+  "filename": "422.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PROJECT": 0.817574,
+    "PROJECT_VERSION": 0.737362,
+    "TASK": 0.817574,
+    "CODE_SUBMISSION": 0.759547
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.738753,
+      "password": 0.743662,
+      "email": 0.741518,
+      "phone": 0.73257,
+      "role": 0.749015,
+      "registration time": 0.743088,
+      "login time": 0.744111
+    },
+    "PROJECT": {
+      "project id": 0.761184,
+      "project name": 0.765136,
+      "project introduction": 0.769167,
+      "responsible user id": 0.758887,
+      "creation time": 0.767616,
+      "project status": 0.769722
+    },
+    "PROJECT_VERSION": {
+      "version id": 0.756601,
+      "project id": 0.762074,
+      "version number": 0.759253,
+      "release date": 0.758921,
+      "version description": 0.766992,
+      "is stable": 0.754154
+    },
+    "TASK": {
+      "task id": 0.756319,
+      "project id": 0.763886,
+      "assigned user id": 0.754591,
+      "task status": 0.763674,
+      "start time": 0.755141,
+      "end time": 0.759535,
+      "task description": 0.770692
+    },
+    "CODE_SUBMISSION": {
+      "submission id": 0.746337,
+      "user id": 0.748552,
+      "project id": 0.759259,
+      "submission time": 0.754506,
+      "submission description": 0.762572,
+      "code path": 0.751922
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROJECT",
+      "description": "Each project has exactly one responsible user, while a user can be responsible for multiple projects.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.573463
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_VERSION",
+      "description": "Each project version belongs to one project, and a project can have many versions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991064
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "TASK",
+      "description": "Each task is created for a specific project, and a project can contain multiple tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.954986
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TASK",
+      "description": "Each task is assigned to exactly one user (developer), while a user can be assigned many tasks.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.019349
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CODE_SUBMISSION",
+      "description": "Each code submission is made by a single user, and a user can make multiple submissions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.738481
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "CODE_SUBMISSION",
+      "description": "Each code submission is associated with one project, while a project can have many code submissions.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.782624
+    }
+  ],
+  "processing_time": 33.84
+}

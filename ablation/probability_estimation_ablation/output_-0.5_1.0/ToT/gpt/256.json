@@ -1,0 +1,88 @@
+{
+  "filename": "256.txt",
+  "entity": {
+    "MALL": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "DEPT_MANAGER": 0.572706,
+    "EMP_DEPT_ASSIGNMENT": 0.50385
+  },
+  "attribute": {
+    "MALL": {
+      "mall_id": 0.55243,
+      "mall_name": 0.552886,
+      "address": 0.552817,
+      "contact_number": 0.551539
+    },
+    "DEPARTMENT": {
+      "department_id": 0.543953,
+      "department_name": 0.551488,
+      "location": 0.550441,
+      "distribution": 0.546628,
+      "contact_number": 0.545639,
+      "mall_id": 0.563843
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.545748,
+      "full_name": 0.548414,
+      "position": 0.553165,
+      "phone_number": 0.545259,
+      "salary": 0.531954,
+      "hire_date": 0.536731
+    },
+    "DEPT_MANAGER": {
+      "department_id": 0.55634,
+      "manager_employee_id": 0.561713,
+      "effective_from": 0.542198,
+      "effective_to": 0.540412
+    },
+    "EMP_DEPT_ASSIGNMENT": {
+      "employee_id": 0.546702,
+      "department_id": 0.545569,
+      "start_date": 0.528558,
+      "end_date": 0.525743
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MALL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A mall contains multiple departments",
+      "probability": 0.989716
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMP_DEPT_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A department has many employee assignment history records",
+      "probability": 0.999255
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMP_DEPT_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An employee may be assigned to multiple departments over time",
+      "probability": 0.971604
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DEPT_MANAGER",
+      "cardinality": "1:N",
+      "description": "A department can have multiple manager records (historical); at any time only one is active",
+      "probability": 0.999346
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPT_MANAGER",
+      "cardinality": "1:N",
+      "description": "An employee can manage multiple departments over time",
+      "probability": 0.960259
+    }
+  ],
+  "processing_time": 18.13,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Implemented the suggested unique constraint by defining DEPT_MANAGER as a weak entity with composite primary key (department_id, effective_from) to guarantee a single active manager per department. Added EMP_DEPT_ASSIGNMENT entity to capture historical employee‑department assignments, removing department_id from EMPLOYEE to avoid redundancy. Updated relationships to reflect the new assignment entity and changed DEPT_MANAGER relationship to 1:N (historical records) while preserving the rule of one current manager. Clarified entity purposes and ensured consistent naming and cardinalities."
+  }
+}

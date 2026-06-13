@@ -1,0 +1,111 @@
+{
+  "filename": "305.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PROFILE": 0.556976,
+    "POST": 0.622459,
+    "FOLLOW_RELATIONSHIP": 1.0,
+    "NOTIFICATION": 0.622459,
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": 0.858386
+  },
+  "attribute": {
+    "USER": {
+      "account d": 0.54047,
+      "email": 0.540105,
+      "password": 0.526865,
+      "verification status": 0.54578,
+      "account status": 0.551103
+    },
+    "PROFILE": {
+      "account d": 0.547956
+    },
+    "POST": {
+      "post d": 0.526657,
+      "publisher account d": 0.55313,
+      "content": 0.529788,
+      "publish time": 0.532766,
+      "attachment": 0.518233,
+      "link": 0.528386
+    },
+    "FOLLOW_RELATIONSHIP": {
+      "follower account d": 0.558173,
+      "followee account d": 0.560064,
+      "follow d": 0.548159,
+      "follow_relationship_id": 1.0,
+      "user_id": 1.0,
+      "follower_account_d": 1.0,
+      "followee_account_d": 1.0
+    },
+    "NOTIFICATION": {
+      "notification d": 0.533352,
+      "notification type": 0.529571,
+      "recipient account d": 0.549612,
+      "related post": 0.539857,
+      "notification time": 0.520181
+    },
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": {
+      "assoc_user_follow_relationship_id": 0.858386,
+      "user_id": 0.858386,
+      "follow_relationship_id": 0.858386
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "description": "A user has one profile",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999203
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "description": "A user can publish multiple posts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.862792
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "description": "One USER can be associated with many ASSOC_USER_FOLLOW_RELATIONSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.858386
+    },
+    {
+      "entity_1": "FOLLOW_RELATIONSHIP",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "description": "One FOLLOW_RELATIONSHIP can be associated with many ASSOC_USER_FOLLOW_RELATIONSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.858386
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "description": "A user can receive multiple notifications",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997619
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "description": "A post can trigger multiple notifications",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.985495
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FOLLOW_RELATIONSHIP",
+      "description": "One USER can be associated with many FOLLOW_RELATIONSHIP.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 10.66
+}

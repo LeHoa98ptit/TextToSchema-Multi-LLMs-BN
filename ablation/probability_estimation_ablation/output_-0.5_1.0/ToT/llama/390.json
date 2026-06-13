@@ -1,0 +1,108 @@
+{
+  "filename": "390.txt",
+  "entity": {
+    "CONSUMER": 0.622459,
+    "COURIER_COMPANY": 0.584895,
+    "COURIER": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "PARTNERSHIP": 0.622459,
+    "ASSOC_ADMINISTRATOR_COURIER_COMPANY": 2e-05
+  },
+  "attribute": {
+    "CONSUMER": {
+      "name": 0.526068,
+      "address": 0.535724,
+      "phone_number": 0.523597,
+      "email": 0.534766
+    },
+    "COURIER_COMPANY": {
+      "company_name": 0.568569,
+      "arrival_time": 0.5659,
+      "charge_price": 0.563941,
+      "company_address": 0.564311,
+      "company_phone_number": 0.566054
+    },
+    "COURIER": {
+      "courier_number": 0.571458,
+      "recipient_name": 0.564391,
+      "recipient_phone_number": 0.56229,
+      "courier_status": 0.576764,
+      "estimated_delivery_time": 0.562977
+    },
+    "ADMINISTRATOR": {
+      "username": 0.520727,
+      "password": 0.5221,
+      "admin_name": 0.518423,
+      "admin_email": 0.521195
+    },
+    "PARTNERSHIP": {
+      "partnership_id": 0.506281,
+      "partner_name": 0.510647,
+      "partner_type": 0.509218,
+      "partner_date": 0.507288
+    },
+    "ASSOC_ADMINISTRATOR_COURIER_COMPANY": {
+      "assoc_administrator_courier_company_id": 2e-05,
+      "administrator_id": 2e-05,
+      "courier_company_id": 2e-05
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CONSUMER",
+      "entity_2": "COURIER",
+      "cardinality": "1:N",
+      "description": "A consumer can have multiple couriers",
+      "probability": 0.999423
+    },
+    {
+      "entity_1": "COURIER_COMPANY",
+      "entity_2": "COURIER",
+      "cardinality": "1:N",
+      "description": "A courier company can have multiple couriers",
+      "probability": 0.999978
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "CONSUMER",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple consumers",
+      "probability": 0.006905
+    },
+    {
+      "entity_1": "COURIER_COMPANY",
+      "entity_2": "PARTNERSHIP",
+      "cardinality": "1:N",
+      "description": "A courier company can have multiple partnerships",
+      "probability": 0.886079
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PARTNERSHIP",
+      "cardinality": "1:N",
+      "description": "An administrator can manage multiple partnerships",
+      "probability": 0.089431
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ASSOC_ADMINISTRATOR_COURIER_COMPANY",
+      "description": "One ADMINISTRATOR can be associated with many ASSOC_ADMINISTRATOR_COURIER_COMPANY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 2e-05
+    },
+    {
+      "entity_1": "COURIER_COMPANY",
+      "entity_2": "ASSOC_ADMINISTRATOR_COURIER_COMPANY",
+      "description": "One COURIER_COMPANY can be associated with many ASSOC_ADMINISTRATOR_COURIER_COMPANY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 2e-05
+    }
+  ],
+  "processing_time": 15.68,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a many-to-many relationship between administrators and courier companies to reflect the possibility of multiple administrators managing multiple courier companies."
+  }
+}

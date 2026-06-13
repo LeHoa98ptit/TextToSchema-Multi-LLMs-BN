@@ -1,0 +1,72 @@
+{
+  "entity": [
+    "USER",
+    "DISH",
+    "ORDER",
+    "SHOP_CART",
+    "ORDER_DETAIL"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "password",
+      "phone",
+      "address",
+      "registration_time",
+      "account_status"
+    ],
+    "DISH": [
+      "dish_name",
+      "price",
+      "ingredient",
+      "taste",
+      "recommendation_index"
+    ],
+    "ORDER": [
+      "order_time",
+      "order_status",
+      "total"
+    ],
+    "SHOP_CART": [
+      "user_id",
+      "dish_id",
+      "quantity",
+      "add_time",
+      "settlement_status"
+    ],
+    "ORDER_DETAIL": [
+      "order_id",
+      "dish_id",
+      "dish_quantity",
+      "unit_price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOP_CART",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.4192,
+  "ilp_runtime": 0.04
+}

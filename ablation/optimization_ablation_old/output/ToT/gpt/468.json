@@ -1,0 +1,163 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "APPLICATION",
+    "CREDIT_CARD",
+    "CARD_TYPE",
+    "REVIEW",
+    "LETTER",
+    "TRANSACTION",
+    "TRANSACTION_TYPE",
+    "APPLICATION_STATUS",
+    "CARD_STATUS",
+    "LETTER_STATUS"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_number",
+      "full_name",
+      "date_of_birth",
+      "address",
+      "phone",
+      "email",
+      "registration_date",
+      "created_at",
+      "updated_at"
+    ],
+    "APPLICATION": [
+      "application_number",
+      "customer_number",
+      "submission_time",
+      "requested_card_type_id",
+      "requested_credit_limit",
+      "status_code",
+      "review_time",
+      "approval_time",
+      "rejection_time",
+      "created_at",
+      "updated_at"
+    ],
+    "CREDIT_CARD": [
+      "card_number",
+      "customer_number",
+      "card_type_id",
+      "issue_date",
+      "expiry_date",
+      "credit_limit",
+      "available_credit",
+      "status_code",
+      "created_at",
+      "updated_at"
+    ],
+    "CARD_TYPE": [
+      "card_type_id",
+      "type_name",
+      "description",
+      "default_credit_limit",
+      "interest_rate",
+      "created_at",
+      "updated_at"
+    ],
+    "REVIEW": [
+      "review_id",
+      "application_number",
+      "reviewer_id",
+      "review_time",
+      "decision",
+      "comments",
+      "created_at",
+      "updated_at"
+    ],
+    "LETTER": [
+      "letter_id",
+      "application_number",
+      "letter_type",
+      "letter_status_code",
+      "send_date",
+      "content",
+      "created_at",
+      "updated_at"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "card_number",
+      "transaction_time",
+      "transaction_type_id",
+      "merchant_name",
+      "amount",
+      "currency",
+      "description",
+      "status",
+      "created_at",
+      "updated_at"
+    ],
+    "TRANSACTION_TYPE": [
+      "transaction_type_id",
+      "type_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "APPLICATION_STATUS": [
+      "status_code",
+      "status_name",
+      "description"
+    ],
+    "CARD_STATUS": [
+      "status_code",
+      "status_name",
+      "description"
+    ],
+    "LETTER_STATUS": [
+      "status_code",
+      "status_name",
+      "description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "APPLICATION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CARD_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CARD_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LETTER",
+      "entity_2": "LETTER_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 70.2706,
+  "ilp_runtime": 0.032
+}

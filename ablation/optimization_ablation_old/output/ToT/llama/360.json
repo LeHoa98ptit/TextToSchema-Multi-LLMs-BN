@@ -1,0 +1,80 @@
+{
+  "entity": [
+    "LOG",
+    "OPERATOR",
+    "SYSTEM",
+    "USER_ROLE",
+    "PERMISSION",
+    "LOG_CATEGORY",
+    "SYSTEM_TYPE"
+  ],
+  "attribute": {
+    "LOG": [
+      "log_level",
+      "content",
+      "category",
+      "timestamp",
+      "lifecycle",
+      "operation_type",
+      "execution_content",
+      "log_category_id"
+    ],
+    "OPERATOR": [
+      "account",
+      "password",
+      "contact_information",
+      "name",
+      "email"
+    ],
+    "SYSTEM": [
+      "name",
+      "description",
+      "operation_history",
+      "system_type_id"
+    ],
+    "USER_ROLE": [
+      "role_name",
+      "role_description"
+    ],
+    "PERMISSION": [
+      "permission_name",
+      "permission_description"
+    ],
+    "LOG_CATEGORY": [
+      "category_name",
+      "category_description"
+    ],
+    "SYSTEM_TYPE": [
+      "type_name",
+      "type_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "OPERATOR",
+      "entity_2": "USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER_ROLE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LOG",
+      "entity_2": "LOG_CATEGORY",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "SYSTEM_TYPE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.8296,
+  "ilp_runtime": 0.073
+}

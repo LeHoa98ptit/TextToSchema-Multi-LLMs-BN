@@ -1,0 +1,62 @@
+{
+  "entity": [
+    "TASK",
+    "SCHEDULER",
+    "TRIGGER",
+    "COMPLEXTRIGGER",
+    "ASSOC_SCHEDULER_TASK"
+  ],
+  "attribute": {
+    "TASK": [
+      "task_d",
+      "task_description",
+      "class_persistence_flag",
+      "concurrent_execution_flag"
+    ],
+    "SCHEDULER": [
+      "scheduler_d",
+      "scheduler_status",
+      "scheduler_configuration",
+      "scheduler_log"
+    ],
+    "TRIGGER": [
+      "trigger_d",
+      "trigger_record",
+      "basic_information"
+    ],
+    "COMPLEXTRIGGER": [
+      "attribute_like_string",
+      "integer",
+      "long_integer",
+      "decimal",
+      "boolean"
+    ],
+    "ASSOC_SCHEDULER_TASK": [
+      "assoc_scheduler_task_id",
+      "scheduler_id",
+      "task_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "ASSOC_SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_SCHEDULER_TASK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "COMPLEXTRIGGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 16.3811,
+  "ilp_runtime": 0.168
+}

@@ -1,0 +1,102 @@
+{
+  "entity": [
+    "MODEL",
+    "MODEL_TYPE",
+    "MODEL_RUN",
+    "DATASET",
+    "DATASET_VARIABLE",
+    "HYPERPARAMETER",
+    "PERFORMANCE_METRIC"
+  ],
+  "attribute": {
+    "MODEL": [
+      "model_id",
+      "model_name",
+      "model_description",
+      "model_implementation"
+    ],
+    "MODEL_TYPE": [
+      "model_type_id",
+      "model_type_name",
+      "model_type_description"
+    ],
+    "MODEL_RUN": [
+      "model_run_id",
+      "start_time",
+      "end_time",
+      "runtime",
+      "run_path",
+      "model_id"
+    ],
+    "DATASET": [
+      "dataset_id",
+      "dataset_name",
+      "dataset_description",
+      "owner",
+      "license",
+      "visibility",
+      "url",
+      "creation_date",
+      "update_date",
+      "datum_size",
+      "number_row",
+      "number_column"
+    ],
+    "DATASET_VARIABLE": [
+      "dataset_variable_id",
+      "datum_type",
+      "unique_value",
+      "null_value",
+      "dataset_id"
+    ],
+    "HYPERPARAMETER": [
+      "hyperparameter_id",
+      "hyperparameter_name",
+      "hyperparameter_description",
+      "hyperparameter_value"
+    ],
+    "PERFORMANCE_METRIC": [
+      "performance_metric_id",
+      "metric_name",
+      "metric_description",
+      "rmse",
+      "mse",
+      "mae",
+      "rmsle"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_RUN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "HYPERPARAMETER",
+      "cardinality": "1:N",
+      "associative_entity": "HYPERPARAMETER_VALUE"
+    },
+    {
+      "entity_1": "MODEL_RUN",
+      "entity_2": "PERFORMANCE_METRIC",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.0769,
+  "ilp_runtime": 0.029
+}

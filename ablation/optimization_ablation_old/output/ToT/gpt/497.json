@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "STUDENT",
+    "CONTACT_INFO",
+    "EVENT",
+    "EVENT_TYPE",
+    "REGISTRATION",
+    "REGISTRATION_STATUS",
+    "RESULT",
+    "AWARD"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id",
+      "first_name",
+      "last_name",
+      "gender",
+      "grade",
+      "class"
+    ],
+    "CONTACT_INFO": [
+      "contact_id",
+      "student_id",
+      "phone",
+      "email",
+      "address"
+    ],
+    "EVENT": [
+      "event_id",
+      "event_name",
+      "event_type_id",
+      "event_date",
+      "start_time",
+      "end_time",
+      "location"
+    ],
+    "EVENT_TYPE": [
+      "type_id",
+      "type_name",
+      "description"
+    ],
+    "REGISTRATION": [
+      "registration_id",
+      "student_id",
+      "event_id",
+      "registration_time",
+      "status_code"
+    ],
+    "REGISTRATION_STATUS": [
+      "status_code",
+      "status_name",
+      "status_description"
+    ],
+    "RESULT": [
+      "result_id",
+      "registration_id",
+      "performance",
+      "result_date",
+      "rank"
+    ],
+    "AWARD": [
+      "award_id",
+      "result_id",
+      "award_name",
+      "award_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EVENT_TYPE",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "REGISTRATION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESULT",
+      "entity_2": "AWARD",
+      "cardinality": "1:0..1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.8579,
+  "ilp_runtime": 0.023
+}

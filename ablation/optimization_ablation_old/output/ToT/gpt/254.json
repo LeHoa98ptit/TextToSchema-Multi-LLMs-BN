@@ -1,0 +1,158 @@
+{
+  "entity": [
+    "STATION",
+    "SEISMOMETER",
+    "CALIBRATION",
+    "CALIBRATION_PARAMETER",
+    "CALIBRATION_TEST",
+    "USER",
+    "ROLE",
+    "PERMISSION",
+    "ROLE_PERMISSION",
+    "PERSONNEL"
+  ],
+  "attribute": {
+    "STATION": [
+      "station_id",
+      "name",
+      "station_type",
+      "province",
+      "latitude",
+      "longitude",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "SEISMOMETER": [
+      "seismo_id",
+      "serial_number",
+      "model",
+      "install_date",
+      "station_id",
+      "mechanical_period",
+      "equivalent_pendulum_length",
+      "moment_of_inertia",
+      "coil_sensitivity",
+      "voltage_sensitivity",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "CALIBRATION": [
+      "calib_id",
+      "seismo_id",
+      "calib_date",
+      "performed_by_user_id",
+      "overall_result",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "CALIBRATION_PARAMETER": [
+      "param_id",
+      "calib_id",
+      "parameter_name",
+      "value",
+      "unit",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "CALIBRATION_TEST": [
+      "test_id",
+      "calib_id",
+      "test_type",
+      "test_date",
+      "test_result",
+      "notes",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "full_name",
+      "email",
+      "role_id",
+      "station_id",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "entity",
+      "operation",
+      "description",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ],
+    "ROLE_PERMISSION": [
+      "role_id",
+      "permission_id",
+      "created_at",
+      "updated_at"
+    ],
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "position",
+      "contact",
+      "station_id",
+      "created_at",
+      "updated_at",
+      "created_by"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SEISMOMETER",
+      "entity_2": "CALIBRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "CALIBRATION_PARAMETER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CALIBRATION",
+      "entity_2": "CALIBRATION_TEST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "STATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 58.3936,
+  "ilp_runtime": 0.085
+}

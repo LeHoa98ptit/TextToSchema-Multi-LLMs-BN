@@ -1,0 +1,85 @@
+{
+  "filename": "294.txt",
+  "entity": {
+    "BRANCH_OFFICE": 0.792029,
+    "CUSTOMER": 0.817574,
+    "ACCOUNT": 0.817574,
+    "TRANSACTION": 0.817574,
+    "ASSOC_CUSTOMER_ACCOUNT": 0.61535
+  },
+  "attribute": {
+    "BRANCH_OFFICE": {
+      "branch id": 0.775037,
+      "name": 0.775015,
+      "address": 0.776879
+    },
+    "CUSTOMER": {
+      "customer id": 0.752864,
+      "name": 0.753902,
+      "id number": 0.752412,
+      "contact phone number": 0.750271,
+      "email address": 0.753117
+    },
+    "ACCOUNT": {
+      "account number": 0.774518,
+      "account type": 0.777313,
+      "balance": 0.777234,
+      "open date": 0.762814
+    },
+    "TRANSACTION": {
+      "transaction id": 0.754431,
+      "transaction type": 0.767489,
+      "transaction amount": 0.761853,
+      "transaction time": 0.753914,
+      "transaction location": 0.762919
+    },
+    "ASSOC_CUSTOMER_ACCOUNT": {
+      "assoc_customer_account_id": 0.61535,
+      "customer_id": 0.61535,
+      "account_id": 0.61535
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BRANCH_OFFICE",
+      "entity_2": "CUSTOMER",
+      "description": "Each branch office has multiple customers.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.151269
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_ACCOUNT",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_ACCOUNT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.61535
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "ASSOC_CUSTOMER_ACCOUNT",
+      "description": "One ACCOUNT can be associated with many ASSOC_CUSTOMER_ACCOUNT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.61535
+    },
+    {
+      "entity_1": "ACCOUNT",
+      "entity_2": "TRANSACTION",
+      "description": "Each account has a transaction history.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997117
+    },
+    {
+      "entity_1": "BRANCH_OFFICE",
+      "entity_2": "ACCOUNT",
+      "description": "Each branch office has multiple accounts.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.164581
+    }
+  ],
+  "processing_time": 13.3
+}

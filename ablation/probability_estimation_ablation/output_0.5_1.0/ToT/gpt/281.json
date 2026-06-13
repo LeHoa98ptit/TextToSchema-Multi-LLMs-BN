@@ -1,0 +1,114 @@
+{
+  "filename": "281.txt",
+  "entity": {
+    "Exhibition": 0.817574,
+    "Curator": 0.817574,
+    "Artwork": 0.797073,
+    "Location": 0.727426,
+    "Company": 0.709158,
+    "ExhibitionCurator": 0.783808,
+    "ExhibitionArtwork": 0.791568
+  },
+  "attribute": {
+    "Exhibition": {
+      "exhibition_id": 0.782975,
+      "title": 0.77712,
+      "start_date": 0.779013,
+      "end_date": 0.780089,
+      "description": 0.781072,
+      "status": 0.779233,
+      "company_id": 0.778949
+    },
+    "Curator": {
+      "curator_id": 0.776804,
+      "first_name": 0.770971,
+      "last_name": 0.771279,
+      "email": 0.765622,
+      "phone": 0.766686
+    },
+    "Artwork": {
+      "artwork_id": 0.756276,
+      "title": 0.7572,
+      "artist": 0.756529,
+      "creation_year": 0.766557,
+      "medium": 0.757074,
+      "provenance": 0.759476
+    },
+    "Location": {
+      "location_id": 0.746322,
+      "venue_name": 0.758768,
+      "address": 0.75355,
+      "city": 0.756676,
+      "country": 0.753017
+    },
+    "Company": {
+      "company_id": 0.743093,
+      "name": 0.749071,
+      "headquarters": 0.755916
+    },
+    "ExhibitionCurator": {
+      "exhibition_curator_id": 0.788006,
+      "exhibition_id": 0.783637,
+      "curator_id": 0.786689,
+      "role": 0.775699,
+      "assigned_date": 0.775923
+    },
+    "ExhibitionArtwork": {
+      "exhibition_artwork_id": 0.782276,
+      "exhibition_id": 0.783636,
+      "artwork_id": 0.777253,
+      "display_start": 0.773455,
+      "display_end": 0.769621,
+      "room_number": 0.774212
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "Exhibition",
+      "entity_2": "Location",
+      "cardinality": "N:1",
+      "description": "Each exhibition occurs at one location; a location can host many exhibitions",
+      "probability": 0.246572
+    },
+    {
+      "entity_1": "Exhibition",
+      "entity_2": "Company",
+      "cardinality": "N:1",
+      "description": "A company (optional) organizes many exhibitions; an exhibition may be linked to a company",
+      "probability": 0.028335
+    },
+    {
+      "entity_1": "Exhibition",
+      "entity_2": "ExhibitionCurator",
+      "cardinality": "1:N",
+      "description": "An exhibition can have multiple curator assignments (lead, assistant, etc.)",
+      "probability": 0.944421
+    },
+    {
+      "entity_1": "Curator",
+      "entity_2": "ExhibitionCurator",
+      "cardinality": "1:N",
+      "description": "A curator can be assigned to many exhibitions",
+      "probability": 0.033965
+    },
+    {
+      "entity_1": "Exhibition",
+      "entity_2": "ExhibitionArtwork",
+      "cardinality": "1:N",
+      "description": "An exhibition can feature many artwork display records",
+      "probability": 0.991646
+    },
+    {
+      "entity_1": "Artwork",
+      "entity_2": "ExhibitionArtwork",
+      "cardinality": "1:N",
+      "description": "An artwork can appear in multiple exhibitions with distinct display periods",
+      "probability": 0.674064
+    }
+  ],
+  "processing_time": 25.19,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added primary‑key attributes to associative tables (exhibition_curator_id, exhibition_artwork_id) for easier referencing and indexing. Standardized naming: PascalCase entity names, snake_case attribute names. Made Company relationship optional (company_id nullable) and retained Company entity for multi‑company scenarios. Introduced status attribute on Exhibition and provenance attribute on Artwork for richer reporting. Clarified foreign‑key attributes within associative entities. Updated documentation to reflect these changes while preserving the comprehensive many‑to‑many relationships and temporal details."
+  }
+}

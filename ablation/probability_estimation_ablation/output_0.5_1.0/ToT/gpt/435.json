@@ -1,0 +1,162 @@
+{
+  "filename": "435.txt",
+  "entity": {
+    "PROBE": 0.817574,
+    "INSTRUMENT": 0.817574,
+    "CALIBRATION": 0.690637,
+    "CELESTIAL_BODY": 0.800736,
+    "OBSERVATION": 0.817574,
+    "MISSION": 0.817574,
+    "MISSION_TARGET": 0.766312,
+    "TRAJECTORY": 0.686176,
+    "RESOURCE_ALLOCATION_DETAIL": 0.677302
+  },
+  "attribute": {
+    "PROBE": {
+      "probe_id": 0.759543,
+      "name": 0.762588,
+      "weight": 0.75826,
+      "launch_date": 0.761778,
+      "service_life": 0.76773,
+      "fuel_remaining": 0.756833,
+      "status": 0.770544,
+      "flight_trajectory": 0.760318
+    },
+    "INSTRUMENT": {
+      "instrument_id": 0.753612,
+      "name": 0.749192,
+      "weight": 0.748367,
+      "power_consumption": 0.751585,
+      "accuracy": 0.75355,
+      "probe_id": 0.764818
+    },
+    "CALIBRATION": {
+      "calibration_id": 0.743079,
+      "instrument_id": 0.754292,
+      "calibration_date": 0.740343,
+      "calibration_value": 0.741958
+    },
+    "CELESTIAL_BODY": {
+      "body_id": 0.753555,
+      "name": 0.751129,
+      "type": 0.752475,
+      "orbital_parameters": 0.76174,
+      "physical_characteristics": 0.760986
+    },
+    "OBSERVATION": {
+      "observation_id": 0.7503,
+      "observation_time": 0.748268,
+      "datum": 0.754798,
+      "result": 0.741119,
+      "accuracy": 0.751492,
+      "research_value": 0.760022,
+      "instrument_id": 0.763668,
+      "body_id": 0.752044
+    },
+    "MISSION": {
+      "mission_id": 0.758976,
+      "name": 0.761997,
+      "priority": 0.76499,
+      "execution_status": 0.761741,
+      "resource_allocation": 0.763357,
+      "start_date": 0.758693,
+      "end_date": 0.755745
+    },
+    "MISSION_TARGET": {
+      "mission_target_id": 0.757013,
+      "mission_id": 0.758468,
+      "body_id": 0.756163,
+      "target_role": 0.755368
+    },
+    "TRAJECTORY": {
+      "trajectory_id": 0.741521,
+      "probe_id": 0.755084,
+      "trajectory_data": 0.753114,
+      "start_time": 0.739008,
+      "end_time": 0.735194
+    },
+    "RESOURCE_ALLOCATION_DETAIL": {
+      "allocation_id": 0.747264,
+      "mission_id": 0.767371,
+      "resource_type": 0.746776,
+      "amount": 0.749355
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROBE",
+      "entity_2": "INSTRUMENT",
+      "cardinality": "1:N",
+      "description": "Each probe can be equipped with multiple instruments",
+      "probability": 0.95449
+    },
+    {
+      "entity_1": "INSTRUMENT",
+      "entity_2": "CALIBRATION",
+      "cardinality": "1:N",
+      "description": "An instrument may have many calibration records",
+      "probability": 0.997175
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "OBSERVATION",
+      "cardinality": "1:N",
+      "description": "A probe generates many observations during its operation",
+      "probability": 0.983595
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "INSTRUMENT",
+      "cardinality": "N:1",
+      "description": "Each observation is produced by a single instrument",
+      "probability": 0.433705
+    },
+    {
+      "entity_1": "OBSERVATION",
+      "entity_2": "CELESTIAL_BODY",
+      "cardinality": "N:1",
+      "description": "Each observation is linked to one observed celestial body",
+      "probability": 0.822807
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "PROBE",
+      "cardinality": "1:N",
+      "description": "A mission controls multiple probes",
+      "probability": 0.03776
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "MISSION_TARGET",
+      "cardinality": "1:N",
+      "description": "A mission can target multiple celestial bodies",
+      "probability": 0.995642
+    },
+    {
+      "entity_1": "CELESTIAL_BODY",
+      "entity_2": "MISSION_TARGET",
+      "cardinality": "1:N",
+      "description": "A celestial body can be targeted by multiple missions",
+      "probability": 0.98415
+    },
+    {
+      "entity_1": "PROBE",
+      "entity_2": "TRAJECTORY",
+      "cardinality": "1:N",
+      "description": "A probe may have multiple trajectory records over time",
+      "probability": 0.827464
+    },
+    {
+      "entity_1": "MISSION",
+      "entity_2": "RESOURCE_ALLOCATION_DETAIL",
+      "cardinality": "1:N",
+      "description": "A mission can have multiple detailed resource allocation entries",
+      "probability": 0.070431
+    }
+  ],
+  "processing_time": 931.07,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added OBSERVATION‑INSTRUMENT relationship; transformed MISSION‑CELESTIAL_BODY into many‑to‑many via MISSION_TARGET associative entity; introduced FLIGHT_TRAJECTORY attribute on PROBE; added TRAJECTORY entity for detailed flight‑trajectory data; added RESOURCE_ALLOCATION_DETAIL entity for granular resource tracking; removed redundant calibration_status from INSTRUMENT; included necessary foreign key attributes (probe_id in INSTRUMENT, instrument_id and body_id in OBSERVATION) to support the new relationships."
+  }
+}

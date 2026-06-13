@@ -1,0 +1,124 @@
+{
+  "filename": "295.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "TRADER": 0.817574,
+    "CLIENT": 0.817574,
+    "TRANSACTION": 0.817574,
+    "FUTURE": 0.817574,
+    "ASSOC_TRANSACTION_FUTURE": 0.987693,
+    "ASSOC_TRADER_FUTURE": 0.59244,
+    "ASSOC_CLIENT_FUTURE": 0.032467
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.757825,
+      "name": 0.758506
+    },
+    "TRADER": {
+      "trader_id": 0.7694,
+      "hire_date": 0.766784,
+      "contact_number": 0.768529
+    },
+    "CLIENT": {
+      "client_id": 0.754506,
+      "d_number": 0.759251,
+      "contact_number": 0.757008
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.762733,
+      "transaction_type": 0.76659,
+      "transaction_quantity": 0.766323,
+      "transaction_price": 0.764654,
+      "transaction_time": 0.763931
+    },
+    "FUTURE": {
+      "future_code": 0.775456,
+      "risk_level": 0.765729
+    },
+    "ASSOC_TRANSACTION_FUTURE": {
+      "assoc_transaction_future_id": 0.987693,
+      "transaction_id": 0.987693,
+      "future_id": 0.987693
+    },
+    "ASSOC_TRADER_FUTURE": {
+      "assoc_trader_future_id": 0.59244,
+      "trader_id": 0.59244,
+      "future_id": 0.59244
+    },
+    "ASSOC_CLIENT_FUTURE": {
+      "assoc_client_future_id": 0.032467,
+      "client_id": 0.032467,
+      "future_id": 0.032467
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "TRADER",
+      "cardinality": "1:N",
+      "probability": 0.122254
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "probability": 0.255576
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "probability": 0.11463
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_FUTURE",
+      "description": "One TRANSACTION can be associated with many ASSOC_TRANSACTION_FUTURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987693
+    },
+    {
+      "entity_1": "FUTURE",
+      "entity_2": "ASSOC_TRANSACTION_FUTURE",
+      "description": "One FUTURE can be associated with many ASSOC_TRANSACTION_FUTURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987693
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "ASSOC_TRADER_FUTURE",
+      "description": "One TRADER can be associated with many ASSOC_TRADER_FUTURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.59244
+    },
+    {
+      "entity_1": "FUTURE",
+      "entity_2": "ASSOC_TRADER_FUTURE",
+      "description": "One FUTURE can be associated with many ASSOC_TRADER_FUTURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.59244
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_CLIENT_FUTURE",
+      "description": "One CLIENT can be associated with many ASSOC_CLIENT_FUTURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032467
+    },
+    {
+      "entity_1": "FUTURE",
+      "entity_2": "ASSOC_CLIENT_FUTURE",
+      "description": "One FUTURE can be associated with many ASSOC_CLIENT_FUTURE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.032467
+    }
+  ],
+  "processing_time": 16.35
+}

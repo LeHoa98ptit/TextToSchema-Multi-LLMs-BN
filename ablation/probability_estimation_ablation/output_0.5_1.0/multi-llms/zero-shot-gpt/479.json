@@ -1,0 +1,105 @@
+{
+  "filename": "479.txt",
+  "entity": {
+    "SUBSIDIARY": 0.817574,
+    "BUSINESS_DEPARTMENT": 0.802723,
+    "EMPLOYEE": 0.817574,
+    "FAMILY_MEMBER": 0.711832,
+    "IDENTITY_VERIFICATION_LOG": 0.669384,
+    "PROPERTY": 0.737787,
+    "REAL_ESTATE_AGENT": 0.76959,
+    "SYSTEM_ADMINISTRATOR": 0.713102
+  },
+  "attribute": {
+    "SUBSIDIARY": {
+      "subsidiary id": 0.78079,
+      "manager id": 0.786997,
+      "contact": 0.77649
+    },
+    "BUSINESS_DEPARTMENT": {
+      "department id": 0.769708,
+      "address": 0.770763,
+      "phone number": 0.764535,
+      "subsidiary id": 0.782861,
+      "supervisor id": 0.771682
+    },
+    "EMPLOYEE": {
+      "employee id": 0.767247,
+      "position": 0.766686,
+      "department id": 0.772912,
+      "phone number": 0.759976
+    },
+    "FAMILY_MEMBER": {
+      "family member id": 0.757328,
+      "employee id": 0.766006,
+      "name": 0.751115,
+      "relationship": 0.750528
+    },
+    "IDENTITY_VERIFICATION_LOG": {
+      "log id": 0.747343,
+      "user id": 0.746026
+    },
+    "PROPERTY": {
+      "property id": 0.742562,
+      "agent id": 0.758665,
+      "approved by admin id": 0.75594
+    },
+    "REAL_ESTATE_AGENT": {
+      "agent id": 0.757575
+    },
+    "SYSTEM_ADMINISTRATOR": {
+      "admin id": 0.757725
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUBSIDIARY",
+      "entity_2": "BUSINESS_DEPARTMENT",
+      "description": "A subsidiary can have multiple business departments; each department is affiliated with one subsidiary",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.989051
+    },
+    {
+      "entity_1": "BUSINESS_DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "description": "Employees belong to a business department; a department can have many employees",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99949
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "FAMILY_MEMBER",
+      "description": "An employee can have multiple family members; each family member is linked to one employee",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.14304
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE",
+      "description": "An employee (as supervisor) can supervise multiple other employees",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    },
+    {
+      "entity_1": "REAL_ESTATE_AGENT",
+      "entity_2": "PROPERTY",
+      "description": "A real estate agent is responsible for selling multiple properties; each property is entered by one agent",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.970641
+    },
+    {
+      "entity_1": "SYSTEM_ADMINISTRATOR",
+      "entity_2": "PROPERTY",
+      "description": "A system administrator approves multiple properties; each property is approved by one administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000333
+    }
+  ],
+  "processing_time": 21.13
+}

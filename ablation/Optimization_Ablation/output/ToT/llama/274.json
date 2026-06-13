@@ -1,0 +1,65 @@
+{
+  "entity": [
+    "USER",
+    "FEEDBACK",
+    "CUSTOMER_SERVICE_REPRESENTATIVE",
+    "PROCESSING_RESULT",
+    "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK"
+  ],
+  "attribute": {
+    "USER": [
+      "username",
+      "contact_number",
+      "email"
+    ],
+    "FEEDBACK": [
+      "content",
+      "time",
+      "processing_status",
+      "processing_time",
+      "processor"
+    ],
+    "CUSTOMER_SERVICE_REPRESENTATIVE": [
+      "contact_information",
+      "work_status",
+      "employee_id"
+    ],
+    "PROCESSING_RESULT": [
+      "result",
+      "description"
+    ],
+    "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK": [
+      "assoc_customer_service_representative_feedback_id",
+      "customer_service_representative_id",
+      "feedback_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER_SERVICE_REPRESENTATIVE",
+      "entity_2": "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "ASSOC_CUSTOMER_SERVICE_REPRESENTATIVE_FEEDBACK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "PROCESSING_RESULT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 23.2988,
+  "ilp_runtime": 0.091
+}

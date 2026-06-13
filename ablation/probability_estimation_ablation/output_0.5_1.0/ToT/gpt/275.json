@@ -1,0 +1,144 @@
+{
+  "filename": "275.txt",
+  "entity": {
+    "ECOSYSTEM": 0.817574,
+    "ECOSYSTEM_TYPE": 0.781563,
+    "LOCATION": 0.74566,
+    "STATUS": 0.709385,
+    "MONITORING_RECORD": 0.792966,
+    "SENSOR_READING": 0.717055,
+    "PERSON": 0.710662,
+    "CONTACT_INFO": 0.689868,
+    "ASSIGNMENT": 0.717623
+  },
+  "attribute": {
+    "ECOSYSTEM": {
+      "ecosystem_id": 0.772524,
+      "name": 0.764408,
+      "description": 0.770965,
+      "type_id": 0.765371,
+      "location_id": 0.765485
+    },
+    "ECOSYSTEM_TYPE": {
+      "type_id": 0.763402,
+      "type_name": 0.764347
+    },
+    "LOCATION": {
+      "location_id": 0.73484,
+      "latitude": 0.73599,
+      "longitude": 0.735647,
+      "region": 0.74603
+    },
+    "STATUS": {
+      "status_id": 0.748174,
+      "status_name": 0.751205
+    },
+    "MONITORING_RECORD": {
+      "record_id": 0.753765,
+      "monitor_date": 0.758805,
+      "ecosystem_id": 0.781043,
+      "person_id": 0.758037,
+      "status_id": 0.757206
+    },
+    "SENSOR_READING": {
+      "reading_id": 0.751736,
+      "record_id": 0.756318,
+      "temperature": 0.753225,
+      "humidity": 0.761862,
+      "soil_moisture": 0.769376,
+      "plant_growth": 0.766821
+    },
+    "PERSON": {
+      "person_id": 0.738312,
+      "first_name": 0.736264,
+      "last_name": 0.738773,
+      "gender": 0.735792,
+      "position": 0.738058,
+      "contact_id": 0.733756,
+      "role": 0.74217
+    },
+    "CONTACT_INFO": {
+      "contact_id": 0.739647,
+      "phone": 0.741042,
+      "email": 0.741695,
+      "address": 0.740051
+    },
+    "ASSIGNMENT": {
+      "assignment_id": 0.738598,
+      "ecosystem_id": 0.766748,
+      "person_id": 0.741259,
+      "assignment_date": 0.742185,
+      "end_date": 0.739183
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ECOSYSTEM_TYPE",
+      "entity_2": "ECOSYSTEM",
+      "cardinality": "1:N",
+      "description": "Each ecosystem belongs to one type; a type can classify many ecosystems",
+      "probability": 0.999472
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ECOSYSTEM",
+      "cardinality": "1:1",
+      "description": "Each ecosystem has a single location record",
+      "probability": 0.494604
+    },
+    {
+      "entity_1": "ECOSYSTEM",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "description": "An ecosystem can have many monitoring records",
+      "probability": 0.965834
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "description": "Each monitoring record records the ecosystem status at that time",
+      "probability": 0.688694
+    },
+    {
+      "entity_1": "MONITORING_RECORD",
+      "entity_2": "SENSOR_READING",
+      "cardinality": "1:1",
+      "description": "A monitoring record has one set of sensor readings",
+      "probability": 0.112051
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each person has one contact information record",
+      "probability": 0.233064
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MONITORING_RECORD",
+      "cardinality": "1:N",
+      "description": "A person (in role of operator) can create many monitoring records",
+      "probability": 0.99939
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A person can be assigned to monitor multiple ecosystems",
+      "probability": 0.055975
+    },
+    {
+      "entity_1": "ECOSYSTEM",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An ecosystem can have multiple operator assignments over time",
+      "probability": 0.554125
+    }
+  ],
+  "processing_time": 34.8,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Consolidated OPERATOR and EMPLOYEE into a single PERSON entity with a role attribute, removing redundancy. Replaced the overly‑normalized ECOSYSTEM_OPERATOR link with an ASSIGNMENT associative entity that captures operator‑ecosystem assignments (including dates) while preserving history. Kept lookup tables for ECOSYSTEM_TYPE and STATUS to enforce controlled vocabularies. Added explicit 1:1 relationship between MONITORING_RECORD and SENSOR_READING and noted a unique constraint on (record_id) in SENSOR_READING. Simplified the model by eliminating duplicate many‑to‑many representations and clarified foreign‑key relationships for better referential integrity."
+  }
+}

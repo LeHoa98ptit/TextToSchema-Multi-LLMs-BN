@@ -1,0 +1,135 @@
+{
+  "filename": "392.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PRODUCT": 0.817574,
+    "ORDER": 0.817574,
+    "CATEGORY": 0.74137,
+    "ADMINISTRATOR": 0.742671,
+    "PAYMENT": 0.717156,
+    "ORDER_ITEM": 0.002105
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.744312,
+      "username": 0.731712,
+      "age": 0.744283,
+      "gender": 0.748221,
+      "phone number": 0.743138,
+      "email": 0.751313,
+      "password hash": 0.741445,
+      "shipping address": 0.750073
+    },
+    "PRODUCT": {
+      "product id": 0.752278,
+      "product name": 0.748387,
+      "category id": 0.750787,
+      "inventory quantity": 0.765362,
+      "price": 0.744579,
+      "classification": 0.760909,
+      "created at": 0.746674
+    },
+    "CATEGORY": {
+      "category id": 0.737804,
+      "category name": 0.738392,
+      "parent category id": 0.735159
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.75134,
+      "username": 0.749455,
+      "password hash": 0.744292,
+      "email": 0.753983
+    },
+    "PAYMENT": {
+      "payment id": 0.742332,
+      "order id": 0.747891,
+      "payment method": 0.745847,
+      "payment amount": 0.738199,
+      "payment date": 0.738413,
+      "payment status": 0.744845
+    },
+    "ORDER": {
+      "order id": 0.74951,
+      "user id": 0.751649,
+      "order date": 0.748779,
+      "order status": 0.756401,
+      "total amount": 0.749635,
+      "shipping address": 0.748865,
+      "order items": 0.760866,
+      "payment id": 0.748023
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.002105,
+      "order_id": 0.002105,
+      "product_id": 0.002105,
+      "quantity": 0.002105
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place many orders; each order is placed by one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999098
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "description": "Each order has one associated payment; each payment corresponds to one order",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.492401
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "PRODUCT",
+      "description": "A category can contain many products; each product belongs to one category",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00026
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "USER",
+      "description": "An administrator manages many users; each user is managed by one administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.310138
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PRODUCT",
+      "description": "An administrator manages many products; each product is managed by one administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.000141
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ORDER",
+      "description": "An administrator oversees many orders; each order is overseen by one administrator",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.005063
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "One ORDER can be associated with many ORDER_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002105
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "description": "One PRODUCT can be associated with many ORDER_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002105
+    }
+  ],
+  "processing_time": 29.16
+}

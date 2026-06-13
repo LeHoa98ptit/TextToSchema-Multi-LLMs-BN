@@ -1,0 +1,95 @@
+{
+  "entity": [
+    "USER",
+    "SYSTEM",
+    "LOGIN",
+    "SESSION",
+    "AUTHORIZATION",
+    "SYSTEM_CONFIGURATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user id",
+      "username",
+      "password hash",
+      "phone number",
+      "email",
+      "account status",
+      "last login time",
+      "last login ip"
+    ],
+    "SYSTEM": [
+      "system id",
+      "system name",
+      "system domain",
+      "access time",
+      "is enabled",
+      "approval required",
+      "login required"
+    ],
+    "LOGIN": [
+      "login id",
+      "user id",
+      "system id",
+      "login time",
+      "login ip"
+    ],
+    "SESSION": [
+      "session id",
+      "user id",
+      "system id",
+      "token",
+      "token expiration time"
+    ],
+    "AUTHORIZATION": [
+      "authorization id",
+      "user id",
+      "system id",
+      "authorization time",
+      "effective time",
+      "expiration time",
+      "status"
+    ],
+    "SYSTEM_CONFIGURATION": [
+      "system config id",
+      "system id",
+      "callback url",
+      "secret key",
+      "token validity period"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "SYSTEM_CONFIGURATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.9258,
+  "ilp_runtime": 0.089
+}

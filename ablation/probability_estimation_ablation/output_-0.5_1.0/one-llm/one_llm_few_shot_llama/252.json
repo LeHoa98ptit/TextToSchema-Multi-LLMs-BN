@@ -1,0 +1,106 @@
+{
+  "filename": "252.txt",
+  "entity": {
+    "PLAYER": 0.622459,
+    "GAME": 0.622459,
+    "SINGLE_PLAYER_GAME": 0.552926,
+    "PLAYER_BATTLE": 0.545201,
+    "COMMUNICATION": 0.622459,
+    "ASSOC_PLAYER_PLAYER_BATTLE": 0.994046,
+    "ASSOC_PLAYER_COMMUNICATION": 0.191494
+  },
+  "attribute": {
+    "PLAYER": {
+      "username": 0.531427,
+      "password": 0.538537,
+      "phone_number": 0.529105,
+      "registration_time": 0.535743
+    },
+    "GAME": {
+      "game_rule": 0.543731,
+      "game_content": 0.538605,
+      "maximum_number_of_players": 0.553397
+    },
+    "SINGLE_PLAYER_GAME": {
+      "game_start_time": 0.546179,
+      "game_end_time": 0.54681,
+      "game_status": 0.554725
+    },
+    "PLAYER_BATTLE": {
+      "battle_start_time": 0.542909,
+      "battle_end_time": 0.541228,
+      "battle_result": 0.543921
+    },
+    "COMMUNICATION": {
+      "communication_start_time": 0.519982,
+      "communication_end_time": 0.522829,
+      "communication_content": 0.523996
+    },
+    "ASSOC_PLAYER_PLAYER_BATTLE": {
+      "assoc_player_player_battle_id": 0.994046,
+      "player_id": 0.994046,
+      "player_battle_id": 0.994046
+    },
+    "ASSOC_PLAYER_COMMUNICATION": {
+      "assoc_player_communication_id": 0.191494,
+      "player_id": 0.191494,
+      "communication_id": 0.191494
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "cardinality": "1:N",
+      "description": "Each player can have many single-player games, and each single-player game is associated with exactly one player.",
+      "probability": 0.988888
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_PLAYER_BATTLE",
+      "description": "One PLAYER can be associated with many ASSOC_PLAYER_PLAYER_BATTLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994046
+    },
+    {
+      "entity_1": "PLAYER_BATTLE",
+      "entity_2": "ASSOC_PLAYER_PLAYER_BATTLE",
+      "description": "One PLAYER_BATTLE can be associated with many ASSOC_PLAYER_PLAYER_BATTLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994046
+    },
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "ASSOC_PLAYER_COMMUNICATION",
+      "description": "One PLAYER can be associated with many ASSOC_PLAYER_COMMUNICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.191494
+    },
+    {
+      "entity_1": "COMMUNICATION",
+      "entity_2": "ASSOC_PLAYER_COMMUNICATION",
+      "description": "One COMMUNICATION can be associated with many ASSOC_PLAYER_COMMUNICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.191494
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "SINGLE_PLAYER_GAME",
+      "cardinality": "1:N",
+      "description": "Each game can have many single-player games, and each single-player game is associated with exactly one game.",
+      "probability": 0.964463
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "PLAYER_BATTLE",
+      "cardinality": "1:N",
+      "description": "Each game can have many battles, and each battle is associated with exactly one game.",
+      "probability": 0.876496
+    }
+  ],
+  "processing_time": 19.0
+}

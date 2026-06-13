@@ -1,0 +1,78 @@
+{
+  "filename": "293.txt",
+  "entity": {
+    "EQUIPMENT": 0.622459,
+    "MINE": 0.622459,
+    "PERSON": 0.622459,
+    "MAINTENANCE_EVENT": 0.535018,
+    "ASSOC_EQUIPMENT_MINE": 0.781827
+  },
+  "attribute": {
+    "EQUIPMENT": {
+      "equipment_id": 0.555117,
+      "model": 0.548008,
+      "purchase_date": 0.547176,
+      "equipment_type": 0.557275
+    },
+    "MINE": {
+      "mine_id": 0.514431,
+      "location": 0.520677
+    },
+    "PERSON": {
+      "person_id": 0.514179,
+      "name": 0.505518,
+      "contact_number": 0.516738
+    },
+    "MAINTENANCE_EVENT": {
+      "maintenance_id": 0.53516,
+      "maintenance_date": 0.530261,
+      "maintenance_content": 0.536671,
+      "maintenance_cost": 0.537082
+    },
+    "ASSOC_EQUIPMENT_MINE": {
+      "assoc_equipment_mine_id": 0.781827,
+      "equipment_id": 0.781827,
+      "mine_id": 0.781827
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EQUIPMENT_MINE",
+      "description": "One EQUIPMENT can be associated with many ASSOC_EQUIPMENT_MINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.781827
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "ASSOC_EQUIPMENT_MINE",
+      "description": "One MINE can be associated with many ASSOC_EQUIPMENT_MINE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.781827
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "description": "Each equipment can have many maintenance events, and each maintenance event is for one equipment.",
+      "probability": 0.976578
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "description": "Each person can perform many maintenance events, and each maintenance event is performed by one person.",
+      "probability": 0.996886
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "EQUIPMENT",
+      "cardinality": "1:N",
+      "description": "Each person can be in charge of many equipment, and each equipment is in charge of one person.",
+      "probability": 0.892606
+    }
+  ],
+  "processing_time": 10.06
+}

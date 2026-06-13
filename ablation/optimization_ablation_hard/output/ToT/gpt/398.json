@@ -1,0 +1,96 @@
+{
+  "entity": [
+    "DISH",
+    "TABLE",
+    "CUSTOMER",
+    "EMPLOYEE",
+    "ORDER",
+    "ORDER_DISH",
+    "SERVICE"
+  ],
+  "attribute": {
+    "DISH": [
+      "dish_id",
+      "dish_name",
+      "dish_price",
+      "description",
+      "is_available",
+      "category_id"
+    ],
+    "TABLE": [
+      "table_id",
+      "seat_number",
+      "location"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "gender",
+      "phone_number",
+      "email"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "name",
+      "age",
+      "gender",
+      "salary",
+      "position"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_date",
+      "dining_time",
+      "total_amount",
+      "table_id",
+      "customer_id"
+    ],
+    "ORDER_DISH": [
+      "order_id",
+      "dish_id",
+      "quantity",
+      "price_at_order"
+    ],
+    "SERVICE": [
+      "service_id",
+      "order_id",
+      "employee_id",
+      "service_time",
+      "notes"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ORDER",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "TABLE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DISH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISH",
+      "entity_2": "ORDER_DISH",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 45.5064,
+  "ilp_runtime": 0.083
+}

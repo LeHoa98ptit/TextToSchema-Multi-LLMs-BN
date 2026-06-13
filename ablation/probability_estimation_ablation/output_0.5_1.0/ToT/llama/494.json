@@ -1,0 +1,118 @@
+{
+  "filename": "494.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ARTICLE": 0.817574,
+    "CATEGORY": 0.817574,
+    "COMMENT": 0.817574,
+    "REPLY_COMMENT": 0.766419,
+    "ASSOC_ARTICLE_CATEGORY": 0.997373
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.744882,
+      "password": 0.754941,
+      "nickname": 0.751349,
+      "gender": 0.76639,
+      "creation_time": 0.755922,
+      "biography": 0.768572
+    },
+    "ARTICLE": {
+      "title": 0.758205,
+      "author": 0.753038,
+      "cover_image": 0.74788,
+      "link": 0.752486,
+      "summary": 0.762116,
+      "permission": 0.769132,
+      "status": 0.761603,
+      "content": 0.772346,
+      "number_like": 0.761226,
+      "number_dislike": 0.753295,
+      "number_read": 0.757166,
+      "creation_time": 0.757866
+    },
+    "CATEGORY": {
+      "parent_category": 0.747394,
+      "level": 0.763703,
+      "description": 0.770015,
+      "icon": 0.749489,
+      "link": 0.753207
+    },
+    "COMMENT": {
+      "content": 0.771821,
+      "creation_time": 0.753034,
+      "article_id": 0.758383,
+      "user_id": 0.755709
+    },
+    "REPLY_COMMENT": {
+      "content": 0.762048,
+      "creation_time": 0.750765,
+      "comment_id": 0.747301,
+      "user_id": 0.752377,
+      "article_id": 0.756761
+    },
+    "ASSOC_ARTICLE_CATEGORY": {
+      "assoc_article_category_id": 0.997373,
+      "article_id": 0.997373,
+      "category_id": 0.997373
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ARTICLE",
+      "cardinality": "1:N",
+      "description": "A user can create multiple articles",
+      "probability": 0.512223
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "ASSOC_ARTICLE_CATEGORY",
+      "description": "One ARTICLE can be associated with many ASSOC_ARTICLE_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997373
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_ARTICLE_CATEGORY",
+      "description": "One CATEGORY can be associated with many ASSOC_ARTICLE_CATEGORY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997373
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can create multiple comments",
+      "probability": 0.961496
+    },
+    {
+      "entity_1": "ARTICLE",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "An article can have multiple comments",
+      "probability": 0.003406
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "REPLY_COMMENT",
+      "cardinality": "1:N",
+      "description": "A comment can have multiple reply comments",
+      "probability": 0.99999
+    },
+    {
+      "entity_1": "REPLY_COMMENT",
+      "entity_2": "ARTICLE",
+      "cardinality": "1:1",
+      "description": "A reply comment is associated with one article",
+      "probability": 0.010588
+    }
+  ],
+  "processing_time": 10.58,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a relationship between reply comments and articles to track comment threads, and added article_id attribute to REPLY_COMMENT entity"
+  }
+}

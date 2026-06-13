@@ -1,0 +1,139 @@
+{
+  "filename": "475.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "PRODUCT": 0.622459,
+    "ASSIGNMENT": 0.485304,
+    "STOCK": 0.467396,
+    "POSITION": 0.481159,
+    "CONTACT_INFO": 0.565865
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.562119,
+      "name": 0.555016,
+      "address": 0.563159,
+      "manager_id": 0.570574
+    },
+    "DEPARTMENT": {
+      "department_id": 0.532036,
+      "name": 0.544471,
+      "manager_id": 0.547912,
+      "supermarket_id": 0.571173
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.543988,
+      "name": 0.550944,
+      "salary": 0.533606,
+      "department_id": 0.547218,
+      "position_id": 0.545689,
+      "contact_info_id": 0.543166
+    },
+    "PRODUCT": {
+      "product_id": 0.518824,
+      "model": 0.538242,
+      "unit_price": 0.529086
+    },
+    "ASSIGNMENT": {
+      "employee_id": 0.546968,
+      "product_id": 0.528694,
+      "assignment_date": 0.517109
+    },
+    "STOCK": {
+      "supermarket_id": 0.554885,
+      "product_id": 0.5189,
+      "stock_quantity": 0.521439,
+      "reorder_level": 0.51979
+    },
+    "POSITION": {
+      "position_id": 0.519147,
+      "title": 0.532801,
+      "description": 0.528095
+    },
+    "CONTACT_INFO": {
+      "contact_info_id": 0.521224,
+      "phone": 0.525314,
+      "email": 0.524396,
+      "address": 0.529701
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A supermarket contains multiple departments",
+      "probability": 0.997809
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department employs many employees",
+      "probability": 0.999887
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "An employee can be assigned to many products",
+      "probability": 0.830956
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A product can have many employee assignments",
+      "probability": 0.007164
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "STOCK",
+      "cardinality": "1:N",
+      "description": "A supermarket holds stock records for many products",
+      "probability": 5.1e-05
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "STOCK",
+      "cardinality": "1:N",
+      "description": "A product can be stocked in many supermarkets",
+      "probability": 0.002425
+    },
+    {
+      "entity_1": "POSITION",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A position can be held by many employees",
+      "probability": 0.877614
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "CONTACT_INFO",
+      "cardinality": "1:1",
+      "description": "Each employee has one set of contact information",
+      "probability": 9.3e-05
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SUPERMARKET",
+      "cardinality": "1:1",
+      "description": "An employee may be the manager of a supermarket",
+      "probability": 0.002671
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:1",
+      "description": "An employee may be the manager of a department",
+      "probability": 0.999887
+    }
+  ],
+  "processing_time": 10.27,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added STOCK associative entity to capture quantity and reorder level per supermarket, converting the vague N:M Supermarket‑Product relationship into a concrete entity with attributes. Extracted POSITION into its own entity for consistent position definitions and linked it to EMPLOYEE. Created CONTACT_INFO entity for flexible, extensible employee contact details. Enforced manager relationships via explicit 1:1 links between EMPLOYEE and SUPERMARKET/DEPARTMENT, using manager_id foreign keys. All enhancements preserve the original core structure while improving completeness, accuracy, and extensibility."
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "filename": "486.txt",
+  "entity": {
+    "COMPANY": 0.765881,
+    "MINE": 0.817574,
+    "LOCATION": 0.716527,
+    "MINERAL_RESOURCE": 0.804176,
+    "RESERVE": 0.705058,
+    "DISCOVERY": 0.735362,
+    "PERSON": 0.695741,
+    "EXTRACTION": 0.817574,
+    "INFORMATION_SYSTEM": 0.693535,
+    "UNIT": 0.7106
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.755074,
+      "name": 0.75736,
+      "headquarters": 0.745212
+    },
+    "MINE": {
+      "mine_id": 0.742614,
+      "name": 0.744209,
+      "operating_status": 0.756652
+    },
+    "LOCATION": {
+      "location_id": 0.73856,
+      "country": 0.741286,
+      "region": 0.745033,
+      "coordinates": 0.742158
+    },
+    "MINERAL_RESOURCE": {
+      "resource_id": 0.772161,
+      "name": 0.774451,
+      "category": 0.77605
+    },
+    "RESERVE": {
+      "reserve_id": 0.753883,
+      "estimated_volume": 0.756585,
+      "unit_id": 0.754197
+    },
+    "DISCOVERY": {
+      "discovery_id": 0.754934,
+      "discovery_date": 0.757098
+    },
+    "PERSON": {
+      "person_id": 0.740007,
+      "name": 0.738756,
+      "position": 0.737799,
+      "contact": 0.734973
+    },
+    "EXTRACTION": {
+      "extraction_id": 0.754675,
+      "date": 0.757441,
+      "volume": 0.755494,
+      "cost": 0.755568,
+      "unit_id": 0.755767
+    },
+    "INFORMATION_SYSTEM": {
+      "system_id": 0.741099,
+      "name": 0.750758,
+      "capability": 0.756241
+    },
+    "UNIT": {
+      "unit_id": 0.746021,
+      "name": 0.752471,
+      "description": 0.753264
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "description": "A mining company can own multiple mines",
+      "probability": 0.970002
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "description": "Each mine has a single geographic location",
+      "probability": 0.932405
+    },
+    {
+      "entity_1": "MINE",
+      "entity_2": "RESERVE",
+      "cardinality": "1:N",
+      "description": "A mine can have multiple reserve estimates (one per mineral resource)",
+      "probability": 0.109516
+    },
+    {
+      "entity_1": "RESERVE",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "N:1",
+      "description": "Each reserve estimate pertains to a specific mineral resource",
+      "probability": 0.886802
+    },
+    {
+      "entity_1": "DISCOVERY",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "N:1",
+      "description": "Multiple discovery events can be recorded for the same mineral resource",
+      "probability": 0.731446
+    },
+    {
+      "entity_1": "DISCOVERY",
+      "entity_2": "MINE",
+      "cardinality": "N:1",
+      "description": "Discovery events are linked to the mine where they occurred",
+      "probability": 0.095759
+    },
+    {
+      "entity_1": "DISCOVERY",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "description": "Each discovery is made by a person (the discoverer)",
+      "probability": 0.903434
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MINE",
+      "cardinality": "1:N",
+      "description": "A person (e.g., supervisor) may be responsible for many mines",
+      "probability": 0.994526
+    },
+    {
+      "entity_1": "EXTRACTION",
+      "entity_2": "MINE",
+      "cardinality": "N:1",
+      "description": "Extraction records are tied to the mine of origin",
+      "probability": 0.003631
+    },
+    {
+      "entity_1": "EXTRACTION",
+      "entity_2": "MINERAL_RESOURCE",
+      "cardinality": "N:1",
+      "description": "Each extraction record specifies the mineral resource extracted",
+      "probability": 0.032158
+    },
+    {
+      "entity_1": "EXTRACTION",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "description": "Each extraction event is performed/managed by a responsible person",
+      "probability": 0.867654
+    },
+    {
+      "entity_1": "INFORMATION_SYSTEM",
+      "entity_2": "EXTRACTION",
+      "cardinality": "1:N",
+      "description": "The information system stores many extraction records for statistical analysis",
+      "probability": 0.070097
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "RESERVE",
+      "cardinality": "1:N",
+      "description": "Units define how reserve volumes are measured",
+      "probability": 0.006311
+    },
+    {
+      "entity_1": "UNIT",
+      "entity_2": "EXTRACTION",
+      "cardinality": "1:N",
+      "description": "Units define how extraction volumes and costs are measured",
+      "probability": 0.009645
+    }
+  ],
+  "processing_time": 8.3,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added PERSON as the discoverer in DISCOVERY and linked via a relationship; connected PERSON to EXTRACTION to capture the operator/manager of each extraction event; restructured RESERVE as a weak entity with 1:N relationship to MINE and N:1 to MINERAL_RESOURCE, allowing multiple reserves per mine per resource; introduced a UNIT lookup entity to ensure consistent measurement units across RESERVE and EXTRACTION; retained LOCATION as a separate entity for detailed geographic data while keeping the model concise and consistent."
+  }
+}

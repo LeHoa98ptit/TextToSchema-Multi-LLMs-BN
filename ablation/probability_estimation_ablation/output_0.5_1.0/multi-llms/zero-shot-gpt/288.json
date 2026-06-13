@@ -1,0 +1,88 @@
+{
+  "filename": "288.txt",
+  "entity": {
+    "MONITORING_SITE": 0.796506,
+    "MONITORING_PERSONNEL": 0.7709,
+    "MAINTENANCE_PERSONNEL": 0.806823,
+    "MONITORING_SESSION": 0.751905,
+    "MAINTENANCE_ACTIVITY": 0.773871
+  },
+  "attribute": {
+    "MONITORING_SITE": {
+      "site id": 0.760944,
+      "location": 0.773394,
+      "responsible person id": 0.772982
+    },
+    "MONITORING_PERSONNEL": {
+      "personnel id": 0.775132,
+      "contact detail": 0.782221,
+      "scope monitoring": 0.780568
+    },
+    "MAINTENANCE_PERSONNEL": {
+      "maintenance personnel id": 0.771622,
+      "contact detail": 0.781001,
+      "scope maintenance": 0.7769
+    },
+    "MONITORING_SESSION": {
+      "session id": 0.75272,
+      "air quality": 0.773603,
+      "water quality": 0.773422,
+      "noise level": 0.760873,
+      "timestamp": 0.752392,
+      "monitor personnel id": 0.771301,
+      "site id": 0.757062,
+      "monitoring result": 0.760946
+    },
+    "MAINTENANCE_ACTIVITY": {
+      "activity id": 0.76634,
+      "site id": 0.766688,
+      "maintenance time": 0.770328,
+      "maintenance content": 0.776778,
+      "maintenance personnel id": 0.776402,
+      "maintenance cost": 0.76593
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "MONITORING_SITE",
+      "description": "A monitoring personnel is responsible for one or more monitoring sites",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.933312
+    },
+    {
+      "entity_1": "MONITORING_PERSONNEL",
+      "entity_2": "MONITORING_SESSION",
+      "description": "A monitoring personnel conducts many monitoring sessions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987316
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MONITORING_SESSION",
+      "description": "A monitoring site has many monitoring sessions recorded at it",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99208
+    },
+    {
+      "entity_1": "MAINTENANCE_PERSONNEL",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "description": "A maintenance personnel performs many maintenance activities",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972043
+    },
+    {
+      "entity_1": "MONITORING_SITE",
+      "entity_2": "MAINTENANCE_ACTIVITY",
+      "description": "A monitoring site has many maintenance activities recorded for it",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.780171
+    }
+  ],
+  "processing_time": 19.68
+}

@@ -1,0 +1,132 @@
+{
+  "entity": [
+    "PERSONNEL",
+    "STUDENT",
+    "PROFESSOR",
+    "BOOK",
+    "BOOK_COPY",
+    "CATEGORY",
+    "AUTHOR",
+    "BORROW_EVENT",
+    "ASSOC_BOOK_CATEGORY",
+    "ASSOC_BOOK_AUTHOR"
+  ],
+  "attribute": {
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "email",
+      "phone",
+      "address"
+    ],
+    "STUDENT": [
+      "student_id",
+      "personnel_id",
+      "enrollment_year",
+      "major"
+    ],
+    "PROFESSOR": [
+      "professor_id",
+      "personnel_id",
+      "department",
+      "title"
+    ],
+    "BOOK": [
+      "book_id",
+      "title",
+      "isbn",
+      "publication_year",
+      "publisher_id"
+    ],
+    "BOOK_COPY": [
+      "copy_id",
+      "book_id",
+      "barcode",
+      "acquisition_date",
+      "condition",
+      "is_available"
+    ],
+    "CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "AUTHOR": [
+      "author_id",
+      "name",
+      "biography"
+    ],
+    "BORROW_EVENT": [
+      "borrow_id",
+      "personnel_id",
+      "copy_id",
+      "borrow_date",
+      "due_date",
+      "return_date",
+      "fine_amount",
+      "status"
+    ],
+    "ASSOC_BOOK_CATEGORY": [
+      "assoc_book_category_id",
+      "book_id",
+      "category_id"
+    ],
+    "ASSOC_BOOK_AUTHOR": [
+      "assoc_book_author_id",
+      "book_id",
+      "author_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "STUDENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "PROFESSOR",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_COPY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "ASSOC_BOOK_CATEGORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "ASSOC_BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROW_EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 77.9374,
+  "ilp_runtime": 0.029
+}

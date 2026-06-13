@@ -1,0 +1,163 @@
+{
+  "filename": "448.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EQUIPMENT": 0.817574,
+    "CONSUMABLE": 0.817574,
+    "HAZARDOUS_CHEMICAL": 0.790095,
+    "EXPERIMENTAL_COURSE": 0.80345,
+    "UNIT": 0.729285,
+    "COURSE_CLASS": 0.727881,
+    "USAGE_RECORD": 0.731903,
+    "CONSUMABLE_RECORD": 0.75984,
+    "HAZARDOUS_CHEMICAL_RECORD": 0.761714,
+    "ASSOC_EXPERIMENTAL_COURSE_USER": 0.972252,
+    "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE": 0.520775
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.732466,
+      "password": 0.742258,
+      "phone_number": 0.738089,
+      "role": 0.754492,
+      "associated_unit": 0.752516
+    },
+    "EQUIPMENT": {
+      "equipment_model": 0.773436,
+      "category": 0.773969,
+      "manufacturer": 0.760797,
+      "status": 0.770308,
+      "acquisition_time": 0.765302
+    },
+    "CONSUMABLE": {
+      "category": 0.763592,
+      "inventory_quantity": 0.770072,
+      "status": 0.757565
+    },
+    "HAZARDOUS_CHEMICAL": {
+      "chemical_inventory_quantity": 0.773952,
+      "issuance_time": 0.756573,
+      "status": 0.756562
+    },
+    "EXPERIMENTAL_COURSE": {
+      "course_name": 0.764609,
+      "class_time": 0.76021,
+      "class_location": 0.761665
+    },
+    "UNIT": {
+      "unit_name": 0.749465
+    },
+    "COURSE_CLASS": {
+      "class_name": 0.760347
+    },
+    "USAGE_RECORD": {
+      "usage_time": 0.755452,
+      "user": 0.758539,
+      "purpose": 0.759425,
+      "course_association": 0.772831
+    },
+    "CONSUMABLE_RECORD": {
+      "purchase_time": 0.753506,
+      "user": 0.758345,
+      "consumable": 0.759874
+    },
+    "HAZARDOUS_CHEMICAL_RECORD": {
+      "purchase_time": 0.762732,
+      "user": 0.767026,
+      "hazardous_chemical": 0.763376
+    },
+    "ASSOC_EXPERIMENTAL_COURSE_USER": {
+      "assoc_experimental_course_user_id": 0.972252,
+      "experimental_course_id": 0.972252,
+      "user_id": 0.972252
+    },
+    "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE": {
+      "assoc_equipment_experimental_course_id": 0.520775,
+      "equipment_id": 0.520775,
+      "experimental_course_id": 0.520775
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "probability": 0.981153
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.990274
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONSUMABLE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.996999
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HAZARDOUS_CHEMICAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.095167
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "USAGE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.998836
+    },
+    {
+      "entity_1": "CONSUMABLE",
+      "entity_2": "CONSUMABLE_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.999064
+    },
+    {
+      "entity_1": "HAZARDOUS_CHEMICAL",
+      "entity_2": "HAZARDOUS_CHEMICAL_RECORD",
+      "cardinality": "1:N",
+      "probability": 0.999775
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "COURSE_CLASS",
+      "cardinality": "1:N",
+      "probability": 0.878993
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_USER",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many ASSOC_EXPERIMENTAL_COURSE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972252
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_EXPERIMENTAL_COURSE_USER",
+      "description": "One USER can be associated with many ASSOC_EXPERIMENTAL_COURSE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.972252
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE",
+      "description": "One EQUIPMENT can be associated with many ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.520775
+    },
+    {
+      "entity_1": "EXPERIMENTAL_COURSE",
+      "entity_2": "ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE",
+      "description": "One EXPERIMENTAL_COURSE can be associated with many ASSOC_EQUIPMENT_EXPERIMENTAL_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.520775
+    }
+  ],
+  "processing_time": 36.49
+}

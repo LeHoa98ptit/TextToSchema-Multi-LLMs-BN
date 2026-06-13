@@ -1,0 +1,112 @@
+{
+  "filename": "314.txt",
+  "entity": {
+    "DEPARTMENT": 0.622459,
+    "ROLE": 0.622459,
+    "EMPLOYEE": 0.622459,
+    "ROLE_DEPT": 0.548175,
+    "EMP_ROLE": 0.509924,
+    "SALARY_HISTORY": 0.546466,
+    "LEAVE": 0.50225
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "dept_id": 0.532075,
+      "name": 0.535723,
+      "description": 0.54767
+    },
+    "ROLE": {
+      "role_id": 0.528268,
+      "name": 0.522864,
+      "base_salary": 0.554584
+    },
+    "EMPLOYEE": {
+      "emp_id": 0.542441,
+      "first_name": 0.546572,
+      "last_name": 0.550648,
+      "email": 0.536267,
+      "hire_date": 0.543406,
+      "dept_id": 0.553529
+    },
+    "ROLE_DEPT": {
+      "role_id": 0.543263,
+      "dept_id": 0.547058
+    },
+    "EMP_ROLE": {
+      "emp_id": 0.52543,
+      "role_id": 0.530685,
+      "start_date": 0.523372,
+      "end_date": 0.526592
+    },
+    "SALARY_HISTORY": {
+      "salary_id": 0.549037,
+      "emp_id": 0.543905,
+      "amount": 0.539117,
+      "effective_date": 0.545235
+    },
+    "LEAVE": {
+      "leave_id": 0.51517,
+      "emp_id": 0.509339,
+      "leave_type": 0.51395,
+      "start_date": 0.5043,
+      "end_date": 0.509084,
+      "status": 0.527093
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_DEPT",
+      "cardinality": "1:N",
+      "description": "A role can be linked to many department assignments",
+      "probability": 0.97093
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ROLE_DEPT",
+      "cardinality": "1:N",
+      "description": "A department can have many role assignments",
+      "probability": 0.999865
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMP_ROLE",
+      "cardinality": "1:N",
+      "description": "An employee may hold multiple roles over time",
+      "probability": 0.76021
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "EMP_ROLE",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to many employees",
+      "probability": 0.21839
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY_HISTORY",
+      "cardinality": "1:N",
+      "description": "Salary changes are recorded per employee",
+      "probability": 0.093244
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "LEAVE",
+      "cardinality": "1:N",
+      "description": "An employee can have multiple leave records",
+      "probability": 0.027519
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee belongs to a single department",
+      "probability": 0.999891
+    }
+  ],
+  "processing_time": 19.42,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed the redundant leave_status attribute from SALARY_HISTORY, added a foreign key dept_id to EMPLOYEE to make the employee‑department relationship explicit, standardized all attribute names to snake_case, and retained the many‑to‑many ROLE‑DEPARTMENT and EMPLOYEE‑ROLE structures with temporal attributes. The model now captures salary history without duplication and aligns with all domain requirements while remaining concise."
+  }
+}

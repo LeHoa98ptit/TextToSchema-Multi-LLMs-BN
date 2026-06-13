@@ -1,0 +1,101 @@
+{
+  "filename": "468.txt",
+  "entity": {
+    "CREDIT_CARD": 0.595849,
+    "CUSTOMER": 0.622459,
+    "APPLICATION": 0.622459,
+    "TRANSACTION": 0.622459,
+    "CONFIRMATION_LETTER": 0.473799,
+    "REJECTION_LETTER": 0.444554
+  },
+  "attribute": {
+    "CREDIT_CARD": {
+      "credit card number": 0.552383,
+      "credit card type": 0.557736,
+      "validity period": 0.542644,
+      "credit limit": 0.547265,
+      "creation time": 0.551652,
+      "update time": 0.547554,
+      "customer number": 0.5527
+    },
+    "CUSTOMER": {
+      "customer number": 0.533559,
+      "applicant d number": 0.541867
+    },
+    "APPLICATION": {
+      "application number": 0.528066,
+      "customer number": 0.542368,
+      "application time": 0.520224,
+      "application result": 0.534789,
+      "application submission time": 0.531947
+    },
+    "TRANSACTION": {
+      "transaction number": 0.549247,
+      "customer number": 0.554664,
+      "transaction time": 0.539957,
+      "transaction type": 0.55262,
+      "transaction description": 0.555832
+    },
+    "CONFIRMATION_LETTER": {
+      "confirmation letter id": 0.52883,
+      "customer number": 0.534499,
+      "application number": 0.542928
+    },
+    "REJECTION_LETTER": {
+      "rejection letter id": 0.523525,
+      "customer number": 0.536123,
+      "application number": 0.54048
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "CUSTOMER",
+      "description": "A customer can have multiple credit cards",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.600265
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CUSTOMER",
+      "description": "An application is associated with one customer",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.987836
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "description": "An application results in one credit card",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.019692
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "CREDIT_CARD",
+      "description": "A credit card can have multiple transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999151
+    },
+    {
+      "entity_1": "CONFIRMATION_LETTER",
+      "entity_2": "APPLICATION",
+      "description": "An application results in one confirmation letter",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.026438
+    },
+    {
+      "entity_1": "REJECTION_LETTER",
+      "entity_2": "APPLICATION",
+      "description": "An application results in one rejection letter",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.000238
+    }
+  ],
+  "processing_time": 23.94
+}

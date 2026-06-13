@@ -1,0 +1,224 @@
+{
+  "filename": "373.txt",
+  "entity": {
+    "PROJECT": 0.622459,
+    "ACTIVITY": 0.622459,
+    "FUND_SOURCE": 0.543961,
+    "DEPARTMENT": 0.498625,
+    "ORGANIZATION": 0.539368,
+    "ALLOCATION": 0.622459,
+    "CODE_MANAGEMENT": 0.494175,
+    "CHANGE_LOG": 0.407744,
+    "COMPLIANCE_RECORD": 0.432956,
+    "BUDGET_VERSION": 0.543738,
+    "APPROVAL": 0.4957
+  },
+  "attribute": {
+    "PROJECT": {
+      "project_id": 0.529539,
+      "project_code": 0.531077,
+      "project_name": 0.533324,
+      "objective": 0.543873,
+      "total_budget": 0.55206,
+      "start_date": 0.517761,
+      "end_date": 0.520847,
+      "status": 0.540836
+    },
+    "ACTIVITY": {
+      "activity_id": 0.500754,
+      "activity_code": 0.504664,
+      "activity_name": 0.502643,
+      "description": 0.524345,
+      "planned_start": 0.511646,
+      "planned_end": 0.511188,
+      "actual_start": 0.495771,
+      "actual_end": 0.499968,
+      "cost_estimate": 0.517859
+    },
+    "FUND_SOURCE": {
+      "source_id": 0.532236,
+      "source_name": 0.535704,
+      "source_type": 0.540206,
+      "contact_person": 0.530279,
+      "contact_email": 0.527383
+    },
+    "DEPARTMENT": {
+      "dept_id": 0.525049,
+      "dept_code": 0.533751,
+      "dept_name": 0.532379,
+      "manager_id": 0.531064
+    },
+    "ORGANIZATION": {
+      "org_id": 0.526949,
+      "org_code": 0.540849,
+      "org_name": 0.533074,
+      "org_type": 0.541079
+    },
+    "ALLOCATION": {
+      "allocation_id": 0.528773,
+      "project_id": 0.544247,
+      "activity_id": 0.521025,
+      "source_id": 0.524801,
+      "allocated_amount": 0.53148,
+      "allocation_ratio": 0.529964,
+      "allocation_date": 0.527957
+    },
+    "CODE_MANAGEMENT": {
+      "code_id": 0.528588,
+      "entity_type": 0.539456,
+      "code_value": 0.534305,
+      "description": 0.554196,
+      "effective_from": 0.530222,
+      "effective_to": 0.535162,
+      "parent_code_id": 0.525834
+    },
+    "CHANGE_LOG": {
+      "log_id": 0.495656,
+      "entity_type": 0.505742,
+      "entity_id": 0.498243,
+      "changed_by": 0.501422,
+      "change_timestamp": 0.492023,
+      "change_type": 0.502031,
+      "old_value": 0.496501,
+      "new_value": 0.498169
+    },
+    "COMPLIANCE_RECORD": {
+      "compliance_id": 0.522339,
+      "project_id": 0.543169,
+      "audit_date": 0.511606,
+      "auditor_name": 0.523213,
+      "compliance_status": 0.525753,
+      "remarks": 0.530147
+    },
+    "BUDGET_VERSION": {
+      "budget_version_id": 0.540152,
+      "project_id": 0.546974,
+      "version_number": 0.533666,
+      "effective_from": 0.535211,
+      "effective_to": 0.538167,
+      "total_budget": 0.544853,
+      "remarks": 0.544383
+    },
+    "APPROVAL": {
+      "approval_id": 0.519991,
+      "project_id": 0.535278,
+      "dept_id": 0.532579,
+      "approver_id": 0.518008,
+      "approval_date": 0.511289,
+      "status": 0.520555,
+      "comments": 0.50775
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each project is owned by one department",
+      "probability": 0.800618
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ORGANIZATION",
+      "cardinality": "N:1",
+      "description": "A project is funded or sponsored by a single organization",
+      "probability": 0.910021
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ACTIVITY",
+      "cardinality": "1:N",
+      "description": "A project contains many activities",
+      "probability": 0.42337
+    },
+    {
+      "entity_1": "ALLOCATION",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "description": "Allocation records reference the project they belong to",
+      "probability": 0.500722
+    },
+    {
+      "entity_1": "ALLOCATION",
+      "entity_2": "ACTIVITY",
+      "cardinality": "N:1",
+      "description": "Allocation records reference the activity receiving funds",
+      "probability": 0.997115
+    },
+    {
+      "entity_1": "ALLOCATION",
+      "entity_2": "FUND_SOURCE",
+      "cardinality": "N:1",
+      "description": "Each allocation is sourced from a single fund source",
+      "probability": 0.45274
+    },
+    {
+      "entity_1": "CODE_MANAGEMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "Project codes are managed through the code management entity",
+      "probability": 0.679166
+    },
+    {
+      "entity_1": "CODE_MANAGEMENT",
+      "entity_2": "ACTIVITY",
+      "cardinality": "1:N",
+      "description": "Activity codes are managed through the code management entity",
+      "probability": 0.039736
+    },
+    {
+      "entity_1": "CHANGE_LOG",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "description": "Change logs can be linked to project records",
+      "probability": 0.001367
+    },
+    {
+      "entity_1": "CHANGE_LOG",
+      "entity_2": "ACTIVITY",
+      "cardinality": "N:1",
+      "description": "Change logs can be linked to activity records",
+      "probability": 0.057534
+    },
+    {
+      "entity_1": "COMPLIANCE_RECORD",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "description": "Compliance audits are performed per project",
+      "probability": 0.913212
+    },
+    {
+      "entity_1": "ORGANIZATION",
+      "entity_2": "FUND_SOURCE",
+      "cardinality": "1:N",
+      "description": "Each fund source is provided by a single organization",
+      "probability": 0.019628
+    },
+    {
+      "entity_1": "BUDGET_VERSION",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "description": "Multiple budget versions can be recorded for a project over time",
+      "probability": 0.003253
+    },
+    {
+      "entity_1": "APPROVAL",
+      "entity_2": "PROJECT",
+      "cardinality": "N:1",
+      "description": "Approvals are issued for specific projects",
+      "probability": 0.064102
+    },
+    {
+      "entity_1": "APPROVAL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Approvals are granted by a department",
+      "probability": 0.079418
+    }
+  ],
+  "processing_time": 36.06,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added ORGANIZATION‑FUND_SOURCE relationship, introduced BUDGET_VERSION entity for historical budget tracking, added APPROVAL entity for department‑level approvals, extended CODE_MANAGEMENT with parent_code_id to support hierarchical codes, and updated the schema to reflect these enhancements while preserving existing strengths."
+  }
+}

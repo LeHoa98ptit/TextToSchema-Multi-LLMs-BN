@@ -1,0 +1,173 @@
+{
+  "filename": "474.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "INSTRUCTOR": 0.817574,
+    "COURSE": 0.705702,
+    "CLASS": 0.747722,
+    "ENROLLMENT": 0.734485,
+    "ASSIGNMENT": 0.817574,
+    "SUBMISSION": 0.796231,
+    "GRADE": 0.817574,
+    "CLASS_INSTRUCTOR": 0.789215,
+    "SUBMISSION_FILE": 0.753859
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.769594,
+      "first_name": 0.764146,
+      "last_name": 0.765623,
+      "email": 0.768175,
+      "enrollment_year": 0.760715
+    },
+    "INSTRUCTOR": {
+      "instructor_id": 0.774597,
+      "first_name": 0.768712,
+      "last_name": 0.769356,
+      "email": 0.769571,
+      "office": 0.771497
+    },
+    "COURSE": {
+      "course_id": 0.770076,
+      "course_code": 0.776555,
+      "title": 0.766127,
+      "credits": 0.768075
+    },
+    "CLASS": {
+      "class_id": 0.75176,
+      "term": 0.756167,
+      "year": 0.758958,
+      "schedule": 0.762263,
+      "course_id": 0.771135
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.754889,
+      "student_id": 0.764975,
+      "class_id": 0.764438,
+      "enrollment_date": 0.749917,
+      "status": 0.756459
+    },
+    "ASSIGNMENT": {
+      "assignment_id": 0.770132,
+      "title": 0.772079,
+      "description": 0.77353,
+      "due_date": 0.758666,
+      "max_score": 0.766286,
+      "class_id": 0.767407,
+      "created_at": 0.74844,
+      "updated_at": 0.750899
+    },
+    "SUBMISSION": {
+      "submission_id": 0.749351,
+      "submit_timestamp": 0.740375,
+      "plagiarism_score": 0.768652,
+      "assignment_id": 0.769517,
+      "student_id": 0.77184,
+      "created_at": 0.741344,
+      "updated_at": 0.745723
+    },
+    "GRADE": {
+      "grade_id": 0.772915,
+      "score": 0.77072,
+      "letter_grade": 0.762876,
+      "feedback": 0.769909,
+      "graded_timestamp": 0.764396,
+      "submission_id": 0.776326,
+      "instructor_id": 0.781448,
+      "created_at": 0.76223,
+      "updated_at": 0.766898
+    },
+    "CLASS_INSTRUCTOR": {
+      "class_instructor_id": 0.775547,
+      "class_id": 0.774624,
+      "instructor_id": 0.777428,
+      "role": 0.772263,
+      "assigned_date": 0.776122
+    },
+    "SUBMISSION_FILE": {
+      "file_id": 0.74446,
+      "submission_id": 0.748616,
+      "file_url": 0.736768,
+      "upload_timestamp": 0.740772,
+      "file_name": 0.744933,
+      "file_type": 0.747048
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999891
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A class can have many enrolled students",
+      "probability": 0.04853
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "CLASS",
+      "cardinality": "1:N",
+      "description": "A course can be offered in many class sections",
+      "probability": 0.00245
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "Each class section has multiple assignments",
+      "probability": 0.935219
+    },
+    {
+      "entity_1": "ASSIGNMENT",
+      "entity_2": "SUBMISSION",
+      "cardinality": "1:N",
+      "description": "Students submit many submissions per assignment",
+      "probability": 0.081479
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "GRADE",
+      "cardinality": "1:1",
+      "description": "Each submission receives a single grade",
+      "probability": 0.024824
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "An instructor can grade many submissions",
+      "probability": 0.000617
+    },
+    {
+      "entity_1": "CLASS",
+      "entity_2": "CLASS_INSTRUCTOR",
+      "cardinality": "1:N",
+      "description": "A class can have multiple instructor assignments (co‑teaching, term changes)",
+      "probability": 0.906056
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "CLASS_INSTRUCTOR",
+      "cardinality": "1:N",
+      "description": "An instructor can be assigned to multiple class sections",
+      "probability": 0.999404
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "SUBMISSION_FILE",
+      "cardinality": "1:N",
+      "description": "A submission may contain multiple uploaded files (versions, supporting documents)",
+      "probability": 0.999966
+    }
+  ],
+  "processing_time": 14.58,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented evaluation suggestions: added CLASS_INSTRUCTOR associative entity to support many‑to‑many instructor‑class relationships; removed instructor_id from CLASS. Added audit fields (created_at, updated_at) to ASSIGNMENT, SUBMISSION, and GRADE. Replaced single file_url in SUBMISSION with SUBMISSION_FILE entity for multiple file versions. Included composite unique constraint concept for (student_id, class_id) in ENROLLMENT (enforced at DB level). Added role and assigned_date attributes to CLASS_INSTRUCTOR for teaching role tracking. Updated relationships accordingly while preserving core structure and strengths of the original model."
+  }
+}

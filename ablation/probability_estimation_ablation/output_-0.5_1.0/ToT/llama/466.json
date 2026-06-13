@@ -1,0 +1,87 @@
+{
+  "filename": "466.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "RESTAURANT_STAFF": 0.562103,
+    "MENU": 0.622459,
+    "ORDER": 0.622459,
+    "PAYMENT_METHOD": 0.434405,
+    "ORDER_ITEM": 0.523807
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "name": 0.539086,
+      "contact_number": 0.522668,
+      "address": 0.533706
+    },
+    "RESTAURANT_STAFF": {
+      "name": 0.567733,
+      "contact_number": 0.555898,
+      "position": 0.574672,
+      "employee_id": 0.561813
+    },
+    "MENU": {
+      "dish": 0.551954,
+      "price": 0.528139,
+      "description": 0.54463,
+      "ingredients": 0.536435
+    },
+    "ORDER": {
+      "order_time": 0.521892,
+      "delivery_time": 0.523865,
+      "delivery_location": 0.523521,
+      "order_status": 0.521382
+    },
+    "PAYMENT_METHOD": {
+      "payment_type": 0.518282,
+      "payment_details": 0.5252
+    },
+    "ORDER_ITEM": {
+      "order_quantity": 0.536066,
+      "menu_id": 0.531633,
+      "order_id": 0.526315
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place multiple orders",
+      "probability": 0.963536
+    },
+    {
+      "entity_1": "RESTAURANT_STAFF",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A staff member can manage multiple orders",
+      "probability": 0.088905
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:1",
+      "description": "A customer has one payment method",
+      "probability": 0.996491
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "A menu item can be part of multiple order items",
+      "probability": 0.983874
+    }
+  ],
+  "processing_time": 10.12,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, introduced ORDER_ITEM entity to simplify the relationship between menu and order, and retained strengths from the original model."
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "entity": [
+    "USER",
+    "MEMBERSHIP",
+    "TEAM",
+    "MATCH",
+    "EVENT",
+    "CLUB",
+    "ORGANIZER",
+    "INTEREST",
+    "FRIENDSHIP",
+    "USER_INTEREST",
+    "USER_TEAM",
+    "SPONSOR",
+    "EVENT_SPONSOR",
+    "ASSOC_USER_INTEREST",
+    "ASSOC_USER_USER"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "email",
+      "password_hash",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "gender",
+      "phone_number",
+      "address",
+      "profile_picture_url",
+      "bio",
+      "registration_date",
+      "social_info"
+    ],
+    "MEMBERSHIP": [
+      "membership_id",
+      "user_id",
+      "membership_type",
+      "start_date",
+      "end_date",
+      "status",
+      "discount_rate"
+    ],
+    "TEAM": [
+      "team_id",
+      "club_id",
+      "team_name",
+      "creation_date",
+      "description",
+      "logo_url"
+    ],
+    "MATCH": [
+      "match_id",
+      "match_date",
+      "match_time",
+      "venue",
+      "home_score",
+      "away_score",
+      "status"
+    ],
+    "EVENT": [
+      "event_id",
+      "organizer_id",
+      "club_id",
+      "event_name",
+      "description",
+      "start_datetime",
+      "end_datetime",
+      "location",
+      "ticket_price",
+      "capacity"
+    ],
+    "CLUB": [
+      "club_id",
+      "club_name",
+      "foundation_date",
+      "headquarters_address",
+      "logo_url"
+    ],
+    "ORGANIZER": [
+      "organizer_id",
+      "name",
+      "contact_email",
+      "phone_number",
+      "description"
+    ],
+    "INTEREST": [
+      "interest_id",
+      "name",
+      "category"
+    ],
+    "FRIENDSHIP": [
+      "friendship_id",
+      "user_id_1",
+      "user_id_2",
+      "status",
+      "created_at"
+    ],
+    "USER_INTEREST": [
+      "user_id",
+      "interest_id",
+      "added_at"
+    ],
+    "USER_TEAM": [
+      "user_id",
+      "team_id",
+      "role",
+      "join_date"
+    ],
+    "SPONSOR": [
+      "sponsor_id",
+      "name",
+      "contact_email",
+      "phone_number",
+      "description"
+    ],
+    "EVENT_SPONSOR": [
+      "event_id",
+      "sponsor_id",
+      "sponsorship_level",
+      "contribution_amount"
+    ],
+    "ASSOC_USER_INTEREST": [
+      "assoc_user_interest_id",
+      "user_id",
+      "interest_id"
+    ],
+    "ASSOC_USER_USER": [
+      "assoc_user_user_id",
+      "user_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "MEMBERSHIP",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CLUB",
+      "entity_2": "TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTEREST",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORGANIZER",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 92.5578,
+  "ilp_runtime": 0.038
+}

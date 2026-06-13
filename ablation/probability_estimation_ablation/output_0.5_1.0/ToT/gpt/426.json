@@ -1,0 +1,159 @@
+{
+  "filename": "426.txt",
+  "entity": {
+    "USER": 0.817574,
+    "WECHAT_AUTH": 0.684645,
+    "ATTRACTION": 0.817574,
+    "ATTRACTION_PICTURE": 0.78369,
+    "BOOKMARK": 0.681115,
+    "RESERVATION": 0.687144,
+    "TICKET": 0.708002,
+    "COMMENT": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.749183,
+      "account_number": 0.757991,
+      "password_hash": 0.749053,
+      "nickname": 0.755083,
+      "bio": 0.75106,
+      "created_at": 0.747906,
+      "updated_at": 0.744733
+    },
+    "WECHAT_AUTH": {
+      "auth_id": 0.761456,
+      "wechat_openid": 0.762887,
+      "unionid": 0.763348,
+      "access_token": 0.765629,
+      "expires_at": 0.756415,
+      "user_id": 0.762998
+    },
+    "ATTRACTION": {
+      "attraction_id": 0.748701,
+      "name": 0.744494,
+      "reference_price": 0.742859,
+      "description": 0.745416,
+      "location": 0.744796,
+      "open_hours": 0.748847
+    },
+    "ATTRACTION_PICTURE": {
+      "picture_id": 0.745126,
+      "attraction_id": 0.747095,
+      "url": 0.742215,
+      "caption": 0.745939,
+      "uploaded_at": 0.742181
+    },
+    "BOOKMARK": {
+      "user_id": 0.754519,
+      "attraction_id": 0.75314,
+      "created_at": 0.748288
+    },
+    "RESERVATION": {
+      "reservation_id": 0.75955,
+      "user_id": 0.763313,
+      "attraction_id": 0.761266,
+      "reservation_time": 0.756523,
+      "ticket_purchase_time": 0.761109,
+      "total_price": 0.752805,
+      "status": 0.758804,
+      "created_at": 0.756744,
+      "updated_at": 0.752923
+    },
+    "TICKET": {
+      "ticket_id": 0.752525,
+      "reservation_id": 0.759257,
+      "attraction_id": 0.756587,
+      "ticket_type": 0.751467,
+      "price": 0.743103,
+      "quantity": 0.751713
+    },
+    "COMMENT": {
+      "comment_id": 0.754225,
+      "user_id": 0.758313,
+      "attraction_id": 0.758968,
+      "comment_time": 0.755248,
+      "content": 0.761371,
+      "status": 0.761469,
+      "created_at": 0.750729,
+      "updated_at": 0.748421,
+      "moderated_at": 0.747264
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "WECHAT_AUTH",
+      "cardinality": "1:1",
+      "description": "Each user has one WeChat authorization record",
+      "probability": 0.978118
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BOOKMARK",
+      "cardinality": "1:N",
+      "description": "A user can create many bookmark entries",
+      "probability": 0.987007
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "BOOKMARK",
+      "cardinality": "1:N",
+      "description": "An attraction can be bookmarked by many users",
+      "probability": 0.263464
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A user may create multiple reservations",
+      "probability": 0.551864
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "Reservations are made for a specific attraction",
+      "probability": 0.164179
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "description": "A reservation can contain many ticket lines",
+      "probability": 0.991705
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "TICKET",
+      "cardinality": "1:N",
+      "description": "Ticket types are defined per attraction",
+      "probability": 0.94688
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "ATTRACTION_PICTURE",
+      "cardinality": "1:N",
+      "description": "An attraction can have multiple pictures",
+      "probability": 0.833081
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can write many comments",
+      "probability": 0.961658
+    },
+    {
+      "entity_1": "ATTRACTION",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "Comments are attached to a specific attraction",
+      "probability": 0.016251
+    }
+  ],
+  "processing_time": 14.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented composite primary key for BOOKMARK (user_id, attraction_id) eliminating surrogate ID, added foreign keys to tie TICKET to ATTRACTION, introduced updated_at timestamps on RESERVATION and COMMENT for audit, included user_id in WECHAT_AUTH, added attraction_id to ATTRACTION_PICTURE, and refined relationships to reflect true cardinalities while preserving the comprehensive attribute set from the best candidate."
+  }
+}

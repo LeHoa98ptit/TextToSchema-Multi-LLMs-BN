@@ -1,0 +1,142 @@
+{
+  "filename": "353.txt",
+  "entity": {
+    "PAGE": 0.622459,
+    "USER": 0.486603,
+    "ADMINISTRATOR": 0.622459,
+    "PAGE_GROUP": 0.512173,
+    "NAVIGATION_CONTROL": 0.483706,
+    "PERMISSION_MANAGEMENT": 0.592642,
+    "DYNAMIC_DISPLAY_CONTROL": 0.519765
+  },
+  "attribute": {
+    "PAGE": {
+      "page id": 0.528895,
+      "alias": 0.530887,
+      "title": 0.532558,
+      "application": 0.560884,
+      "display order": 0.532211,
+      "style": 0.544975,
+      "redirection target": 0.514838,
+      "click event": 0.523462,
+      "visibility": 0.540075,
+      "created at": 0.532223,
+      "updated at": 0.523253,
+      "page group id": 0.525011
+    },
+    "USER": {
+      "user id": 0.516949,
+      "username": 0.502228,
+      "email address": 0.516977,
+      "detail": 0.544203,
+      "created at": 0.516202
+    },
+    "ADMINISTRATOR": {
+      "admin id": 0.537424,
+      "username": 0.533987,
+      "email address": 0.529745,
+      "created at": 0.534745
+    },
+    "PAGE_GROUP": {
+      "group id": 0.520047,
+      "group name": 0.522936,
+      "description": 0.537394
+    },
+    "NAVIGATION_CONTROL": {
+      "control id": 0.52883,
+      "page id": 0.533098,
+      "target page id": 0.528206,
+      "label": 0.524812,
+      "nav order": 0.525915
+    },
+    "PERMISSION_MANAGEMENT": {
+      "permission id": 0.536364,
+      "page id": 0.549422,
+      "group id": 0.533542,
+      "can view": 0.550486,
+      "can edit": 0.548663
+    },
+    "DYNAMIC_DISPLAY_CONTROL": {
+      "display control id": 0.524224,
+      "page id": 0.53195,
+      "show condition": 0.529307,
+      "hide condition": 0.526279,
+      "is dynamic": 0.526853
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PAGE_GROUP",
+      "entity_2": "PAGE",
+      "description": "A page belongs to one page group; a page group can contain many pages.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999771
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "NAVIGATION_CONTROL",
+      "description": "A page can have multiple navigation controls defined.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998772
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "NAVIGATION_CONTROL",
+      "description": "A navigation control points to a target page.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998772
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "PERMISSION_MANAGEMENT",
+      "description": "Permission records are defined for each page.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.111595
+    },
+    {
+      "entity_1": "PAGE_GROUP",
+      "entity_2": "PERMISSION_MANAGEMENT",
+      "description": "Permission records are associated with a page group.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.011055
+    },
+    {
+      "entity_1": "PAGE",
+      "entity_2": "DYNAMIC_DISPLAY_CONTROL",
+      "description": "Dynamic display control settings are defined per page.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996151
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PAGE",
+      "description": "An administrator can modify many pages (display order, style, redirection, etc.).",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.002212
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PAGE_GROUP",
+      "description": "An administrator manages page groups.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.007166
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PERMISSION_MANAGEMENT",
+      "description": "An administrator sets permission management schemes.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.028007
+    }
+  ],
+  "processing_time": 30.58
+}

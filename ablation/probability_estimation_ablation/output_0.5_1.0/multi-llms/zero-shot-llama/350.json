@@ -1,0 +1,177 @@
+{
+  "filename": "350.txt",
+  "entity": {
+    "PARTICIPANT": 0.817574,
+    "COMPANY": 0.71549,
+    "CONFERENCE": 0.817574,
+    "TICKET": 0.817574,
+    "WORKSHOP": 0.817574,
+    "DISCOUNT_CODE": 0.805699,
+    "SPEAKER": 0.709261,
+    "MEETING": 0.739448,
+    "CONFERENCE_SCHEDULE": 0.765577,
+    "TICKET_RECORD": 0.995502,
+    "TICKET_DISCOUNT": 0.559125,
+    "WORKSHOP_SPEAKER": 0.015694
+  },
+  "attribute": {
+    "PARTICIPANT": {
+      "participant id": 0.763833,
+      "company": 0.768747,
+      "email": 0.765373
+    },
+    "COMPANY": {
+      "company id": 0.741844,
+      "description": 0.756972
+    },
+    "CONFERENCE": {
+      "conference id": 0.774217,
+      "description": 0.785531
+    },
+    "TICKET": {
+      "ticket id": 0.759929,
+      "description": 0.770563,
+      "price": 0.755649
+    },
+    "WORKSHOP": {
+      "workshop id": 0.773194,
+      "description": 0.776375,
+      "requirement": 0.777851,
+      "location": 0.764075,
+      "date": 0.766236,
+      "start time": 0.769599,
+      "end time": 0.768671,
+      "capacity": 0.770608
+    },
+    "DISCOUNT_CODE": {
+      "discount code id": 0.756208,
+      "code type": 0.761109
+    },
+    "SPEAKER": {
+      "speaker id": 0.747636,
+      "company": 0.753168,
+      "description": 0.758264
+    },
+    "MEETING": {
+      "meeting id": 0.770672,
+      "description": 0.778852,
+      "date": 0.764927,
+      "start time": 0.766571,
+      "end time": 0.762271,
+      "room": 0.768509
+    },
+    "CONFERENCE_SCHEDULE": {
+      "conference schedule id": 0.775617,
+      "conference id": 0.777216,
+      "meeting id": 0.781374
+    },
+    "TICKET_RECORD": {
+      "ticket_record_id": 0.995502,
+      "participant_id": 0.995502,
+      "ticket_id": 0.995502,
+      "NET_PRICE": 0.995502,
+      "DISCOUNT_CODE_ID": 0.995502
+    },
+    "TICKET_DISCOUNT": {
+      "ticket_discount_id": 0.559125,
+      "ticket_id": 0.559125,
+      "discount_code_id": 0.559125
+    },
+    "WORKSHOP_SPEAKER": {
+      "workshop_speaker_id": 0.015694,
+      "workshop_id": 0.015694,
+      "speaker_id": 0.015694
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "COMPANY",
+      "description": "A participant belongs to a company",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.582402
+    },
+    {
+      "entity_1": "PARTICIPANT",
+      "entity_2": "TICKET_RECORD",
+      "description": "One PARTICIPANT can be associated with many TICKET_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995502
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "TICKET_RECORD",
+      "description": "One TICKET can be associated with many TICKET_RECORD.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995502
+    },
+    {
+      "entity_1": "TICKET",
+      "entity_2": "TICKET_DISCOUNT",
+      "description": "One TICKET can be associated with many TICKET_DISCOUNT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.559125
+    },
+    {
+      "entity_1": "DISCOUNT_CODE",
+      "entity_2": "TICKET_DISCOUNT",
+      "description": "One DISCOUNT_CODE can be associated with many TICKET_DISCOUNT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.559125
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "WORKSHOP",
+      "description": "A conference can have multiple workshops",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.674216
+    },
+    {
+      "entity_1": "WORKSHOP",
+      "entity_2": "WORKSHOP_SPEAKER",
+      "description": "One WORKSHOP can be associated with many WORKSHOP_SPEAKER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015694
+    },
+    {
+      "entity_1": "SPEAKER",
+      "entity_2": "WORKSHOP_SPEAKER",
+      "description": "One SPEAKER can be associated with many WORKSHOP_SPEAKER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.015694
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "MEETING",
+      "description": "A conference can have multiple meetings",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998439
+    },
+    {
+      "entity_1": "CONFERENCE",
+      "entity_2": "CONFERENCE_SCHEDULE",
+      "description": "A conference has a conference schedule",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999982
+    },
+    {
+      "entity_1": "CONFERENCE_SCHEDULE",
+      "entity_2": "MEETING",
+      "description": "A conference schedule can have multiple meetings",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998532
+    }
+  ],
+  "processing_time": 34.2
+}

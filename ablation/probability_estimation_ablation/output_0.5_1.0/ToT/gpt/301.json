@@ -1,0 +1,195 @@
+{
+  "filename": "301.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SEAT": 0.817574,
+    "RESERVATION": 0.817574,
+    "LAYOUT_TEMPLATE": 0.660293,
+    "AREA": 0.755266,
+    "EVENT": 0.714573,
+    "OCCASION": 0.718433,
+    "PRICE_CATEGORY": 0.675945,
+    "SEAT_STATUS_LOG": 0.742748,
+    "ASSOC_RESERVATION_SEAT": 0.999679
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.740661,
+      "first_name": 0.742204,
+      "last_name": 0.740423,
+      "contact_number": 0.744385,
+      "email": 0.743123,
+      "password_hash": 0.734035,
+      "created_at": 0.732727,
+      "updated_at": 0.739066
+    },
+    "SEAT": {
+      "seat_id": 0.765498,
+      "area_id": 0.766831,
+      "price_category_id": 0.765024,
+      "x_coord": 0.757352,
+      "y_coord": 0.755795,
+      "row_number": 0.766316,
+      "column_number": 0.767312,
+      "type": 0.76629,
+      "base_price": 0.766298,
+      "is_valid": 0.764654,
+      "created_at": 0.759436,
+      "updated_at": 0.76453
+    },
+    "RESERVATION": {
+      "reservation_id": 0.768793,
+      "user_id": 0.765295,
+      "event_id": 0.764787,
+      "reservation_timestamp": 0.763296,
+      "total_amount": 0.764254,
+      "payment_status": 0.762299,
+      "created_at": 0.759876,
+      "updated_at": 0.763684
+    },
+    "LAYOUT_TEMPLATE": {
+      "template_id": 0.743111,
+      "name": 0.74853,
+      "description": 0.761652,
+      "suitable_for": 0.759649,
+      "created_at": 0.740851,
+      "updated_at": 0.743665
+    },
+    "AREA": {
+      "area_id": 0.747424,
+      "name": 0.743428,
+      "description": 0.752597,
+      "template_id": 0.744501,
+      "created_at": 0.741068,
+      "updated_at": 0.744481
+    },
+    "EVENT": {
+      "event_id": 0.740841,
+      "title": 0.749377,
+      "event_date": 0.743355,
+      "start_time": 0.743262,
+      "end_time": 0.740101,
+      "venue": 0.755615,
+      "occasion_id": 0.745658,
+      "template_id": 0.741211,
+      "created_at": 0.736982,
+      "updated_at": 0.739627
+    },
+    "OCCASION": {
+      "occasion_id": 0.748031,
+      "name": 0.746855,
+      "time_period": 0.750825,
+      "description": 0.750165,
+      "created_at": 0.739407,
+      "updated_at": 0.744724
+    },
+    "PRICE_CATEGORY": {
+      "category_id": 0.745501,
+      "name": 0.752282,
+      "multiplier": 0.741785,
+      "description": 0.759016,
+      "created_at": 0.745299,
+      "updated_at": 0.746306
+    },
+    "SEAT_STATUS_LOG": {
+      "log_id": 0.766675,
+      "seat_id": 0.769706,
+      "reservation_id": 0.77621,
+      "user_id": 0.766284,
+      "previous_status": 0.763536,
+      "new_status": 0.765541,
+      "changed_at": 0.761515
+    },
+    "ASSOC_RESERVATION_SEAT": {
+      "assoc_reservation_seat_id": 0.999679,
+      "reservation_id": 0.999679,
+      "seat_id": 0.999679
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "A user can have many reservations",
+      "probability": 0.554712
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "description": "One RESERVATION can be associated with many ASSOC_RESERVATION_SEAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999679
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "description": "One SEAT can be associated with many ASSOC_RESERVATION_SEAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999679
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "description": "An event can have many reservations",
+      "probability": 0.841149
+    },
+    {
+      "entity_1": "OCCASION",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "An occasion groups multiple events",
+      "probability": 0.241064
+    },
+    {
+      "entity_1": "LAYOUT_TEMPLATE",
+      "entity_2": "AREA",
+      "cardinality": "1:N",
+      "description": "A layout template can be applied to many areas",
+      "probability": 0.147857
+    },
+    {
+      "entity_1": "AREA",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "description": "Each area contains many seats",
+      "probability": 0.846732
+    },
+    {
+      "entity_1": "PRICE_CATEGORY",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "description": "A price category can be assigned to many seats",
+      "probability": 0.756346
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "SEAT_STATUS_LOG",
+      "cardinality": "1:N",
+      "description": "Every status change of a seat is recorded",
+      "probability": 0.989751
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SEAT_STATUS_LOG",
+      "cardinality": "1:N",
+      "description": "A user (admin or system) performs seat status changes",
+      "probability": 0.044861
+    },
+    {
+      "entity_1": "LAYOUT_TEMPLATE",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "An event uses a layout template; many events may share the same template",
+      "probability": 0.12447
+    }
+  ],
+  "processing_time": 54.91,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit EVENT‑LAYOUT_TEMPLATE relationship and template_id FK in EVENT. Introduced area_id and price_category_id FK in SEAT, enabling a composite unique constraint (area_id, row_number, column_number) to prevent duplicate seats. Added user_id FK to SEAT_STATUS_LOG for auditability. Added timestamps to OCCASION and PRICE_CATEGORY for consistency. Updated relationships to reflect new foreign keys and added USER‑SEAT_STATUS_LOG link. All timestamp fields now follow a uniform naming convention."
+  }
+}

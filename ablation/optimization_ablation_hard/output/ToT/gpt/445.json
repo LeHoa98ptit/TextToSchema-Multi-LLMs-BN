@@ -1,0 +1,155 @@
+{
+  "entity": [
+    "PERSONNEL",
+    "UNIT",
+    "VISITOR",
+    "APPOINTMENT",
+    "APPOINTMENT_STATUS",
+    "ACCESS_RECORD",
+    "ACCESS_DEVICE",
+    "ADMINISTRATOR",
+    "ROLE",
+    "HEALTH_RECORD",
+    "TRAVEL_LOG"
+  ],
+  "attribute": {
+    "PERSONNEL": [
+      "personnel_id",
+      "name",
+      "phone",
+      "email",
+      "personnel_type",
+      "unit_id",
+      "health_code_color"
+    ],
+    "UNIT": [
+      "unit_id",
+      "unit_name",
+      "unit_type",
+      "parent_unit_id"
+    ],
+    "VISITOR": [
+      "visitor_id",
+      "name",
+      "phone",
+      "email",
+      "organization"
+    ],
+    "APPOINTMENT": [
+      "appointment_id",
+      "visitor_id",
+      "personnel_id",
+      "entry_time",
+      "exit_time",
+      "status_id",
+      "created_at",
+      "reviewed_by_admin_id"
+    ],
+    "APPOINTMENT_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "ACCESS_RECORD": [
+      "access_record_id",
+      "personnel_id",
+      "device_id",
+      "entry_time",
+      "exit_time",
+      "access_method",
+      "verification_result"
+    ],
+    "ACCESS_DEVICE": [
+      "device_id",
+      "location",
+      "device_type",
+      "status",
+      "encryption_enabled"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "name",
+      "role_id",
+      "email",
+      "phone"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "HEALTH_RECORD": [
+      "health_record_id",
+      "personnel_id",
+      "record_date",
+      "temperature",
+      "symptoms",
+      "health_code_color"
+    ],
+    "TRAVEL_LOG": [
+      "travel_log_id",
+      "personnel_id",
+      "timestamp",
+      "location",
+      "purpose"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "UNIT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VISITOR",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "APPOINTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPOINTMENT",
+      "entity_2": "APPOINTMENT_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCESS_DEVICE",
+      "entity_2": "ACCESS_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ROLE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "HEALTH_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "TRAVEL_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 63.6953,
+  "ilp_runtime": 0.197
+}

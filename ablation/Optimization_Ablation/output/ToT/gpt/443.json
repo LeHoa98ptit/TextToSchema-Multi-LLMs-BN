@@ -1,0 +1,161 @@
+{
+  "entity": [
+    "USER",
+    "EQUIPMENT",
+    "EQUIPMENT_MODEL",
+    "EQUIPMENT_STATUS",
+    "CALIBRATION_RECORD",
+    "LOCATION",
+    "DEPARTMENT",
+    "BORROW_TRANSACTION",
+    "RETURN_TRANSACTION",
+    "ACCOUNT_ACTIVITY",
+    "STATUS_LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "mobile_number",
+      "role",
+      "permission",
+      "email",
+      "created_at"
+    ],
+    "EQUIPMENT": [
+      "equipment_id",
+      "serial_number",
+      "asset_tag",
+      "purchase_date",
+      "warranty_expiry",
+      "current_status_id",
+      "model_id",
+      "location_id",
+      "department_id",
+      "person_in_charge",
+      "remark"
+    ],
+    "EQUIPMENT_MODEL": [
+      "model_id",
+      "manufacturer",
+      "model_name",
+      "specifications"
+    ],
+    "EQUIPMENT_STATUS": [
+      "status_id",
+      "status_name",
+      "description"
+    ],
+    "CALIBRATION_RECORD": [
+      "calibration_id",
+      "equipment_id",
+      "calibration_date",
+      "valid_until",
+      "result",
+      "calibrated_by",
+      "certificate_path"
+    ],
+    "LOCATION": [
+      "location_id",
+      "building",
+      "room_number",
+      "floor",
+      "area_description"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name",
+      "manager_user_id"
+    ],
+    "BORROW_TRANSACTION": [
+      "borrow_id",
+      "equipment_id",
+      "borrower_user_id",
+      "borrow_time",
+      "borrow_photo_path",
+      "iou_photo_path",
+      "receive_area",
+      "receive_time",
+      "receive_photo_path",
+      "remark"
+    ],
+    "RETURN_TRANSACTION": [
+      "return_id",
+      "borrow_id",
+      "returner_user_id",
+      "return_time",
+      "return_photo_path",
+      "condition_note"
+    ],
+    "ACCOUNT_ACTIVITY": [
+      "activity_id",
+      "user_id",
+      "equipment_id",
+      "transaction_type",
+      "timestamp",
+      "detail",
+      "ip_address"
+    ],
+    "STATUS_LOG": [
+      "log_id",
+      "equipment_id",
+      "status_id",
+      "changed_at",
+      "changed_by_user_id",
+      "comment"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_MODEL",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "CALIBRATION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "BORROW_TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BORROW_TRANSACTION",
+      "entity_2": "RETURN_TRANSACTION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "STATUS_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 75.6154,
+  "ilp_runtime": 0.067
+}

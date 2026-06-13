@@ -1,0 +1,204 @@
+{
+  "filename": "443.txt",
+  "entity": {
+    "USER": 0.526076,
+    "EQUIPMENT": 0.622459,
+    "DEPARTMENT": 0.463043,
+    "ROLE": 0.476667,
+    "PERMISSION": 0.468318,
+    "EQUIPMENT_STATUS_LOG": 0.500275,
+    "EQUIPMENT_BORROWING": 0.536336,
+    "ACCOUNT_ACTIVITY_LOG": 0.486129,
+    "ROLE_PERMISSION": 0.351681
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.51588,
+      "username": 0.502351,
+      "password hash": 0.512949,
+      "mobile number": 0.514477,
+      "role id": 0.526631
+    },
+    "ROLE": {
+      "role id": 0.528998,
+      "role name": 0.52623,
+      "description": 0.54066
+    },
+    "PERMISSION": {
+      "permission id": 0.523325,
+      "permission name": 0.524036,
+      "description": 0.542538
+    },
+    "DEPARTMENT": {
+      "department id": 0.525782,
+      "department name": 0.524573
+    },
+    "EQUIPMENT": {
+      "equipment id": 0.565579,
+      "equipment code": 0.56981,
+      "model": 0.561015,
+      "status": 0.565747,
+      "calibration date": 0.545687,
+      "calibration validity": 0.546462,
+      "calibration result": 0.539406,
+      "location": 0.561327,
+      "department id": 0.561371,
+      "person in charge id": 0.556578,
+      "remark": 0.565249
+    },
+    "EQUIPMENT_STATUS_LOG": {
+      "status log id": 0.555279,
+      "equipment id": 0.567585,
+      "status": 0.561928,
+      "log timestamp": 0.552791,
+      "photo url": 0.548408,
+      "remark": 0.563564
+    },
+    "EQUIPMENT_BORROWING": {
+      "borrowing id": 0.548204,
+      "equipment id": 0.565618,
+      "borrower id": 0.550095,
+      "borrowing time": 0.54294,
+      "borrow equipment photos": 0.556071,
+      "iou photos": 0.542656,
+      "recipient id": 0.547927,
+      "receive area": 0.555955,
+      "receive time": 0.545812,
+      "receive equipment photos": 0.562458,
+      "returner id": 0.54891,
+      "return time": 0.538557,
+      "return equipment photos": 0.557351,
+      "monitoring data": 0.565073,
+      "remark": 0.553374
+    },
+    "ACCOUNT_ACTIVITY_LOG": {
+      "activity log id": 0.538382,
+      "equipment id": 0.569727,
+      "borrowing account id": 0.540137,
+      "receive account id": 0.536088,
+      "return account id": 0.534884,
+      "activity timestamp": 0.535695,
+      "remark": 0.546507
+    },
+    "ROLE_PERMISSION": {
+      "role_permission_id": 0.351681,
+      "role_id": 0.351681,
+      "permission_id": 0.351681
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each user is assigned exactly one role, while a role can be assigned to many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995196
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.351681
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.351681
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EQUIPMENT",
+      "description": "Each equipment item belongs to one department, while a department can own many equipment items.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004431
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT",
+      "description": "A user (person in charge) can be responsible for many equipment items; each equipment has one person in charge.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.865445
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_STATUS_LOG",
+      "description": "Each equipment can have multiple status log entries; each log entry refers to one equipment.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999847
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "EQUIPMENT_BORROWING",
+      "description": "Each equipment can be borrowed many times; each borrowing record is for one equipment.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999991
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_BORROWING",
+      "description": "A user (borrower) can have many borrowing records; each borrowing record has one borrower.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987655
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_BORROWING",
+      "description": "A user (recipient) can receive many borrowed equipments; each borrowing record has one recipient.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987655
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EQUIPMENT_BORROWING",
+      "description": "A user (returner) can return many equipments; each borrowing record has one returner.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987655
+    },
+    {
+      "entity_1": "EQUIPMENT",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "description": "Each equipment can have multiple account activity log entries; each log entry refers to one equipment.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.706261
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "description": "A user (borrowing account) can be associated with many activity log entries; each log entry has one borrowing account.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997641
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "description": "A user (receive account) can be associated with many activity log entries; each log entry has one receive account.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997641
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ACCOUNT_ACTIVITY_LOG",
+      "description": "A user (return account) can be associated with many activity log entries; each log entry has one return account.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997641
+    }
+  ],
+  "processing_time": 7.73
+}

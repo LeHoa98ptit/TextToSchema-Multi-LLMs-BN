@@ -1,0 +1,98 @@
+{
+  "filename": "459.txt",
+  "entity": {
+    "COMPANY": 0.817574,
+    "DEPARTMENT": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "PROJECT": 0.817574,
+    "PROJECT_PARTICIPATION": 0.74621,
+    "ASSOC_EMPLOYEE_PROJECT": 0.784463
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.754264,
+      "company_name": 0.754009
+    },
+    "DEPARTMENT": {
+      "department_number": 0.755956,
+      "department_manager": 0.770065,
+      "department_name": 0.763391
+    },
+    "EMPLOYEE": {
+      "employee_number": 0.775545,
+      "department": 0.782606,
+      "salary": 0.765477,
+      "position": 0.778876,
+      "education_level": 0.778631
+    },
+    "PROJECT": {
+      "project_number": 0.7607,
+      "project_name": 0.753431,
+      "responsible_person": 0.764547
+    },
+    "PROJECT_PARTICIPATION": {
+      "employee_number": 0.779491,
+      "project_number": 0.766123,
+      "participation_role": 0.765843
+    },
+    "ASSOC_EMPLOYEE_PROJECT": {
+      "assoc_employee_project_id": 0.784463,
+      "employee_id": 0.784463,
+      "project_id": 0.784463
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "A company can have multiple departments, and each department belongs to one company.",
+      "probability": 0.873761
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A department can have multiple employees, and each employee belongs to one department.",
+      "probability": 0.999913
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "PROJECT",
+      "cardinality": "1:N",
+      "description": "A department can manage multiple projects, and each project is managed by one department.",
+      "probability": 0.83856
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "A project can have multiple participations, and each participation is associated with one project.",
+      "probability": 0.999861
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PROJECT_PARTICIPATION",
+      "cardinality": "1:N",
+      "description": "An employee can participate in multiple projects, and each participation is associated with one employee.",
+      "probability": 0.534881
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_EMPLOYEE_PROJECT",
+      "description": "One EMPLOYEE can be associated with many ASSOC_EMPLOYEE_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.784463
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "ASSOC_EMPLOYEE_PROJECT",
+      "description": "One PROJECT can be associated with many ASSOC_EMPLOYEE_PROJECT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.784463
+    }
+  ],
+  "processing_time": 16.65
+}

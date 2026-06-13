@@ -1,0 +1,95 @@
+{
+  "filename": "254.txt",
+  "entity": {
+    "SEISMOMETER": 0.622459,
+    "CALIBRATION": 0.622459,
+    "STATION": 0.622459,
+    "USER": 0.622459,
+    "ROLE": 0.49625,
+    "PERSONNEL": 0.517318
+  },
+  "attribute": {
+    "SEISMOMETER": {
+      "seismometer id": 0.542791,
+      "mechanical period": 0.540293,
+      "equivalent pendulum length": 0.537322,
+      "moment of inertia": 0.534568,
+      "coil sensitivity": 0.535902,
+      "voltage sensitivity": 0.536235,
+      "aspect info": 0.551332
+    },
+    "CALIBRATION": {
+      "calibration id": 0.520074,
+      "seismometer id": 0.542284,
+      "station id": 0.533072,
+      "calibration time": 0.516498,
+      "mechanical period": 0.525309,
+      "equivalent pendulum length": 0.524595,
+      "moment of inertia": 0.515747,
+      "coil sensitivity": 0.516458,
+      "comparison result": 0.522301,
+      "vibration table test result": 0.53877,
+      "amplitude": 0.522185,
+      "width": 0.512575
+    },
+    "STATION": {
+      "station id": 0.518692,
+      "station name": 0.520914,
+      "station type": 0.524764
+    },
+    "USER": {
+      "user id": 0.511849,
+      "username": 0.501743,
+      "password hash": 0.508851,
+      "role id": 0.517077,
+      "station id": 0.522974
+    },
+    "ROLE": {
+      "role id": 0.513159,
+      "role name": 0.515781,
+      "description": 0.526556,
+      "permissions": 0.526347
+    },
+    "PERSONNEL": {
+      "personnel id": 0.530748,
+      "full name": 0.531351,
+      "position": 0.533456,
+      "contact info": 0.538215
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SEISMOMETER",
+      "entity_2": "CALIBRATION",
+      "description": "Each calibration record pertains to exactly one seismometer, while a seismometer can have many calibration records over time.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.901122
+    },
+    {
+      "entity_1": "STATION",
+      "entity_2": "CALIBRATION",
+      "description": "Each calibration is performed at a single station, and a station can host many calibrations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.230632
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "description": "Each user is assigned one role, while a role can be assigned to many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997436
+    },
+    {
+      "entity_1": "STATION",
+      "entity_2": "USER",
+      "description": "Each user is associated with a single station, and a station can have many users.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.069496
+    }
+  ],
+  "processing_time": 6.42
+}

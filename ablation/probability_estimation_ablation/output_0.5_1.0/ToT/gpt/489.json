@@ -1,0 +1,113 @@
+{
+  "filename": "489.txt",
+  "entity": {
+    "APPLICATION": 0.817574,
+    "CHANNEL": 0.817574,
+    "CLIENT": 0.817574,
+    "SUBSCRIPTION": 0.727485,
+    "EVENT": 0.817574,
+    "NOTIFICATION": 0.715917
+  },
+  "attribute": {
+    "APPLICATION": {
+      "appid": 0.751577,
+      "name": 0.756283,
+      "created_at": 0.745266
+    },
+    "CHANNEL": {
+      "channel_id": 0.753915,
+      "app_id": 0.758111,
+      "name": 0.754379,
+      "is_private": 0.748865,
+      "status": 0.767157,
+      "last_online_at": 0.754851,
+      "created_at": 0.751915,
+      "closed_at": 0.74946
+    },
+    "CLIENT": {
+      "client_id": 0.744923,
+      "app_id": 0.748336,
+      "username": 0.747007,
+      "device_token": 0.743145,
+      "email": 0.756144,
+      "registered_at": 0.749781,
+      "last_active_at": 0.751714
+    },
+    "SUBSCRIPTION": {
+      "client_id": 0.755606,
+      "channel_id": 0.759852,
+      "subscribed_at": 0.752278,
+      "is_muted": 0.751127
+    },
+    "EVENT": {
+      "event_id": 0.743934,
+      "channel_id": 0.756146,
+      "event_type": 0.74803,
+      "event_timestamp": 0.746263,
+      "payload": 0.762642
+    },
+    "NOTIFICATION": {
+      "notification_id": 0.752562,
+      "event_id": 0.753029,
+      "client_id": 0.758966,
+      "delivery_status": 0.765465,
+      "sent_at": 0.753535
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CHANNEL",
+      "cardinality": "1:N",
+      "description": "An application owns multiple channels",
+      "probability": 0.832235
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CLIENT",
+      "cardinality": "1:N",
+      "description": "Clients are registered under a single application",
+      "probability": 0.418819
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A channel can have many subscription records",
+      "probability": 0.463195
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "SUBSCRIPTION",
+      "cardinality": "1:N",
+      "description": "A client can subscribe to many channels",
+      "probability": 0.994967
+    },
+    {
+      "entity_1": "CHANNEL",
+      "entity_2": "EVENT",
+      "cardinality": "1:N",
+      "description": "Events are logged per channel",
+      "probability": 0.393276
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "An event may generate multiple push notifications",
+      "probability": 0.866329
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A client can receive many notifications",
+      "probability": 0.001272
+    }
+  ],
+  "processing_time": 7.07,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added optional profiling fields to CLIENT (email, last_active_at). Introduced CHANNEL.last_online_at to capture online status. Renamed EVENT timestamp to event_timestamp and clarified it as indexed for quick queries. Implemented composite primary key (client_id, channel_id) for SUBSCRIPTION implicitly by using only those two attributes as identifiers. Added lightweight NOTIFICATION entity to optionally track delivery status without over‑engineering. Updated relationship set to include EVENT‑>NOTIFICATION and CLIENT‑>NOTIFICATION links. Retained the concise, efficient structure of the best candidate while addressing completeness and query performance concerns."
+  }
+}

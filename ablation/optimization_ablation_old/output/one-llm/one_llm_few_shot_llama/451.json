@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "INTRUSION_DETECTION_RECORD",
+    "RESPONSE_PLAN",
+    "KNOWLEDGE_BASE",
+    "ALARM",
+    "INTELLIGENT_CONTROL_SYSTEM",
+    "NETWORK_TRAFFIC",
+    "SECURITY_CONFIGURATION"
+  ],
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": [
+      "record_id",
+      "detection_time",
+      "source_ip_address",
+      "destination_ip_address",
+      "source_port_number",
+      "destination_port_number",
+      "attack_type",
+      "threat_level"
+    ],
+    "RESPONSE_PLAN": [
+      "plan_id",
+      "plan_generation_time",
+      "plan_type",
+      "detailed_plan_content",
+      "execution_status"
+    ],
+    "KNOWLEDGE_BASE": [
+      "knowledge_id",
+      "record_category",
+      "intrusion_behavior",
+      "security_configuration",
+      "good_practice",
+      "knowledge_description",
+      "knowledge_source",
+      "knowledge_reliability"
+    ],
+    "ALARM": [
+      "alarm_id",
+      "alarm_time",
+      "alarm_level",
+      "alarm_content",
+      "processing_status"
+    ],
+    "INTELLIGENT_CONTROL_SYSTEM": [
+      "system_id",
+      "particle_swarm_algorithm",
+      "support_vector_machine_model",
+      "random_forest_algorithm"
+    ],
+    "NETWORK_TRAFFIC": [
+      "traffic_id",
+      "real_time_network_traffic"
+    ],
+    "SECURITY_CONFIGURATION": [
+      "configuration_id",
+      "security_setting"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "KNOWLEDGE_BASE",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTELLIGENT_CONTROL_SYSTEM",
+      "entity_2": "RESPONSE_PLAN",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "NETWORK_TRAFFIC",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.4163,
+  "ilp_runtime": 0.125
+}

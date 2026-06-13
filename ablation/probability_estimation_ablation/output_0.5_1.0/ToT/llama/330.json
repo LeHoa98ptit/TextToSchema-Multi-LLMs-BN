@@ -1,0 +1,74 @@
+{
+  "filename": "330.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ROLE": 0.817574,
+    "IDENTITY_KEY": 0.800943,
+    "AUTHENTICATION_SCHEME": 0.695868,
+    "USER_ROLE_ASSIGNMENT": 0.780383
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.742211,
+      "password_hash": 0.753935,
+      "email": 0.757283,
+      "status": 0.762005,
+      "display_language": 0.745007,
+      "time_zone": 0.749979,
+      "date_time_format": 0.749147
+    },
+    "ROLE": {
+      "role_description": 0.769085,
+      "role_id": 0.761327
+    },
+    "IDENTITY_KEY": {
+      "identity_key_value": 0.75644,
+      "identity_key_type": 0.75588
+    },
+    "AUTHENTICATION_SCHEME": {
+      "scheme_name": 0.74732,
+      "scheme_description": 0.759073
+    },
+    "USER_ROLE_ASSIGNMENT": {
+      "assignment_id": 0.763859,
+      "user_id": 0.767319,
+      "role_id": 0.765622,
+      "assignment_date": 0.762093
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "IDENTITY_KEY",
+      "cardinality": "1:N",
+      "description": "A user can have multiple identity keys",
+      "probability": 0.999864
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHENTICATION_SCHEME",
+      "cardinality": "1:1",
+      "description": "A user is associated with one authentication scheme",
+      "probability": 0.994809
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_ROLE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A user can have multiple role assignments",
+      "probability": 0.999517
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER_ROLE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "description": "A role can be assigned to multiple users",
+      "probability": 0.808093
+    }
+  ],
+  "processing_time": 14.37,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a separate entity for user-role assignments to improve data integrity and reduce redundancy, while retaining the strengths of the original model and addressing the identified issues."
+  }
+}

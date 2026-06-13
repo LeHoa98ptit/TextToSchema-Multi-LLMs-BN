@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "GEOGRAPHIC_LOCATION",
+    "IP_ADDRESS",
+    "COUNTRY",
+    "CONTINENT",
+    "PROVIDER",
+    "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER"
+  ],
+  "attribute": {
+    "GEOGRAPHIC_LOCATION": [
+      "latitude",
+      "longitude",
+      "altitude"
+    ],
+    "IP_ADDRESS": [
+      "ip",
+      "network"
+    ],
+    "COUNTRY": [
+      "iso_code",
+      "name",
+      "european_union"
+    ],
+    "CONTINENT": [
+      "name",
+      "code"
+    ],
+    "PROVIDER": [
+      "name",
+      "type"
+    ],
+    "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER": [
+      "assoc_geographic_location_provider_id",
+      "geographic_location_id",
+      "provider_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "GEOGRAPHIC_LOCATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "CONTINENT",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "IP_ADDRESS",
+      "entity_2": "PROVIDER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GEOGRAPHIC_LOCATION",
+      "entity_2": "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROVIDER",
+      "entity_2": "ASSOC_GEOGRAPHIC_LOCATION_PROVIDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 39.4875,
+  "ilp_runtime": 0.087
+}

@@ -1,0 +1,87 @@
+{
+  "filename": "301.txt",
+  "entity": {
+    "SEAT": 0.622459,
+    "SEAT_LAYOUT_TEMPLATE": 0.521612,
+    "USER": 0.622459,
+    "RESERVATION": 0.622459,
+    "ASSOC_RESERVATION_SEAT": 0.999271
+  },
+  "attribute": {
+    "SEAT": {
+      "seat_id": 0.545638,
+      "layout_template_id": 0.545846,
+      "location_x": 0.547014,
+      "location_y": 0.546646,
+      "row_number": 0.546769,
+      "column_number": 0.548149,
+      "seat_type": 0.550161,
+      "price": 0.533737,
+      "created_at": 0.537328,
+      "updated_at": 0.544302,
+      "is_valid": 0.544474,
+      "status": 0.553091
+    },
+    "SEAT_LAYOUT_TEMPLATE": {
+      "template_id": 0.544466,
+      "description": 0.5636,
+      "occasion": 0.556613,
+      "time_period": 0.554332,
+      "created_at": 0.542969,
+      "updated_at": 0.54472
+    },
+    "USER": {
+      "user_id": 0.512349,
+      "full_name": 0.507239,
+      "contact_number": 0.517215,
+      "email_address": 0.512752,
+      "created_at": 0.502126,
+      "updated_at": 0.510278
+    },
+    "RESERVATION": {
+      "reservation_id": 0.550208,
+      "user_id": 0.545357,
+      "reservation_time": 0.547315,
+      "total_price": 0.541376,
+      "status": 0.551115,
+      "created_at": 0.537927,
+      "updated_at": 0.543139
+    },
+    "ASSOC_RESERVATION_SEAT": {
+      "assoc_reservation_seat_id": 0.999271,
+      "reservation_id": 0.999271,
+      "seat_id": 0.999271
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SEAT_LAYOUT_TEMPLATE",
+      "entity_2": "SEAT",
+      "cardinality": "1:N",
+      "probability": 0.806605
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "RESERVATION",
+      "cardinality": "1:N",
+      "probability": 0.364635
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "description": "One RESERVATION can be associated with many ASSOC_RESERVATION_SEAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999271
+    },
+    {
+      "entity_1": "SEAT",
+      "entity_2": "ASSOC_RESERVATION_SEAT",
+      "description": "One SEAT can be associated with many ASSOC_RESERVATION_SEAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999271
+    }
+  ],
+  "processing_time": 21.81
+}

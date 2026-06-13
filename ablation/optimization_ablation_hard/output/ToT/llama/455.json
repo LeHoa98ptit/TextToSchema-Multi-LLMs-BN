@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "VEHICLE",
+    "PARKING_SPACE",
+    "ENTRY_POINT",
+    "EXIT_POINT",
+    "OCCUPANCY",
+    "VEHICLE_OWNER",
+    "ASSOC_ENTRY_POINT_EXIT_POINT"
+  ],
+  "attribute": {
+    "VEHICLE": [
+      "license_plate",
+      "entry_time",
+      "exit_time",
+      "vehicle_type",
+      "owner_id"
+    ],
+    "PARKING_SPACE": [
+      "space_id",
+      "status",
+      "space_type",
+      "location"
+    ],
+    "ENTRY_POINT": [
+      "entry_id",
+      "entry_time",
+      "entry_point_type"
+    ],
+    "EXIT_POINT": [
+      "exit_id",
+      "exit_time",
+      "exit_point_type"
+    ],
+    "OCCUPANCY": [
+      "occupancy_id",
+      "start_time",
+      "end_time",
+      "parking_space_id",
+      "vehicle_id"
+    ],
+    "VEHICLE_OWNER": [
+      "owner_id",
+      "name",
+      "contact_info"
+    ],
+    "ASSOC_ENTRY_POINT_EXIT_POINT": [
+      "assoc_entry_point_exit_point_id",
+      "entry_point_id",
+      "exit_point_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "PARKING_SPACE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OCCUPANCY",
+      "entity_2": "VEHICLE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_OWNER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ENTRY_POINT",
+      "entity_2": "ASSOC_ENTRY_POINT_EXIT_POINT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXIT_POINT",
+      "entity_2": "ASSOC_ENTRY_POINT_EXIT_POINT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.9445,
+  "ilp_runtime": 0.034
+}

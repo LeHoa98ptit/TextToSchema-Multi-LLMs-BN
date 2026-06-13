@@ -1,0 +1,130 @@
+{
+  "filename": "427.txt",
+  "entity": {
+    "Student": 0.817574,
+    "Teacher": 0.817574,
+    "Course": 0.817574,
+    "StudentCourse": 0.778475,
+    "CoursePrerequisite": 0.770918,
+    "Teaching": 0.817574,
+    "Timetable": 0.697938
+  },
+  "attribute": {
+    "Student": {
+      "student_id": 0.773646,
+      "name": 0.769429,
+      "gender": 0.767272,
+      "department": 0.773067,
+      "age": 0.763015,
+      "enrollment_date": 0.773135,
+      "major": 0.762686,
+      "login": 0.771493,
+      "password": 0.769804
+    },
+    "Teacher": {
+      "teacher_id": 0.77137,
+      "name": 0.763047,
+      "gender": 0.762091,
+      "login": 0.773149,
+      "password": 0.769158,
+      "title": 0.763466,
+      "department": 0.766404
+    },
+    "Course": {
+      "course_id": 0.774924,
+      "name": 0.769148,
+      "credit": 0.760061,
+      "description": 0.776584
+    },
+    "StudentCourse": {
+      "student_id": 0.776028,
+      "teaching_id": 0.78024,
+      "selection_date": 0.779566,
+      "grade": 0.768102,
+      "status": 0.775635
+    },
+    "CoursePrerequisite": {
+      "course_id": 0.77893,
+      "required_course_id": 0.777027
+    },
+    "Teaching": {
+      "teaching_id": 0.772917,
+      "course_id": 0.779932,
+      "teacher_id": 0.774198,
+      "semester": 0.770483,
+      "location": 0.763225,
+      "class_time": 0.771126,
+      "capacity": 0.764464
+    },
+    "Timetable": {
+      "timetable_id": 0.761406,
+      "student_id": 0.781084,
+      "teaching_id": 0.778576,
+      "class_time": 0.770522,
+      "location": 0.759528
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "Student",
+      "entity_2": "StudentCourse",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records; each StudentCourse belongs to one student.",
+      "probability": 0.952291
+    },
+    {
+      "entity_1": "Teaching",
+      "entity_2": "StudentCourse",
+      "cardinality": "1:N",
+      "description": "An enrollment is linked to a specific teaching section (section/semester).",
+      "probability": 0.000434
+    },
+    {
+      "entity_1": "Course",
+      "entity_2": "Teaching",
+      "cardinality": "1:N",
+      "description": "A course can be offered in many teaching sections.",
+      "probability": 0.999723
+    },
+    {
+      "entity_1": "Teacher",
+      "entity_2": "Teaching",
+      "cardinality": "1:N",
+      "description": "A teacher may teach multiple teaching sections.",
+      "probability": 0.998252
+    },
+    {
+      "entity_1": "Course",
+      "entity_2": "CoursePrerequisite",
+      "cardinality": "1:N",
+      "description": "A course may have multiple prerequisite entries.",
+      "probability": 0.754085
+    },
+    {
+      "entity_1": "CoursePrerequisite",
+      "entity_2": "Course",
+      "cardinality": "N:1",
+      "description": "Each prerequisite entry references one required course.",
+      "probability": 0.754085
+    },
+    {
+      "entity_1": "Student",
+      "entity_2": "Timetable",
+      "cardinality": "1:N",
+      "description": "A student can have many timetable rows, one per teaching section.",
+      "probability": 0.020672
+    },
+    {
+      "entity_1": "Teaching",
+      "entity_2": "Timetable",
+      "cardinality": "1:N",
+      "description": "Each teaching section can appear in many students' timetables.",
+      "probability": 0.324315
+    }
+  ],
+  "processing_time": 12.87,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added Teacher.login attribute; introduced teaching_id foreign key in StudentCourse to associate enrollments with specific teaching sections; expanded CoursePrerequisite to include both course_id and required_course_id; added necessary foreign keys (course_id in Teaching, teacher_id in Teaching, student_id and teaching_id in Timetable); refined attribute lists to cover all required fields; defined composite relationships to support accurate schedule generation; kept strengths of original model while improving completeness, accuracy, and consistency."
+  }
+}

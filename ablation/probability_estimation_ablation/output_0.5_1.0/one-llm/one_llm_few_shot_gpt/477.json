@@ -1,0 +1,74 @@
+{
+  "filename": "477.txt",
+  "entity": {
+    "TRANSACTION": 0.817574,
+    "BILLING_METHOD": 0.797186,
+    "DISCOUNT": 0.723802,
+    "TRANSACTION_DETAIL": 0.763253,
+    "ASSOC_TRANSACTION_DISCOUNT": 0.549791
+  },
+  "attribute": {
+    "TRANSACTION": {
+      "transaction_id": 0.752656,
+      "transaction_time": 0.763253,
+      "total_amount": 0.769331,
+      "actual_payment": 0.772988,
+      "billing_method_id": 0.770767
+    },
+    "BILLING_METHOD": {
+      "billing_method_id": 0.768637,
+      "method_name": 0.768136,
+      "calculation_rule": 0.780135
+    },
+    "DISCOUNT": {
+      "discount_id": 0.756395,
+      "discount_name": 0.7598,
+      "discount_value": 0.756688,
+      "discount_type": 0.761239
+    },
+    "TRANSACTION_DETAIL": {
+      "detail_id": 0.754505,
+      "transaction_id": 0.754678,
+      "product_id": 0.747836,
+      "quantity": 0.771306,
+      "unit_price": 0.763631,
+      "line_total": 0.768291
+    },
+    "ASSOC_TRANSACTION_DISCOUNT": {
+      "assoc_transaction_discount_id": 0.549791,
+      "transaction_id": 0.549791,
+      "discount_id": 0.549791
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BILLING_METHOD",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "probability": 0.033176
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "probability": 0.999982
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRANSACTION_DISCOUNT",
+      "description": "One TRANSACTION can be associated with many ASSOC_TRANSACTION_DISCOUNT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.549791
+    },
+    {
+      "entity_1": "DISCOUNT",
+      "entity_2": "ASSOC_TRANSACTION_DISCOUNT",
+      "description": "One DISCOUNT can be associated with many ASSOC_TRANSACTION_DISCOUNT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.549791
+    }
+  ],
+  "processing_time": 9.78
+}

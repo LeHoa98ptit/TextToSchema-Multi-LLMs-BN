@@ -1,0 +1,139 @@
+{
+  "entity": [
+    "COMPANY",
+    "TEAM",
+    "HOUSEKEEPER",
+    "SERVICE_TYPE",
+    "SKILL",
+    "CUSTOMER",
+    "SERVICE_TASK",
+    "SERVICE_EVALUATION",
+    "PERFORMANCE_EVALUATION",
+    "HOUSEKEEPER_SERVICE_TYPE",
+    "HOUSEKEEPER_SKILL",
+    "ASSOC_HOUSEKEEPER_SERVICE_TYPE"
+  ],
+  "attribute": {
+    "COMPANY": [
+      "company_id",
+      "name",
+      "address",
+      "phone"
+    ],
+    "TEAM": [
+      "team_id",
+      "team_name",
+      "manager_id",
+      "company_id"
+    ],
+    "HOUSEKEEPER": [
+      "housekeeper_id",
+      "name",
+      "contact_number",
+      "years_experience",
+      "team_id"
+    ],
+    "SERVICE_TYPE": [
+      "service_type_id",
+      "description"
+    ],
+    "SKILL": [
+      "skill_id",
+      "skill_name",
+      "description"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "phone",
+      "address"
+    ],
+    "SERVICE_TASK": [
+      "task_id",
+      "service_date",
+      "service_address",
+      "duration",
+      "completion_status",
+      "service_type_id",
+      "housekeeper_id",
+      "customer_id",
+      "fee_amount",
+      "payment_date"
+    ],
+    "SERVICE_EVALUATION": [
+      "evaluation_id",
+      "task_id",
+      "customer_id",
+      "customer_satisfaction",
+      "effectiveness_score",
+      "comments"
+    ],
+    "PERFORMANCE_EVALUATION": [
+      "eval_id",
+      "housekeeper_id",
+      "period_start",
+      "period_end",
+      "tasks_completed",
+      "average_rating"
+    ],
+    "HOUSEKEEPER_SERVICE_TYPE": [
+      "housekeeper_id",
+      "service_type_id"
+    ],
+    "HOUSEKEEPER_SKILL": [
+      "housekeeper_id",
+      "skill_id"
+    ],
+    "ASSOC_HOUSEKEEPER_SERVICE_TYPE": [
+      "assoc_housekeeper_service_type_id",
+      "housekeeper_id",
+      "service_type_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "HOUSEKEEPER",
+      "entity_2": "ASSOC_HOUSEKEEPER_SERVICE_TYPE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE_TYPE",
+      "entity_2": "ASSOC_HOUSEKEEPER_SERVICE_TYPE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE_TASK",
+      "entity_2": "SERVICE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE_TASK",
+      "entity_2": "HOUSEKEEPER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE_TASK",
+      "entity_2": "SERVICE_EVALUATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SERVICE_EVALUATION",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 57.0173,
+  "ilp_runtime": 0.034
+}

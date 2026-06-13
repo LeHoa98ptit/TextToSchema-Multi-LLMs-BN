@@ -1,0 +1,78 @@
+{
+  "entity": [
+    "ENGINEER",
+    "MACHINE",
+    "MIGRATION",
+    "ENGINEER_MACHINE",
+    "ASSOC_ENGINEER_MACHINE"
+  ],
+  "attribute": {
+    "ENGINEER": [
+      "name",
+      "join_date",
+      "status",
+      "support_ability",
+      "contact_info",
+      "expertise"
+    ],
+    "MACHINE": [
+      "machine_id",
+      "receive_date",
+      "cost",
+      "machine_info",
+      "machine_type",
+      "maintenance_schedule"
+    ],
+    "MIGRATION": [
+      "migration_date",
+      "source_version",
+      "target_version",
+      "description",
+      "migration_type"
+    ],
+    "ENGINEER_MACHINE": [
+      "allocation_date",
+      "adjustment_date",
+      "responsibility_level"
+    ],
+    "ASSOC_ENGINEER_MACHINE": [
+      "assoc_engineer_machine_id",
+      "engineer_id",
+      "machine_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ASSOC_ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "ASSOC_ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ENGINEER",
+      "entity_2": "ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MACHINE",
+      "entity_2": "ENGINEER_MACHINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MIGRATION",
+      "entity_2": "ENGINEER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.0386,
+  "ilp_runtime": 0.03
+}

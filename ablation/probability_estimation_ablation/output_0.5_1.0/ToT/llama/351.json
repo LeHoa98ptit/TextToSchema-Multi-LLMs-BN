@@ -1,0 +1,115 @@
+{
+  "filename": "351.txt",
+  "entity": {
+    "USER": 0.745869,
+    "ROLE": 0.732609,
+    "OBJECT": 0.817574,
+    "OBJECT_TYPE": 0.739467,
+    "PERMISSION": 0.817574,
+    "PERMISSION_ENTRY": 0.779697,
+    "AUDIT_LOG": 0.686649,
+    "CONTACT_INFORMATION": 0.690445,
+    "OWNER": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.735451,
+      "password": 0.754362,
+      "email": 0.743991
+    },
+    "ROLE": {
+      "role_id": 0.762157,
+      "role_name": 0.761945
+    },
+    "OBJECT": {
+      "object_id": 0.74733,
+      "object_name": 0.747623,
+      "object_description": 0.748429,
+      "object_type_id": 0.749117
+    },
+    "OBJECT_TYPE": {
+      "type_id": 0.749369,
+      "type_name": 0.749591
+    },
+    "PERMISSION": {
+      "permission_id": 0.770594,
+      "access_level": 0.782345,
+      "inheritance": 0.786487
+    },
+    "PERMISSION_ENTRY": {
+      "entry_id": 0.770533,
+      "permission_id": 0.773071,
+      "object_id": 0.776082
+    },
+    "AUDIT_LOG": {
+      "log_id": 0.758712,
+      "attempt_result": 0.756218,
+      "attempt_time": 0.757124,
+      "user_id": 0.762831
+    },
+    "CONTACT_INFORMATION": {
+      "phone": 0.748654,
+      "email": 0.743697
+    },
+    "OWNER": {
+      "owner_id": 0.760296,
+      "owner_name": 0.759604
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "N:1",
+      "description": "A user can have one role",
+      "probability": 0.997688
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "PERMISSION",
+      "cardinality": "1:N",
+      "description": "A role can have multiple permissions",
+      "probability": 0.574036
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OBJECT_TYPE",
+      "cardinality": "N:1",
+      "description": "An object has one object type",
+      "probability": 0.999912
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "PERMISSION_ENTRY",
+      "cardinality": "1:N",
+      "description": "A permission can have multiple permission entries",
+      "probability": 0.997899
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUDIT_LOG",
+      "cardinality": "1:N",
+      "description": "A user can have multiple audit logs",
+      "probability": 0.995567
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OWNER",
+      "cardinality": "1:1",
+      "description": "An object has one owner",
+      "probability": 0.039072
+    },
+    {
+      "entity_1": "OWNER",
+      "entity_2": "CONTACT_INFORMATION",
+      "cardinality": "1:1",
+      "description": "An owner has one contact information",
+      "probability": 0.974014
+    }
+  ],
+  "processing_time": 24.97,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant relationships, integrated object type into object entity, and added user id to audit log for clarity and efficiency."
+  }
+}

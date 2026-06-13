@@ -1,0 +1,84 @@
+{
+  "entity": [
+    "EXPENSE",
+    "ACCOUNTING_ACCOUNT",
+    "COMPANY_ACCOUNT",
+    "EXTERNAL_SUPPLIER",
+    "SYSTEM_USER",
+    "ASSOC_EXPENSE_ACCOUNTING_ACCOUNT",
+    "ASSOC_EXPENSE_COMPANY_ACCOUNT"
+  ],
+  "attribute": {
+    "EXPENSE": [
+      "description",
+      "month",
+      "date",
+      "payment_date",
+      "expense_status"
+    ],
+    "ACCOUNTING_ACCOUNT": [
+      "account_id",
+      "account_number",
+      "account_type"
+    ],
+    "COMPANY_ACCOUNT": [
+      "company_id",
+      "company_name",
+      "company_address"
+    ],
+    "EXTERNAL_SUPPLIER": [
+      "supplier_id",
+      "supplier_name",
+      "supplier_address"
+    ],
+    "SYSTEM_USER": [
+      "user_id",
+      "username",
+      "user_role"
+    ],
+    "ASSOC_EXPENSE_ACCOUNTING_ACCOUNT": [
+      "assoc_expense_accounting_account_id",
+      "expense_id",
+      "accounting_account_id"
+    ],
+    "ASSOC_EXPENSE_COMPANY_ACCOUNT": [
+      "assoc_expense_company_account_id",
+      "expense_id",
+      "company_account_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "ASSOC_EXPENSE_ACCOUNTING_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ACCOUNTING_ACCOUNT",
+      "entity_2": "ASSOC_EXPENSE_ACCOUNTING_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "ASSOC_EXPENSE_COMPANY_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY_ACCOUNT",
+      "entity_2": "ASSOC_EXPENSE_COMPANY_ACCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SYSTEM_USER",
+      "entity_2": "EXPENSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 35.274,
+  "ilp_runtime": 0.074
+}

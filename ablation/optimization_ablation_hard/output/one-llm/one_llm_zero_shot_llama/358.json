@@ -1,0 +1,98 @@
+{
+  "entity": [
+    "PROCESS_DEFINITION",
+    "PROCESS_INSTANCE",
+    "TASK",
+    "TASK_TYPE",
+    "EXECUTION_INSTANCE",
+    "EXCEPTION_INFORMATION",
+    "SCHEDULED_TASK"
+  ],
+  "attribute": {
+    "PROCESS_DEFINITION": [
+      "id",
+      "name",
+      "description"
+    ],
+    "PROCESS_INSTANCE": [
+      "id",
+      "process_definition_id",
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "TASK": [
+      "id",
+      "name",
+      "description",
+      "task_type_id",
+      "start_time",
+      "end_time",
+      "execution_result"
+    ],
+    "TASK_TYPE": [
+      "id",
+      "name",
+      "description"
+    ],
+    "EXECUTION_INSTANCE": [
+      "id",
+      "process_instance_id",
+      "task_id",
+      "start_time",
+      "end_time",
+      "execution_result"
+    ],
+    "EXCEPTION_INFORMATION": [
+      "id",
+      "exception_message",
+      "exception_time"
+    ],
+    "SCHEDULED_TASK": [
+      "id",
+      "task_id",
+      "schedule_time",
+      "expiration_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TYPE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "EXCEPTION_INFORMATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SCHEDULED_TASK",
+      "entity_2": "TASK",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 44.5406,
+  "ilp_runtime": 0.042
+}

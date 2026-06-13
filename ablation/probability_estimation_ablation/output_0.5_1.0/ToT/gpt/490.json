@@ -1,0 +1,196 @@
+{
+  "filename": "490.txt",
+  "entity": {
+    "PART": 0.817574,
+    "SUPPLIER": 0.817574,
+    "SUPPLIER_CONTACT": 0.77704,
+    "CUSTOMER": 0.817574,
+    "CUSTOMER_CONTACT": 0.763524,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "QUOTATION": 0.697728,
+    "COUNTRY": 0.757551,
+    "REGION": 0.751551,
+    "CREDIT_RECORD": 0.736062,
+    "PAYMENT_METHOD": 0.67577
+  },
+  "attribute": {
+    "PART": {
+      "part_id": 0.744057,
+      "part_number": 0.749373,
+      "specification": 0.759658,
+      "unit": 0.752649,
+      "unit_price": 0.754645,
+      "inventory_level": 0.768162,
+      "min_stock": 0.749576,
+      "max_stock": 0.750694
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.769057,
+      "supplier_name": 0.771721,
+      "credit_rating": 0.765548,
+      "address": 0.770732
+    },
+    "SUPPLIER_CONTACT": {
+      "contact_id": 0.761001,
+      "supplier_id": 0.766748,
+      "contact_name": 0.762483,
+      "phone": 0.763969,
+      "email": 0.767025
+    },
+    "CUSTOMER": {
+      "customer_id": 0.747924,
+      "customer_name": 0.750829,
+      "address": 0.752997
+    },
+    "CUSTOMER_CONTACT": {
+      "contact_id": 0.739882,
+      "customer_id": 0.743952,
+      "contact_name": 0.742735,
+      "phone": 0.748194,
+      "email": 0.749765
+    },
+    "ORDER": {
+      "order_id": 0.744963,
+      "order_date": 0.745641,
+      "delivery_date": 0.745646,
+      "order_status": 0.747249,
+      "customer_id": 0.752393,
+      "payment_method_id": 0.741822
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.743043,
+      "order_id": 0.743809,
+      "part_id": 0.749745,
+      "supplier_id": 0.764364,
+      "quantity": 0.761358,
+      "unit_price": 0.754907,
+      "total_price": 0.751077
+    },
+    "QUOTATION": {
+      "quotation_id": 0.724889,
+      "supplier_id": 0.757487,
+      "part_id": 0.73427,
+      "quoted_price": 0.73635,
+      "valid_until": 0.723827
+    },
+    "COUNTRY": {
+      "country_id": 0.742959,
+      "country_name": 0.742443
+    },
+    "REGION": {
+      "region_id": 0.744576,
+      "region_name": 0.74779,
+      "country_id": 0.749196
+    },
+    "CREDIT_RECORD": {
+      "credit_record_id": 0.740302,
+      "customer_id": 0.749389,
+      "credit_score": 0.743295,
+      "last_update": 0.741603
+    },
+    "PAYMENT_METHOD": {
+      "payment_method_id": 0.737177,
+      "method_name": 0.739811,
+      "details": 0.75781
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_CONTACT",
+      "cardinality": "1:N",
+      "description": "A supplier can have multiple contact persons",
+      "probability": 0.998993
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CONTACT",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple contact persons",
+      "probability": 0.987862
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "QUOTATION",
+      "cardinality": "1:N",
+      "description": "Suppliers issue many quotations",
+      "probability": 0.081376
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "QUOTATION",
+      "cardinality": "1:N",
+      "description": "Each part can have many quotations from different suppliers",
+      "probability": 0.808332
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_RECORD",
+      "cardinality": "1:N",
+      "description": "A customer may have multiple credit records over time",
+      "probability": 0.976134
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Customers place multiple orders",
+      "probability": 0.964474
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of one or more order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "PART",
+      "cardinality": "N:1",
+      "description": "Each order item references a single part",
+      "probability": 0.181383
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "Each order item is fulfilled by one supplier",
+      "probability": 0.014511
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "COUNTRY",
+      "cardinality": "N:1",
+      "description": "Regions belong to a country",
+      "probability": 0.258235
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "REGION",
+      "cardinality": "N:1",
+      "description": "Suppliers are located in a region",
+      "probability": 0.984815
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "REGION",
+      "cardinality": "N:1",
+      "description": "Customers are located in a region",
+      "probability": 0.997552
+    },
+    {
+      "entity_1": "PAYMENT_METHOD",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A payment method can be used for many orders",
+      "probability": 0.036567
+    }
+  ],
+  "processing_time": 15.03,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "None"
+  }
+}

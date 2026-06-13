@@ -1,0 +1,104 @@
+{
+  "filename": "409.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PRODUCT": 0.622459,
+    "SHOPPING_CART": 0.573782,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.523807,
+    "CART_ITEM": 0.251065
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.521305,
+      "username": 0.50532,
+      "password": 0.528232,
+      "email": 0.528545
+    },
+    "PRODUCT": {
+      "product id": 0.53709,
+      "price": 0.531681,
+      "inventory quantity": 0.562156,
+      "description": 0.537946
+    },
+    "SHOPPING_CART": {
+      "cart id": 0.540816,
+      "user id": 0.546409,
+      "created at": 0.542606,
+      "cart items": 0.560524
+    },
+    "ORDER": {
+      "order id": 0.529054,
+      "user id": 0.5305,
+      "creation time": 0.526461,
+      "status": 0.537475
+    },
+    "ORDER_ITEM": {
+      "order item id": 0.532497,
+      "order id": 0.532705,
+      "product id": 0.542159,
+      "quantity": 0.557098,
+      "unit price": 0.54155
+    },
+    "CART_ITEM": {
+      "cart_item_id": 0.251065,
+      "shopping_cart_id": 0.251065,
+      "product_id": 0.251065,
+      "cart item id": 0.251065,
+      "cart id": 0.251065,
+      "product id": 0.251065,
+      "quantity": 0.251065
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SHOPPING_CART",
+      "description": "Each user has a single shopping cart and each shopping cart belongs to one user",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.997487
+    },
+    {
+      "entity_1": "SHOPPING_CART",
+      "entity_2": "CART_ITEM",
+      "description": "One SHOPPING_CART can be associated with many CART_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.251065
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CART_ITEM",
+      "description": "One PRODUCT can be associated with many CART_ITEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.251065
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "description": "A user can place many orders, each order is placed by exactly one user",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999089
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "description": "An order consists of multiple order items, each order item belongs to one order",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999937
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "description": "A product can appear in many order items across different orders, each order item references one product",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.970408
+    }
+  ],
+  "processing_time": 3.24
+}

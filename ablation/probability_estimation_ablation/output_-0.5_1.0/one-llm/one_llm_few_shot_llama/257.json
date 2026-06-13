@@ -1,0 +1,101 @@
+{
+  "filename": "257.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "FLIGHT": 0.622459,
+    "BOOKING": 0.622459,
+    "ORDER": 0.622459,
+    "ASSOC_CUSTOMER_ORDER": 0.963969
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.543652,
+      "name": 0.548285,
+      "gender": 0.553559,
+      "contact_information": 0.541483,
+      "customer_type": 0.556526
+    },
+    "FLIGHT": {
+      "flight_id": 0.538974,
+      "flight_date": 0.542858,
+      "airline": 0.548523,
+      "departure_location": 0.536997,
+      "departure_time": 0.545148,
+      "destination": 0.542335,
+      "arrival_time": 0.544078
+    },
+    "BOOKING": {
+      "booking_id": 0.551325,
+      "booking_date": 0.553093,
+      "check_in_time": 0.548616,
+      "check_out_time": 0.549775,
+      "discount_rate": 0.555797
+    },
+    "ORDER": {
+      "order_id": 0.511813,
+      "order_date": 0.517012,
+      "ticket_order_number": 0.538498,
+      "discount_rate": 0.53655
+    },
+    "ASSOC_CUSTOMER_ORDER": {
+      "assoc_customer_order_id": 0.963969,
+      "customer_id": 0.963969,
+      "order_id": 0.963969
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BOOKING",
+      "description": "Each booking is made by exactly one customer, and each customer can make many bookings over time.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.73859
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "BOOKING",
+      "description": "Each booking is for exactly one flight, and each flight can have many bookings.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.995351
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "description": "Each order is made by exactly one customer, and each customer can make many orders over time.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.963969
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "ORDER",
+      "description": "Each order is for exactly one flight, and each flight can have many orders.",
+      "cardinality": "1:N",
+      "is_identifying": false,
+      "associative_entity": null,
+      "probability": 0.019201
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_ORDER",
+      "description": "One CUSTOMER can be associated with many ASSOC_CUSTOMER_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963969
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_CUSTOMER_ORDER",
+      "description": "One ORDER can be associated with many ASSOC_CUSTOMER_ORDER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.963969
+    }
+  ],
+  "processing_time": 20.31
+}

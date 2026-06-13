@@ -1,0 +1,162 @@
+{
+  "filename": "368.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TEACHER": 0.622459,
+    "SUBJECT": 0.622459,
+    "EXAM": 0.622459,
+    "ENROLLMENT": 0.504375,
+    "TEACHING": 0.574051,
+    "GUIDANCE": 0.485779,
+    "TEST_SCORE": 0.531956,
+    "GRADE": 0.622459
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.563803,
+      "first_name": 0.555349,
+      "last_name": 0.56257,
+      "birthdate": 0.550683,
+      "age": 0.546196,
+      "address": 0.550522,
+      "phone": 0.537377,
+      "email": 0.547716
+    },
+    "TEACHER": {
+      "teacher_id": 0.558816,
+      "first_name": 0.549677,
+      "last_name": 0.555885,
+      "address": 0.545228,
+      "phone": 0.534516,
+      "email": 0.54336,
+      "hire_date": 0.546231
+    },
+    "SUBJECT": {
+      "subject_id": 0.539878,
+      "subject_name": 0.540457,
+      "class_hours": 0.549796,
+      "credit": 0.531348
+    },
+    "EXAM": {
+      "exam_id": 0.54008,
+      "exam_name": 0.539823,
+      "exam_date": 0.54064,
+      "total_marks": 0.547663,
+      "subject_id": 0.552041
+    },
+    "ENROLLMENT": {
+      "enrollment_id": 0.536709,
+      "student_id": 0.554034,
+      "subject_id": 0.552999,
+      "enrollment_date": 0.529543,
+      "status": 0.528673
+    },
+    "TEACHING": {
+      "teaching_id": 0.551889,
+      "teacher_id": 0.559064,
+      "subject_id": 0.554498,
+      "start_date": 0.533956,
+      "end_date": 0.537718
+    },
+    "GUIDANCE": {
+      "guidance_id": 0.526794,
+      "teacher_id": 0.554347,
+      "student_id": 0.55767,
+      "start_date": 0.524137,
+      "end_date": 0.524403,
+      "notes": 0.522119
+    },
+    "TEST_SCORE": {
+      "test_score_id": 0.533661,
+      "student_id": 0.561322,
+      "exam_id": 0.545703,
+      "score": 0.53393,
+      "max_score": 0.531258
+    },
+    "GRADE": {
+      "grade_id": 0.551908,
+      "student_id": 0.564946,
+      "subject_id": 0.562158,
+      "average_score": 0.546546,
+      "grade_letter": 0.540841,
+      "calculation_date": 0.540983
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999895
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A subject can be enrolled by many students",
+      "probability": 0.007794
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "description": "A teacher may teach multiple subjects over time",
+      "probability": 0.971173
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "TEACHING",
+      "cardinality": "1:N",
+      "description": "A subject can be taught by many teachers (different periods)",
+      "probability": 0.119352
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "GUIDANCE",
+      "cardinality": "1:N",
+      "description": "A teacher can guide many students",
+      "probability": 0.086171
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GUIDANCE",
+      "cardinality": "1:N",
+      "description": "A student may receive multiple guidance sessions",
+      "probability": 0.165961
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "TEST_SCORE",
+      "cardinality": "1:N",
+      "description": "A student can have many test score entries",
+      "probability": 0.610299
+    },
+    {
+      "entity_1": "EXAM",
+      "entity_2": "TEST_SCORE",
+      "cardinality": "1:N",
+      "description": "An exam can generate many test score entries",
+      "probability": 0.997692
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "A student can have multiple grade records (per subject/term)",
+      "probability": 0.651629
+    },
+    {
+      "entity_1": "SUBJECT",
+      "entity_2": "GRADE",
+      "cardinality": "1:N",
+      "description": "Grades are calculated per subject",
+      "probability": 0.137482
+    }
+  ],
+  "processing_time": 30.27,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant subject_id, test_name and test_date from TEST_SCORE; added exam_id to link scores directly to the exam (subject derived via EXAM). Clarified TEST_SCORE relationships to STUDENT and EXAM only. Noted GRADE as a derived/reporting view but retained for historical snapshots. Added guidance relationship for teacher‑student mentorship. Updated cardinalities and descriptions to reflect associative entities. Highlighted need for unique constraint (student_id, exam_id) on TEST_SCORE to prevent duplicate entries and recommended indexing foreign keys for performance."
+  }
+}

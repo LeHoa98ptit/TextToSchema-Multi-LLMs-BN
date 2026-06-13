@@ -1,0 +1,112 @@
+{
+  "filename": "295.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "TRADER": 0.622459,
+    "CLIENT": 0.622459,
+    "TRANSACTION": 0.622459,
+    "FUTURE": 0.622459,
+    "ASSOC_TRADER_CLIENT": 0.813824,
+    "ASSOC_TRADER_TRANSACTION": 0.596914
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.53514,
+      "company_name": 0.535229
+    },
+    "TRADER": {
+      "trader_id": 0.551052,
+      "hire_date": 0.547417,
+      "contact_number": 0.54984
+    },
+    "CLIENT": {
+      "client_id": 0.530659,
+      "client_name": 0.532449,
+      "contact_number": 0.534034
+    },
+    "TRANSACTION": {
+      "transaction_id": 0.541832,
+      "transaction_type": 0.547148,
+      "transaction_quantity": 0.546779,
+      "transaction_price": 0.544474,
+      "transaction_time": 0.543479
+    },
+    "FUTURE": {
+      "future_code": 0.559561,
+      "future_type": 0.556915
+    },
+    "ASSOC_TRADER_CLIENT": {
+      "assoc_trader_client_id": 0.813824,
+      "trader_id": 0.813824,
+      "client_id": 0.813824
+    },
+    "ASSOC_TRADER_TRANSACTION": {
+      "assoc_trader_transaction_id": 0.596914,
+      "trader_id": 0.596914,
+      "transaction_id": 0.596914
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "TRADER",
+      "cardinality": "1:N",
+      "description": "A company can have many traders, and each trader is assigned to exactly one company.",
+      "probability": 0.368973
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A trader can execute many transactions, and each transaction is executed by exactly one trader.",
+      "probability": 0.596914
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A client can have many transactions, and each transaction is associated with exactly one client.",
+      "probability": 0.491365
+    },
+    {
+      "entity_1": "FUTURE",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A future can have many transactions, and each transaction is associated with exactly one future.",
+      "probability": 0.996549
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "ASSOC_TRADER_CLIENT",
+      "description": "One TRADER can be associated with many ASSOC_TRADER_CLIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.813824
+    },
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ASSOC_TRADER_CLIENT",
+      "description": "One CLIENT can be associated with many ASSOC_TRADER_CLIENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.813824
+    },
+    {
+      "entity_1": "TRADER",
+      "entity_2": "ASSOC_TRADER_TRANSACTION",
+      "description": "One TRADER can be associated with many ASSOC_TRADER_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.596914
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "ASSOC_TRADER_TRANSACTION",
+      "description": "One TRANSACTION can be associated with many ASSOC_TRADER_TRANSACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.596914
+    }
+  ],
+  "processing_time": 15.3
+}

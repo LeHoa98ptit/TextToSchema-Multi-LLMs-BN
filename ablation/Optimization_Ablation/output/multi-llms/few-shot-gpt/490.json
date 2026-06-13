@@ -1,0 +1,117 @@
+{
+  "entity": [
+    "PART",
+    "SUPPLIER",
+    "CUSTOMER",
+    "ORDER",
+    "ORDER_DETAIL",
+    "QUOTATION",
+    "COUNTRY",
+    "REGION"
+  ],
+  "attribute": {
+    "PART": [
+      "part id",
+      "part number",
+      "specification",
+      "unit price",
+      "inventory level"
+    ],
+    "SUPPLIER": [
+      "supplier id",
+      "contact person",
+      "phone",
+      "email",
+      "credit rating",
+      "country id",
+      "region id"
+    ],
+    "CUSTOMER": [
+      "customer id",
+      "contact name",
+      "phone",
+      "email",
+      "payment method",
+      "country id",
+      "region id"
+    ],
+    "ORDER": [
+      "order id",
+      "order time",
+      "customer id",
+      "delivery date",
+      "order status"
+    ],
+    "ORDER_DETAIL": [
+      "order detail id",
+      "order id",
+      "part id",
+      "supplier id",
+      "quantity",
+      "unit price",
+      "line total"
+    ],
+    "QUOTATION": [
+      "quotation id",
+      "supplier id",
+      "part id",
+      "quoted price",
+      "quotation date"
+    ],
+    "COUNTRY": [
+      "country id",
+      "country name"
+    ],
+    "REGION": [
+      "region id",
+      "region name",
+      "country id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PART",
+      "entity_2": "QUOTATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COUNTRY",
+      "entity_2": "SUPPLIER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "SUPPLIER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "CUSTOMER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 56.7327,
+  "ilp_runtime": 0.028
+}

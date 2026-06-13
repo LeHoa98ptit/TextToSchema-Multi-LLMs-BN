@@ -1,0 +1,195 @@
+{
+  "filename": "440.txt",
+  "entity": {
+    "DEVICE": 0.622459,
+    "PRODUCT_MODEL": 0.457528,
+    "USER": 0.622459,
+    "DEPARTMENT": 0.498625,
+    "GROUP": 0.488227,
+    "MAINTENANCE_REQUEST": 0.544928,
+    "MAINTENANCE_RECORD": 0.530537,
+    "INVENTORY_RECORD": 0.489027,
+    "LOCATION": 0.486328
+  },
+  "attribute": {
+    "DEVICE": {
+      "device id": 0.528257,
+      "device code": 0.541586,
+      "qr code": 0.547106,
+      "ip address": 0.524015,
+      "device image": 0.532086,
+      "enabled": 0.531877,
+      "creation time": 0.525809,
+      "update time": 0.519827,
+      "status": 0.547121,
+      "status update time": 0.529508,
+      "remark": 0.541971,
+      "product model id": 0.531813,
+      "person charge id": 0.537842,
+      "group id": 0.53527,
+      "usage type": 0.5495,
+      "location id": 0.527904,
+      "department id": 0.542517
+    },
+    "PRODUCT_MODEL": {
+      "product model id": 0.513488,
+      "model name": 0.520122,
+      "model description": 0.535369
+    },
+    "USER": {
+      "user id": 0.512942,
+      "role": 0.531598,
+      "contact info": 0.529207,
+      "account status": 0.533412
+    },
+    "DEPARTMENT": {
+      "department id": 0.528917,
+      "department name": 0.529313
+    },
+    "GROUP": {
+      "group id": 0.514407,
+      "group name": 0.513786,
+      "usage type": 0.5392
+    },
+    "LOCATION": {
+      "location id": 0.511141,
+      "location name": 0.511949,
+      "address": 0.512568
+    },
+    "INVENTORY_RECORD": {
+      "inventory id": 0.534941,
+      "device id": 0.546992,
+      "inventory person id": 0.538619,
+      "inventory time": 0.533601,
+      "location id": 0.531495
+    },
+    "MAINTENANCE_REQUEST": {
+      "request id": 0.532093,
+      "device id": 0.547803,
+      "requester id": 0.532949,
+      "request time": 0.528397,
+      "maintenance content": 0.547568,
+      "status": 0.541043,
+      "assigned personnel id": 0.547195,
+      "handle time": 0.532738,
+      "remark": 0.543705
+    },
+    "MAINTENANCE_RECORD": {
+      "record id": 0.538918,
+      "device id": 0.552607,
+      "maintenance personnel id": 0.553358,
+      "maintenance time": 0.541366,
+      "maintenance content": 0.554759,
+      "maintenance result": 0.545822,
+      "user satisfaction": 0.558696,
+      "remark": 0.550852
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PRODUCT_MODEL",
+      "entity_2": "DEVICE",
+      "description": "Each device is based on one product model, while a product model can be used for many devices.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994019
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEVICE",
+      "description": "A user (person in charge) is responsible for many devices, each device has exactly one person in charge.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.907062
+    },
+    {
+      "entity_1": "GROUP",
+      "entity_2": "DEVICE",
+      "description": "Devices are assigned to a usage group; a group can contain many devices.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.390948
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "DEVICE",
+      "description": "Each device is located at one location, while a location can host many devices.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990044
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DEVICE",
+      "description": "Devices belong to a department; a department can own many devices.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.5563
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "INVENTORY_RECORD",
+      "description": "A device can have many inventory records over time; each inventory record refers to one device.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983957
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "INVENTORY_RECORD",
+      "description": "A user (inventory person) can create many inventory records; each inventory record is created by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997385
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "INVENTORY_RECORD",
+      "description": "An inventory record is performed at one location; a location can be associated with many inventory records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.985002
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "description": "A device can have many maintenance requests; each request concerns a single device.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.960538
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "description": "A user (requester) can submit many maintenance requests; each request is submitted by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99859
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_REQUEST",
+      "description": "A user (assigned maintenance personnel) can be assigned to many maintenance requests; each request is assigned to one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99859
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "MAINTENANCE_RECORD",
+      "description": "A device can have many maintenance records; each record pertains to one device.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.994102
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "description": "A user (maintenance personnel) can create many maintenance records; each record is created by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999787
+    }
+  ],
+  "processing_time": 8.52
+}

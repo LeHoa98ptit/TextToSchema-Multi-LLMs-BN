@@ -1,0 +1,115 @@
+{
+  "entity": [
+    "STUDENT",
+    "INSTRUCTOR",
+    "COURSE",
+    "ENROLLMENT",
+    "ATTENDANCE",
+    "LEAVE",
+    "ATTENDANCE_STATUS",
+    "LEAVE_STATUS"
+  ],
+  "attribute": {
+    "STUDENT": [
+      "student_id PK",
+      "name",
+      "gender",
+      "age",
+      "phone_number",
+      "game_preference",
+      "created_at",
+      "updated_at"
+    ],
+    "INSTRUCTOR": [
+      "instructor_id PK",
+      "name",
+      "gender",
+      "title",
+      "work_duration",
+      "created_at",
+      "updated_at"
+    ],
+    "COURSE": [
+      "course_id PK",
+      "name",
+      "location",
+      "credit",
+      "instructor_id FK",
+      "created_at",
+      "updated_at"
+    ],
+    "ENROLLMENT": [
+      "enrollment_id PK",
+      "student_id FK",
+      "course_id FK",
+      "enrollment_date",
+      "created_at",
+      "updated_at"
+    ],
+    "ATTENDANCE": [
+      "attendance_id PK",
+      "student_id FK",
+      "course_id FK",
+      "check_time",
+      "class_time",
+      "status_id FK",
+      "remark",
+      "created_at",
+      "updated_at"
+    ],
+    "LEAVE": [
+      "leave_id PK",
+      "student_id FK",
+      "course_id FK",
+      "leave_time",
+      "class_time",
+      "reason",
+      "status_id FK",
+      "approval_time",
+      "created_at",
+      "updated_at"
+    ],
+    "ATTENDANCE_STATUS": [
+      "status_id PK",
+      "status_name"
+    ],
+    "LEAVE_STATUS": [
+      "status_id PK",
+      "status_name"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ATTENDANCE_STATUS",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LEAVE_STATUS",
+      "entity_2": "LEAVE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 63.3654,
+  "ilp_runtime": 0.088
+}

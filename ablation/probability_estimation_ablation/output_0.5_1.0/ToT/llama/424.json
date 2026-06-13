@@ -1,0 +1,108 @@
+{
+  "filename": "424.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SYSTEM": 0.817574,
+    "LOGIN": 0.817574,
+    "SESSION": 0.736334,
+    "AUTHORIZATION": 0.817574,
+    "ASSOC_USER_SYSTEM": 0.97642
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.740214,
+      "password": 0.763216,
+      "phone_number": 0.750695,
+      "email": 0.758844,
+      "account_status": 0.765693,
+      "login_status": 0.771306
+    },
+    "SYSTEM": {
+      "system_id": 0.7556,
+      "system_domain": 0.758757,
+      "access_time": 0.759662,
+      "callback_url": 0.739408,
+      "secret_key": 0.755059,
+      "token_validity_period": 0.763921,
+      "enable_approval": 0.756829,
+      "require_login": 0.766807
+    },
+    "LOGIN": {
+      "login_time": 0.765421,
+      "login_ip": 0.763927
+    },
+    "SESSION": {
+      "token": 0.762722,
+      "expiration_time": 0.75462,
+      "logout_time": 0.754577
+    },
+    "AUTHORIZATION": {
+      "authorization_time": 0.760821,
+      "effective_time": 0.760263,
+      "expiration_time": 0.759167
+    },
+    "ASSOC_USER_SYSTEM": {
+      "assoc_user_system_id": 0.97642,
+      "user_id": 0.97642,
+      "system_id": 0.97642
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN",
+      "cardinality": "1:N",
+      "description": "A user can have multiple logins",
+      "probability": 0.999964
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "LOGIN",
+      "cardinality": "1:N",
+      "description": "A system can have multiple logins",
+      "probability": 0.017568
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_SYSTEM",
+      "description": "One USER can be associated with many ASSOC_USER_SYSTEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.97642
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "ASSOC_USER_SYSTEM",
+      "description": "One SYSTEM can be associated with many ASSOC_USER_SYSTEM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.97642
+    },
+    {
+      "entity_1": "LOGIN",
+      "entity_2": "SESSION",
+      "cardinality": "1:1",
+      "description": "A login is associated with a single session",
+      "probability": 0.63204
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "description": "A user can have multiple authorizations",
+      "probability": 0.999881
+    },
+    {
+      "entity_1": "SYSTEM",
+      "entity_2": "AUTHORIZATION",
+      "cardinality": "1:N",
+      "description": "A system can have multiple authorizations",
+      "probability": 0.826385
+    }
+  ],
+  "processing_time": 21.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Integrated improvement suggestions from the evaluation, fixed identified issues, retained strengths, and ensured the final model is optimal by adding missing attributes such as login_status, enable_approval, require_login, and logout_time, and simplifying complex relationships."
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "filename": "344.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ROLE": 0.817574,
+    "APPLICATION": 0.817574,
+    "WEB_SERVICE": 0.793917,
+    "ERROR": 0.817574,
+    "INVOCATION": 0.695974,
+    "PERMISSION": 0.719705,
+    "ASSOC_USER_ROLE": 0.997576,
+    "ASSOC_ROLE_PERMISSION": 0.5741,
+    "ASSOC_USER_APPLICATION": 0.998021
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.738614,
+      "email": 0.750282,
+      "password": 0.748294
+    },
+    "ROLE": {
+      "role_name": 0.757143,
+      "description": 0.768129
+    },
+    "APPLICATION": {
+      "d_code": 0.755291,
+      "type": 0.766632,
+      "creation_date": 0.75675
+    },
+    "WEB_SERVICE": {
+      "d_description": 0.773345,
+      "creation_date": 0.764773,
+      "return_status": 0.759429
+    },
+    "ERROR": {
+      "error_code": 0.748212,
+      "description": 0.759699,
+      "timestamp": 0.751085,
+      "return_status": 0.743854
+    },
+    "INVOCATION": {
+      "invocation_time": 0.739977,
+      "return_status": 0.740149,
+      "delay_time": 0.734347,
+      "success_rate": 0.747155,
+      "performance_metric": 0.75759
+    },
+    "PERMISSION": {
+      "permission_name": 0.752496,
+      "description": 0.769995
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.997576,
+      "user_id": 0.997576,
+      "role_id": 0.997576
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.5741,
+      "role_id": 0.5741,
+      "permission_id": 0.5741
+    },
+    "ASSOC_USER_APPLICATION": {
+      "assoc_user_application_id": 0.998021,
+      "user_id": 0.998021,
+      "application_id": 0.998021
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997576
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997576
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.5741
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.5741
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEB_SERVICE",
+      "cardinality": "1:N",
+      "description": "An application can have multiple web services",
+      "probability": 0.996521
+    },
+    {
+      "entity_1": "WEB_SERVICE",
+      "entity_2": "ERROR",
+      "cardinality": "1:N",
+      "description": "A web service can have multiple errors",
+      "probability": 0.094729
+    },
+    {
+      "entity_1": "WEB_SERVICE",
+      "entity_2": "INVOCATION",
+      "cardinality": "1:N",
+      "description": "A web service can have multiple invocations",
+      "probability": 0.000699
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_APPLICATION",
+      "description": "One USER can be associated with many ASSOC_USER_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998021
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "ASSOC_USER_APPLICATION",
+      "description": "One APPLICATION can be associated with many ASSOC_USER_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998021
+    }
+  ],
+  "processing_time": 21.5,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added attributes to the INVOCATION entity to track performance metrics, and added a relationship between the USER entity and the APPLICATION entity to track user authorization."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "entity": [
+    "PLAYER",
+    "GAME",
+    "GAME_RULE",
+    "SINGLE_PLAYER_SESSION",
+    "BATTLE_SESSION",
+    "BATTLE_PARTICIPANT",
+    "BATTLE_RESULT"
+  ],
+  "attribute": {
+    "PLAYER": [
+      "player_id",
+      "username",
+      "password_hash",
+      "phone_number",
+      "registration_time",
+      "account_status"
+    ],
+    "GAME": [
+      "game_id",
+      "name",
+      "content",
+      "max_players"
+    ],
+    "GAME_RULE": [
+      "rule_id",
+      "game_id",
+      "rule_description",
+      "configuration_json"
+    ],
+    "SINGLE_PLAYER_SESSION": [
+      "sps_id",
+      "player_id",
+      "game_id",
+      "start_time",
+      "end_time",
+      "session_status",
+      "score"
+    ],
+    "BATTLE_SESSION": [
+      "battle_id",
+      "game_id",
+      "start_time",
+      "end_time",
+      "battle_status"
+    ],
+    "BATTLE_PARTICIPANT": [
+      "bp_id",
+      "battle_id",
+      "player_id",
+      "role",
+      "individual_result"
+    ],
+    "BATTLE_RESULT": [
+      "result_id",
+      "battle_id",
+      "winner_player_id",
+      "loser_player_id",
+      "details"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PLAYER",
+      "entity_2": "SINGLE_PLAYER_SESSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "GAME",
+      "entity_2": "GAME_RULE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BATTLE_SESSION",
+      "entity_2": "BATTLE_PARTICIPANT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BATTLE_SESSION",
+      "entity_2": "BATTLE_RESULT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 22.8877,
+  "ilp_runtime": 0.087
+}

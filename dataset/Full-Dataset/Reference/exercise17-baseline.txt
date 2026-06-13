@@ -1,0 +1,89 @@
+{
+  "entity": [
+    "Worker",
+    "Workshop",
+    "Raw material",
+    "Product",
+    "Product processing task",
+    "Worker processing product",
+    "Raw materials involved in product processing",
+    "Workshop raw material management"
+  ],
+  "attribut": {
+    "Worker": [
+      "Worker ID",
+      "Name",
+      "Contact number"
+    ],
+    "Workshop": [
+      "Workshop ID",
+      "Workshop name",
+      "Workshop address"
+    ],
+    "Raw material": [
+      "Raw material ID",
+      "Raw material name"
+    ],
+    "Product": [
+      "Product ID",
+      "Product name"
+    ],
+    "Product processing task": [
+      "Product ID",
+      "Processing task ID",
+      "Production quantity",
+      "Processing time",
+      "Product quality rating"
+    ],
+    "Worker processing product": [
+      "Worker ID",
+      "Processing task ID"
+    ],
+    "Raw materials involved in product processing": [
+      "Raw material ID",
+      "Processing task ID"
+    ],
+    "Workshop raw material management": [
+      "Workshop ID",
+      "Raw material ID",
+      "Inventory quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Product",
+      "entity_2": "Product processing task",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Product processing task",
+      "entity_2": "Worker processing product",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Worker",
+      "entity_2": "Worker processing product",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Product processing task",
+      "entity_2": "Raw materials involved in product processing",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Raw material",
+      "entity_2": "Raw materials involved in product processing",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Raw material",
+      "entity_2": "Workshop raw material management",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Workshop",
+      "entity_2": "Workshop raw material management",
+      "cardinality": "1:N"
+    }
+  ]
+}

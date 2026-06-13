@@ -1,0 +1,93 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "DEPARTMENT",
+    "WORK_UNIT",
+    "TRANSACTION",
+    "DOCUMENT",
+    "OPERATION_LOG"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "registration_date"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "name",
+      "responsibility_description"
+    ],
+    "WORK_UNIT": [
+      "unit_id",
+      "name",
+      "responsibility_description"
+    ],
+    "TRANSACTION": [
+      "transaction_id",
+      "transaction_date",
+      "transaction_type",
+      "value",
+      "notes"
+    ],
+    "DOCUMENT": [
+      "document_id",
+      "name",
+      "content",
+      "created_date"
+    ],
+    "OPERATION_LOG": [
+      "log_id",
+      "operation_time",
+      "operation_description"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "WORK_UNIT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "WORK_UNIT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DOCUMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.377,
+  "ilp_runtime": 0.099
+}

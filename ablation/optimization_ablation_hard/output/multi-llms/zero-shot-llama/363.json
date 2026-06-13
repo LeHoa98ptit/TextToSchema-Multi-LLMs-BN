@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "LIBRARY",
+    "BOOK",
+    "READER",
+    "BOOK_BORROWING",
+    "BOOK_RESERVATION"
+  ],
+  "attribute": {
+    "LIBRARY": [
+      "library location",
+      "shelf number"
+    ],
+    "BOOK": [
+      "isbn",
+      "title",
+      "author",
+      "publisher",
+      "publication date",
+      "price",
+      "number copy available",
+      "number copy circulation"
+    ],
+    "READER": [
+      "reader d",
+      "library card number",
+      "gender",
+      "age",
+      "phone",
+      "email",
+      "reader type",
+      "maximum borrowing limit"
+    ],
+    "BOOK_BORROWING": [
+      "reader d",
+      "isbn",
+      "borrowing time",
+      "actual return date",
+      "borrowing status",
+      "loan period",
+      "pk",
+      "book_borrowing_id",
+      "reader_id",
+      "book_id",
+      "borrowing_time",
+      "actual_return_date",
+      "borrowing_status",
+      "loan_period"
+    ],
+    "BOOK_RESERVATION": [
+      "reader d",
+      "isbn",
+      "reservation time",
+      "reservation expiration time",
+      "reservation status",
+      "pk",
+      "book_reservation_id",
+      "reader_id",
+      "book_id",
+      "reservation_time",
+      "reservation_expiration_time",
+      "reservation_status"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "LIBRARY",
+      "entity_2": "BOOK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "BOOK_BORROWING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_BORROWING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "READER",
+      "entity_2": "BOOK_RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_RESERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 134.3584,
+  "ilp_runtime": 0.085
+}

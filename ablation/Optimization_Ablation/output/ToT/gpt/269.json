@@ -1,0 +1,75 @@
+{
+  "entity": [
+    "RESTAURANT",
+    "TABLE",
+    "CUSTOMER",
+    "RESERVATION",
+    "RESERVATION_STATUS",
+    "RESERVATION_TABLE"
+  ],
+  "attribute": {
+    "RESTAURANT": [
+      "restaurant_id",
+      "name",
+      "address"
+    ],
+    "TABLE": [
+      "table_id",
+      "restaurant_id",
+      "table_number",
+      "location",
+      "seating_capacity"
+    ],
+    "CUSTOMER": [
+      "customer_id",
+      "first_name",
+      "last_name",
+      "phone",
+      "email"
+    ],
+    "RESERVATION": [
+      "reservation_id",
+      "customer_id",
+      "reservation_time",
+      "number_of_diners",
+      "special_requests",
+      "status_id"
+    ],
+    "RESERVATION_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "RESERVATION_TABLE": [
+      "reservation_id",
+      "table_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "RESERVATION",
+      "entity_2": "RESERVATION_TABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TABLE",
+      "entity_2": "RESERVATION_TABLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.6133,
+  "ilp_runtime": 0.097
+}

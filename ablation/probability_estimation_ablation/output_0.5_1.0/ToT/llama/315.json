@@ -1,0 +1,62 @@
+{
+  "filename": "315.txt",
+  "entity": {
+    "PERSONNEL": 0.817574,
+    "BOOK": 0.817574,
+    "BORROWING": 0.817574,
+    "COPY": 0.713859
+  },
+  "attribute": {
+    "PERSONNEL": {
+      "name": 0.749039,
+      "contact": 0.747126,
+      "email": 0.745008,
+      "role": 0.75375
+    },
+    "BOOK": {
+      "title": 0.747646,
+      "author": 0.743703,
+      "publisher": 0.754986
+    },
+    "BORROWING": {
+      "start_time": 0.745897,
+      "end_time": 0.748285,
+      "return_status": 0.75021,
+      "borrower": 0.751665
+    },
+    "COPY": {
+      "copy_id": 0.737188,
+      "book_id": 0.751208,
+      "status": 0.748718,
+      "publication_date": 0.739985
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "BORROWING",
+      "cardinality": "1:N",
+      "description": "A personnel can have multiple borrowings",
+      "probability": 0.9883
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "COPY",
+      "cardinality": "1:N",
+      "description": "A book can have multiple copies",
+      "probability": 0.964431
+    },
+    {
+      "entity_1": "COPY",
+      "entity_2": "BORROWING",
+      "cardinality": "1:1",
+      "description": "A copy is associated with one borrowing",
+      "probability": 0.908723
+    }
+  ],
+  "processing_time": 18.43,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant PUBLICATION entity and integrated its attributes into COPY entity, simplified relationships and removed redundant attributes to improve efficiency and consistency while maintaining completeness and accuracy."
+  }
+}

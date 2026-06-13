@@ -1,0 +1,82 @@
+{
+  "filename": "348.txt",
+  "entity": {
+    "PLUGIN": 0.817574,
+    "PLUGIN_TYPE": 0.790692,
+    "PLUGIN_VERSION": 0.745585,
+    "PLUGIN_EXECUTION": 0.73577,
+    "SQL_STATEMENT": 0.678437,
+    "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT": 0.004437
+  },
+  "attribute": {
+    "PLUGIN": {
+      "plugin_id": 0.760574,
+      "name": 0.76463,
+      "description": 0.774875
+    },
+    "PLUGIN_TYPE": {
+      "type_id": 0.758954,
+      "type_name": 0.760292,
+      "type_description": 0.762096
+    },
+    "PLUGIN_VERSION": {
+      "version_id": 0.758259,
+      "version_number": 0.75923,
+      "release_date": 0.760694
+    },
+    "PLUGIN_EXECUTION": {
+      "execution_id": 0.767878,
+      "start_time": 0.768074,
+      "end_time": 0.769851,
+      "status": 0.776817
+    },
+    "SQL_STATEMENT": {
+      "statement_id": 0.748715,
+      "statement_text": 0.746223,
+      "execution_result": 0.753439
+    },
+    "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT": {
+      "assoc_plugin_execution_sql_statement_id": 0.004437,
+      "plugin_execution_id": 0.004437,
+      "sql_statement_id": 0.004437
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_TYPE",
+      "cardinality": "N:1",
+      "description": "Each plugin is associated with one plugin type, and each plugin type can have many plugins.",
+      "probability": 0.999459
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_VERSION",
+      "cardinality": "1:N",
+      "description": "Each plugin can have many versions, and each version is associated with one plugin.",
+      "probability": 0.999946
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_EXECUTION",
+      "cardinality": "1:N",
+      "description": "Each plugin can have many executions, and each execution is associated with one plugin.",
+      "probability": 0.99806
+    },
+    {
+      "entity_1": "PLUGIN_EXECUTION",
+      "entity_2": "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004437
+    },
+    {
+      "entity_1": "SQL_STATEMENT",
+      "entity_2": "ASSOC_PLUGIN_EXECUTION_SQL_STATEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.004437
+    }
+  ],
+  "processing_time": 4.71
+}

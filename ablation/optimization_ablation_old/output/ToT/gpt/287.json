@@ -1,0 +1,91 @@
+{
+  "entity": [
+    "PARK",
+    "PERSON",
+    "PLANT_SPECIE",
+    "PARK_PLANT_OBSERVATION",
+    "MAINTENANCE",
+    "MAINTENANCE_ASSIGNMENT"
+  ],
+  "attribute": {
+    "PARK": [
+      "park_id",
+      "name",
+      "location",
+      "area",
+      "responsible_person_id"
+    ],
+    "PERSON": [
+      "person_id",
+      "name",
+      "email",
+      "phone"
+    ],
+    "PLANT_SPECIE": [
+      "specie_id",
+      "common_name",
+      "scientific_name"
+    ],
+    "PARK_PLANT_OBSERVATION": [
+      "observation_id",
+      "park_id",
+      "specie_id",
+      "recording_time",
+      "recorder_id",
+      "quantity",
+      "growth_status"
+    ],
+    "MAINTENANCE": [
+      "maintenance_id",
+      "park_id",
+      "maintenance_time",
+      "content",
+      "cost"
+    ],
+    "MAINTENANCE_ASSIGNMENT": [
+      "maintenance_id",
+      "person_id",
+      "role"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "PARK",
+      "entity_2": "PARK_PLANT_OBSERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PLANT_SPECIE",
+      "entity_2": "PARK_PLANT_OBSERVATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "MAINTENANCE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "MAINTENANCE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERSON",
+      "entity_2": "PARK",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 25.4693,
+  "ilp_runtime": 0.091
+}

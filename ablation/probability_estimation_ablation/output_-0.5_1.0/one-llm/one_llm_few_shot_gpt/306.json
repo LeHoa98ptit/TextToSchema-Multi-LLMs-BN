@@ -1,0 +1,194 @@
+{
+  "filename": "306.txt",
+  "entity": {
+    "TASK": 0.622459,
+    "SCHEDULER": 0.622459,
+    "TRIGGER": 0.622459,
+    "SIMPLE_TRIGGER": 0.558851,
+    "CRON_TRIGGER": 0.528768,
+    "COMPLEX_TRIGGER": 0.543316,
+    "BLOB_TRIGGER": 0.515695,
+    "LOCK": 0.622459,
+    "TASK_TRIGGER": 0.534918,
+    "SCHEDULER_TASK": 0.552407,
+    "SCHEDULER_LOCK": 0.535515,
+    "SCHEDULER_LOG": 0.534197,
+    "ASSOC_TASK_TRIGGER": 0.476736,
+    "ASSOC_SCHEDULER_TASK": 0.884192,
+    "ASSOC_SCHEDULER_LOCK": 0.12334
+  },
+  "attribute": {
+    "TASK": {
+      "task_id": 0.535962,
+      "task_name": 0.538903,
+      "task_class": 0.533025,
+      "persistence_flag": 0.540008,
+      "concurrent_execution_flag": 0.543293,
+      "dependent_task_id": 0.537345
+    },
+    "SCHEDULER": {
+      "scheduler_id": 0.5413,
+      "scheduler_name": 0.54051,
+      "scheduler_status": 0.544626,
+      "scheduler_configuration": 0.540686
+    },
+    "TRIGGER": {
+      "trigger_id": 0.526638,
+      "trigger_name": 0.530026,
+      "trigger_type": 0.534281,
+      "trigger_status": 0.535483
+    },
+    "SIMPLE_TRIGGER": {
+      "trigger_id": 0.52385,
+      "repeat_count": 0.535698,
+      "repeat_interval": 0.537866,
+      "trigger_count": 0.534302
+    },
+    "CRON_TRIGGER": {
+      "trigger_id": 0.535363,
+      "cron_expression": 0.535636,
+      "timezone": 0.535872
+    },
+    "COMPLEX_TRIGGER": {
+      "trigger_id": 0.538107,
+      "attribute_string": 0.529589,
+      "attribute_integer": 0.531977,
+      "attribute_long": 0.530899,
+      "attribute_decimal": 0.531575,
+      "attribute_boolean": 0.52982
+    },
+    "BLOB_TRIGGER": {
+      "trigger_id": 0.526682,
+      "binary_data": 0.521616
+    },
+    "LOCK": {
+      "lock_id": 0.51365,
+      "lock_status": 0.524863,
+      "lock_description": 0.52584
+    },
+    "TASK_TRIGGER": {
+      "task_id": 0.548277,
+      "trigger_id": 0.546559,
+      "execution_time": 0.550791,
+      "priority": 0.559615,
+      "trigger_status": 0.551278,
+      "start_time": 0.549233,
+      "end_time": 0.553404,
+      "calendar": 0.548774,
+      "fault_instruction": 0.549413
+    },
+    "SCHEDULER_TASK": {
+      "scheduler_id": 0.548297,
+      "task_id": 0.550121
+    },
+    "SCHEDULER_LOCK": {
+      "scheduler_id": 0.541654,
+      "lock_id": 0.538659,
+      "acquisition_time": 0.534675,
+      "release_time": 0.536018
+    },
+    "SCHEDULER_LOG": {
+      "log_id": 0.528075,
+      "scheduler_id": 0.535968,
+      "log_timestamp": 0.530881,
+      "log_message": 0.523403,
+      "log_level": 0.529924
+    },
+    "ASSOC_TASK_TRIGGER": {
+      "assoc_task_trigger_id": 0.476736,
+      "task_id": 0.476736,
+      "trigger_id": 0.476736
+    },
+    "ASSOC_SCHEDULER_TASK": {
+      "assoc_scheduler_task_id": 0.884192,
+      "scheduler_id": 0.884192,
+      "task_id": 0.884192
+    },
+    "ASSOC_SCHEDULER_LOCK": {
+      "assoc_scheduler_lock_id": 0.12334,
+      "scheduler_id": 0.12334,
+      "lock_id": 0.12334
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_TASK_TRIGGER",
+      "description": "One TASK can be associated with many ASSOC_TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.476736
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "ASSOC_TASK_TRIGGER",
+      "description": "One TRIGGER can be associated with many ASSOC_TASK_TRIGGER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.476736
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "ASSOC_SCHEDULER_TASK",
+      "description": "One SCHEDULER can be associated with many ASSOC_SCHEDULER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.884192
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "ASSOC_SCHEDULER_TASK",
+      "description": "One TASK can be associated with many ASSOC_SCHEDULER_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.884192
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "ASSOC_SCHEDULER_LOCK",
+      "description": "One SCHEDULER can be associated with many ASSOC_SCHEDULER_LOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.12334
+    },
+    {
+      "entity_1": "LOCK",
+      "entity_2": "ASSOC_SCHEDULER_LOCK",
+      "description": "One LOCK can be associated with many ASSOC_SCHEDULER_LOCK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.12334
+    },
+    {
+      "entity_1": "SCHEDULER",
+      "entity_2": "SCHEDULER_LOG",
+      "cardinality": "1:N",
+      "probability": 0.730991
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "SIMPLE_TRIGGER",
+      "cardinality": "1:1",
+      "probability": 0.999808
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "CRON_TRIGGER",
+      "cardinality": "1:1",
+      "probability": 0.928971
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "COMPLEX_TRIGGER",
+      "cardinality": "1:1",
+      "probability": 0.999318
+    },
+    {
+      "entity_1": "TRIGGER",
+      "entity_2": "BLOB_TRIGGER",
+      "cardinality": "1:1",
+      "probability": 0.961627
+    }
+  ],
+  "processing_time": 51.63
+}

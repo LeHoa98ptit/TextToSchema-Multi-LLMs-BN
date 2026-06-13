@@ -1,0 +1,162 @@
+{
+  "filename": "347.txt",
+  "entity": {
+    "MODEL": 0.622459,
+    "DATASET": 0.622459,
+    "RUN": 0.622459,
+    "HYPERPARAMETER": 0.622459,
+    "MODEL_TYPE": 0.588871,
+    "DATASET_VARIABLE": 0.530188,
+    "TAG": 0.622459,
+    "MODEL_PERFORMANCE": 0.520214,
+    "DATASET_STATISTIC": 0.525353,
+    "ASSOC_DATASET_TAG": 0.090205,
+    "ASSOC_HYPERPARAMETER_MODEL": 0.373791
+  },
+  "attribute": {
+    "MODEL": {
+      "name": 0.528843,
+      "type": 0.534477,
+      "description": 0.534298,
+      "performance_metric": 0.544267
+    },
+    "DATASET": {
+      "name": 0.533786,
+      "url": 0.532407,
+      "size": 0.534476,
+      "owner": 0.532394,
+      "license": 0.530223,
+      "visibility": 0.530803,
+      "creation_date": 0.52972,
+      "update_date": 0.526898
+    },
+    "RUN": {
+      "start_time": 0.514042,
+      "end_time": 0.519609,
+      "runtime": 0.517656,
+      "model_id": 0.529023,
+      "dataset_id": 0.530544
+    },
+    "HYPERPARAMETER": {
+      "name": 0.534017,
+      "value": 0.534047,
+      "default_value": 0.528762
+    },
+    "MODEL_TYPE": {
+      "name": 0.531313,
+      "description": 0.536246
+    },
+    "DATASET_VARIABLE": {
+      "name": 0.528748,
+      "type": 0.535785,
+      "unique_value": 0.526944,
+      "null_value": 0.522026
+    },
+    "TAG": {
+      "name": 0.511631,
+      "description": 0.519596
+    },
+    "MODEL_PERFORMANCE": {
+      "rmse": 0.529433,
+      "mse": 0.539258,
+      "mae": 0.545446,
+      "rmsle": 0.53169
+    },
+    "DATASET_STATISTIC": {
+      "row_count": 0.538469,
+      "column_count": 0.536864,
+      "data_distribution": 0.530907
+    },
+    "ASSOC_DATASET_TAG": {
+      "assoc_dataset_tag_id": 0.090205,
+      "dataset_id": 0.090205,
+      "tag_id": 0.090205
+    },
+    "ASSOC_HYPERPARAMETER_MODEL": {
+      "assoc_hyperparameter_model_id": 0.373791,
+      "hyperparameter_id": 0.373791,
+      "model_id": 0.373791
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_TYPE",
+      "cardinality": "1:1",
+      "description": "A model is associated with one model type",
+      "probability": 0.993034
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_VARIABLE",
+      "cardinality": "1:N",
+      "description": "A dataset can have multiple variables",
+      "probability": 0.999903
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "ASSOC_DATASET_TAG",
+      "description": "One DATASET can be associated with many ASSOC_DATASET_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.090205
+    },
+    {
+      "entity_1": "TAG",
+      "entity_2": "ASSOC_DATASET_TAG",
+      "description": "One TAG can be associated with many ASSOC_DATASET_TAG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.090205
+    },
+    {
+      "entity_1": "HYPERPARAMETER",
+      "entity_2": "ASSOC_HYPERPARAMETER_MODEL",
+      "description": "One HYPERPARAMETER can be associated with many ASSOC_HYPERPARAMETER_MODEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.373791
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "ASSOC_HYPERPARAMETER_MODEL",
+      "description": "One MODEL can be associated with many ASSOC_HYPERPARAMETER_MODEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.373791
+    },
+    {
+      "entity_1": "RUN",
+      "entity_2": "MODEL",
+      "cardinality": "1:N",
+      "description": "A model can have multiple runs",
+      "probability": 0.058082
+    },
+    {
+      "entity_1": "RUN",
+      "entity_2": "DATASET",
+      "cardinality": "1:N",
+      "description": "A dataset can be used in multiple runs",
+      "probability": 0.094776
+    },
+    {
+      "entity_1": "MODEL",
+      "entity_2": "MODEL_PERFORMANCE",
+      "cardinality": "1:1",
+      "description": "A model has one performance metric",
+      "probability": 0.964659
+    },
+    {
+      "entity_1": "DATASET",
+      "entity_2": "DATASET_STATISTIC",
+      "cardinality": "1:1",
+      "description": "A dataset has one statistic",
+      "probability": 0.804329
+    }
+  ],
+  "processing_time": 42.17,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added MODEL_PERFORMANCE and DATASET_STATISTIC entities to capture detailed performance metrics and dataset statistics. Refined relationships between entities to ensure better data integrity."
+  }
+}

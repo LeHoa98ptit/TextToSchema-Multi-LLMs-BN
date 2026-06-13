@@ -1,0 +1,133 @@
+{
+  "filename": "328.txt",
+  "entity": {
+    "ADMINISTRATOR": 0.742671,
+    "SURVEY": 0.817574,
+    "QUESTION": 0.817574,
+    "OPTION": 0.817574,
+    "RESPONDENT": 0.724721,
+    "ANSWER": 0.817574,
+    "ASSOC_SURVEY_RESPONDENT": 0.781537,
+    "ASSOC_OPTION_ANSWER": 0.830665
+  },
+  "attribute": {
+    "ADMINISTRATOR": {
+      "phone_number": 0.754103,
+      "account": 0.756502,
+      "password": 0.752088,
+      "register_log": 0.749105
+    },
+    "SURVEY": {
+      "title": 0.784346,
+      "description": 0.789138,
+      "access_restriction": 0.773693,
+      "start_time": 0.769124,
+      "end_time": 0.772717,
+      "access_rule": 0.774267,
+      "public_password": 0.774791,
+      "status": 0.78781,
+      "progress": 0.78908,
+      "logo_url": 0.767257,
+      "background_image_url": 0.761187,
+      "anonymity_setting": 0.767051
+    },
+    "QUESTION": {
+      "title": 0.754956,
+      "description": 0.763274,
+      "require_status": 0.751888,
+      "validation_type": 0.757623,
+      "display_order": 0.746001,
+      "display_style": 0.756514,
+      "evaluation_status": 0.760961,
+      "evaluation_score": 0.75999
+    },
+    "OPTION": {
+      "content": 0.76206,
+      "display_order": 0.73751,
+      "correct_answer_status": 0.757607
+    },
+    "RESPONDENT": {
+      "information": 0.755301
+    },
+    "ANSWER": {
+      "answer_type": 0.755959,
+      "submission_time": 0.753276,
+      "answer_content": 0.756062
+    },
+    "ASSOC_SURVEY_RESPONDENT": {
+      "assoc_survey_respondent_id": 0.781537,
+      "survey_id": 0.781537,
+      "respondent_id": 0.781537
+    },
+    "ASSOC_OPTION_ANSWER": {
+      "assoc_option_answer_id": 0.830665,
+      "option_id": 0.830665,
+      "answer_id": 0.830665
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "SURVEY",
+      "cardinality": "1:N",
+      "probability": 7.9e-05
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "QUESTION",
+      "cardinality": "1:N",
+      "probability": 0.725517
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "OPTION",
+      "cardinality": "1:N",
+      "probability": 0.437452
+    },
+    {
+      "entity_1": "SURVEY",
+      "entity_2": "ASSOC_SURVEY_RESPONDENT",
+      "description": "One SURVEY can be associated with many ASSOC_SURVEY_RESPONDENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.781537
+    },
+    {
+      "entity_1": "RESPONDENT",
+      "entity_2": "ASSOC_SURVEY_RESPONDENT",
+      "description": "One RESPONDENT can be associated with many ASSOC_SURVEY_RESPONDENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.781537
+    },
+    {
+      "entity_1": "QUESTION",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "probability": 0.999505
+    },
+    {
+      "entity_1": "OPTION",
+      "entity_2": "ASSOC_OPTION_ANSWER",
+      "description": "One OPTION can be associated with many ASSOC_OPTION_ANSWER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.830665
+    },
+    {
+      "entity_1": "ANSWER",
+      "entity_2": "ASSOC_OPTION_ANSWER",
+      "description": "One ANSWER can be associated with many ASSOC_OPTION_ANSWER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.830665
+    },
+    {
+      "entity_1": "RESPONDENT",
+      "entity_2": "ANSWER",
+      "cardinality": "1:N",
+      "probability": 0.048981
+    }
+  ],
+  "processing_time": 32.6
+}

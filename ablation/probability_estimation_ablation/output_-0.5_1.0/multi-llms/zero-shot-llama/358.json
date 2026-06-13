@@ -1,0 +1,117 @@
+{
+  "filename": "358.txt",
+  "entity": {
+    "PROCESS_DEFINITION": 0.550552,
+    "PROCESS_INSTANCE": 0.578544,
+    "TASK": 0.622459,
+    "TASK_TYPE": 0.522061,
+    "EXECUTION_INSTANCE": 0.584725,
+    "TENANT": 0.622459,
+    "PROCESSOR_CONFIGURATION": 0.44695,
+    "EXECUTION_TASK": 0.968085
+  },
+  "attribute": {
+    "PROCESS_DEFINITION": {
+      "id": 0.53763,
+      "number": 0.542152
+    },
+    "PROCESS_INSTANCE": {
+      "id": 0.536837,
+      "process definition id": 0.547011
+    },
+    "TASK": {
+      "id": 0.545036,
+      "task type": 0.556611,
+      "start time": 0.543692,
+      "end time": 0.543465,
+      "execution result": 0.548978,
+      "exception information": 0.561674
+    },
+    "TASK_TYPE": {
+      "id": 0.543331,
+      "lock information": 0.563478
+    },
+    "EXECUTION_INSTANCE": {
+      "id": 0.529358,
+      "process instance id": 0.541939,
+      "task id": 0.55169,
+      "execution time": 0.535764,
+      "expiration time": 0.535908,
+      "repeat configuration": 0.542483
+    },
+    "TENANT": {
+      "id": 0.524061
+    },
+    "PROCESSOR_CONFIGURATION": {
+      "id": 0.534485,
+      "configuration": 0.534179
+    },
+    "EXECUTION_TASK": {
+      "execution_task_id": 0.968085,
+      "execution_instance_id": 0.968085,
+      "task_id": 0.968085,
+      "execution_time": 0.968085,
+      "expiration_time": 0.968085,
+      "repeat_configuration": 0.968085
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "description": "A process definition can have multiple process instances",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.979085
+    },
+    {
+      "entity_1": "PROCESS_INSTANCE",
+      "entity_2": "EXECUTION_INSTANCE",
+      "description": "A process instance can have multiple execution instances",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997249
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXECUTION_INSTANCE",
+      "description": "A task can have multiple execution instances",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968085
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_TYPE",
+      "description": "A task type can have multiple tasks",
+      "cardinality": "N:1",
+      "associative_entity": null,
+      "probability": 0.999989
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "EXECUTION_TASK",
+      "description": "One EXECUTION_INSTANCE can be associated with many EXECUTION_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968085
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "EXECUTION_TASK",
+      "description": "One TASK can be associated with many EXECUTION_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968085
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESSOR_CONFIGURATION",
+      "description": "A tenant can have multiple processor configurations",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.779769
+    }
+  ],
+  "processing_time": 19.24
+}

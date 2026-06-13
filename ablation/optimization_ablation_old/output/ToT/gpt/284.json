@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "CLIENT",
+    "CONTACT",
+    "ADVERTISEMENT",
+    "AD_CONTENT",
+    "BROADCAST",
+    "TIMESLOT",
+    "SCHEDULE",
+    "PAYMENT"
+  ],
+  "attribute": {
+    "CLIENT": [
+      "client_id",
+      "name",
+      "tax_id",
+      "primary_contact_name",
+      "primary_contact_phone",
+      "primary_contact_email"
+    ],
+    "CONTACT": [
+      "contact_id",
+      "client_id",
+      "name",
+      "phone",
+      "email",
+      "role"
+    ],
+    "ADVERTISEMENT": [
+      "ad_id",
+      "client_id",
+      "title",
+      "total_duration",
+      "total_cost",
+      "status"
+    ],
+    "AD_CONTENT": [
+      "content_id",
+      "ad_id",
+      "media_type",
+      "file_path",
+      "length_seconds"
+    ],
+    "BROADCAST": [
+      "broadcast_id",
+      "broadcast_date",
+      "program_name"
+    ],
+    "TIMESLOT": [
+      "slot_id",
+      "broadcast_id",
+      "start_time",
+      "end_time",
+      "status"
+    ],
+    "SCHEDULE": [
+      "schedule_id",
+      "ad_id",
+      "slot_id",
+      "air_date",
+      "order_in_slot"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "ad_id",
+      "amount",
+      "payment_date",
+      "method"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CLIENT",
+      "entity_2": "ADVERTISEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ADVERTISEMENT",
+      "entity_2": "AD_CONTENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.0192,
+  "ilp_runtime": 0.064
+}

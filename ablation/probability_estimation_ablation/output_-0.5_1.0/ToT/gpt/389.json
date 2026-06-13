@@ -1,0 +1,69 @@
+{
+  "filename": "389.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TEACHER": 0.622459,
+    "COURSE": 0.622459,
+    "ENROLLMENT": 0.516494
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.554959,
+      "name": 0.555521,
+      "gender": 0.555429,
+      "age": 0.544607,
+      "phone": 0.544658
+    },
+    "TEACHER": {
+      "teacher_id": 0.549885,
+      "name": 0.545328,
+      "gender": 0.546291,
+      "title": 0.547912,
+      "phone": 0.539687
+    },
+    "COURSE": {
+      "course_id": 0.54788,
+      "name": 0.545757,
+      "credit": 0.53121,
+      "class_hour": 0.552914,
+      "location": 0.544091,
+      "max_students": 0.56345,
+      "teacher_id": 0.560852
+    },
+    "ENROLLMENT": {
+      "student_id": 0.54985,
+      "course_id": 0.55383,
+      "enrollment_date": 0.533442,
+      "status": 0.537075,
+      "grade": 0.546247
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A student can have many enrollment records",
+      "probability": 0.999895
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ENROLLMENT",
+      "cardinality": "1:N",
+      "description": "A course can be enrolled by many students",
+      "probability": 0.089358
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "A teacher teaches multiple courses",
+      "probability": 0.992231
+    }
+  ],
+  "processing_time": 8.28,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Added a 'status' attribute to ENROLLMENT to capture course‑selection status (e.g., pending, completed, withdrawn). Renamed 'selection_time' to 'enrollment_date' for clearer semantics. Replaced surrogate 'enrollment_id' with a composite primary key (student_id, course_id) to naturally enforce the many‑to‑many relationship and prevent duplicate enrollments. Retained all original entities, attributes, and relationships, preserving the clean structure and naming consistency."
+  }
+}

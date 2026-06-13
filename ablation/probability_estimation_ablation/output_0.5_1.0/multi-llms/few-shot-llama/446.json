@@ -1,0 +1,119 @@
+{
+  "filename": "446.txt",
+  "entity": {
+    "USER": 0.817574,
+    "SENSOR": 0.817574,
+    "CROP": 0.817574,
+    "GROWTH_MODEL": 0.801469,
+    "METEOROLOGICAL_RECORD": 0.775651,
+    "SUPPLY_ACTION": 0.67752,
+    "EVALUATION": 0.817574
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.744258,
+      "username": 0.737563,
+      "password": 0.743317,
+      "phone number": 0.742644,
+      "registration time": 0.747013,
+      "last login time": 0.740887,
+      "role": 0.75023
+    },
+    "SENSOR": {
+      "sensor id": 0.753445,
+      "location": 0.753734,
+      "burial depth": 0.748939
+    },
+    "CROP": {
+      "crop id": 0.766539,
+      "name": 0.76111,
+      "type": 0.767613
+    },
+    "GROWTH_MODEL": {
+      "growth model id": 0.759767,
+      "model name": 0.761911,
+      "parameters": 0.764411,
+      "creation time": 0.760288
+    },
+    "METEOROLOGICAL_RECORD": {
+      "meteorological record id": 0.762874,
+      "timestamp": 0.759924,
+      "temperature": 0.754807,
+      "humidity": 0.759907,
+      "rainfall": 0.758796,
+      "wind speed": 0.756151,
+      "light intensity": 0.761392,
+      "location": 0.76163
+    },
+    "SUPPLY_ACTION": {
+      "supply action id": 0.748678,
+      "supply time": 0.749661,
+      "location": 0.748542,
+      "amount of water": 0.756579,
+      "amount of fertilizer": 0.765113,
+      "supply_action_id": 0.40847,
+      "user_id": 0.40847,
+      "crop_id": 0.40847,
+      "supply_time": 0.40847,
+      "amount_of_water": 0.40847,
+      "amount_of_fertilizer": 0.40847
+    },
+    "EVALUATION": {
+      "evaluation id": 0.743751,
+      "evaluation metric name": 0.744002,
+      "evaluation metric value": 0.746461,
+      "location": 0.7455
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "SUPPLY_ACTION",
+      "description": "Each user can perform many supply actions, but each supply action is performed by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.965153
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "METEOROLOGICAL_RECORD",
+      "description": "Each sensor can record many meteorological records, but each meteorological record is recorded by one sensor.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.987383
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "GROWTH_MODEL",
+      "description": "Each crop has one growth model, and each growth model is associated with one crop.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.507129
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EVALUATION",
+      "description": "Each user can perform many evaluations, but each evaluation is performed by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.995376
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "EVALUATION",
+      "description": "Each crop can have many evaluations, but each evaluation is associated with one crop.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001209
+    },
+    {
+      "entity_1": "CROP",
+      "entity_2": "SUPPLY_ACTION",
+      "description": "One CROP can be associated with many SUPPLY_ACTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.40847
+    }
+  ],
+  "processing_time": 32.65
+}

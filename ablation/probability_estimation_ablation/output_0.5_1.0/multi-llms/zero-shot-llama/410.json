@@ -1,0 +1,188 @@
+{
+  "filename": "410.txt",
+  "entity": {
+    "USER": 0.702765,
+    "VEHICLE": 0.817574,
+    "VEHICLE_MAINTENANCE": 0.76484,
+    "VEHICLE_DEPARTURE": 0.765541,
+    "VEHICLE_MAINTENANCE_APPLICATION": 0.749228,
+    "REPAIR_SHOP": 0.73208,
+    "ANNOUNCEMENT": 0.717116,
+    "TOKEN": 0.687058,
+    "ASSOC_USER_VEHICLE": 0.997582,
+    "ASSOC_USER_VEHICLE_MAINTENANCE_APPLICATION": 0.999,
+    "ASSOC_REPAIR_SHOP_VEHICLE_MAINTENANCE": 0.901798,
+    "ASSOC_USER_ANNOUNCEMENT": 0.978598
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.736004,
+      "user password": 0.734944,
+      "role": 0.744704
+    },
+    "VEHICLE": {
+      "vehicle id": 0.759342,
+      "vehicle photo": 0.765585,
+      "vehicle status": 0.770295,
+      "vehicle category": 0.775668
+    },
+    "VEHICLE_MAINTENANCE": {
+      "maintenance id": 0.769737,
+      "vehicle id": 0.770087,
+      "maintenance time": 0.769729,
+      "maintenance detail": 0.777751,
+      "review": 0.776306,
+      "review reply": 0.771053
+    },
+    "VEHICLE_DEPARTURE": {
+      "departure id": 0.759918,
+      "vehicle id": 0.761656,
+      "departure time": 0.75632,
+      "departure note": 0.764847
+    },
+    "VEHICLE_MAINTENANCE_APPLICATION": {
+      "application id": 0.768173,
+      "vehicle id": 0.770102,
+      "application time": 0.767951,
+      "application reason": 0.770011,
+      "review": 0.77888,
+      "review reply": 0.775219
+    },
+    "REPAIR_SHOP": {
+      "repair shop id": 0.751741,
+      "shop contact person": 0.750299,
+      "contact number": 0.747573
+    },
+    "ANNOUNCEMENT": {
+      "announcement id": 0.735647,
+      "title": 0.737711,
+      "content": 0.745448,
+      "creation time": 0.737011
+    },
+    "TOKEN": {
+      "token id": 0.738519,
+      "token value": 0.736892,
+      "creation time": 0.738894,
+      "expiration time": 0.73876
+    },
+    "ASSOC_USER_VEHICLE": {
+      "assoc_user_vehicle_id": 0.997582,
+      "user_id": 0.997582,
+      "vehicle_id": 0.997582
+    },
+    "ASSOC_USER_VEHICLE_MAINTENANCE_APPLICATION": {
+      "assoc_user_vehicle_maintenance_application_id": 0.999,
+      "user_id": 0.999,
+      "vehicle_maintenance_application_id": 0.999
+    },
+    "ASSOC_REPAIR_SHOP_VEHICLE_MAINTENANCE": {
+      "assoc_repair_shop_vehicle_maintenance_id": 0.901798,
+      "repair_shop_id": 0.901798,
+      "vehicle_maintenance_id": 0.901798
+    },
+    "ASSOC_USER_ANNOUNCEMENT": {
+      "assoc_user_announcement_id": 0.978598,
+      "user_id": 0.978598,
+      "announcement_id": 0.978598
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_VEHICLE",
+      "description": "One USER can be associated with many ASSOC_USER_VEHICLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997582
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "ASSOC_USER_VEHICLE",
+      "description": "One VEHICLE can be associated with many ASSOC_USER_VEHICLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997582
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_MAINTENANCE",
+      "description": "A vehicle can have multiple maintenance records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999849
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_DEPARTURE",
+      "description": "A vehicle can have multiple departure records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999841
+    },
+    {
+      "entity_1": "VEHICLE",
+      "entity_2": "VEHICLE_MAINTENANCE_APPLICATION",
+      "description": "A vehicle can have multiple maintenance applications",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999703
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_VEHICLE_MAINTENANCE_APPLICATION",
+      "description": "One USER can be associated with many ASSOC_USER_VEHICLE_MAINTENANCE_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999
+    },
+    {
+      "entity_1": "VEHICLE_MAINTENANCE_APPLICATION",
+      "entity_2": "ASSOC_USER_VEHICLE_MAINTENANCE_APPLICATION",
+      "description": "One VEHICLE_MAINTENANCE_APPLICATION can be associated with many ASSOC_USER_VEHICLE_MAINTENANCE_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999
+    },
+    {
+      "entity_1": "REPAIR_SHOP",
+      "entity_2": "ASSOC_REPAIR_SHOP_VEHICLE_MAINTENANCE",
+      "description": "One REPAIR_SHOP can be associated with many ASSOC_REPAIR_SHOP_VEHICLE_MAINTENANCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.901798
+    },
+    {
+      "entity_1": "VEHICLE_MAINTENANCE",
+      "entity_2": "ASSOC_REPAIR_SHOP_VEHICLE_MAINTENANCE",
+      "description": "One VEHICLE_MAINTENANCE can be associated with many ASSOC_REPAIR_SHOP_VEHICLE_MAINTENANCE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.901798
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One USER can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.978598
+    },
+    {
+      "entity_1": "ANNOUNCEMENT",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One ANNOUNCEMENT can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.978598
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TOKEN",
+      "description": "A user can have multiple tokens",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.96453
+    }
+  ],
+  "processing_time": 40.36
+}

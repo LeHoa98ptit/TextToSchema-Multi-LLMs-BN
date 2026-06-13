@@ -1,0 +1,87 @@
+{
+  "filename": "359.txt",
+  "entity": {
+    "USER": 0.817574,
+    "EVENT": 0.817574,
+    "MESSAGE": 0.731511,
+    "PARTICIPANT": 0.733196,
+    "ASSOC_USER_EVENT": 0.962102
+  },
+  "attribute": {
+    "USER": {
+      "name": 0.75117,
+      "contact_information": 0.759982,
+      "avatar": 0.751506,
+      "password": 0.749696,
+      "personal_photo": 0.755706
+    },
+    "EVENT": {
+      "name": 0.769718,
+      "description": 0.771894,
+      "location": 0.76945,
+      "time": 0.762674,
+      "type": 0.771228
+    },
+    "MESSAGE": {
+      "content": 0.759721,
+      "timestamp": 0.753491
+    },
+    "PARTICIPANT": {
+      "user_id": 0.756932,
+      "event_id": 0.765884,
+      "registration_time": 0.764153
+    },
+    "ASSOC_USER_EVENT": {
+      "assoc_user_event_id": 0.962102,
+      "user_id": 0.962102,
+      "event_id": 0.962102
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_EVENT",
+      "description": "One USER can be associated with many ASSOC_USER_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962102
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "ASSOC_USER_EVENT",
+      "description": "One EVENT can be associated with many ASSOC_USER_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.962102
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can send many messages, but each message is sent by one user.",
+      "probability": 0.999709
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "An event can have many messages, but each message is associated with one event.",
+      "probability": 0.103242
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "1:N",
+      "description": "A user can participate in many events, and each participation is associated with one user.",
+      "probability": 0.989138
+    },
+    {
+      "entity_1": "EVENT",
+      "entity_2": "PARTICIPANT",
+      "cardinality": "1:N",
+      "description": "An event can have many participants, and each participation is associated with one event.",
+      "probability": 0.847734
+    }
+  ],
+  "processing_time": 13.9
+}

@@ -1,0 +1,101 @@
+{
+  "filename": "260.txt",
+  "entity": {
+    "STUDENT": 0.817574,
+    "COURSE": 0.817574,
+    "REGISTRATION": 0.817574,
+    "EXAMINATION_RESULT": 0.801739,
+    "ACADEMIC_STAFF": 0.741696,
+    "NOTIFICATION": 0.690509
+  },
+  "attribute": {
+    "STUDENT": {
+      "date_of_birth": 0.778829,
+      "phone_number": 0.776121,
+      "home_address": 0.776745,
+      "student_id": 0.782243
+    },
+    "COURSE": {
+      "course_credit": 0.779069,
+      "instructor": 0.772255,
+      "class_time": 0.775537,
+      "location": 0.77316,
+      "course_id": 0.781303
+    },
+    "REGISTRATION": {
+      "registration_time": 0.761949,
+      "status": 0.768883,
+      "registration_id": 0.764578
+    },
+    "EXAMINATION_RESULT": {
+      "examination_grade": 0.766712,
+      "examination_date": 0.763852,
+      "student_id": 0.776318
+    },
+    "ACADEMIC_STAFF": {
+      "staff_id": 0.760838,
+      "staff_name": 0.757414
+    },
+    "NOTIFICATION": {
+      "notification_time": 0.73756,
+      "notification_message": 0.739786,
+      "recipient": 0.741859
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A student can have multiple registrations",
+      "probability": 0.998367
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A course can have multiple registrations",
+      "probability": 0.012141
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "EXAMINATION_RESULT",
+      "cardinality": "1:N",
+      "description": "A student can have multiple examination results",
+      "probability": 0.979314
+    },
+    {
+      "entity_1": "ACADEMIC_STAFF",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "An academic staff can teach multiple courses",
+      "probability": 0.125005
+    },
+    {
+      "entity_1": "REGISTRATION",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:1",
+      "description": "A registration can trigger one notification",
+      "probability": 0.266565
+    },
+    {
+      "entity_1": "ACADEMIC_STAFF",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "An academic staff can receive multiple notifications",
+      "probability": 0.092708
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "description": "A student can receive multiple notifications",
+      "probability": 0.030205
+    }
+  ],
+  "processing_time": 23.85,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a notification entity to track system notifications, updated relationships to reflect the complexity of the course registration system, and retained the strengths of the original model."
+  }
+}

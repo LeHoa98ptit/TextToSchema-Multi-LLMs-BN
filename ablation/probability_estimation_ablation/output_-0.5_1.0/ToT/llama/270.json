@@ -1,0 +1,117 @@
+{
+  "filename": "270.txt",
+  "entity": {
+    "PROGRAM": 0.622459,
+    "STAFF": 0.622459,
+    "REVIEWER": 0.460632,
+    "PRODUCTION": 0.622459,
+    "REVIEW": 0.45862,
+    "ASSOC_PROGRAM_STAFF": 0.953171,
+    "ASSOC_STAFF_PRODUCTION": 0.824874
+  },
+  "attribute": {
+    "PROGRAM": {
+      "name": 0.542215,
+      "type": 0.552776,
+      "duration": 0.541588,
+      "content": 0.553471,
+      "broadcast_time": 0.555911
+    },
+    "STAFF": {
+      "name": 0.538956,
+      "role": 0.542319,
+      "department": 0.543984,
+      "experience": 0.538919
+    },
+    "REVIEWER": {
+      "name": 0.517954,
+      "department": 0.538816
+    },
+    "PRODUCTION": {
+      "production_time": 0.549424,
+      "production_staff": 0.563694
+    },
+    "REVIEW": {
+      "review_time": 0.52281,
+      "review_result": 0.519772,
+      "feedback": 0.515957
+    },
+    "ASSOC_PROGRAM_STAFF": {
+      "assoc_program_staff_id": 0.953171,
+      "program_id": 0.953171,
+      "staff_id": 0.953171
+    },
+    "ASSOC_STAFF_PRODUCTION": {
+      "assoc_staff_production_id": 0.824874,
+      "staff_id": 0.824874,
+      "production_id": 0.824874
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "ASSOC_PROGRAM_STAFF",
+      "description": "One PROGRAM can be associated with many ASSOC_PROGRAM_STAFF.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.953171
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "ASSOC_PROGRAM_STAFF",
+      "description": "One STAFF can be associated with many ASSOC_PROGRAM_STAFF.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.953171
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "REVIEWER",
+      "cardinality": "1:N",
+      "description": "A program can be reviewed by multiple reviewers",
+      "probability": 0.005342
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "PRODUCTION",
+      "cardinality": "1:1",
+      "description": "A program has one production process",
+      "probability": 0.13843
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A program can have multiple reviews",
+      "probability": 0.70298
+    },
+    {
+      "entity_1": "REVIEWER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A reviewer can conduct multiple reviews",
+      "probability": 0.999852
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "ASSOC_STAFF_PRODUCTION",
+      "description": "One STAFF can be associated with many ASSOC_STAFF_PRODUCTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.824874
+    },
+    {
+      "entity_1": "PRODUCTION",
+      "entity_2": "ASSOC_STAFF_PRODUCTION",
+      "description": "One PRODUCTION can be associated with many ASSOC_STAFF_PRODUCTION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.824874
+    }
+  ],
+  "processing_time": 17.74,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attribute 'expertise' from REVIEWER entity, added relationship between REVIEWER and REVIEW entities, and added relationship between STAFF and PRODUCTION entities to better reflect the domain."
+  }
+}

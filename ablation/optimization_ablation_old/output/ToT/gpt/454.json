@@ -1,0 +1,103 @@
+{
+  "entity": [
+    "SUPERMARKET",
+    "PRODUCT",
+    "DISTRIBUTION_CENTER",
+    "SUPPLY_REQUEST",
+    "SUPPLY_REQUEST_LINE",
+    "DISTRIBUTION_ORDER",
+    "DISTRIBUTION_ORDER_LINE",
+    "PURCHASE_ORDER",
+    "PURCHASE_ORDER_LINE",
+    "INVENTORY"
+  ],
+  "attribute": {
+    "SUPERMARKET": [
+      "supermarket_id",
+      "name",
+      "address",
+      "phone",
+      "email"
+    ],
+    "PRODUCT": [
+      "product_id",
+      "name",
+      "unit_price"
+    ],
+    "DISTRIBUTION_CENTER": [
+      "center_id",
+      "name",
+      "location",
+      "phone"
+    ],
+    "SUPPLY_REQUEST": [
+      "request_id",
+      "supermarket_id",
+      "request_date",
+      "status"
+    ],
+    "SUPPLY_REQUEST_LINE": [
+      "request_id",
+      "product_id",
+      "quantity_requested"
+    ],
+    "DISTRIBUTION_ORDER": [
+      "order_id",
+      "request_id",
+      "center_id",
+      "order_date",
+      "status"
+    ],
+    "DISTRIBUTION_ORDER_LINE": [
+      "order_id",
+      "product_id",
+      "quantity_dispatched",
+      "unit_price"
+    ],
+    "PURCHASE_ORDER": [
+      "purchase_id",
+      "center_id",
+      "purchase_date",
+      "status"
+    ],
+    "PURCHASE_ORDER_LINE": [
+      "purchase_id",
+      "product_id",
+      "quantity_ordered",
+      "unit_price"
+    ],
+    "INVENTORY": [
+      "center_id",
+      "product_id",
+      "quantity_on_hand"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DISTRIBUTION_CENTER",
+      "entity_2": "DISTRIBUTION_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DISTRIBUTION_ORDER",
+      "entity_2": "DISTRIBUTION_ORDER_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PURCHASE_ORDER_LINE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 46.5561,
+  "ilp_runtime": 0.057
+}

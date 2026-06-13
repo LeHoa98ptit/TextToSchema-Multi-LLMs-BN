@@ -1,0 +1,116 @@
+{
+  "filename": "253.txt",
+  "entity": {
+    "USER": 0.622459,
+    "GROUP_CHAT": 0.599744,
+    "CHAT_RECORD": 0.521761,
+    "USER_GROUP_CHAT": 0.578349,
+    "GROUP_CHAT_REQUEST": 0.572755,
+    "ASSOC_USER_GROUP_CHAT": 0.365133
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.516161,
+      "password": 0.52525,
+      "contact_information": 0.543993,
+      "registration_time": 0.530258,
+      "user_id": 0.521991
+    },
+    "GROUP_CHAT": {
+      "group_chat_id": 0.553206,
+      "creator_id": 0.557823,
+      "creation_time": 0.560694,
+      "number_of_members": 0.56206
+    },
+    "CHAT_RECORD": {
+      "sender_id": 0.560489,
+      "receiver_id": 0.557138,
+      "message_time": 0.569609,
+      "message_type": 0.567703,
+      "message_content": 0.572847,
+      "message_read": 0.568127
+    },
+    "USER_GROUP_CHAT": {
+      "user_id": 0.559418,
+      "group_chat_id": 0.555004,
+      "join_time": 0.560036,
+      "leave_time": 0.555049
+    },
+    "GROUP_CHAT_REQUEST": {
+      "user_id": 0.558695,
+      "group_chat_id": 0.554248,
+      "request_time": 0.554171,
+      "request_status": 0.554784
+    },
+    "ASSOC_USER_GROUP_CHAT": {
+      "assoc_user_group_chat_id": 0.365133,
+      "user_id": 0.365133,
+      "group_chat_id": 0.365133
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_GROUP_CHAT",
+      "description": "One USER can be associated with many ASSOC_USER_GROUP_CHAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.365133
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "ASSOC_USER_GROUP_CHAT",
+      "description": "One GROUP_CHAT can be associated with many ASSOC_USER_GROUP_CHAT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.365133
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "description": "A user can send multiple chat records.",
+      "probability": 0.745409
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "CHAT_RECORD",
+      "cardinality": "1:N",
+      "description": "A group chat can have multiple chat records.",
+      "probability": 0.999435
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A user can join multiple group chats.",
+      "probability": 0.971319
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "USER_GROUP_CHAT",
+      "cardinality": "1:N",
+      "description": "A group chat can have multiple users joining it.",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "GROUP_CHAT_REQUEST",
+      "cardinality": "1:N",
+      "description": "A user can send multiple group chat requests.",
+      "probability": 0.23062
+    },
+    {
+      "entity_1": "GROUP_CHAT",
+      "entity_2": "GROUP_CHAT_REQUEST",
+      "cardinality": "1:N",
+      "description": "A group chat can receive multiple group chat requests.",
+      "probability": 0.999981
+    }
+  ],
+  "processing_time": 25.94,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added a new entity GROUP_CHAT_REQUEST to manage user requests to join group chats, and updated relationships to reflect this change."
+  }
+}

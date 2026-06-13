@@ -1,0 +1,177 @@
+{
+  "filename": "346.txt",
+  "entity": {
+    "EXPENSE": 0.817574,
+    "EXPENSE_APPLICATION": 0.768471,
+    "SUPPLIER": 0.817574,
+    "COMPANY": 0.755617,
+    "USER": 0.751084,
+    "ACCOUNT": 0.817574,
+    "ACCOUNTING_CENTER": 0.72037,
+    "EXPENSE_STATUS": 0.757588,
+    "REPORT": 0.717542,
+    "EXPENSE_APPLICATION_LINK": 0.755728,
+    "EXPENSE_REPORT_LINK": 0.756908
+  },
+  "attribute": {
+    "EXPENSE": {
+      "expense_id": 0.768694,
+      "amount": 0.76753,
+      "description": 0.773025,
+      "created_at": 0.760108,
+      "expense_date": 0.770066,
+      "payment_date": 0.764516,
+      "year": 0.767896,
+      "month": 0.765167,
+      "entered_by_user_id": 0.761894,
+      "approved_by_user_id": 0.759378,
+      "supplier_id": 0.772512,
+      "company_id": 0.772482,
+      "account_id": 0.767773,
+      "accounting_center_id": 0.773375,
+      "status_id": 0.762291
+    },
+    "EXPENSE_APPLICATION": {
+      "application_id": 0.766439,
+      "name": 0.77211,
+      "description": 0.780362
+    },
+    "SUPPLIER": {
+      "supplier_id": 0.759015,
+      "name": 0.75387,
+      "tax_id": 0.756831,
+      "address": 0.757895,
+      "phone": 0.74628,
+      "email": 0.757038
+    },
+    "COMPANY": {
+      "company_id": 0.75392,
+      "name": 0.751053,
+      "registration_number": 0.755604,
+      "address": 0.753125
+    },
+    "USER": {
+      "user_id": 0.73581,
+      "username": 0.729273,
+      "full_name": 0.736839,
+      "email": 0.741236,
+      "role_id": 0.740924
+    },
+    "ACCOUNT": {
+      "account_id": 0.750094,
+      "account_number": 0.754066,
+      "account_type": 0.755975,
+      "currency": 0.756121,
+      "balance": 0.764548
+    },
+    "ACCOUNTING_CENTER": {
+      "center_id": 0.766144,
+      "name": 0.764303,
+      "location": 0.763405
+    },
+    "EXPENSE_STATUS": {
+      "status_id": 0.758914,
+      "status_name": 0.763842,
+      "is_paid": 0.763365
+    },
+    "REPORT": {
+      "report_id": 0.754533,
+      "report_name": 0.75705,
+      "generated_at": 0.746715,
+      "period_start": 0.75196,
+      "period_end": 0.753598
+    },
+    "EXPENSE_APPLICATION_LINK": {
+      "expense_id": 0.768998,
+      "application_id": 0.763843
+    },
+    "EXPENSE_REPORT_LINK": {
+      "expense_id": 0.772688,
+      "report_id": 0.770938
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "SUPPLIER",
+      "cardinality": "N:1",
+      "description": "Each expense is paid to a single external supplier",
+      "probability": 0.007623
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "description": "Expense belongs to the company that incurred it",
+      "probability": 0.338098
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "User who entered the expense (entered_by_user_id)",
+      "probability": 0.997019
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "User who approved the expense (approved_by_user_id)",
+      "probability": 0.997019
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "ACCOUNTING_CENTER",
+      "cardinality": "N:1",
+      "description": "Expense is processed by one accounting center",
+      "probability": 0.212584
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "ACCOUNT",
+      "cardinality": "N:1",
+      "description": "Expense is charged to a specific accounting account",
+      "probability": 0.992997
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "EXPENSE_STATUS",
+      "cardinality": "N:1",
+      "description": "Current payment status of the expense",
+      "probability": 0.999571
+    },
+    {
+      "entity_1": "EXPENSE_APPLICATION_LINK",
+      "entity_2": "EXPENSE",
+      "cardinality": "N:1",
+      "description": "Links an expense to one or more applications",
+      "probability": 0.999874
+    },
+    {
+      "entity_1": "EXPENSE_APPLICATION_LINK",
+      "entity_2": "EXPENSE_APPLICATION",
+      "cardinality": "N:1",
+      "description": "Links an application to one or more expenses",
+      "probability": 0.999966
+    },
+    {
+      "entity_1": "EXPENSE_REPORT_LINK",
+      "entity_2": "EXPENSE",
+      "cardinality": "N:1",
+      "description": "Links an expense to one or more generated reports",
+      "probability": 0.981304
+    },
+    {
+      "entity_1": "EXPENSE_REPORT_LINK",
+      "entity_2": "REPORT",
+      "cardinality": "N:1",
+      "description": "Links a report to one or more expenses",
+      "probability": 0.958394
+    }
+  ],
+  "processing_time": 46.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "1. Integrated time attributes directly into EXPENSE (expense_date, payment_date, year, month) and removed the separate TIME_DIMENSION entity to simplify queries. 2. Added entered_by_user_id and approved_by_user_id to capture entry and approval workflow, linking both to USER. 3. Introduced explicit link tables EXPENSE_APPLICATION_LINK and EXPENSE_REPORT_LINK to model the required many‑to‑many associations while keeping core entities clean. 4. Kept N:1 relationships for Supplier, Company, Accounting Center, Account, and Status as appropriate. 5. Preserved all core entities and attributes from the high‑scoring candidate, improving completeness without over‑engineering."
+  }
+}

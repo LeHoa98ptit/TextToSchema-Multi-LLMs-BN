@@ -1,0 +1,138 @@
+{
+  "filename": "307.txt",
+  "entity": {
+    "COMPANY": 0.622459,
+    "USER": 0.622459,
+    "API_KEY": 0.472303,
+    "EMPLOYEE": 0.622459,
+    "SITE": 0.622459,
+    "DEVICE": 0.481109,
+    "ROLE": 0.494975,
+    "ASSOC_USER_ROLE": 0.997459
+  },
+  "attribute": {
+    "COMPANY": {
+      "creation_date": 0.537653,
+      "update_date": 0.531113,
+      "website": 0.540165,
+      "unique_operation": 0.547584
+    },
+    "USER": {
+      "creation_date": 0.522492,
+      "update_date": 0.51131,
+      "username": 0.505367,
+      "email": 0.515534,
+      "password": 0.522601,
+      "login_time": 0.512935
+    },
+    "API_KEY": {
+      "creation_date": 0.521118,
+      "update_date": 0.51779,
+      "key": 0.527196,
+      "private_key": 0.51622,
+      "application_reason": 0.523853,
+      "key_uri": 0.515587
+    },
+    "EMPLOYEE": {
+      "creation_date": 0.545189,
+      "update_date": 0.537744,
+      "position": 0.545248,
+      "salary": 0.537265,
+      "employee_id": 0.551583
+    },
+    "SITE": {
+      "creation_date": 0.513748,
+      "update_date": 0.507215,
+      "hostname": 0.50197,
+      "abbreviation": 0.514265,
+      "database": 0.53272,
+      "deprecate": 0.512087
+    },
+    "DEVICE": {
+      "creation_date": 0.510533,
+      "update_date": 0.502979,
+      "device_id": 0.501368
+    },
+    "ROLE": {
+      "role_name": 0.520053,
+      "description": 0.525076
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.997459,
+      "user_id": 0.997459,
+      "role_id": 0.997459
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A company can have multiple users",
+      "probability": 0.869286
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "API_KEY",
+      "cardinality": "1:N",
+      "description": "A user can have multiple API keys",
+      "probability": 0.997952
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A company can have multiple employees",
+      "probability": 0.828942
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SITE",
+      "cardinality": "1:N",
+      "description": "A user can manage multiple sites",
+      "probability": 0.962345
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEVICE",
+      "cardinality": "1:N",
+      "description": "An employee can manage multiple devices",
+      "probability": 0.242491
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997459
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997459
+    },
+    {
+      "entity_1": "API_KEY",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "An API key is associated with one user",
+      "probability": 0.997952
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "COMPANY",
+      "cardinality": "N:1",
+      "description": "An employee is associated with one company",
+      "probability": 0.828942
+    }
+  ],
+  "processing_time": 36.43,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes and relationships, added a separate ROLE entity to manage user roles, and added more detailed descriptions for each entity and relationship."
+  }
+}

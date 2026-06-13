@@ -1,0 +1,146 @@
+{
+  "filename": "418.txt",
+  "entity": {
+    "USER": 0.622459,
+    "INCOME": 0.622459,
+    "EXPENSE": 0.553173,
+    "TYPE": 0.622459,
+    "ANNOUNCEMENT": 0.517393,
+    "SECURITY_QUESTION": 0.448855,
+    "LOGIN_HISTORY": 0.450884,
+    "PASSWORD_RESET": 0.445591,
+    "ASSOC_USER_ANNOUNCEMENT": 0.980091
+  },
+  "attribute": {
+    "USER": {
+      "gender": 0.535791,
+      "age": 0.518313,
+      "contact": 0.527531,
+      "address": 0.527346,
+      "email": 0.527684,
+      "login": 0.529687,
+      "password": 0.522918,
+      "type": 0.542845,
+      "status": 0.541561,
+      "security_question": 0.536068,
+      "security_answer": 0.528865
+    },
+    "INCOME": {
+      "type": 0.55051,
+      "remark": 0.534165,
+      "time": 0.521567,
+      "status": 0.550285,
+      "income_type": 0.54854
+    },
+    "EXPENSE": {
+      "type": 0.548595,
+      "remark": 0.528806,
+      "time": 0.523294,
+      "status": 0.548707,
+      "expense_type": 0.537133
+    },
+    "TYPE": {
+      "status": 0.541882,
+      "type_name": 0.516936
+    },
+    "ANNOUNCEMENT": {
+      "title": 0.515183,
+      "content": 0.531768,
+      "publication_time": 0.523499,
+      "status": 0.525714,
+      "announcement_type": 0.527408,
+      "category": 0.52871,
+      "tags": 0.512939
+    },
+    "SECURITY_QUESTION": {
+      "question": 0.531154,
+      "answer": 0.532056
+    },
+    "LOGIN_HISTORY": {
+      "login_time": 0.513634,
+      "login_ip": 0.510925,
+      "login_status": 0.523409
+    },
+    "PASSWORD_RESET": {
+      "reset_time": 0.501543,
+      "reset_status": 0.514004
+    },
+    "ASSOC_USER_ANNOUNCEMENT": {
+      "assoc_user_announcement_id": 0.980091,
+      "user_id": 0.980091,
+      "announcement_id": 0.980091
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "INCOME",
+      "cardinality": "1:N",
+      "description": "A user can have multiple incomes",
+      "probability": 0.999219
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "EXPENSE",
+      "cardinality": "1:N",
+      "description": "A user can have multiple expenses",
+      "probability": 0.997115
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One USER can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980091
+    },
+    {
+      "entity_1": "ANNOUNCEMENT",
+      "entity_2": "ASSOC_USER_ANNOUNCEMENT",
+      "description": "One ANNOUNCEMENT can be associated with many ASSOC_USER_ANNOUNCEMENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.980091
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SECURITY_QUESTION",
+      "cardinality": "1:1",
+      "description": "A user has one security question",
+      "probability": 0.978216
+    },
+    {
+      "entity_1": "INCOME",
+      "entity_2": "TYPE",
+      "cardinality": "N:1",
+      "description": "An income is of one type",
+      "probability": 0.872055
+    },
+    {
+      "entity_1": "EXPENSE",
+      "entity_2": "TYPE",
+      "cardinality": "N:1",
+      "description": "An expense is of one type",
+      "probability": 0.012498
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_HISTORY",
+      "cardinality": "1:N",
+      "description": "A user can have multiple login histories",
+      "probability": 0.975851
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "PASSWORD_RESET",
+      "cardinality": "1:N",
+      "description": "A user can have multiple password resets",
+      "probability": 0.999691
+    }
+  ],
+  "processing_time": 21.89,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added separate entities for login history and password reset, and added more attributes to the announcement entity, such as announcement category and tags."
+  }
+}

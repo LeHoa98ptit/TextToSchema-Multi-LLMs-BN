@@ -1,0 +1,81 @@
+{
+  "entity": [
+    "BILLING_METHOD",
+    "TRANSACTION",
+    "TRANSACTION_DETAIL",
+    "DISCOUNT",
+    "REBATE",
+    "PAYMENT"
+  ],
+  "attribute": {
+    "BILLING_METHOD": [
+      "billing method id",
+      "method name",
+      "description"
+    ],
+    "TRANSACTION": [
+      "transaction id",
+      "transaction time",
+      "billing method id",
+      "total amount",
+      "payment id"
+    ],
+    "TRANSACTION_DETAIL": [
+      "transaction detail id",
+      "transaction id",
+      "product id",
+      "quantity",
+      "unit price",
+      "line total"
+    ],
+    "DISCOUNT": [
+      "discount id",
+      "transaction id",
+      "discount type",
+      "discount value",
+      "description"
+    ],
+    "REBATE": [
+      "rebate id",
+      "transaction id",
+      "rebate type",
+      "rebate amount",
+      "description"
+    ],
+    "PAYMENT": [
+      "payment id",
+      "transaction id",
+      "payment method",
+      "amount paid",
+      "payment time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REBATE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 34.567,
+  "ilp_runtime": 0.055
+}

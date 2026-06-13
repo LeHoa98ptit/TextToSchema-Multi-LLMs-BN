@@ -1,0 +1,164 @@
+{
+  "filename": "358.txt",
+  "entity": {
+    "TENANT": 0.817574,
+    "PROCESS_DEFINITION": 0.76904,
+    "PROCESS_INSTANCE": 0.788649,
+    "TASK": 0.817574,
+    "TASK_TYPE": 0.748061,
+    "SCHEDULE": 0.707423,
+    "EXECUTION_INSTANCE": 0.792851,
+    "TASK_EXECUTION": 0.789647,
+    "LOCK_INFO": 0.689397,
+    "EXCEPTION_INFO": 0.676186
+  },
+  "attribute": {
+    "TENANT": {
+      "tenant_id": 0.747792,
+      "name": 0.749564,
+      "description": 0.759629
+    },
+    "PROCESS_DEFINITION": {
+      "process_definition_id": 0.764229,
+      "tenant_id": 0.768129,
+      "name": 0.76375,
+      "version": 0.766587,
+      "description": 0.769794
+    },
+    "PROCESS_INSTANCE": {
+      "process_instance_id": 0.759713,
+      "process_definition_id": 0.763947,
+      "tenant_id": 0.765186,
+      "start_time": 0.7583,
+      "end_time": 0.759891,
+      "status": 0.766671
+    },
+    "TASK": {
+      "task_id": 0.762279,
+      "process_definition_id": 0.773243,
+      "tenant_id": 0.769864,
+      "task_type_id": 0.761904,
+      "name": 0.770422,
+      "description": 0.775052
+    },
+    "TASK_TYPE": {
+      "task_type_id": 0.761607,
+      "name": 0.769688,
+      "description": 0.775826
+    },
+    "SCHEDULE": {
+      "schedule_id": 0.753598,
+      "task_id": 0.764009,
+      "expiration_time": 0.753798,
+      "repeat_interval": 0.754852,
+      "repeat_cron": 0.750317,
+      "processor_config": 0.761145
+    },
+    "EXECUTION_INSTANCE": {
+      "execution_instance_id": 0.752389,
+      "process_instance_id": 0.759368,
+      "tenant_id": 0.756383,
+      "start_time": 0.754414,
+      "end_time": 0.755624,
+      "status": 0.764022
+    },
+    "TASK_EXECUTION": {
+      "task_execution_id": 0.768792,
+      "execution_instance_id": 0.768282,
+      "task_id": 0.767464,
+      "start_time": 0.764512,
+      "end_time": 0.765461,
+      "result": 0.767909,
+      "lock_info_id": 0.770632,
+      "exception_info_id": 0.7711
+    },
+    "LOCK_INFO": {
+      "lock_info_id": 0.749677,
+      "lock_key": 0.746716,
+      "lock_acquired_time": 0.752128,
+      "lock_released_time": 0.753806
+    },
+    "EXCEPTION_INFO": {
+      "exception_info_id": 0.748949,
+      "error_code": 0.747214,
+      "error_message": 0.746303,
+      "stack_trace": 0.745342,
+      "occurred_at": 0.747229
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESS_DEFINITION",
+      "cardinality": "1:N",
+      "probability": 5e-05
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "probability": 0.001607
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "probability": 0.000784
+    },
+    {
+      "entity_1": "TENANT",
+      "entity_2": "EXECUTION_INSTANCE",
+      "cardinality": "1:N",
+      "probability": 0.197394
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "PROCESS_INSTANCE",
+      "cardinality": "1:N",
+      "probability": 0.800395
+    },
+    {
+      "entity_1": "PROCESS_DEFINITION",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "probability": 0.058059
+    },
+    {
+      "entity_1": "TASK_TYPE",
+      "entity_2": "TASK",
+      "cardinality": "1:N",
+      "probability": 0.999929
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "SCHEDULE",
+      "cardinality": "1:1",
+      "probability": 0.859813
+    },
+    {
+      "entity_1": "EXECUTION_INSTANCE",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "probability": 0.991081
+    },
+    {
+      "entity_1": "TASK",
+      "entity_2": "TASK_EXECUTION",
+      "cardinality": "1:N",
+      "probability": 0.999313
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "LOCK_INFO",
+      "cardinality": "1:1",
+      "probability": 0.521728
+    },
+    {
+      "entity_1": "TASK_EXECUTION",
+      "entity_2": "EXCEPTION_INFO",
+      "cardinality": "1:N",
+      "probability": 0.240016
+    }
+  ],
+  "processing_time": 41.8
+}

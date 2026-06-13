@@ -1,0 +1,87 @@
+{
+  "filename": "481.txt",
+  "entity": {
+    "CROP": 0.622459,
+    "SENSOR": 0.622459,
+    "RULE": 0.622459,
+    "MONITORING_DATUM": 0.595657,
+    "ANALYSIS_RESULT": 0.518666,
+    "PREDICTION_RESULT": 0.482832
+  },
+  "attribute": {
+    "CROP": {
+      "crop_type": 0.552635,
+      "description": 0.549119,
+      "growth_stage": 0.55421,
+      "crop_variety": 0.557084,
+      "soil_type": 0.553764
+    },
+    "SENSOR": {
+      "sensor_type": 0.541407,
+      "location": 0.536695,
+      "accuracy": 0.530549
+    },
+    "RULE": {
+      "rule_name": 0.521735,
+      "condition": 0.520192,
+      "action": 0.524917
+    },
+    "MONITORING_DATUM": {
+      "datum_value": 0.550802,
+      "collection_time": 0.553015,
+      "sensor_id": 0.556477
+    },
+    "ANALYSIS_RESULT": {
+      "result_value": 0.510561,
+      "analysis_time": 0.520498,
+      "rule_id": 0.523376
+    },
+    "PREDICTION_RESULT": {
+      "prediction_value": 0.505756,
+      "prediction_time": 0.507467,
+      "analysis_id": 0.516201
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CROP",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "description": "A crop can have multiple monitoring data",
+      "probability": 0.009337
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "description": "A sensor can collect multiple monitoring data",
+      "probability": 0.002112
+    },
+    {
+      "entity_1": "RULE",
+      "entity_2": "MONITORING_DATUM",
+      "cardinality": "1:N",
+      "description": "A rule can be applied to multiple monitoring data",
+      "probability": 0.000733
+    },
+    {
+      "entity_1": "MONITORING_DATUM",
+      "entity_2": "ANALYSIS_RESULT",
+      "cardinality": "1:N",
+      "description": "A monitoring datum can have multiple analysis results",
+      "probability": 0.00091
+    },
+    {
+      "entity_1": "ANALYSIS_RESULT",
+      "entity_2": "PREDICTION_RESULT",
+      "cardinality": "1:N",
+      "description": "An analysis result can have multiple prediction results",
+      "probability": 0.986493
+    }
+  ],
+  "processing_time": 9.36,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added crop_variety and soil_type attributes to the CROP entity to provide more detailed information about the crops being monitored, as suggested in the evaluation."
+  }
+}

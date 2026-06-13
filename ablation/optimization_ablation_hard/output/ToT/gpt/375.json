@@ -1,0 +1,218 @@
+{
+  "entity": [
+    "DEVICE",
+    "DEVICE_TYPE",
+    "DEVICE_STATUS",
+    "USER",
+    "STAFF",
+    "TRAFFIC",
+    "TRAFFIC_STATUS",
+    "FAILURE",
+    "FAILURE_TYPE",
+    "FAILURE_HANDLE_STATUS",
+    "MAINTENANCE",
+    "CONNECTION",
+    "CONNECTION_STATUS",
+    "FAILURE_ASSIGNMENT"
+  ],
+  "attribute": {
+    "DEVICE": [
+      "device_id",
+      "device_type_id",
+      "device_status_id",
+      "ip_address",
+      "installation_location",
+      "installation_time",
+      "firmware_version",
+      "created_at",
+      "updated_at"
+    ],
+    "DEVICE_TYPE": [
+      "type_id",
+      "type_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "DEVICE_STATUS": [
+      "status_id",
+      "status_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "password_hash",
+      "email",
+      "role",
+      "created_at",
+      "updated_at"
+    ],
+    "STAFF": [
+      "staff_id",
+      "name",
+      "email",
+      "phone",
+      "department",
+      "created_at",
+      "updated_at"
+    ],
+    "TRAFFIC": [
+      "traffic_id",
+      "device_id",
+      "recorded_at",
+      "upload_bytes",
+      "download_bytes",
+      "total_bytes",
+      "traffic_status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "TRAFFIC_STATUS": [
+      "status_id",
+      "status_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "FAILURE": [
+      "failure_id",
+      "device_id",
+      "failure_type_id",
+      "occurrence_time",
+      "description",
+      "handle_status_id",
+      "resolution_time",
+      "remark",
+      "created_at",
+      "updated_at"
+    ],
+    "FAILURE_TYPE": [
+      "failure_type_id",
+      "name",
+      "severity_level",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "FAILURE_HANDLE_STATUS": [
+      "status_id",
+      "status_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "MAINTENANCE": [
+      "maintenance_id",
+      "device_id",
+      "staff_id",
+      "maintenance_start",
+      "maintenance_end",
+      "activity_detail",
+      "result",
+      "remark",
+      "created_at",
+      "updated_at"
+    ],
+    "CONNECTION": [
+      "connection_id",
+      "user_id",
+      "device_id",
+      "connect_time",
+      "disconnect_time",
+      "bandwidth_used",
+      "user_ip",
+      "connection_status_id",
+      "created_at",
+      "updated_at"
+    ],
+    "CONNECTION_STATUS": [
+      "status_id",
+      "status_name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "FAILURE_ASSIGNMENT": [
+      "assignment_id",
+      "failure_id",
+      "staff_id",
+      "assigned_at",
+      "role",
+      "created_at",
+      "updated_at"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "DEVICE_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TRAFFIC",
+      "entity_2": "TRAFFIC_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FAILURE",
+      "entity_2": "FAILURE_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FAILURE",
+      "entity_2": "FAILURE_HANDLE_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEVICE",
+      "entity_2": "CONNECTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONNECTION",
+      "entity_2": "CONNECTION_STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "FAILURE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FAILURE",
+      "entity_2": "FAILURE_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 127.3472,
+  "ilp_runtime": 0.063
+}

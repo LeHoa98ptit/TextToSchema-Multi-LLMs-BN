@@ -1,0 +1,210 @@
+{
+  "filename": "352.txt",
+  "entity": {
+    "SUPPLIER": 0.622459,
+    "CUSTOMER": 0.622459,
+    "ADDRESS": 0.488177,
+    "SUPPLIER_ADDRESS": 0.552703,
+    "CUSTOMER_ADDRESS": 0.533525,
+    "PRODUCT": 0.622459,
+    "PRODUCT_CATEGORY": 0.486204,
+    "SUPPLIER_PRODUCT": 0.573122,
+    "INVOICE": 0.622459,
+    "INVOICE_LINE": 0.555866,
+    "TAX_RATE": 0.428763,
+    "INVOICE_STATUS": 0.555446,
+    "ASSOC_SUPPLIER_PRODUCT": 0.03944
+  },
+  "attribute": {
+    "SUPPLIER": {
+      "supplier_id": 0.542238,
+      "name": 0.538469,
+      "phone": 0.536417,
+      "created_at": 0.528024,
+      "updated_at": 0.527376
+    },
+    "CUSTOMER": {
+      "customer_id": 0.527878,
+      "name": 0.533931,
+      "phone": 0.527905,
+      "email": 0.535838,
+      "created_at": 0.516608,
+      "updated_at": 0.514514
+    },
+    "ADDRESS": {
+      "address_id": 0.507823,
+      "street": 0.515509,
+      "city": 0.512844,
+      "state": 0.51332,
+      "zip": 0.513284,
+      "country": 0.50523
+    },
+    "SUPPLIER_ADDRESS": {
+      "supplier_id": 0.541928,
+      "address_id": 0.536655
+    },
+    "CUSTOMER_ADDRESS": {
+      "customer_id": 0.524118,
+      "address_id": 0.519608
+    },
+    "PRODUCT": {
+      "product_id": 0.518168,
+      "description": 0.53148,
+      "purchase_price": 0.53039,
+      "sell_price": 0.52466,
+      "inventory_qty": 0.553155,
+      "min_inventory_qty": 0.545879,
+      "category_id": 0.515409,
+      "created_at": 0.509386,
+      "updated_at": 0.511279
+    },
+    "PRODUCT_CATEGORY": {
+      "category_id": 0.514409,
+      "name": 0.524019,
+      "description": 0.538397
+    },
+    "SUPPLIER_PRODUCT": {
+      "supplier_id": 0.543295,
+      "product_id": 0.537128
+    },
+    "INVOICE": {
+      "invoice_id": 0.541206,
+      "invoice_date": 0.535107,
+      "tax_rate_id": 0.53922,
+      "total_amount": 0.542576,
+      "status_id": 0.536857,
+      "customer_id": 0.549104,
+      "created_at": 0.531227,
+      "updated_at": 0.530015
+    },
+    "INVOICE_LINE": {
+      "invoice_id": 0.543153,
+      "product_id": 0.54811,
+      "quantity": 0.559269,
+      "unit_price": 0.542948,
+      "line_total": 0.545761
+    },
+    "TAX_RATE": {
+      "tax_rate_id": 0.511986,
+      "rate": 0.50577,
+      "description": 0.515631
+    },
+    "INVOICE_STATUS": {
+      "status_id": 0.532922,
+      "name": 0.544403,
+      "description": 0.553077
+    },
+    "ASSOC_SUPPLIER_PRODUCT": {
+      "assoc_supplier_product_id": 0.03944,
+      "supplier_id": 0.03944,
+      "product_id": 0.03944
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_ADDRESS",
+      "cardinality": "1:N",
+      "description": "A supplier can have one or more addresses",
+      "probability": 0.999939
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "SUPPLIER_ADDRESS",
+      "cardinality": "1:N",
+      "description": "An address can be linked to multiple suppliers (if shared) or remain unique",
+      "probability": 0.993129
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_ADDRESS",
+      "cardinality": "1:N",
+      "description": "A customer can have one or more addresses",
+      "probability": 0.998291
+    },
+    {
+      "entity_1": "ADDRESS",
+      "entity_2": "CUSTOMER_ADDRESS",
+      "cardinality": "1:N",
+      "description": "An address can be linked to multiple customers (if shared) or remain unique",
+      "probability": 0.998329
+    },
+    {
+      "entity_1": "PRODUCT_CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "Each product belongs to one category; a category can contain many products",
+      "probability": 0.18761
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER_PRODUCT",
+      "cardinality": "1:N",
+      "description": "Link table for many‑to‑many relationship between suppliers and products",
+      "probability": 0.999989
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLIER_PRODUCT",
+      "cardinality": "1:N",
+      "description": "Link table for many‑to‑many relationship between products and suppliers",
+      "probability": 0.998733
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_SUPPLIER_PRODUCT",
+      "description": "One SUPPLIER can be associated with many ASSOC_SUPPLIER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.03944
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ASSOC_SUPPLIER_PRODUCT",
+      "description": "One PRODUCT can be associated with many ASSOC_SUPPLIER_PRODUCT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.03944
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "description": "A customer can have multiple invoices",
+      "probability": 0.57223
+    },
+    {
+      "entity_1": "TAX_RATE",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "description": "Each invoice uses one tax rate; a tax rate can be applied to many invoices",
+      "probability": 0.030219
+    },
+    {
+      "entity_1": "INVOICE_STATUS",
+      "entity_2": "INVOICE",
+      "cardinality": "1:N",
+      "description": "Each invoice has one status; a status can be assigned to many invoices",
+      "probability": 0.993852
+    },
+    {
+      "entity_1": "INVOICE",
+      "entity_2": "INVOICE_LINE",
+      "cardinality": "1:N",
+      "description": "An invoice contains multiple line items",
+      "probability": 0.956177
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVOICE_LINE",
+      "cardinality": "1:N",
+      "description": "A product can appear on many invoice lines",
+      "probability": 0.536127
+    }
+  ],
+  "processing_time": 46.71,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Extracted ADDRESS into a separate entity with linking tables for suppliers and customers, added timestamps (created_at, updated_at) for auditability, introduced lookup tables for product categories, tax rates, and invoice status, replaced the single supplier_id foreign key with a many‑to‑many SUPPLIER_PRODUCT junction to allow multiple suppliers per product, and documented integrity considerations (e.g., inventory_qty >= 0) while preserving the original simple, normalized core structure."
+  }
+}

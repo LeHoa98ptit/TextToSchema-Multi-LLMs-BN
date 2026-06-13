@@ -1,0 +1,94 @@
+{
+  "filename": "274.txt",
+  "entity": {
+    "USER": 0.622459,
+    "FEEDBACK": 0.622459,
+    "EMPLOYEE": 0.490626,
+    "COMPANY": 0.513772,
+    "PROCESSING": 0.622459,
+    "STATUS_LOOKUP": 0.518941
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.516216,
+      "username": 0.510664,
+      "contact_number": 0.526128,
+      "email": 0.535176,
+      "registered_date": 0.510929
+    },
+    "FEEDBACK": {
+      "feedback_id": 0.554686,
+      "user_id": 0.551985,
+      "content": 0.564015,
+      "feedback_time": 0.55704
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.522022,
+      "name": 0.531877,
+      "contact_number": 0.529682,
+      "work_status": 0.535382,
+      "company_id": 0.521631
+    },
+    "COMPANY": {
+      "company_id": 0.517131,
+      "company_name": 0.520496,
+      "address": 0.521507,
+      "contact_number": 0.525868
+    },
+    "PROCESSING": {
+      "processing_id": 0.530953,
+      "feedback_id": 0.555357,
+      "employee_id": 0.532597,
+      "processing_time": 0.533306,
+      "processing_result": 0.537091,
+      "status_id": 0.531177
+    },
+    "STATUS_LOOKUP": {
+      "status_id": 0.523178,
+      "status_name": 0.526021,
+      "description": 0.538738
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "FEEDBACK",
+      "cardinality": "1:N",
+      "description": "Each user may submit multiple feedback records",
+      "probability": 0.992182
+    },
+    {
+      "entity_1": "FEEDBACK",
+      "entity_2": "PROCESSING",
+      "cardinality": "1:N",
+      "description": "A feedback item can have one or more processing records (audit trail of re‑processing)",
+      "probability": 0.116046
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PROCESSING",
+      "cardinality": "1:N",
+      "description": "An employee can process many feedback items",
+      "probability": 0.828343
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "A company employs multiple customer service representatives",
+      "probability": 0.480615
+    },
+    {
+      "entity_1": "STATUS_LOOKUP",
+      "entity_2": "PROCESSING",
+      "cardinality": "1:N",
+      "description": "Each processing record references a single status from the lookup table",
+      "probability": 0.860259
+    }
+  ],
+  "processing_time": 18.75,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Changed FEEDBACK‑PROCESSING relationship to 1:N to support multiple handling steps and audit trails. Introduced STATUS_LOOKUP entity to enforce consistent processing status values via a foreign key. Retained all original entities and attributes, preserving normalization and completeness. Updated PROCESSING attributes to reference status_id instead of a free‑text status field."
+  }
+}

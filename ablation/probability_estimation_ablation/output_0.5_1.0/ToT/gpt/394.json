@@ -1,0 +1,128 @@
+{
+  "filename": "394.txt",
+  "entity": {
+    "USER": 0.817574,
+    "ADMINISTRATOR": 0.817574,
+    "ADDRESS": 0.719665,
+    "MENU": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "LOGIN_RECORD": 0.748532
+  },
+  "attribute": {
+    "USER": {
+      "userid": 0.750866,
+      "username": 0.736808,
+      "password": 0.754316,
+      "phone": 0.748098,
+      "registration_time": 0.752244,
+      "last_login_time": 0.748131
+    },
+    "ADMINISTRATOR": {
+      "adminid": 0.762657,
+      "admin_username": 0.757486,
+      "admin_password": 0.756128,
+      "last_login_ip": 0.749891,
+      "last_login_time": 0.7514
+    },
+    "ADDRESS": {
+      "address_id": 0.745351,
+      "user_id": 0.749497,
+      "street": 0.741721,
+      "city": 0.742159,
+      "state": 0.743091,
+      "zip_code": 0.73573,
+      "country": 0.739603
+    },
+    "MENU": {
+      "menuid": 0.755289,
+      "dish_name": 0.764836,
+      "price": 0.754528,
+      "image_url": 0.738173,
+      "description": 0.767601,
+      "category": 0.760403,
+      "available": 0.765361,
+      "stock_quantity": 0.755508
+    },
+    "ORDER": {
+      "orderid": 0.763372,
+      "user_id": 0.762564,
+      "order_status": 0.756959,
+      "creation_time": 0.757124,
+      "order_remark": 0.753556,
+      "modification_time": 0.752673,
+      "total_price": 0.753038
+    },
+    "ORDER_ITEM": {
+      "order_item_id": 0.755367,
+      "order_id": 0.757082,
+      "menu_id": 0.760746,
+      "quantity": 0.764243,
+      "price": 0.754963
+    },
+    "LOGIN_RECORD": {
+      "login_id": 0.746705,
+      "user_id": 0.751311,
+      "admin_id": 0.756946,
+      "login_time": 0.748244,
+      "login_ip": 0.749108,
+      "login_type": 0.746435
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ADDRESS",
+      "cardinality": "1:N",
+      "description": "A user can have multiple addresses",
+      "probability": 0.9125
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A user may place multiple orders",
+      "probability": 0.998865
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "Each order contains one or more order items",
+      "probability": 0.999936
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "MENU",
+      "cardinality": "N:1",
+      "description": "Order items reference a single menu dish",
+      "probability": 0.937076
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "description": "Administrators manage the menu entries",
+      "probability": 0.248037
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "LOGIN_RECORD",
+      "cardinality": "1:N",
+      "description": "User login attempts are recorded",
+      "probability": 0.99981
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "LOGIN_RECORD",
+      "cardinality": "1:N",
+      "description": "Administrator login attempts are recorded",
+      "probability": 0.001921
+    }
+  ],
+  "processing_time": 27.05,
+  "metadata": {
+    "best_candidate": "candidate_3",
+    "improvements_made": "Added LOGIN_RECORD entity for audit of user and admin logins, introduced ADDRESS entity to normalize user addresses and support multiple addresses per user, extended MENU with 'available' flag and 'stock_quantity' for dish availability, retained the essential ORDER_ITEM associative entity for line‑item details, and clarified all foreign‑key relationships with appropriate cardinalities."
+  }
+}

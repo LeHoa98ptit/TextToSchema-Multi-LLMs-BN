@@ -1,0 +1,109 @@
+{
+  "filename": "474.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "INSTRUCTOR": 0.622459,
+    "COURSE": 0.468691,
+    "ASSIGNMENT": 0.622459,
+    "SUBMISSION": 0.589742,
+    "GRADE": 0.622459,
+    "EVALUATION": 0.622459
+  },
+  "attribute": {
+    "STUDENT": {
+      "student id": 0.553103,
+      "class": 0.55256
+    },
+    "INSTRUCTOR": {
+      "instructor id": 0.556504,
+      "course id": 0.563266
+    },
+    "COURSE": {
+      "course id": 0.547108,
+      "course name": 0.552799
+    },
+    "ASSIGNMENT": {
+      "assignment id": 0.557526,
+      "course id": 0.571375,
+      "title": 0.5548
+    },
+    "SUBMISSION": {
+      "submission id": 0.52619,
+      "student id": 0.555093,
+      "assignment id": 0.552733,
+      "submitted at": 0.533687,
+      "file path": 0.517168
+    },
+    "GRADE": {
+      "grade id": 0.549476,
+      "submission id": 0.561987,
+      "score": 0.552897,
+      "grade letter": 0.543414
+    },
+    "EVALUATION": {
+      "evaluation id": 0.527203,
+      "grade id": 0.554391,
+      "comments": 0.517328,
+      "overall score": 0.538657
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COURSE",
+      "entity_2": "STUDENT",
+      "description": "Each student is enrolled in exactly one course, while a course can have many students.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.040201
+    },
+    {
+      "entity_1": "INSTRUCTOR",
+      "entity_2": "COURSE",
+      "description": "Each course is taught by one instructor, and an instructor can teach multiple courses.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.653667
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSIGNMENT",
+      "description": "Each assignment belongs to one course, and a course can have many assignments.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.120452
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "SUBMISSION",
+      "description": "A student can make many submissions, each submission is made by exactly one student.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.013973
+    },
+    {
+      "entity_1": "ASSIGNMENT",
+      "entity_2": "SUBMISSION",
+      "description": "An assignment can have many submissions, each submission relates to one assignment.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.07956
+    },
+    {
+      "entity_1": "SUBMISSION",
+      "entity_2": "GRADE",
+      "description": "Each submission receives exactly one grade, and each grade corresponds to one submission.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.024921
+    },
+    {
+      "entity_1": "GRADE",
+      "entity_2": "EVALUATION",
+      "description": "Each grade has one evaluation record, and each evaluation is linked to a single grade.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.267038
+    }
+  ],
+  "processing_time": 3.28
+}

@@ -1,0 +1,128 @@
+{
+  "filename": "485.txt",
+  "entity": {
+    "PROTECTION_AREA": 0.58829,
+    "SPECIE": 0.622459,
+    "PERSONNEL": 0.463291,
+    "SENSOR": 0.47031,
+    "RECORD": 0.622459,
+    "ENVIRONMENTAL_CHANGE": 0.513197,
+    "ASSOC_PERSONNEL_PROTECTION_AREA": 0.017792
+  },
+  "attribute": {
+    "PROTECTION_AREA": {
+      "location": 0.545279,
+      "charge": 0.537969,
+      "size": 0.53193,
+      "type": 0.544076
+    },
+    "SPECIE": {
+      "quantity": 0.507826,
+      "growth_status": 0.515006,
+      "type": 0.507403,
+      "habitat": 0.529898
+    },
+    "PERSONNEL": {
+      "name": 0.52593,
+      "role": 0.529278,
+      "contact_info": 0.530617,
+      "expertise": 0.528906
+    },
+    "SENSOR": {
+      "type": 0.533031,
+      "location": 0.531261,
+      "accuracy": 0.520407,
+      "maintenance_schedule": 0.537571
+    },
+    "RECORD": {
+      "recording_time": 0.535568,
+      "recording_personnel": 0.549262,
+      "specie_quantity": 0.532198,
+      "flora_fauna": 0.564842
+    },
+    "ENVIRONMENTAL_CHANGE": {
+      "time": 0.533786,
+      "location": 0.542875,
+      "temperature": 0.528866,
+      "humidity": 0.535177,
+      "rainfall": 0.532032
+    },
+    "ASSOC_PERSONNEL_PROTECTION_AREA": {
+      "assoc_personnel_protection_area_id": 0.017792,
+      "personnel_id": 0.017792,
+      "protection_area_id": 0.017792
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "SPECIE",
+      "cardinality": "1:N",
+      "description": "A protection area can have multiple species",
+      "probability": 0.060735
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_PROTECTION_AREA",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_PROTECTION_AREA.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.017792
+    },
+    {
+      "entity_1": "PROTECTION_AREA",
+      "entity_2": "ASSOC_PERSONNEL_PROTECTION_AREA",
+      "description": "One PROTECTION_AREA can be associated with many ASSOC_PERSONNEL_PROTECTION_AREA.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.017792
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "1:N",
+      "description": "A sensor can be used to monitor multiple protection areas",
+      "probability": 0.989397
+    },
+    {
+      "entity_1": "RECORD",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "description": "A record is associated with one protection area",
+      "probability": 0.959812
+    },
+    {
+      "entity_1": "RECORD",
+      "entity_2": "PERSONNEL",
+      "cardinality": "N:1",
+      "description": "A record is made by one personnel",
+      "probability": 0.999021
+    },
+    {
+      "entity_1": "ENVIRONMENTAL_CHANGE",
+      "entity_2": "PROTECTION_AREA",
+      "cardinality": "N:1",
+      "description": "An environmental change is associated with one protection area",
+      "probability": 0.610141
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "ENVIRONMENTAL_CHANGE",
+      "cardinality": "1:N",
+      "description": "A sensor can record multiple environmental changes",
+      "probability": 0.311879
+    },
+    {
+      "entity_1": "SENSOR",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "description": "A sensor can be used to make multiple records",
+      "probability": 0.572572
+    }
+  ],
+  "processing_time": 12.94,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant information, added a relationship between SENSOR and RECORD to improve data consistency and accuracy."
+  }
+}

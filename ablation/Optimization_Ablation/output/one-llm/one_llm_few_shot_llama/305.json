@@ -1,0 +1,74 @@
+{
+  "entity": [
+    "USER",
+    "POST",
+    "NOTIFICATION",
+    "FOLLOW_RELATIONSHIP",
+    "ASSOC_USER_FOLLOW_RELATIONSHIP"
+  ],
+  "attribute": {
+    "USER": [
+      "account_d",
+      "email",
+      "password",
+      "verification_status",
+      "account_status"
+    ],
+    "POST": [
+      "post_d",
+      "publisher_account_d",
+      "content",
+      "publish_time",
+      "attachment_link"
+    ],
+    "NOTIFICATION": [
+      "notification_type",
+      "recipient_account_d",
+      "related_post",
+      "user_notification_time"
+    ],
+    "FOLLOW_RELATIONSHIP": [
+      "follower_account_d",
+      "followee_account_d"
+    ],
+    "ASSOC_USER_FOLLOW_RELATIONSHIP": [
+      "assoc_user_follow_relationship_id",
+      "user_id",
+      "follow_relationship_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FOLLOW_RELATIONSHIP",
+      "entity_2": "ASSOC_USER_FOLLOW_RELATIONSHIP",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "NOTIFICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 27.1836,
+  "ilp_runtime": 0.065
+}

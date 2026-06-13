@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "MALL",
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "DEPT_MANAGER",
+    "EMP_DEPT_ASSIGNMENT"
+  ],
+  "attribute": {
+    "MALL": [
+      "mall_id",
+      "mall_name",
+      "address",
+      "contact_number"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "department_name",
+      "location",
+      "distribution",
+      "contact_number",
+      "mall_id"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "full_name",
+      "position",
+      "phone_number",
+      "salary",
+      "hire_date"
+    ],
+    "DEPT_MANAGER": [
+      "department_id",
+      "manager_employee_id",
+      "effective_from",
+      "effective_to"
+    ],
+    "EMP_DEPT_ASSIGNMENT": [
+      "employee_id",
+      "department_id",
+      "start_date",
+      "end_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MALL",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMP_DEPT_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMP_DEPT_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "DEPT_MANAGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPT_MANAGER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 36.9928,
+  "ilp_runtime": 0.088
+}

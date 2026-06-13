@@ -1,0 +1,121 @@
+{
+  "filename": "466.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "STAFF": 0.817574,
+    "RESTAURANT": 0.757147,
+    "MENU": 0.817574,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "DELIVERY_LOCATION": 0.764966
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer_id": 0.753458,
+      "first_name": 0.759661,
+      "last_name": 0.754276,
+      "contact_number": 0.74852,
+      "email": 0.757282,
+      "address": 0.756766,
+      "preferred_payment_method": 0.752033
+    },
+    "STAFF": {
+      "staff_id": 0.759058,
+      "first_name": 0.76077,
+      "last_name": 0.757244,
+      "contact_number": 0.755948,
+      "email": 0.761022,
+      "position": 0.767878,
+      "hire_date": 0.750908
+    },
+    "RESTAURANT": {
+      "restaurant_id": 0.767537,
+      "name": 0.772299,
+      "address": 0.771548,
+      "phone": 0.774354,
+      "opening_hours": 0.766991
+    },
+    "MENU": {
+      "menu_id": 0.74708,
+      "dish_name": 0.760354,
+      "description": 0.764767,
+      "price": 0.752628,
+      "category": 0.760148,
+      "is_available": 0.748162,
+      "restaurant_id": 0.768983
+    },
+    "ORDER": {
+      "order_id": 0.748695,
+      "order_date": 0.747835,
+      "delivery_time": 0.749422,
+      "order_status": 0.747548,
+      "total_amount": 0.751932,
+      "payment_method": 0.750465,
+      "delivery_location_id": 0.74351,
+      "customer_id": 0.757529,
+      "staff_id": 0.763967
+    },
+    "ORDER_ITEM": {
+      "order_id": 0.751262,
+      "menu_id": 0.75523,
+      "quantity": 0.764414,
+      "unit_price": 0.75328
+    },
+    "DELIVERY_LOCATION": {
+      "location_id": 0.741585,
+      "address": 0.749123,
+      "floor": 0.755978,
+      "building": 0.754523,
+      "notes": 0.757191
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each customer can place multiple orders",
+      "probability": 0.963655
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "Each staff member can process many orders",
+      "probability": 0.179763
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order consists of multiple order items",
+      "probability": 0.999938
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "MENU",
+      "cardinality": "N:1",
+      "description": "Each order item references one menu dish",
+      "probability": 0.963893
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY_LOCATION",
+      "cardinality": "N:1",
+      "description": "Orders are delivered to a specific location",
+      "probability": 2.8e-05
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "MENU",
+      "cardinality": "1:N",
+      "description": "A restaurant offers many menu dishes",
+      "probability": 0.577995
+    }
+  ],
+  "processing_time": 12.5,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented a composite primary key (order_id, menu_id) for ORDER_ITEM, removed the surrogate order_item_id and the derived item_price attribute, added unit_price to capture price at order time, aligned attribute naming across entities, and retained all entities and relationships from the high‑scoring candidate while ensuring better normalization and preparation for integrity constraints."
+  }
+}

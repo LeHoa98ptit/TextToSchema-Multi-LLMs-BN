@@ -1,0 +1,106 @@
+{
+  "filename": "470.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "MENU": 0.463838,
+    "ORDER": 0.622459,
+    "ORDER_ITEM": 0.523807,
+    "DELIVERY_PERSON": 0.558752,
+    "DELIVERY": 0.622459,
+    "PAYMENT_REQUEST": 0.593825
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.537213,
+      "full_name": 0.537672,
+      "phone_number": 0.543181,
+      "address": 0.550269
+    },
+    "MENU": {
+      "menu_id": 0.517037,
+      "dish_name": 0.533897,
+      "price": 0.524178,
+      "special_offer_indicator": 0.531385
+    },
+    "ORDER": {
+      "order_id": 0.530947,
+      "employee_id": 0.545983,
+      "total_price": 0.523794,
+      "delivery_time": 0.535004,
+      "delivery_address": 0.543545,
+      "payment_method": 0.52986,
+      "order_date": 0.52581
+    },
+    "ORDER_ITEM": {
+      "order_id": 0.532673,
+      "menu_id": 0.53434,
+      "quantity": 0.550494,
+      "item_price": 0.529403
+    },
+    "DELIVERY_PERSON": {
+      "delivery_person_id": 0.535952,
+      "full_name": 0.534159,
+      "phone_number": 0.537188,
+      "address": 0.542763
+    },
+    "DELIVERY": {
+      "delivery_id": 0.534421,
+      "order_id": 0.538376,
+      "delivery_time": 0.532467,
+      "delivery_person_id": 0.534872,
+      "delivery_address": 0.53799
+    },
+    "PAYMENT_REQUEST": {
+      "payment_request_id": 0.530492,
+      "order_id": 0.538609,
+      "employee_id": 0.547321,
+      "payment_status": 0.531661,
+      "request_date": 0.528532
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "probability": 0.0002
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.999847
+    },
+    {
+      "entity_1": "MENU",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "probability": 0.878727
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "probability": 0.006095
+    },
+    {
+      "entity_1": "DELIVERY_PERSON",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:N",
+      "probability": 0.992165
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:1",
+      "probability": 0.099258
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:N",
+      "probability": 0.050807
+    }
+  ],
+  "processing_time": 14.49
+}

@@ -1,0 +1,79 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "FLIGHT",
+    "BOOKING",
+    "ORDER",
+    "ASSOC_CUSTOMER_ORDER"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer_id",
+      "name",
+      "gender",
+      "contact_information",
+      "customer_type"
+    ],
+    "FLIGHT": [
+      "flight_id",
+      "flight_date",
+      "airline",
+      "departure_location",
+      "departure_time",
+      "destination",
+      "arrival_time"
+    ],
+    "BOOKING": [
+      "booking_id",
+      "booking_date",
+      "check_in_time",
+      "check_out_time",
+      "discount_rate"
+    ],
+    "ORDER": [
+      "order_id",
+      "order_date",
+      "ticket_order_number",
+      "discount_rate"
+    ],
+    "ASSOC_CUSTOMER_ORDER": [
+      "assoc_customer_order_id",
+      "customer_id",
+      "order_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "FLIGHT",
+      "entity_2": "BOOKING",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ASSOC_CUSTOMER_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ASSOC_CUSTOMER_ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 37.6951,
+  "ilp_runtime": 0.083
+}

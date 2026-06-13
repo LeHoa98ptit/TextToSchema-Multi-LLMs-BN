@@ -1,0 +1,77 @@
+{
+  "filename": "483.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PAYMENT_PLATFORM": 0.753766,
+    "INTERMEDIARY": 0.817574,
+    "OPERATION": 0.817574,
+    "USER_PAYMENT_OPERATION": 0.789863
+  },
+  "attribute": {
+    "PAYMENT_PLATFORM": {
+      "platform id": 0.777116,
+      "platform name": 0.777403,
+      "platform address": 0.773404
+    },
+    "USER": {
+      "user id": 0.744009,
+      "name": 0.737932,
+      "contact information": 0.758771,
+      "registration method": 0.755878
+    },
+    "INTERMEDIARY": {
+      "intermediary id": 0.764044,
+      "intermediary name": 0.763101,
+      "intermediary status": 0.768412,
+      "operation id": 0.768947
+    },
+    "OPERATION": {
+      "operation id": 0.756091,
+      "operation type": 0.757617,
+      "operation amount": 0.762879,
+      "operation time": 0.753829,
+      "platform id": 0.764601
+    },
+    "USER_PAYMENT_OPERATION": {
+      "operation id": 0.778933,
+      "user id": 0.774213,
+      "payment status": 0.780954,
+      "payment time": 0.774221
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PAYMENT_PLATFORM",
+      "entity_2": "OPERATION",
+      "description": "Each payment platform can include multiple operations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.206601
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "A user can participate in multiple payment operations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999951
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "USER_PAYMENT_OPERATION",
+      "description": "Each operation may be associated with multiple user payment operations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.98989
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "INTERMEDIARY",
+      "description": "Each operation may contain multiple intermediaries.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.238012
+    }
+  ],
+  "processing_time": 19.39
+}

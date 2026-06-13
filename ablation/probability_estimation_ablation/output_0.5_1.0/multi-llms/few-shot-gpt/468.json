@@ -1,0 +1,75 @@
+{
+  "filename": "468.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "CREDIT_CARD_APPLICATION": 0.768026,
+    "CREDIT_CARD": 0.800305,
+    "TRANSACTION": 0.817574
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.756026
+    },
+    "CREDIT_CARD_APPLICATION": {
+      "application id": 0.774832,
+      "customer id": 0.776355,
+      "applicant id": 0.777176,
+      "submission time": 0.77608,
+      "application result": 0.784426,
+      "card type requested": 0.781348,
+      "creation time": 0.774263,
+      "update time": 0.771518
+    },
+    "CREDIT_CARD": {
+      "card number": 0.770216,
+      "customer id": 0.770096,
+      "card type": 0.773777,
+      "validity period": 0.763324,
+      "credit limit": 0.766674,
+      "creation time": 0.769829,
+      "update time": 0.766882
+    },
+    "TRANSACTION": {
+      "transaction id": 0.761311,
+      "customer id": 0.76744,
+      "transaction time": 0.761363,
+      "transaction type": 0.770522,
+      "transaction description": 0.772813
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD_APPLICATION",
+      "description": "A customer can submit multiple credit card applications, each application is linked to exactly one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.947049
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "description": "A customer may be issued multiple credit cards over time, each credit card belongs to exactly one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.597421
+    },
+    {
+      "entity_1": "CREDIT_CARD_APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "description": "Each approved credit card application results in exactly one credit card, and each credit card originates from a single application.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999975
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "TRANSACTION",
+      "description": "A customer can perform many transactions, each transaction is associated with exactly one customer.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996923
+    }
+  ],
+  "processing_time": 19.05
+}

@@ -1,0 +1,120 @@
+{
+  "filename": "332.txt",
+  "entity": {
+    "ALBUM": 0.817574,
+    "ARTIST": 0.817574,
+    "SONG": 0.817574,
+    "VIDEO": 0.735381,
+    "PLAYLIST": 0.817574,
+    "USER": 0.817574,
+    "ASSOC_ALBUM_ARTIST": 0.798694,
+    "ASSOC_PLAYLIST_SONG": 0.988891
+  },
+  "attribute": {
+    "ALBUM": {
+      "album_id": 0.770811,
+      "release_date": 0.764576,
+      "description": 0.772748
+    },
+    "ARTIST": {
+      "artist_id": 0.756693,
+      "name": 0.757848,
+      "bio": 0.744675
+    },
+    "SONG": {
+      "song_id": 0.761265,
+      "title": 0.754532,
+      "duration": 0.764684,
+      "popularity": 0.767042
+    },
+    "VIDEO": {
+      "video_id": 0.74589,
+      "url": 0.740458,
+      "duration": 0.736778
+    },
+    "PLAYLIST": {
+      "playlist_id": 0.765272,
+      "name": 0.769737,
+      "play_count": 0.765339,
+      "description": 0.775086
+    },
+    "USER": {
+      "user_id": 0.749101,
+      "username": 0.73972,
+      "email": 0.745818,
+      "password": 0.74509,
+      "location": 0.747934,
+      "preferences": 0.752105
+    },
+    "ASSOC_ALBUM_ARTIST": {
+      "assoc_album_artist_id": 0.798694,
+      "album_id": 0.798694,
+      "artist_id": 0.798694
+    },
+    "ASSOC_PLAYLIST_SONG": {
+      "assoc_playlist_song_id": 0.988891,
+      "playlist_id": 0.988891,
+      "song_id": 0.988891
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ALBUM",
+      "entity_2": "ASSOC_ALBUM_ARTIST",
+      "description": "One ALBUM can be associated with many ASSOC_ALBUM_ARTIST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.798694
+    },
+    {
+      "entity_1": "ARTIST",
+      "entity_2": "ASSOC_ALBUM_ARTIST",
+      "description": "One ARTIST can be associated with many ASSOC_ALBUM_ARTIST.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.798694
+    },
+    {
+      "entity_1": "SONG",
+      "entity_2": "ALBUM",
+      "cardinality": "N:1",
+      "description": "A song is part of one album",
+      "probability": 0.993188
+    },
+    {
+      "entity_1": "SONG",
+      "entity_2": "VIDEO",
+      "cardinality": "1:1",
+      "description": "A song has one video",
+      "probability": 0.537301
+    },
+    {
+      "entity_1": "PLAYLIST",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "description": "A playlist is created by one user",
+      "probability": 0.996801
+    },
+    {
+      "entity_1": "PLAYLIST",
+      "entity_2": "ASSOC_PLAYLIST_SONG",
+      "description": "One PLAYLIST can be associated with many ASSOC_PLAYLIST_SONG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988891
+    },
+    {
+      "entity_1": "SONG",
+      "entity_2": "ASSOC_PLAYLIST_SONG",
+      "description": "One SONG can be associated with many ASSOC_PLAYLIST_SONG.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.988891
+    }
+  ],
+  "processing_time": 22.71,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added location and preferences attributes to the USER entity, and changed the relationship between ALBUM and ARTIST to many-to-many to account for collaborative albums."
+  }
+}

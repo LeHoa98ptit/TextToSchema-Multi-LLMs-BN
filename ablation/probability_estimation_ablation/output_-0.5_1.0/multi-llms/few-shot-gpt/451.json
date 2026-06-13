@@ -1,0 +1,97 @@
+{
+  "filename": "451.txt",
+  "entity": {
+    "INTRUSION_DETECTION_RECORD": 0.525154,
+    "RESPONSE_PLAN": 0.521013,
+    "KNOWLEDGE": 0.622459,
+    "ALARM": 0.622459,
+    "NETWORK_TRAFFIC": 0.450735,
+    "PLAN_KNOWLEDGE": 0.193448
+  },
+  "attribute": {
+    "INTRUSION_DETECTION_RECORD": {
+      "record id": 0.551728,
+      "detection time": 0.56056,
+      "source ip": 0.552551,
+      "destination ip": 0.549333,
+      "source port": 0.55697,
+      "destination port": 0.554712,
+      "attack type": 0.565841,
+      "threat level": 0.563671
+    },
+    "RESPONSE_PLAN": {
+      "plan id": 0.517905,
+      "generation time": 0.519776,
+      "plan type": 0.521711,
+      "plan content": 0.517603,
+      "execution status": 0.522879
+    },
+    "KNOWLEDGE": {
+      "knowledge id": 0.543098,
+      "category": 0.540004,
+      "intrusion behavior": 0.547305,
+      "security configuration": 0.555658,
+      "good practice": 0.529453,
+      "description": 0.541255,
+      "source": 0.538068,
+      "reliability": 0.530409
+    },
+    "ALARM": {
+      "alarm id": 0.538033,
+      "alarm time": 0.532556,
+      "alarm level": 0.540707,
+      "alarm content": 0.547535,
+      "processing status": 0.55772
+    },
+    "NETWORK_TRAFFIC": {
+      "traffic id": 0.5384,
+      "capture time": 0.528323,
+      "source ip": 0.527274,
+      "destination ip": 0.520804,
+      "source port": 0.528466,
+      "destination port": 0.523878,
+      "protocol": 0.538408
+    },
+    "PLAN_KNOWLEDGE": {
+      "plan_knowledge_id": 0.193448,
+      "response_plan_id": 0.193448,
+      "knowledge_id": 0.193448,
+      "plan_id": 0.193448
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "NETWORK_TRAFFIC",
+      "entity_2": "INTRUSION_DETECTION_RECORD",
+      "description": "Each network traffic entry can be examined and may result in zero or many intrusion detection records; each detection record is derived from a single network traffic entry.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.990828
+    },
+    {
+      "entity_1": "INTRUSION_DETECTION_RECORD",
+      "entity_2": "ALARM",
+      "description": "When an intrusion detection record indicates a threat, the alarm management system can generate one or multiple alarms; each alarm is linked to a single detection record.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999952
+    },
+    {
+      "entity_1": "RESPONSE_PLAN",
+      "entity_2": "PLAN_KNOWLEDGE",
+      "description": "One RESPONSE_PLAN can be associated with many PLAN_KNOWLEDGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.193448
+    },
+    {
+      "entity_1": "KNOWLEDGE",
+      "entity_2": "PLAN_KNOWLEDGE",
+      "description": "One KNOWLEDGE can be associated with many PLAN_KNOWLEDGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.193448
+    }
+  ],
+  "processing_time": 4.41
+}

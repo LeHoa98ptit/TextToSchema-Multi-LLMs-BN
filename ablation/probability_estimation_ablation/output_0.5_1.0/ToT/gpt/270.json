@@ -1,0 +1,169 @@
+{
+  "filename": "270.txt",
+  "entity": {
+    "COMPANY": 0.745888,
+    "PROGRAM": 0.817574,
+    "PROGRAM_TYPE": 0.742423,
+    "STAFF": 0.817574,
+    "PRODUCTION_RECORD": 0.749491,
+    "REVIEW": 0.697221,
+    "REVIEWER": 0.698928,
+    "COMPANY_PROGRAM": 0.741542,
+    "ASSOC_COMPANY_PROGRAM": 0.973576
+  },
+  "attribute": {
+    "COMPANY": {
+      "company_id": 0.750059,
+      "name": 0.757277,
+      "headquarters": 0.749643,
+      "established_date": 0.745746
+    },
+    "PROGRAM": {
+      "program_id": 0.755853,
+      "title": 0.767788,
+      "broadcast_date": 0.769706,
+      "start_time": 0.753038,
+      "end_time": 0.753463,
+      "duration_minutes": 0.760081,
+      "quality_score": 0.763649,
+      "status": 0.768598,
+      "type_id": 0.754645,
+      "last_review_id": 0.747029
+    },
+    "PROGRAM_TYPE": {
+      "type_id": 0.753638,
+      "type_name": 0.756697
+    },
+    "STAFF": {
+      "staff_id": 0.755829,
+      "name": 0.760631,
+      "position": 0.763617,
+      "email": 0.754134,
+      "phone": 0.754915,
+      "company_id": 0.75873
+    },
+    "PRODUCTION_RECORD": {
+      "record_id": 0.756319,
+      "program_id": 0.768555,
+      "staff_id": 0.763943,
+      "activity_type": 0.775781,
+      "role_in_production": 0.770931,
+      "start_timestamp": 0.751517,
+      "end_timestamp": 0.752369,
+      "hours_spent": 0.760859
+    },
+    "REVIEW": {
+      "review_id": 0.741091,
+      "program_id": 0.758911,
+      "reviewer_id": 0.740917,
+      "review_date": 0.737434,
+      "compliance_flag": 0.752862,
+      "comments": 0.738231,
+      "rating": 0.740443,
+      "review_round": 0.74445
+    },
+    "REVIEWER": {
+      "reviewer_id": 0.741789,
+      "name": 0.744948,
+      "qualification": 0.75631,
+      "staff_id": 0.75422
+    },
+    "COMPANY_PROGRAM": {
+      "comp_prog_id": 0.761199,
+      "company_id": 0.76328,
+      "program_id": 0.766241,
+      "participation_role": 0.772392
+    },
+    "ASSOC_COMPANY_PROGRAM": {
+      "assoc_company_program_id": 0.973576,
+      "company_id": 0.973576,
+      "program_id": 0.973576
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "STAFF",
+      "cardinality": "1:N",
+      "description": "A company employs many staff members",
+      "probability": 0.037461
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "ASSOC_COMPANY_PROGRAM",
+      "description": "One COMPANY can be associated with many ASSOC_COMPANY_PROGRAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.973576
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "ASSOC_COMPANY_PROGRAM",
+      "description": "One PROGRAM can be associated with many ASSOC_COMPANY_PROGRAM.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.973576
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "PROGRAM_TYPE",
+      "cardinality": "N:1",
+      "description": "Each program belongs to a single program type",
+      "probability": 0.999898
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "PRODUCTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A program has multiple production records",
+      "probability": 0.956221
+    },
+    {
+      "entity_1": "STAFF",
+      "entity_2": "PRODUCTION_RECORD",
+      "cardinality": "1:N",
+      "description": "A staff member may have many production records",
+      "probability": 0.99917
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A program can undergo several review rounds",
+      "probability": 0.702729
+    },
+    {
+      "entity_1": "REVIEWER",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A reviewer conducts many reviews",
+      "probability": 0.999852
+    },
+    {
+      "entity_1": "REVIEWER",
+      "entity_2": "STAFF",
+      "cardinality": "N:1",
+      "description": "A reviewer may be linked to an internal staff member (optional)",
+      "probability": 0.142693
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "COMPANY_PROGRAM",
+      "cardinality": "1:N",
+      "description": "A company participates in many program collaborations",
+      "probability": 0.999982
+    },
+    {
+      "entity_1": "PROGRAM",
+      "entity_2": "COMPANY_PROGRAM",
+      "cardinality": "1:N",
+      "description": "A program may involve multiple company collaborations",
+      "probability": 0.999928
+    }
+  ],
+  "processing_time": 39.42,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added a many‑to‑many COMPANY‑PROGRAM relationship via the associative entity COMPANY_PROGRAM to support collaborative productions. Integrated optional link between REVIEWER and internal STAFF (staff_id FK) for flexibility while keeping external reviewers separate. Enriched PRODUCTION_RECORD with a 'role_in_production' attribute for clearer activity classification. Added foreign keys type_id and last_review_id to PROGRAM for direct linkage to PROGRAM_TYPE and the most recent REVIEW. Included review_round in REVIEW to capture multiple review cycles. Adjusted relationships to reflect the new entities and removed redundant STAFF‑COMPANY relationship by using staff.company_id as a direct FK."
+  }
+}

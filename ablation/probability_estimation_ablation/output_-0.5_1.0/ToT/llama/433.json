@@ -1,0 +1,87 @@
+{
+  "filename": "433.txt",
+  "entity": {
+    "BUSINESS_ENTITY": 0.598183,
+    "ATTACHMENT": 0.622459,
+    "USER": 0.622459,
+    "DEPARTMENT": 0.488927,
+    "ROLE": 0.494375
+  },
+  "attribute": {
+    "BUSINESS_ENTITY": {
+      "type": 0.554044,
+      "module_code": 0.55662,
+      "creation_time": 0.538456,
+      "update_time": 0.5319,
+      "creator": 0.552557,
+      "description": 0.559084
+    },
+    "ATTACHMENT": {
+      "file": 0.54995,
+      "file_size": 0.536239,
+      "file_path": 0.53035,
+      "creation_time": 0.53576,
+      "file_status": 0.539405,
+      "uploader": 0.549433,
+      "file_type": 0.541045,
+      "business_entity_id": 0.55481
+    },
+    "USER": {
+      "user_id": 0.510686,
+      "department_id": 0.529971,
+      "role_id": 0.520546,
+      "contact_detail": 0.530778,
+      "email": 0.516861
+    },
+    "DEPARTMENT": {
+      "department_id": 0.527911,
+      "department_name": 0.530537
+    },
+    "ROLE": {
+      "role_id": 0.523739,
+      "role_name": 0.526173
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "BUSINESS_ENTITY",
+      "entity_2": "ATTACHMENT",
+      "cardinality": "1:N",
+      "description": "A business entity can have multiple attachments",
+      "probability": 0.161126
+    },
+    {
+      "entity_1": "BUSINESS_ENTITY",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A user can create multiple business entities",
+      "probability": 0.9187
+    },
+    {
+      "entity_1": "ATTACHMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "A user can upload multiple attachments",
+      "probability": 0.030797
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:1",
+      "description": "A user belongs to one department",
+      "probability": 0.991892
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ROLE",
+      "cardinality": "1:1",
+      "description": "A user has one role",
+      "probability": 0.99746
+    }
+  ],
+  "processing_time": 13.59,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Simplified the many-to-many relationship between business entity and attachment to a one-to-many relationship by adding a business_entity_id attribute to the attachment entity, and retained separate entities for department and role as they provide necessary information for user management"
+  }
+}

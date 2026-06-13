@@ -1,0 +1,55 @@
+{
+  "entity": [
+    "USER",
+    "OPERATION",
+    "PAYMENT",
+    "ASSOC_USER_OPERATION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "contact_information",
+      "registration_method"
+    ],
+    "OPERATION": [
+      "operation_id",
+      "operation_type",
+      "operation_time",
+      "platform_id"
+    ],
+    "PAYMENT": [
+      "payment_id",
+      "operation_id",
+      "user_id",
+      "payment_status",
+      "payment_time"
+    ],
+    "ASSOC_USER_OPERATION": [
+      "assoc_user_operation_id",
+      "user_id",
+      "operation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "OPERATION",
+      "entity_2": "ASSOC_USER_OPERATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.5492,
+  "ilp_runtime": 0.073
+}

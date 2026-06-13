@@ -1,0 +1,131 @@
+{
+  "entity": [
+    "USER",
+    "PROFILE",
+    "POST",
+    "IMAGE",
+    "COMMENT",
+    "INTEREST",
+    "LIKE",
+    "ASSOC_USER_INTEREST",
+    "ASSOC_USER_POST"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "email",
+      "registration_date"
+    ],
+    "PROFILE": [
+      "gender",
+      "age",
+      "occupation",
+      "avatar_url",
+      "bio"
+    ],
+    "POST": [
+      "post_id",
+      "title",
+      "description",
+      "created_at",
+      "view_count"
+    ],
+    "IMAGE": [
+      "image_id",
+      "url",
+      "width",
+      "height"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "content",
+      "comment_time",
+      "edited_flag",
+      "status",
+      "parent_comment_id"
+    ],
+    "INTEREST": [
+      "interest_id",
+      "name"
+    ],
+    "LIKE": [
+      "liked_at"
+    ],
+    "ASSOC_USER_INTEREST": [
+      "assoc_user_interest_id",
+      "user_id",
+      "interest_id"
+    ],
+    "ASSOC_USER_POST": [
+      "assoc_user_post_id",
+      "user_id",
+      "post_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "IMAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INTEREST",
+      "entity_2": "ASSOC_USER_INTEREST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMMENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "ASSOC_USER_POST",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "LIKE",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 62.2196,
+  "ilp_runtime": 0.081
+}

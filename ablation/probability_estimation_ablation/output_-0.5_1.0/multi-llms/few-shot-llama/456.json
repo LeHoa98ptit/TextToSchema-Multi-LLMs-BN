@@ -1,0 +1,112 @@
+{
+  "filename": "456.txt",
+  "entity": {
+    "SUPERMARKET": 0.622459,
+    "PRODUCT": 0.622459,
+    "DISTRIBUTION_DEPARTMENT": 0.550106,
+    "PURCHASE_ORDER": 0.526899,
+    "PAYMENT_ORDER": 0.550898,
+    "SUPPLY_REQUEST": 0.493525,
+    "DISTRIBUTION_NOTIFICATION": 0.50245,
+    "STOCKOUT_NOTIFICATION": 0.434332
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket id": 0.560681,
+      "supermarket name": 0.563951,
+      "supermarket address": 0.556486,
+      "manager phone number": 0.556189
+    },
+    "PRODUCT": {
+      "product id": 0.516016,
+      "product name": 0.519506,
+      "inventory quantity": 0.547028,
+      "storage location": 0.515808
+    },
+    "DISTRIBUTION_DEPARTMENT": {
+      "department id": 0.526505,
+      "department name": 0.528702,
+      "department address": 0.52774,
+      "manager phone number": 0.528682
+    },
+    "PURCHASE_ORDER": {
+      "purchase id": 0.522527,
+      "product id": 0.525939,
+      "purchase date": 0.516504,
+      "supplier": 0.539861,
+      "purchase quantity": 0.543162
+    },
+    "PAYMENT_ORDER": {
+      "order id": 0.519748,
+      "purchase id": 0.520201,
+      "payment amount": 0.520816,
+      "payment date": 0.511879,
+      "payment status": 0.522338
+    },
+    "SUPPLY_REQUEST": {
+      "supermarket id": 0.567206,
+      "product id": 0.537916,
+      "request time": 0.535085,
+      "requested quantity": 0.546914
+    },
+    "DISTRIBUTION_NOTIFICATION": {
+      "distribution notice number": 0.516365,
+      "product id": 0.525794,
+      "distribution department id": 0.525364,
+      "distribution quantity": 0.537398,
+      "distribution time": 0.521536
+    },
+    "STOCKOUT_NOTIFICATION": {}
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A supermarket can have many supply requests.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.010685
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "description": "A product can have many supply requests.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.519203
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "PURCHASE_ORDER",
+      "description": "A product can have many purchase orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.256858
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PAYMENT_ORDER",
+      "description": "A purchase order can have many payment orders.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99922
+    },
+    {
+      "entity_1": "DISTRIBUTION_DEPARTMENT",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "description": "A distribution department can have many distribution notifications.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99893
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "DISTRIBUTION_NOTIFICATION",
+      "description": "A product can have many distribution notifications.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.443247
+    }
+  ],
+  "processing_time": 40.14
+}

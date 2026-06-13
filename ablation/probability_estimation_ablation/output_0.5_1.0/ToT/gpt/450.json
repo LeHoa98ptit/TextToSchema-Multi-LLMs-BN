@@ -1,0 +1,198 @@
+{
+  "filename": "450.txt",
+  "entity": {
+    "DEPARTMENT": 0.817574,
+    "USER": 0.817574,
+    "ROLE": 0.726612,
+    "ASSET_CATEGORY": 0.757882,
+    "ASSET_STATUS": 0.760714,
+    "CIRCULATION_STATUS": 0.765594,
+    "ACTION_TYPE": 0.671858,
+    "ASSET": 0.817574,
+    "CIRCULATION_RECORD": 0.757128,
+    "ASSET_AUDIT": 0.746077
+  },
+  "attribute": {
+    "DEPARTMENT": {
+      "dept_id": 0.761391,
+      "dept_name": 0.76278,
+      "dept_description": 0.771848,
+      "manager_user_id": 0.758016,
+      "created_at": 0.759624
+    },
+    "USER": {
+      "user_id": 0.745564,
+      "user_name": 0.74369,
+      "email": 0.743266,
+      "role_id": 0.752028,
+      "hire_date": 0.744775,
+      "dept_id": 0.762269,
+      "created_at": 0.74118,
+      "updated_at": 0.745057
+    },
+    "ROLE": {
+      "role_id": 0.752723,
+      "role_name": 0.75407,
+      "role_description": 0.760913
+    },
+    "ASSET_CATEGORY": {
+      "category_id": 0.766089,
+      "category_type": 0.766685,
+      "category_description": 0.770469,
+      "parent_category_id": 0.761104
+    },
+    "ASSET_STATUS": {
+      "status_id": 0.769398,
+      "status_name": 0.771604,
+      "status_description": 0.775844
+    },
+    "CIRCULATION_STATUS": {
+      "circ_status_id": 0.750913,
+      "circ_status_name": 0.75251,
+      "circ_status_description": 0.75448
+    },
+    "ACTION_TYPE": {
+      "action_type_id": 0.73779,
+      "action_name": 0.738026,
+      "action_description": 0.746388
+    },
+    "ASSET": {
+      "asset_id": 0.768002,
+      "asset_tag": 0.764254,
+      "category_id": 0.767798,
+      "dept_id": 0.780116,
+      "status_id": 0.771172,
+      "scrap_indicator": 0.76843,
+      "purchase_date": 0.760786,
+      "warranty_expiry": 0.751737,
+      "creator_user_id": 0.770277,
+      "created_at": 0.765397,
+      "updater_user_id": 0.772408,
+      "updated_at": 0.763801
+    },
+    "CIRCULATION_RECORD": {
+      "record_id": 0.749921,
+      "asset_id": 0.771444,
+      "user_id": 0.752142,
+      "circ_status_id": 0.752244,
+      "action_type_id": 0.751675,
+      "start_timestamp": 0.744726,
+      "end_timestamp": 0.744518,
+      "remarks": 0.751407
+    },
+    "ASSET_AUDIT": {
+      "audit_id": 0.767895,
+      "asset_id": 0.771259,
+      "changed_field": 0.764199,
+      "old_value": 0.762502,
+      "new_value": 0.765999,
+      "changed_by_user_id": 0.766161,
+      "changed_at": 0.761936
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "Each department employs many users (dept_id foreign key in USER)",
+      "probability": 0.992936
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "description": "Assets are assigned to a department (dept_id foreign key in ASSET)",
+      "probability": 0.4746
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "USER",
+      "cardinality": "0:1",
+      "description": "Optional manager of a department (manager_user_id references USER)",
+      "probability": 0.992936
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "USER",
+      "cardinality": "1:N",
+      "description": "Each role can be assigned to many users (role_id foreign key in USER)",
+      "probability": 0.991495
+    },
+    {
+      "entity_1": "ASSET_CATEGORY",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "description": "One category classifies many assets (category_id foreign key in ASSET)",
+      "probability": 0.999777
+    },
+    {
+      "entity_1": "ASSET_STATUS",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "description": "Asset status is selected from predefined statuses (status_id foreign key in ASSET)",
+      "probability": 0.997934
+    },
+    {
+      "entity_1": "CIRCULATION_STATUS",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "description": "Circulation record status uses predefined values (circ_status_id foreign key in CIRCULATION_RECORD)",
+      "probability": 0.997158
+    },
+    {
+      "entity_1": "ACTION_TYPE",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "description": "Action type of a circulation event is chosen from a lookup table (action_type_id foreign key in CIRCULATION_RECORD)",
+      "probability": 0.588242
+    },
+    {
+      "entity_1": "ASSET",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "description": "An asset can have many circulation records (asset_id foreign key in CIRCULATION_RECORD)",
+      "probability": 0.854972
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CIRCULATION_RECORD",
+      "cardinality": "1:N",
+      "description": "A user may initiate multiple circulation actions (user_id foreign key in CIRCULATION_RECORD)",
+      "probability": 0.990287
+    },
+    {
+      "entity_1": "ASSET",
+      "entity_2": "ASSET_AUDIT",
+      "cardinality": "1:N",
+      "description": "Changes to an asset are stored as audit rows (asset_id foreign key in ASSET_AUDIT)",
+      "probability": 0.991575
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET_AUDIT",
+      "cardinality": "1:N",
+      "description": "Audit rows reference the user who made the change (changed_by_user_id foreign key in ASSET_AUDIT)",
+      "probability": 0.999259
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "description": "Creator relationship (creator_user_id foreign key in ASSET)",
+      "probability": 0.949477
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSET",
+      "cardinality": "1:N",
+      "description": "Updater relationship (updater_user_id foreign key in ASSET)",
+      "probability": 0.949477
+    }
+  ],
+  "processing_time": 14.83,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added ROLE entity and replaced raw role attribute with role_id foreign key. Introduced lookup tables ASSET_STATUS, CIRCULATION_STATUS, and ACTION_TYPE to enforce enumerated values for status and action types. Made manager_user_id optional and documented its relationship. Marked parent_category_id as optional for hierarchical categories. Included unique asset_tag concept (to be enforced via constraint). Added explicit foreign‑key relationships for creator/updater and manager roles, improving auditability and data integrity while preserving the original model's strengths."
+  }
+}

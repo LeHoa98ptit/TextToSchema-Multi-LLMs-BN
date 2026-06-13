@@ -1,0 +1,108 @@
+{
+  "filename": "348.txt",
+  "entity": {
+    "PLUGIN": 0.817574,
+    "PLUGIN_MANAGEMENT_SYSTEM": 0.733529,
+    "PLUGIN_DATABASE": 0.735401,
+    "EXECUTION_INFORMATION": 0.748061,
+    "PLUGIN_RUNTIME_STATUS": 0.701217,
+    "SQL_STATEMENT": 0.678437,
+    "AUDIT_LOG": 0.768044
+  },
+  "attribute": {
+    "PLUGIN": {
+      "plugin id": 0.762167,
+      "version number": 0.764752,
+      "plugin type": 0.773539
+    },
+    "PLUGIN_MANAGEMENT_SYSTEM": {
+      "system id": 0.77159
+    },
+    "PLUGIN_DATABASE": {
+      "database id": 0.767733
+    },
+    "EXECUTION_INFORMATION": {
+      "execution id": 0.764709,
+      "plugin id": 0.774864,
+      "start time": 0.765181,
+      "end time": 0.767765
+    },
+    "PLUGIN_RUNTIME_STATUS": {
+      "status id": 0.762802,
+      "plugin id": 0.766439,
+      "version number": 0.764297,
+      "plugin type": 0.77462,
+      "start time": 0.763636,
+      "end time": 0.765725
+    },
+    "SQL_STATEMENT": {
+      "statement id": 0.750705,
+      "sql text": 0.748856
+    },
+    "AUDIT_LOG": {
+      "audit id": 0.76045,
+      "execution id": 0.765586,
+      "statement id": 0.762049,
+      "audit timestamp": 0.761801
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PLUGIN_MANAGEMENT_SYSTEM",
+      "entity_2": "EXECUTION_INFORMATION",
+      "description": "The management system records many execution information records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.307672
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "EXECUTION_INFORMATION",
+      "description": "Each execution information entry is associated with one plugin",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.450092
+    },
+    {
+      "entity_1": "PLUGIN",
+      "entity_2": "PLUGIN_RUNTIME_STATUS",
+      "description": "A plugin can have multiple runtime status records over time",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.656953
+    },
+    {
+      "entity_1": "PLUGIN_DATABASE",
+      "entity_2": "AUDIT_LOG",
+      "description": "The plugin database stores many audit log entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.013144
+    },
+    {
+      "entity_1": "SQL_STATEMENT",
+      "entity_2": "EXECUTION_INFORMATION",
+      "description": "One SQL statement can be used in many execution information records",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.007787
+    },
+    {
+      "entity_1": "SQL_STATEMENT",
+      "entity_2": "AUDIT_LOG",
+      "description": "One SQL statement can be referenced by many audit log entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.028387
+    },
+    {
+      "entity_1": "EXECUTION_INFORMATION",
+      "entity_2": "AUDIT_LOG",
+      "description": "An execution information record may have multiple audit log entries",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.622101
+    }
+  ],
+  "processing_time": 18.17
+}

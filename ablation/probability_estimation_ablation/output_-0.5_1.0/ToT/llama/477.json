@@ -1,0 +1,112 @@
+{
+  "filename": "477.txt",
+  "entity": {
+    "TRANSACTION": 0.622459,
+    "BILLING_METHOD": 0.591169,
+    "PAYMENT": 0.622459,
+    "DISCOUNT": 0.490851,
+    "REBATE": 0.595801,
+    "TRANSACTION_DETAIL": 0.542547,
+    "PRODUCT": 0.485954,
+    "CUSTOMER": 0.491076
+  },
+  "attribute": {
+    "TRANSACTION": {
+      "transaction_id": 0.528177,
+      "transaction_time": 0.542546,
+      "total_amount": 0.550956
+    },
+    "BILLING_METHOD": {
+      "billing_method_id": 0.549991,
+      "method_name": 0.549294,
+      "description": 0.567921
+    },
+    "PAYMENT": {
+      "payment_id": 0.541556,
+      "amount": 0.55084,
+      "payment_method": 0.557255
+    },
+    "DISCOUNT": {
+      "discount_id": 0.533205,
+      "discount_percentage": 0.536493,
+      "discount_amount": 0.545542
+    },
+    "REBATE": {
+      "rebate_id": 0.525233,
+      "rebate_percentage": 0.535185,
+      "rebate_amount": 0.533831
+    },
+    "TRANSACTION_DETAIL": {
+      "detail_id": 0.530658,
+      "transaction_id": 0.530891,
+      "product_id": 0.521763,
+      "quantity": 0.553716
+    },
+    "PRODUCT": {
+      "product_id": 0.500767,
+      "product_name": 0.505986,
+      "price": 0.512307
+    },
+    "CUSTOMER": {
+      "customer_id": 0.519646,
+      "customer_name": 0.524419,
+      "contact_info": 0.525613
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "BILLING_METHOD",
+      "cardinality": "1:N",
+      "description": "A transaction is associated with one billing method",
+      "probability": 0.154708
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:1",
+      "description": "A transaction has one payment",
+      "probability": 0.978909
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "DISCOUNT",
+      "cardinality": "1:N",
+      "description": "A transaction can have multiple discounts",
+      "probability": 0.873999
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "REBATE",
+      "cardinality": "1:N",
+      "description": "A transaction can have multiple rebates",
+      "probability": 0.936251
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "TRANSACTION_DETAIL",
+      "cardinality": "1:N",
+      "description": "A transaction can have multiple transaction details",
+      "probability": 0.999997
+    },
+    {
+      "entity_1": "TRANSACTION_DETAIL",
+      "entity_2": "PRODUCT",
+      "cardinality": "N:1",
+      "description": "A transaction detail is associated with one product",
+      "probability": 0.970942
+    },
+    {
+      "entity_1": "TRANSACTION",
+      "entity_2": "CUSTOMER",
+      "cardinality": "N:1",
+      "description": "A transaction is associated with one customer",
+      "probability": 0.989713
+    }
+  ],
+  "processing_time": 10.48,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added PRODUCT and CUSTOMER entities to capture product information and customer data, and established relationships between TRANSACTION_DETAIL and PRODUCT, and TRANSACTION and CUSTOMER."
+  }
+}

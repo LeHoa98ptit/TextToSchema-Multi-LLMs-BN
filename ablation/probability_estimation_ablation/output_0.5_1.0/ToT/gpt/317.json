@@ -1,0 +1,98 @@
+{
+  "filename": "317.txt",
+  "entity": {
+    "SERVICE": 0.817574,
+    "DESCRIPTION_SET": 0.750129,
+    "DESCRIPTION": 0.817574,
+    "SERVICE_MONITOR": 0.747326,
+    "REGISTRATION": 0.712591
+  },
+  "attribute": {
+    "SERVICE": {
+      "service_id": 0.770401,
+      "name": 0.775217,
+      "base_url": 0.761013,
+      "health_url": 0.770844,
+      "created_at": 0.756537,
+      "updated_at": 0.753704
+    },
+    "DESCRIPTION_SET": {
+      "set_id": 0.765029,
+      "service_id": 0.779728,
+      "title": 0.767982,
+      "created_at": 0.757789,
+      "updated_at": 0.75813
+    },
+    "DESCRIPTION": {
+      "sd_id": 0.770576,
+      "service_id": 0.781569,
+      "set_id": 0.766857,
+      "content": 0.771888,
+      "version": 0.768714,
+      "effective_from": 0.746888,
+      "effective_to": 0.75152,
+      "created_at": 0.757143,
+      "updated_at": 0.760794
+    },
+    "SERVICE_MONITOR": {
+      "monitor_id": 0.76943,
+      "service_id": 0.775587,
+      "status": 0.778932,
+      "checked_at": 0.76129,
+      "last_response_code": 0.761106,
+      "created_at": 0.760476,
+      "updated_at": 0.759914
+    },
+    "REGISTRATION": {
+      "reg_id": 0.751349,
+      "service_id": 0.765454,
+      "registered_by": 0.743911,
+      "registered_at": 0.743008,
+      "notes": 0.759426,
+      "created_at": 0.74199,
+      "updated_at": 0.74386
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "DESCRIPTION_SET",
+      "cardinality": "1:N",
+      "description": "A service can own multiple description sets",
+      "probability": 0.358938
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "DESCRIPTION",
+      "cardinality": "1:N",
+      "description": "A service may have many individual description entries",
+      "probability": 0.708532
+    },
+    {
+      "entity_1": "DESCRIPTION_SET",
+      "entity_2": "DESCRIPTION",
+      "cardinality": "1:N",
+      "description": "Each description set groups several description entries",
+      "probability": 0.999931
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "SERVICE_MONITOR",
+      "cardinality": "1:N",
+      "description": "Historical monitoring records for a service (status, response code, timestamps)",
+      "probability": 0.988894
+    },
+    {
+      "entity_1": "SERVICE",
+      "entity_2": "REGISTRATION",
+      "cardinality": "1:N",
+      "description": "A service can be registered multiple times (e.g., different environments or versions)",
+      "probability": 0.23883
+    }
+  ],
+  "processing_time": 25.06,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Merged SERVICE_STATUS and HEALTH_CHECK into a single SERVICE_MONITOR entity to eliminate redundancy and support historical tracking (1:N relationship). Added versioning and effective date fields to DESCRIPTION for auditability. Standardized naming to singular nouns and snake_case attributes. Retained SERVICE, DESCRIPTION_SET, DESCRIPTION, and REGISTRATION entities, preserving their strengths. Clarified ownership of DESCRIPTION_SET with a 1:N link to SERVICE. Included created_at/updated_at timestamps for all entities to support change tracking."
+  }
+}

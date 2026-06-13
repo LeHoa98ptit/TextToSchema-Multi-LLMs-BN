@@ -1,0 +1,99 @@
+{
+  "entity": [
+    "USER",
+    "PERMISSION",
+    "INGREDIENT",
+    "INGREDIENT_TYPE",
+    "TORTILLA",
+    "PRODUCTION",
+    "SALE",
+    "ASSOC_USER_PERMISSION"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password",
+      "activation_status",
+      "created_at",
+      "updated_at"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "permission_name",
+      "description"
+    ],
+    "INGREDIENT": [
+      "ingredient_id",
+      "name",
+      "quantity",
+      "unit",
+      "ingredient_type_id"
+    ],
+    "INGREDIENT_TYPE": [
+      "ingredient_type_id",
+      "type_name",
+      "description"
+    ],
+    "TORTILLA": [
+      "tortilla_id",
+      "name",
+      "size",
+      "weight",
+      "creation_time",
+      "design_id"
+    ],
+    "PRODUCTION": [
+      "production_id",
+      "tortilla_id",
+      "production_date",
+      "quantity_produced"
+    ],
+    "SALE": [
+      "sale_id",
+      "tortilla_id",
+      "sale_date",
+      "quantity_sold",
+      "customer_name"
+    ],
+    "ASSOC_USER_PERMISSION": [
+      "assoc_user_permission_id",
+      "user_id",
+      "permission_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_USER_PERMISSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "INGREDIENT_TYPE",
+      "entity_2": "INGREDIENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TORTILLA",
+      "entity_2": "PRODUCTION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "TORTILLA",
+      "entity_2": "SALE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 42.426,
+  "ilp_runtime": 0.067
+}

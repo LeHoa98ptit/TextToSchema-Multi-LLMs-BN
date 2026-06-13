@@ -1,0 +1,136 @@
+{
+  "filename": "496.txt",
+  "entity": {
+    "USER": 0.817574,
+    "PRODUCT": 0.817574,
+    "TRANSACTION": 0.817574,
+    "REVIEW": 0.704767,
+    "CATEGORY": 0.710127,
+    "LOCATION": 0.817574,
+    "FAVORITE": 0.704725,
+    "MESSAGE": 0.731511
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.734214,
+      "email": 0.746618,
+      "phone_number": 0.741458,
+      "avatar": 0.735695,
+      "nickname": 0.73945,
+      "gender": 0.74588,
+      "age": 0.746451
+    },
+    "PRODUCT": {
+      "title": 0.755898,
+      "description": 0.759884,
+      "condition": 0.749652,
+      "original_price": 0.750459,
+      "sell_price": 0.750556,
+      "category": 0.763362,
+      "location": 0.752937
+    },
+    "TRANSACTION": {
+      "transaction_time": 0.750859,
+      "transaction_location": 0.751481,
+      "transaction_method": 0.756191,
+      "transaction_status": 0.753371
+    },
+    "REVIEW": {
+      "review_content": 0.743748,
+      "review_rating": 0.743657
+    },
+    "CATEGORY": {
+      "category_name": 0.74311
+    },
+    "LOCATION": {
+      "location_name": 0.730354
+    },
+    "FAVORITE": {
+      "product_id": 0.750129,
+      "user_id": 0.736333
+    },
+    "MESSAGE": {
+      "message_content": 0.740455,
+      "sender_id": 0.73609,
+      "receiver_id": 0.739172,
+      "message_time": 0.736697
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "A user can publish multiple products",
+      "probability": 0.015436
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A user can participate in multiple transactions",
+      "probability": 0.990356
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "TRANSACTION",
+      "cardinality": "1:N",
+      "description": "A product can be involved in multiple transactions",
+      "probability": 0.356139
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "REVIEW",
+      "cardinality": "1:N",
+      "description": "A product can have multiple reviews",
+      "probability": 0.376421
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "CATEGORY",
+      "cardinality": "N:1",
+      "description": "A product belongs to one category",
+      "probability": 0.000186
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "LOCATION",
+      "cardinality": "N:1",
+      "description": "A product is located in one location",
+      "probability": 0.00375
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAVORITE",
+      "cardinality": "1:N",
+      "description": "A user can have multiple favorite products",
+      "probability": 0.913114
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "FAVORITE",
+      "cardinality": "1:N",
+      "description": "A product can be favorited by multiple users",
+      "probability": 0.01341
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can send multiple messages",
+      "probability": 0.99851
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "description": "A user can receive multiple messages",
+      "probability": 0.99851
+    }
+  ],
+  "processing_time": 15.45,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added FAVORITE entity to allow users to mark products as favorites and MESSAGE entity to enable private messaging between users, while retaining the strengths of the original model and addressing identified issues."
+  }
+}

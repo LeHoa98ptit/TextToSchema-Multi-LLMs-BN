@@ -1,0 +1,56 @@
+{
+  "entity": [
+    "MONITORING_RULE",
+    "MONITORING_DATUM",
+    "ANALYSIS_RESULT",
+    "PREDICTION_RESULT",
+    "ASSOC_MONITORING_RULE_MONITORING_DATUM"
+  ],
+  "attribute": {
+    "MONITORING_RULE": [
+      "rule_id",
+      "rule_description",
+      "threshold_value"
+    ],
+    "MONITORING_DATUM": [
+      "datum_value",
+      "collection_time",
+      "data_type"
+    ],
+    "ANALYSIS_RESULT": [
+      "result_id",
+      "result_description",
+      "result_value"
+    ],
+    "PREDICTION_RESULT": [
+      "prediction_id",
+      "prediction_description",
+      "prediction_value"
+    ],
+    "ASSOC_MONITORING_RULE_MONITORING_DATUM": [
+      "assoc_monitoring_rule_monitoring_datum_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "ANALYSIS_RESULT",
+      "entity_2": "PREDICTION_RESULT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_RULE",
+      "entity_2": "ASSOC_MONITORING_RULE_MONITORING_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MONITORING_DATUM",
+      "entity_2": "ASSOC_MONITORING_RULE_MONITORING_DATUM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 5.8626,
+  "ilp_runtime": 0.119
+}

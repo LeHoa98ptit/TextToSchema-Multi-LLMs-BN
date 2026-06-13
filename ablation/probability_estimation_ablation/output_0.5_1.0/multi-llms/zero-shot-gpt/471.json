@@ -1,0 +1,82 @@
+{
+  "filename": "471.txt",
+  "entity": {
+    "CUSTOMER": 0.817574,
+    "CREDIT_CARD": 0.800305,
+    "APPLICATION": 0.715287,
+    "TRANSACTION": 0.817574
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "customer id": 0.764122,
+      "address": 0.762392,
+      "contact number": 0.75661,
+      "application status": 0.769648
+    },
+    "CREDIT_CARD": {
+      "card number": 0.777379,
+      "card type": 0.779143,
+      "validity period": 0.76679,
+      "credit limit": 0.770979,
+      "activation status": 0.782652,
+      "password hash": 0.770442
+    },
+    "APPLICATION": {
+      "application id": 0.742712,
+      "customer id": 0.76298,
+      "requested card type": 0.771002,
+      "status": 0.752252
+    },
+    "TRANSACTION": {
+      "transaction id": 0.764887,
+      "customer id": 0.773971,
+      "card number": 0.779773,
+      "transaction date": 0.760885,
+      "description": 0.768978,
+      "status": 0.76774
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "APPLICATION",
+      "description": "A customer can submit one or more credit card applications",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.991845
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CREDIT_CARD",
+      "description": "A customer can be issued and own multiple credit cards",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.4768
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "CREDIT_CARD",
+      "description": "An approved application results in the issuance of a single credit card",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.014559
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "TRANSACTION",
+      "description": "A customer can perform multiple transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996932
+    },
+    {
+      "entity_1": "CREDIT_CARD",
+      "entity_2": "TRANSACTION",
+      "description": "A credit card can be used for multiple transactions",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998884
+    }
+  ],
+  "processing_time": 963.06
+}

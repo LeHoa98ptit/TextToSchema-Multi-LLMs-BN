@@ -1,0 +1,173 @@
+{
+  "filename": "476.txt",
+  "entity": {
+    "CUSTOMER": 0.622459,
+    "SALE_ORDER": 0.525553,
+    "PRODUCTION_PLAN": 0.546812,
+    "RAW_MATERIAL": 0.586933,
+    "SUPPLIER": 0.622459,
+    "PRODUCT": 0.514446,
+    "INVENTORY": 0.530637,
+    "DELIVERY": 0.622459,
+    "FINANCIAL_RECORD": 0.511223,
+    "PIZZA_RECIPE": 0.448929,
+    "ASSOC_PRODUCTION_PLAN_RAW_MATERIAL": 0.001995,
+    "ASSOC_RAW_MATERIAL_SUPPLIER": 2.7e-05,
+    "ASSOC_PIZZA_RECIPE_RAW_MATERIAL": 0.00231
+  },
+  "attribute": {
+    "CUSTOMER": {
+      "d": 0.535977,
+      "contact_number": 0.526363,
+      "address": 0.531424
+    },
+    "SALE_ORDER": {
+      "d": 0.539913,
+      "customer_d": 0.546161,
+      "expect_delivery_date": 0.524544,
+      "order_status": 0.536291
+    },
+    "PRODUCTION_PLAN": {
+      "production_sequence": 0.549925,
+      "quantity": 0.555737,
+      "production_status": 0.549962
+    },
+    "RAW_MATERIAL": {
+      "d": 0.522482,
+      "order_quantity": 0.53717,
+      "supply_quantity": 0.544456,
+      "order_status": 0.527788
+    },
+    "SUPPLIER": {
+      "d": 0.539707,
+      "raw_material_d": 0.53789,
+      "order_quantity": 0.548133
+    },
+    "PRODUCT": {
+      "d": 0.516159,
+      "quantity": 0.535515,
+      "status": 0.534646
+    },
+    "INVENTORY": {
+      "quantity": 0.55395,
+      "status": 0.556959
+    },
+    "DELIVERY": {
+      "delivery_time": 0.528474,
+      "location": 0.530181,
+      "status": 0.533102
+    },
+    "FINANCIAL_RECORD": {
+      "income": 0.51659,
+      "expense": 0.52391,
+      "transaction_type": 0.524517,
+      "date": 0.514322,
+      "status": 0.526039
+    },
+    "PIZZA_RECIPE": {
+      "raw_material_detail": 0.551835
+    },
+    "ASSOC_PRODUCTION_PLAN_RAW_MATERIAL": {
+      "assoc_production_plan_raw_material_id": 0.001995,
+      "production_plan_id": 0.001995,
+      "raw_material_id": 0.001995
+    },
+    "ASSOC_RAW_MATERIAL_SUPPLIER": {
+      "assoc_raw_material_supplier_id": 2.7e-05,
+      "raw_material_id": 2.7e-05,
+      "supplier_id": 2.7e-05
+    },
+    "ASSOC_PIZZA_RECIPE_RAW_MATERIAL": {
+      "assoc_pizza_recipe_raw_material_id": 0.00231,
+      "pizza_recipe_id": 0.00231,
+      "raw_material_id": 0.00231
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.772207
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "PRODUCTION_PLAN",
+      "cardinality": "1:1",
+      "probability": 0.026336
+    },
+    {
+      "entity_1": "PRODUCTION_PLAN",
+      "entity_2": "ASSOC_PRODUCTION_PLAN_RAW_MATERIAL",
+      "description": "One PRODUCTION_PLAN can be associated with many ASSOC_PRODUCTION_PLAN_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001995
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "ASSOC_PRODUCTION_PLAN_RAW_MATERIAL",
+      "description": "One RAW_MATERIAL can be associated with many ASSOC_PRODUCTION_PLAN_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001995
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "ASSOC_RAW_MATERIAL_SUPPLIER",
+      "description": "One RAW_MATERIAL can be associated with many ASSOC_RAW_MATERIAL_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 2.7e-05
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "ASSOC_RAW_MATERIAL_SUPPLIER",
+      "description": "One SUPPLIER can be associated with many ASSOC_RAW_MATERIAL_SUPPLIER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 2.7e-05
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "RAW_MATERIAL",
+      "cardinality": "1:N",
+      "probability": 2.7e-05
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:1",
+      "probability": 0.772589
+    },
+    {
+      "entity_1": "SALE_ORDER",
+      "entity_2": "DELIVERY",
+      "cardinality": "1:1",
+      "probability": 0.398248
+    },
+    {
+      "entity_1": "FINANCIAL_RECORD",
+      "entity_2": "SALE_ORDER",
+      "cardinality": "1:N",
+      "probability": 0.000218
+    },
+    {
+      "entity_1": "PIZZA_RECIPE",
+      "entity_2": "ASSOC_PIZZA_RECIPE_RAW_MATERIAL",
+      "description": "One PIZZA_RECIPE can be associated with many ASSOC_PIZZA_RECIPE_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00231
+    },
+    {
+      "entity_1": "RAW_MATERIAL",
+      "entity_2": "ASSOC_PIZZA_RECIPE_RAW_MATERIAL",
+      "description": "One RAW_MATERIAL can be associated with many ASSOC_PIZZA_RECIPE_RAW_MATERIAL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.00231
+    }
+  ],
+  "processing_time": 26.78
+}

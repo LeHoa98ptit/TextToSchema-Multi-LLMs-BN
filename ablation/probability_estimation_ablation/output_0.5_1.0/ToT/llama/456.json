@@ -1,0 +1,125 @@
+{
+  "filename": "456.txt",
+  "entity": {
+    "SUPERMARKET": 0.817574,
+    "PRODUCT": 0.817574,
+    "DISTRIBUTION_DEPARTMENT": 0.76872,
+    "PURCHASE_ORDER": 0.7517,
+    "PAYMENT_ORDER": 0.769289,
+    "SUPPLY_REQUEST": 0.725936,
+    "STOCKOUT_NOTIFICATION": 0.676077,
+    "INVENTORY": 0.817574,
+    "FINANCE": 0.737187
+  },
+  "attribute": {
+    "SUPERMARKET": {
+      "supermarket_id": 0.775766,
+      "supermarket_address": 0.770927,
+      "manager": 0.773898,
+      "phone_number": 0.770627
+    },
+    "PRODUCT": {
+      "product_id": 0.738342,
+      "product_name": 0.740264,
+      "quantity": 0.756537,
+      "storage_location": 0.740818
+    },
+    "DISTRIBUTION_DEPARTMENT": {
+      "department_id": 0.749567,
+      "department_address": 0.749043,
+      "manager": 0.756997,
+      "phone_number": 0.749505
+    },
+    "PURCHASE_ORDER": {
+      "purchase_id": 0.747537,
+      "purchase_date": 0.742733,
+      "supplier": 0.761294,
+      "purchase_quantity": 0.760802
+    },
+    "PAYMENT_ORDER": {
+      "payment_id": 0.741144,
+      "payment_date": 0.737556,
+      "payment_status": 0.743775
+    },
+    "SUPPLY_REQUEST": {
+      "request_id": 0.753553,
+      "request_time": 0.754025,
+      "request_quantity": 0.763332
+    },
+    "STOCKOUT_NOTIFICATION": {
+      "notification_id": 0.748648,
+      "notification_time": 0.745919
+    },
+    "INVENTORY": {
+      "inventory_id": 0.759641,
+      "inventory_quantity": 0.766096
+    },
+    "FINANCE": {
+      "finance_id": 0.738919,
+      "payment_info": 0.747054
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A supermarket can have multiple supply requests",
+      "probability": 0.010622
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "SUPPLY_REQUEST",
+      "cardinality": "1:N",
+      "description": "A product can have multiple supply requests",
+      "probability": 0.51915
+    },
+    {
+      "entity_1": "DISTRIBUTION_DEPARTMENT",
+      "entity_2": "PURCHASE_ORDER",
+      "cardinality": "1:N",
+      "description": "A distribution department can have multiple purchase orders",
+      "probability": 0.010539
+    },
+    {
+      "entity_1": "PURCHASE_ORDER",
+      "entity_2": "PAYMENT_ORDER",
+      "cardinality": "1:1",
+      "description": "A purchase order is associated with one payment order",
+      "probability": 0.999012
+    },
+    {
+      "entity_1": "INVENTORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "description": "An inventory can have multiple products",
+      "probability": 0.95212
+    },
+    {
+      "entity_1": "FINANCE",
+      "entity_2": "PAYMENT_ORDER",
+      "cardinality": "1:N",
+      "description": "A finance department can have multiple payment orders",
+      "probability": 0.885353
+    },
+    {
+      "entity_1": "SUPERMARKET",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A supermarket can have multiple inventories",
+      "probability": 0.308844
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "INVENTORY",
+      "cardinality": "1:N",
+      "description": "A product can be stored in multiple inventories",
+      "probability": 0.95212
+    }
+  ],
+  "processing_time": 34.63,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Removed redundant attributes, added more descriptive names for entities and attributes, and included additional relationships to improve model completeness and accuracy."
+  }
+}

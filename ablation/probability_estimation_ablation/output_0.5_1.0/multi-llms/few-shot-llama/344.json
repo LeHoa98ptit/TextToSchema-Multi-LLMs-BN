@@ -1,0 +1,114 @@
+{
+  "filename": "344.txt",
+  "entity": {
+    "USER": 0.817574,
+    "APPLICATION": 0.817574,
+    "WEB_SERVICE": 0.793917,
+    "MONITORING_INVOCATION": 0.703141,
+    "ERROR": 0.817574,
+    "USER_APPLICATION": 0.998296
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.750209,
+      "username": 0.738614,
+      "email": 0.750282,
+      "role": 0.764649
+    },
+    "APPLICATION": {
+      "application id": 0.76123,
+      "code": 0.763592,
+      "name": 0.756361,
+      "type": 0.766632
+    },
+    "WEB_SERVICE": {
+      "web service id": 0.764268,
+      "name": 0.762443,
+      "description": 0.777883,
+      "creation date": 0.76707,
+      "error code": 0.767133,
+      "error description": 0.77123,
+      "error timestamp": 0.765492,
+      "return status": 0.763847
+    },
+    "MONITORING_INVOCATION": {
+      "invocation id": 0.753954,
+      "invocation time": 0.754358,
+      "return status": 0.757724,
+      "delay time": 0.75493
+    },
+    "ERROR": {
+      "error id": 0.751441,
+      "error code": 0.750857,
+      "error description": 0.75756,
+      "error timestamp": 0.749088,
+      "return status": 0.748352
+    },
+    "USER_APPLICATION": {
+      "user_application_id": 0.998296,
+      "user_id": 0.998296,
+      "application_id": 0.998296,
+      "authorization_id": 0.998296,
+      "access_level": 0.998296
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_APPLICATION",
+      "description": "One USER can be associated with many USER_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998296
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "USER_APPLICATION",
+      "description": "One APPLICATION can be associated with many USER_APPLICATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998296
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "WEB_SERVICE",
+      "description": "A user can invoke many web services.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.588422
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "WEB_SERVICE",
+      "description": "An application can have many web services.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.996565
+    },
+    {
+      "entity_1": "WEB_SERVICE",
+      "entity_2": "MONITORING_INVOCATION",
+      "description": "A web service can have many monitoring invocations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.05966
+    },
+    {
+      "entity_1": "WEB_SERVICE",
+      "entity_2": "ERROR",
+      "description": "A web service can have many errors.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.095467
+    },
+    {
+      "entity_1": "MONITORING_INVOCATION",
+      "entity_2": "ERROR",
+      "description": "A monitoring invocation can have many errors.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.001263
+    }
+  ],
+  "processing_time": 22.63
+}

@@ -1,0 +1,118 @@
+{
+  "filename": "351.txt",
+  "entity": {
+    "ACCESS_CONTROL_SYSTEM": 0.734778,
+    "OBJECT": 0.817574,
+    "USER_ROLE": 0.734875,
+    "OWNER": 0.817574,
+    "PERMISSION_ENTRY": 0.779697,
+    "AUDIT_LOG": 0.686649,
+    "ATTEMPT": 0.706511
+  },
+  "attribute": {
+    "ACCESS_CONTROL_SYSTEM": {
+      "id": 0.783786,
+      "name": 0.782713
+    },
+    "OBJECT": {
+      "id": 0.749665,
+      "type": 0.757471,
+      "parent object id": 0.754816
+    },
+    "USER_ROLE": {
+      "id": 0.766293,
+      "name": 0.763333
+    },
+    "OWNER": {
+      "id": 0.758629,
+      "contact information": 0.762362
+    },
+    "PERMISSION_ENTRY": {
+      "id": 0.773713,
+      "object id": 0.777709,
+      "user role id": 0.774417,
+      "permission": 0.779658,
+      "permission_entry_id": 0.017255,
+      "user_role_id": 0.017255,
+      "object_id": 0.017255
+    },
+    "AUDIT_LOG": {
+      "id": 0.762392,
+      "attempt id": 0.760946,
+      "result": 0.758289
+    },
+    "ATTEMPT": {
+      "id": 0.746814,
+      "user role id": 0.766407,
+      "object id": 0.751274,
+      "timestamp": 0.741139
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ACCESS_CONTROL_SYSTEM",
+      "entity_2": "OBJECT",
+      "description": "An access control system manages multiple objects",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.428675
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "OWNER",
+      "description": "An object has one owner",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.039072
+    },
+    {
+      "entity_1": "USER_ROLE",
+      "entity_2": "PERMISSION_ENTRY",
+      "description": "One USER_ROLE can be associated with many PERMISSION_ENTRY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.017255
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "PERMISSION_ENTRY",
+      "description": "One OBJECT can be associated with many PERMISSION_ENTRY.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.017255
+    },
+    {
+      "entity_1": "ACCESS_CONTROL_SYSTEM",
+      "entity_2": "AUDIT_LOG",
+      "description": "An access control system records multiple audit logs",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.046802
+    },
+    {
+      "entity_1": "ATTEMPT",
+      "entity_2": "AUDIT_LOG",
+      "description": "An attempt is recorded as an audit log",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.104072
+    },
+    {
+      "entity_1": "USER_ROLE",
+      "entity_2": "ATTEMPT",
+      "description": "A user role can make multiple attempts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.901502
+    },
+    {
+      "entity_1": "OBJECT",
+      "entity_2": "ATTEMPT",
+      "description": "An object can have multiple attempts",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.84621
+    }
+  ],
+  "processing_time": 21.0
+}

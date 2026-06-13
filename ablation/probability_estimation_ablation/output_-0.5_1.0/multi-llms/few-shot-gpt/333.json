@@ -1,0 +1,127 @@
+{
+  "filename": "333.txt",
+  "entity": {
+    "USER": 0.622459,
+    "PROFILE": 0.510498,
+    "CONNECTION": 0.622459,
+    "HOME_PAGE": 0.572143,
+    "POST": 0.477914
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.531113,
+      "username": 0.528581,
+      "password hash": 0.520101,
+      "user type": 0.54938,
+      "registration time": 0.533341
+    },
+    "PROFILE": {
+      "profile id": 0.528278,
+      "user id": 0.533212,
+      "phone": 0.537875,
+      "address": 0.536308,
+      "email": 0.526792,
+      "birthday": 0.521832,
+      "gender": 0.535052,
+      "relationship status": 0.535853,
+      "interests": 0.540418,
+      "motto": 0.522661,
+      "hometown": 0.529833,
+      "current location": 0.526795
+    },
+    "CONNECTION": {
+      "connection id": 0.52256,
+      "user id": 0.537245,
+      "connected user id": 0.534748,
+      "connection time": 0.52301,
+      "request sent time": 0.526068,
+      "request status": 0.525509
+    },
+    "HOME_PAGE": {
+      "home page id": 0.534135,
+      "owner user id": 0.541898,
+      "title": 0.53443,
+      "introduction": 0.551775,
+      "creation time": 0.536657
+    },
+    "POST": {
+      "post id": 0.516126,
+      "home page id": 0.533748,
+      "author user id": 0.524705,
+      "content text": 0.516571,
+      "posting time": 0.531441
+    },
+    "USER_HOME_PAGE": {
+      "user id": 0.546607,
+      "home page id": 0.544715,
+      "join time": 0.555358
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "PROFILE",
+      "description": "Each user has exactly one personal profile and each profile belongs to one user.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999223
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "HOME_PAGE",
+      "description": "A user can create multiple personal home pages; each home page is owned by a single user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99851
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION",
+      "description": "A user can be the initiator of many connection records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998205
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "CONNECTION",
+      "description": "A user can be the target of many connection records.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998205
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "USER_HOME_PAGE",
+      "description": "A user can join multiple home pages; each join is recorded in USER_HOME_PAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998119
+    },
+    {
+      "entity_1": "HOME_PAGE",
+      "entity_2": "USER_HOME_PAGE",
+      "description": "A home page can have many users joining it; each join is recorded in USER_HOME_PAGE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999256
+    },
+    {
+      "entity_1": "HOME_PAGE",
+      "entity_2": "POST",
+      "description": "A home page can contain multiple posts; each post belongs to one home page.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.968148
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "description": "A user can author multiple posts; each post has a single author.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.900578
+    }
+  ],
+  "processing_time": 6.66
+}

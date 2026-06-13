@@ -1,0 +1,116 @@
+{
+  "entity": [
+    "MEMBER",
+    "ADDRESS",
+    "BOOK",
+    "AUTHOR",
+    "BOOK_AUTHOR",
+    "PUBLISHER",
+    "BOOK_TYPE",
+    "ORDER",
+    "ORDER_DETAIL"
+  ],
+  "attribute": {
+    "MEMBER": [
+      "member_id",
+      "username",
+      "password",
+      "telephone",
+      "points_balance",
+      "total_spent",
+      "address_id"
+    ],
+    "ADDRESS": [
+      "address_id",
+      "member_id",
+      "street",
+      "city",
+      "postal_code"
+    ],
+    "BOOK": [
+      "book_id",
+      "title",
+      "isbn",
+      "price",
+      "publication_date",
+      "publisher_id",
+      "type_id"
+    ],
+    "AUTHOR": [
+      "author_id",
+      "name"
+    ],
+    "BOOK_AUTHOR": [
+      "book_id",
+      "author_id"
+    ],
+    "PUBLISHER": [
+      "publisher_id",
+      "name",
+      "address"
+    ],
+    "BOOK_TYPE": [
+      "type_id",
+      "type_name"
+    ],
+    "ORDER": [
+      "order_id",
+      "member_id",
+      "sale_date",
+      "shipping_date",
+      "shipping_address_id"
+    ],
+    "ORDER_DETAIL": [
+      "order_id",
+      "book_id",
+      "quantity",
+      "unit_price"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "MEMBER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_DETAIL",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "AUTHOR",
+      "entity_2": "BOOK_AUTHOR",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "BOOK_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BOOK",
+      "entity_2": "PUBLISHER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ADDRESS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 63.2637,
+  "ilp_runtime": 0.11
+}

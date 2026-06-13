@@ -1,0 +1,130 @@
+{
+  "filename": "470.txt",
+  "entity": {
+    "ENTERPRISE": 0.817574,
+    "EMPLOYEE": 0.817574,
+    "MENU": 0.701636,
+    "ORDER": 0.817574,
+    "ORDER_ITEM": 0.749378,
+    "RESTAURANT_STAFF": 0.745547,
+    "DELIVERY_PERSON": 0.774884,
+    "PAYMENT_REQUEST": 0.798959
+  },
+  "attribute": {
+    "ENTERPRISE": {
+      "name": 0.762132,
+      "address": 0.767844,
+      "phone_number": 0.761732
+    },
+    "EMPLOYEE": {
+      "name": 0.764635,
+      "phone_number": 0.763715,
+      "address": 0.768837,
+      "employee_id": 0.759351
+    },
+    "MENU": {
+      "dish": 0.765432,
+      "price": 0.749658,
+      "special_offer_indicator": 0.755045
+    },
+    "ORDER": {
+      "order_number": 0.758557,
+      "total_price": 0.749368,
+      "delivery_time": 0.757725,
+      "delivery_address": 0.763979,
+      "payment_method": 0.753911,
+      "order_status": 0.756082,
+      "order_date": 0.750884
+    },
+    "ORDER_ITEM": {
+      "quantity": 0.768999,
+      "dish_price": 0.765893
+    },
+    "RESTAURANT_STAFF": {
+      "name": 0.773031,
+      "phone_number": 0.77158,
+      "staff_id": 0.772852
+    },
+    "DELIVERY_PERSON": {
+      "name": 0.755394,
+      "phone_number": 0.759333,
+      "address": 0.763411,
+      "delivery_person_id": 0.758424
+    },
+    "PAYMENT_REQUEST": {
+      "payment_status": 0.755251,
+      "order_number": 0.765046,
+      "employee_id": 0.766715
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "ENTERPRISE",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "An enterprise has multiple employees",
+      "probability": 0.924329
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "An employee can place multiple orders",
+      "probability": 0.000512
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "description": "An order can have multiple order items",
+      "probability": 0.999979
+    },
+    {
+      "entity_1": "ORDER_ITEM",
+      "entity_2": "MENU",
+      "cardinality": "N:1",
+      "description": "An order item is associated with one menu item",
+      "probability": 0.984049
+    },
+    {
+      "entity_1": "RESTAURANT_STAFF",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A restaurant staff can prepare multiple orders",
+      "probability": 0.345146
+    },
+    {
+      "entity_1": "DELIVERY_PERSON",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A delivery person can deliver multiple orders",
+      "probability": 6.7e-05
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_REQUEST",
+      "cardinality": "1:1",
+      "description": "An order is associated with one payment request",
+      "probability": 0.227351
+    },
+    {
+      "entity_1": "RESTAURANT_STAFF",
+      "entity_2": "DELIVERY_PERSON",
+      "cardinality": "1:N",
+      "description": "A restaurant staff can interact with multiple delivery persons",
+      "probability": 0.903693
+    },
+    {
+      "entity_1": "DELIVERY_PERSON",
+      "entity_2": "RESTAURANT_STAFF",
+      "cardinality": "1:N",
+      "description": "A delivery person can interact with multiple restaurant staff",
+      "probability": 0.903693
+    }
+  ],
+  "processing_time": 24.26,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added order status and order date attributes to the ORDER entity, and added relationships between the DELIVERY_PERSON and RESTAURANT_STAFF entities to reflect their interactions."
+  }
+}

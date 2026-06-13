@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "DOCUMENT",
+    "DOCUMENT_TYPE",
+    "VERSION",
+    "STATUS_CATEGORY",
+    "STATUS",
+    "STATUS_HISTORY",
+    "USER"
+  ],
+  "attribute": {
+    "DOCUMENT": [
+      "doc_id",
+      "title",
+      "abstract",
+      "doc_type_id",
+      "created_at",
+      "created_by",
+      "current_version_id"
+    ],
+    "DOCUMENT_TYPE": [
+      "doc_type_id",
+      "name",
+      "description",
+      "retention_policy"
+    ],
+    "VERSION": [
+      "version_id",
+      "doc_id",
+      "version_number",
+      "content_hash",
+      "file_path",
+      "created_at",
+      "created_by",
+      "is_active"
+    ],
+    "STATUS_CATEGORY": [
+      "category_id",
+      "name",
+      "description"
+    ],
+    "STATUS": [
+      "status_id",
+      "version_id",
+      "category_id",
+      "process_step_id",
+      "status_value",
+      "sequence_number",
+      "effective_date",
+      "notes",
+      "changed_by",
+      "changed_at"
+    ],
+    "STATUS_HISTORY": [
+      "history_id",
+      "status_id",
+      "from_status_id",
+      "to_status_id",
+      "changed_by",
+      "changed_at",
+      "comment"
+    ],
+    "USER": [
+      "user_id",
+      "username",
+      "full_name",
+      "email",
+      "role"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "DOCUMENT_TYPE",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DOCUMENT",
+      "entity_2": "VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "STATUS_CATEGORY",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STATUS_HISTORY",
+      "entity_2": "STATUS",
+      "cardinality": "N:1",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 40.8951,
+  "ilp_runtime": 0.051
+}

@@ -1,0 +1,101 @@
+{
+  "filename": "473.txt",
+  "entity": {
+    "PUBLICATION": 0.622459,
+    "CUSTOMER": 0.622459,
+    "ADMINISTRATOR": 0.622459,
+    "ORDER": 0.622459,
+    "PAYMENT_METHOD": 0.433988,
+    "SHIPPING_ADDRESS": 0.458322
+  },
+  "attribute": {
+    "PUBLICATION": {
+      "title": 0.552118,
+      "author": 0.547939,
+      "price": 0.547749,
+      "type": 0.563063,
+      "publication_date": 0.54594
+    },
+    "CUSTOMER": {
+      "name": 0.526257,
+      "phone": 0.526894,
+      "email": 0.527831,
+      "password": 0.528866,
+      "registration_status": 0.530872,
+      "address": 0.531956
+    },
+    "ADMINISTRATOR": {
+      "name": 0.523396,
+      "phone": 0.525386,
+      "email": 0.521883,
+      "password": 0.518931,
+      "role": 0.521371
+    },
+    "ORDER": {
+      "order_id": 0.519477,
+      "order_time": 0.516389,
+      "order_status": 0.522826,
+      "total_cost": 0.515397
+    },
+    "PAYMENT_METHOD": {
+      "method_name": 0.510342,
+      "method_description": 0.521561
+    },
+    "SHIPPING_ADDRESS": {
+      "address_line1": 0.52113,
+      "address_line2": 0.518292,
+      "city": 0.523602,
+      "state": 0.520422,
+      "zip_code": 0.5162
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PUBLICATION",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A publication can be part of many orders",
+      "probability": 0.193152
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "A customer can place many orders",
+      "probability": 0.964848
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "PUBLICATION",
+      "cardinality": "1:N",
+      "description": "An administrator can manage many publications",
+      "probability": 0.02445
+    },
+    {
+      "entity_1": "ADMINISTRATOR",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "description": "An administrator can manage many orders",
+      "probability": 0.004931
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT_METHOD",
+      "cardinality": "1:1",
+      "description": "An order is associated with one payment method",
+      "probability": 0.03577
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "SHIPPING_ADDRESS",
+      "cardinality": "1:1",
+      "description": "An order is associated with one shipping address",
+      "probability": 0.043442
+    }
+  ],
+  "processing_time": 11.23,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added order_id attribute to ORDER entity and added relationship between ADMINISTRATOR and ORDER entities to reflect administrator's ability to manage orders."
+  }
+}

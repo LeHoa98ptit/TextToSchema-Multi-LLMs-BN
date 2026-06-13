@@ -1,0 +1,134 @@
+{
+  "entity": [
+    "CUSTOMER",
+    "CONTACT_PERSON",
+    "CUSTOMER_CLASSIFICATION",
+    "PRODUCT",
+    "PRODUCT_CATEGORY",
+    "BRAND",
+    "SUPPLIER",
+    "ORDER",
+    "ORDER_ITEM",
+    "PAYMENT"
+  ],
+  "attribute": {
+    "CUSTOMER": [
+      "customer id",
+      "customer name",
+      "address",
+      "phone",
+      "email"
+    ],
+    "CONTACT_PERSON": [
+      "contact person id",
+      "customer id",
+      "contact name",
+      "contact phone",
+      "contact email"
+    ],
+    "CUSTOMER_CLASSIFICATION": [
+      "classification id",
+      "customer id",
+      "customer type",
+      "credit rating"
+    ],
+    "PRODUCT": [
+      "product id",
+      "product name",
+      "product specification",
+      "unit price",
+      "inventory quantity",
+      "production date",
+      "category id",
+      "brand id",
+      "supplier id"
+    ],
+    "PRODUCT_CATEGORY": [
+      "category id",
+      "category name"
+    ],
+    "BRAND": [
+      "brand id",
+      "brand name"
+    ],
+    "SUPPLIER": [
+      "supplier id",
+      "supplier name",
+      "contact phone",
+      "contact email"
+    ],
+    "ORDER": [
+      "order id",
+      "customer id",
+      "order time",
+      "order status"
+    ],
+    "ORDER_ITEM": [
+      "order item id",
+      "order id",
+      "product id",
+      "quantity",
+      "unit price",
+      "total price"
+    ],
+    "PAYMENT": [
+      "payment id",
+      "order id",
+      "payment method",
+      "payment status",
+      "payment time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CONTACT_PERSON",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "CUSTOMER_CLASSIFICATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT_CATEGORY",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BRAND",
+      "entity_2": "PRODUCT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "ORDER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PRODUCT",
+      "entity_2": "ORDER_ITEM",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ORDER",
+      "entity_2": "PAYMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 50.9104,
+  "ilp_runtime": 0.047
+}

@@ -1,0 +1,99 @@
+{
+  "filename": "276.txt",
+  "entity": {
+    "MAINTENANCE_TECHNICIAN": 0.569718,
+    "MAINTENANCE_TEAM": 0.600296,
+    "CUSTOMER": 0.622459,
+    "MAINTENANCE_TASK": 0.592546,
+    "MAINTENANCE_PRODUCT": 0.558087,
+    "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TASK": 0.052273
+  },
+  "attribute": {
+    "MAINTENANCE_TECHNICIAN": {
+      "technician_id": 0.564592,
+      "name": 0.562752,
+      "gender": 0.562192,
+      "phone_number": 0.562423,
+      "position": 0.572605,
+      "employment_date": 0.56099,
+      "team_id": 0.565
+    },
+    "MAINTENANCE_TEAM": {
+      "team_id": 0.546817,
+      "team_name": 0.549959,
+      "team_leader_id": 0.550362,
+      "responsibility": 0.562268,
+      "total_number_member": 0.552684
+    },
+    "CUSTOMER": {
+      "customer_id": 0.526509,
+      "name": 0.528893,
+      "phone_number": 0.524568,
+      "address": 0.526157
+    },
+    "MAINTENANCE_TASK": {
+      "task_id": 0.550339,
+      "maintenance_time": 0.562316,
+      "maintenance_duration": 0.559056,
+      "cost": 0.548774,
+      "result": 0.565434,
+      "satisfaction_level": 0.573255,
+      "feedback_resolution_result": 0.55543,
+      "customer_id": 0.560533,
+      "product_id": 0.548472
+    },
+    "MAINTENANCE_PRODUCT": {
+      "product_id": 0.535914,
+      "product_name": 0.540676,
+      "description": 0.561272
+    },
+    "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TASK": {
+      "assoc_maintenance_technician_maintenance_task_id": 0.052273,
+      "maintenance_technician_id": 0.052273,
+      "maintenance_task_id": 0.052273
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TECHNICIAN",
+      "cardinality": "1:N",
+      "probability": 0.424478
+    },
+    {
+      "entity_1": "MAINTENANCE_TEAM",
+      "entity_2": "MAINTENANCE_TECHNICIAN",
+      "cardinality": "1:1",
+      "probability": 0.424478
+    },
+    {
+      "entity_1": "MAINTENANCE_TECHNICIAN",
+      "entity_2": "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TASK",
+      "description": "One MAINTENANCE_TECHNICIAN can be associated with many ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052273
+    },
+    {
+      "entity_1": "MAINTENANCE_TASK",
+      "entity_2": "ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TASK",
+      "description": "One MAINTENANCE_TASK can be associated with many ASSOC_MAINTENANCE_TECHNICIAN_MAINTENANCE_TASK.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.052273
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "probability": 0.178866
+    },
+    {
+      "entity_1": "MAINTENANCE_PRODUCT",
+      "entity_2": "MAINTENANCE_TASK",
+      "cardinality": "1:N",
+      "probability": 0.444877
+    }
+  ],
+  "processing_time": 23.07
+}

@@ -1,0 +1,142 @@
+{
+  "entity": [
+    "USER",
+    "COMPANY",
+    "JOB",
+    "RESUME",
+    "APPLICATION",
+    "APPLICATION_STATUS",
+    "CONVERSATION",
+    "MESSAGE",
+    "MESSAGE_BOARD",
+    "ASSOC_USER_CONVERSATION"
+  ],
+  "attribute": {
+    "USER": [
+      "userid",
+      "username",
+      "password",
+      "email",
+      "avatar",
+      "nickname",
+      "registration_time",
+      "role"
+    ],
+    "COMPANY": [
+      "companyid",
+      "name",
+      "address",
+      "profile",
+      "contact_email",
+      "contact_phone"
+    ],
+    "JOB": [
+      "jobid",
+      "title",
+      "description",
+      "requirements",
+      "category",
+      "salary",
+      "education_level",
+      "work_location",
+      "posted_date",
+      "companyid"
+    ],
+    "RESUME": [
+      "resumeid",
+      "user_id",
+      "content",
+      "upload_time",
+      "education",
+      "experience",
+      "skills"
+    ],
+    "APPLICATION": [
+      "applicationid",
+      "user_id",
+      "job_id",
+      "resume_id",
+      "apply_date",
+      "status_id"
+    ],
+    "APPLICATION_STATUS": [
+      "status_id",
+      "status_name"
+    ],
+    "CONVERSATION": [
+      "conversationid",
+      "created_at"
+    ],
+    "MESSAGE": [
+      "messageid",
+      "conversation_id",
+      "sender_id",
+      "content",
+      "send_time"
+    ],
+    "MESSAGE_BOARD": [
+      "boardid",
+      "user_id",
+      "content",
+      "post_time",
+      "edited_time"
+    ],
+    "ASSOC_USER_CONVERSATION": [
+      "assoc_user_conversation_id",
+      "user_id",
+      "conversation_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "JOB",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "COMPANY",
+      "entity_2": "JOB",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "MESSAGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CONVERSATION",
+      "entity_2": "ASSOC_USER_CONVERSATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MESSAGE_BOARD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION_STATUS",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 74.4011,
+  "ilp_runtime": 0.109
+}

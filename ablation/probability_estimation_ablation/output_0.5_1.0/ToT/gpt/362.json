@@ -1,0 +1,82 @@
+{
+  "filename": "362.txt",
+  "entity": {
+    "USER": 0.817574,
+    "POST": 0.817574,
+    "COMMENT": 0.817574,
+    "FOLLOW": 0.726334,
+    "ASSOC_USER_USER": 1.0
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.756597,
+      "email": 0.762688,
+      "bio": 0.764236,
+      "relationship_status": 0.756926,
+      "phone_number": 0.756598,
+      "created_at": 0.750654,
+      "updated_at": 0.751851
+    },
+    "POST": {
+      "post_id": 0.746318,
+      "title": 0.747964,
+      "content": 0.754753,
+      "created_at": 0.747071,
+      "updated_at": 0.746396,
+      "user_id": 0.758044
+    },
+    "COMMENT": {
+      "comment_id": 0.757661,
+      "content": 0.764442,
+      "created_at": 0.754061,
+      "updated_at": 0.755367,
+      "user_id": 0.766646,
+      "post_id": 0.757897
+    },
+    "FOLLOW": {
+      "follower_id": 0.751878,
+      "followee_id": 0.753829,
+      "created_at": 0.747459
+    },
+    "ASSOC_USER_USER": {
+      "assoc_user_user_id": 1.0,
+      "user_id": 1.0
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "POST",
+      "cardinality": "1:N",
+      "description": "A user can create many posts; each post is authored by one user",
+      "probability": 0.862185
+    },
+    {
+      "entity_1": "POST",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A post can have many comments; each comment belongs to one post",
+      "probability": 0.017735
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "description": "A user can write many comments; each comment is written by one user",
+      "probability": 0.960486
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_USER",
+      "description": "One USER can be associated with many ASSOC_USER_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 1.0
+    }
+  ],
+  "processing_time": 17.43,
+  "metadata": {
+    "best_candidate": "candidate_1",
+    "improvements_made": "Explicit primary keys defined (user_id, post_id, comment_id) with NOT NULL/auto‑increment semantics. Added foreign‑key constraints: POST.user_id → USER.user_id, COMMENT.user_id → USER.user_id, COMMENT.post_id → POST.post_id, FOLLOW.follower_id & FOLLOW.followee_id → USER.user_id. Enforced UNIQUE constraint on USER.email to guarantee email uniqueness. Documentation of constraints incorporated in the model description."
+  }
+}

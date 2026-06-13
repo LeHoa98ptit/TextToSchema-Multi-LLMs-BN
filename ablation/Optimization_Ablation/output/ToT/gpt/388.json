@@ -1,0 +1,167 @@
+{
+  "entity": [
+    "EMPLOYEE",
+    "JOB_ASSIGNMENT",
+    "PERFORMANCE_APPRAISAL",
+    "SALARY",
+    "SALARY_CALCULATION",
+    "PROJECT",
+    "PROJECT_PROGRESS",
+    "PROJECT_SUPPLIER",
+    "SUPPLIER",
+    "ATTENDANCE"
+  ],
+  "attribute": {
+    "EMPLOYEE": [
+      "employee_id",
+      "first_name",
+      "last_name",
+      "date_of_birth",
+      "hire_date",
+      "position",
+      "salary_number",
+      "creation_time",
+      "update_time"
+    ],
+    "JOB_ASSIGNMENT": [
+      "assignment_id",
+      "employee_id",
+      "project_id",
+      "role",
+      "start_date",
+      "end_date",
+      "allocation_percent",
+      "creation_time",
+      "update_time"
+    ],
+    "PERFORMANCE_APPRAISAL": [
+      "appraisal_id",
+      "employee_id",
+      "period_start",
+      "period_end",
+      "rating",
+      "comments",
+      "creation_time",
+      "update_time"
+    ],
+    "SALARY": [
+      "salary_id",
+      "employee_id",
+      "calculation_id",
+      "pay_date",
+      "gross_amount",
+      "net_amount",
+      "creation_time",
+      "update_time"
+    ],
+    "SALARY_CALCULATION": [
+      "calculation_id",
+      "base_salary",
+      "bonus",
+      "deductions",
+      "taxes",
+      "creation_time",
+      "update_time"
+    ],
+    "PROJECT": [
+      "project_id",
+      "project_name",
+      "description",
+      "budget",
+      "start_date",
+      "end_date",
+      "creation_time",
+      "update_time"
+    ],
+    "PROJECT_PROGRESS": [
+      "progress_id",
+      "project_id",
+      "status",
+      "percent_complete",
+      "last_update",
+      "creation_time",
+      "update_time"
+    ],
+    "PROJECT_SUPPLIER": [
+      "proj_sup_id",
+      "project_id",
+      "supplier_id",
+      "supply_type",
+      "contract_value",
+      "creation_time",
+      "update_time"
+    ],
+    "SUPPLIER": [
+      "supplier_id",
+      "supplier_name",
+      "address",
+      "contact_person",
+      "phone",
+      "email",
+      "parent_supplier_id",
+      "creation_time",
+      "update_time"
+    ],
+    "ATTENDANCE": [
+      "attendance_id",
+      "employee_id",
+      "clock_in",
+      "clock_out",
+      "attendance_date",
+      "creation_time",
+      "update_time"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "JOB_ASSIGNMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "SALARY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SALARY",
+      "entity_2": "SALARY_CALCULATION",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_PROGRESS",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "PROJECT_SUPPLIER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "PROJECT_SUPPLIER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ATTENDANCE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "SUPPLIER",
+      "entity_2": "SUPPLIER",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 93.6079,
+  "ilp_runtime": 0.077
+}

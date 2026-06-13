@@ -1,0 +1,110 @@
+{
+  "filename": "479.txt",
+  "entity": {
+    "SUBSIDIARY": 0.622459,
+    "BUSINESS_DEPARTMENT": 0.599504,
+    "EMPLOYEE": 0.622459,
+    "REAL_ESTATE": 0.60573,
+    "SYSTEM_ADMINISTRATOR": 0.47764,
+    "USER": 0.471755,
+    "ASSOC_REAL_ESTATE_USER": 0.223825
+  },
+  "attribute": {
+    "SUBSIDIARY": {
+      "subsidiary_id": 0.568108,
+      "manager": 0.571279,
+      "contact_address": 0.555807,
+      "phone_number": 0.558014
+    },
+    "BUSINESS_DEPARTMENT": {
+      "department_id": 0.551354,
+      "address": 0.552956,
+      "phone_number": 0.544757,
+      "supervisor": 0.556955
+    },
+    "EMPLOYEE": {
+      "employee_id": 0.54809,
+      "position": 0.547281,
+      "affiliated_department": 0.562464,
+      "phone_number": 0.539345,
+      "family_member_name": 0.554571,
+      "relationship": 0.547781
+    },
+    "REAL_ESTATE": {
+      "property_id": 0.530332,
+      "information": 0.54378,
+      "responsible_agent": 0.537232,
+      "approval_status": 0.530398
+    },
+    "SYSTEM_ADMINISTRATOR": {
+      "administrator_id": 0.528804,
+      "username": 0.524425,
+      "password": 0.525392
+    },
+    "USER": {
+      "user_id": 0.510202,
+      "username": 0.493884,
+      "password": 0.509253,
+      "verification_status": 0.511732
+    },
+    "ASSOC_REAL_ESTATE_USER": {
+      "assoc_real_estate_user_id": 0.223825,
+      "real_estate_id": 0.223825,
+      "user_id": 0.223825
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "SUBSIDIARY",
+      "entity_2": "BUSINESS_DEPARTMENT",
+      "cardinality": "1:N",
+      "description": "Each subsidiary can have multiple business departments, and each business department belongs to one subsidiary.",
+      "probability": 0.989099
+    },
+    {
+      "entity_1": "BUSINESS_DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Each business department can have multiple employees, and each employee belongs to one business department.",
+      "probability": 0.999485
+    },
+    {
+      "entity_1": "SUBSIDIARY",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "description": "Each subsidiary can have multiple employees, and each employee belongs to one subsidiary through a business department.",
+      "probability": 0.984663
+    },
+    {
+      "entity_1": "REAL_ESTATE",
+      "entity_2": "SYSTEM_ADMINISTRATOR",
+      "cardinality": "1:N",
+      "description": "Each real estate property can be managed by one system administrator, and each system administrator can manage multiple real estate properties.",
+      "probability": 2e-06
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "SYSTEM_ADMINISTRATOR",
+      "cardinality": "1:1",
+      "description": "Each system administrator is a user, and each user can be a system administrator.",
+      "probability": 0.272916
+    },
+    {
+      "entity_1": "REAL_ESTATE",
+      "entity_2": "ASSOC_REAL_ESTATE_USER",
+      "description": "One REAL_ESTATE can be associated with many ASSOC_REAL_ESTATE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.223825
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_REAL_ESTATE_USER",
+      "description": "One USER can be associated with many ASSOC_REAL_ESTATE_USER.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.223825
+    }
+  ],
+  "processing_time": 13.96
+}

@@ -1,0 +1,202 @@
+{
+  "filename": "277.txt",
+  "entity": {
+    "company": 0.622459,
+    "team": 0.622459,
+    "housekeeper": 0.622459,
+    "service_type": 0.512622,
+    "skill": 0.493425,
+    "customer": 0.622459,
+    "service_task": 0.527323,
+    "service_evaluation": 0.530711,
+    "performance_evaluation": 0.55389,
+    "housekeeper_service_type": 0.554359,
+    "housekeeper_skill": 0.581029,
+    "ASSOC_HOUSEKEEPER_SERVICE_TYPE": 0.956464,
+    "ASSOC_HOUSEKEEPER_SKILL": 0.064131
+  },
+  "attribute": {
+    "company": {
+      "company_id": 0.514546,
+      "name": 0.521337,
+      "address": 0.519281,
+      "phone": 0.518668
+    },
+    "team": {
+      "team_id": 0.511676,
+      "team_name": 0.515857,
+      "manager_id": 0.519604,
+      "company_id": 0.515953
+    },
+    "housekeeper": {
+      "housekeeper_id": 0.558851,
+      "name": 0.555552,
+      "contact_number": 0.556484,
+      "years_experience": 0.561417,
+      "team_id": 0.549567
+    },
+    "service_type": {
+      "service_type_id": 0.536627,
+      "description": 0.560917
+    },
+    "skill": {
+      "skill_id": 0.521997,
+      "skill_name": 0.525774,
+      "description": 0.533172
+    },
+    "customer": {
+      "customer_id": 0.532881,
+      "name": 0.535862,
+      "phone": 0.527232,
+      "address": 0.532392
+    },
+    "service_task": {
+      "task_id": 0.532434,
+      "service_date": 0.534638,
+      "service_address": 0.538344,
+      "duration": 0.541301,
+      "completion_status": 0.536413,
+      "service_type_id": 0.536481,
+      "housekeeper_id": 0.565255,
+      "customer_id": 0.544407,
+      "fee_amount": 0.537026,
+      "payment_date": 0.529552
+    },
+    "service_evaluation": {
+      "evaluation_id": 0.537219,
+      "task_id": 0.536057,
+      "customer_id": 0.547075,
+      "customer_satisfaction": 0.554984,
+      "effectiveness_score": 0.548345,
+      "comments": 0.545117
+    },
+    "performance_evaluation": {
+      "eval_id": 0.50934,
+      "housekeeper_id": 0.561327,
+      "period_start": 0.518915,
+      "period_end": 0.52217,
+      "tasks_completed": 0.531059,
+      "average_rating": 0.513746
+    },
+    "housekeeper_service_type": {
+      "housekeeper_id": 0.573479,
+      "service_type_id": 0.568531
+    },
+    "housekeeper_skill": {
+      "housekeeper_id": 0.562917,
+      "skill_id": 0.55607
+    },
+    "ASSOC_HOUSEKEEPER_SERVICE_TYPE": {
+      "assoc_housekeeper_service_type_id": 0.956464,
+      "housekeeper_id": 0.956464,
+      "service_type_id": 0.956464
+    },
+    "ASSOC_HOUSEKEEPER_SKILL": {
+      "assoc_housekeeper_skill_id": 0.064131,
+      "housekeeper_id": 0.064131,
+      "skill_id": 0.064131
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "company",
+      "entity_2": "team",
+      "cardinality": "1:N",
+      "description": "A company manages many teams",
+      "probability": 0.979108
+    },
+    {
+      "entity_1": "team",
+      "entity_2": "housekeeper",
+      "cardinality": "1:N",
+      "description": "Each team employs multiple housekeepers",
+      "probability": 0.00359
+    },
+    {
+      "entity_1": "team",
+      "entity_2": "housekeeper",
+      "cardinality": "1:1",
+      "description": "team.manager_id references the housekeeper who leads the team",
+      "probability": 0.00359
+    },
+    {
+      "entity_1": "housekeeper",
+      "entity_2": "ASSOC_HOUSEKEEPER_SERVICE_TYPE",
+      "description": "One housekeeper can be associated with many ASSOC_HOUSEKEEPER_SERVICE_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.956464
+    },
+    {
+      "entity_1": "service_type",
+      "entity_2": "ASSOC_HOUSEKEEPER_SERVICE_TYPE",
+      "description": "One service_type can be associated with many ASSOC_HOUSEKEEPER_SERVICE_TYPE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.956464
+    },
+    {
+      "entity_1": "housekeeper",
+      "entity_2": "ASSOC_HOUSEKEEPER_SKILL",
+      "description": "One housekeeper can be associated with many ASSOC_HOUSEKEEPER_SKILL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.064131
+    },
+    {
+      "entity_1": "skill",
+      "entity_2": "ASSOC_HOUSEKEEPER_SKILL",
+      "description": "One skill can be associated with many ASSOC_HOUSEKEEPER_SKILL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.064131
+    },
+    {
+      "entity_1": "service_task",
+      "entity_2": "service_type",
+      "cardinality": "N:1",
+      "description": "Each task is of a single service type",
+      "probability": 0.996483
+    },
+    {
+      "entity_1": "service_task",
+      "entity_2": "housekeeper",
+      "cardinality": "N:1",
+      "description": "Each task is performed by one housekeeper",
+      "probability": 0.93019
+    },
+    {
+      "entity_1": "service_task",
+      "entity_2": "customer",
+      "cardinality": "N:1",
+      "description": "Each task is requested by one customer",
+      "probability": 0.174586
+    },
+    {
+      "entity_1": "service_task",
+      "entity_2": "service_evaluation",
+      "cardinality": "1:1",
+      "description": "A completed task may have one customer evaluation",
+      "probability": 0.963953
+    },
+    {
+      "entity_1": "service_evaluation",
+      "entity_2": "customer",
+      "cardinality": "N:1",
+      "description": "Evaluation records the customer who gave the rating",
+      "probability": 0.942933
+    },
+    {
+      "entity_1": "housekeeper",
+      "entity_2": "performance_evaluation",
+      "cardinality": "1:N",
+      "description": "Periodic performance evaluations are stored for each housekeeper",
+      "probability": 0.028515
+    }
+  ],
+  "processing_time": 35.36,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Implemented evaluation suggestions: merged fee attributes into SERVICE_TASK, added explicit junction tables HOUSEKEEPER_SERVICE_TYPE and HOUSEKEEPER_SKILL for N:M relationships, added COMPANY_ID to TEAM and MANAGER_ID reference, included CUSTOMER_ID in SERVICE_EVALUATION, standardized attribute naming to snake_case, clarified relationship cardinalities, and retained all core entities while removing the redundant SERVICE_FEE table."
+  }
+}

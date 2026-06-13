@@ -1,0 +1,42 @@
+% Requires: \usepackage{booktabs}, \usepackage{multirow}
+\begin{table}[t]
+\centering
+\caption{ER model quality metrics for various configurations, LLMs, and prompts. Best overall configuration in grey.}
+\label{tab:er_model_quality}
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lllcccc}
+\toprule
+\textbf{Config} & \textbf{LLM} & \textbf{Prompt}
+& \textbf{Basic Counts}
+& \textbf{Complexity}
+& \textbf{Redundancy (\%)} $\downarrow$
+& \textbf{Well-Formedness (\%)} $\uparrow$ \\
+\midrule
+& & & E | R | A | Total & R/E | N:M (\%) | A/E & Dup | Similar & Ent w/ A | Valid Card | Not Isolated \\
+\midrule
+-0.5+1.0 & GPT & FewShot & 5.98 | 5.28 | 24.89 | 36.15 & 0.86 | 0.0 | 4.26 & 0.0 | 0.49 & 94.62 | 97.19 | 94.59 \\
+ & LLAMA-3 & FewShot & 3.17 | 0.82 | 1.21 | 5.2 & 0.23 | 0.0 | 0.33 & 0.74 | 0.44 & 7.28 | 35.48 | 31.42 \\
+ & GPT & ZeroShot & 6.35 | 4.19 | 25.72 | 36.26 & 0.69 | 0.0 | 4.14 & 0.06 | 0.66 & 97.64 | 77.6 | 74.84 \\
+ & LLAMA-3 & ZeroShot & 3.37 | 1.31 | 1.9 | 6.58 & 0.33 | 0.0 | 0.47 & 0.77 | 0.35 & 10.1 | 48.8 | 43.61 \\
+ & GPT & ToT & 3.0 | 0.03 | 0.0 | 3.03 & 0.01 | 0.0 | 0.0 & 0.63 | 0.14 & 0.0 | 1.67 | 1.26 \\
+ & LLAMA-3 & ToT & 3.0 | 0.0 | 0.0 | 3.0 & 0.0 | 0.0 | 0.0 & 0.0 | 0.13 & 0.0 | 0.0 | 0.0 \\
+\midrule
+0.5+1.0 & GPT & FewShot & 5.91 | 5.42 | 24.94 | 36.27 & 0.88 | 0.0 | 4.27 & 1.98 | 0.49 & 94.62 | 97.19 | 94.61 \\
+\rowcolor{gray!15}
+ & LLAMA-3 & FewShot & 4.66 | 3.75 | 18.9 | 27.31 & 0.78 | 0.0 | 4.12 & 0.0 | 0.22 & 96.43 | 97.18 | 94.72 \\
+ & GPT & ZeroShot & 6.17 | 4.0 | 25.26 | 35.42 & 0.67 | 0.0 | 4.16 & 1.16 | 0.46 & 97.77 | 75.0 | 72.47 \\
+ & LLAMA-3 & ZeroShot & 6.36 | 6.27 | 25.08 | 37.71 & 0.98 | 0.0 | 4.06 & 3.3 | 0.51 & 100.0 | 99.37 | 99.06 \\
+ & GPT & ToT & 8.59 | 9.03 | 46.84 | 64.45 & 1.05 | 0.0 | 5.49 & 2.15 | 0.48 & 100.0 | 99.0 | 98.24 \\
+ & LLAMA-3 & ToT & 6.57 | 6.45 | 26.03 | 39.04 & 0.98 | 0.0 | 4.02 & 1.43 | 0.33 & 100.0 | 100.0 | 99.34 \\
+\midrule
+1.0+3.0 & GPT & FewShot & 5.92 | 5.35 | 24.68 | 35.95 & 0.89 | 0.0 | 4.28 & 2.08 | 0.52 & 94.63 | 97.42 | 94.81 \\
+ & LLAMA-3 & FewShot & 5.49 | 5.04 | 21.99 | 32.52 & 0.9 | 0.0 | 4.06 & 2.75 | 0.72 & 95.63 | 91.38 | 91.02 \\
+ & GPT & ZeroShot & 6.25 | 4.04 | 25.37 | 35.65 & 0.69 | 0.0 | 4.16 & 1.12 | 0.45 & 97.77 | 75.45 | 72.86 \\
+ & LLAMA-3 & ZeroShot & 6.36 | 6.35 | 25.15 | 37.86 & 1.0 | 0.0 | 4.07 & 3.3 | 0.51 & 100.0 | 100.0 | 99.77 \\
+ & GPT & ToT & 8.6 | 9.17 | 46.94 | 64.72 & 1.06 | 0.0 | 5.49 & 2.18 | 0.48 & 100.0 | 98.92 | 98.64 \\
+ & LLAMA-3 & ToT & 6.57 | 6.5 | 26.06 | 39.13 & 0.99 | 0.0 | 4.03 & 1.39 | 0.33 & 100.0 | 100.0 | 99.52 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

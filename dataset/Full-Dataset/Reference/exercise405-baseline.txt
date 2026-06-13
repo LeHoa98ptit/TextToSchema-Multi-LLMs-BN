@@ -1,0 +1,105 @@
+{
+  "entity": [
+    "Drug",
+    "Doctor",
+    "Patient",
+    "Prescription",
+    "Outpatient Management",
+    "Patient Outpatient Consultation",
+    "Patient Payment Prescription",
+    "Prescription Contains Drug"
+  ],
+  "attribut": {
+    "Drug": [
+      "Drug ID",
+      "Name",
+      "Specification",
+      "Usage"
+    ],
+    "Doctor": [
+      "Doctor ID",
+      "Name",
+      "Address",
+      "Phone Number"
+    ],
+    "Patient": [
+      "Patient ID",
+      "Name",
+      "Address",
+      "Phone Number"
+    ],
+    "Prescription": [
+      "Prescription ID",
+      "Medical Orders",
+      "Date",
+      "Category",
+      "Issuing Doctor",
+      "Remarks"
+    ],
+    "Outpatient Management": [
+      "Outpatient ID",
+      "Doctor Number",
+      "Outpatient Type",
+      "Opening Time"
+    ],
+    "Patient Outpatient Consultation": [
+      "Patient Number",
+      "Outpatient Number",
+      "Consultation Time",
+      "Consultation Content"
+    ],
+    "Patient Payment Prescription": [
+      "Patient Number",
+      "Prescription Number",
+      "Payment Amount",
+      "Discount"
+    ],
+    "Prescription Contains Drug": [
+      "Prescription Number",
+      "Drug Number",
+      "Quantity"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "Doctor",
+      "entity_2": "Prescription",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Doctor",
+      "entity_2": "Outpatient Management",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Patient",
+      "entity_2": "Patient Outpatient Consultation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Outpatient Management",
+      "entity_2": "Patient Outpatient Consultation",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Prescription",
+      "entity_2": "Patient Payment Prescription",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Patient",
+      "entity_2": "Patient Payment Prescription",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Prescription",
+      "entity_2": "Prescription Contains Drug",
+      "cardinality": "1:N"
+    },
+    {
+      "entity_1": "Drug",
+      "entity_2": "Prescription Contains Drug",
+      "cardinality": "1:N"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "filename": "425.txt",
+  "entity": {
+    "USER": 0.486603,
+    "BUILDING": 0.481384,
+    "DORMITORY": 0.622459,
+    "STUDENT": 0.622459,
+    "APPLICATION": 0.622459,
+    "MAINTENANCE_RECORD": 0.530537,
+    "ANNOUNCEMENT": 0.622459
+  },
+  "attribute": {
+    "USER": {
+      "user id": 0.513151,
+      "username": 0.502726,
+      "password": 0.523892
+    },
+    "BUILDING": {
+      "building id": 0.522533,
+      "name": 0.518711,
+      "type": 0.524661,
+      "location": 0.51776,
+      "description": 0.53003,
+      "responsible dormitory manager id": 0.564095
+    },
+    "DORMITORY": {
+      "dormitory id": 0.559717,
+      "name": 0.561012,
+      "type": 0.563128,
+      "number of beds": 0.554295,
+      "belonging building id": 0.552247,
+      "supporting facilities": 0.566903,
+      "responsible dormitory manager id": 0.56449
+    },
+    "STUDENT": {
+      "student id": 0.546311,
+      "name": 0.545829,
+      "gender": 0.541057,
+      "belonging dormitory id": 0.562385,
+      "class": 0.539066
+    },
+    "APPLICATION": {
+      "application id": 0.505593,
+      "application type": 0.516533,
+      "applicant student id": 0.53968,
+      "application content": 0.520016,
+      "application time": 0.510786,
+      "application status": 0.525136,
+      "administrator processing opinion": 0.533878
+    },
+    "MAINTENANCE_RECORD": {
+      "maintenance record id": 0.524557,
+      "dormitory id": 0.564608,
+      "fault description": 0.527822,
+      "repair time": 0.517505,
+      "maintenance staff id": 0.542416,
+      "maintenance situation": 0.533237,
+      "completion time": 0.526429
+    },
+    "ANNOUNCEMENT": {
+      "announcement id": 0.509412,
+      "announcement title": 0.516005,
+      "announcement content": 0.516669,
+      "release time": 0.504812,
+      "administrator id": 0.525009
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "APPLICATION",
+      "description": "A user can submit many applications, but each application is submitted by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997454
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "DORMITORY",
+      "description": "A building can have many dormitories, but each dormitory belongs to one building.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.423411
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "description": "A dormitory can have many students, but each student belongs to one dormitory.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.99995
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "description": "A student can submit many applications, but each application is submitted by one student.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.717051
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "USER",
+      "description": "An application is processed by one user, and a user can process many applications.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.997454
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "description": "A dormitory can have many maintenance records, but each maintenance record is for one dormitory.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.983457
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "description": "A user can publish many announcements, but each announcement is published by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.880897
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "MAINTENANCE_RECORD",
+      "description": "A user (maintenance staff) can handle many maintenance records, but each maintenance record is handled by one user.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.999555
+    }
+  ],
+  "processing_time": 37.05
+}

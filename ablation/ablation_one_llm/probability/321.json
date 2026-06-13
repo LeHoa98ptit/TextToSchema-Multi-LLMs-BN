@@ -1,0 +1,138 @@
+{
+  "filename": "321.txt",
+  "entity": {
+    "USER": 0.817574,
+    "FOOTBALL_CLUB": 0.739602,
+    "EVENT_ORGANIZER": 0.74808,
+    "TEAM": 0.817574,
+    "MATCH": 0.817574,
+    "MEMBERSHIP": 0.817574,
+    "ASSOC_USER_TEAM": 0.75417,
+    "ASSOC_TEAM_MATCH": 0.658199,
+    "ASSOC_USER_FOOTBALL_CLUB": 0.245652
+  },
+  "attribute": {
+    "USER": {
+      "username": 0.740244,
+      "email": 0.748037,
+      "password": 0.742907,
+      "name": 0.741503,
+      "date_of_birth": 0.737259,
+      "phone_number": 0.739537,
+      "address": 0.739523,
+      "interests": 0.764541
+    },
+    "FOOTBALL_CLUB": {
+      "club_id": 0.767323,
+      "club_name": 0.769291,
+      "club_description": 0.774867,
+      "club_location": 0.766835
+    },
+    "EVENT_ORGANIZER": {
+      "organizer_id": 0.750109,
+      "organizer_name": 0.752264,
+      "organizer_description": 0.753918,
+      "organizer_location": 0.74767
+    },
+    "TEAM": {
+      "team_id": 0.758871,
+      "team_name": 0.761071,
+      "team_description": 0.766012,
+      "team_location": 0.758179
+    },
+    "MATCH": {
+      "match_id": 0.747065,
+      "match_date": 0.743685,
+      "match_time": 0.748952,
+      "match_location": 0.741562,
+      "match_result": 0.74592
+    },
+    "MEMBERSHIP": {
+      "membership_id": 0.746275,
+      "membership_type": 0.754297,
+      "membership_status": 0.755058,
+      "membership_fee": 0.746253
+    },
+    "ASSOC_USER_TEAM": {
+      "assoc_user_team_id": 0.75417,
+      "user_id": 0.75417,
+      "team_id": 0.75417
+    },
+    "ASSOC_TEAM_MATCH": {
+      "assoc_team_match_id": 0.658199,
+      "team_id": 0.658199,
+      "match_id": 0.658199
+    },
+    "ASSOC_USER_FOOTBALL_CLUB": {
+      "assoc_user_football_club_id": 0.245652,
+      "user_id": 0.245652,
+      "football_club_id": 0.245652
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "MEMBERSHIP",
+      "cardinality": "1:N",
+      "description": "A user can have multiple memberships, but each membership is associated with one user.",
+      "probability": 0.998357
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.75417
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "ASSOC_USER_TEAM",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.75417
+    },
+    {
+      "entity_1": "TEAM",
+      "entity_2": "ASSOC_TEAM_MATCH",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.658199
+    },
+    {
+      "entity_1": "MATCH",
+      "entity_2": "ASSOC_TEAM_MATCH",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.658199
+    },
+    {
+      "entity_1": "FOOTBALL_CLUB",
+      "entity_2": "TEAM",
+      "cardinality": "1:N",
+      "description": "A football club can have multiple teams, but each team is associated with one football club.",
+      "probability": 0.854792
+    },
+    {
+      "entity_1": "EVENT_ORGANIZER",
+      "entity_2": "MATCH",
+      "cardinality": "1:N",
+      "description": "An event organizer can organize multiple matches, but each match is associated with one event organizer.",
+      "probability": 0.236651
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_FOOTBALL_CLUB",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.245652
+    },
+    {
+      "entity_1": "FOOTBALL_CLUB",
+      "entity_2": "ASSOC_USER_FOOTBALL_CLUB",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.245652
+    }
+  ],
+  "processing_time": 16.25
+}

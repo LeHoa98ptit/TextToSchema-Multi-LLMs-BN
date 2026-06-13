@@ -1,0 +1,125 @@
+{
+  "filename": "281.txt",
+  "entity": {
+    "EXHIBITION": 0.817574,
+    "CURATOR": 0.817574,
+    "LOCATION": 0.727426,
+    "EXHIBIT": 0.817574,
+    "ASSOC_EXHIBITION_CURATOR": 0.020652,
+    "ASSOC_CURATOR_EXHIBIT": 0.232779,
+    "ASSOC_CURATOR_LOCATION": 0.038771
+  },
+  "attribute": {
+    "EXHIBITION": {
+      "name": 0.780591,
+      "start_time": 0.782673,
+      "end_time": 0.781938,
+      "description": 0.781072,
+      "ticket_price": 0.764816
+    },
+    "CURATOR": {
+      "name": 0.773228,
+      "email": 0.765622,
+      "phone": 0.766686,
+      "bio": 0.765233
+    },
+    "LOCATION": {
+      "address": 0.75355,
+      "city": 0.756676,
+      "country": 0.753017,
+      "capacity": 0.762448
+    },
+    "EXHIBIT": {
+      "name": 0.778652,
+      "description": 0.778486,
+      "artist": 0.780596,
+      "medium": 0.767988,
+      "exhibit_type": 0.777061,
+      "exhibit_status": 0.777736
+    },
+    "ASSOC_EXHIBITION_CURATOR": {
+      "assoc_exhibition_curator_id": 0.020652,
+      "exhibition_id": 0.020652,
+      "curator_id": 0.020652
+    },
+    "ASSOC_CURATOR_EXHIBIT": {
+      "assoc_curator_exhibit_id": 0.232779,
+      "curator_id": 0.232779,
+      "exhibit_id": 0.232779
+    },
+    "ASSOC_CURATOR_LOCATION": {
+      "assoc_curator_location_id": 0.038771,
+      "curator_id": 0.038771,
+      "location_id": 0.038771
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EXHIBITION",
+      "entity_2": "ASSOC_EXHIBITION_CURATOR",
+      "description": "One EXHIBITION can be associated with many ASSOC_EXHIBITION_CURATOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.020652
+    },
+    {
+      "entity_1": "CURATOR",
+      "entity_2": "ASSOC_EXHIBITION_CURATOR",
+      "description": "One CURATOR can be associated with many ASSOC_EXHIBITION_CURATOR.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.020652
+    },
+    {
+      "entity_1": "EXHIBITION",
+      "entity_2": "LOCATION",
+      "cardinality": "1:N",
+      "description": "An exhibition can be held at one location and a location can host multiple exhibitions",
+      "probability": 0.242565
+    },
+    {
+      "entity_1": "EXHIBITION",
+      "entity_2": "EXHIBIT",
+      "cardinality": "1:N",
+      "description": "An exhibition can feature multiple exhibits and an exhibit can be part of one exhibition",
+      "probability": 0.998772
+    },
+    {
+      "entity_1": "CURATOR",
+      "entity_2": "ASSOC_CURATOR_EXHIBIT",
+      "description": "One CURATOR can be associated with many ASSOC_CURATOR_EXHIBIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.232779
+    },
+    {
+      "entity_1": "EXHIBIT",
+      "entity_2": "ASSOC_CURATOR_EXHIBIT",
+      "description": "One EXHIBIT can be associated with many ASSOC_CURATOR_EXHIBIT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.232779
+    },
+    {
+      "entity_1": "CURATOR",
+      "entity_2": "ASSOC_CURATOR_LOCATION",
+      "description": "One CURATOR can be associated with many ASSOC_CURATOR_LOCATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.038771
+    },
+    {
+      "entity_1": "LOCATION",
+      "entity_2": "ASSOC_CURATOR_LOCATION",
+      "description": "One LOCATION can be associated with many ASSOC_CURATOR_LOCATION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.038771
+    }
+  ],
+  "processing_time": 13.88,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added exhibit type and exhibit status attributes to the EXHIBIT entity, and added a relationship between CURATOR and LOCATION entities"
+  }
+}

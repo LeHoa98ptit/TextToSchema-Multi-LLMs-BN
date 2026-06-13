@@ -1,0 +1,85 @@
+{
+  "filename": "292.txt",
+  "entity": {
+    "FACILITY": 0.622459,
+    "RESIDENTIAL_COMMUNITY": 0.465256,
+    "LOCATION": 0.520139,
+    "MAINTENANCE_EVENT": 0.535018,
+    "PERSONNEL": 0.622459,
+    "ASSOC_PERSONNEL_MAINTENANCE_EVENT": 0.966827
+  },
+  "attribute": {
+    "FACILITY": {
+      "facility_id": 0.548911,
+      "facility_name": 0.552816,
+      "facility_type": 0.549924
+    },
+    "RESIDENTIAL_COMMUNITY": {
+      "community_id": 0.531894,
+      "community_name": 0.536765,
+      "community_address": 0.532531
+    },
+    "LOCATION": {
+      "location_id": 0.512464,
+      "location_name": 0.514634,
+      "location_address": 0.512747
+    },
+    "MAINTENANCE_EVENT": {
+      "event_id": 0.534889,
+      "event_date": 0.534136,
+      "event_time": 0.53795,
+      "event_content": 0.544923,
+      "event_cost": 0.543987
+    },
+    "PERSONNEL": {
+      "personnel_id": 0.543401,
+      "personnel_name": 0.543821,
+      "personnel_contact_info": 0.552359
+    },
+    "ASSOC_PERSONNEL_MAINTENANCE_EVENT": {
+      "assoc_personnel_maintenance_event_id": 0.966827,
+      "personnel_id": 0.966827,
+      "maintenance_event_id": 0.966827
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "RESIDENTIAL_COMMUNITY",
+      "cardinality": "1:N",
+      "description": "A facility can be part of many residential communities, and each residential community can have many facilities.",
+      "probability": 0.975083
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "LOCATION",
+      "cardinality": "1:1",
+      "description": "Each facility is located at one location, and each location can have one facility.",
+      "probability": 0.999325
+    },
+    {
+      "entity_1": "FACILITY",
+      "entity_2": "MAINTENANCE_EVENT",
+      "cardinality": "1:N",
+      "description": "Each facility can have many maintenance events, and each maintenance event is associated with one facility.",
+      "probability": 0.845733
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE_EVENT",
+      "description": "One PERSONNEL can be associated with many ASSOC_PERSONNEL_MAINTENANCE_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.966827
+    },
+    {
+      "entity_1": "MAINTENANCE_EVENT",
+      "entity_2": "ASSOC_PERSONNEL_MAINTENANCE_EVENT",
+      "description": "One MAINTENANCE_EVENT can be associated with many ASSOC_PERSONNEL_MAINTENANCE_EVENT.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.966827
+    }
+  ],
+  "processing_time": 12.36
+}

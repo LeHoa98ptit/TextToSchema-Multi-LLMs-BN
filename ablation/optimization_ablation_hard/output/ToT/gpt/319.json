@@ -1,0 +1,62 @@
+{
+  "entity": [
+    "REGION",
+    "CITY",
+    "POSTAL_CODE",
+    "REGION_MERGE"
+  ],
+  "attribute": {
+    "REGION": [
+      "regional_code",
+      "regional_name",
+      "regional_level",
+      "pinyin_abbreviation",
+      "parent_regional_id",
+      "center_latitude",
+      "center_longitude"
+    ],
+    "CITY": [
+      "city_code",
+      "city_name",
+      "regional_code"
+    ],
+    "POSTAL_CODE": [
+      "postal_code",
+      "city_code"
+    ],
+    "REGION_MERGE": [
+      "merge_id",
+      "source_regional_code",
+      "target_regional_code",
+      "merge_date"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "REGION",
+      "entity_2": "CITY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "CITY",
+      "entity_2": "POSTAL_CODE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "REGION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REGION",
+      "entity_2": "REGION_MERGE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 33.5705,
+  "ilp_runtime": 0.062
+}

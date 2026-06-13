@@ -1,0 +1,137 @@
+{
+  "filename": "268.txt",
+  "entity": {
+    "HOTEL": 0.528095,
+    "RESTAURANT": 0.622459,
+    "LOCATION": 0.4938,
+    "OPERATING_HOUR": 0.593222,
+    "DISH": 0.521387,
+    "CATEGORY": 0.622459,
+    "CUSTOMER": 0.622459,
+    "TABLE": 0.481533,
+    "RESERVATION": 0.622459
+  },
+  "attribute": {
+    "HOTEL": {
+      "hotel id": 0.549278
+    },
+    "RESTAURANT": {
+      "restaurant id": 0.567211,
+      "hotel id": 0.568066
+    },
+    "LOCATION": {
+      "location id": 0.530957
+    },
+    "OPERATING_HOUR": {
+      "operating hour id": 0.540583,
+      "restaurant id": 0.575742,
+      "day of week": 0.52799,
+      "open time": 0.539546,
+      "close time": 0.536045
+    },
+    "DISH": {
+      "dish id": 0.547426,
+      "restaurant id": 0.564335,
+      "name": 0.544601,
+      "price": 0.548301,
+      "category id": 0.550603
+    },
+    "CATEGORY": {
+      "category id": 0.522217,
+      "name": 0.527892
+    },
+    "CUSTOMER": {
+      "customer id": 0.536812,
+      "name": 0.540511
+    },
+    "TABLE": {
+      "table id": 0.528527,
+      "restaurant id": 0.571445,
+      "table number": 0.538916,
+      "capacity": 0.533806
+    },
+    "RESERVATION": {
+      "reservation id": 0.548074,
+      "customer id": 0.555634,
+      "restaurant id": 0.573828,
+      "table id": 0.557544,
+      "reservation time": 0.551731,
+      "number of diners": 0.571522
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "HOTEL",
+      "entity_2": "RESTAURANT",
+      "description": "A hotel can have multiple restaurants; each restaurant belongs to one hotel.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.998528
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "LOCATION",
+      "description": "Each restaurant is associated with a single location.",
+      "cardinality": "1:1",
+      "associative_entity": null,
+      "probability": 0.999818
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "OPERATING_HOUR",
+      "description": "A restaurant has operating hour records for each day of the week.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.023851
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "DISH",
+      "description": "A restaurant offers many dishes.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.713264
+    },
+    {
+      "entity_1": "CATEGORY",
+      "entity_2": "DISH",
+      "description": "Each category groups multiple dishes.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006125
+    },
+    {
+      "entity_1": "CUSTOMER",
+      "entity_2": "RESERVATION",
+      "description": "A customer can make multiple reservations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.006338
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "RESERVATION",
+      "description": "A restaurant can have many reservations.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.911075
+    },
+    {
+      "entity_1": "TABLE",
+      "entity_2": "RESERVATION",
+      "description": "A table can be assigned to many reservations over time.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.143547
+    },
+    {
+      "entity_1": "RESTAURANT",
+      "entity_2": "TABLE",
+      "description": "A restaurant contains multiple tables.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.804659
+    }
+  ],
+  "processing_time": 10.64
+}

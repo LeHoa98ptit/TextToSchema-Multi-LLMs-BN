@@ -1,0 +1,65 @@
+{
+  "entity": [
+    "DEPARTMENT",
+    "WORKORDER",
+    "EMAILCONFIGURATION",
+    "EMPLOYEE",
+    "EMAILSERVER",
+    "ASSOC_DEPARTMENT_EMPLOYEE"
+  ],
+  "attribute": {
+    "DEPARTMENT": [
+      "departmentdescription",
+      "emailaddress",
+      "sortorder",
+      "autoreplydisabled",
+      "hideuser"
+    ],
+    "WORKORDER": [
+      "workorderdescription",
+      "respondemail",
+      "pipeline"
+    ],
+    "EMAILCONFIGURATION": [
+      "emailserverhost",
+      "portnumber",
+      "loginusername",
+      "password"
+    ],
+    "EMPLOYEE": [
+      "employeename",
+      "email"
+    ],
+    "EMAILSERVER": [
+      "serveraddress",
+      "maintenancedatetime"
+    ],
+    "ASSOC_DEPARTMENT_EMPLOYEE": [
+      "assoc_department_employee_id",
+      "department_id",
+      "employee_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "EMAILCONFIGURATION",
+      "entity_2": "EMAILSERVER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "ASSOC_DEPARTMENT_EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "ASSOC_DEPARTMENT_EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 59.3694,
+  "ilp_runtime": 0.055
+}

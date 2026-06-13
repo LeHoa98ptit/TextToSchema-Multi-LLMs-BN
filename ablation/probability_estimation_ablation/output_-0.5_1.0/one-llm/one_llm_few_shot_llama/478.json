@@ -1,0 +1,98 @@
+{
+  "filename": "478.txt",
+  "entity": {
+    "USER": 0.622459,
+    "BICYCLE": 0.622459,
+    "TRIP": 0.473974,
+    "FAULT_RECORD": 0.542671,
+    "BILLING_RULE": 0.477216,
+    "ASSOC_USER_BICYCLE": 0.043293
+  },
+  "attribute": {
+    "USER": {
+      "d": 0.510514,
+      "phone_number": 0.523441,
+      "credit_status": 0.535877
+    },
+    "BICYCLE": {
+      "location": 0.543427,
+      "status": 0.555229,
+      "unlock_code": 0.545516,
+      "bicycle_number": 0.555507
+    },
+    "TRIP": {
+      "start_time": 0.530447,
+      "end_time": 0.525334,
+      "cost": 0.512885,
+      "payment_status": 0.5344
+    },
+    "FAULT_RECORD": {
+      "fault_description": 0.531687,
+      "report_time": 0.529848
+    },
+    "BILLING_RULE": {
+      "billing_method": 0.531551,
+      "unit_price": 0.532072,
+      "minimum_fee": 0.543042
+    },
+    "ASSOC_USER_BICYCLE": {
+      "assoc_user_bicycle_id": 0.043293,
+      "user_id": 0.043293,
+      "bicycle_id": 0.043293
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "description": "Each user can have many trips, and each trip is associated with exactly one user.",
+      "probability": 0.991024
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "description": "Each bicycle can be used for many trips, and each trip is associated with exactly one bicycle.",
+      "probability": 0.602801
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "FAULT_RECORD",
+      "cardinality": "1:N",
+      "description": "Each user can report many faults, and each fault is associated with exactly one user.",
+      "probability": 0.991067
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "FAULT_RECORD",
+      "cardinality": "1:N",
+      "description": "Each bicycle can have many faults reported, and each fault is associated with exactly one bicycle.",
+      "probability": 0.856998
+    },
+    {
+      "entity_1": "BILLING_RULE",
+      "entity_2": "TRIP",
+      "cardinality": "1:N",
+      "description": "Each billing rule can be applied to many trips, and each trip is associated with exactly one billing rule.",
+      "probability": 0.635861
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_BICYCLE",
+      "description": "One USER can be associated with many ASSOC_USER_BICYCLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.043293
+    },
+    {
+      "entity_1": "BICYCLE",
+      "entity_2": "ASSOC_USER_BICYCLE",
+      "description": "One BICYCLE can be associated with many ASSOC_USER_BICYCLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.043293
+    }
+  ],
+  "processing_time": 10.17
+}

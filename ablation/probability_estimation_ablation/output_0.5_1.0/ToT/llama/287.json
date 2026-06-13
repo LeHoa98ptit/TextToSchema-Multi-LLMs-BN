@@ -1,0 +1,129 @@
+{
+  "filename": "287.txt",
+  "entity": {
+    "PARK": 0.817574,
+    "PERSON": 0.693897,
+    "PLANT": 0.817574,
+    "MAINTENANCE": 0.817574,
+    "RECORD": 0.817574,
+    "PERSONNEL": 0.716019,
+    "ASSOC_MAINTENANCE_PERSONNEL": 0.922185
+  },
+  "attribute": {
+    "PARK": {
+      "location": 0.76452,
+      "area": 0.7642,
+      "responsible_person": 0.772658,
+      "park_name": 0.765415,
+      "park_type": 0.766292
+    },
+    "PERSON": {
+      "name": 0.730756,
+      "contact_info": 0.742923,
+      "email": 0.737857,
+      "phone_number": 0.743536,
+      "address": 0.744766
+    },
+    "PLANT": {
+      "specie": 0.749698,
+      "quantity": 0.761925,
+      "growth_status": 0.764913,
+      "recording_time": 0.767277,
+      "plant_age": 0.753894,
+      "plant_health": 0.763906
+    },
+    "MAINTENANCE": {
+      "maintenance_time": 0.75913,
+      "maintenance_content": 0.760255,
+      "maintenance_cost": 0.758453,
+      "maintenance_personnel": 0.767382,
+      "maintenance_frequency": 0.763338,
+      "maintenance_priority": 0.760112
+    },
+    "RECORD": {
+      "recording_time": 0.752667,
+      "recorder": 0.752656,
+      "plant_specie": 0.766371,
+      "plant_quantity": 0.771603,
+      "record_type": 0.745791,
+      "record_description": 0.755955
+    },
+    "PERSONNEL": {
+      "name": 0.747199,
+      "role": 0.751251,
+      "personnel_id": 0.751402,
+      "department": 0.760556,
+      "job_title": 0.750976
+    },
+    "ASSOC_MAINTENANCE_PERSONNEL": {
+      "assoc_maintenance_personnel_id": 0.922185,
+      "maintenance_id": 0.922185,
+      "personnel_id": 0.922185
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "PARK",
+      "entity_2": "PERSON",
+      "cardinality": "1:1",
+      "description": "A park is managed by one person",
+      "probability": 0.882652
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "PLANT",
+      "cardinality": "1:N",
+      "description": "A park has multiple plants",
+      "probability": 0.024907
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "MAINTENANCE",
+      "cardinality": "1:N",
+      "description": "A park has multiple maintenance activities",
+      "probability": 0.818114
+    },
+    {
+      "entity_1": "PARK",
+      "entity_2": "RECORD",
+      "cardinality": "1:N",
+      "description": "A park has multiple records",
+      "probability": 0.820133
+    },
+    {
+      "entity_1": "MAINTENANCE",
+      "entity_2": "ASSOC_MAINTENANCE_PERSONNEL",
+      "description": "One MAINTENANCE can be associated with many ASSOC_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.922185
+    },
+    {
+      "entity_1": "PERSONNEL",
+      "entity_2": "ASSOC_MAINTENANCE_PERSONNEL",
+      "description": "One PERSONNEL can be associated with many ASSOC_MAINTENANCE_PERSONNEL.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.922185
+    },
+    {
+      "entity_1": "RECORD",
+      "entity_2": "PLANT",
+      "cardinality": "N:1",
+      "description": "A record is related to one plant specie",
+      "probability": 0.046638
+    },
+    {
+      "entity_1": "RECORD",
+      "entity_2": "PERSON",
+      "cardinality": "N:1",
+      "description": "A record is made by one person",
+      "probability": 0.999631
+    }
+  ],
+  "processing_time": 25.66,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added more attributes to PERSON and MAINTENANCE entities, reviewed and improved consistency of naming conventions, and added new relationships to enhance data integrity and completeness."
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "entity": [
+    "SUBSIDIARY",
+    "DEPARTMENT",
+    "EMPLOYEE",
+    "FAMILY_MEMBER",
+    "IDENTITY_VERIFICATION_LOG",
+    "REAL_ESTATE_AGENT",
+    "PROPERTY",
+    "ADMINISTRATOR"
+  ],
+  "attribute": {
+    "SUBSIDIARY": [
+      "subsidiary_id",
+      "manager_name",
+      "manager_address",
+      "manager_phone_number"
+    ],
+    "DEPARTMENT": [
+      "department_id",
+      "address",
+      "phone_number",
+      "subsidiary_id",
+      "supervisor_name"
+    ],
+    "EMPLOYEE": [
+      "employee_id",
+      "position",
+      "department_id",
+      "phone_number"
+    ],
+    "FAMILY_MEMBER": [
+      "family_member_id",
+      "employee_id",
+      "name",
+      "relationship"
+    ],
+    "IDENTITY_VERIFICATION_LOG": [
+      "log_id",
+      "employee_id",
+      "verification_timestamp",
+      "status"
+    ],
+    "REAL_ESTATE_AGENT": [
+      "agent_id",
+      "name",
+      "contact_phone",
+      "contact_email"
+    ],
+    "PROPERTY": [
+      "property_id",
+      "address",
+      "agent_id",
+      "status",
+      "approval_admin_id",
+      "listing_date",
+      "sale_date"
+    ],
+    "ADMINISTRATOR": [
+      "admin_id",
+      "name",
+      "contact_phone"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "SUBSIDIARY",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "REAL_ESTATE_AGENT",
+      "entity_2": "PROPERTY",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 32.9537,
+  "ilp_runtime": 0.064
+}

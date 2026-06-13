@@ -1,0 +1,180 @@
+{
+  "filename": "369.txt",
+  "entity": {
+    "USER": 0.817574,
+    "CONTENT": 0.817574,
+    "CONTENT_VERSION": 0.725538,
+    "WORKFLOW": 0.817574,
+    "STATE": 0.817574,
+    "OPERATION_LOG": 0.745831,
+    "COMMENT": 0.7161,
+    "ROLE": 0.727307,
+    "PERMISSION": 0.817574,
+    "ASSOC_USER_ROLE": 0.979555,
+    "ASSOC_ROLE_PERMISSION": 0.075457
+  },
+  "attribute": {
+    "USER": {
+      "user_id": 0.735522,
+      "username": 0.729081,
+      "full_name": 0.739009,
+      "email": 0.741566,
+      "password_hash": 0.731126,
+      "created_at": 0.731587,
+      "updated_at": 0.734764
+    },
+    "CONTENT": {
+      "content_id": 0.750241,
+      "title": 0.752648,
+      "body": 0.759672,
+      "created_at": 0.74308,
+      "updated_at": 0.744827,
+      "created_by_user_id": 0.743643,
+      "workflow_id": 0.75481,
+      "current_state_id": 0.745838
+    },
+    "CONTENT_VERSION": {
+      "version_id": 0.749393,
+      "content_id": 0.752495,
+      "version_number": 0.749769,
+      "body_snapshot": 0.744161,
+      "created_at": 0.746718,
+      "created_by_user_id": 0.747017,
+      "change_summary": 0.754773
+    },
+    "WORKFLOW": {
+      "workflow_id": 0.742982,
+      "name": 0.759502,
+      "description": 0.76845,
+      "created_at": 0.738042,
+      "updated_at": 0.737168
+    },
+    "STATE": {
+      "state_id": 0.7347,
+      "workflow_id": 0.748609,
+      "name": 0.732772,
+      "description": 0.747318,
+      "state_order": 0.741576
+    },
+    "OPERATION_LOG": {
+      "log_id": 0.744222,
+      "operation_type": 0.752882,
+      "operation_time": 0.749609,
+      "user_id": 0.745858,
+      "content_id": 0.755233,
+      "version_id": 0.74851,
+      "details": 0.763218
+    },
+    "COMMENT": {
+      "comment_id": 0.728092,
+      "content_id": 0.741041,
+      "version_id": 0.737811,
+      "user_id": 0.733475,
+      "comment_text": 0.734905,
+      "created_at": 0.728938
+    },
+    "ROLE": {
+      "role_id": 0.741441,
+      "name": 0.745903,
+      "description": 0.759832
+    },
+    "PERMISSION": {
+      "permission_id": 0.740057,
+      "name": 0.748546,
+      "description": 0.756785
+    },
+    "ASSOC_USER_ROLE": {
+      "assoc_user_role_id": 0.979555,
+      "user_id": 0.979555,
+      "role_id": 0.979555
+    },
+    "ASSOC_ROLE_PERMISSION": {
+      "assoc_role_permission_id": 0.075457,
+      "role_id": 0.075457,
+      "permission_id": 0.075457
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "CONTENT",
+      "cardinality": "1:N",
+      "probability": 0.402792
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "CONTENT_VERSION",
+      "cardinality": "1:N",
+      "probability": 0.999673
+    },
+    {
+      "entity_1": "WORKFLOW",
+      "entity_2": "CONTENT",
+      "cardinality": "1:N",
+      "probability": 0.003432
+    },
+    {
+      "entity_1": "WORKFLOW",
+      "entity_2": "STATE",
+      "cardinality": "1:N",
+      "probability": 0.002872
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "probability": 0.95854
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "probability": 0.001176
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "probability": 0.936809
+    },
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "probability": 4e-06
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One USER can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.979555
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "description": "One ROLE can be associated with many ASSOC_USER_ROLE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.979555
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One ROLE can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.075457
+    },
+    {
+      "entity_1": "PERMISSION",
+      "entity_2": "ASSOC_ROLE_PERMISSION",
+      "description": "One PERMISSION can be associated with many ASSOC_ROLE_PERMISSION.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.075457
+    }
+  ],
+  "processing_time": 45.56
+}

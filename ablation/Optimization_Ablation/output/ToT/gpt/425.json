@@ -1,0 +1,161 @@
+{
+  "entity": [
+    "USER",
+    "ROLE",
+    "BUILDING",
+    "DORMITORY",
+    "STUDENT",
+    "APPLICATION",
+    "MAINTENANCE_RECORD",
+    "MAINTENANCE_STAFF",
+    "ABSENCE_REGISTRATION",
+    "ANNOUNCEMENT",
+    "ASSOC_USER_ROLE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "password"
+    ],
+    "ROLE": [
+      "role_id",
+      "role_name",
+      "description"
+    ],
+    "BUILDING": [
+      "building_id",
+      "type",
+      "location",
+      "description"
+    ],
+    "DORMITORY": [
+      "dormitory_id",
+      "type",
+      "number",
+      "bed_total",
+      "building_id"
+    ],
+    "STUDENT": [
+      "student_id",
+      "name",
+      "gender",
+      "class",
+      "dormitory_id"
+    ],
+    "APPLICATION": [
+      "application_id",
+      "type",
+      "content",
+      "apply_time",
+      "status",
+      "admin_opinion",
+      "student_id",
+      "processed_by"
+    ],
+    "MAINTENANCE_RECORD": [
+      "record_id",
+      "dormitory_id",
+      "fault_description",
+      "repair_time",
+      "situation",
+      "completion_time",
+      "staff_id"
+    ],
+    "MAINTENANCE_STAFF": [
+      "staff_id",
+      "user_id",
+      "name",
+      "contact"
+    ],
+    "ABSENCE_REGISTRATION": [
+      "absence_id",
+      "student_id",
+      "date",
+      "reason",
+      "status"
+    ],
+    "ANNOUNCEMENT": [
+      "announcement_id",
+      "title",
+      "content",
+      "release_time",
+      "admin_id"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "BUILDING",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "USER",
+      "cardinality": "1:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "STUDENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "APPLICATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "APPLICATION",
+      "entity_2": "USER",
+      "cardinality": "N:1",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "DORMITORY",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "MAINTENANCE_STAFF",
+      "entity_2": "MAINTENANCE_RECORD",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ABSENCE_REGISTRATION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ANNOUNCEMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 77.8359,
+  "ilp_runtime": 0.091
+}

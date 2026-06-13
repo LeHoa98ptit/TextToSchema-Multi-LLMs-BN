@@ -1,0 +1,124 @@
+{
+  "entity": [
+    "USER",
+    "CONTENT",
+    "CONTENT_VERSION",
+    "WORKFLOW",
+    "STATE",
+    "OPERATION_LOG",
+    "COMMENT",
+    "ROLE",
+    "PERMISSION",
+    "ASSOC_USER_ROLE"
+  ],
+  "attribute": {
+    "USER": [
+      "user_id",
+      "username",
+      "full_name",
+      "email",
+      "password_hash",
+      "created_at",
+      "updated_at"
+    ],
+    "CONTENT": [
+      "content_id",
+      "title",
+      "body",
+      "created_at",
+      "updated_at",
+      "created_by_user_id",
+      "workflow_id",
+      "current_state_id"
+    ],
+    "CONTENT_VERSION": [
+      "version_id",
+      "content_id",
+      "version_number",
+      "body_snapshot",
+      "created_at",
+      "created_by_user_id",
+      "change_summary"
+    ],
+    "WORKFLOW": [
+      "workflow_id",
+      "name",
+      "description",
+      "created_at",
+      "updated_at"
+    ],
+    "STATE": [
+      "state_id",
+      "workflow_id",
+      "name",
+      "description",
+      "state_order"
+    ],
+    "OPERATION_LOG": [
+      "log_id",
+      "operation_type",
+      "operation_time",
+      "user_id",
+      "content_id",
+      "version_id",
+      "details"
+    ],
+    "COMMENT": [
+      "comment_id",
+      "content_id",
+      "version_id",
+      "user_id",
+      "comment_text",
+      "created_at"
+    ],
+    "ROLE": [
+      "role_id",
+      "name",
+      "description"
+    ],
+    "PERMISSION": [
+      "permission_id",
+      "name",
+      "description"
+    ],
+    "ASSOC_USER_ROLE": [
+      "assoc_user_role_id",
+      "user_id",
+      "role_id"
+    ]
+  },
+  "relationship": [
+    {
+      "entity_1": "CONTENT",
+      "entity_2": "CONTENT_VERSION",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "OPERATION_LOG",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "COMMENT",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "USER",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    },
+    {
+      "entity_1": "ROLE",
+      "entity_2": "ASSOC_USER_ROLE",
+      "cardinality": "1:N",
+      "associative_entity": null
+    }
+  ],
+  "ilp_score": 54.8154,
+  "ilp_runtime": 0.105
+}

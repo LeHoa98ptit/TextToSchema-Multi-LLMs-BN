@@ -1,0 +1,81 @@
+{
+  "filename": "389.txt",
+  "entity": {
+    "STUDENT": 0.622459,
+    "TEACHER": 0.622459,
+    "COURSE": 0.622459,
+    "COURSE_SELECTION": 0.586933,
+    "ASSOC_STUDENT_COURSE": 0.031612
+  },
+  "attribute": {
+    "STUDENT": {
+      "student_id": 0.554959,
+      "gender": 0.555429,
+      "age": 0.544607,
+      "phone": 0.544658
+    },
+    "TEACHER": {
+      "teacher_id": 0.549885,
+      "gender": 0.546291,
+      "title": 0.547912,
+      "phone": 0.539687
+    },
+    "COURSE": {
+      "course_id": 0.54788,
+      "credit": 0.53121,
+      "class_hour": 0.552914,
+      "teaching_teacher": 0.558672,
+      "class_location": 0.555245,
+      "number_of_students": 0.565465
+    },
+    "COURSE_SELECTION": {
+      "selection_time": 0.548531,
+      "grade": 0.561357
+    },
+    "ASSOC_STUDENT_COURSE": {
+      "assoc_student_course_id": 0.031612,
+      "student_id": 0.031612,
+      "course_id": 0.031612
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "COURSE_SELECTION",
+      "cardinality": "1:N",
+      "description": "Each student can have multiple course selections.",
+      "probability": 0.998453
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "COURSE_SELECTION",
+      "cardinality": "1:N",
+      "description": "Each course can have multiple students enrolled.",
+      "probability": 0.999734
+    },
+    {
+      "entity_1": "TEACHER",
+      "entity_2": "COURSE",
+      "cardinality": "1:N",
+      "description": "Each teacher can teach multiple courses.",
+      "probability": 0.99218
+    },
+    {
+      "entity_1": "STUDENT",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One STUDENT can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.031612
+    },
+    {
+      "entity_1": "COURSE",
+      "entity_2": "ASSOC_STUDENT_COURSE",
+      "description": "One COURSE can be associated with many ASSOC_STUDENT_COURSE.",
+      "cardinality": "1:N",
+      "associative_entity": null,
+      "probability": 0.031612
+    }
+  ],
+  "processing_time": 15.02
+}

@@ -1,0 +1,89 @@
+{
+  "filename": "464.txt",
+  "entity": {
+    "EMPLOYEE": 0.622459,
+    "DEPARTMENT": 0.622459,
+    "PROJECT": 0.622459,
+    "EMPLOYEE_PROJECT": 0.541678
+  },
+  "attribute": {
+    "EMPLOYEE": {
+      "employee_id": 0.561389,
+      "first_name": 0.561932,
+      "last_name": 0.555147,
+      "date_of_birth": 0.550829,
+      "hire_date": 0.544146,
+      "salary": 0.550927,
+      "position": 0.562993,
+      "education_level": 0.566377,
+      "email": 0.549652,
+      "phone": 0.543162
+    },
+    "DEPARTMENT": {
+      "department_id": 0.53626,
+      "department_name": 0.539905,
+      "location": 0.530598,
+      "budget": 0.534525,
+      "manager_id": 0.545982
+    },
+    "PROJECT": {
+      "project_id": 0.52982,
+      "project_name": 0.526246,
+      "start_date": 0.522067,
+      "end_date": 0.52026,
+      "budget": 0.532773,
+      "status": 0.536031
+    },
+    "EMPLOYEE_PROJECT": {
+      "participation_id": 0.557496,
+      "employee_id": 0.567989,
+      "project_id": 0.558428,
+      "role": 0.567209,
+      "allocation_percent": 0.556983,
+      "start_date": 0.550991,
+      "end_date": 0.549309
+    }
+  },
+  "relationship": [
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each employee is assigned to one department; a department employs many employees",
+      "probability": 0.999913
+    },
+    {
+      "entity_1": "DEPARTMENT",
+      "entity_2": "EMPLOYEE",
+      "cardinality": "1:1",
+      "description": "Each department has a single manager, referenced by DEPARTMENT.manager_id",
+      "probability": 0.999913
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "DEPARTMENT",
+      "cardinality": "N:1",
+      "description": "Each project is owned by one department; a department can sponsor many projects",
+      "probability": 0.830846
+    },
+    {
+      "entity_1": "EMPLOYEE",
+      "entity_2": "EMPLOYEE_PROJECT",
+      "cardinality": "1:N",
+      "description": "An employee can have many participation records in projects",
+      "probability": 0.999933
+    },
+    {
+      "entity_1": "PROJECT",
+      "entity_2": "EMPLOYEE_PROJECT",
+      "cardinality": "1:N",
+      "description": "A project can have many employee participation records",
+      "probability": 0.998322
+    }
+  ],
+  "processing_time": 6.58,
+  "metadata": {
+    "best_candidate": "candidate_2",
+    "improvements_made": "Added explicit manager_id foreign key in DEPARTMENT to clarify the 1:1 manager relationship; introduced participation_id surrogate key in EMPLOYEE_PROJECT to guarantee unique participation records and support a composite primary key concept; retained valuable descriptive attributes (location, budget, project dates, status) for richer reporting; kept the associative entity EMPLOYEE_PROJECT for the many‑to‑many Employee‑Project relationship; ensured all relationships are clearly described with correct cardinalities."
+  }
+}
